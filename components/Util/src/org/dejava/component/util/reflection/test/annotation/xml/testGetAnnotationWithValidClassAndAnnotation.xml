@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<testCase>
+    <name>Get annotation - Valid class and annotation</name>
+    <description>Tests the method "get annotation" with valid class and annotation.</description>
+    <steps>
+        <step class="org.dejava.component.util.test.model.TestStep">
+            <name>Get annotation - Static call with valid class and annotation</name>
+            <description>Calls the "get annotation" method from the static class with valid class and annotation, and expects a given return.</description>
+            <method>
+                <name>runStepTestGetAnnotationWithValidClassAndAnnotation</name>
+                <parametersClasses>
+                    <parameterClass class="java.lang.Class">org.dejava.component.util.reflection.test.annotation.auxiliary.AnnotatedClass</parameterClass>
+                </parametersClasses>
+                <parametersValues>
+                    <parameterValue>#{object}</parameterValue>
+                </parametersValues>
+            </method>
+        </step>
+    </steps>
+    <data>
+        <data class="org.dejava.component.util.reflection.test.annotation.auxiliary.AnnotatedClass">
+            <annotatedClass>org.dejava.component.util.reflection.test.annotation.auxiliary.ClassA</annotatedClass>
+            <annotationValue>ClassA</annotationValue>
+        </data>
+        <data class="org.dejava.component.util.reflection.test.annotation.auxiliary.AnnotatedClass">
+            <annotatedClass>org.dejava.component.util.reflection.test.annotation.auxiliary.InterfaceZ</annotatedClass>
+            <annotationValue>InterfaceZ</annotationValue>
+        </data>
+        <data class="org.dejava.component.util.reflection.test.annotation.auxiliary.AnnotatedClass">
+            <annotatedClass>org.dejava.component.util.reflection.test.annotation.auxiliary.InterfaceY</annotatedClass>
+            <annotationValue>InterfaceZ</annotationValue>
+        </data>
+        <data class="org.dejava.component.util.reflection.test.annotation.auxiliary.AnnotatedClass">
+            <annotatedClass>org.dejava.component.util.reflection.test.annotation.auxiliary.ClassB</annotatedClass>
+            <annotationValue>ClassA</annotationValue>
+        </data>
+        <data class="org.dejava.component.util.reflection.test.annotation.auxiliary.AnnotatedClass">
+            <annotatedClass>org.dejava.component.util.reflection.test.annotation.auxiliary.ClassC</annotatedClass>
+            <annotationValue>InterfaceZ</annotationValue>
+        </data>
+        <data class="org.dejava.component.util.reflection.test.annotation.auxiliary.AnnotatedClass">
+            <annotatedClass>org.dejava.component.util.reflection.test.annotation.auxiliary.ClassD</annotatedClass>
+            <annotationValue>ClassD</annotationValue>
+        </data>
+    </data>
+</testCase>

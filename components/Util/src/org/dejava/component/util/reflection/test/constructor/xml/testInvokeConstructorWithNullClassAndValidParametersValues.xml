@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<testCase>
+    <name>Get class - Null class name</name>
+    <description>Tests the method "get class" with null class name.</description>
+    <steps>
+        <step class="org.dejava.component.util.test.model.TestStep">
+            <name>Get class - static call with null class name</name>
+            <description>Calls the "get class" method from the static class with null class name and expects a given exception</description>
+            <method>
+                <staticMethodClass>org.dejava.component.util.reflection.handler.ClassHandler</staticMethodClass>
+                <name>getClass</name>
+                <parametersClasses>
+                    <parameterClass class="java.lang.Class">java.lang.String</parameterClass>
+                </parametersClasses>
+                <parametersValues>
+                    <parameterValue>#{null}</parameterValue>
+                </parametersValues>
+                <expectedException>
+                    <name>EmptyParameterException</name>
+                    <message>reflection.class.name.empty</message>
+                </expectedException>
+            </method>
+        </step>
+    </steps>
+</testCase>

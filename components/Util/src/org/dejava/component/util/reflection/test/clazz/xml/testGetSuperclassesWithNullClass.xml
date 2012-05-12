@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<testCase>
+    <name>Get superclasses - Null class test</name>
+    <description>Test the method "get superclasses" with an empty class as the main parameter value.</description>
+    <steps>
+        <step class="org.dejava.component.util.test.model.TestStep">
+            <name>Get superclasses - static call with expected exception</name>
+            <description>Calls the "get superclasses" method from the static class and expects an empty parameter exception.</description>
+            <method>
+                <staticMethodClass>org.dejava.component.util.reflection.handler.ClassHandler</staticMethodClass>
+                <name>getSuperclasses</name>
+                <parametersClasses>
+                    <parameterClass class="java.lang.Class">java.lang.Class</parameterClass>
+                </parametersClasses>
+                <parametersValues>
+                    <parameterValue>#{null}</parameterValue>
+                </parametersValues>
+                <expectedException>
+                    <name>EmptyParameterException</name>
+                    <message>reflection.class.empty</message>
+                </expectedException>
+            </method>
+        </step>
+    </steps>
+</testCase>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<testCase>
+    <name>Get superclasses - Valid parameters</name>
+    <description>Tests the "get superclasses" method with valid parameters.</description>
+    <steps>
+        <step class="org.dejava.component.util.test.model.TestStep">
+            <name>Get superclasses - static call with expected return</name>
+            <description>Calls the "get superclasses" method from the static class and expects a given return.</description>
+            <method>
+                <staticMethodClass>org.dejava.component.util.reflection.handler.ClassHandler</staticMethodClass>
+                <name>getSuperclasses</name>
+                <parametersClasses>
+                    <parameterClass class="java.lang.Class">java.lang.Class</parameterClass>
+                </parametersClasses>
+                <parametersValues>
+                    <parameterValue>#{object.clazz}</parameterValue>
+                </parametersValues>
+                <expectedReturn>#{object.superclasses}</expectedReturn>
+            </method>
+        </step>
+    </steps>
+    <data>
+        <data
+			class="org.dejava.component.util.reflection.test.clazz.auxiliary.ClassSuperclasses">
+            <clazz>java.lang.String</clazz>
+            <superclasses>
+                <class class="java.lang.Class">java.lang.CharSequence</class>
+                <class class="java.lang.Class">java.lang.Comparable</class>
+                <class class="java.lang.Class">java.io.Serializable</class>
+                <class class="java.lang.Class">java.lang.String</class>
+                <class class="java.lang.Class">java.lang.Object</class>
+            </superclasses>
+        </data>
+        <data
+			class="org.dejava.component.util.reflection.test.clazz.auxiliary.ClassSuperclasses">
+            <clazz>java.util.ArrayList</clazz>
+            <superclasses>
+                <class class="java.lang.Class">java.lang.Cloneable</class>
+                <class class="java.lang.Class">java.util.Collection</class>
+                <class class="java.lang.Class">java.util.List</class>
+                <class class="java.lang.Class">java.util.RandomAccess</class>
+                <class class="java.lang.Class">java.io.Serializable</class>
+                <class class="java.lang.Class">java.util.AbstractList</class>
+                <class class="java.lang.Class">java.util.AbstractCollection</class>
+                <class class="java.lang.Class">java.lang.Object</class>
+                <class class="java.lang.Class">java.util.ArrayList</class>
+                <class class="java.lang.Class">java.io.Serializable</class>
+                <class class="java.lang.Class">java.lang.Iterable</class>
+            </superclasses>
+        </data>
+    </data>
+</testCase>

@@ -3,10 +3,11 @@ package org.dejava.component.util.test.runner;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dejava.component.util.test.annotation.TestCaseConfig;
-import org.dejava.component.util.test.exception.TestException;
-import org.dejava.component.util.test.model.TestCase;
-import org.dejava.component.util.test.runner.statement.InvokeMethodXMLConfig;
+import junit.framework.TestCase;
+
+import org.dejava.component.util.test.annotation.MultiDataTest;
+import org.dejava.component.util.test.model.MultiDataTestSourceType;
+import org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod;
 import org.junit.Test;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
@@ -14,15 +15,21 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
 /**
- * JUnit runner that uses XML as test data for the test methods annotated with @TestCaseConfig. It injects a
- * TestCase object as argument for the test methods.
+ * JUnit runner that inject test data into tests. It runs the same test multiple times if multiple data is
+ * given.
+ * 
+ * It uses a custom annotation named {@link MultiDataTest}. The data must be provided by different sources:
+ * {@link MultiDataTestSourceType}. All sources must return a Iterable from which the multiple test data will
+ * be retrieved.
+ * 
+ * It also runs regular JUnit test annotated with @Test. In this cases, there is no data injection.
  */
-public class XMLDataJUnitRunner extends BlockJUnit4ClassRunner {
+public class MultiDataJUnitRunner extends BlockJUnit4ClassRunner {
 	
 	/**
 	 * @see BlockJUnit4ClassRunner#BlockJUnit4ClassRunner(java.lang.Class)
 	 */
-	public XMLDataJUnitRunner(Class<?> clazz) throws InitializationError {
+	public MultiDataJUnitRunner(Class<?> clazz) throws InitializationError {
 		super(clazz);
 	}
 	
@@ -35,10 +42,10 @@ public class XMLDataJUnitRunner extends BlockJUnit4ClassRunner {
 		List<FrameworkMethod> testMethods = new ArrayList<FrameworkMethod>();
 		// Adds the methods annotated with @Test (as for default action).
 		testMethods.addAll(getTestClass().getAnnotatedMethods(Test.class));
-		// Removes the methods annotated with @TestCaseConfig (if method has both annotations).
-		testMethods.removeAll(getTestClass().getAnnotatedMethods(TestCaseConfig.class));
-		// Adds the methods annotated with @TestCaseConfig again.
-		testMethods.addAll(getTestClass().getAnnotatedMethods(TestCaseConfig.class));
+		// Removes the methods annotated with {@link MultiDataTest} (if method has both annotations).
+		testMethods.removeAll(getTestClass().getAnnotatedMethods(MultiDataTest.class));
+		// Adds the methods annotated with {@link MultiDataTest} again.
+		testMethods.addAll(getTestClass().getAnnotatedMethods(MultiDataTest.class));
 		// Returns the found test methods.
 		return testMethods;
 	}
@@ -48,12 +55,12 @@ public class XMLDataJUnitRunner extends BlockJUnit4ClassRunner {
 	 */
 	@Override
 	protected Statement methodInvoker(FrameworkMethod method, Object test) {
-		// Uses the InvokeMethodXMLConfig instead.
-		return new InvokeMethodXMLConfig(method, test);
+		// Uses the InvokeMultiDataTestMethod instead.
+		return new InvokeMultiDataTestMethod(method, test);
 	}
 	
 	/**
-	 * Validate the passed methods (usually methods annotated with @Test but not @TestCaseConfig) as
+	 * Validate the passed methods (usually methods annotated with @Test but not @MultiDataTest) as
 	 * "public void no args".
 	 * 
 	 * @param methods
@@ -73,7 +80,7 @@ public class XMLDataJUnitRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	/**
-	 * Validate the passed methods (usually methods annotated with @TestCaseConfig) as
+	 * Validate the passed methods (usually methods annotated with @MultiDataTest) as
 	 * "public void one test case arg".
 	 * 
 	 * @param methods
@@ -92,17 +99,16 @@ public class XMLDataJUnitRunner extends BlockJUnit4ClassRunner {
 			// If there are not one and only one parameter.
 			if (currentTestMethod.getMethod().getParameterTypes().length != 1) {
 				// Adds an error. FIXME
-				errors.add(new TestException("Method " + currentTestMethod.getName()
-						+ " should have one and only one parameter", null, null));
+				errors.add(new Exception("Method " + currentTestMethod.getName()
+						+ " should have one and only one parameter"));
 			}
 			// If there are.
 			else {
 				// If the parameter type is not in the TestCase hierarchy.
 				if (!currentTestMethod.getMethod().getParameterTypes()[0].isAssignableFrom(TestCase.class)) {
 					// Adds an error. FIXME
-					errors.add(new TestException("Method " + currentTestMethod.getName()
-							+ " should have one parameter class that is assignable from TestCase.class",
-							null, null));
+					errors.add(new Exception("Method " + currentTestMethod.getName()
+							+ " should have one parameter class that is assignable from TestCase.class"));
 				}
 			}
 		}
@@ -115,14 +121,14 @@ public class XMLDataJUnitRunner extends BlockJUnit4ClassRunner {
 	protected void validateTestMethods(List<Throwable> errors) {
 		// Gets the methods annotated with @Test.
 		List<FrameworkMethod> testAnnotatedMethods = getTestClass().getAnnotatedMethods(Test.class);
-		// Gets the methods annotated with @TestCaseConfig again.
+		// Gets the methods annotated with @MultiDataTest again.
 		List<FrameworkMethod> testCaseConfigAnnotatedMethods = getTestClass().getAnnotatedMethods(
-				TestCaseConfig.class);
+				MultiDataTest.class);
 		// Removes the methods with both annotations from the first list.
 		testAnnotatedMethods.removeAll(testCaseConfigAnnotatedMethods);
 		// Validate the just annotated with @Test as "public void no args".
 		validatePublicVoidNoArgs(testAnnotatedMethods, false, errors);
-		// Validate the just annotated with @Test as "public void one test case arg".
+		// Validate the just annotated with @MultiDataTest as "public void one test case arg".
 		validatePublicVoidOneTestCaseArg(testCaseConfigAnnotatedMethods, false, errors);
 	}
 }

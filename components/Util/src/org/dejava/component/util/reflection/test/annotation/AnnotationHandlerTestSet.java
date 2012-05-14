@@ -4,18 +4,18 @@ import org.dejava.component.util.exception.localized.EmptyParameterException;
 import org.dejava.component.util.reflection.handler.AnnotationHandler;
 import org.dejava.component.util.reflection.test.annotation.auxiliary.AnnotatedClass;
 import org.dejava.component.util.reflection.test.annotation.auxiliary.AnnotationK;
-import org.dejava.component.util.test.annotation.TestCaseConfig;
+import org.dejava.component.util.test.annotation.MultiDataTest;
 import org.dejava.component.util.test.exception.InvalidTestStepException;
 import org.dejava.component.util.test.exception.TestStepException;
 import org.dejava.component.util.test.model.TestCase;
 import org.dejava.component.util.test.model.TestSet;
-import org.dejava.component.util.test.runner.XMLDataJUnitRunner;
+import org.dejava.component.util.test.runner.MultiDataJUnitRunner;
 import org.junit.runner.RunWith;
 
 /**
  * Test set for AnnotationHandler methods.
  */
-@RunWith(XMLDataJUnitRunner.class)
+@RunWith(MultiDataJUnitRunner.class)
 public class AnnotationHandlerTestSet extends TestSet {
 	
 	/**
@@ -28,7 +28,7 @@ public class AnnotationHandlerTestSet extends TestSet {
 	 * @throws InvalidTestStepException
 	 *             TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetAnnotationWithNullClass(final TestCase testCase) throws InvalidTestStepException,
 			TestStepException {
 		// Run steps of this test case.
@@ -45,7 +45,7 @@ public class AnnotationHandlerTestSet extends TestSet {
 	 * @throws InvalidTestStepException
 	 *             TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetAnnotationWithNullAnnotation(TestCase testCase) throws InvalidTestStepException,
 			TestStepException {
 		// Run steps of this test case.
@@ -84,7 +84,7 @@ public class AnnotationHandlerTestSet extends TestSet {
 	 * @throws InvalidTestStepException
 	 *             TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetAnnotationWithValidClassAndAnnotation(TestCase testCase)
 			throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.

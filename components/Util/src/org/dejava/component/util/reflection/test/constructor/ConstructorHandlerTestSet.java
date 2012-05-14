@@ -4,13 +4,13 @@ import org.dejava.component.util.test.exception.InvalidTestStepException;
 import org.dejava.component.util.test.exception.TestStepException;
 import org.dejava.component.util.test.model.TestCase;
 import org.dejava.component.util.test.model.TestSet;
-import org.dejava.component.util.test.runner.XMLDataJUnitRunner;
+import org.dejava.component.util.test.runner.MultiDataJUnitRunner;
 import org.junit.runner.RunWith;
 
 /**
  * Test set for ConstructorHandler methods.
  */
-@RunWith(XMLDataJUnitRunner.class)
+@RunWith(MultiDataJUnitRunner.class)
 public class ConstructorHandlerTestSet extends TestSet {
 	
 	/**

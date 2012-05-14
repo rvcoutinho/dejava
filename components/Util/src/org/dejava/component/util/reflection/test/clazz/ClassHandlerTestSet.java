@@ -1,17 +1,17 @@
 package org.dejava.component.util.reflection.test.clazz;
 
-import org.dejava.component.util.test.annotation.TestCaseConfig;
+import org.dejava.component.util.test.annotation.MultiDataTest;
 import org.dejava.component.util.test.exception.InvalidTestStepException;
 import org.dejava.component.util.test.exception.TestStepException;
 import org.dejava.component.util.test.model.TestCase;
 import org.dejava.component.util.test.model.TestSet;
-import org.dejava.component.util.test.runner.XMLDataJUnitRunner;
+import org.dejava.component.util.test.runner.MultiDataJUnitRunner;
 import org.junit.runner.RunWith;
 
 /**
  * Test set for ClassHandler methods.
  */
-@RunWith(XMLDataJUnitRunner.class)
+@RunWith(MultiDataJUnitRunner.class)
 public class ClassHandlerTestSet extends TestSet {
 	
 	/**
@@ -22,7 +22,7 @@ public class ClassHandlerTestSet extends TestSet {
 	 * @throws TestStepException  TODO
 	 * @throws InvalidTestStepException  TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetSuperclassesWithNullClass(TestCase testCase) throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.
 		runSteps(testCase);
@@ -36,7 +36,7 @@ public class ClassHandlerTestSet extends TestSet {
 	 * @throws TestStepException  TODO
 	 * @throws InvalidTestStepException  TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetSuperclassesWithValidClass(TestCase testCase) throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.
 		runSteps(testCase);
@@ -50,7 +50,7 @@ public class ClassHandlerTestSet extends TestSet {
 	 * @throws TestStepException TODO
 	 * @throws InvalidTestStepException TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetCurrentClassNameWithValidDepth(TestCase testCase) throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.
 		runSteps(testCase);
@@ -64,7 +64,7 @@ public class ClassHandlerTestSet extends TestSet {
 	 * @throws TestStepException TODO
 	 * @throws InvalidTestStepException TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetCurrentClassWithValidDepth(TestCase testCase) throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.
 		runSteps(testCase);
@@ -78,7 +78,7 @@ public class ClassHandlerTestSet extends TestSet {
 	 * @throws TestStepException TODO
 	 * @throws InvalidTestStepException TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetCurrentClassWithValidDepthAndClassLoader(TestCase testCase) throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.
 		runSteps(testCase);
@@ -92,7 +92,7 @@ public class ClassHandlerTestSet extends TestSet {
 	 * @throws TestStepException TODO
 	 * @throws InvalidTestStepException TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetClassWithNullName(TestCase testCase) throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.
 		runSteps(testCase);
@@ -106,7 +106,7 @@ public class ClassHandlerTestSet extends TestSet {
 	 * @throws TestStepException TODO
 	 * @throws InvalidTestStepException TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetClassWithInvalidName(TestCase testCase) throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.
 		runSteps(testCase);
@@ -120,7 +120,7 @@ public class ClassHandlerTestSet extends TestSet {
 	 * @throws TestStepException TODO
 	 * @throws InvalidTestStepException TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetClassWithValidName(TestCase testCase) throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.
 		runSteps(testCase);
@@ -134,7 +134,7 @@ public class ClassHandlerTestSet extends TestSet {
 	 * @throws TestStepException TODO
 	 * @throws InvalidTestStepException TODO
 	 */
-	@TestCaseConfig
+	@MultiDataTest
 	public void testGetClassWithValidNameAndClassLoader(TestCase testCase) throws InvalidTestStepException, TestStepException {
 		// Run steps of this test case.
 		runSteps(testCase);

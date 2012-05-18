@@ -1,11 +1,13 @@
 package org.dejava.component.util.test.runner.statement.provider;
 
 import java.io.InputStream;
+import java.util.List;
 
 import junit.framework.TestCase;
 
 import org.dejava.component.util.exception.localized.EmptyParameterException;
 import org.dejava.component.util.reflection.handler.PackageHandler;
+import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod;
 import org.dejava.component.util.xml.XMLCreator;
 import org.dejava.component.util.xml.XMLDecoder;
@@ -83,12 +85,21 @@ public class XMLTestDataProvider implements TestDataProvider {
 	 *      org.junit.runners.model.FrameworkMethod)
 	 */
 	@Override
-	public Iterable<?> getTestData(final Object targetTest, final FrameworkMethod testMethod) {
-		// Gets the XML input stream.
-		final InputStream xmlInputStream = getXMLStream(targetTest, testMethod);
-		// Creates the XML document for the stream.
-		final Document xmlDocument = XMLCreator.createXMLDocument(xmlInputStream);
-		// Gets the test data object from the XML document.
-		return (Iterable<?>) XMLDecoder.fromXML(xmlDocument, null, TestCase.class, null);
+	public List<?> getTestData(final Object targetTest, final FrameworkMethod testMethod)
+			throws UnavailableTestDataException {
+		// Tries to get the data.
+		try {
+			// Gets the XML input stream.
+			final InputStream xmlInputStream = getXMLStream(targetTest, testMethod);
+			// Creates the XML document for the stream.
+			final Document xmlDocument = XMLCreator.createXMLDocument(xmlInputStream);
+			// Gets the test data object from the XML document.
+			return (List<?>) XMLDecoder.fromXML(xmlDocument, null, TestCase.class, null);
+		}
+		// If the test data cannot be retrieved.
+		catch (Exception exception) {
+			// Throws an exception. FIXME
+			throw new UnavailableTestDataException(null, null, null);
+		}
 	}
 }

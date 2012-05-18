@@ -6,7 +6,6 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import org.dejava.component.util.test.annotation.MultiDataTest;
-import org.dejava.component.util.test.model.MultiDataTestSourceType;
 import org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod;
 import org.junit.Test;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -18,9 +17,7 @@ import org.junit.runners.model.Statement;
  * JUnit runner that inject test data into tests. It runs the same test multiple times if multiple data is
  * given.
  * 
- * It uses a custom annotation named {@link MultiDataTest}. The data must be provided by different sources:
- * {@link MultiDataTestSourceType}. All sources must return a Iterable from which the multiple test data will
- * be retrieved.
+ * It uses a custom annotation named {@link MultiDataTest} to decide how test data will be retrieved.
  * 
  * It also runs regular JUnit test annotated with @Test. In this cases, there is no data injection.
  */

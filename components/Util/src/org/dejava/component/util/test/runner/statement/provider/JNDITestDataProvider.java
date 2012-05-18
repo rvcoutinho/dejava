@@ -1,6 +1,9 @@
 package org.dejava.component.util.test.runner.statement.provider;
 
+import java.util.List;
+
 import org.dejava.component.util.reflection.handler.MethodHandler;
+import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.junit.runners.model.FrameworkMethod;
 
 /**
@@ -75,8 +78,17 @@ public class JNDITestDataProvider implements TestDataProvider {
 	 *      org.junit.runners.model.FrameworkMethod)
 	 */
 	@Override
-	public Iterable<?> getTestData(final Object targetTest, final FrameworkMethod testMethod) {
-		// The test data is the return of the method invocation.
-		return (Iterable<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null);
+	public List<?> getTestData(final Object targetTest, final FrameworkMethod testMethod)
+			throws UnavailableTestDataException {
+		// Tries to get the data.
+		try {
+			// The test data is the return of the method invocation.
+			return (List<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null);
+		}
+		// If the test data cannot be retrieved.
+		catch (Exception exception) {
+			// Throws an exception. FIXME
+			throw new UnavailableTestDataException(null, null, null);
+		}
 	}
 }

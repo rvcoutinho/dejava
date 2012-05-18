@@ -1,5 +1,8 @@
 package org.dejava.component.util.test.runner.statement.provider;
 
+import java.util.List;
+
+import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.MultiDataJUnitRunner;
 import org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod;
 import org.junit.runners.model.FrameworkMethod;
@@ -18,6 +21,9 @@ public interface TestDataProvider {
 	 * @param testMethod
 	 *            The JUnit framework method.
 	 * @return The test data from the appropriate source.
+	 * @throws UnavailableTestDataException
+	 *             If the test data provider cannot be created.
 	 */
-	public Iterable<?> getTestData(final Object targetTest, final FrameworkMethod testMethod);
+	public List<?> getTestData(final Object targetTest, final FrameworkMethod testMethod)
+			throws UnavailableTestDataException;
 }

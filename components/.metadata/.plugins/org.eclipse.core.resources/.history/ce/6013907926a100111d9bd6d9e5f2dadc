@@ -1,0 +1,18 @@
+package org.dejava.component.util.test.exception;
+
+import org.dejava.component.util.exception.localized.AbstractLocalizedException;
+
+/**
+ * Exception related to unavailable test data.
+ */
+public class UnavailableTestDataException extends AbstractLocalizedException {
+
+
+	/**
+	 * @see AbstractLocalizedException#AbstractLocalizedException(String, Throwable, Object[])
+	 */
+	public UnavailableTestDataException(String messageKey, Throwable cause, Object[] parameters) {
+		super(messageKey, cause, parameters);
+	}
+	
+}

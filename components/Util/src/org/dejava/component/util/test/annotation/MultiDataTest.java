@@ -27,4 +27,14 @@ public @interface MultiDataTest {
 	 * The data provider must have a constructor with the same number of String arguments given.
 	 */
 	String[] paramsValues() default {};
+	
+	/**
+	 * The maximum number of test data objects that must be used in the test.
+	 * 
+	 * If the provided data quantity is larger than the given number, only a subset of the test data (having
+	 * the exact defined size) will be used. This subset will be random.
+	 * 
+	 * If the maximum is 0, all data will be used.
+	 */
+	int maxTestData() default 0;
 }

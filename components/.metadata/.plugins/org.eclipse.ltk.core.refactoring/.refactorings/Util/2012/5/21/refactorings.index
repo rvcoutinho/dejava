@@ -1,0 +1,10 @@
+1336953938570	Rename type 'TestCaseConfig'
+1336954018927	Rename type 'XMLDataJUnitRunner'
+1337018325535	Rename type 'MultiTestSource'
+1337021834550	Rename type 'InvokeMethodXMLConfig'
+1337307521248	Delete element
+1337307734254	Rename type 'TestSourceProvider'
+1337307969155	Move compilation unit
+1337308737347	Copy compilation unit
+1337308750435	Copy compilation unit
+1337312858045	Rename package 'org.dejava.component.util.test.runner.statement.dataprovider'

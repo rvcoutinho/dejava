@@ -1,0 +1,21 @@
+package org.dejava.component.util.test.runner.statement.dataprovider;
+
+import org.dejava.component.util.test.annotation.MultiDataTest;
+import org.dejava.component.util.test.runner.MultiDataJUnitRunner;
+import org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod;
+
+/**
+ * Defines how test data must be provided for the {@link MultiDataJUnitRunner} and
+ * {@link InvokeMultiDataTestMethod}.
+ */
+public interface TestDataProvider {
+	
+	/**
+	 * Gets the test data from the appropriate source.
+	 * 
+	 * @param multiDataTest
+	 *            the annotation with the data source information.
+	 * @return The test data from the appropriate source.
+	 */
+	public Iterable<?> getTestData(final MultiDataTest multiDataTest);
+}

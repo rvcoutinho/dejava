@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.model.MultiDataTestSourceType"/>
+<fullyQualifiedTypeName name="java.lang.Iterable"/>
+<fullyQualifiedTypeName name="java.util.logging.MemoryHandler"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.reflection.handler.MethodHandler"/>
+<fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+<fullyQualifiedTypeName name="javax.naming.NamingException"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.exception.localized.InvalidParameterException"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.reflection.constant.ErrorKeys"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.runner.statement.dataprovider.TestDataProvider"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.runner.MultiDataJUnitRunner"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.annotation.MultiDataTest"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.reflection.handler.ConstructorHandler"/>
+</qualifiedTypeNameHistroy>

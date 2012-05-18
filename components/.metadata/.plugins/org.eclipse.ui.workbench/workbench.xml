@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="45" version="2.0">
+<workbench progressCount="59" version="2.0">
 <workbenchAdvisor/>
 <window height="680" maximized="true" width="1024" x="150" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -8,69 +8,47 @@
 </perspectiveBar>
 <coolbarLayout>
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="122" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="149" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
-<coolItem id="org.eclipse.emf.facet.common.editor.actionSet" itemType="typeToolBarContribution" x="38" y="23"/>
 <coolItem id="org.eclipse.jst.j2ee.J2eeMainActionSet" itemType="typeToolBarContribution" x="91" y="22"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="99" y="22"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="130" y="22"/>
 <coolItem id="org.eclipse.wst.server.ui.internal.webbrowser.actionSet" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="org.eclipse.wst.ws.explorer.explorer" itemType="typeToolBarContribution" x="38" y="22"/>
-<coolItem id="org.jboss.tools.central.editors.JBossCentralEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.jboss.tools.jst.jsp.toolbars.sampleToolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.jboss.tools.jst.web.ui.server.actionSet" itemType="typeToolBarContribution" x="153" y="22"/>
 <coolItem id="org.jboss.tools.maven.ui.toolbars.selectMavenProfilesToolbar" itemType="typeToolBarContribution" x="38" y="22"/>
-<coolItem id="org.topcased.requirement.core.mainToolbar" itemType="typeToolBarContribution" x="38" y="23"/>
+<coolItem id="org.jboss.tools.jst.jsp.toolbars.sampleToolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="122" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.papyrus.readonly.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.papyrus.navigation.toolbars.navigationToolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.papyrus.layouttool.toolbarlayout" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.papyrus.diagram.ui.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipes.papyrus.menu.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.emf.facet.widgets.nattable.workbench.editor.NatTableEditor.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.papyrus.table.ui.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.jboss.tools.central.editors.JBossCentralEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="38" y="22"/>
 </coolbarLayout>
-<page aggregateWorkingSetId="Aggregate for window 1336412053089" focus="true" label="Workspace - PMD">
+<page focus="true" label="Workspace - Java EE">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
-<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InvokeMethodXMLConfig.java" partName="InvokeMethodXMLConfig.java" path="F:/development/components/Util/src/org/dejava/component/util/test/runner/statement/InvokeMethodXMLConfig.java" title="InvokeMethodXMLConfig.java" tooltip="Util/src/org/dejava/component/util/test/runner/statement/InvokeMethodXMLConfig.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Util/src/org/dejava/component/util/test/runner/statement/InvokeMethodXMLConfig.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MultiDataJUnitRunner.java" partName="MultiDataJUnitRunner.java" path="F:/development/components/Util/src/org/dejava/component/util/test/runner/MultiDataJUnitRunner.java" title="MultiDataJUnitRunner.java" tooltip="Util/src/org/dejava/component/util/test/runner/MultiDataJUnitRunner.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Util/src/org/dejava/component/util/test/runner/MultiDataJUnitRunner.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="11" selectionOffset="1360" selectionTopPixel="225"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MultiDataTest.java" partName="MultiDataTest.java" path="F:/development/components/Util/src/org/dejava/component/util/test/annotation/MultiDataTest.java" title="MultiDataTest.java" tooltip="Util/src/org/dejava/component/util/test/annotation/MultiDataTest.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Util/src/org/dejava/component/util/test/annotation/MultiDataTest.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="376" selectionTopPixel="73"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="1338"/>
 </editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
-</view>
-<view id="net.sourceforge.pmd.eclipse.ui.views.violationOutline" partName="Violations Outline">
-<viewState/>
 </view>
 <view id="org.eclipse.ui.views.AllMarkersView" partName="Markers">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.allSeverityField" categoryGroup="org.eclipse.ui.ide.type" markerContentGenerator="org.eclipse.ui.ide.allMarkersGenerator" partName="Markers">
@@ -84,13 +62,7 @@
 </view>
 <view id="org.eclipse.wst.common.snippets.internal.ui.SnippetsView" partName="Snippets"/>
 <view id="org.eclipse.ui.views.PropertySheet" partName="Properties"/>
-<view id="net.sourceforge.pmd.eclipse.ui.views.violationOverview" partName="Violations Overview">
-<viewState/>
-</view>
 <view id="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" partName="Data Source Explorer"/>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
-</view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="1" linkWithEditor="0" rootMode="1" workingSetName="">
 <customFilters userDefinedPatternsEnabled="false">
@@ -128,16 +100,11 @@
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
-<view id="org.eclipse.wst.server.ui.ServersView" partName="Servers">
-<viewState CommonNavigator.LINKING_ENABLED="0"/>
-</view>
+<view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="net.sourceforge.pmd.eclipse.ui.views.pmdPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jst.j2ee.J2EEPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
 <alwaysOnActionSet id="org.eclipse.rse.core.search.searchActionSet"/>
 <alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
@@ -147,6 +114,13 @@
 <alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
 <alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
 <alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
+<alwaysOnActionSet id="org.jboss.ide.eclipse.archives.ui.actions.Archives"/>
+<alwaysOnActionSet id="org.jboss.tools.jst.web.ui.server.actionSet"/>
+<alwaysOnActionSet id="org.jboss.tools.central"/>
+<alwaysOnActionSet id="org.jboss.tools.common.model.ui.actionSet"/>
 <alwaysOnActionSet id="org.eclipse.jst.j2ee.J2eeMainActionSet"/>
 <alwaysOnActionSet id="org.eclipse.jdt.ui.JavaActionSet"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
@@ -156,10 +130,6 @@
 <alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
 <alwaysOnActionSet id="org.eclipse.wst.ws.explorer.explorer"/>
 <alwaysOnActionSet id="org.jboss.tools.cdi.ui.actionSet"/>
-<alwaysOnActionSet id="org.jboss.ide.eclipse.archives.ui.actions.Archives"/>
-<alwaysOnActionSet id="org.jboss.tools.jst.web.ui.server.actionSet"/>
-<alwaysOnActionSet id="org.jboss.tools.central"/>
-<alwaysOnActionSet id="org.jboss.tools.common.model.ui.actionSet"/>
 <show_view_action id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <show_view_action id="org.eclipse.wst.server.ui.ServersView"/>
 <show_view_action id="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator"/>
@@ -187,6 +157,16 @@
 <new_wizard_action id="org.eclipse.jst.ws.creation.ui.wizard.serverwizard"/>
 <new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
 <new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewCDIProjectWizard"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewBeanCreationWizard"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewQualifierCreationWizard"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewStereotypeCreationWizard"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewScopeCreationWizard"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewInterceptorBindingCreationWizard"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewInterceptorCreationWizard"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewDecoratorCreationWizard"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewAnnotationLiteralCreationWizard"/>
+<new_wizard_action id="org.jboss.tools.cdi.ui.wizard.NewBeansXMLCreationWizard"/>
 <perspective_action id="org.eclipse.jpt.ui.jpaPerspective"/>
 <perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
 <perspective_action id="org.eclipse.jdt.ui.JavaPerspective"/>
@@ -196,118 +176,67 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
-<view id="org.eclipse.ui.views.AllMarkersView"/>
-<view id="org.eclipse.ui.views.PropertySheet"/>
-<view id="org.eclipse.wst.server.ui.ServersView"/>
-<view id="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator"/>
-<view id="org.eclipse.wst.common.snippets.internal.ui.SnippetsView"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
-<view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
-<fastViewBars/>
-<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<fastViewBars>
+<fastViewBar fastViewLocation="131072" id="topRight" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
+<fastViews>
+<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
+<view id="org.eclipse.mylyn.tasks.ui.views.tasks" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+<fastViewBar fastViewLocation="131072" id="bottomRight" orientation="256" selectedTabId="org.eclipse.ui.views.AllMarkersView" style="0">
+<fastViews>
+<view id="org.eclipse.ui.views.AllMarkersView" ratio="0.3"/>
+<view id="org.eclipse.ui.views.PropertySheet" ratio="0.3"/>
+<view id="org.eclipse.wst.server.ui.ServersView" ratio="0.3"/>
+<view id="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" ratio="0.3"/>
+<view id="org.eclipse.wst.common.snippets.internal.ui.SnippetsView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
 <page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.PackagesView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
-<part id="1"/>
-</presentation>
-</folder>
-</info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@6897cd75" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
-<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
-</folder>
-</info>
-<info part="org.eclipse.ui.editorss" ratio="0.23093072" ratioLeft="330" ratioRight="1099" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottomRight" ratio="0.6994633" ratioLeft="391" ratioRight="168" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.AllMarkersView" label="Markers"/>
-<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
-<page content="org.eclipse.wst.server.ui.ServersView" label="Servers"/>
-<page content="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" label="Data Source Explorer"/>
-<page content="org.eclipse.wst.common.snippets.internal.ui.SnippetsView" label="Snippets"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.views.TaskList" label="LabelNotFound"/>
-<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
-<page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="5"/>
-</presentation>
-</folder>
-</info>
-<info folder="true" part="topRight" ratio="0.7" ratioLeft="525" ratioRight="225" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
-<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="Task List"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
-<part id="1"/>
-</presentation>
-</folder>
-</info>
-</mainWindow>
-</layout>
-</perspective>
-<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
-<descriptor class="net.sourceforge.pmd.eclipse.ui.views.PMDPerspective" id="net.sourceforge.pmd.eclipse.ui.views.pmdPerspective" label="PMD"/>
-<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
-<alwaysOnActionSet id="org.eclipse.rse.core.search.searchActionSet"/>
-<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
-<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
-<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
-<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
-<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
-<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
-<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
-<alwaysOnActionSet id="org.jboss.ide.eclipse.archives.ui.actions.Archives"/>
-<alwaysOnActionSet id="org.jboss.tools.jst.web.ui.server.actionSet"/>
-<alwaysOnActionSet id="org.jboss.tools.central"/>
-<alwaysOnActionSet id="org.jboss.tools.common.model.ui.actionSet"/>
-<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
-<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.jdt.ui.PackageExplorer"/>
-<view id="net.sourceforge.pmd.eclipse.ui.views.violationOutline"/>
-<view id="net.sourceforge.pmd.eclipse.ui.views.violationOverview"/>
-<fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@6b9e2595">
-<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="org.eclipse.ui.internal.ViewStack@6b9e2595">
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="topLeft">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="318" ratioRight="954" relationship="2" relative="org.eclipse.ui.internal.ViewStack@6b9e2595"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@6d1b05ec" ratio="0.64918625" ratioLeft="359" ratioRight="194" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="net.sourceforge.pmd.eclipse.ui.views.violationOverview" appearance="2" expanded="2">
-<page content="net.sourceforge.pmd.eclipse.ui.views.violationOverview" label="Violations Overview"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<info part="org.eclipse.ui.editorss" ratio="0.29472026" ratioLeft="374" ratioRight="895" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottomRight" ratio="0.6994633" ratioLeft="391" ratioRight="168" relationship="4" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.ui.views.AllMarkersView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
+<page content="org.eclipse.wst.server.ui.ServersView" label="LabelNotFound"/>
+<page content="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" label="LabelNotFound"/>
+<page content="org.eclipse.wst.common.snippets.internal.ui.SnippetsView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.TaskList" label="LabelNotFound"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@5bb59065" ratio="0.59855336" ratioLeft="331" ratioRight="222" relationship="4" relative="org.eclipse.ui.internal.ViewStack@6b9e2595">
-<folder activePageID="net.sourceforge.pmd.eclipse.ui.views.violationOutline" appearance="2" expanded="2">
-<page content="net.sourceforge.pmd.eclipse.ui.views.violationOutline" label="Violations Outline"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<info folder="true" part="topRight" ratio="0.7" ratioLeft="525" ratioRight="225" relationship="2" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -317,64 +246,171 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/XMLDataJUnitRunner.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/statement/InvokeMethodXMLConfig.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/annotation/TestCaseConfig.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/annotation/XMLDataTest.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/annotation/XMLTestData.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/annotation/TestDataSource.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/XMLDataJUnitRunner.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/annotation/TestCaseConfig.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/statement/InvokeMultiDataTestMethod.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/statement/dataprovider/TestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/statement/dataprovider/XMLTestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/statement/dataprovider/MethodTestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/statement/dataprovider/JNDITestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/MultiDataJUnitRunner.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/statement/provider/JNDITestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/statement/provider/TestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/reflection/handler/ConstructorHandler.java"/>
+<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Util/C:\/Program Files\/Java\/jre6\/lib\/rt.jar&lt;java.lang.reflect(Constructor.class"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/reflection/handler/MethodHandler.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/reflection/handler/ClassHandler.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/statement/InvokeMultiDataTestMethod.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/annotation/MultiDataTest.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Util/src/org/dejava/component/util/test/runner/MultiDataJUnitRunner.java"/>
 </editors>
-<item historyLabel="XMLDataJUnitRunner.java" index="0">
-<position info="not_deleted" x="3173" y="0"/>
+<item historyLabel="InvokeMultiDataTestMethod.java" index="0">
+<position info="not_deleted" x="2211" y="19"/>
 </item>
-<item historyLabel="InvokeMethodXMLConfig.java" index="1">
+<item historyLabel="XMLTestDataProvider.java" index="2">
+<position/>
+</item>
+<item historyLabel="TestDataProvider.java" index="1">
+<position info="not_deleted" x="820" y="0"/>
+</item>
+<item historyLabel="InvokeMultiDataTestMethod.java" index="0">
+<position info="not_deleted" x="418" y="0"/>
+</item>
+<item historyLabel="TestDataProvider.java" index="1">
+<position info="not_deleted" x="669" y="0"/>
+</item>
+<item historyLabel="InvokeMultiDataTestMethod.java" index="0">
+<position info="not_deleted" x="2571" y="0"/>
+</item>
+<item historyLabel="TestDataProvider.java" index="1">
+<position info="not_deleted" x="602" y="0"/>
+</item>
+<item historyLabel="InvokeMultiDataTestMethod.java" index="0">
+<position info="not_deleted" x="2359" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="4">
+<position info="not_deleted" x="1995" y="287"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="3">
+<position info="not_deleted" x="2190" y="0"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="2">
+<position/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="4">
+<position info="not_deleted" x="2420" y="0"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="3">
+<position info="not_deleted" x="924" y="0"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="2">
+<position/>
+</item>
+<item historyLabel="TestDataProvider.java" index="1">
+<position info="not_deleted" x="513" y="89"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="4">
+<position info="not_deleted" x="2420" y="0"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="3">
+<position info="not_deleted" x="924" y="0"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="2">
+<position/>
+</item>
+<item historyLabel="TestDataProvider.java" index="1">
+<position info="not_deleted" x="602" y="67"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="2">
+<position/>
+</item>
+<item historyLabel="TestDataProvider.java" index="1">
+<position info="not_deleted" x="602" y="67"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="3">
+<position info="not_deleted" x="924" y="0"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="2">
+<position info="not_deleted" x="1159" y="32"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="3">
+<position/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="2">
+<position info="not_deleted" x="998" y="67"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="3">
+<position info="not_deleted" x="1695" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="4">
+<position info="not_deleted" x="2420" y="0"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="3">
+<position info="not_deleted" x="1695" y="0"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="2">
+<position info="not_deleted" x="1494" y="0"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="3">
+<position info="not_deleted" x="1695" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="4">
+<position info="not_deleted" x="2420" y="0"/>
+</item>
+<item historyLabel="InvokeMultiDataTestMethod.java" index="0">
+<position info="not_deleted" x="2359" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="6">
+<position info="not_deleted" x="2416" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="6">
+<position info="not_deleted" x="2412" y="0"/>
+</item>
+<item historyLabel="TestDataProvider.java" index="7">
+<position info="not_deleted" x="602" y="67"/>
+</item>
+<item historyLabel="ConstructorHandler.java" index="8">
+<position info="not_deleted" x="1403" y="0"/>
+</item>
+<item historyLabel="Constructor.class" index="9">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="XMLDataJUnitRunner.java" index="0">
+<item historyLabel="ConstructorHandler.java" index="8">
+<position info="not_deleted" x="1403" y="0"/>
+</item>
+<item historyLabel="MethodHandler.java" index="10">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="XMLDataJUnitRunner.java" index="0">
-<position info="not_deleted" x="1312" y="4"/>
-</item>
-<item historyLabel="TestCaseConfig.java" index="2">
+<item historyLabel="ClassHandler.java" index="11">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="XMLDataTest.java" index="3">
+<item historyLabel="MethodHandler.java" index="10">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="XMLTestData.java" index="4">
-<position info="not_deleted" x="633" y="21"/>
+<item historyLabel="ConstructorHandler.java" index="8">
+<position info="not_deleted" x="1403" y="0"/>
 </item>
-<item historyLabel="XMLDataJUnitRunner.java" index="0">
-<position info="not_deleted" x="1309" y="4"/>
+<item historyLabel="JNDITestDataProvider.java" index="6">
+<position info="not_deleted" x="2412" y="0"/>
 </item>
-<item historyLabel="XMLTestData.java" index="4">
-<position info="not_deleted" x="633" y="21"/>
+<item historyLabel="MultiDataJUnitRunner.java" index="5">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="TestDataSource.java" index="5">
-<position info="not_deleted" x="366" y="0"/>
+<item historyLabel="InvokeMultiDataTestMethod.java" index="12">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="XMLDataJUnitRunner.java" index="6">
-<position info="not_deleted" x="1309" y="4"/>
+<item historyLabel="InvokeMultiDataTestMethod.java" index="12">
+<position info="not_deleted" x="2535" y="0"/>
 </item>
-<item historyLabel="TestCaseConfig.java" index="7">
-<position info="not_deleted" x="366" y="0"/>
+<item historyLabel="InvokeMultiDataTestMethod.java" index="12">
+<position info="not_deleted" x="2371" y="0"/>
 </item>
-<item historyLabel="MultiDataTest.java" index="8">
-<position info="not_deleted" x="366" y="0"/>
+<item historyLabel="MultiDataTest.java" index="13">
+<position info="not_deleted" x="1067" y="0"/>
 </item>
-<item historyLabel="MultiDataJUnitRunner.java" index="9">
-<position info="not_deleted" x="1356" y="11"/>
+<item historyLabel="InvokeMultiDataTestMethod.java" index="12">
+<position info="not_deleted" x="2480" y="0"/>
 </item>
-<item historyLabel="MultiDataTest.java" index="8">
-<position info="not_deleted" x="376" y="0"/>
-</item>
-<item active="true" historyLabel="MultiDataJUnitRunner.java" index="9">
-<position info="not_deleted" x="1360" y="11"/>
+<item active="true" historyLabel="MultiDataJUnitRunner.java" index="14">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -382,6 +418,13 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="topLeft"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="bottomRight"/>
+<trimItem IMemento.internal.id="topRight"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 <trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
@@ -394,35 +437,47 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestCaseConfig.java" tooltip="Util/src/org/dejava/component/util/test/annotation/TestCaseConfig.java">
-<persistable path="/Util/src/org/dejava/component/util/test/annotation/TestCaseConfig.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MultiDataJUnitRunner.java" tooltip="Util/src/org/dejava/component/util/test/runner/MultiDataJUnitRunner.java">
+<persistable path="/Util/src/org/dejava/component/util/test/runner/MultiDataJUnitRunner.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="XMLDataJUnitRunner.java" tooltip="Util/src/org/dejava/component/util/test/runner/XMLDataJUnitRunner.java">
-<persistable path="/Util/src/org/dejava/component/util/test/runner/XMLDataJUnitRunner.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MultiDataTest.java" tooltip="Util/src/org/dejava/component/util/test/annotation/MultiDataTest.java">
+<persistable path="/Util/src/org/dejava/component/util/test/annotation/MultiDataTest.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InvokeMethodXMLConfig.java" tooltip="Util/src/org/dejava/component/util/test/runner/statement/InvokeMethodXMLConfig.java">
-<persistable path="/Util/src/org/dejava/component/util/test/runner/statement/InvokeMethodXMLConfig.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AnnotationHandler.java" tooltip="Util/src/org/dejava/component/util/reflection/handler/AnnotationHandler.java">
-<persistable path="/Util/src/org/dejava/component/util/reflection/handler/AnnotationHandler.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InvokeMultiDataTestMethod.java" tooltip="Util/src/org/dejava/component/util/test/runner/statement/InvokeMultiDataTestMethod.java">
+<persistable path="/Util/src/org/dejava/component/util/test/runner/statement/InvokeMultiDataTestMethod.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ClassHandler.java" tooltip="Util/src/org/dejava/component/util/reflection/handler/ClassHandler.java">
 <persistable path="/Util/src/org/dejava/component/util/reflection/handler/ClassHandler.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PackageHandler.java" tooltip="Util/src/org/dejava/component/util/reflection/handler/PackageHandler.java">
-<persistable path="/Util/src/org/dejava/component/util/reflection/handler/PackageHandler.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MethodHandler.java" tooltip="Util/src/org/dejava/component/util/reflection/handler/MethodHandler.java">
+<persistable path="/Util/src/org/dejava/component/util/reflection/handler/MethodHandler.java"/>
 </file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="Statement.class" tooltip="org.junit.runners.model.Statement">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Util/C:\/Program Files\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.runners.model(Statement.class"/>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="Constructor.class" tooltip="java.lang.reflect.Constructor">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Util/C:\/Program Files\/Java\/jre6\/lib\/rt.jar&lt;java.lang.reflect(Constructor.class"/>
 </file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="FrameworkMethod.class" tooltip="org.junit.runners.model.FrameworkMethod">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Util/C:\/Program Files\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.runners.model(FrameworkMethod.class"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ConstructorHandler.java" tooltip="Util/src/org/dejava/component/util/reflection/handler/ConstructorHandler.java">
+<persistable path="/Util/src/org/dejava/component/util/reflection/handler/ConstructorHandler.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestSet.java" tooltip="Util/src/org/dejava/component/util/test/model/TestSet.java">
-<persistable path="/Util/src/org/dejava/component/util/test/model/TestSet.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="XMLTestDataProvider.java" tooltip="Util/src/org/dejava/component/util/test/runner/statement/dataprovider/XMLTestDataProvider.java">
+<persistable path="/Util/src/org/dejava/component/util/test/runner/statement/dataprovider/XMLTestDataProvider.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestCase.java" tooltip="Util/src/org/dejava/component/util/test/model/TestCase.java">
-<persistable path="/Util/src/org/dejava/component/util/test/model/TestCase.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestDataProvider.java" tooltip="Util/src/org/dejava/component/util/test/runner/statement/dataprovider/TestDataProvider.java">
+<persistable path="/Util/src/org/dejava/component/util/test/runner/statement/dataprovider/TestDataProvider.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JNDITestDataProvider.java" tooltip="Util/src/org/dejava/component/util/test/runner/statement/dataprovider/JNDITestDataProvider.java">
+<persistable path="/Util/src/org/dejava/component/util/test/runner/statement/dataprovider/JNDITestDataProvider.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MethodTestDataProvider.java" tooltip="Util/src/org/dejava/component/util/test/runner/statement/dataprovider/MethodTestDataProvider.java">
+<persistable path="/Util/src/org/dejava/component/util/test/runner/statement/dataprovider/MethodTestDataProvider.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestSourceProvider.java" tooltip="Util/src/org/dejava/component/util/test/runner/statement/TestSourceProvider.java">
+<persistable path="/Util/src/org/dejava/component/util/test/runner/statement/TestSourceProvider.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MultiDataTestSourceType.java" tooltip="Util/src/org/dejava/component/util/test/model/MultiDataTestSourceType.java">
+<persistable path="/Util/src/org/dejava/component/util/test/model/MultiDataTestSourceType.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ErrorKeys.java" tooltip="Util/src/org/dejava/component/util/reflection/constant/ErrorKeys.java">
+<persistable path="/Util/src/org/dejava/component/util/reflection/constant/ErrorKeys.java"/>
 </file>
 </mruList>
 </workbench>

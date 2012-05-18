@@ -1,0 +1,66 @@
+package org.dejava.component.util.test.runner.statement.dataprovider;
+
+import java.io.InputStream;
+
+import junit.framework.TestCase;
+
+import org.dejava.component.util.exception.localized.EmptyParameterException;
+import org.dejava.component.util.reflection.handler.PackageHandler;
+import org.dejava.component.util.test.annotation.MultiDataTest;
+import org.dejava.component.util.xml.XMLCreator;
+import org.dejava.component.util.xml.XMLDecoder;
+import org.w3c.dom.Document;
+
+/**
+ * Provides access to XML test data.
+ */
+public class XMLTestDataProvider implements TestDataProvider {
+	
+	/**
+	 * Gets the XML stream for the test data objects.
+	 * 
+	 * @param multiDataTest
+	 *            Test case configuration annotation.
+	 * @return The XML stream for the test data objects.
+	 * @throws EmptyParameterException
+	 *             If the test class cannot be accessed.
+	 */
+	private InputStream getXMLStream(final MultiDataTest multiDataTest) throws EmptyParameterException {
+		// XML relative path.
+		String xmlRelativePath;
+		// If the test case configuration does not provide a configuration file
+		// path.
+		if (multiDataTest.xmlPath().isEmpty()) {
+			// The relative path is the default one.
+			xmlRelativePath = MultiDataTest.DEFAULT_XML_PATH;
+			// Replaces the method name in the default relative path.
+			xmlRelativePath = xmlRelativePath.replace(MultiDataTest.METHOD_NAME_EXPRESSION, getTestMethod()
+					.getName());
+		}
+		// If the test case configuration does provide a configuration file
+		// path.
+		else {
+			// Gets the given path.
+			xmlRelativePath = multiDataTest.xmlPath();
+		}
+		// Gets the path for the XML.
+		final String xmlPath = PackageHandler.getPackageAsDirPath(getTargetTest().getClass()) + '/'
+				+ xmlRelativePath;
+		// Returns the XML stream.
+		return Thread.currentThread().getContextClassLoader().getResourceAsStream(xmlPath);
+	}
+	
+	/**
+	 * @see org.dejava.component.util.test.runner.statement.dataprovider.TestDataProvider#getTestData(org.dejava.component.util.test.annotation.MultiDataTest)
+	 */
+	@Override
+	public Iterable<?> getTestData(MultiDataTest multiDataTest) {
+		// Gets the XML input stream.
+		final InputStream xmlInputStream = getXMLStream(multiDataTest);
+		// Creates the XML document for the stream.
+		final Document xmlDocument = XMLCreator.createXMLDocument(xmlInputStream);
+		// Gets the test data object from the XML document.
+		return (Iterable<?>) XMLDecoder.fromXML(xmlDocument, null, TestCase.class, null);
+	}
+	
+}

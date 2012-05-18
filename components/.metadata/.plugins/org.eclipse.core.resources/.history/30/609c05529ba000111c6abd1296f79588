@@ -1,0 +1,84 @@
+package org.dejava.component.util.test.runner.statement.dataprovider;
+
+import org.dejava.component.util.reflection.handler.MethodHandler;
+import org.dejava.component.util.test.annotation.MultiDataTest;
+import org.junit.runners.model.FrameworkMethod;
+
+/**
+ * Provides access to XML test data.
+ */
+public class JNDITestDataProvider implements TestDataProvider {
+	
+	/**
+	 * The JNDI path for the object from which the test data provider method will be invoked.
+	 */
+	private String objectPath;
+	
+	/**
+	 * Gets the JNDI path for the object from which the test data provider method will be invoked.
+	 * 
+	 * @return The JNDI path for the object from which the test data provider method will be invoked.
+	 */
+	public String getObjectPath() {
+		return objectPath;
+	}
+	
+	/**
+	 * Sets the JNDI path for the object from which the test data provider method will be invoked.
+	 * 
+	 * @param objectPath
+	 *            New JNDI path for the object from which the test data provider method will be invoked.
+	 */
+	public void setObjectPath(String objectPath) {
+		this.objectPath = objectPath;
+	}
+	
+	/**
+	 * The method name for the test data provider.
+	 */
+	private String methodName;
+	
+	/**
+	 * Gets the method name for the test data provider.
+	 * 
+	 * @return The method name for the test data provider.
+	 */
+	public String getMethodName() {
+		return methodName;
+	}
+	
+	/**
+	 * Sets the method name for the test data provider.
+	 * 
+	 * @param methodName
+	 *            New method name for the test data provider.
+	 */
+	public void setMethodName(final String methodName) {
+		this.methodName = methodName;
+	}
+	
+	/**
+	 * Default constructor.
+	 * 
+	 * @param objectPath
+	 *            The JNDI path for the object from which the test data provider method will be invoked.
+	 * @param methodName
+	 *            The method name for the test data provider.
+	 */
+	public JNDITestDataProvider(String objectPath, String methodName) {
+		super();
+		this.objectPath = objectPath;
+		this.methodName = methodName;
+	}
+	
+	/**
+	 * @see org.dejava.component.util.test.runner.statement.dataprovider.TestDataProvider#getTestData(org.junit.runners.model.FrameworkMethod,
+	 *      java.lang.Object, org.dejava.component.util.test.annotation.MultiDataTest)
+	 */
+	@Override
+	public Iterable<?> getTestData(final FrameworkMethod testMethod, final Object targetTest,
+			final MultiDataTest multiDataTest) {
+		// The test data is the return of the method invocation.
+		return (Iterable<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null);
+	}
+}

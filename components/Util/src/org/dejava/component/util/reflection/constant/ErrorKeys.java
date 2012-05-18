@@ -111,6 +111,11 @@ public final class ErrorKeys {
 	public static final String UNACCESSIBLE_METHOD = "reflection.method.unaccessible";
 	
 	/**
+	 * Invalid JNDI path error key.
+	 */
+	public static final String INVALID_JNDI_PATH = "reflection.jndi.path.invalid";
+	
+	/**
 	 * Private constructor.
 	 */
 	private ErrorKeys() {

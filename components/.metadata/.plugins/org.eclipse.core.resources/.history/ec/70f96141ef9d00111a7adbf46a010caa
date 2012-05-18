@@ -1,0 +1,9 @@
+package org.dejava.component.util.test.model;
+
+
+/**
+ * Data source  or the multiple data 
+ */
+public enum MultiDataTestSourceType {
+	
+}

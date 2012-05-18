@@ -6,6 +6,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import org.dejava.component.util.exception.localized.EmptyParameterException;
 import org.dejava.component.util.exception.localized.InvalidParameterException;
 import org.dejava.component.util.reflection.constant.ErrorKeys;
@@ -221,76 +224,11 @@ public final class MethodHandler {
 	}
 	
 	/**
-	 * Invoke a static method from a class. The search includes the inherited classes and interfaces of each
+	 * Invokes a method from an object/class. The search includes the inherited classes and interfaces of each
 	 * parameter class.
 	 * 
 	 * @param clazz
 	 *            The class from which the method will be invoked.
-	 * @param methodName
-	 *            Name of the method to be invoked.
-	 * @param parametersClasses
-	 *            Parameters classes for the method to be invoked.
-	 * @param parametersValues
-	 *            Parameters values to be used during the invocation.
-	 * @return Returns the method being invoked return value.
-	 * @throws InvalidParameterException
-	 *             If the parameters for this method are not valid (empty or method could not be accessed).
-	 * @throws InvocationException
-	 *             If the method throws an exception itself.
-	 */
-	public static Object invokeStaticMethod(final Class<?> clazz, final String methodName,
-			final Class<?>[] parametersClasses, final Object[] parametersValues)
-			throws InvalidParameterException, InvocationException {
-		// Tries to invoke the method.
-		try {
-			// Tries to get the method.
-			final Method method = getMethod(clazz, methodName, parametersClasses);
-			// Tries to invoke it.
-			return method.invoke(null, parametersValues);
-		}
-		// If an exception is thrown by the method itself.
-		catch (InvocationTargetException exception) {
-			// Throws an exception using the exception thrown as its cause.
-			throw new InvocationException(ErrorKeys.METHOD_EXCEPTION, exception, null);
-		}
-		// If the parameter values are illegal for the method.
-		catch (IllegalArgumentException exception) {
-			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.ILLEGAL_PARAMS_VALUES, exception, null);
-		}
-		// If the method cannot be accessed.
-		catch (IllegalAccessException exception) {
-			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.UNACCESSIBLE_METHOD, exception, null);
-		}
-	}
-	
-	/**
-	 * Invoke a static method from a class. The search includes the inherited classes and interfaces of each
-	 * parameter class.
-	 * 
-	 * @param clazz
-	 *            The class from which the method will be invoked.
-	 * @param methodName
-	 *            Name of the method to be invoked.
-	 * @param parametersValues
-	 *            Parameters values to be used during the invocation.
-	 * @return Returns the method being invoked return value.
-	 * @throws InvalidParameterException
-	 *             If the parameters for this method are not valid (empty or method could not be accessed).
-	 * @throws InvocationException
-	 *             If the method throws an exception itself.
-	 */
-	public static Object invokeStaticMethod(final Class<?> clazz, final String methodName,
-			final Object[] parametersValues) throws InvalidParameterException, InvocationException {
-		// Invoke the method.
-		return invokeStaticMethod(clazz, methodName, getParametersClasses(parametersValues), parametersValues);
-	}
-	
-	/**
-	 * Invoke a static method from a class. The search includes the inherited classes and interfaces of each
-	 * parameter class.
-	 * 
 	 * @param object
 	 *            The object from which the method will be invoked.
 	 * @param methodName
@@ -305,19 +243,14 @@ public final class MethodHandler {
 	 * @throws InvocationException
 	 *             If the method throws an exception itself.
 	 */
-	public static Object invokeMethod(final Object object, final String methodName,
+	private static Object invokeMethod(final Class<?> clazz, final Object object, final String methodName,
 			final Class<?>[] parametersClasses, final Object[] parametersValues)
 			throws InvalidParameterException, InvocationException {
-		// If the object is null.
-		if (object == null) {
-			// Throws an exception.
-			throw new EmptyParameterException("class"); // TODO
-		}
 		// Tries to invoke the method.
 		try {
 			// Tries to get the method.
-			final Method method = getMethod(object.getClass(), methodName, parametersClasses);
-			// Tries to invoke the method.
+			final Method method = getMethod(clazz, methodName, parametersClasses);
+			// Tries to invoke it.
 			return method.invoke(object, parametersValues);
 		}
 		// If an exception is thrown by the method itself.
@@ -338,7 +271,79 @@ public final class MethodHandler {
 	}
 	
 	/**
-	 * Invoke a static method from a class. The search includes the inherited classes and interfaces of each
+	 * Invokes a static method from a class. The search includes the inherited classes and interfaces of each
+	 * parameter class.
+	 * 
+	 * @param clazz
+	 *            The class from which the method will be invoked.
+	 * @param methodName
+	 *            Name of the method to be invoked.
+	 * @param parametersClasses
+	 *            Parameters classes for the method to be invoked.
+	 * @param parametersValues
+	 *            Parameters values to be used during the invocation.
+	 * @return Returns the method being invoked return value.
+	 * @throws InvalidParameterException
+	 *             If the parameters for this method are not valid (empty or method could not be accessed).
+	 * @throws InvocationException
+	 *             If the method throws an exception itself.
+	 */
+	public static Object invokeStaticMethod(final Class<?> clazz, final String methodName,
+			final Class<?>[] parametersClasses, final Object[] parametersValues)
+			throws InvalidParameterException, InvocationException {
+		// Invoke the method.
+		return invokeMethod(clazz, null, methodName, parametersClasses, parametersValues);
+	}
+	
+	/**
+	 * Invokes a static method from a class. The search includes the inherited classes and interfaces of each
+	 * parameter class.
+	 * 
+	 * @param clazz
+	 *            The class from which the method will be invoked.
+	 * @param methodName
+	 *            Name of the method to be invoked.
+	 * @param parametersValues
+	 *            Parameters values to be used during the invocation.
+	 * @return Returns the method being invoked return value.
+	 * @throws InvalidParameterException
+	 *             If the parameters for this method are not valid (empty or method could not be accessed).
+	 * @throws InvocationException
+	 *             If the method throws an exception itself.
+	 */
+	public static Object invokeStaticMethod(final Class<?> clazz, final String methodName,
+			final Object[] parametersValues) throws InvalidParameterException, InvocationException {
+		// Invokes the method.
+		return invokeStaticMethod(clazz, methodName, getParametersClasses(parametersValues), parametersValues);
+	}
+	
+	/**
+	 * Invokes a method from an object. The search includes the inherited classes and interfaces of each
+	 * parameter class.
+	 * 
+	 * @param object
+	 *            The object from which the method will be invoked.
+	 * @param methodName
+	 *            Name of the method to be found.
+	 * @param parametersClasses
+	 *            Parameters classes for the method to be invoked.
+	 * @param parametersValues
+	 *            Parameters values to be used during the invocation.
+	 * @return Returns the method being invoked return value.
+	 * @throws InvalidParameterException
+	 *             If the parameters for this method are not valid (empty or method could not be accessed).
+	 * @throws InvocationException
+	 *             If the method throws an exception itself.
+	 */
+	public static Object invokeMethod(final Object object, final String methodName,
+			final Class<?>[] parametersClasses, final Object[] parametersValues)
+			throws InvalidParameterException, InvocationException {
+		// Invokes the method.
+		return invokeMethod(object.getClass(), object, methodName, parametersClasses, parametersValues);
+	}
+	
+	/**
+	 * Invokes a method from an object. The search includes the inherited classes and interfaces of each
 	 * parameter class.
 	 * 
 	 * @param object
@@ -355,7 +360,44 @@ public final class MethodHandler {
 	 */
 	public static Object invokeMethod(final Object object, final String methodName,
 			final Object[] parametersValues) throws InvalidParameterException, InvocationException {
-		// Invoke the method.
+		// Invokes the method.
 		return invokeMethod(object, methodName, getParametersClasses(parametersValues), parametersValues);
+	}
+	
+	/**
+	 * Invokes a method from a JNDI object. The search includes the inherited classes and interfaces of each
+	 * parameter class.
+	 * 
+	 * @param jndiPath
+	 *            The JNDI path for the object from which the method will be invoked.
+	 * @param methodName
+	 *            Name of the method to be found.
+	 * @param parametersValues
+	 *            Parameters values to be used during the invocation.
+	 * @return Returns the method being invoked return value.
+	 * @throws InvalidParameterException
+	 *             If the parameters for this method are not valid (empty or method could not be accessed).
+	 * @throws InvocationException
+	 *             If the method throws an exception itself.
+	 */
+	public static Object invokeMethod(final String jndiPath, final String methodName,
+			final Object[] parametersValues) throws InvalidParameterException, InvocationException {
+		// If the JNDI path is empty.
+		if ((jndiPath == null) || (jndiPath.isEmpty())) {
+			// Throws an exception.
+			throw new EmptyParameterException("class"); // TODO
+		}
+		// Tries to invoke the method.
+		try {
+			// Tries to retrieve the object.
+			final Object object = InitialContext.doLookup(jndiPath);
+			// Invokes the method.
+			return invokeMethod(object, methodName, getParametersClasses(parametersValues), parametersValues);
+		}
+		// If the object cannot be found.
+		catch (NamingException exception) {
+			// Throws an exception.
+			throw new InvalidParameterException(ErrorKeys.INVALID_JNDI_PATH, exception, null);
+		}
 	}
 }

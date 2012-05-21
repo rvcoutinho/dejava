@@ -1,9 +1,0 @@
-package org.dejava.component.util.test.model;
-
-
-/**
- * TODO
- */
-public enum MultiDataTestSource {
-	
-}

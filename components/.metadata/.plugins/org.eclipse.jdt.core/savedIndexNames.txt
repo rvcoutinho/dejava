@@ -16,4 +16,3 @@ INDEX VERSION 1.126+C:\Users\Romulo Coutinho\Desktop\dejava\components\.metadata
 3270002986.index
 1692729972.index
 1657330681.index
-2979386324.index

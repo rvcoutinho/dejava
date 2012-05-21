@@ -24,3 +24,30 @@ deactivated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",133762314
 activated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337623150602
 executed,command,org.eclipse.jdt.ui,3.7.1.r371_v20110824-0800,"org.eclipse.jdt.ui.navigate.open.type.in.hierarchy",1337623150611
 deactivated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337623151402
+activated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337623215916
+deactivated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337623216930
+activated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337623776154
+deactivated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337623776659
+deactivated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337623780311
+activated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337623934162
+deactivated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337623934896
+activated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337624371797
+deactivated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337624372623
+activated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337624451077
+deactivated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337624451934
+activated,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337624452715
+closed,workbench,org.eclipse.ui.workbench,3.7.0.I20110519-0100,"",1337624452804
+started,bundle,org.eclipse.papyrus.sasheditor.di,0.8.2.v201203261636,"org.eclipse.papyrus.sasheditor.di",1337624454449
+error,log,,,"Unexpected Error",1337624454458
+error,log,,,"Unexpected Error",1337624454471
+started,bundle,org.eclipse.papyrus.core.adaptor.gmf,0.8.2.v201203261636,"org.eclipse.papyrus.core.adaptor.gmf",1337624454655
+started,bundle,org.eclipse.draw2d,3.7.2.v20111017-2020,"org.eclipse.draw2d",1337624454789
+started,bundle,org.eclipse.papyrus.commands,0.8.2.v201203261636,"org.eclipse.papyrus.commands",1337624454896
+started,bundle,org.eclipse.emf.workspace,1.5.1.v20110823-1800,"org.eclipse.emf.workspace",1337624454951
+started,bundle,org.eclipse.gmf.runtime.emf.commands.core,1.4.0.v20100423-2359,"org.eclipse.gmf.runtime.emf.commands.core",1337624454951
+started,bundle,org.eclipse.papyrus.validation,0.8.2.v201203261636,"org.eclipse.papyrus.validation",1337624454952
+started,bundle,org.eclipse.emf.ecore.change,2.7.1.v20120127-1122,"org.eclipse.emf.ecore.change",1337624454955
+started,bundle,org.eclipse.papyrus.sysml.service.types,0.8.2.v201203261636,"org.eclipse.papyrus.sysml.service.types",1337624455004
+started,bundle,org.eclipse.papyrus.uml.service.types,0.8.2.v201203261636,"org.eclipse.papyrus.uml.service.types",1337624455134
+started,bundle,org.eclipse.acceleo.engine,3.1.3.v20120214-0359,"org.eclipse.acceleo.engine",1337624455516
+started,bundle,org.topcased.uml2c,4.1.5.201110131419,"org.topcased.uml2c",1337624455516

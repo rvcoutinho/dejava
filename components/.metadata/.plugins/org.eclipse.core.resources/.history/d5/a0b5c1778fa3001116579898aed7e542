@@ -1,0 +1,44 @@
+package org.dejava.component.util.test.test.auxiliary;
+
+import org.junit.runner.notification.RunListener;
+
+/**
+ * TODO
+ */
+public class SucessRunListener extends RunListener {
+
+	/**
+	 * Test method name that must run successfully.
+	 */
+	private String testMethodName;
+
+	/**
+	 * Gets the test method name that must run successfully.
+	 * 
+	 * @return The test method name that must run successfully.
+	 */
+	public String getTestMethodName() {
+		return testMethodName;
+	}
+
+	/**
+	 * Sets the test method name that must run successfully.
+	 * 
+	 * @param testMethodName
+	 *            New test method name that must run successfully.
+	 */
+	public void setTestMethodName(String testMethodName) {
+		this.testMethodName = testMethodName;
+	}
+
+	/**
+	 * TODO
+	 * @param testMethodName The test method name that must run successfully.
+	 */
+	public SucessRunListener(String testMethodName) {
+		super();
+		this.testMethodName = testMethodName;
+	}
+	
+	
+}

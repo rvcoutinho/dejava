@@ -1,0 +1,41 @@
+package org.dejava.component.util.test.test;
+
+import junit.framework.TestCase;
+import junit.framework.TestResult;
+
+import org.dejava.component.util.test.runner.MultiDataJUnitRunner;
+import org.dejava.component.util.test.test.auxiliary.FakeTestClass;
+import org.junit.runner.RunWith;
+import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.model.InitializationError;
+
+/**
+ * Test cases for the MultiDataJUnitRunner.
+ */
+@RunWith(value = MultiDataJUnitRunner.class)
+public class MultiDataJUnitRunnerTest extends TestCase {
+
+	/**
+	 * Returns an instance of the {@link MultiDataJUnitRunner} for the
+	 * {@link FakeTestClass} that will be used to test the TestRunner.
+	 * 
+	 * @return An instance of the {@link MultiDataJUnitRunner} for the
+	 *         {@link FakeTestClass} that will be used to test the TestRunner.
+	 * @throws InitializationError
+	 *             If the test runner cannot me initialized for the
+	 *             {@link FakeTestClass}.
+	 */
+	private MultiDataJUnitRunner getFakeTestRunner() throws InitializationError {
+		// Returns a new instance of the runner for the FakeTestClass.
+		return new MultiDataJUnitRunner(FakeTestClass.class);
+	}
+
+	public void test() throws InitializationError {
+		// Creates a new notifier.
+		RunNotifier runNotifier = new RunNotifier();
+		
+		
+		// Tries to run the tests.
+		getFakeTestRunner().run(runNotifier);
+	}
+}

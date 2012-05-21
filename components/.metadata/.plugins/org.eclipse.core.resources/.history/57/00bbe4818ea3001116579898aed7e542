@@ -1,0 +1,15 @@
+package org.dejava.component.util.test.test.auxiliary;
+
+import org.junit.rules.TestName;
+import org.junit.runner.notification.RunListener;
+
+/**
+ * TODO
+ */
+public class SucessRunListener extends RunListener {
+
+	
+	private String testMethodName() {
+		
+	}
+}

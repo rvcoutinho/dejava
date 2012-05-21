@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="741" key="org.eclipse.jdt.uicleanup_pagemodify_dialog.preferred_height"/>
+	<item value="0" key="org.eclipse.jdt.uiformatter_page.white_space.java_view.inner"/>
+	<item value="860" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_height"/>
+	<item value="248" key="org.eclipse.jdt.uicleanup_pagemodify_dialog.preferred_x"/>
+	<item value="0" key="org.eclipse.jdt.uicleanup_pagemodify_dialog.preferred_y"/>
+	<item value="0" key="org.eclipse.jdt.uiformatter_page.white_space_tab_page.node"/>
 	<item value="0" key="org.eclipse.jdt.ui.last.selected.jre.kind2"/>
+	<item value="C:\Users\Romulo Coutinho\Desktop\dejava" key="org.eclipse.jdt.ui.codeformatter.savepath"/>
+	<item value="887" key="org.eclipse.jdt.uicleanup_pagemodify_dialog.preferred_width"/>
+	<item value="C:\Users\Romulo Coutinho\Desktop\dejava" key="org.eclipse.jdt.ui.codeformatter.loadpath"/>
+	<item value="218" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_x"/>
+	<item value="1" key="org.eclipse.jdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
+	<item value="1005" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_width"/>
+	<item value="0" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_y"/>
 	<section name="OptionalMessageDialog.hide.">
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
 	</section>
 	<section name="SourceActionDialog.constructors">
-		<item value="1" key="VisibilityModifier"/>
 		<item value="true" key="Comments"/>
+		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="SynchronizedModifier"/>
 		<item value="false" key="FinalModifier"/>
 	</section>
@@ -35,8 +48,8 @@
 		<item value="true" key="expanded0"/>
 	</section>
 	<section name="SourceActionDialog.methods">
-		<item value="1" key="VisibilityModifier"/>
 		<item value="true" key="Comments"/>
+		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="SynchronizedModifier"/>
 		<item value="false" key="FinalModifier"/>
 	</section>
@@ -51,8 +64,8 @@
 		<section name="DialogBoundsSettings">
 			<item value="600" key="DIALOG_WIDTH"/>
 			<item value="110" key="DIALOG_Y_ORIGIN"/>
-			<item value="428" key="DIALOG_X_ORIGIN"/>
 			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="428" key="DIALOG_X_ORIGIN"/>
 			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		</section>
 	</section>
@@ -71,12 +84,12 @@
 		<item value="false" key="OmitCallToSuper"/>
 	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
-		<item value="true" key="updateQualifiedNames"/>
-		<item value="*" key="patterns"/>
 		<item value="true" key="renameSubpackages"/>
+		<item value="*" key="patterns"/>
+		<item value="true" key="updateQualifiedNames"/>
 		<item value="1" key="updateSimilarElementsMatchStrategy"/>
 		<item value="true" key="updateTextualMatches"/>
-		<item value="true" key="updateSimilarElements"/>
+		<item value="false" key="updateSimilarElements"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
 		<item value="false" key="GoIntoTopLevelTypeAction.isChecked"/>

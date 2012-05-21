@@ -9,7 +9,6 @@
 <fullyQualifiedTypeName name="org.dejava.component.util.exception.localized.InvalidParameterException"/>
 <fullyQualifiedTypeName name="org.dejava.component.util.reflection.constant.ErrorKeys"/>
 <fullyQualifiedTypeName name="org.dejava.component.util.test.runner.statement.dataprovider.TestDataProvider"/>
-<fullyQualifiedTypeName name="org.dejava.component.util.test.runner.MultiDataJUnitRunner"/>
 <fullyQualifiedTypeName name="org.dejava.component.util.test.annotation.MultiDataTest"/>
 <fullyQualifiedTypeName name="org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod"/>
 <fullyQualifiedTypeName name="org.dejava.component.util.reflection.handler.ConstructorHandler"/>
@@ -17,4 +16,16 @@
 <fullyQualifiedTypeName name="org.dejava.component.util.test.exception.UnavailableTestDataException"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.test.MultiDataJUnitRunnerTest"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.test.auxiliary.FakeTestClass"/>
+<fullyQualifiedTypeName name="org.junit.runner.RunWith"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.runner.MultiDataJUnitRunner"/>
+<fullyQualifiedTypeName name="org.junit.runner.notification.RunNotifier"/>
+<fullyQualifiedTypeName name="junit.framework.TestCase"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="org.junit.runner.notification.RunListener"/>
+<fullyQualifiedTypeName name="org.junit.rules.TestName"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.test.auxiliary.SucessRunListener"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.test.auxiliary.SuccessRunListener"/>
 </qualifiedTypeNameHistroy>

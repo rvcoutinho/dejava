@@ -1,0 +1,5 @@
+package org.dejava.component.util.test.test.auxiliary;
+
+public class FakeTestClass {
+	
+}

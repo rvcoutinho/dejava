@@ -1,0 +1,24 @@
+package org.dejava.component.util.test.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import junit.framework.TestCase;
+
+import org.dejava.component.util.test.annotation.MultiDataTest;
+import org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.model.FrameworkMethod;
+import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.Statement;
+
+/**
+ * 
+ */
+@RunWith(org.dejava.component.util.test.runner.MultiDataJUnitRunner)
+public class MultiDataJUnitRunnerTest extends TestCase {
+	
+	
+}

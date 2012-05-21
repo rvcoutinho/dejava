@@ -1,0 +1,54 @@
+package org.dejava.component.util.test.test.auxiliary;
+
+import org.junit.runner.Description;
+import org.junit.runner.notification.RunListener;
+
+/**
+ * TODO
+ */
+public class SucessRunListener extends RunListener {
+
+	/**
+	 * Test description for the test that must run successfully.
+	 */
+	private String testDescription;
+
+	/**
+	 * Gets the test description for the test that must run successfully.
+	 * 
+	 * @return The test description for the test that must run successfully.
+	 */
+	public String getTestDescription() {
+		return testDescription;
+	}
+
+	/**
+	 * Sets the test description for the test that must run successfully.
+	 * 
+	 * @param testDescription
+	 *            New test description for the test that must run successfully.
+	 */
+	public void setTestDescription(String testDescription) {
+		this.testDescription = testDescription;
+	}
+
+	/**
+	 * Default constructor.
+	 * 
+	 * @param testDescription
+	 *            The test description for the test that must run successfully.
+	 */
+	public SucessRunListener(String testDescription) {
+		super();
+		this.testDescription = testDescription;
+	}
+
+	/**
+	 * @see org.junit.runner.notification.RunListener#testIgnored(org.junit.runner.Description)
+	 */
+	@Override
+	public void testIgnored(Description description) throws Exception {
+		// If the test ignored has the same given test description.
+	}
+
+}

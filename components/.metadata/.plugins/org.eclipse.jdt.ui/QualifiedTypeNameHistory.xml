@@ -13,4 +13,8 @@
 <fullyQualifiedTypeName name="org.dejava.component.util.test.annotation.MultiDataTest"/>
 <fullyQualifiedTypeName name="org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod"/>
 <fullyQualifiedTypeName name="org.dejava.component.util.reflection.handler.ConstructorHandler"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.exception.localized.AbstractLocalizedException"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.test.exception.UnavailableTestDataException"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
 </qualifiedTypeNameHistroy>

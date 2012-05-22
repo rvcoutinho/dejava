@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="MultiDataJUnitRunnerTest" project="Test" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="org.dejava.component.util.test.test.MultiDataJUnitRunnerTest" time="0.079">
+    <testcase name="testTestNormalSuccess" classname="org.dejava.component.util.test.test.MultiDataJUnitRunnerTest" time="0.075"/>
+    <testcase name="testTestNormalAssumptionFailure" classname="org.dejava.component.util.test.test.MultiDataJUnitRunnerTest" time="0.004"/>
+  </testsuite>
+</testrun>

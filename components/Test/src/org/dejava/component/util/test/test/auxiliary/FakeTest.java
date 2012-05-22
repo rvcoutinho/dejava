@@ -11,30 +11,31 @@ import org.junit.runner.RunWith;
  */
 @RunWith(value = MultiDataJUnitRunner.class)
 public class FakeTest extends TestCase {
-
-	/**
-	 * Simulates a normal test failure.
-	 */
-	@Test
-	public void testNormalFailure() {
-		fail("testNormalFailure");
-	}
-
+	
 	/**
 	 * Simulates a normal test success.
 	 */
 	@Test
 	public void testNormalSuccess() {
 	}
-
+	
 	/**
-	 * Simulates a normal test error.
+	 * Simulates a normal assumption failure test.
 	 * 
-	 * @throws Exception
-	 *             A exception.
 	 */
 	@Test
-	public void testNormalError() throws Exception {
-		throw new Exception("testNormalError");
+	public void testNormalAssumptionFailure() {
+		fail("testNormalAssumptionFailure");
+	}
+	
+	/**
+	 * Simulates a test failure.
+	 * 
+	 * @throws Exception
+	 *             An exception.
+	 */
+	@Test
+	public void testNormalFailure() throws Exception {
+		throw new Exception("testNormalFailure");
 	}
 }

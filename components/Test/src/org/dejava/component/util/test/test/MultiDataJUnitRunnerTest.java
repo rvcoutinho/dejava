@@ -1,5 +1,6 @@
 package org.dejava.component.util.test.test;
 
+import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
 import org.dejava.component.util.test.runner.MultiDataJUnitRunner;
@@ -29,23 +30,71 @@ public class MultiDataJUnitRunnerTest extends TestCase {
 	}
 	
 	/**
-	 * TODO
+	 * Tests if a normal test method (annotated with @Test) runs normally.
 	 * 
 	 * @throws InitializationError
-	 *             TODO
+	 *             If the test runner cannot me initialized for the {@link FakeTest}.
 	 */
 	@Test
-	public void testTestNormalFailure() throws InitializationError {
+	public void testTestNormalSuccess() throws InitializationError {
 		// Creates a new notifier.
-		RunNotifier runNotifier = new RunNotifier();
+		final RunNotifier runNotifier = new RunNotifier();
 		// Creates a listener for the FakeTest.
-		RunListenerLog runListener = new RunListenerLog("testNormalSuccess");
+		final RunListenerLog runListener = new RunListenerLog("testNormalSuccess");
 		// Adds the listener to the notifier.
 		runNotifier.addListener(runListener);
 		// Tries to run the tests.
 		getFakeTestRunner().run(runNotifier);
-		// If the test did not finished as expected.
-		if (!runListener.getAsExpected()) {
+		// If the test is not finished without failures.
+		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() != null)) {
+			// The test fails. FIXME
+			fail();
+		}
+	}
+	
+	/**
+	 * Tests if a assumption failure test method (annotated with @Test) runs normally.
+	 * 
+	 * @throws InitializationError
+	 *             If the test runner cannot me initialized for the {@link FakeTest}.
+	 */
+	@Test
+	public void testTestNormalAssumptionFailure() throws InitializationError {
+		// Creates a new notifier.
+		final RunNotifier runNotifier = new RunNotifier();
+		// Creates a listener for the FakeTest.
+		final RunListenerLog runListener = new RunListenerLog("testNormalAssumptionFailure");
+		// Adds the listener to the notifier.
+		runNotifier.addListener(runListener);
+		// Tries to run the tests.
+		getFakeTestRunner().run(runNotifier);
+		// If the test is not finished with expected failures.
+		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)
+				|| (!(runListener.getFailure().getException() instanceof AssertionFailedError))) {
+			// The test fails. FIXME
+			fail();
+		}
+	}
+	
+	/**
+	 * Tests if a failure test method (annotated with @Test) runs normally.
+	 * 
+	 * @throws InitializationError
+	 *             If the test runner cannot me initialized for the {@link FakeTest}.
+	 */
+	@Test
+	public void testTestNormalFailure() throws InitializationError {
+		// Creates a new notifier.
+		final RunNotifier runNotifier = new RunNotifier();
+		// Creates a listener for the FakeTest.
+		final RunListenerLog runListener = new RunListenerLog("testNormalFailure");
+		// Adds the listener to the notifier.
+		runNotifier.addListener(runListener);
+		// Tries to run the tests.
+		getFakeTestRunner().run(runNotifier);
+		// If the test is not finished with expected failures.
+		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)
+				|| ((runListener.getFailure().getException() instanceof AssertionFailedError))) {
 			// The test fails. FIXME
 			fail();
 		}

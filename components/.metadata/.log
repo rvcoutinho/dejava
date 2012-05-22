@@ -6435,3 +6435,40 @@ java.net.UnknownHostException: update.atlassian.com
 
 !ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:46.977
 !MESSAGE Could not resolve bindings form method RunListener
+!SESSION 2012-05-22 00:01:49.482 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_30
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2012-05-22 00:02:56.035
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-05-22 00:02:56.035
+!MESSAGE A conflict occurred for ALT+CTRL+P:
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.jboss.tools.maven.ui.commands.selectMavenProfileCommand,Select Maven Profiles,
+		,
+		Category(org.eclipse.ui.category.window,Window,null,true),
+		org.jboss.tools.maven.profiles.ui.internal.ProfileSelectionHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.CreatePatchCommand,Create Patch...,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-22 00:23:50.478
+!MESSAGE Could not resolve bindings form method testTestNormalFailure
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-22 00:37:20.178
+!MESSAGE Could not resolve bindings form method testTestNormalAssumptionFailure
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-22 00:37:22.714
+!MESSAGE Could not resolve bindings form method testTestNormalAssumptionFailure

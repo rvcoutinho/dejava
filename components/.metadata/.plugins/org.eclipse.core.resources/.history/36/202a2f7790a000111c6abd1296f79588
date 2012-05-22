@@ -1,9 +1,0 @@
-package org.dejava.component.util.test.runner.statement;
-
-
-/**
- * TODO
- */
-public interface TestDataProvider {
-	
-}

@@ -1,9 +1,0 @@
-package org.dejava.component.util.test.runner.statement.dataprovider;
-
-
-/**
- * Provides access to XML test data.
- */
-public class XMLTestDataProvider implements TestDataProvider {
-	
-}

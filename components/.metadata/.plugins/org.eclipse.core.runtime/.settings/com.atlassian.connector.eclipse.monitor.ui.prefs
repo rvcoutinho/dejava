@@ -1,3 +1,4 @@
-#Sun May 20 23:32:19 BRT 2012
+#Mon May 21 23:45:34 BRT 2012
 com.atlassian.connector.eclipse.monitor.usage.first.time=false
+com.atlassian.connector.eclipse.monitor.usage.enabled=true
 eclipse.preferences.version=1

@@ -1,0 +1,10 @@
+#Mon May 21 23:16:36 BRT 2012
+defaultExcludesList=**/*~,**/\#*\#,**/.\#*,**/%*%,**/._*,**/CVS,**/CVS/**,**/.cvsignore,**/SCCS,**/SCCS/**,**/vssver.scc,**/.svn,**/.svn/**,**/.DS_Store,
+useDefaultExcludes=true
+alwaysShowProjectExplorerNode=false
+showFullFilesetRootDir=true
+showProjectRoot=true
+showPackageOutputPath=true
+showAllProjects=false
+eclipse.preferences.version=1
+showBuildErrorDialog=true

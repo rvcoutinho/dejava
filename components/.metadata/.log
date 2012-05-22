@@ -5380,3 +5380,1058 @@ org.eclipse.papyrus.core.services.ServiceNotFoundException: Can't get the curren
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SESSION 2012-05-21 23:03:29.478 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_30
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 4 4 2012-05-21 23:04:00.195
+!MESSAGE Could not create view: 'org.eclipse.cdt.debug.ui.executablesView'.
+
+!ENTRY org.eclipse.jface 2 0 2012-05-21 23:04:06.794
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-05-21 23:04:06.794
+!MESSAGE A conflict occurred for ALT+CTRL+P:
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.jboss.tools.maven.ui.commands.selectMavenProfileCommand,Select Maven Profiles,
+		,
+		Category(org.eclipse.ui.category.window,Window,null,true),
+		org.jboss.tools.maven.profiles.ui.internal.ProfileSelectionHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.CreatePatchCommand,Create Patch...,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.ui 4 0 2012-05-21 23:04:07.823
+!MESSAGE Problems occurred restoring workbench.
+!SUBENTRY 1 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.ui 4 0 2012-05-21 23:04:07.823
+!MESSAGE Unable to restore perspective: Workspace - Debug.
+!SUBENTRY 2 org.eclipse.ui 0 0 2012-05-21 23:04:07.823
+!MESSAGE Problems occurred restoring perspective.
+!SUBENTRY 3 org.eclipse.ui 0 0 2012-05-21 23:04:07.823
+!MESSAGE 
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.ui 4 4 2012-05-21 23:04:07.823
+!MESSAGE Could not create view: org.eclipse.cdt.debug.ui.executablesView
+!STACK 1
+org.eclipse.ui.PartInitException: Could not create view: org.eclipse.cdt.debug.ui.executablesView
+	at org.eclipse.ui.internal.ViewFactory.createView(ViewFactory.java:158)
+	at org.eclipse.ui.internal.Perspective.createReferences(Perspective.java:1249)
+	at org.eclipse.ui.internal.FastViewManager.restoreState(FastViewManager.java:925)
+	at org.eclipse.ui.internal.Perspective.restoreState(Perspective.java:1363)
+	at org.eclipse.ui.internal.WorkbenchPage.restoreState(WorkbenchPage.java:3341)
+	at org.eclipse.ui.internal.WorkbenchWindow.restoreState(WorkbenchWindow.java:2225)
+	at org.eclipse.ui.internal.Workbench.doRestoreState(Workbench.java:3682)
+	at org.eclipse.ui.internal.Workbench.access$32(Workbench.java:3624)
+	at org.eclipse.ui.internal.Workbench$60.run(Workbench.java:2324)
+	at org.eclipse.ui.internal.Workbench.runStartupWithProgress(Workbench.java:2021)
+	at org.eclipse.ui.internal.Workbench.restoreState(Workbench.java:2322)
+	at org.eclipse.ui.internal.Workbench.access$30(Workbench.java:2293)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2139)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench.restoreState(Workbench.java:2083)
+	at org.eclipse.ui.internal.WorkbenchConfigurer.restoreState(WorkbenchConfigurer.java:183)
+	at org.eclipse.ui.application.WorkbenchAdvisor$1.run(WorkbenchAdvisor.java:781)
+!SUBENTRY 3 org.eclipse.ui 4 0 2012-05-21 23:04:07.823
+!MESSAGE Could not create view: org.eclipse.cdt.debug.ui.executablesView
+!SUBENTRY 2 org.eclipse.ui 4 0 2012-05-21 23:04:07.823
+!MESSAGE Could not find view: org.eclipse.cdt.debug.ui.executablesView
+!SUBENTRY 1 unknown 0 0 2012-05-21 23:04:07.823
+!MESSAGE OK
+
+!ENTRY org.jboss.tools.project.examples 2 0 2012-05-21 23:04:21.520
+!MESSAGE Premature end of file.
+
+!ENTRY org.jboss.tools.central 4 0 2012-05-21 23:04:24.749
+!MESSAGE planet.jboss.org
+!STACK 0
+java.net.UnknownHostException: planet.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.central.jobs.AbstractRefreshJob.run(AbstractRefreshJob.java:184)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.google.gdt.eclipse.managedapis 1 0 2012-05-21 23:04:29.242
+!MESSAGE Failed to load icon cache
+
+!ENTRY org.eclipse.team.svn.core.svnnature 4 0 2012-05-21 23:04:37.073
+!MESSAGE SVN: 'org.eclipse.team.svn.core.discovery.model.RemoteBundleDiscoveryStrategy$DownloadBundleJob' operation finished with error
+!SUBENTRY 1 org.eclipse.team.svn.core.svnnature 4 0 2012-05-21 23:04:37.073
+!MESSAGE SVN: 'org.eclipse.team.svn.core.discovery.model.RemoteBundleDiscoveryStrategy$DownloadBundleJob' operation finished with error: Cannot download bundle at http://community.polarion.com/projects/subversive/download/eclipse/2.0/discovery/org.eclipse.team.svn.discovery-0.7.9.I20110818-1700.jar
+!STACK 0
+java.lang.Exception: Cannot download bundle at http://community.polarion.com/projects/subversive/download/eclipse/2.0/discovery/org.eclipse.team.svn.discovery-0.7.9.I20110818-1700.jar
+	at org.eclipse.team.svn.core.discovery.model.RemoteBundleDiscoveryStrategy$DownloadBundleJob.exec(RemoteBundleDiscoveryStrategy.java:159)
+	at org.eclipse.team.svn.core.discovery.model.RemoteBundleDiscoveryStrategy.performDiscovery(RemoteBundleDiscoveryStrategy.java:88)
+	at org.eclipse.team.svn.core.discovery.model.ConnectorDiscovery.performDiscovery(ConnectorDiscovery.java:108)
+	at org.eclipse.team.svn.ui.discovery.wizards.ConnectorDiscoveryWizardMainPage$16.run(ConnectorDiscoveryWizardMainPage.java:1172)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.net.UnknownHostException: community.polarion.com
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(Unknown Source)
+	at java.net.HttpURLConnection.getResponseCode(Unknown Source)
+	at org.eclipse.team.svn.core.discovery.util.WebUtil.downloadResource(WebUtil.java:58)
+	at org.eclipse.team.svn.core.discovery.model.RemoteBundleDiscoveryStrategy$DownloadBundleJob.exec(RemoteBundleDiscoveryStrategy.java:149)
+	... 4 more
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2012-05-21 23:04:47.728
+!MESSAGE Connection to http://download.jboss.org/jbosstools/updates/development/indigo/jbosstools-directory.xml failed on download.jboss.org. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.sendRetrieveRequest(FileReader.java:349)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.read(FileReader.java:213)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.stream(RepositoryTransport.java:146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.mylyn.internal.discovery.core.util.P2TransportService.stream(P2TransportService.java:93)
+	at org.eclipse.mylyn.internal.discovery.core.util.WebUtil.stream(WebUtil.java:161)
+	at org.eclipse.mylyn.internal.discovery.core.util.WebUtil.readResource(WebUtil.java:95)
+	at org.eclipse.mylyn.internal.discovery.core.model.RemoteBundleDiscoveryStrategy.performDiscovery(RemoteBundleDiscoveryStrategy.java:107)
+	at org.eclipse.mylyn.internal.discovery.core.model.ConnectorDiscovery.performDiscovery(ConnectorDiscovery.java:114)
+	at org.jboss.tools.central.editors.xpl.DiscoveryViewer$18.run(DiscoveryViewer.java:1509)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.mylyn.discovery.core 4 0 2012-05-21 23:04:49.360
+!MESSAGE Failed to discover all connectors.
+!SUBENTRY 1 org.eclipse.mylyn.discovery.core 4 0 2012-05-21 23:04:49.360
+!MESSAGE RemoteBundleDiscoveryStrategy failed with an error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unknown Host: http://download.jboss.org/jbosstools/updates/development/indigo/jbosstools-directory.xml
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.stream(RepositoryTransport.java:155)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.mylyn.internal.discovery.core.util.P2TransportService.stream(P2TransportService.java:93)
+	at org.eclipse.mylyn.internal.discovery.core.util.WebUtil.stream(WebUtil.java:161)
+	at org.eclipse.mylyn.internal.discovery.core.util.WebUtil.readResource(WebUtil.java:95)
+	at org.eclipse.mylyn.internal.discovery.core.model.RemoteBundleDiscoveryStrategy.performDiscovery(RemoteBundleDiscoveryStrategy.java:107)
+	at org.eclipse.mylyn.internal.discovery.core.model.ConnectorDiscovery.performDiscovery(ConnectorDiscovery.java:114)
+	at org.jboss.tools.central.editors.xpl.DiscoveryViewer$18.run(DiscoveryViewer.java:1509)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.sendRetrieveRequest(FileReader.java:349)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.read(FileReader.java:213)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.stream(RepositoryTransport.java:146)
+	... 11 more
+!SUBENTRY 2 org.eclipse.equinox.p2.transport.ecf 4 1006 2012-05-21 23:04:49.361
+!MESSAGE Unknown Host: http://download.jboss.org/jbosstools/updates/development/indigo/jbosstools-directory.xml
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.sendRetrieveRequest(FileReader.java:349)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.read(FileReader.java:213)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.stream(RepositoryTransport.java:146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.mylyn.internal.discovery.core.util.P2TransportService.stream(P2TransportService.java:93)
+	at org.eclipse.mylyn.internal.discovery.core.util.WebUtil.stream(WebUtil.java:161)
+	at org.eclipse.mylyn.internal.discovery.core.util.WebUtil.readResource(WebUtil.java:95)
+	at org.eclipse.mylyn.internal.discovery.core.model.RemoteBundleDiscoveryStrategy.performDiscovery(RemoteBundleDiscoveryStrategy.java:107)
+	at org.eclipse.mylyn.internal.discovery.core.model.ConnectorDiscovery.performDiscovery(ConnectorDiscovery.java:114)
+	at org.jboss.tools.central.editors.xpl.DiscoveryViewer$18.run(DiscoveryViewer.java:1509)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.ui 4 4 2012-05-21 23:09:10.616
+!MESSAGE Plug-in 'org.zeroturnaround.eclipse.nature' contributed an invalid Menu Extension (Path: 'org.zeroturnaround.eclipse.rebelMenu' is invalid): jrebel-project-nature-plugin.addRemoveNatureAction
+
+!ENTRY org.eclipse.ltk.ui.refactoring 4 10000 2012-05-21 23:09:14.188
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:793)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:344)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:132)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Contains: Error deleting resource '/Test' from the workspace tree.
+org.eclipse.core.internal.resources.ResourceException: Could not delete metadata for '/Test'.
+	at org.eclipse.core.internal.resources.LocalMetaArea.delete(LocalMetaArea.java:103)
+	at org.eclipse.core.internal.resources.Project.deleteResource(Project.java:358)
+	at org.eclipse.core.internal.resources.ResourceTree.deletedProject(ResourceTree.java:169)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:870)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1939)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:344)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:132)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SUBENTRY 1 org.eclipse.core.resources 1 273 2012-05-21 23:09:14.188
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 1 4 2012-05-21 23:09:14.188
+!MESSAGE Error deleting resource '/Test' from the workspace tree.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Could not delete metadata for '/Test'.
+	at org.eclipse.core.internal.resources.LocalMetaArea.delete(LocalMetaArea.java:103)
+	at org.eclipse.core.internal.resources.Project.deleteResource(Project.java:358)
+	at org.eclipse.core.internal.resources.ResourceTree.deletedProject(ResourceTree.java:169)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:870)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1939)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:344)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:132)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SUBENTRY 3 org.eclipse.core.resources 4 569 2012-05-21 23:09:14.188
+!MESSAGE Could not delete metadata for '/Test'.
+
+!ENTRY org.eclipse.core.resources 1 273 2012-05-21 23:09:14.188
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 1 org.eclipse.core.resources 1 4 2012-05-21 23:09:14.188
+!MESSAGE Error deleting resource '/Test' from the workspace tree.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Could not delete metadata for '/Test'.
+	at org.eclipse.core.internal.resources.LocalMetaArea.delete(LocalMetaArea.java:103)
+	at org.eclipse.core.internal.resources.Project.deleteResource(Project.java:358)
+	at org.eclipse.core.internal.resources.ResourceTree.deletedProject(ResourceTree.java:169)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:870)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1939)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:344)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:132)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SUBENTRY 2 org.eclipse.core.resources 4 569 2012-05-21 23:09:14.188
+!MESSAGE Could not delete metadata for '/Test'.
+
+!ENTRY org.eclipse.jdt.core 4 4 2012-05-21 23:09:16.918
+!MESSAGE JavaBuilder handling ImageBuilderInternalException while building: Message
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:793)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:173)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Could not delete '/Message/bin/org'.
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1935)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:173)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org\dejava\component\util.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org\dejava\component.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org\dejava.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2012-05-21 23:09:16.918
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2012-05-21 23:09:16.918
+!MESSAGE Could not delete '/Message/bin/org'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1935)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:173)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org\dejava\component\util.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org\dejava\component.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org\dejava.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2012-05-21 23:09:16.918
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2012-05-21 23:09:16.918
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-21 23:09:16.918
+!MESSAGE Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org\dejava\component\util.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-21 23:09:16.918
+!MESSAGE Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org\dejava\component.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-21 23:09:16.918
+!MESSAGE Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org\dejava.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-21 23:09:16.918
+!MESSAGE Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Message\bin\org.
+
+!ENTRY org.eclipse.jdt.core 4 4 2012-05-21 23:09:17.012
+!MESSAGE JavaBuilder handling ImageBuilderInternalException while building: Reflection
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:793)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:173)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Could not delete '/Reflection/bin/org'.
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1935)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:173)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Reflection\bin\org\dejava.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Reflection\bin\org.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2012-05-21 23:09:17.012
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2012-05-21 23:09:17.012
+!MESSAGE Could not delete '/Reflection/bin/org'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1935)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:173)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Reflection\bin\org\dejava.
+Contains: Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Reflection\bin\org.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2012-05-21 23:09:17.012
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2012-05-21 23:09:17.012
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-21 23:09:17.012
+!MESSAGE Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Reflection\bin\org\dejava.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-21 23:09:17.012
+!MESSAGE Could not delete: D:\usuarios\rvcoutinho\Desktop\development\components\Reflection\bin\org.
+
+!ENTRY org.eclipse.ui 4 4 2012-05-21 23:09:22.831
+!MESSAGE Plug-in 'org.zeroturnaround.eclipse.nature' contributed an invalid Menu Extension (Path: 'org.zeroturnaround.eclipse.rebelMenu' is invalid): jrebel-project-nature-plugin.addRemoveNatureAction
+!SESSION 2012-05-21 23:09:45.937 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_30
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2012-05-21 23:09:55.234
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-05-21 23:09:55.234
+!MESSAGE A conflict occurred for ALT+CTRL+P:
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.jboss.tools.maven.ui.commands.selectMavenProfileCommand,Select Maven Profiles,
+		,
+		Category(org.eclipse.ui.category.window,Window,null,true),
+		org.jboss.tools.maven.profiles.ui.internal.ProfileSelectionHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.CreatePatchCommand,Create Patch...,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.google.gdt.eclipse.managedapis 1 0 2012-05-21 23:09:56.779
+!MESSAGE Failed to load icon cache
+
+!ENTRY org.jboss.tools.project.examples 4 0 2012-05-21 23:10:03.080
+!MESSAGE download.jboss.org
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjectExamplesFile(ProjectExampleUtil.java:691)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:254)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:230)
+	at org.jboss.tools.central.jobs.RefreshTutorialsJob.run(RefreshTutorialsJob.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.project.examples 2 0 2012-05-21 23:10:03.095
+!MESSAGE Invalid URL: http://download.jboss.org/jbosstools/examples/project-examples-maven-3.3.xml
+
+!ENTRY org.jboss.tools.project.examples 4 0 2012-05-21 23:10:03.189
+!MESSAGE download.jboss.org
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjectExamplesFile(ProjectExampleUtil.java:691)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:254)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:230)
+	at org.jboss.tools.central.jobs.RefreshTutorialsJob.run(RefreshTutorialsJob.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.project.examples 2 0 2012-05-21 23:10:03.189
+!MESSAGE Invalid URL: http://download.jboss.org/jbosstools/examples/project-examples-shared-3.3.Beta1.xml
+
+!ENTRY org.jboss.tools.project.examples 4 0 2012-05-21 23:10:03.236
+!MESSAGE download.jboss.org
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjectExamplesFile(ProjectExampleUtil.java:691)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:254)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:230)
+	at org.jboss.tools.central.jobs.RefreshTutorialsJob.run(RefreshTutorialsJob.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.project.examples 2 0 2012-05-21 23:10:03.236
+!MESSAGE Invalid URL: http://download.jboss.org/jbosstools/examples/project-examples-bpel-3.1.xml
+
+!ENTRY org.jboss.tools.project.examples 4 0 2012-05-21 23:10:03.282
+!MESSAGE download.jboss.org
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjectExamplesFile(ProjectExampleUtil.java:691)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:254)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:230)
+	at org.jboss.tools.central.jobs.RefreshTutorialsJob.run(RefreshTutorialsJob.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.project.examples 2 0 2012-05-21 23:10:03.282
+!MESSAGE Invalid URL: http://download.jboss.org/jbosstools/examples/project-examples-3.2.xml
+
+!ENTRY org.jboss.tools.project.examples 4 0 2012-05-21 23:10:03.345
+!MESSAGE download.jboss.org
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjectExamplesFile(ProjectExampleUtil.java:691)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:254)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:230)
+	at org.jboss.tools.central.jobs.RefreshTutorialsJob.run(RefreshTutorialsJob.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.project.examples 2 0 2012-05-21 23:10:03.345
+!MESSAGE Invalid URL: http://download.jboss.org/jbosstools/examples/project-examples-maven-3.2.xml
+
+!ENTRY org.jboss.tools.project.examples 4 0 2012-05-21 23:10:03.392
+!MESSAGE download.jboss.org
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjectExamplesFile(ProjectExampleUtil.java:691)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:254)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:230)
+	at org.jboss.tools.central.jobs.RefreshTutorialsJob.run(RefreshTutorialsJob.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.project.examples 2 0 2012-05-21 23:10:03.392
+!MESSAGE Invalid URL: http://download.jboss.org/jbosstools/examples/project-examples-community-3.1.xml
+
+!ENTRY org.jboss.tools.project.examples 4 0 2012-05-21 23:10:03.438
+!MESSAGE download.jboss.org
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjectExamplesFile(ProjectExampleUtil.java:691)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.handleCategories(ProjectExampleUtil.java:439)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:404)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:230)
+	at org.jboss.tools.central.jobs.RefreshTutorialsJob.run(RefreshTutorialsJob.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.project.examples 2 0 2012-05-21 23:10:03.438
+!MESSAGE Invalid URL: http://download.jboss.org/jbosstools/examples/project-examples-category-3.3.xml
+
+!ENTRY org.jboss.tools.project.examples 4 0 2012-05-21 23:10:03.485
+!MESSAGE download.jboss.org
+!STACK 0
+java.net.UnknownHostException: download.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjectExamplesFile(ProjectExampleUtil.java:691)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.handleCategories(ProjectExampleUtil.java:439)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:404)
+	at org.jboss.tools.project.examples.model.ProjectExampleUtil.getProjects(ProjectExampleUtil.java:230)
+	at org.jboss.tools.central.jobs.RefreshTutorialsJob.run(RefreshTutorialsJob.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.project.examples 2 0 2012-05-21 23:10:03.485
+!MESSAGE Invalid URL: http://download.jboss.org/jbosstools/examples/project-examples-category-jbosstools-3.3.xml
+
+!ENTRY org.jboss.tools.central 4 0 2012-05-21 23:10:03.750
+!MESSAGE planet.jboss.org
+!STACK 0
+java.net.UnknownHostException: planet.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.central.jobs.AbstractRefreshJob.run(AbstractRefreshJob.java:184)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.central 4 0 2012-05-21 23:10:03.775
+!MESSAGE planet.jboss.org
+!STACK 0
+java.net.UnknownHostException: planet.jboss.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.transfer(ECFExamplesTransport.java:315)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.performDownload(ECFExamplesTransport.java:246)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport.download(ECFExamplesTransport.java:206)
+	at org.jboss.tools.central.jobs.AbstractRefreshJob.run(AbstractRefreshJob.java:184)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.atlassian.connector.eclipse.monitor.core 4 0 2012-05-21 23:15:03.399
+!MESSAGE Usage Data wasn't uploaded because there's no network connection. Please try again later.
+!STACK 0
+java.net.UnknownHostException: update.atlassian.com
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory.createSocket(DefaultProtocolSocketFactory.java:80)
+	at org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory.createSocket(DefaultProtocolSocketFactory.java:122)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.atlassian.connector.eclipse.internal.monitor.core.operations.UsageDataUploadJob.upload(UsageDataUploadJob.java:174)
+	at com.atlassian.connector.eclipse.internal.monitor.core.operations.UsageDataUploadJob.performUpload(UsageDataUploadJob.java:96)
+	at com.atlassian.connector.eclipse.internal.monitor.core.operations.UsageDataUploadJob.checkLastTransmitTimeAndRun(UsageDataUploadJob.java:82)
+	at com.atlassian.connector.eclipse.internal.monitor.core.operations.UsageDataUploadJob.run(UsageDataUploadJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.google.gdt.eclipse.suite 1 0 2012-05-21 23:27:03.897
+!MESSAGE Registering: com.google.gwt.eclipse.sdkbundle_2.4.0.v201201120043-rel-r37
+
+!ENTRY org.eclipse.ui 4 4 2012-05-21 23:27:18.374
+!MESSAGE Plug-in 'org.zeroturnaround.eclipse.nature' contributed an invalid Menu Extension (Path: 'org.zeroturnaround.eclipse.rebelMenu' is invalid): jrebel-project-nature-plugin.addRemoveNatureAction
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:31:32.086
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:32:32.786
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:32:45.188
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:32:47.294
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:08.946
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:14.126
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:15.202
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:18.837
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:20.428
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:25.092
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:45.716
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:49.366
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:51.082
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:52.002
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:53.048
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:54.280
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:54.342
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:54.857
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:33:55.918
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:01.596
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:03.734
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:04.576
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:05.294
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:14.591
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:20.816
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:23.421
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:25.511
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:30.706
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:34.388
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:39.052
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:40.113
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:41.174
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:42.235
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:42.952
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:43.841
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:44.887
+!MESSAGE Could not resolve bindings form method SuccessRunListener
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-21 23:34:46.977
+!MESSAGE Could not resolve bindings form method RunListener

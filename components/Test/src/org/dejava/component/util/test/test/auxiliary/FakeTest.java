@@ -38,4 +38,5 @@ public class FakeTest extends TestCase {
 	public void testNormalFailure() throws Exception {
 		throw new Exception("testNormalFailure");
 	}
+	
 }

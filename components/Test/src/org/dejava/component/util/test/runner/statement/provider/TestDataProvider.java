@@ -1,6 +1,6 @@
 package org.dejava.component.util.test.runner.statement.provider;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.MultiDataJUnitRunner;
@@ -24,6 +24,6 @@ public interface TestDataProvider {
 	 * @throws UnavailableTestDataException
 	 *             If the test data provider cannot be created.
 	 */
-	public List<?> getTestData(final Object targetTest, final FrameworkMethod testMethod)
+	public Collection<?> getTestData(final Object targetTest, final FrameworkMethod testMethod)
 			throws UnavailableTestDataException;
 }

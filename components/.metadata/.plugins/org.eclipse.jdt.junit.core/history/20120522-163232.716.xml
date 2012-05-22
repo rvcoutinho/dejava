@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="FakeTest" project="Test" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="org.dejava.component.util.test.test.auxiliary.FakeTest" time="0.047">
+    <testcase name="initializationError" classname="org.dejava.component.util.test.test.auxiliary.FakeTest" time="0.047">
+      <error>java.lang.Exception: Method testMultiDataNoArgs should have one and only one parameter&#13;
+	at org.dejava.component.util.test.runner.MultiDataJUnitRunner.validatePublicVoidOneTestCaseArg(MultiDataJUnitRunner.java:100)&#13;
+	at org.dejava.component.util.test.runner.MultiDataJUnitRunner.validateTestMethods(MultiDataJUnitRunner.java:129)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.validateInstanceMethods(BlockJUnit4ClassRunner.java:174)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.collectInitializationErrors(BlockJUnit4ClassRunner.java:122)&#13;
+	at org.junit.runners.ParentRunner.validate(ParentRunner.java:269)&#13;
+	at org.junit.runners.ParentRunner.&lt;init&gt;(ParentRunner.java:66)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.&lt;init&gt;(BlockJUnit4ClassRunner.java:58)&#13;
+	at org.dejava.component.util.test.runner.MultiDataJUnitRunner.&lt;init&gt;(MultiDataJUnitRunner.java:30)&#13;
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)&#13;
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)&#13;
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)&#13;
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)&#13;
+	at org.junit.internal.builders.AnnotatedBuilder.buildRunner(AnnotatedBuilder.java:31)&#13;
+	at org.junit.internal.builders.AnnotatedBuilder.runnerForClass(AnnotatedBuilder.java:24)&#13;
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)&#13;
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)&#13;
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)&#13;
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.&lt;init&gt;(JUnit4TestReference.java:33)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestClassReference.&lt;init&gt;(JUnit4TestClassReference.java:25)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader.createTest(JUnit4TestLoader.java:48)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader.loadTests(JUnit4TestLoader.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

@@ -1,4 +1,4 @@
-#Tue May 22 01:25:20 BRT 2012
+#Tue May 22 16:00:59 BRT 2012
 cleanup.remove_trailing_whitespaces=true
 cleanup.remove_unused_private_fields=true
 cleanup.add_missing_nls_tags=false
@@ -67,7 +67,7 @@ cleanup.make_parameters_final=true
 content_assist_proposals_background=255,255,255
 cleanup.always_use_blocks=true
 cleanup.add_serial_version_id=true
-content_assist_number_of_computers=27
+content_assist_number_of_computers=21
 cleanup.remove_unused_local_variables=false
 cleanup.sort_members_all=false
 org.eclipse.jdt.ui.formatterprofiles.version=12

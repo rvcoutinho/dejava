@@ -5,7 +5,7 @@
       <description>Blogs related to JBoss technology</description>
       <link>http://pipes.yahoo.com/pipes/pipe.info?_id=cd806417dc77bdc49d15956faa318a78</link>
       <atom:link rel="next" href="http://pipes.yahoo.com/pipes/pipe.run?_id=cd806417dc77bdc49d15956faa318a78&amp;_render=rss&amp;page=2" />
-      <pubDate>Tue, 22 May 2012 02:38:34 +0000</pubDate>
+      <pubDate>Wed, 23 May 2012 22:36:48 +0000</pubDate>
       <generator>http://pipes.yahoo.com/pipes/</generator>
       <feedburner:info uri="jbosscentralblogs" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><image><url>http://design.jboss.org/jbossorg/branding/jbosscommunity_logos/jbosscommunity_logo_stack_white.png</url></image><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://planet.jboss.org/feeds/blogs" /><feedburner:feedFlare href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fplanet.jboss.org%2Ffeeds%2Fblogs" src="http://us.i1.yimg.com/us.yimg.com/i/us/my/addtomyyahoo4.gif">Subscribe with My Yahoo!</feedburner:feedFlare><feedburner:feedFlare href="http://www.netvibes.com/subscribe.php?url=http%3A%2F%2Fplanet.jboss.org%2Ffeeds%2Fblogs" src="http://www.netvibes.com/img/add2netvibes.gif">Subscribe with Netvibes</feedburner:feedFlare><feedburner:feedFlare href="http://fusion.google.com/add?feedurl=http%3A%2F%2Fplanet.jboss.org%2Ffeeds%2Fblogs" src="http://buttons.googlesyndication.com/fusion/add.gif">Subscribe with Google</feedburner:feedFlare><feedburner:feedFlare href="http://www.plusmo.com/add?url=http%3A%2F%2Fplanet.jboss.org%2Ffeeds%2Fblogs" src="http://plusmo.com/res/graphics/fbplusmo.gif">Subscribe with Plusmo</feedburner:feedFlare><feedburner:feedFlare href="http://www.live.com/?add=http%3A%2F%2Fplanet.jboss.org%2Ffeeds%2Fblogs" src="http://tkfiles.storage.msn.com/x1piYkpqHC_35nIp1gLE68-wvzLZO8iXl_JMledmJQXP-XTBOLfmQv4zhj4MhcWEJh_GtoBIiAl1Mjh-ndp9k47If7hTaFno0mxW9_i3p_5qQw">Subscribe with Live.com</feedburner:feedFlare><feedburner:browserFriendly>This is a curated feed with blogs and highlights concerning JBoss technology.</feedburner:browserFriendly><item>
          <title>JBoss Tools and Developer Studio Beta 3 - Use the Source!</title>
@@ -591,4 +591,4 @@ So go get a fresh copy of &lt;a rel="nofollow" target="_blank" href="http://www.
          <pubDate>Fri, 23 Sep 2011 10:24:25 +0000</pubDate>
       <feedburner:origLink>http://community.jboss.org/community/tools/blog/2011/09/20/forge-tools-shes-a-rainbow</feedburner:origLink></item>
    </channel>
-</rss><!-- fe4.yql.bf1.yahoo.com compressed/chunked Tue May 22 02:38:29 UTC 2012 -->
+</rss><!-- fe2.yql.bf1.yahoo.com compressed/chunked Wed May 23 22:36:45 UTC 2012 -->

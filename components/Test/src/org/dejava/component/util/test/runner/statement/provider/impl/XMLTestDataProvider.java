@@ -3,12 +3,10 @@ package org.dejava.component.util.test.runner.statement.provider.impl;
 import java.io.InputStream;
 import java.util.Collection;
 
-import junit.framework.TestCase;
-
 import org.dejava.component.util.exception.localized.EmptyParameterException;
 import org.dejava.component.util.reflection.handler.PackageHandler;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
-import org.dejava.component.util.test.runner.statement.InvokeMultiDataTestMethod;
+import org.dejava.component.util.test.runner.statement.InvokeParametricTestMethod;
 import org.dejava.component.util.test.runner.statement.provider.TestDataProvider;
 import org.dejava.component.util.xml.XMLCreator;
 import org.dejava.component.util.xml.XMLDecoder;
@@ -23,7 +21,7 @@ public class XMLTestDataProvider implements TestDataProvider {
 	/**
 	 * Default path for the XML.
 	 */
-	public static final String DEFAULT_XML_PATH = "xml/" + InvokeMultiDataTestMethod.METHOD_NAME_EXPRESSION
+	public static final String DEFAULT_XML_PATH = "xml/" + InvokeParametricTestMethod.METHOD_NAME_EXPRESSION
 			+ ".xml";
 	
 	/**
@@ -44,7 +42,7 @@ public class XMLTestDataProvider implements TestDataProvider {
 			// The default method name is used.
 			filePath = DEFAULT_XML_PATH;
 			// Replaces the method name in the path.
-			filePath = filePath.replace(InvokeMultiDataTestMethod.METHOD_NAME_EXPRESSION,
+			filePath = filePath.replace(InvokeParametricTestMethod.METHOD_NAME_EXPRESSION,
 					testMethod.getName());
 		}
 		// Returns the method name.
@@ -94,8 +92,8 @@ public class XMLTestDataProvider implements TestDataProvider {
 			final InputStream xmlInputStream = getXMLStream(targetTest, testMethod);
 			// Creates the XML document for the stream.
 			final Document xmlDocument = XMLCreator.createXMLDocument(xmlInputStream);
-			// Gets the test data object from the XML document.
-			return (Collection<?>) XMLDecoder.fromXML(xmlDocument, null, TestCase.class, null);
+			// Gets the test data object from the XML document. TODO Think about expected class
+			return (Collection<?>) XMLDecoder.fromXML(xmlDocument, null, null, null);
 		}
 		// If the test data cannot be retrieved.
 		catch (Exception exception) {

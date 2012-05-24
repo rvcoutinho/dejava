@@ -2,14 +2,14 @@ package org.dejava.component.util.test.test.auxiliary;
 
 import junit.framework.TestCase;
 
-import org.dejava.component.util.test.runner.MultiDataJUnitRunner;
+import org.dejava.component.util.test.runner.ParametricJUnitRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
  * Fake test class to be used in the test framework tests.
  */
-@RunWith(value = MultiDataJUnitRunner.class)
+@RunWith(value = ParametricJUnitRunner.class)
 public class FakeTest extends TestCase {
 	
 	/**

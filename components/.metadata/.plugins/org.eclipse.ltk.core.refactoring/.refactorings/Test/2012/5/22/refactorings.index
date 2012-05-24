@@ -1,1 +1,5 @@
 1337715259038	Move compilation units
+1337816617476	Rename type 'MultiDataTest'
+1337816706823	Rename type 'MultiDataJUnitRunner'
+1337816719629	Rename type 'InvokeMultiDataTestMethod'
+1337816746947	Rename type 'MultiDataJUnitRunnerTest'

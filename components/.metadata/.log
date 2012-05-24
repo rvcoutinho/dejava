@@ -6560,3 +6560,134 @@ org.eclipse.core.internal.resources.ResourceException: Resource '/Plugin_Resourc
 
 !ENTRY edu.cmu.sei.aadl.model 4 0 2012-05-22 16:01:16.098
 !MESSAGE Cannot load plugin property sets and packages.
+!SESSION 2012-05-23 20:05:13.993 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_30
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2012-05-23 20:05:23.983
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jface 2 0 2012-05-23 20:05:59.200
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-05-23 20:05:59.200
+!MESSAGE A conflict occurred for ALT+CTRL+P:
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.jboss.tools.maven.ui.commands.selectMavenProfileCommand,Select Maven Profiles,
+		,
+		Category(org.eclipse.ui.category.window,Window,null,true),
+		org.jboss.tools.maven.profiles.ui.internal.ProfileSelectionHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.CreatePatchCommand,Create Patch...,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.google.gdt.eclipse.managedapis 1 0 2012-05-23 22:53:25.913
+!MESSAGE Failed to load icon cache
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:00:05.388
+!MESSAGE Could not resolve bindings form method dataProvider
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:05:24.608
+!MESSAGE Could not resolve bindings form method dataProvider
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:06:20.291
+!MESSAGE Could not resolve bindings form method dataProvider
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:08:34.141
+!MESSAGE Could not resolve bindings form method paramsValues
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:08:35.695
+!MESSAGE Could not resolve bindings form method paramsValues
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:08:40.721
+!MESSAGE Could not resolve bindings form method paramsValues
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:08:42.253
+!MESSAGE Could not resolve bindings form method paramsValues
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:08:43.267
+!MESSAGE Could not resolve bindings form method paramsValues
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:08:44.287
+!MESSAGE Could not resolve bindings form method paramsValues
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-24 01:10:00.506
+!MESSAGE Could not resolve bindings form method getTestData
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 4 0 2012-05-24 02:17:14.405
+!MESSAGE Failed to build or refresh the JAX-RS metamodel
+!STACK 0
+java.lang.ClassCastException: org.eclipse.jdt.internal.core.TypeParameter cannot be cast to org.eclipse.jdt.core.IType
+	at org.jboss.tools.ws.jaxrs.core.jdt.JavaMethodSignaturesVisitor.visit(JavaMethodSignaturesVisitor.java:88)
+	at org.eclipse.jdt.core.dom.MethodDeclaration.accept0(MethodDeclaration.java:489)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2585)
+	at org.eclipse.jdt.core.dom.TypeDeclaration.accept0(TypeDeclaration.java:484)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2585)
+	at org.eclipse.jdt.core.dom.CompilationUnit.accept0(CompilationUnit.java:219)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.jboss.tools.ws.jaxrs.core.jdt.CompilationUnitsRepository.mergeAST(CompilationUnitsRepository.java:116)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:118)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:152)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:152)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:152)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:152)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanAndFilterEvent(JavaElementDeltaScanner.java:71)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JaxrsMetamodelBuildJob.run(JaxrsMetamodelBuildJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 4 0 2012-05-24 02:17:14.930
+!MESSAGE Failed to build or refresh the JAX-RS metamodel
+!STACK 0
+java.lang.ClassCastException: org.eclipse.jdt.internal.core.TypeParameter cannot be cast to org.eclipse.jdt.core.IType
+	at org.jboss.tools.ws.jaxrs.core.jdt.JavaMethodSignaturesVisitor.visit(JavaMethodSignaturesVisitor.java:88)
+	at org.eclipse.jdt.core.dom.MethodDeclaration.accept0(MethodDeclaration.java:489)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2585)
+	at org.eclipse.jdt.core.dom.TypeDeclaration.accept0(TypeDeclaration.java:484)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2585)
+	at org.eclipse.jdt.core.dom.CompilationUnit.accept0(CompilationUnit.java:219)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.jboss.tools.ws.jaxrs.core.jdt.CompilationUnitsRepository.mergeAST(CompilationUnitsRepository.java:116)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:118)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanAndFilterEvent(JavaElementDeltaScanner.java:71)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JaxrsMetamodelBuildJob.run(JaxrsMetamodelBuildJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 4 0 2012-05-24 02:17:18.496
+!MESSAGE Failed to build or refresh the JAX-RS metamodel
+!STACK 0
+java.lang.ClassCastException: org.eclipse.jdt.internal.core.TypeParameter cannot be cast to org.eclipse.jdt.core.IType
+	at org.jboss.tools.ws.jaxrs.core.jdt.JavaMethodSignaturesVisitor.visit(JavaMethodSignaturesVisitor.java:88)
+	at org.eclipse.jdt.core.dom.MethodDeclaration.accept0(MethodDeclaration.java:489)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2585)
+	at org.eclipse.jdt.core.dom.TypeDeclaration.accept0(TypeDeclaration.java:484)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.core.dom.ASTNode.acceptChildren(ASTNode.java:2585)
+	at org.eclipse.jdt.core.dom.CompilationUnit.accept0(CompilationUnit.java:219)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.jboss.tools.ws.jaxrs.core.jdt.CompilationUnitsRepository.recordAST(CompilationUnitsRepository.java:108)
+	at org.jboss.tools.ws.jaxrs.core.jdt.CompilationUnitsRepository.getAST(CompilationUnitsRepository.java:71)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.getCompilationUnitAST(JavaElementDeltaScanner.java:180)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:103)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:152)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:152)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:152)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanDelta(JavaElementDeltaScanner.java:152)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JavaElementDeltaScanner.scanAndFilterEvent(JavaElementDeltaScanner.java:71)
+	at org.jboss.tools.ws.jaxrs.core.internal.metamodel.builder.JaxrsMetamodelBuildJob.run(JaxrsMetamodelBuildJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

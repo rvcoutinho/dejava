@@ -1,6 +1,7 @@
 package org.dejava.component.util.test.runner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -8,9 +9,10 @@ import junit.framework.TestCase;
 import org.dejava.component.util.reflection.handler.ConstructorHandler;
 import org.dejava.component.util.test.annotation.ParametricTest;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
-import org.dejava.component.util.test.runner.statement.InvokeParametricTestMethod;
-import org.dejava.component.util.test.runner.statement.provider.TestDataProvider;
+import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.junit.Test;
+import org.junit.internal.runners.model.ReflectiveCallable;
+import org.junit.internal.runners.statements.Fail;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
@@ -51,15 +53,6 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	/**
-	 * @see BlockJUnit4ClassRunner#methodInvoker(org.junit.runners.model.FrameworkMethod, java.lang.Object)
-	 */
-	@Override
-	protected Statement methodInvoker(final FrameworkMethod method, final Object test) {
-		// Uses the InvokeParametricTestMethod instead.
-		return new InvokeParametricTestMethod(method, test);
-	}
-	
-	/**
 	 * Gets the test data provider instance from the given annotation.
 	 * 
 	 * @param method
@@ -81,7 +74,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		// If the provider cannot be instantiated.
 		catch (final Exception exception) {
 			// Throws an exception. FIXME
-			throw new UnavailableTestDataException(null, null, null);
+			throw new UnavailableTestDataException(null, exception, null);
 		}
 	}
 	
@@ -90,7 +83,63 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	 */
 	@Override
 	protected Statement methodBlock(final FrameworkMethod method) {
+		// Test instance.
+		Object test;
+		// Tries to get a new test instance.
+		try {
+			// Creates a new reflective call.
+			ReflectiveCallable createTestCall = new ReflectiveCallable() {
+				
+				@Override
+				protected Object runReflectiveCall() throws Throwable {
+					return createTest();
+				}
+			};
+			// Creates the test instance.
+			test = createTestCall.run();
+		}
+		// If anything is raised by the test creation.
+		catch (Throwable throwable) {
+			// Returns a fail statement.
+			return new Fail(throwable);
+		}
 		
+		// Gets the annotation with the test data information.
+		final ParametricTest parametricTest = getTestMethod().getAnnotation(ParametricTest.class);
+		// If the @ParametricTest annotation exists.
+		if (parametricTest != null) {
+			// Tries to get the test data objects.
+			final List<?> testData = new ArrayList<Object>(getTestDataProvider().getTestData(getTargetTest(),
+					getTestMethod()));
+			// Shuffles the list (important when {@link ParametricTest#maxTestData()} is given).
+			Collections.shuffle(testData);
+			// Gets the maximum number of test data objects to be used.
+			Integer maxTestData = parametricTest.maxTestData();
+			// If the number is 0.
+			if (maxTestData == 0) {
+				// The maximum number of test data objects is the list size.
+				maxTestData = testData.size();
+			}
+			// List of failed tests. TODO
+			// For each test data object (until the maximum given).
+			for (Integer currentDataObjTdx = 0; currentDataObjTdx < maxTestData; currentDataObjTdx++) {
+				// Gets the current object.
+				final Object currentTestDataObj = testData.get(currentDataObjTdx);
+				// Tries to invoke the test with the current test data.
+				try {
+					getTestMethod().invokeExplosively(getTargetTest(), new Object[] { currentTestDataObj });
+				}
+				// If the test raises an exception.
+				catch (final Exception exception) {
+					// Adds the failed test information to the list. TODO
+				}
+			}
+		}
+		// If it does not exist.
+		else {
+			// Invokes the method with no parameters.
+			getTestMethod().invokeExplosively(getTargetTest(), new Object[0]);
+		}
 	}
 	
 	/**
@@ -154,15 +203,15 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	@Override
 	protected void validateTestMethods(final List<Throwable> errors) {
 		// Gets the methods annotated with @Test.
-		final List<FrameworkMethod> testAnnotatedMethods = getTestClass().getAnnotatedMethods(Test.class);
+		final List<FrameworkMethod> testMethods = getTestClass().getAnnotatedMethods(Test.class);
 		// Gets the methods annotated with @ParametricTest again.
-		final List<FrameworkMethod> testCaseConfigAnnotatedMethods = getTestClass().getAnnotatedMethods(
+		final List<FrameworkMethod> parametricTestMethods = getTestClass().getAnnotatedMethods(
 				ParametricTest.class);
 		// Removes the methods with both annotations from the first list.
-		testAnnotatedMethods.removeAll(testCaseConfigAnnotatedMethods);
+		testMethods.removeAll(parametricTestMethods);
 		// Validate the just annotated with @Test as "public void no args".
-		validatePublicVoidNoArgs(testAnnotatedMethods, false, errors);
+		validatePublicVoidNoArgs(testMethods, false, errors);
 		// Validate the just annotated with @ParametricTest as "public void one test case arg".
-		validatePublicVoidOneTestCaseArg(testCaseConfigAnnotatedMethods, false, errors);
+		validatePublicVoidOneTestCaseArg(parametricTestMethods, false, errors);
 	}
 }

@@ -15,7 +15,8 @@ public class UnavailableTestDataException extends AbstractLocalizedException {
 	/**
 	 * @see AbstractLocalizedException#AbstractLocalizedException(String, Throwable, Object[])
 	 */
-	public UnavailableTestDataException(String messageKey, Throwable cause, Object[] parameters) {
+	public UnavailableTestDataException(final String messageKey, final Throwable cause,
+			final Object[] parameters) {
 		super(messageKey, cause, parameters);
 	}
 	

@@ -17,6 +17,7 @@ public class FakeTest extends TestCase {
 	 */
 	@Test
 	public void testNormalSuccess() {
+		// Success...
 	}
 	
 	/**

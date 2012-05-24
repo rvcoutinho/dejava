@@ -5,8 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.dejava.component.util.test.runner.statement.provider.TestDataProvider;
-import org.dejava.component.util.test.runner.statement.provider.impl.XMLTestDataProvider;
+import org.dejava.component.util.test.runner.dataset.TestDataProvider;
+import org.dejava.component.util.test.runner.dataset.impl.XMLTestDataProvider;
 
 /**
  * Multiple data test. This annotation tells the JUnit (with the proper Runner) to run the annotated test

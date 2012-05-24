@@ -1,8 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<memento>
-<attribute name="priorityFilterList" value="1:2:3:4:5"/>
-<attribute name="projectFilterList" value=""/>
-<attribute name="packageSwitch" value="1"/>
-<attribute name="tableColumnWidths" value="405:100:100:100:100"/>
-<attribute name="tableColumnSorter" value="0:1"/>
-</memento>
+<memento>&#x0A;<attribute name="priorityFilterList" value="1:2:3:4"/>&#x0A;<attribute name="projectFilterList" value=""/>&#x0A;<attribute name="packageSwitch" value="1"/>&#x0A;<attribute name="tableColumnWidths" value="405:100:100:100:100"/>&#x0A;<attribute name="tableColumnSorter" value="0:1"/>&#x0A;</memento>

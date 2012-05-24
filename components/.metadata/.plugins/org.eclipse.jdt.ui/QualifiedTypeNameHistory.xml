@@ -4,4 +4,5 @@
 <fullyQualifiedTypeName name="org.dejava.component.util.test.test.auxiliary.RunListenerLog"/>
 <fullyQualifiedTypeName name="junit.framework.AssertionFailedError"/>
 <fullyQualifiedTypeName name="TestData"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.reflection.handler.ConstructorHandler"/>
 </qualifiedTypeNameHistroy>

@@ -1,226 +1,26 @@
 what,kind,bundleId,bundleVersion,description,time
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882353440
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.rename.element",1337882353455
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882357451
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882366566
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.rename.element",1337882366579
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882373559
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882374550
-opened,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.CompilationUnitEditor",1337882378265
-activated,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.CompilationUnitEditor",1337882378327
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337882383283
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337882383557
-activated,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.CompilationUnitEditor",1337882385369
-closed,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.CompilationUnitEditor",1337882385374
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882387183
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882388163
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882390861
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882422480
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1337882423864
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337882434655
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337882434680
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337882434714
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337882434723
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.saveAll",1337882434736
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337882441147
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337882441158
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1337882441175
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882448453
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882448597
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882448837
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337882452606
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337882452613
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1337882452638
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.delete",1337882454862
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882455668
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337882456542
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337882456801
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337882458058
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337882458641
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882460046
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337882461354
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337882461359
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882461407
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.clean.up",1337882461423
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882471590
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882472297
-opened,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.ClassFileEditor",1337882480888
-activated,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.ClassFileEditor",1337882480962
-activated,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.CompilationUnitEditor",1337882482375
-closed,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.ClassFileEditor",1337882482380
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.copy",1337882484111
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882484482
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882500424
-opened,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.ClassFileEditor",1337882505790
-activated,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.ClassFileEditor",1337882505859
-activated,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.CompilationUnitEditor",1337882507175
-closed,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.ClassFileEditor",1337882507180
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882510127
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882510650
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882510960
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882513205
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882513663
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882514524
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882518190
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882537188
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.copy",1337882544238
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882545101
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882587557
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.cut",1337882591291
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1337882592471
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337882608748
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.copy",1337882618521
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1337882619647
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882622256
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882622405
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882626625
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882640361
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882644171
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882644347
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882644555
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882644779
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337882645068
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337882646534
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882647486
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882647652
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337882661387
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882667670
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882667843
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882687007
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882687322
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882687589
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882687806
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882688054
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882688273
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882688566
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882688921
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882689229
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882689578
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882689887
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882719803
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882722478
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337882723607
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882725634
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882730127
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882730555
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882730853
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882731134
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882733124
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882733393
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882733708
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882734108
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882734459
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.undo",1337882734779
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337882741347
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337882743998
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337882750238
-opened,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.ClassFileEditor",1337882755693
-activated,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.ClassFileEditor",1337882755761
-activated,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.CompilationUnitEditor",1337882757239
-closed,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.ClassFileEditor",1337882757244
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882758218
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882759088
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882759354
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882760255
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882762377
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882768970
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337882807042
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337882807051
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1337882807071
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882810878
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882829101
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337882831252
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883174963
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337883191924
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337883191930
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1337883191946
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337883206135
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883207672
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883207869
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337883209806
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337883215938
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883219376
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883220215
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883220624
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883221439
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883221808
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883231745
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1337883234441
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883239151
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883255527
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337883279328
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883280045
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883282089
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337883283682
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883284900
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883285048
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.copy",1337883286038
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1337883287373
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.cut",1337883289889
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1337883291168
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337883292653
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337883293862
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337883295053
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337883295316
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337883295460
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337883295467
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.saveAll",1337883295490
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337883315319
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337883315325
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.save",1337883315345
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.cut",1337883333510
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1337883334301
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.copy",1337883338674
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1337883339254
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.text.contentAssist.proposals",1337883340750
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883341481
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883341625
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337883344347
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337883344577
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337883344652
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337883344656
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.saveAll",1337883344667
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337883354132
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.goto.wordPrevious",1337883376737
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.goto.wordPrevious",1337883376865
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.goto.wordPrevious",1337883377041
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337883379200
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337883379238
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337883379263
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337883379268
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.saveAll",1337883379281
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.copy",1337883380905
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.edit.paste",1337883382014
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337883393193
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337883393438
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337883393523
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337883393543
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.saveAll",1337883393563
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337883398390
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337883398433
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337883398471
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337883398479
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.saveAll",1337883398490
-executed,command,org.eclipse.ui.workbench.texteditor,3.7.0.v20110928-1504,"org.eclipse.ui.edit.text.deletePreviousWord",1337883430329
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.organize.imports",1337883442272
-executed,command,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.edit.text.java.format",1337883442300
-error,log,,,"message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@9423c3e1org.dejava.component.util.test.runner.statement.provider [in src [in Test]] does not exist",1337883442336
-error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.core.resources"".",1337883442341
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.saveAll",1337883442353
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337883451108
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884132121
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884132752
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884389012
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884424144
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884433441
-activated,view,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.PackageExplorer",1337884443161
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884444642
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884470490
-executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.file.properties",1337884470506
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884472837
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884686604
-activated,editor,org.eclipse.jdt.ui,3.7.2.v20120109-1427,"org.eclipse.jdt.ui.CompilationUnitEditor",1337884691862
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337884751631
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337885135316
-deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337885135778
-activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1337885512690
+stopped,bundle,org.eclipse.jst.ws.axis2.creation.ui,1.0.104.v201004211805,"org.eclipse.jst.ws.axis2.creation.ui",1337889297226
+stopped,bundle,org.eclipse.jst.ws.axis2.consumption.ui,1.0.103.v201004211805,"org.eclipse.jst.ws.axis2.consumption.ui",1337889297227
+stopped,bundle,org.eclipse.jst.ws.axis2.creation.core,1.0.106.v201004211805,"org.eclipse.jst.ws.axis2.creation.core",1337889297228
+stopped,bundle,org.eclipse.jst.ws.axis2.consumption.core,1.0.105.v201004211805,"org.eclipse.jst.ws.axis2.consumption.core",1337889297229
+stopped,bundle,org.eclipse.jst.ws.axis2.ui,1.0.303.v201003110431,"org.eclipse.jst.ws.axis2.ui",1337889297229
+stopped,bundle,org.eclipse.jst.ws.axis2.core,1.0.204.v201004211805,"org.eclipse.jst.ws.axis2.core",1337889297230
+stopped,bundle,org.eclipse.jst.ws.cxf.creation.ui,1.0.100.v201104022153,"org.eclipse.jst.ws.cxf.creation.ui",1337889297231
+stopped,bundle,org.jboss.tools.ws.creation.ui,1.2.2.v20120514-1752-H106-Beta3,"org.jboss.tools.ws.creation.ui",1337889297232
+stopped,bundle,org.eclipse.jst.ws.creation.ui,1.0.609.v201103082016,"org.eclipse.jst.ws.creation.ui",1337889297233
+stopped,bundle,org.eclipse.jst.ws.cxf.consumption.ui,1.0.0.v201003222311,"org.eclipse.jst.ws.cxf.consumption.ui",1337889297234
+stopped,bundle,org.jboss.tools.ws.ui,1.2.2.v20120514-1752-H106-Beta3,"org.jboss.tools.ws.ui",1337889297235
+stopped,bundle,org.jboss.tools.ws.creation.core,1.2.2.v20120514-1752-H106-Beta3,"org.jboss.tools.ws.creation.core",1337889297236
+stopped,bundle,org.jboss.tools.ws.core,1.2.2.v20120514-1752-H106-Beta3,"org.jboss.tools.ws.core",1337889297237
+stopped,bundle,org.eclipse.jst.ws.consumption.ui,1.1.402.v201201250306,"org.eclipse.jst.ws.consumption.ui",1337889297238
+stopped,bundle,org.eclipse.jst.ws.consumption,1.0.603.v201202012024,"org.eclipse.jst.ws.consumption",1337889297239
+stopped,bundle,org.eclipse.jst.ws.cxf.consumption.core,1.0.0.v201003222311,"org.eclipse.jst.ws.cxf.consumption.core",1337889297240
+stopped,bundle,org.eclipse.jst.ws.cxf.creation.core,1.0.100.v201104022153,"org.eclipse.jst.ws.cxf.creation.core",1337889297240
+stopped,bundle,org.eclipse.jst.ws.cxf.ui,1.0.0.v201004171919,"org.eclipse.jst.ws.cxf.ui",1337889297279
+stopped,bundle,org.eclipse.jst.ws.cxf.core,1.0.100.v201104022153,"org.eclipse.jst.ws.cxf.core",1337889297280
+stopped,bundle,org.eclipse.jst.ws.uddiregistry,1.0.500.v201004211805,"org.eclipse.jst.ws.uddiregistry",1337889297280
+stopped,bundle,org.eclipse.jst.ws.ui,1.0.403.v201004211805,"org.eclipse.jst.ws.ui",1337889297281
+stopped,bundle,org.eclipse.jst.ws,1.0.509.v201108250610,"org.eclipse.jst.ws",1337889297282
+stopped,bundle,org.eclipse.wst.ws.explorer,1.0.607.v201103082002,"org.eclipse.wst.ws.explorer",1337889297283
+stopped,bundle,org.eclipse.wst.wsdl.ui,1.2.403.v201108240515,"org.eclipse.wst.wsdl.ui",1337889297284
+stopped,bundle,org.eclipse.wst.ws.ui,1.1.200.v201004211805,"org.eclipse.wst.ws.ui",1337889297285

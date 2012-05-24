@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="46" version="2.0">
+<workbench progressCount="33" version="2.0">
 <workbenchAdvisor/>
 <window height="680" maximized="true" width="1024" x="125" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -15,7 +15,7 @@
 <coolItem id="com.rockstarapps.jslint.actionSet" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
 <coolItem id="org.eclipse.jst.j2ee.J2eeMainActionSet" itemType="typeToolBarContribution" x="91" y="22"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="61" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="130" y="22"/>
 <coolItem id="org.eclipse.wst.server.ui.internal.webbrowser.actionSet" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="org.eclipse.wst.ws.explorer.explorer" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="org.jboss.tools.jst.web.ui.server.actionSet" itemType="typeToolBarContribution" x="153" y="22"/>
@@ -28,7 +28,7 @@
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.jboss.tools.central.editors.JBossCentralEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="38" y="22"/>
@@ -38,16 +38,45 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InvokeParametricTestMethod.java" partName="InvokeParametricTestMethod.java" path="C:/Users/Romulo Coutinho/Desktop/dejava/components/Test/src/org/dejava/component/util/test/runner/statement/InvokeParametricTestMethod.java" title="InvokeParametricTestMethod.java" tooltip="Test/src/org/dejava/component/util/test/runner/statement/InvokeParametricTestMethod.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Test/src/org/dejava/component/util/test/runner/statement/InvokeParametricTestMethod.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="578" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ParametricJUnitRunner.java" partName="ParametricJUnitRunner.java" path="C:/Users/Romulo Coutinho/Desktop/dejava/components/Test/src/org/dejava/component/util/test/runner/ParametricJUnitRunner.java" title="ParametricJUnitRunner.java" tooltip="Test/src/org/dejava/component/util/test/runner/ParametricJUnitRunner.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Test/src/org/dejava/component/util/test/runner/ParametricJUnitRunner.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3460" selectionTopPixel="976"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JNDITestDataProvider.java" partName="JNDITestDataProvider.java" path="C:/Users/Romulo Coutinho/Desktop/dejava/components/Test/src/org/dejava/component/util/test/runner/dataset/impl/JNDITestDataProvider.java" title="JNDITestDataProvider.java" tooltip="Test/src/org/dejava/component/util/test/runner/dataset/impl/JNDITestDataProvider.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Test/src/org/dejava/component/util/test/runner/dataset/impl/JNDITestDataProvider.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="9" selectionOffset="2864" selectionTopPixel="916"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MethodTestDataProvider.java" partName="MethodTestDataProvider.java" path="C:/Users/Romulo Coutinho/Desktop/dejava/components/Test/src/org/dejava/component/util/test/runner/dataset/impl/MethodTestDataProvider.java" title="MethodTestDataProvider.java" tooltip="Test/src/org/dejava/component/util/test/runner/dataset/impl/MethodTestDataProvider.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Test/src/org/dejava/component/util/test/runner/dataset/impl/MethodTestDataProvider.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2429" selectionTopPixel="901"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="XMLTestDataProvider.java" partName="XMLTestDataProvider.java" path="C:/Users/Romulo Coutinho/Desktop/dejava/components/Test/src/org/dejava/component/util/test/runner/dataset/impl/XMLTestDataProvider.java" title="XMLTestDataProvider.java" tooltip="Test/src/org/dejava/component/util/test/runner/dataset/impl/XMLTestDataProvider.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Test/src/org/dejava/component/util/test/runner/dataset/impl/XMLTestDataProvider.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3658" selectionTopPixel="961"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
 <view id="net.sourceforge.pmd.eclipse.ui.views.violationOutline" partName="Violations Outline">
+<viewState/>
+</view>
+<view id="net.sourceforge.pmd.eclipse.ui.views.violationOverview" partName="Violations Overview">
 <viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
@@ -90,7 +119,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="net.sourceforge.pmd.eclipse.ui.views.pmdPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="net.sourceforge.pmd.eclipse.ui.views.pmdPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -359,6 +388,7 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
 <view id="net.sourceforge.pmd.eclipse.ui.views.violationOutline"/>
+<view id="net.sourceforge.pmd.eclipse.ui.views.violationOverview"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -379,8 +409,16 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.24982207" ratioLeft="351" ratioRight="1054" relationship="2" relative="org.eclipse.ui.internal.ViewStack@147feb3"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1dc8ed4" ratio="0.64928293" ratioLeft="498" ratioRight="269" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="net.sourceforge.pmd.eclipse.ui.views.violationOverview" appearance="2" expanded="2">
+<page content="net.sourceforge.pmd.eclipse.ui.views.violationOverview" label="Violations Overview"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@c75d38" ratio="0.49953747" ratioLeft="540" ratioRight="541" relationship="2" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
-<page content="net.sourceforge.pmd.eclipse.ui.views.violationOverview" label="LabelNotFound"/>
+<page content="net.sourceforge.pmd.eclipse.ui.views.CPDView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
@@ -397,7 +435,132 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/test/ParametricJUnitRunnerTest.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/runner/statement/InvokeParametricTestMethod.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/runner/ParametricJUnitRunner.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/test/auxiliary/RunListenerLog.java"/>
+<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Test/C:\/Program Files\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.runner.notification(RunListener.class"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/runner/statement/provider/impl/JNDITestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/runner/statement/provider/impl/MethodTestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/runner/statement/provider/impl/XMLTestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/runner/dataset/impl/JNDITestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/runner/dataset/impl/MethodTestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/runner/dataset/impl/XMLTestDataProvider.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Test/src/org/dejava/component/util/test/test/auxiliary/FakeTest.java"/>
+<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Test/C:\/Program Files\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.internal.runners.model(ReflectiveCallable.class"/>
+<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Test/C:\/Program Files\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.runners(BlockJUnit4ClassRunner.class"/>
+</editors>
+<item historyLabel="ParametricJUnitRunnerTest.java" index="0">
+<position info="not_deleted" x="2481" y="491"/>
+</item>
+<item historyLabel="ParametricJUnitRunnerTest.java" index="0">
+<position info="not_deleted" x="3438" y="480"/>
+</item>
+<item historyLabel="InvokeParametricTestMethod.java" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="InvokeParametricTestMethod.java" index="1">
+<position info="not_deleted" x="578" y="0"/>
+</item>
+<item historyLabel="ParametricJUnitRunner.java" index="2">
+<position info="not_deleted" x="7758" y="0"/>
+</item>
+<item historyLabel="RunListenerLog.java" index="3">
+<position info="not_deleted" x="3201" y="0"/>
+</item>
+<item historyLabel="RunListener.class" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="RunListenerLog.java" index="3">
+<position info="not_deleted" x="3135" y="0"/>
+</item>
+<item historyLabel="ParametricJUnitRunner.java" index="2">
+<position info="not_deleted" x="7758" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="5">
+<position info="not_deleted" x="1156" y="0"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="6">
+<position info="not_deleted" x="769" y="0"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="7">
+<position info="not_deleted" x="866" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="5">
+<position info="not_deleted" x="2897" y="9"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="6">
+<position info="not_deleted" x="2804" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="5">
+<position info="not_deleted" x="2897" y="9"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="6">
+<position info="not_deleted" x="2804" y="0"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="7">
+<position info="not_deleted" x="3691" y="0"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="6">
+<position info="not_deleted" x="2462" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="5">
+<position info="not_deleted" x="2897" y="9"/>
+</item>
+<item historyLabel="ParametricJUnitRunner.java" index="2">
+<position info="not_deleted" x="7758" y="0"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="8">
+<position info="not_deleted" x="2875" y="9"/>
+</item>
+<item historyLabel="JNDITestDataProvider.java" index="8">
+<position info="not_deleted" x="2864" y="9"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="9">
+<position info="not_deleted" x="2440" y="0"/>
+</item>
+<item historyLabel="MethodTestDataProvider.java" index="9">
+<position info="not_deleted" x="2429" y="0"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="10">
+<position info="not_deleted" x="3669" y="0"/>
+</item>
+<item historyLabel="XMLTestDataProvider.java" index="10">
+<position info="not_deleted" x="3658" y="0"/>
+</item>
+<item historyLabel="FakeTest.java" index="11">
+<position info="not_deleted" x="622" y="0"/>
+</item>
+<item historyLabel="ParametricJUnitRunner.java" index="2">
+<position/>
+</item>
+<item historyLabel="ReflectiveCallable.class" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ParametricJUnitRunner.java" index="2">
+<position/>
+</item>
+<item historyLabel="BlockJUnit4ClassRunner.class" index="13">
+<position/>
+</item>
+<item historyLabel="ParametricJUnitRunner.java" index="2">
+<position info="not_deleted" x="3479" y="12"/>
+</item>
+<item historyLabel="ParametricJUnitRunner.java" index="2">
+<position info="not_deleted" x="3443" y="0"/>
+</item>
+<item historyLabel="BlockJUnit4ClassRunner.class" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ParametricJUnitRunner.java" index="2">
+<position/>
+</item>
+<item active="true" historyLabel="ParametricJUnitRunner.java" index="2">
+<position/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -415,11 +578,38 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="BlockJUnit4ClassRunner.class" tooltip="org.junit.runners.BlockJUnit4ClassRunner">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Test/C:\/Program Files\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.runners(BlockJUnit4ClassRunner.class"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="ReflectiveCallable.class" tooltip="org.junit.internal.runners.model.ReflectiveCallable">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Test/C:\/Program Files\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.internal.runners.model(ReflectiveCallable.class"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FakeTest.java" tooltip="Test/src/org/dejava/component/util/test/test/auxiliary/FakeTest.java">
+<persistable path="/Test/src/org/dejava/component/util/test/test/auxiliary/FakeTest.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="XMLTestDataProvider.java" tooltip="Test/src/org/dejava/component/util/test/runner/statement/provider/impl/XMLTestDataProvider.java">
+<persistable path="/Test/src/org/dejava/component/util/test/runner/statement/provider/impl/XMLTestDataProvider.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MethodTestDataProvider.java" tooltip="Test/src/org/dejava/component/util/test/runner/statement/provider/impl/MethodTestDataProvider.java">
 <persistable path="/Test/src/org/dejava/component/util/test/runner/statement/provider/impl/MethodTestDataProvider.java"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JNDITestDataProvider.java" tooltip="Test/src/org/dejava/component/util/test/runner/statement/provider/impl/JNDITestDataProvider.java">
+<persistable path="/Test/src/org/dejava/component/util/test/runner/statement/provider/impl/JNDITestDataProvider.java"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="RunListener.class" tooltip="org.junit.runner.notification.RunListener">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Test/C:\/Program Files\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.runner.notification(RunListener.class"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RunListenerLog.java" tooltip="Test/src/org/dejava/component/util/test/test/auxiliary/RunListenerLog.java">
 <persistable path="/Test/src/org/dejava/component/util/test/test/auxiliary/RunListenerLog.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ParametricJUnitRunner.java" tooltip="Test/src/org/dejava/component/util/test/runner/ParametricJUnitRunner.java">
+<persistable path="/Test/src/org/dejava/component/util/test/runner/ParametricJUnitRunner.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InvokeParametricTestMethod.java" tooltip="Test/src/org/dejava/component/util/test/runner/statement/InvokeParametricTestMethod.java">
+<persistable path="/Test/src/org/dejava/component/util/test/runner/statement/InvokeParametricTestMethod.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ParametricJUnitRunnerTest.java" tooltip="Test/src/org/dejava/component/util/test/test/ParametricJUnitRunnerTest.java">
+<persistable path="/Test/src/org/dejava/component/util/test/test/ParametricJUnitRunnerTest.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestDataProvider.java" tooltip="Test/src/org/dejava/component/util/test/runner/statement/provider/TestDataProvider.java">
 <persistable path="/Test/src/org/dejava/component/util/test/runner/statement/provider/TestDataProvider.java"/>
@@ -429,33 +619,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MethodHandler.java" tooltip="Reflection/src/org/dejava/component/util/reflection/handler/MethodHandler.java">
 <persistable path="/Reflection/src/org/dejava/component/util/reflection/handler/MethodHandler.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AnnotationHandler.java" tooltip="Reflection/src/org/dejava/component/util/reflection/handler/AnnotationHandler.java">
-<persistable path="/Reflection/src/org/dejava/component/util/reflection/handler/AnnotationHandler.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="XMLTestDataProvider.java" tooltip="Test/src/org/dejava/component/util/test/runner/statement/provider/impl/XMLTestDataProvider.java">
-<persistable path="/Test/src/org/dejava/component/util/test/runner/statement/provider/impl/XMLTestDataProvider.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ParametricTest.java" tooltip="Test/src/org/dejava/component/util/test/annotation/ParametricTest.java">
-<persistable path="/Test/src/org/dejava/component/util/test/annotation/ParametricTest.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JNDITestDataProvider.java" tooltip="Test/src/org/dejava/component/util/test/runner/statement/provider/impl/JNDITestDataProvider.java">
-<persistable path="/Test/src/org/dejava/component/util/test/runner/statement/provider/impl/JNDITestDataProvider.java"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="BlockJUnit4ClassRunner.class" tooltip="org.junit.runners.BlockJUnit4ClassRunner">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Test/D:\/usuarios\/rvcoutinho\/Desktop\/64\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.runners(BlockJUnit4ClassRunner.class"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MultiDataJUnitRunner.java" tooltip="Test/src/org/dejava/component/util/test/runner/MultiDataJUnitRunner.java">
-<persistable path="/Test/src/org/dejava/component/util/test/runner/MultiDataJUnitRunner.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InvokeMultiDataTestMethod.java" tooltip="Test/src/org/dejava/component/util/test/runner/statement/InvokeMultiDataTestMethod.java">
-<persistable path="/Test/src/org/dejava/component/util/test/runner/statement/InvokeMultiDataTestMethod.java"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="Failure.class" tooltip="org.junit.runner.notification.Failure">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Date/D:\/usuarios\/rvcoutinho\/Desktop\/64\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.runner.notification(Failure.class"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="AssumptionViolatedException.class" tooltip="org.junit.internal.AssumptionViolatedException">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Test/D:\/usuarios\/rvcoutinho\/Desktop\/64\/eclipse\/plugins\/org.junit_4.8.2.v4_8_2_v20110321-1705\/junit.jar&lt;org.junit.internal(AssumptionViolatedException.class"/>
 </file>
 </mruList>
 </workbench>

@@ -78,8 +78,6 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		}
 	}
 	
-	
-	
 	/**
 	 * @see org.junit.runners.BlockJUnit4ClassRunner#methodBlock(org.junit.runners.model.FrameworkMethod)
 	 */
@@ -105,8 +103,6 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 			// Returns a fail statement.
 			return new Fail(throwable);
 		}
-		
-		
 		
 		// Gets the annotation with the test data information.
 		final ParametricTest parametricTest = getTestMethod().getAnnotation(ParametricTest.class);

@@ -262,8 +262,8 @@ public final class XMLDecoder {
 						// Tries to get the current parameter value by invoking
 						// the constructor that takes one string parameter.
 						currentParamValue = ConstructorHandler.invokeConstructor(
-								jndiParamsClasses.get(currentParamIndex - 1),
-								new Object[] { currentParamValue });
+								jndiParamsClasses.get(currentParamIndex - 1), null,
+								new Object[] { currentParamValue }, false);
 						// Adds the value to the list.
 						jndiParamsValues.add(currentParamValue);
 					}
@@ -355,7 +355,8 @@ public final class XMLDecoder {
 					// Creates a new instance of the object (from the node
 					// class)
 					// with the node text value.
-					object = ConstructorHandler.invokeConstructor(nodeClass, new Object[] { nodeTextValue });
+					object = ConstructorHandler.invokeConstructor(nodeClass, null,
+							new Object[] { nodeTextValue }, false);
 				}
 				// Gets the node id.
 				final String nodeId = getNodeId(node);
@@ -409,7 +410,8 @@ public final class XMLDecoder {
 				// If the initial value of the object is null.
 				if (object == null) {
 					// Tries to get a new instance of the node object.
-					return ConstructorHandler.invokeConstructor(getNodeClass(node, probableClass), null);
+					return ConstructorHandler.invokeConstructor(getNodeClass(node, probableClass), null,
+							null, false);
 				}
 				// If it is not null.
 				else {

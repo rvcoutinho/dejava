@@ -5,4 +5,7 @@
 <fullyQualifiedTypeName name="junit.framework.AssertionFailedError"/>
 <fullyQualifiedTypeName name="TestData"/>
 <fullyQualifiedTypeName name="org.dejava.component.util.reflection.handler.ConstructorHandler"/>
+<fullyQualifiedTypeName name="sun.net.www.content.audio.wav"/>
+<fullyQualifiedTypeName name="java.lang.Throwable"/>
+<fullyQualifiedTypeName name="org.dejava.component.util.reflection.handler.MethodHandler"/>
 </qualifiedTypeNameHistroy>

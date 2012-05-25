@@ -10006,3 +10006,152 @@ java.io.FileNotFoundException: C:\Users\Romulo Coutinho\Desktop\dejava\component
 
 !ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:12:39.717
 !MESSAGE Command ReviewCode excecuted in 1898ms
+!SESSION 2012-05-25 14:22:27.000 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_26
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.equinox.p2.operations 2 0 2012-05-25 14:24:51.220
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2012-05-25 14:24:51.220
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.220
+!MESSAGE "Mylyn Tasks Connector: Bugzilla" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.220
+!MESSAGE "Mylyn Context Connector: Team Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.220
+!MESSAGE "Mylyn Task List" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.220
+!MESSAGE "Mylyn Task-Focused Interface" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.220
+!MESSAGE "Mylyn Context Connector: Eclipse IDE" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.220
+!MESSAGE "Mylyn Context Connector: Java Development" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.220
+!MESSAGE "Mylyn Commons" will be ignored because a newer version is already installed. 
+
+!ENTRY org.eclipse.equinox.p2.operations 2 0 2012-05-25 14:24:51.343
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2012-05-25 14:24:51.343
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.343
+!MESSAGE "Mylyn Tasks Connector: Bugzilla" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.343
+!MESSAGE "Mylyn Context Connector: Team Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.343
+!MESSAGE "Mylyn Task List" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.343
+!MESSAGE "Mylyn Task-Focused Interface" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.343
+!MESSAGE "Mylyn Context Connector: Eclipse IDE" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.343
+!MESSAGE "Mylyn Context Connector: Java Development" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.343
+!MESSAGE "Mylyn Commons" will be ignored because a newer version is already installed. 
+
+!ENTRY org.eclipse.equinox.p2.operations 2 0 2012-05-25 14:24:51.359
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2012-05-25 14:24:51.359
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.359
+!MESSAGE "Mylyn Tasks Connector: Bugzilla" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.359
+!MESSAGE "Mylyn Context Connector: Team Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.359
+!MESSAGE "Mylyn Task List" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.359
+!MESSAGE "Mylyn Task-Focused Interface" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.359
+!MESSAGE "Mylyn Context Connector: Eclipse IDE" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.359
+!MESSAGE "Mylyn Context Connector: Java Development" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2012-05-25 14:24:51.359
+!MESSAGE "Mylyn Commons" will be ignored because a newer version is already installed. 
+!SESSION 2012-05-25 14:37:31.416 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_26
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY edu.umd.cs.findbugs.plugin.eclipse 1 0 2012-05-25 14:42:08.408
+!MESSAGE creating new bug collection: C:\Users\Romulo Coutinho\Desktop\dejava\components\.metadata\.plugins\edu.umd.cs.findbugs.plugin.eclipse\Reflection.fbwarnings
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:45:09.254
+!MESSAGE 14 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:45:09.318
+!MESSAGE Review code command terminated. 237 rules were executed against 1 files. Actual PMD duration is about 1134ms, that is about 1134.0 ms/file, 4.78481 ms/rule, 4.78481 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:45:09.321
+!MESSAGE Command ReviewCode excecuted in 2101ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:51:12.662
+!MESSAGE 14 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:51:12.863
+!MESSAGE Review code command terminated. 237 rules were executed against 1 files. Actual PMD duration is about 145ms, that is about 145.0 ms/file, 0.6118143 ms/rule, 0.6118143 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:51:12.866
+!MESSAGE Command ReviewCode excecuted in 366ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:51:58.813
+!MESSAGE Command DeleteMarkersCommand excecuted in 34ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:55:29.715
+!MESSAGE 13 markers applied on 1 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:55:30.025
+!MESSAGE Review code command terminated. 237 rules were executed against 1 files. Actual PMD duration is about 116ms, that is about 116.0 ms/file, 0.48945147 ms/rule, 0.48945147 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 14:55:30.031
+!MESSAGE Command ReviewCode excecuted in 447ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 17:57:58.269
+!MESSAGE 13 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 17:57:58.506
+!MESSAGE Review code command terminated. 237 rules were executed against 1 files. Actual PMD duration is about 141ms, that is about 141.0 ms/file, 0.5949367 ms/rule, 0.5949367 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 17:57:58.509
+!MESSAGE Command ReviewCode excecuted in 393ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 17:59:02.314
+!MESSAGE 13 markers applied on 1 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 17:59:02.572
+!MESSAGE Review code command terminated. 237 rules were executed against 1 files. Actual PMD duration is about 108ms, that is about 108.0 ms/file, 0.4556962 ms/rule, 0.4556962 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 17:59:02.574
+!MESSAGE Command ReviewCode excecuted in 379ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 17:59:28.346
+!MESSAGE 13 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 17:59:28.611
+!MESSAGE Review code command terminated. 237 rules were executed against 1 files. Actual PMD duration is about 86ms, that is about 86.0 ms/file, 0.3628692 ms/rule, 0.3628692 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 17:59:28.614
+!MESSAGE Command ReviewCode excecuted in 362ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 18:16:25.599
+!MESSAGE 16 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 18:16:25.811
+!MESSAGE Review code command terminated. 237 rules were executed against 1 files. Actual PMD duration is about 126ms, that is about 126.0 ms/file, 0.5316456 ms/rule, 0.5316456 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 18:16:25.814
+!MESSAGE Command ReviewCode excecuted in 354ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 18:17:47.317
+!MESSAGE 16 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 18:17:47.546
+!MESSAGE Review code command terminated. 237 rules were executed against 1 files. Actual PMD duration is about 121ms, that is about 121.0 ms/file, 0.51054853 ms/rule, 0.51054853 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-25 18:17:47.548
+!MESSAGE Command ReviewCode excecuted in 365ms

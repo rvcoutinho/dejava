@@ -65,20 +65,18 @@ public final class ClassHandler {
 	 *            Depth in the current stack for the desired class (0 is the first and so on).
 	 * @return The name of the current class (with the selected depth) being executed.
 	 */
-	public static String getCurrentClassName(final Integer depth) {
-		// Actual depth default value is 0.
-		Integer actualDepth = 0;
-		// If the given depth is not null.
-		if (depth != null) {
-			// Updates the actual depth.
-			actualDepth = depth;
+	public static String getCurrentClassName(Integer depth) {
+		// If the given depth is null.
+		if (depth == null) {
+			// The depth is 0.
+			depth = 0;
 		}
 		// Tries to return the class.
 		try {
 			// Gets the stack trace.
 			final StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
 			// Returns the name of the method in the selected depth.
-			return stackTrace[2 + actualDepth].getClassName();
+			return stackTrace[2 + depth].getClassName();
 		}
 		// If the depth is deeper than the stack.
 		catch (IndexOutOfBoundsException exception) {
@@ -99,17 +97,15 @@ public final class ClassHandler {
 	 * @throws InvalidParameterException
 	 *             If the class loader cannot load the current class.
 	 */
-	public static Class<?> getCurrentClass(final Integer depth, final ClassLoader classLoader)
+	public static Class<?> getCurrentClass(Integer depth, final ClassLoader classLoader)
 			throws InvalidParameterException {
-		// Actual depth default value is 0.
-		Integer actualDepth = 0;
-		// If the given depth is not null.
-		if (depth != null) {
-			// Updates the actual depth.
-			actualDepth = depth;
+		// If the given depth is null.
+		if (depth == null) {
+			// The depth is 0.
+			depth = 0;
 		}
 		// Gets the current class name for the given depth.
-		final String className = getCurrentClassName(actualDepth + 1);
+		final String className = getCurrentClassName(depth + 1);
 		// Returns the class for the name.
 		return getClass(className, true, classLoader);
 	}
@@ -123,16 +119,14 @@ public final class ClassHandler {
 	 * @throws InvalidParameterException
 	 *             If the class loader cannot load the current class.
 	 */
-	public static Class<?> getCurrentClass(final Integer depth) throws InvalidParameterException {
-		// Actual depth default value is 0.
-		Integer actualDepth = 0;
-		// If the given depth is not null.
-		if (depth != null) {
-			// Updates the actual depth.
-			actualDepth = depth;
+	public static Class<?> getCurrentClass(Integer depth) throws InvalidParameterException {
+		// If the given depth is null.
+		if (depth == null) {
+			// The depth is 0.
+			depth = 0;
 		}
 		// The context class loader is used to recover the current class.
-		return getCurrentClass(actualDepth + 1, null);
+		return getCurrentClass(depth + 1, null);
 	}
 	
 	/**

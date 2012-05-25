@@ -13,6 +13,7 @@ import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.junit.Test;
 import org.junit.internal.runners.model.ReflectiveCallable;
 import org.junit.internal.runners.statements.Fail;
+import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
@@ -56,7 +57,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	 * Gets the test data provider instance from the given annotation.
 	 * 
 	 * @param method
-	 *            Test method that will be executed.f
+	 *            Test method that will be executed.
 	 * @return The test data provider instance from the given annotation.
 	 * @throws UnavailableTestDataException
 	 *             If the test data provider cannot be created.
@@ -68,8 +69,8 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 			// Gets the annotation with the test data information.
 			final ParametricTest parametricTest = method.getAnnotation(ParametricTest.class);
 			// Returns the test data provider.
-			return ConstructorHandler.invokeConstructor(parametricTest.dataProvider(),
-					parametricTest.paramsValues());
+			return ConstructorHandler.invokeConstructor(parametricTest.dataProvider(), null,
+					parametricTest.paramsValues(), false);
 		}
 		// If the provider cannot be instantiated.
 		catch (final Exception exception) {
@@ -78,7 +79,15 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		}
 	}
 	
-	
+	/**
+	 * @see org.junit.runners.BlockJUnit4ClassRunner#runChild(org.junit.runners.model.FrameworkMethod,
+	 *      org.junit.runner.notification.RunNotifier)
+	 */
+	@Override
+	protected void runChild(FrameworkMethod method, RunNotifier notifier) {
+		// TODO Auto-generated method stub
+		super.runChild(method, notifier);
+	}
 	
 	/**
 	 * @see org.junit.runners.BlockJUnit4ClassRunner#methodBlock(org.junit.runners.model.FrameworkMethod)
@@ -90,7 +99,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		// Tries to get a new test instance.
 		try {
 			// Creates a new reflective call.
-			ReflectiveCallable createTestCall = new ReflectiveCallable() {
+			final ReflectiveCallable createTestCall = new ReflectiveCallable() {
 				
 				@Override
 				protected Object runReflectiveCall() throws Throwable {
@@ -101,12 +110,10 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 			test = createTestCall.run();
 		}
 		// If anything is raised by the test creation.
-		catch (Throwable throwable) {
+		catch (final Throwable throwable) {
 			// Returns a fail statement.
 			return new Fail(throwable);
 		}
-		
-		
 		
 		// Gets the annotation with the test data information.
 		final ParametricTest parametricTest = getTestMethod().getAnnotation(ParametricTest.class);

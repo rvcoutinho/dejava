@@ -55,7 +55,7 @@ public final class MethodHandler {
 		// Gets the methods for the class.
 		final Method[] methods = clazz.getMethods();
 		// For each method found for the class.
-		for (Method currentMethod : methods) {
+		for (final Method currentMethod : methods) {
 			// If the current class has the given annotation.
 			if (currentMethod.isAnnotationPresent(annotationClass)) {
 				// Adds the current method in the annotated methods list.
@@ -73,18 +73,16 @@ public final class MethodHandler {
 	 *            Depth in the current stack for the desired method (0 is the first and so on).
 	 * @return The name of the current method (with the selected depth) being executed.
 	 */
-	public static String getCurrentMethodName(final Integer depth) {
-		// Actual depth default value is 0.
-		Integer actualDepth = 0;
-		// If the given depth is not null.
-		if (depth != null) {
-			// Updates the actual depth.
-			actualDepth = depth;
+	public static String getCurrentMethodName(Integer depth) {
+		// If the given depth is null.
+		if (depth == null) {
+			// The depth is 0.
+			depth = 0;
 		}
 		// Gets the stack trace.
 		final StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
 		// Returns the name of the method in the selected depth.
-		return stackTrace[2 + actualDepth].getMethodName();
+		return stackTrace[2 + depth].getMethodName();
 	}
 	
 	/**
@@ -95,7 +93,7 @@ public final class MethodHandler {
 	 *            The class from which the method will be found.
 	 * @param methodName
 	 *            Name of the method to be found.
-	 * @param parametersClasses
+	 * @param paramsClasses
 	 *            Parameters classes for the method to be found.
 	 * @param varyingParamIndex
 	 *            Index of the parameter class that will be varied with inherited classes/interfaces.
@@ -103,35 +101,36 @@ public final class MethodHandler {
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
 	 */
-	private static Method getMethod(final Class<?> clazz, String methodName,
-			final Class<?>[] parametersClasses, Integer varyingParamIndex) throws InvalidParameterException {
+	private static Method getMethod(final Class<?> clazz, final String methodName,
+			final Class<?>[] paramsClasses, Integer varyingParamIndex) throws InvalidParameterException {
 		// If the index of the parameter being varied is null.
 		if (varyingParamIndex == null) {
 			// The index is 0.
 			varyingParamIndex = 0;
 		}
 		// Keeps the original value of the parameter that will be changed.
-		final Class<?> initialParamClass = parametersClasses[varyingParamIndex];
+		final Class<?> initialParamClass = paramsClasses[varyingParamIndex];
 		// For each class inherited by the current parameter being varied.
-		for (Class<?> currentParamClass : ClassHandler.getSuperclasses(parametersClasses[varyingParamIndex])) {
+		for (final Class<?> currentParamClass : ClassHandler
+				.getSuperclasses(paramsClasses[varyingParamIndex])) {
 			// Changes the parameter class with the current
 			// superclass/interface.
-			parametersClasses[varyingParamIndex] = currentParamClass;
+			paramsClasses[varyingParamIndex] = currentParamClass;
 			// Tries to return the method with the exact parameters classes.
 			try {
-				return clazz.getMethod(methodName, parametersClasses);
+				return clazz.getMethod(methodName, paramsClasses);
 			}
 			// If it is not possible to get the method.
-			catch (Exception exception) {
+			catch (final Exception exception) {
 				// If the current varying parameter class is not the last
 				// parameter class.
-				if (varyingParamIndex < (parametersClasses.length - 1)) {
+				if (varyingParamIndex < (paramsClasses.length - 1)) {
 					// Tries to get the method varying the next parameter.
 					try {
-						return getMethod(clazz, methodName, parametersClasses, varyingParamIndex + 1);
+						return getMethod(clazz, methodName, paramsClasses, varyingParamIndex + 1);
 					}
 					// If it is not possible to get the method.
-					catch (Exception exception2) {
+					catch (final Exception exception2) {
 						// Ignores and continues the loop.
 					}
 				}
@@ -139,7 +138,7 @@ public final class MethodHandler {
 		}
 		// At the end, returns the parameter class being varied to its original
 		// value.
-		parametersClasses[varyingParamIndex] = initialParamClass;
+		paramsClasses[varyingParamIndex] = initialParamClass;
 		// If no method was found, throws an exception.
 		throw new InvalidParameterException(ErrorKeys.MISSING_METHOD, null, null);
 	}
@@ -152,14 +151,14 @@ public final class MethodHandler {
 	 *            The class from which the method will be found.
 	 * @param methodName
 	 *            Name of the method to be found.
-	 * @param parametersClasses
+	 * @param paramsClasses
 	 *            Parameters classes for the method to be found.
 	 * @return A method from a class with the passed parameters.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
 	 */
 	public static Method getMethod(final Class<?> clazz, final String methodName,
-			final Class<?>[] parametersClasses) throws InvalidParameterException {
+			final Class<?>[] paramsClasses) throws InvalidParameterException {
 		// If the passed class is null.
 		if (clazz == null) {
 			// Throws an exception.
@@ -170,57 +169,57 @@ public final class MethodHandler {
 			// Throws an exception.
 			throw new EmptyParameterException("class"); // TODO
 		}
-		// If there are any parameters for the method to be found.
-		if ((parametersClasses != null) && (parametersClasses.length != 0)) {
-			// Tries to get the method varying the first parameter class.
-			return getMethod(clazz, methodName, parametersClasses, 0);
-		}
-		// If there are not.
-		else {
+		// If there are no parameters for the method to be found.
+		if ((paramsClasses == null) || (paramsClasses.length == 0)) {
 			// Tries to get the method normally using the reflection API.
 			try {
 				return clazz.getMethod(methodName);
 			}
 			// If the method cannot be found or accessed.
-			catch (Exception exception) {
+			catch (final Exception exception) {
 				// Throws an exception.
 				throw new InvalidParameterException(ErrorKeys.MISSING_METHOD, exception, null);
 			}
+		}
+		// If there are parameters.
+		else {
+			// Tries to get the method varying the first parameter class.
+			return getMethod(clazz, methodName, paramsClasses, 0);
 		}
 	}
 	
 	/**
 	 * Returns the classes of the parameters from its values.
 	 * 
-	 * @param parametersValues
+	 * @param paramsValues
 	 *            Parameters values to be used during a invocation of a method.
 	 * @return The classes of the parameters from its values.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty).
 	 */
-	public static Class<?>[] getParametersClasses(final Object[] parametersValues)
+	public static Class<?>[] getParametersClasses(final Object[] paramsValues)
 			throws InvalidParameterException {
 		// Parameters classes.
-		Class<?>[] parametersClasses = null;
+		Class<?>[] paramsClasses = null;
 		// If there are values for the parameters.
-		if ((parametersValues != null) && (parametersValues.length != 0)) {
+		if ((paramsValues != null) && (paramsValues.length != 0)) {
 			// Creates an array for the parameters classes with the same length
 			// as the parameters values one.
-			parametersClasses = new Class<?>[parametersValues.length];
+			paramsClasses = new Class<?>[paramsValues.length];
 			// For each parameter value.
-			for (Integer currentParamIndex = 0; currentParamIndex < parametersValues.length; currentParamIndex++) {
+			for (Integer currentParamIndex = 0; currentParamIndex < paramsValues.length; currentParamIndex++) {
 				// If the value for the parameter is null.
-				if (parametersValues[currentParamIndex] == null) {
+				if (paramsValues[currentParamIndex] == null) {
 					// Throws an exception.
 					throw new InvalidParameterException(ErrorKeys.EMPTY_PARAM_VALUE, null, null);
 				}
 				// Gets the class for the current parameter and puts it in the
 				// correspondent position inside array.
-				parametersClasses[currentParamIndex] = parametersValues[currentParamIndex].getClass();
+				paramsClasses[currentParamIndex] = paramsValues[currentParamIndex].getClass();
 			}
 		}
 		// Returns the classes of the parameters.
-		return parametersClasses;
+		return paramsClasses;
 	}
 	
 	/**
@@ -233,12 +232,12 @@ public final class MethodHandler {
 	 *            The object from which the method will be invoked.
 	 * @param methodName
 	 *            Name of the method to be found.
-	 * @param parametersClasses
+	 * @param paramsClasses
 	 *            Parameters classes for the method to be invoked.
-	 * @param parametersValues
+	 * @param paramsValues
 	 *            Parameters values to be used during the invocation.
 	 * @param ignoreAccess
-	 *            If the defined accessibility for the method must be ignored.
+	 *            If the defined access for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -246,29 +245,34 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	private static Object invokeMethod(final Class<?> clazz, final Object object, final String methodName,
-			final Class<?>[] parametersClasses, final Object[] parametersValues, final Boolean ignoreAccess)
+			Class<?>[] paramsClasses, final Object[] paramsValues, final Boolean ignoreAccess)
 			throws InvalidParameterException, InvocationException {
+		// If no classes are given for the parameters.
+		if (paramsClasses == null) {
+			// Gets the parameters classes from the parameters values.
+			paramsClasses = getParametersClasses(paramsValues);
+		}
 		// Tries to invoke the method.
 		try {
 			// Tries to get the method.
-			final Method method = getMethod(clazz, methodName, parametersClasses);
-			// Redefines the accessibility of the field.
+			final Method method = getMethod(clazz, methodName, paramsClasses);
+			// Redefines the access of the method.
 			method.setAccessible(ignoreAccess);
 			// Tries to invoke it.
-			return method.invoke(object, parametersValues);
+			return method.invoke(object, paramsValues);
 		}
 		// If an exception is thrown by the method itself.
-		catch (InvocationTargetException exception) {
+		catch (final InvocationTargetException exception) {
 			// Throws an exception using the exception thrown as its cause.
-			throw new InvocationException(ErrorKeys.METHOD_EXCEPTION, exception, null);
+			throw new InvocationException(ErrorKeys.METHOD_EXCEPTION, exception.getCause(), null);
 		}
 		// If the parameter values are illegal for the method.
-		catch (IllegalArgumentException exception) {
+		catch (final IllegalArgumentException exception) {
 			// Throws an exception.
 			throw new InvalidParameterException(ErrorKeys.ILLEGAL_PARAMS_VALUES, exception, null);
 		}
 		// If the method cannot be accessed.
-		catch (IllegalAccessException exception) {
+		catch (final IllegalAccessException exception) {
 			// Throws an exception.
 			throw new InvalidParameterException(ErrorKeys.UNACCESSIBLE_METHOD, exception, null);
 		}
@@ -282,12 +286,12 @@ public final class MethodHandler {
 	 *            The class from which the method will be invoked.
 	 * @param methodName
 	 *            Name of the method to be invoked.
-	 * @param parametersClasses
+	 * @param paramsClasses
 	 *            Parameters classes for the method to be invoked.
-	 * @param parametersValues
+	 * @param paramsValues
 	 *            Parameters values to be used during the invocation.
 	 * @param ignoreAccess
-	 *            If the defined accessibility for the method must be ignored.
+	 *            If the defined access for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -295,36 +299,10 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	public static Object invokeStaticMethod(final Class<?> clazz, final String methodName,
-			final Class<?>[] parametersClasses, final Object[] parametersValues, final Boolean ignoreAccess)
+			final Class<?>[] paramsClasses, final Object[] paramsValues, final Boolean ignoreAccess)
 			throws InvalidParameterException, InvocationException {
 		// Invoke the method.
-		return invokeMethod(clazz, null, methodName, parametersClasses, parametersValues, ignoreAccess);
-	}
-	
-	/**
-	 * Invokes a static method from a class. The search includes the inherited classes and interfaces of each
-	 * parameter class.
-	 * 
-	 * @param clazz
-	 *            The class from which the method will be invoked.
-	 * @param methodName
-	 *            Name of the method to be invoked.
-	 * @param parametersValues
-	 *            Parameters values to be used during the invocation.
-	 * @param ignoreAccess
-	 *            If the defined accessibility for the method must be ignored.
-	 * @return Returns the method being invoked return value.
-	 * @throws InvalidParameterException
-	 *             If the parameters for this method are not valid (empty or method could not be accessed).
-	 * @throws InvocationException
-	 *             If the method throws an exception itself.
-	 */
-	public static Object invokeStaticMethod(final Class<?> clazz, final String methodName,
-			final Object[] parametersValues, final Boolean ignoreAccess) throws InvalidParameterException,
-			InvocationException {
-		// Invokes the method.
-		return invokeStaticMethod(clazz, methodName, getParametersClasses(parametersValues),
-				parametersValues, ignoreAccess);
+		return invokeMethod(clazz, null, methodName, paramsClasses, paramsValues, ignoreAccess);
 	}
 	
 	/**
@@ -335,12 +313,12 @@ public final class MethodHandler {
 	 *            The object from which the method will be invoked.
 	 * @param methodName
 	 *            Name of the method to be found.
-	 * @param parametersClasses
+	 * @param paramsClasses
 	 *            Parameters classes for the method to be invoked.
-	 * @param parametersValues
+	 * @param paramsValues
 	 *            Parameters values to be used during the invocation.
 	 * @param ignoreAccess
-	 *            If the defined accessibility for the method must be ignored.
+	 *            If the defined access for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -348,37 +326,10 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	public static Object invokeMethod(final Object object, final String methodName,
-			final Class<?>[] parametersClasses, final Object[] parametersValues, final Boolean ignoreAccess)
+			final Class<?>[] paramsClasses, final Object[] paramsValues, final Boolean ignoreAccess)
 			throws InvalidParameterException, InvocationException {
 		// Invokes the method.
-		return invokeMethod(object.getClass(), object, methodName, parametersClasses, parametersValues,
-				ignoreAccess);
-	}
-	
-	/**
-	 * Invokes a method from an object. The search includes the inherited classes and interfaces of each
-	 * parameter class.
-	 * 
-	 * @param object
-	 *            The object from which the method will be invoked.
-	 * @param methodName
-	 *            Name of the method to be found.
-	 * @param parametersValues
-	 *            Parameters values to be used during the invocation.
-	 * @param ignoreAccess
-	 *            If the defined accessibility for the method must be ignored.
-	 * @return Returns the method being invoked return value.
-	 * @throws InvalidParameterException
-	 *             If the parameters for this method are not valid (empty or method could not be accessed).
-	 * @throws InvocationException
-	 *             If the method throws an exception itself.
-	 */
-	public static Object invokeMethod(final Object object, final String methodName,
-			final Object[] parametersValues, final Boolean ignoreAccess) throws InvalidParameterException,
-			InvocationException {
-		// Invokes the method.
-		return invokeMethod(object, methodName, getParametersClasses(parametersValues), parametersValues,
-				ignoreAccess);
+		return invokeMethod(object.getClass(), object, methodName, paramsClasses, paramsValues, ignoreAccess);
 	}
 	
 	/**
@@ -389,10 +340,12 @@ public final class MethodHandler {
 	 *            The JNDI path for the object from which the method will be invoked.
 	 * @param methodName
 	 *            Name of the method to be found.
-	 * @param parametersValues
+	 * @param paramsClasses
+	 *            Parameters classes for the method to be invoked.
+	 * @param paramsValues
 	 *            Parameters values to be used during the invocation.
 	 * @param ignoreAccess
-	 *            If the defined accessibility for the method must be ignored.
+	 *            If the defined access for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -400,8 +353,8 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	public static Object invokeMethod(final String jndiPath, final String methodName,
-			final Object[] parametersValues, final Boolean ignoreAccess) throws InvalidParameterException,
-			InvocationException {
+			final Class<?>[] paramsClasses, final Object[] paramsValues, final Boolean ignoreAccess)
+			throws InvalidParameterException, InvocationException {
 		// If the JNDI path is empty.
 		if ((jndiPath == null) || (jndiPath.isEmpty())) {
 			// Throws an exception.
@@ -412,11 +365,10 @@ public final class MethodHandler {
 			// Tries to retrieve the object.
 			final Object object = InitialContext.doLookup(jndiPath);
 			// Invokes the method.
-			return invokeMethod(object, methodName, getParametersClasses(parametersValues), parametersValues,
-					ignoreAccess);
+			return invokeMethod(object, methodName, paramsClasses, paramsValues, ignoreAccess);
 		}
 		// If the object cannot be found.
-		catch (NamingException exception) {
+		catch (final NamingException exception) {
 			// Throws an exception.
 			throw new InvalidParameterException(ErrorKeys.INVALID_JNDI_PATH, exception, null);
 		}

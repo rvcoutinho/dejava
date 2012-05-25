@@ -84,7 +84,8 @@ public class JNDITestDataProvider implements TestDataProvider {
 		// Tries to get the data.
 		try {
 			// The test data is the return of the method invocation.
-			return (Collection<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null, false);
+			return (Collection<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null, null,
+					false);
 		}
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {

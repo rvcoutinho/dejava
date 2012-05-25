@@ -190,7 +190,7 @@ public final class ValidationProcessor {
 					// Tries to get the parameter actual value (using the given class).
 					currentParamValue = ConstructorHandler.invokeConstructor(
 							validationMethod.otherParametersClasses()[currentParamIndex],
-							new Class<?>[] { String.class }, new Object[] { currentParamValue });
+							new Class<?>[] { String.class }, new Object[] { currentParamValue }, false);
 					// Adds the current parameter actual value in the list.
 					parametersValues.add(currentParamValue);
 				}

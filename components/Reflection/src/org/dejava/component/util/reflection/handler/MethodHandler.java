@@ -237,6 +237,8 @@ public final class MethodHandler {
 	 *            Parameters classes for the method to be invoked.
 	 * @param parametersValues
 	 *            Parameters values to be used during the invocation.
+	 * @param ignoreAccess
+	 *            If the defined accessibility for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -244,12 +246,14 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	private static Object invokeMethod(final Class<?> clazz, final Object object, final String methodName,
-			final Class<?>[] parametersClasses, final Object[] parametersValues)
+			final Class<?>[] parametersClasses, final Object[] parametersValues, final Boolean ignoreAccess)
 			throws InvalidParameterException, InvocationException {
 		// Tries to invoke the method.
 		try {
 			// Tries to get the method.
 			final Method method = getMethod(clazz, methodName, parametersClasses);
+			// Redefines the accessibility of the field.
+			method.setAccessible(ignoreAccess);
 			// Tries to invoke it.
 			return method.invoke(object, parametersValues);
 		}
@@ -282,6 +286,8 @@ public final class MethodHandler {
 	 *            Parameters classes for the method to be invoked.
 	 * @param parametersValues
 	 *            Parameters values to be used during the invocation.
+	 * @param ignoreAccess
+	 *            If the defined accessibility for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -289,10 +295,10 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	public static Object invokeStaticMethod(final Class<?> clazz, final String methodName,
-			final Class<?>[] parametersClasses, final Object[] parametersValues)
+			final Class<?>[] parametersClasses, final Object[] parametersValues, final Boolean ignoreAccess)
 			throws InvalidParameterException, InvocationException {
 		// Invoke the method.
-		return invokeMethod(clazz, null, methodName, parametersClasses, parametersValues);
+		return invokeMethod(clazz, null, methodName, parametersClasses, parametersValues, ignoreAccess);
 	}
 	
 	/**
@@ -305,6 +311,8 @@ public final class MethodHandler {
 	 *            Name of the method to be invoked.
 	 * @param parametersValues
 	 *            Parameters values to be used during the invocation.
+	 * @param ignoreAccess
+	 *            If the defined accessibility for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -312,9 +320,11 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	public static Object invokeStaticMethod(final Class<?> clazz, final String methodName,
-			final Object[] parametersValues) throws InvalidParameterException, InvocationException {
+			final Object[] parametersValues, final Boolean ignoreAccess) throws InvalidParameterException,
+			InvocationException {
 		// Invokes the method.
-		return invokeStaticMethod(clazz, methodName, getParametersClasses(parametersValues), parametersValues);
+		return invokeStaticMethod(clazz, methodName, getParametersClasses(parametersValues),
+				parametersValues, ignoreAccess);
 	}
 	
 	/**
@@ -329,6 +339,8 @@ public final class MethodHandler {
 	 *            Parameters classes for the method to be invoked.
 	 * @param parametersValues
 	 *            Parameters values to be used during the invocation.
+	 * @param ignoreAccess
+	 *            If the defined accessibility for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -336,10 +348,11 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	public static Object invokeMethod(final Object object, final String methodName,
-			final Class<?>[] parametersClasses, final Object[] parametersValues)
+			final Class<?>[] parametersClasses, final Object[] parametersValues, final Boolean ignoreAccess)
 			throws InvalidParameterException, InvocationException {
 		// Invokes the method.
-		return invokeMethod(object.getClass(), object, methodName, parametersClasses, parametersValues);
+		return invokeMethod(object.getClass(), object, methodName, parametersClasses, parametersValues,
+				ignoreAccess);
 	}
 	
 	/**
@@ -352,6 +365,8 @@ public final class MethodHandler {
 	 *            Name of the method to be found.
 	 * @param parametersValues
 	 *            Parameters values to be used during the invocation.
+	 * @param ignoreAccess
+	 *            If the defined accessibility for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -359,9 +374,11 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	public static Object invokeMethod(final Object object, final String methodName,
-			final Object[] parametersValues) throws InvalidParameterException, InvocationException {
+			final Object[] parametersValues, final Boolean ignoreAccess) throws InvalidParameterException,
+			InvocationException {
 		// Invokes the method.
-		return invokeMethod(object, methodName, getParametersClasses(parametersValues), parametersValues);
+		return invokeMethod(object, methodName, getParametersClasses(parametersValues), parametersValues,
+				ignoreAccess);
 	}
 	
 	/**
@@ -374,6 +391,8 @@ public final class MethodHandler {
 	 *            Name of the method to be found.
 	 * @param parametersValues
 	 *            Parameters values to be used during the invocation.
+	 * @param ignoreAccess
+	 *            If the defined accessibility for the method must be ignored.
 	 * @return Returns the method being invoked return value.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
@@ -381,7 +400,8 @@ public final class MethodHandler {
 	 *             If the method throws an exception itself.
 	 */
 	public static Object invokeMethod(final String jndiPath, final String methodName,
-			final Object[] parametersValues) throws InvalidParameterException, InvocationException {
+			final Object[] parametersValues, final Boolean ignoreAccess) throws InvalidParameterException,
+			InvocationException {
 		// If the JNDI path is empty.
 		if ((jndiPath == null) || (jndiPath.isEmpty())) {
 			// Throws an exception.
@@ -392,7 +412,8 @@ public final class MethodHandler {
 			// Tries to retrieve the object.
 			final Object object = InitialContext.doLookup(jndiPath);
 			// Invokes the method.
-			return invokeMethod(object, methodName, getParametersClasses(parametersValues), parametersValues);
+			return invokeMethod(object, methodName, getParametersClasses(parametersValues), parametersValues,
+					ignoreAccess);
 		}
 		// If the object cannot be found.
 		catch (NamingException exception) {

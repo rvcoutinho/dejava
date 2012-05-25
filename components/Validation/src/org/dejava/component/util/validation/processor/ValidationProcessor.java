@@ -17,7 +17,6 @@ import org.dejava.component.util.reflection.handler.FieldHandler;
 import org.dejava.component.util.reflection.handler.MethodHandler;
 import org.dejava.component.util.validation.annotation.ValidationMethod;
 import org.dejava.component.util.validation.annotation.Validations;
-import org.dejava.component.util.validation.constant.ErrorKeys;
 import org.dejava.component.util.validation.exception.FailedValidationException;
 import org.dejava.component.util.validation.exception.FailedValidationsException;
 import org.dejava.component.util.validation.exception.ImpossibleValidationException;
@@ -171,7 +170,8 @@ public final class ValidationProcessor {
 			// For each complementary field.
 			for (String currentFieldPath : validationMethod.complementaryFieldsPaths()) {
 				// Gets the current complementary field value.
-				final Object currentFieldValue = FieldHandler.getFieldValue(object, currentFieldPath, false);
+				final Object currentFieldValue = FieldHandler.getFieldValue(object, currentFieldPath, false,
+						true);
 				// Adds the current field value in the list.
 				parametersValues.add(currentFieldValue);
 			}
@@ -243,13 +243,13 @@ public final class ValidationProcessor {
 			if (methodObject == null) {
 				// Tries to perform the validation as a static method.
 				return (Boolean) MethodHandler.invokeStaticMethod(methodClass, validationMethod.methodName(),
-						parametersClasses, parametersValues);
+						parametersClasses, parametersValues, false);
 			}
 			// If there is a validation method object.
 			else {
 				// Tries to perform the validation as an object method.
 				return (Boolean) MethodHandler.invokeMethod(methodObject, validationMethod.methodName(),
-						parametersClasses, parametersValues);
+						parametersClasses, parametersValues, false);
 			}
 		}
 		// If the parameters for this validation method are not valid (empty or method could not be accessed).
@@ -286,7 +286,7 @@ public final class ValidationProcessor {
 		// Tries to validate the field.
 		try {
 			// Gets the field value.
-			final Object fieldValue = FieldHandler.getFieldValue(object, field.getName(), false);
+			final Object fieldValue = FieldHandler.getFieldValue(object, field.getName(), false, true);
 			// Gets the parameters classes to invoke the method.
 			Class<?>[] parametersClasses = getValidationMethodParametersClasses(object, field,
 					validationMethod);
@@ -394,7 +394,7 @@ public final class ValidationProcessor {
 		final List<Exception> failedValidations = new ArrayList<Exception>();
 		// Tries to get the field value.
 		try {
-			final Object fieldValue = FieldHandler.getFieldValue(object, field.getName(), false);
+			final Object fieldValue = FieldHandler.getFieldValue(object, field.getName(), false, true);
 			// If the field value is not null.
 			if (fieldValue != null) {
 				// If the field value is an array.
@@ -534,7 +534,7 @@ public final class ValidationProcessor {
 			throws FailedValidationsException, InvalidParameterException {
 		// If the object is null.
 		if (object == null) {
-			// Throws an exception. 
+			// Throws an exception.
 			throw new EmptyParameterException("class"); // TODO
 		}
 		// Objects already under validation (used to prevent infinity cycles).
@@ -571,7 +571,7 @@ public final class ValidationProcessor {
 			// Gets the path for the fields (but for the last one).
 			final String firstFieldsPath = fieldPath.substring(0, lastFieldStartPos - 1);
 			// Gets the value of the field right before the last one.
-			object = FieldHandler.getFieldValue(object, firstFieldsPath, false);
+			object = FieldHandler.getFieldValue(object, firstFieldsPath, false, true);
 		}
 		// If the object is not null.
 		if (object != null) {

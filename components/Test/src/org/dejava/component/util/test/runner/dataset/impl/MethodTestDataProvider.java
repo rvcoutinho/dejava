@@ -84,7 +84,8 @@ public class MethodTestDataProvider implements TestDataProvider {
 		// Tries to get the data.
 		try {
 			// The test data is the return of the method invocation.
-			return (Collection<?>) MethodHandler.invokeMethod(targetTest, getMethodName(testMethod), null);
+			return (Collection<?>) MethodHandler.invokeMethod(targetTest, getMethodName(testMethod), null,
+					true);
 		}
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {

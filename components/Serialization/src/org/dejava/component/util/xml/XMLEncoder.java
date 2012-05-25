@@ -108,7 +108,8 @@ public final class XMLEncoder {
 			// For each field of the complex object.
 			for (Field currentField : FieldHandler.getAllFields(object.getClass())) {
 				// Gets the field value.
-				Object currentFieldValue = FieldHandler.getFieldValue(object, currentField.getName(), false);
+				Object currentFieldValue = FieldHandler.getFieldValue(object, currentField.getName(), false,
+						false);
 				// If the field value is not null.
 				if (currentFieldValue != null) {
 					// If it should force the node class (false by default).

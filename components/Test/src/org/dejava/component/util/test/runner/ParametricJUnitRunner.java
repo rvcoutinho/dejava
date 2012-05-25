@@ -10,7 +10,10 @@ import org.dejava.component.util.reflection.handler.ConstructorHandler;
 import org.dejava.component.util.test.annotation.ParametricTest;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.internal.AssumptionViolatedException;
+import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.internal.runners.model.ReflectiveCallable;
 import org.junit.internal.runners.statements.Fail;
 import org.junit.runner.notification.RunNotifier;
@@ -80,13 +83,88 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	/**
+	 * Runs a parametric test.
+	 * 
+	 * @param method
+	 *            The test method to run.
+	 */
+	protected void runParametricTest(final FrameworkMethod method) {
+		// Gets the annotation with the test data information.
+		final ParametricTest parametricTest = method.getAnnotation(ParametricTest.class);
+		// If the @ParametricTest annotation exists.
+		if (parametricTest != null) {
+			// Tries to get the test data objects.
+			final List<?> testData = new ArrayList<Object>(getTestDataProvider().getTestData(getTargetTest(),
+					method));
+			// Shuffles the list (important when {@link ParametricTest#maxTestData()} is given).
+			Collections.shuffle(testData);
+			// Gets the maximum number of test data objects to be used.
+			Integer maxTestData = parametricTest.maxTestData();
+			// If the number is 0.
+			if (maxTestData == 0) {
+				// The maximum number of test data objects is the list size.
+				maxTestData = testData.size();
+			}
+			// List of failed tests. TODO
+			// For each test data object (until the maximum given).
+			for (Integer currentDataObjTdx = 0; currentDataObjTdx < maxTestData; currentDataObjTdx++) {
+				// Gets the current object.
+				final Object currentTestDataObj = testData.get(currentDataObjTdx);
+				// Tries to invoke the test with the current test data.
+				try {
+					method.invokeExplosively(getTargetTest(), new Object[] { currentTestDataObj });
+				}
+				// If the test raises an exception.
+				catch (final Exception exception) {
+					// Adds the failed test information to the list. TODO
+				}
+			}
+		}
+		// If it does not exist.
+		else {
+			// Invokes the method with no parameters.
+			method.invokeExplosively(getTargetTest(), new Object[0]);
+		}
+		
+	}
+	
+	/**
 	 * @see org.junit.runners.BlockJUnit4ClassRunner#runChild(org.junit.runners.model.FrameworkMethod,
 	 *      org.junit.runner.notification.RunNotifier)
 	 */
 	@Override
-	protected void runChild(FrameworkMethod method, RunNotifier notifier) {
-		// TODO Auto-generated method stub
-		super.runChild(method, notifier);
+	protected void runChild(final FrameworkMethod method, final RunNotifier notifier) {
+		// Creates a new notifier for the test.
+		final EachTestNotifier eachNotifier = new EachTestNotifier(notifier, describeChild(method));
+		// If the @Ignore annotation is present.
+		if (method.getAnnotation(Ignore.class) != null) {
+			// Notifies that the test has been ignored.
+			eachNotifier.fireTestIgnored();
+		}
+		// Otherwise.
+		else {
+			// Notifies that the test has been started.
+			eachNotifier.fireTestStarted();
+			// Tries to run the test.
+			try {
+				runParametricTest(method);
+			}
+			// If an assumption was violated.
+			catch (final AssumptionViolatedException exception) {
+				// Notifies that a test assumption has been violated.
+				eachNotifier.addFailedAssumption(exception);
+			}
+			// If any other exception is raised.
+			catch (final Throwable throwable) {
+				// Notifies that a test has failed.
+				eachNotifier.addFailure(throwable);
+			}
+			// Finally.
+			finally {
+				// Notifies that a test has finished.
+				eachNotifier.fireTestFinished();
+			}
+		}
 	}
 	
 	/**
@@ -115,42 +193,6 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 			return new Fail(throwable);
 		}
 		
-		// Gets the annotation with the test data information.
-		final ParametricTest parametricTest = getTestMethod().getAnnotation(ParametricTest.class);
-		// If the @ParametricTest annotation exists.
-		if (parametricTest != null) {
-			// Tries to get the test data objects.
-			final List<?> testData = new ArrayList<Object>(getTestDataProvider().getTestData(getTargetTest(),
-					getTestMethod()));
-			// Shuffles the list (important when {@link ParametricTest#maxTestData()} is given).
-			Collections.shuffle(testData);
-			// Gets the maximum number of test data objects to be used.
-			Integer maxTestData = parametricTest.maxTestData();
-			// If the number is 0.
-			if (maxTestData == 0) {
-				// The maximum number of test data objects is the list size.
-				maxTestData = testData.size();
-			}
-			// List of failed tests. TODO
-			// For each test data object (until the maximum given).
-			for (Integer currentDataObjTdx = 0; currentDataObjTdx < maxTestData; currentDataObjTdx++) {
-				// Gets the current object.
-				final Object currentTestDataObj = testData.get(currentDataObjTdx);
-				// Tries to invoke the test with the current test data.
-				try {
-					getTestMethod().invokeExplosively(getTargetTest(), new Object[] { currentTestDataObj });
-				}
-				// If the test raises an exception.
-				catch (final Exception exception) {
-					// Adds the failed test information to the list. TODO
-				}
-			}
-		}
-		// If it does not exist.
-		else {
-			// Invokes the method with no parameters.
-			getTestMethod().invokeExplosively(getTargetTest(), new Object[0]);
-		}
 	}
 	
 	/**

@@ -7,3 +7,4 @@
 1337882339097	Rename package 'org.dejava.component.util.test.runner.dataset.provider'
 1337882353383	Rename package 'org.dejava.component.util.test.runner.provider'
 1337882365436	Rename package 'org.dejava.component.util.test.runner.statement.provider.impl'
+1337982611976	Rename type 'InvokeParametricTestMethod'

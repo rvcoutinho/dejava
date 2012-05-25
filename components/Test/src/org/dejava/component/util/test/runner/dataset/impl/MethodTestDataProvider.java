@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.dejava.component.util.reflection.handler.MethodHandler;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
-import org.dejava.component.util.test.runner.statement.InvokeParametricTestMethod;
+import org.dejava.component.util.test.runner.statement.ParametricTestMethodInvoker;
 import org.junit.runners.model.FrameworkMethod;
 
 /**
@@ -16,7 +16,7 @@ public class MethodTestDataProvider implements TestDataProvider {
 	/**
 	 * Default name for the test data objects method.
 	 */
-	public static final String DEFAULT_METHOD_NAME = InvokeParametricTestMethod.METHOD_NAME_EXPRESSION
+	public static final String DEFAULT_METHOD_NAME = ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION
 			+ "Data";
 	
 	/**
@@ -37,7 +37,7 @@ public class MethodTestDataProvider implements TestDataProvider {
 			// The default method name is used.
 			methodName = DEFAULT_METHOD_NAME;
 			// Replaces the method name in the path.
-			methodName = methodName.replace(InvokeParametricTestMethod.METHOD_NAME_EXPRESSION,
+			methodName = methodName.replace(ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION,
 					testMethod.getName());
 		}
 		// Returns the method name.

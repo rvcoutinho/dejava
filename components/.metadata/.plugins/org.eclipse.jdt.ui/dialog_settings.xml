@@ -14,10 +14,10 @@
 	<item value="887" key="org.eclipse.jdt.uicleanup_pagemodify_dialog.preferred_width"/>
 	<item value="D:\usuarios\rvcoutinho\Desktop\development" key="org.eclipse.jdt.ui.codeformatter.loadpath"/>
 	<item value="189" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_x"/>
-	<item value="0" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_y"/>
-	<item value="1005" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_width"/>
-	<item value="1" key="org.eclipse.jdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
 	<item value="5" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.last_focus"/>
+	<item value="1" key="org.eclipse.jdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
+	<item value="1005" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_width"/>
+	<item value="0" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_y"/>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item value="true" key="group_libraries"/>
 		<item value="false" key="linkWithEditor"/>
@@ -36,15 +36,21 @@
 		<item value="400" key="height"/>
 		<item value="600" key="width"/>
 	</section>
-	<section name="quick_assist_proposal_size">
-	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
-		<item value="true" key="updateQualifiedNames"/>
-		<item value="*" key="patterns"/>
 		<item value="true" key="renameSubpackages"/>
+		<item value="*" key="patterns"/>
+		<item value="true" key="updateQualifiedNames"/>
 		<item value="1" key="updateSimilarElementsMatchStrategy"/>
 		<item value="true" key="updateTextualMatches"/>
 		<item value="true" key="updateSimilarElements"/>
+	</section>
+	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="SourceActionDialog.methods">
+		<item value="true" key="Comments"/>
+		<item value="1" key="VisibilityModifier"/>
+		<item value="false" key="SynchronizedModifier"/>
+		<item value="false" key="FinalModifier"/>
 	</section>
 	<section name="ProblemSeveritiesConfigurationBlock">
 		<item value="false" key="expanded4"/>
@@ -55,19 +61,13 @@
 		<item value="false" key="expanded5"/>
 		<item value="true" key="expanded0"/>
 	</section>
-	<section name="SourceActionDialog.methods">
-		<item value="1" key="VisibilityModifier"/>
-		<item value="true" key="Comments"/>
-		<item value="false" key="SynchronizedModifier"/>
-		<item value="false" key="FinalModifier"/>
+	<section name="AddGetterSetterDialog">
+		<item value="false" key="RemoveFinal"/>
+		<item value="false" key="SortOrdering"/>
 	</section>
 	<section name="JavaBuildConfigurationBlock">
 		<item value="false" key="expanded2"/>
 		<item value="true" key="expanded1"/>
 		<item value="true" key="expanded0"/>
-	</section>
-	<section name="AddGetterSetterDialog">
-		<item value="false" key="RemoveFinal"/>
-		<item value="false" key="SortOrdering"/>
 	</section>
 </section>

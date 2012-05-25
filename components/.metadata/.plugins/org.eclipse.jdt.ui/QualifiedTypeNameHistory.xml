@@ -8,4 +8,5 @@
 <fullyQualifiedTypeName name="sun.net.www.content.audio.wav"/>
 <fullyQualifiedTypeName name="java.lang.Throwable"/>
 <fullyQualifiedTypeName name="org.dejava.component.util.reflection.handler.MethodHandler"/>
+<fullyQualifiedTypeName name="org.junit.internal.runners.model.EachTestNotifier"/>
 </qualifiedTypeNameHistroy>

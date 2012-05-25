@@ -7,7 +7,7 @@ import org.dejava.component.util.exception.localized.EmptyParameterException;
 import org.dejava.component.util.reflection.handler.PackageHandler;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
-import org.dejava.component.util.test.runner.statement.InvokeParametricTestMethod;
+import org.dejava.component.util.test.runner.statement.ParametricTestMethodInvoker;
 import org.dejava.component.util.xml.XMLCreator;
 import org.dejava.component.util.xml.XMLDecoder;
 import org.junit.runners.model.FrameworkMethod;
@@ -21,7 +21,7 @@ public class XMLTestDataProvider implements TestDataProvider {
 	/**
 	 * Default path for the XML.
 	 */
-	public static final String DEFAULT_XML_PATH = "xml/" + InvokeParametricTestMethod.METHOD_NAME_EXPRESSION
+	public static final String DEFAULT_XML_PATH = "xml/" + ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION
 			+ ".xml";
 	
 	/**
@@ -42,7 +42,7 @@ public class XMLTestDataProvider implements TestDataProvider {
 			// The default method name is used.
 			filePath = DEFAULT_XML_PATH;
 			// Replaces the method name in the path.
-			filePath = filePath.replace(InvokeParametricTestMethod.METHOD_NAME_EXPRESSION,
+			filePath = filePath.replace(ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION,
 					testMethod.getName());
 		}
 		// Returns the method name.

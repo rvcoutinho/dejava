@@ -62,34 +62,29 @@ public class XMLTestDataProvider implements TestDataProvider {
 	/**
 	 * Gets the XML stream for the test data objects.
 	 * 
-	 * @param targetTest
-	 *            The target test object for the method invocation.
 	 * @param testMethod
 	 *            The JUnit framework method.
 	 * @return The XML stream for the test data objects.
 	 * @throws EmptyParameterException
 	 *             If the test class cannot be accessed.
 	 */
-	private InputStream getXMLStream(final Object targetTest, final FrameworkMethod testMethod)
-			throws EmptyParameterException {
+	private InputStream getXMLStream(final FrameworkMethod testMethod) throws EmptyParameterException {
 		// Gets the path for the XML.
-		final String xmlPath = PackageHandler.getPackageAsDirPath(targetTest.getClass()) + '/'
-				+ getFilePath(testMethod);
+		final String xmlPath = PackageHandler.getPackageAsDirPath(testMethod.getMethod().getDeclaringClass())
+				+ '/' + getFilePath(testMethod);
 		// Returns the XML stream.
 		return Thread.currentThread().getContextClassLoader().getResourceAsStream(xmlPath);
 	}
 	
 	/**
-	 * @see org.dejava.component.util.test.runner.dataset.TestDataProvider#getTestData(java.lang.Object,
-	 *      org.junit.runners.model.FrameworkMethod)
+	 * @see org.dejava.component.util.test.runner.dataset.TestDataProvider#getTestData(org.junit.runners.model.FrameworkMethod)
 	 */
 	@Override
-	public Collection<?> getTestData(final Object targetTest, final FrameworkMethod testMethod)
-			throws UnavailableTestDataException {
+	public Collection<?> getTestData(final FrameworkMethod testMethod) throws UnavailableTestDataException {
 		// Tries to get the data.
 		try {
 			// Gets the XML input stream.
-			final InputStream xmlInputStream = getXMLStream(targetTest, testMethod);
+			final InputStream xmlInputStream = getXMLStream(testMethod);
 			// Creates the XML document for the stream.
 			final Document xmlDocument = XMLCreator.createXMLDocument(xmlInputStream);
 			// Gets the test data object from the XML document. TODO Think about expected class

@@ -1,6 +1,6 @@
 Found a 8 line (46 tokens) duplication in the following files: 
-Starting at line 66 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\ParametricJUnitRunnerTest.java
-Starting at line 90 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\ParametricJUnitRunnerTest.java
+Starting at line 66 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\ParametricJUnitRunnerTest.java
+Starting at line 90 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\ParametricJUnitRunnerTest.java
 
 		final RunListenerLog runListener = new RunListenerLog("testNormalFailure");
 		// Adds the listener to the notifier.
@@ -12,8 +12,8 @@ Starting at line 90 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\s
 				|| ((runListener.getFailure().getException() instanceof AssertionFailedError))) {
 =====================================================================
 Found a 7 line (41 tokens) duplication in the following files: 
-Starting at line 43 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\ParametricJUnitRunnerTest.java
-Starting at line 66 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\ParametricJUnitRunnerTest.java
+Starting at line 43 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\ParametricJUnitRunnerTest.java
+Starting at line 66 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\ParametricJUnitRunnerTest.java
 
 		final RunListenerLog runListener = new RunListenerLog("testNormalAssumptionFailure");
 		// Adds the listener to the notifier.
@@ -24,8 +24,8 @@ Starting at line 66 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\s
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)
 =====================================================================
 Found a 14 line (39 tokens) duplication in the following files: 
-Starting at line 74 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\runner\statement\provider\impl\MethodTestDataProvider.java
-Starting at line 74 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\runner\statement\provider\impl\JNDITestDataProvider.java
+Starting at line 74 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\runner\dataset\impl\MethodTestDataProvider.java
+Starting at line 74 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\runner\dataset\impl\JNDITestDataProvider.java
 
 		this.methodName = methodName;
 	}
@@ -40,11 +40,11 @@ Starting at line 74 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\s
 		// Tries to get the data.
 		try {
 			// The test data is the return of the method invocation.
-			return (Collection<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null);
+			return (Collection<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null, null,
 =====================================================================
 Found a 6 line (31 tokens) duplication in the following files: 
-Starting at line 135 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\runner\ParametricJUnitRunner.java
-Starting at line 155 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\runner\ParametricJUnitRunner.java
+Starting at line 209 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\runner\ParametricJUnitRunner.java
+Starting at line 229 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\runner\ParametricJUnitRunner.java
 
 	protected void validatePublicVoidOneTestCaseArg(final List<FrameworkMethod> methods,
 			final boolean isStatic, final List<Throwable> errors) {
@@ -54,8 +54,8 @@ Starting at line 155 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\
 			currentTestMethod.validatePublicVoid(isStatic, errors);
 =====================================================================
 Found a 13 line (31 tokens) duplication in the following files: 
-Starting at line 136 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\auxiliary\RunListenerLog.java
-Starting at line 148 of C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\auxiliary\RunListenerLog.java
+Starting at line 136 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\auxiliary\RunListenerLog.java
+Starting at line 148 of D:\usuarios\rvcoutinho\Desktop\dejava\components\Test\src\org\dejava\component\util\test\test\auxiliary\RunListenerLog.java
 
 	public void testAssumptionFailure(final Failure failure) {
 		// If the failed test has the same given test description.

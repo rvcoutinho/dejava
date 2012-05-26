@@ -16,14 +16,11 @@ public interface TestDataProvider {
 	/**
 	 * Gets the test data from the appropriate source.
 	 * 
-	 * @param targetTest
-	 *            The target test object for the method invocation.
 	 * @param testMethod
 	 *            The JUnit framework method.
 	 * @return The test data from the appropriate source.
 	 * @throws UnavailableTestDataException
 	 *             If the test data provider cannot be created.
 	 */
-	Collection<?> getTestData(final Object targetTest, final FrameworkMethod testMethod)
-			throws UnavailableTestDataException;
+	Collection<?> getTestData(final FrameworkMethod testMethod) throws UnavailableTestDataException;
 }

@@ -1,6 +1,7 @@
 package org.dejava.component.util.test.runner;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -10,14 +11,18 @@ import org.dejava.component.util.reflection.handler.ConstructorHandler;
 import org.dejava.component.util.test.annotation.ParametricTest;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
+import org.dejava.component.util.test.runner.statement.ParametricTestMethodInvoker;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.internal.AssumptionViolatedException;
 import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.internal.runners.model.ReflectiveCallable;
 import org.junit.internal.runners.statements.Fail;
+import org.junit.rules.MethodRule;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
@@ -65,7 +70,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	 * @throws UnavailableTestDataException
 	 *             If the test data provider cannot be created.
 	 */
-	public TestDataProvider getTestDataProvider(final FrameworkMethod method)
+	protected TestDataProvider getTestDataProvider(final FrameworkMethod method)
 			throws UnavailableTestDataException {
 		// Tries to get the provider.
 		try {
@@ -78,8 +83,134 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		// If the provider cannot be instantiated.
 		catch (final Exception exception) {
 			// Throws an exception. FIXME
-			throw new UnavailableTestDataException(null, exception, null);
+			throw new UnavailableTestDataException(null, exception, new Object[] { method.getName() });
 		}
+	}
+	
+	/**
+	 * Gets the rules for the given test.
+	 * 
+	 * @param test
+	 *            Test that the rules must be retrieved for.
+	 * @return The rules for the given test.
+	 */
+	protected Collection<MethodRule> getRules(final Object test) {
+		// Creates the rules list.
+		final Collection<MethodRule> rules = new ArrayList<MethodRule>();
+		// For each field (rule) from the test class annotated with @Rule.
+		for (final FrameworkField currentRule : getTestClass().getAnnotatedFields(Rule.class)) {
+			// Tries to add the current rule to the list,
+			try {
+				rules.add((MethodRule) currentRule.get(test));
+			}
+			// If it is not possible to get the current rule.
+			catch (final Exception exception) {
+				// Throws an RuntimeException as it should not be possible to get a not accessible field.
+				// FIXME
+				throw new RuntimeException();
+			}
+		}
+		// Returns the rules.
+		return rules;
+	}
+	
+	/**
+	 * TODO
+	 * @param method
+	 * @param target
+	 * @param statement
+	 * @return
+	 */
+	private Statement withRules(final FrameworkMethod method, final Object test, final Statement statement) {
+		Statement result = statement;
+		for (final MethodRule each : rules(target)) {
+			result = each.apply(result, method, target);
+		}
+		return result;
+	}
+	
+	/**
+	 * TODO
+	 * 
+	 * @param method
+	 * @param testParamsValues
+	 * @return
+	 */
+	protected Statement getTestMethodStatement(final FrameworkMethod method, final Object[] testParamsValues) {
+		// Test instance.
+		Object test;
+		// Tries to get a new test instance.
+		try {
+			// Creates a new reflective call.
+			final ReflectiveCallable createTestCall = new ReflectiveCallable() {
+				
+				@Override
+				protected Object runReflectiveCall() throws Throwable {
+					return createTest();
+				}
+			};
+			// Creates the test instance.
+			test = createTestCall.run();
+		}
+		// If anything is raised by the test creation.
+		catch (final Throwable throwable) {
+			// Returns a fail statement.
+			return new Fail(throwable);
+		}
+		// Creates the ParametricTestMethodInvoker statement.
+		Statement testMethodStatement = new ParametricTestMethodInvoker(test, method, testParamsValues);
+		// Wraps the statement
+		testMethodStatement = withRules(testMethodStatement);
+	}
+	
+	/**
+	 * TODO
+	 * 
+	 * @param method
+	 * @param testParamValue
+	 * @return
+	 * @throws UnavailableTestDataException
+	 */
+	protected Collection<Statement> getTestMethodStatements(final FrameworkMethod method)
+			throws UnavailableTestDataException {
+		// Gets the annotation with the test data information.
+		final ParametricTest parametricTest = method.getAnnotation(ParametricTest.class);
+		// Creates the list with the statements for the current test.
+		final Collection<Statement> testMethodStatements = new ArrayList<Statement>();
+		// If the @ParametricTest annotation does not exist for the method.
+		if (parametricTest == null) {
+			// Gets only one statement for the test.
+			final Statement testMethodStatement = getTestMethodStatement(method, new Object[] {});
+			// Adds the test statement to the collection.
+			testMethodStatements.add(testMethodStatement);
+		}
+		// If it does exist.
+		else {
+			// Gets the test data for the method.
+			final List<?> testMethodParamsValues = new ArrayList<Object>(getTestDataProvider(method)
+					.getTestData(method));
+			// Shuffles the parameters values.
+			Collections.shuffle(testMethodParamsValues);
+			// Gets the maximum number of test data objects to be used.
+			Integer maxTestParams = parametricTest.maxTestData();
+			// If the number is 0.
+			if (maxTestParams == 0) {
+				// The maximum number of test data objects is the list size.
+				maxTestParams = testMethodParamsValues.size();
+			}
+			// For each test data object (until the maximum given).
+			for (Integer currentDataObjIndex = 0; currentDataObjIndex < maxTestParams; currentDataObjIndex++) {
+				// Gets the current parameter value.
+				final Object currentTestParamValue = testMethodParamsValues.get(currentDataObjIndex);
+				// Gets the test statement for the current parameter value.
+				final Statement testMethodStatement = getTestMethodStatement(method,
+						new Object[] { currentTestParamValue });
+				// Adds the test statement to the collection.
+				testMethodStatements.add(testMethodStatement);
+			}
+		}
+		// Returns the statements for the test.
+		return testMethodStatements;
 	}
 	
 	/**
@@ -89,42 +220,6 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	 *            The test method to run.
 	 */
 	protected void runParametricTest(final FrameworkMethod method) {
-		// Gets the annotation with the test data information.
-		final ParametricTest parametricTest = method.getAnnotation(ParametricTest.class);
-		// If the @ParametricTest annotation exists.
-		if (parametricTest != null) {
-			// Tries to get the test data objects.
-			final List<?> testData = new ArrayList<Object>(getTestDataProvider().getTestData(getTargetTest(),
-					method));
-			// Shuffles the list (important when {@link ParametricTest#maxTestData()} is given).
-			Collections.shuffle(testData);
-			// Gets the maximum number of test data objects to be used.
-			Integer maxTestData = parametricTest.maxTestData();
-			// If the number is 0.
-			if (maxTestData == 0) {
-				// The maximum number of test data objects is the list size.
-				maxTestData = testData.size();
-			}
-			// List of failed tests. TODO
-			// For each test data object (until the maximum given).
-			for (Integer currentDataObjTdx = 0; currentDataObjTdx < maxTestData; currentDataObjTdx++) {
-				// Gets the current object.
-				final Object currentTestDataObj = testData.get(currentDataObjTdx);
-				// Tries to invoke the test with the current test data.
-				try {
-					method.invokeExplosively(getTargetTest(), new Object[] { currentTestDataObj });
-				}
-				// If the test raises an exception.
-				catch (final Exception exception) {
-					// Adds the failed test information to the list. TODO
-				}
-			}
-		}
-		// If it does not exist.
-		else {
-			// Invokes the method with no parameters.
-			method.invokeExplosively(getTargetTest(), new Object[0]);
-		}
 		
 	}
 	
@@ -136,13 +231,8 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	protected void runChild(final FrameworkMethod method, final RunNotifier notifier) {
 		// Creates a new notifier for the test.
 		final EachTestNotifier eachNotifier = new EachTestNotifier(notifier, describeChild(method));
-		// If the @Ignore annotation is present.
-		if (method.getAnnotation(Ignore.class) != null) {
-			// Notifies that the test has been ignored.
-			eachNotifier.fireTestIgnored();
-		}
-		// Otherwise.
-		else {
+		// If the @Ignore annotation is not present.
+		if (method.getAnnotation(Ignore.class) == null) {
 			// Notifies that the test has been started.
 			eachNotifier.fireTestStarted();
 			// Tries to run the test.
@@ -165,34 +255,11 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 				eachNotifier.fireTestFinished();
 			}
 		}
-	}
-	
-	/**
-	 * @see org.junit.runners.BlockJUnit4ClassRunner#methodBlock(org.junit.runners.model.FrameworkMethod)
-	 */
-	@Override
-	protected Statement methodBlock(final FrameworkMethod method) {
-		// Test instance.
-		Object test;
-		// Tries to get a new test instance.
-		try {
-			// Creates a new reflective call.
-			final ReflectiveCallable createTestCall = new ReflectiveCallable() {
-				
-				@Override
-				protected Object runReflectiveCall() throws Throwable {
-					return createTest();
-				}
-			};
-			// Creates the test instance.
-			test = createTestCall.run();
+		// If it is present.
+		else {
+			// Notifies that the test has been ignored.
+			eachNotifier.fireTestIgnored();
 		}
-		// If anything is raised by the test creation.
-		catch (final Throwable throwable) {
-			// Returns a fail statement.
-			return new Fail(throwable);
-		}
-		
 	}
 	
 	/**
@@ -232,20 +299,20 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		for (final FrameworkMethod currentTestMethod : methods) {
 			// Performs "public void" validation.
 			currentTestMethod.validatePublicVoid(isStatic, errors);
-			// If there are not one and only one parameter.
-			if (currentTestMethod.getMethod().getParameterTypes().length != 1) {
-				// Adds an error. FIXME
-				errors.add(new Exception("Method " + currentTestMethod.getName()
-						+ " should have one and only one parameter"));
-			}
-			// If there are.
-			else {
+			// If there is one and only one parameter.
+			if (currentTestMethod.getMethod().getParameterTypes().length == 1) {
 				// If the parameter type is not in the TestCase hierarchy.
 				if (!currentTestMethod.getMethod().getParameterTypes()[0].isAssignableFrom(TestCase.class)) {
 					// Adds an error. FIXME
 					errors.add(new Exception("Method " + currentTestMethod.getName()
 							+ " should have one parameter class that is assignable from TestCase.class"));
 				}
+			}
+			// If there are not.
+			else {
+				// Adds an error. FIXME
+				errors.add(new Exception("Method " + currentTestMethod.getName()
+						+ " should have one and only one parameter"));
 			}
 		}
 	}

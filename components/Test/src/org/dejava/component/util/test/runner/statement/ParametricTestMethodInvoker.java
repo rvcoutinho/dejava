@@ -16,30 +16,6 @@ public class ParametricTestMethodInvoker extends Statement {
 	public static final String METHOD_NAME_EXPRESSION = "#{annotated_method_name}";
 	
 	/**
-	 * The JUnit framework method.
-	 */
-	private FrameworkMethod testMethod;
-	
-	/**
-	 * Returns the JUnit framework method.
-	 * 
-	 * @return The JUnit framework method.
-	 */
-	public FrameworkMethod getTestMethod() {
-		return testMethod;
-	}
-	
-	/**
-	 * Sets the JUnit framework method.
-	 * 
-	 * @param testMethod
-	 *            New JUnit framework method.
-	 */
-	public void setTestMethod(final FrameworkMethod testMethod) {
-		this.testMethod = testMethod;
-	}
-	
-	/**
 	 * The target test object for the method invocation.
 	 */
 	private Object targetTest;
@@ -61,6 +37,30 @@ public class ParametricTestMethodInvoker extends Statement {
 	 */
 	public void setTargetTest(final Object targetTest) {
 		this.targetTest = targetTest;
+	}
+	
+	/**
+	 * The JUnit framework method.
+	 */
+	private FrameworkMethod testMethod;
+	
+	/**
+	 * Returns the JUnit framework method.
+	 * 
+	 * @return The JUnit framework method.
+	 */
+	public FrameworkMethod getTestMethod() {
+		return testMethod;
+	}
+	
+	/**
+	 * Sets the JUnit framework method.
+	 * 
+	 * @param testMethod
+	 *            New JUnit framework method.
+	 */
+	public void setTestMethod(final FrameworkMethod testMethod) {
+		this.testMethod = testMethod;
 	}
 	
 	/**
@@ -90,19 +90,19 @@ public class ParametricTestMethodInvoker extends Statement {
 	/**
 	 * Default constructor.
 	 * 
-	 * @param testMethod
-	 *            The JUnit framework method.
 	 * @param targetTest
 	 *            The target test object for the method invocation.
+	 * @param testMethod
+	 *            The JUnit framework method.
 	 * @param paramsValues
 	 *            The parameters values for the test method.
 	 */
-	public ParametricTestMethodInvoker(final FrameworkMethod testMethod, final Object targetTest,
+	public ParametricTestMethodInvoker(final Object targetTest, final FrameworkMethod testMethod,
 			final Object[] paramsValues) {
 		super();
 		// Sets the main fields.
-		this.testMethod = testMethod;
 		this.targetTest = targetTest;
+		this.testMethod = testMethod;
 		this.paramsValues = paramsValues;
 	}
 	

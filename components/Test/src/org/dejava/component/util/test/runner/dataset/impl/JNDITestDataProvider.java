@@ -75,12 +75,10 @@ public class JNDITestDataProvider implements TestDataProvider {
 	}
 	
 	/**
-	 * @see org.dejava.component.util.test.runner.dataset.TestDataProvider#getTestData(java.lang.Object,
-	 *      org.junit.runners.model.FrameworkMethod)
+	 * @see org.dejava.component.util.test.runner.dataset.TestDataProvider#getTestData(org.junit.runners.model.FrameworkMethod)
 	 */
 	@Override
-	public Collection<?> getTestData(final Object targetTest, final FrameworkMethod testMethod)
-			throws UnavailableTestDataException {
+	public Collection<?> getTestData(final FrameworkMethod testMethod) throws UnavailableTestDataException {
 		// Tries to get the data.
 		try {
 			// The test data is the return of the method invocation.

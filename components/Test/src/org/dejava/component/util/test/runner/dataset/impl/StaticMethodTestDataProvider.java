@@ -11,7 +11,7 @@ import org.junit.runners.model.FrameworkMethod;
 /**
  * Provides access to XML test data.
  */
-public class MethodTestDataProvider implements TestDataProvider {
+public class StaticMethodTestDataProvider implements TestDataProvider {
 	
 	/**
 	 * Default name for the test data objects method.
@@ -59,7 +59,7 @@ public class MethodTestDataProvider implements TestDataProvider {
 	 * 
 	 * The method
 	 */
-	public MethodTestDataProvider() {
+	public StaticMethodTestDataProvider() {
 		super();
 	}
 	
@@ -69,23 +69,21 @@ public class MethodTestDataProvider implements TestDataProvider {
 	 * @param methodName
 	 *            The method name for the test data provider.
 	 */
-	public MethodTestDataProvider(final String methodName) {
+	public StaticMethodTestDataProvider(final String methodName) {
 		super();
 		this.methodName = methodName;
 	}
 	
 	/**
-	 * @see org.dejava.component.util.test.runner.dataset.TestDataProvider#getTestData(java.lang.Object,
-	 *      org.junit.runners.model.FrameworkMethod)
+	 * @see org.dejava.component.util.test.runner.dataset.TestDataProvider#getTestData(org.junit.runners.model.FrameworkMethod)
 	 */
 	@Override
-	public Collection<?> getTestData(final Object targetTest, final FrameworkMethod testMethod)
-			throws UnavailableTestDataException {
+	public Collection<?> getTestData(final FrameworkMethod testMethod) throws UnavailableTestDataException {
 		// Tries to get the data.
 		try {
 			// The test data is the return of the method invocation.
-			return (Collection<?>) MethodHandler.invokeMethod(targetTest, getMethodName(testMethod), null,
-					null, true);
+			return (Collection<?>) MethodHandler.invokeStaticMethod(testMethod.getMethod()
+					.getDeclaringClass(), getMethodName(testMethod), null, null, true);
 		}
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {

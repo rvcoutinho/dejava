@@ -5,8 +5,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.dejava.component.util.reflection.handler.ConstructorHandler;
 import org.dejava.component.util.test.annotation.ParametricTest;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
@@ -64,18 +62,18 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	/**
 	 * Gets the test data provider instance from the given annotation.
 	 * 
-	 * @param method
+	 * @param testMethod
 	 *            Test method that will be executed.
 	 * @return The test data provider instance from the given annotation.
 	 * @throws UnavailableTestDataException
 	 *             If the test data provider cannot be created.
 	 */
-	protected TestDataProvider getTestDataProvider(final FrameworkMethod method)
+	protected TestDataProvider getTestDataProvider(final FrameworkMethod testMethod)
 			throws UnavailableTestDataException {
 		// Tries to get the provider.
 		try {
 			// Gets the annotation with the test data information.
-			final ParametricTest parametricTest = method.getAnnotation(ParametricTest.class);
+			final ParametricTest parametricTest = testMethod.getAnnotation(ParametricTest.class);
 			// Returns the test data provider.
 			return ConstructorHandler.invokeConstructor(parametricTest.dataProvider(), null,
 					parametricTest.paramsValues(), false);
@@ -83,7 +81,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		// If the provider cannot be instantiated.
 		catch (final Exception exception) {
 			// Throws an exception. FIXME
-			throw new UnavailableTestDataException(null, exception, new Object[] { method.getName() });
+			throw new UnavailableTestDataException(null, exception, new Object[] { testMethod.getName() });
 		}
 	}
 	
@@ -110,35 +108,50 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 				throw new RuntimeException();
 			}
 		}
+		// TODO Add default rules.
 		// Returns the rules.
 		return rules;
 	}
 	
 	/**
-	 * TODO
-	 * @param method
-	 * @param target
-	 * @param statement
-	 * @return
+	 * Includes the given rules in a statement.
+	 * 
+	 * @param testMethod
+	 *            The test method for the statement.
+	 * @param test
+	 *            The test to be used in the statement.
+	 * @param currentTestStatement
+	 *            The current statement (to be wrapped by the new ones).
+	 * @param rules
+	 *            Rules to be applied to the current statement.
+	 * @return A new statement by wrapping the the given statement with the given rules.
 	 */
-	private Statement withRules(final FrameworkMethod method, final Object test, final Statement statement) {
-		Statement result = statement;
-		for (final MethodRule each : rules(target)) {
-			result = each.apply(result, method, target);
+	private Statement includeRules(final FrameworkMethod testMethod, final Object test,
+			final Statement currentTestStatement, final Collection<MethodRule> rules) {
+		// The new test statement starts with the given one.
+		Statement newTestStatement = currentTestStatement;
+		// For each provided rule.
+		for (final MethodRule currentRule : rules) {
+			// The new statement is the old one wrapped with the current rule.
+			newTestStatement = currentRule.apply(newTestStatement, testMethod, test);
 		}
-		return result;
+		// Returns the new test statement.
+		return newTestStatement;
 	}
 	
 	/**
-	 * TODO
+	 * Gets the statement for a parametric test method.
 	 * 
-	 * @param method
+	 * @param testMethod
+	 *            The test method for the statement.
 	 * @param testParamsValues
-	 * @return
+	 *            The values of the parameters to be used in the test.
+	 * @return the statement for a parametric test method.
 	 */
-	protected Statement getTestMethodStatement(final FrameworkMethod method, final Object[] testParamsValues) {
+	protected Statement getTestMethodStatement(final FrameworkMethod testMethod,
+			final Object[] testParamsValues) {
 		// Test instance.
-		Object test;
+		Object test = null;
 		// Tries to get a new test instance.
 		try {
 			// Creates a new reflective call.
@@ -158,37 +171,41 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 			return new Fail(throwable);
 		}
 		// Creates the ParametricTestMethodInvoker statement.
-		Statement testMethodStatement = new ParametricTestMethodInvoker(test, method, testParamsValues);
-		// Wraps the statement
-		testMethodStatement = withRules(testMethodStatement);
+		Statement testMethodStatement = new ParametricTestMethodInvoker(test, testMethod, testParamsValues);
+		// Wraps the statement with the given rules.
+		testMethodStatement = includeRules(testMethod, test, testMethodStatement,
+				getRules(testMethodStatement));
+		// Returns the test statement.
+		return testMethodStatement;
 	}
 	
 	/**
-	 * TODO
+	 * Gets the statements for a parametric test method.
 	 * 
-	 * @param method
-	 * @param testParamValue
-	 * @return
+	 * @param testMethod
+	 *            The test method for the statements.
+	 * @return The statements for a parametric test method.
 	 * @throws UnavailableTestDataException
+	 *             If the test data is not available.
 	 */
-	protected Collection<Statement> getTestMethodStatements(final FrameworkMethod method)
+	protected Collection<Statement> getTestMethodStatements(final FrameworkMethod testMethod)
 			throws UnavailableTestDataException {
 		// Gets the annotation with the test data information.
-		final ParametricTest parametricTest = method.getAnnotation(ParametricTest.class);
+		final ParametricTest parametricTest = testMethod.getAnnotation(ParametricTest.class);
 		// Creates the list with the statements for the current test.
 		final Collection<Statement> testMethodStatements = new ArrayList<Statement>();
 		// If the @ParametricTest annotation does not exist for the method.
 		if (parametricTest == null) {
 			// Gets only one statement for the test.
-			final Statement testMethodStatement = getTestMethodStatement(method, new Object[] {});
+			final Statement testMethodStatement = getTestMethodStatement(testMethod, new Object[] {});
 			// Adds the test statement to the collection.
 			testMethodStatements.add(testMethodStatement);
 		}
 		// If it does exist.
 		else {
 			// Gets the test data for the method.
-			final List<?> testMethodParamsValues = new ArrayList<Object>(getTestDataProvider(method)
-					.getTestData(method));
+			final List<?> testMethodParamsValues = new ArrayList<Object>(getTestDataProvider(testMethod)
+					.getTestData(testMethod));
 			// Shuffles the parameters values.
 			Collections.shuffle(testMethodParamsValues);
 			// Gets the maximum number of test data objects to be used.
@@ -203,7 +220,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 				// Gets the current parameter value.
 				final Object currentTestParamValue = testMethodParamsValues.get(currentDataObjIndex);
 				// Gets the test statement for the current parameter value.
-				final Statement testMethodStatement = getTestMethodStatement(method,
+				final Statement testMethodStatement = getTestMethodStatement(testMethod,
 						new Object[] { currentTestParamValue });
 				// Adds the test statement to the collection.
 				testMethodStatements.add(testMethodStatement);
@@ -216,11 +233,33 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	/**
 	 * Runs a parametric test.
 	 * 
-	 * @param method
+	 * @param testMethod
 	 *            The test method to run.
+	 * @throws UnavailableTestDataException
+	 *             If the test data is not available.
 	 */
-	protected void runParametricTest(final FrameworkMethod method) {
-		
+	protected void runParametricTest(final FrameworkMethod testMethod) throws UnavailableTestDataException {
+		// Gets the statements for the test.
+		final Collection<Statement> testMethodStatements = getTestMethodStatements(testMethod);
+		// Creates a list for the failed tests.
+		final Collection<Exception> failedTests = new ArrayList<Exception>();
+		// Creates a list for the assumption violated tests.
+		final Collection<Exception> assumptionViolatedTests = new ArrayList<Exception>();
+		// For each statement.
+		for (final Statement currentStatement : testMethodStatements) {
+			// Tries to evaluate the current statement.
+			try {
+				currentStatement.evaluate();
+			}
+			// If an assumption is violated for the current statement.
+			catch (final AssumptionViolatedException exception) {
+				// TODO Adds the
+			}
+			// If any other exception is raised by the current test statement.
+			catch (final Throwable throwable) {
+				// TODO: handle exception
+			}
+		}
 	}
 	
 	/**
@@ -228,37 +267,37 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	 *      org.junit.runner.notification.RunNotifier)
 	 */
 	@Override
-	protected void runChild(final FrameworkMethod method, final RunNotifier notifier) {
+	protected void runChild(final FrameworkMethod testMethod, final RunNotifier notifier) {
 		// Creates a new notifier for the test.
-		final EachTestNotifier eachNotifier = new EachTestNotifier(notifier, describeChild(method));
+		final EachTestNotifier testNotifier = new EachTestNotifier(notifier, describeChild(testMethod));
 		// If the @Ignore annotation is not present.
-		if (method.getAnnotation(Ignore.class) == null) {
+		if (testMethod.getAnnotation(Ignore.class) == null) {
 			// Notifies that the test has been started.
-			eachNotifier.fireTestStarted();
+			testNotifier.fireTestStarted();
 			// Tries to run the test.
 			try {
-				runParametricTest(method);
+				runParametricTest(testMethod);
 			}
 			// If an assumption was violated.
 			catch (final AssumptionViolatedException exception) {
 				// Notifies that a test assumption has been violated.
-				eachNotifier.addFailedAssumption(exception);
+				testNotifier.addFailedAssumption(exception);
 			}
 			// If any other exception is raised.
 			catch (final Throwable throwable) {
 				// Notifies that a test has failed.
-				eachNotifier.addFailure(throwable);
+				testNotifier.addFailure(throwable);
 			}
 			// Finally.
 			finally {
 				// Notifies that a test has finished.
-				eachNotifier.fireTestFinished();
+				testNotifier.fireTestFinished();
 			}
 		}
 		// If it is present.
 		else {
 			// Notifies that the test has been ignored.
-			eachNotifier.fireTestIgnored();
+			testNotifier.fireTestIgnored();
 		}
 	}
 	
@@ -283,8 +322,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	/**
-	 * Validate the passed methods (usually methods annotated with @ParametricTest) as
-	 * "public void one test case arg".
+	 * Validate the passed methods (usually methods annotated with @ParametricTest) as "public void one arg".
 	 * 
 	 * @param methods
 	 *            Methods to be validated.
@@ -293,23 +331,14 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	 * @param errors
 	 *            Errors list where new validation errors should be added.
 	 */
-	protected void validatePublicVoidOneTestCaseArg(final List<FrameworkMethod> methods,
-			final boolean isStatic, final List<Throwable> errors) {
+	protected void validatePublicVoidOneArg(final List<FrameworkMethod> methods, final boolean isStatic,
+			final List<Throwable> errors) {
 		// For each method.
 		for (final FrameworkMethod currentTestMethod : methods) {
 			// Performs "public void" validation.
 			currentTestMethod.validatePublicVoid(isStatic, errors);
-			// If there is one and only one parameter.
-			if (currentTestMethod.getMethod().getParameterTypes().length == 1) {
-				// If the parameter type is not in the TestCase hierarchy.
-				if (!currentTestMethod.getMethod().getParameterTypes()[0].isAssignableFrom(TestCase.class)) {
-					// Adds an error. FIXME
-					errors.add(new Exception("Method " + currentTestMethod.getName()
-							+ " should have one parameter class that is assignable from TestCase.class"));
-				}
-			}
-			// If there are not.
-			else {
+			// If there is not one and only one parameter.
+			if (currentTestMethod.getMethod().getParameterTypes().length != 1) {
 				// Adds an error. FIXME
 				errors.add(new Exception("Method " + currentTestMethod.getName()
 						+ " should have one and only one parameter"));
@@ -331,7 +360,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		testMethods.removeAll(parametricTestMethods);
 		// Validate the just annotated with @Test as "public void no args".
 		validatePublicVoidNoArgs(testMethods, false, errors);
-		// Validate the just annotated with @ParametricTest as "public void one test case arg".
-		validatePublicVoidOneTestCaseArg(parametricTestMethods, false, errors);
+		// Validate the just annotated with @ParametricTest as "public void one arg".
+		validatePublicVoidOneArg(parametricTestMethods, false, errors);
 	}
 }

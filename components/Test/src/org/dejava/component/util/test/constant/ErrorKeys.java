@@ -11,9 +11,9 @@ import org.dejava.component.util.message.model.MessageSourceClassType;
 public final class ErrorKeys {
 	
 	/**
-	 * Unavailable parametric org.dejava.component.util.test.test data.
+	 * Unavailable parametric test data.
 	 */
-	public static final String UNAVAILABLE_TEST_DATA = "org.dejava.component.util.test.test.test.data.unavailable";
+	public static final String UNAVAILABLE_TEST_DATA = "test.test.data.unavailable";
 	
 	/**
 	 * Private constructor.

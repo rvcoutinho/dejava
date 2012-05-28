@@ -11269,3 +11269,180 @@ org.eclipse.ecf.filetransfer.UserCancelledException: Cancelled by user
 
 !ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:58:32.170
 !MESSAGE Command ReviewCode excecuted in 805ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 15:02:59.228
+!MESSAGE 34 markers applied on 15 files in 5ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 15:02:59.266
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 424ms, that is about 28.266666 ms/file, 1.8197424 ms/rule, 0.121316165 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 15:02:59.269
+!MESSAGE Command ReviewCode excecuted in 495ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:01:51.564
+!MESSAGE 34 markers applied on 15 files in 4ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:01:51.806
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 2041ms, that is about 136.06667 ms/file, 8.759657 ms/rule, 0.5839771 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:01:51.808
+!MESSAGE Command ReviewCode excecuted in 2387ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:02:38.585
+!MESSAGE 34 markers applied on 15 files in 3ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:02:38.595
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 496ms, that is about 33.066666 ms/file, 2.1287553 ms/rule, 0.14191702 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:02:38.598
+!MESSAGE Command ReviewCode excecuted in 535ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:02:45.278
+!MESSAGE 34 markers applied on 15 files in 3ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:02:45.299
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 430ms, that is about 28.666666 ms/file, 1.8454936 ms/rule, 0.123032905 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:02:45.302
+!MESSAGE Command ReviewCode excecuted in 487ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:04:33.322
+!MESSAGE 21 markers applied on 1 files in 2ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:04:33.477
+!MESSAGE Review code command terminated. 233 rules were executed against 1 files. Actual PMD duration is about 172ms, that is about 172.0 ms/file, 0.73819745 ms/rule, 0.73819745 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 18:04:33.480
+!MESSAGE Command ReviewCode excecuted in 340ms
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:20:06.714
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:13.221
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:22.647
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:23.368
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:23.937
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:24.084
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:24.313
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:24.874
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:25.067
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:26.885
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:27.906
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:28.895
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:30.099
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:31.403
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:33.429
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:36.429
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:37.442
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:38.459
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:41.011
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:41.942
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:21:42.971
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:22:27.522
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:22:27.956
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:22:29.034
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:22:40.550
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:22:44.563
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:22:55.099
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:22:56.107
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:22:57.555
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:22:58.622
+!MESSAGE Could not resolve bindings form method AbstractTestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:32:49.685
+!MESSAGE Could not resolve bindings form method AbstractTestMethodException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:32:52.303
+!MESSAGE Could not resolve bindings form method AbstractTestMethodException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:32:53.710
+!MESSAGE Could not resolve bindings form method AbstractTestMethodException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:32:55.718
+!MESSAGE Could not resolve bindings form method AbstractTestMethodException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:32:59.730
+!MESSAGE Could not resolve bindings form method AbstractTestMethodException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:33:01.647
+!MESSAGE Could not resolve bindings form method AbstractTestMethodException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:33:02.770
+!MESSAGE Could not resolve bindings form method AbstractTestMethodException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:33:05.853
+!MESSAGE Could not resolve bindings form method AbstractTestMethodException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 18:33:06.787
+!MESSAGE Could not resolve bindings form method AbstractTestMethodException
+
+!ENTRY org.eclipse.core.resources 4 2 2012-05-28 18:36:39.488
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOutlineContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

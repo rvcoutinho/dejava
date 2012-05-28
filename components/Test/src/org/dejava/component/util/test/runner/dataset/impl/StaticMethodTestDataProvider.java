@@ -9,27 +9,27 @@ import org.dejava.component.util.test.runner.statement.ParametricTestMethodInvok
 import org.junit.runners.model.FrameworkMethod;
 
 /**
- * Provides access to XML org.dejava.component.util.test.test data.
+ * Provides access to XML test data.
  */
 public class StaticMethodTestDataProvider implements TestDataProvider {
 	
 	/**
-	 * Default name for the org.dejava.component.util.test.test data objects method.
+	 * Default name for the test data objects method.
 	 */
 	public static final String DEFAULT_METHOD_NAME = ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION
 			+ "Data";
 	
 	/**
-	 * The method name for the org.dejava.component.util.test.test data provider.
+	 * The method name for the test data provider.
 	 */
 	private String methodName;
 	
 	/**
-	 * Gets the method name for the org.dejava.component.util.test.test data provider.
+	 * Gets the method name for the test data provider.
 	 * 
 	 * @param testMethod
 	 *            The JUnit framework method.
-	 * @return The method name for the org.dejava.component.util.test.test data provider.
+	 * @return The method name for the test data provider.
 	 */
 	public String getMethodName(final FrameworkMethod testMethod) {
 		// If the method name is not given.
@@ -45,10 +45,10 @@ public class StaticMethodTestDataProvider implements TestDataProvider {
 	}
 	
 	/**
-	 * Sets the method name for the org.dejava.component.util.test.test data provider.
+	 * Sets the method name for the test data provider.
 	 * 
 	 * @param methodName
-	 *            New method name for the org.dejava.component.util.test.test data provider.
+	 *            New method name for the test data provider.
 	 */
 	public void setMethodName(final String methodName) {
 		this.methodName = methodName;
@@ -67,7 +67,7 @@ public class StaticMethodTestDataProvider implements TestDataProvider {
 	 * Default constructor.
 	 * 
 	 * @param methodName
-	 *            The method name for the org.dejava.component.util.test.test data provider.
+	 *            The method name for the test data provider.
 	 */
 	public StaticMethodTestDataProvider(final String methodName) {
 		super();
@@ -81,14 +81,14 @@ public class StaticMethodTestDataProvider implements TestDataProvider {
 	public Collection<?> getTestData(final FrameworkMethod testMethod) throws UnavailableTestDataException {
 		// Tries to get the data.
 		try {
-			// The org.dejava.component.util.test.test data is the return of the method invocation.
+			// The test data is the return of the method invocation.
 			return (Collection<?>) MethodHandler.invokeStaticMethod(testMethod.getMethod()
 					.getDeclaringClass(), getMethodName(testMethod), null, null, true);
 		}
-		// If the org.dejava.component.util.test.test data cannot be retrieved.
+		// If the test data cannot be retrieved.
 		catch (final Exception exception) {
 			// Throws an exception.
-			throw new UnavailableTestDataException(exception, new Object[] { testMethod.getName() });
+			throw new UnavailableTestDataException(exception, testMethod.getName());
 		}
 	}
 }

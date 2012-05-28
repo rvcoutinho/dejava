@@ -1,11 +1,9 @@
 package org.dejava.component.util.test.exception;
 
-import org.dejava.component.util.test.constant.ErrorKeys;
-
 /**
- * Exception related to unavailable org.dejava.component.util.test.test data.
+ * Exception related to unavailable test data.
  */
-public class ParametricTestException extends AbstractTestException {
+public class ParametricTestException extends AbstractTestMethodException {
 	
 	/**
 	 * Generated serial.
@@ -13,15 +11,10 @@ public class ParametricTestException extends AbstractTestException {
 	private static final long serialVersionUID = -7501622556068793489L;
 	
 	/**
-	 * Basic constructor.
-	 * 
-	 * @param cause
-	 *            Exception cause.
-	 * @param parameters
-	 *            Parameters for the exception (and message).
+	 * @see AbstractTestMethodException#AbstractTestMethodException(String, Throwable, String, Object[])
 	 */
-	public ParametricTestException(final Throwable cause, final Object[] parameters) {
-		super(ErrorKeys.UNAVAILABLE_TEST_DATA, cause, parameters);
+	public ParametricTestException(final String messageKey, final Throwable cause, final String testName,
+			final Object[] paramsValues) {
+		super(messageKey, cause, testName, paramsValues);
 	}
-	
 }

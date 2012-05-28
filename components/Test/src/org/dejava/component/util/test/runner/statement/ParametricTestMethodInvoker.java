@@ -4,9 +4,9 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
 
 /**
- * Statement to invoke org.dejava.component.util.test.test methods.
+ * Statement to invoke test methods.
  * 
- * Each org.dejava.component.util.test.test method might be invoked multiple times with the provided org.dejava.component.util.test.test data.
+ * Each test method might be invoked multiple times with the provided test data.
  */
 public class ParametricTestMethodInvoker extends Statement {
 	
@@ -16,24 +16,24 @@ public class ParametricTestMethodInvoker extends Statement {
 	public static final String METHOD_NAME_EXPRESSION = "#{annotated_method_name}";
 	
 	/**
-	 * The target org.dejava.component.util.test.test object for the method invocation.
+	 * The target test object for the method invocation.
 	 */
 	private Object targetTest;
 	
 	/**
-	 * Returns the target org.dejava.component.util.test.test object for the method invocation.
+	 * Returns the target test object for the method invocation.
 	 * 
-	 * @return The target org.dejava.component.util.test.test object for the method invocation.
+	 * @return The target test object for the method invocation.
 	 */
 	public Object getTargetTest() {
 		return targetTest;
 	}
 	
 	/**
-	 * Sets the target org.dejava.component.util.test.test object for the method invocation.
+	 * Sets the target test object for the method invocation.
 	 * 
 	 * @param targetTest
-	 *            New target org.dejava.component.util.test.test object for the method invocation.
+	 *            New target test object for the method invocation.
 	 */
 	public void setTargetTest(final Object targetTest) {
 		this.targetTest = targetTest;
@@ -64,24 +64,24 @@ public class ParametricTestMethodInvoker extends Statement {
 	}
 	
 	/**
-	 * The parameters values for the org.dejava.component.util.test.test method.
+	 * The parameters values for the test method.
 	 */
 	private Object[] paramsValues;
 	
 	/**
-	 * Gets the parameters values for the org.dejava.component.util.test.test method.
+	 * Gets the parameters values for the test method.
 	 * 
-	 * @return The parameters values for the org.dejava.component.util.test.test method.
+	 * @return The parameters values for the test method.
 	 */
 	public Object[] getParamsValues() {
 		return paramsValues;
 	}
 	
 	/**
-	 * Sets the parameters values for the org.dejava.component.util.test.test method.
+	 * Sets the parameters values for the test method.
 	 * 
 	 * @param paramsValues
-	 *            New parameters values for the org.dejava.component.util.test.test method.
+	 *            New parameters values for the test method.
 	 */
 	public void setParamsValues(final Object[] paramsValues) {
 		this.paramsValues = paramsValues;
@@ -91,11 +91,11 @@ public class ParametricTestMethodInvoker extends Statement {
 	 * Default constructor.
 	 * 
 	 * @param targetTest
-	 *            The target org.dejava.component.util.test.test object for the method invocation.
+	 *            The target test object for the method invocation.
 	 * @param testMethod
 	 *            The JUnit framework method.
 	 * @param paramsValues
-	 *            The parameters values for the org.dejava.component.util.test.test method.
+	 *            The parameters values for the test method.
 	 */
 	public ParametricTestMethodInvoker(final Object targetTest, final FrameworkMethod testMethod,
 			final Object[] paramsValues) {
@@ -111,7 +111,7 @@ public class ParametricTestMethodInvoker extends Statement {
 	 */
 	@Override
 	public void evaluate() throws Throwable {
-		// Invokes the org.dejava.component.util.test.test method with the given parameters values.
+		// Invokes the test method with the given parameters values.
 		getTestMethod().invokeExplosively(getTargetTest(), new Object[] { getParamsValues() });
 	}
 }

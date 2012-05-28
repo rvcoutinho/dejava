@@ -10423,3 +10423,849 @@ java.io.IOException: Stream closed
 	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer$1.performFileTransfer(AbstractRetrieveFileTransfer.java:173)
 	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:35:31.757
+!MESSAGE 43 markers applied on 12 files in 3ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:35:31.820
+!MESSAGE Review code command terminated. 233 rules were executed against 12 files. Actual PMD duration is about 1715ms, that is about 142.91667 ms/file, 7.360515 ms/rule, 0.61337626 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:35:31.824
+!MESSAGE Command ReviewCode excecuted in 3125ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:43:29.670
+!MESSAGE 45 markers applied on 13 files in 4ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:43:29.730
+!MESSAGE Review code command terminated. 233 rules were executed against 13 files. Actual PMD duration is about 353ms, that is about 27.153847 ms/file, 1.5150214 ms/rule, 0.11654011 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:43:29.733
+!MESSAGE Command ReviewCode excecuted in 439ms
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 14:47:31.560
+!MESSAGE Could not resolve bindings form method TestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 14:47:33.068
+!MESSAGE Could not resolve bindings form method TestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 14:47:34.148
+!MESSAGE Could not resolve bindings form method TestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 14:47:34.220
+!MESSAGE Could not resolve bindings form method TestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 14:47:34.251
+!MESSAGE Could not resolve bindings form method TestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 14:47:34.728
+!MESSAGE Could not resolve bindings form method TestException
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-05-28 14:47:35.739
+!MESSAGE Could not resolve bindings form method TestException
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:03.484
+!MESSAGE 45 markers applied on 15 files in 3ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:03.575
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 386ms, that is about 25.733334 ms/file, 1.6566523 ms/rule, 0.11044349 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:03.578
+!MESSAGE Command ReviewCode excecuted in 506ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:20.817
+!MESSAGE 45 markers applied on 15 files in 3ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:20.905
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 392ms, that is about 26.133333 ms/file, 1.6824034 ms/rule, 0.11216023 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:20.910
+!MESSAGE Command ReviewCode excecuted in 512ms
+
+!ENTRY org.eclipse.jdt.core 4 4 2012-05-28 14:51:24.383
+!MESSAGE JavaBuilder handling CoreException while cleaning: Test
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:793)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.clean(JavaBuilder.java:291)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:304)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Could not delete '/Test/bin/org'.
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1941)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.clean(JavaBuilder.java:291)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:304)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\constant\ErrorKeys.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\constant.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception\AbstractTestException.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception\ParametricTestException.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception\UnavailableTestDataException.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\impl\JNDITestDataProvider.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\impl\StaticMethodTestDataProvider.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\impl.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\TestDataProvider.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\ParametricJUnitRunner$1.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\ParametricJUnitRunner.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2012-05-28 14:51:24.384
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete '/Test/bin/org'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1941)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.clean(JavaBuilder.java:291)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:304)
+	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\constant\ErrorKeys.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\constant.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception\AbstractTestException.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception\ParametricTestException.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception\UnavailableTestDataException.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\impl\JNDITestDataProvider.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\impl\StaticMethodTestDataProvider.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\impl.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\TestDataProvider.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\ParametricJUnitRunner$1.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\ParametricJUnitRunner.class.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava.
+Contains: Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2012-05-28 14:51:24.384
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\constant\ErrorKeys.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\constant.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception\AbstractTestException.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception\ParametricTestException.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception\UnavailableTestDataException.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\exception.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\impl\JNDITestDataProvider.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\impl\StaticMethodTestDataProvider.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\impl.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset\TestDataProvider.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\dataset.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\ParametricJUnitRunner$1.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner\ParametricJUnitRunner.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test\runner.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util\test.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component\util.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava\component.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.384
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org\dejava.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2012-05-28 14:51:24.385
+!MESSAGE Could not delete: C:\Users\Romulo Coutinho\Desktop\dejava\components\Test\bin\org.
+
+!ENTRY com.google.gdt.eclipse.suite 1 0 2012-05-28 14:51:26.558
+!MESSAGE Registering: com.google.gwt.eclipse.sdkbundle_2.4.0.v201201120043-rel-r37
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:45.485
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:45.783
+!MESSAGE Review code command terminated. 233 rules were executed against 1 files. Actual PMD duration is about 34ms, that is about 34.0 ms/file, 0.14592275 ms/rule, 0.14592275 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:45.786
+!MESSAGE Command ReviewCode excecuted in 350ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:53.231
+!MESSAGE 43 markers applied on 15 files in 3ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:53.351
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 362ms, that is about 24.133333 ms/file, 1.5536481 ms/rule, 0.10357654 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:51:53.357
+!MESSAGE Command ReviewCode excecuted in 514ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 4 0 2012-05-28 14:52:32.307
+!MESSAGE message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@65355a03org.dejava.component.util.test.test [in src [in Test]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [org.dejava.component.util.test.test [in src [in Test]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newNotPresentException(JavaElement.java:495)
+	at org.eclipse.jdt.internal.core.PackageFragment.getUnderlyingResource(PackageFragment.java:350)
+	at org.eclipse.jdt.internal.core.Openable.getCorrespondingResource(Openable.java:319)
+	at net.sourceforge.pmd.eclipse.ui.model.PackageRecord.getResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:557)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:223)
+	at org.eclipse.jdt.internal.ui.refactoring.RefactoringExecutionHelper$Operation.run(RefactoringExecutionHelper.java:106)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:4887)
+	at org.eclipse.jdt.internal.ui.actions.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:106)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:464)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:372)
+	at org.eclipse.jface.window.ApplicationWindow$1.run(ApplicationWindow.java:759)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.window.ApplicationWindow.run(ApplicationWindow.java:756)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2649)
+	at org.eclipse.jdt.internal.ui.refactoring.RefactoringExecutionHelper.perform(RefactoringExecutionHelper.java:191)
+	at org.eclipse.jdt.internal.ui.refactoring.RefactoringExecutionHelper.perform(RefactoringExecutionHelper.java:151)
+	at org.eclipse.jdt.internal.ui.refactoring.reorg.ReorgMoveStarter.run(ReorgMoveStarter.java:70)
+	at org.eclipse.jdt.internal.ui.packageview.SelectionTransferDropAdapter.handleDropMove(SelectionTransferDropAdapter.java:283)
+	at org.eclipse.jdt.internal.ui.packageview.SelectionTransferDropAdapter.performDrop(SelectionTransferDropAdapter.java:220)
+	at org.eclipse.jdt.internal.ui.dnd.JdtViewerDropAdapter.drop(JdtViewerDropAdapter.java:246)
+	at org.eclipse.jface.util.DelegatingDropAdapter$3.run(DelegatingDropAdapter.java:211)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:49)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:175)
+	at org.eclipse.jface.util.DelegatingDropAdapter.drop(DelegatingDropAdapter.java:209)
+	at org.eclipse.swt.dnd.DNDListener.handleEvent(DNDListener.java:90)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1077)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1062)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:774)
+	at org.eclipse.swt.dnd.DropTarget.Drop(DropTarget.java:456)
+	at org.eclipse.swt.dnd.DropTarget$3.method6(DropTarget.java:258)
+	at org.eclipse.swt.internal.ole.win32.COMObject.callback6(COMObject.java:119)
+	at org.eclipse.swt.internal.ole.win32.COM.DoDragDrop(Native Method)
+	at org.eclipse.swt.dnd.DragSource.drag(DragSource.java:363)
+	at org.eclipse.swt.dnd.DragSource.access$0(DragSource.java:289)
+	at org.eclipse.swt.dnd.DragSource$1.handleEvent(DragSource.java:172)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4165)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3754)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2012-05-28 14:52:32.307
+!MESSAGE org.dejava.component.util.test.test [in src [in Test]] does not exist
+
+!ENTRY org.eclipse.core.resources 4 2 2012-05-28 14:52:32.318
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:557)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:223)
+	at org.eclipse.jdt.internal.ui.refactoring.RefactoringExecutionHelper$Operation.run(RefactoringExecutionHelper.java:106)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:4887)
+	at org.eclipse.jdt.internal.ui.actions.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:106)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:464)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:372)
+	at org.eclipse.jface.window.ApplicationWindow$1.run(ApplicationWindow.java:759)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.window.ApplicationWindow.run(ApplicationWindow.java:756)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2649)
+	at org.eclipse.jdt.internal.ui.refactoring.RefactoringExecutionHelper.perform(RefactoringExecutionHelper.java:191)
+	at org.eclipse.jdt.internal.ui.refactoring.RefactoringExecutionHelper.perform(RefactoringExecutionHelper.java:151)
+	at org.eclipse.jdt.internal.ui.refactoring.reorg.ReorgMoveStarter.run(ReorgMoveStarter.java:70)
+	at org.eclipse.jdt.internal.ui.packageview.SelectionTransferDropAdapter.handleDropMove(SelectionTransferDropAdapter.java:283)
+	at org.eclipse.jdt.internal.ui.packageview.SelectionTransferDropAdapter.performDrop(SelectionTransferDropAdapter.java:220)
+	at org.eclipse.jdt.internal.ui.dnd.JdtViewerDropAdapter.drop(JdtViewerDropAdapter.java:246)
+	at org.eclipse.jface.util.DelegatingDropAdapter$3.run(DelegatingDropAdapter.java:211)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:49)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:175)
+	at org.eclipse.jface.util.DelegatingDropAdapter.drop(DelegatingDropAdapter.java:209)
+	at org.eclipse.swt.dnd.DNDListener.handleEvent(DNDListener.java:90)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1077)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1062)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:774)
+	at org.eclipse.swt.dnd.DropTarget.Drop(DropTarget.java:456)
+	at org.eclipse.swt.dnd.DropTarget$3.method6(DropTarget.java:258)
+	at org.eclipse.swt.internal.ole.win32.COMObject.callback6(COMObject.java:119)
+	at org.eclipse.swt.internal.ole.win32.COM.DoDragDrop(Native Method)
+	at org.eclipse.swt.dnd.DragSource.drag(DragSource.java:363)
+	at org.eclipse.swt.dnd.DragSource.access$0(DragSource.java:289)
+	at org.eclipse.swt.dnd.DragSource$1.handleEvent(DragSource.java:172)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4165)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3754)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 4 0 2012-05-28 14:53:27.609
+!MESSAGE message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@65355a03org.dejava.component.util.test.test [in src [in Test]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [org.dejava.component.util.test.test [in src [in Test]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newNotPresentException(JavaElement.java:495)
+	at org.eclipse.jdt.internal.core.PackageFragment.getUnderlyingResource(PackageFragment.java:350)
+	at org.eclipse.jdt.internal.core.Openable.getCorrespondingResource(Openable.java:319)
+	at net.sourceforge.pmd.eclipse.ui.model.PackageRecord.getResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:557)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:223)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2012-05-28 14:53:27.609
+!MESSAGE org.dejava.component.util.test.test [in src [in Test]] does not exist
+
+!ENTRY org.eclipse.core.resources 4 2 2012-05-28 14:53:27.694
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:557)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:223)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 4 0 2012-05-28 14:54:14.819
+!MESSAGE message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@65355a03org.dejava.component.util.test.test [in src [in Test]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [org.dejava.component.util.test.test [in src [in Test]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newNotPresentException(JavaElement.java:495)
+	at org.eclipse.jdt.internal.core.PackageFragment.getUnderlyingResource(PackageFragment.java:350)
+	at org.eclipse.jdt.internal.core.Openable.getCorrespondingResource(Openable.java:319)
+	at net.sourceforge.pmd.eclipse.ui.model.PackageRecord.getResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2353)
+	at org.eclipse.ui.actions.WorkspaceModifyOperation.run(WorkspaceModifyOperation.java:118)
+	at org.eclipse.ui.internal.editors.text.WorkspaceOperationRunner.run(WorkspaceOperationRunner.java:75)
+	at org.eclipse.ui.internal.editors.text.WorkspaceOperationRunner.run(WorkspaceOperationRunner.java:65)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.executeOperation(TextFileDocumentProvider.java:456)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.saveDocument(TextFileDocumentProvider.java:772)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.performSave(AbstractTextEditor.java:5048)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.performSave(CompilationUnitEditor.java:1247)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.doSave(CompilationUnitEditor.java:1301)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.doSave(AbstractTextEditor.java:7177)
+	at org.eclipse.ui.Saveable.doSave(Saveable.java:214)
+	at org.eclipse.ui.internal.SaveableHelper.doSaveModel(SaveableHelper.java:349)
+	at org.eclipse.ui.internal.SaveableHelper$3.run(SaveableHelper.java:195)
+	at org.eclipse.ui.internal.SaveableHelper$5.run(SaveableHelper.java:277)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:464)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:372)
+	at org.eclipse.jface.window.ApplicationWindow$1.run(ApplicationWindow.java:759)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.window.ApplicationWindow.run(ApplicationWindow.java:756)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2649)
+	at org.eclipse.ui.internal.SaveableHelper.runProgressMonitorOperation(SaveableHelper.java:285)
+	at org.eclipse.ui.internal.SaveableHelper.runProgressMonitorOperation(SaveableHelper.java:264)
+	at org.eclipse.ui.internal.SaveableHelper.saveModels(SaveableHelper.java:207)
+	at org.eclipse.ui.internal.SaveableHelper.savePart(SaveableHelper.java:144)
+	at org.eclipse.ui.internal.EditorManager.savePart(EditorManager.java:1399)
+	at org.eclipse.ui.internal.WorkbenchPage.savePart(WorkbenchPage.java:3416)
+	at org.eclipse.ui.internal.WorkbenchPage.saveEditor(WorkbenchPage.java:3429)
+	at org.eclipse.ui.internal.handlers.SaveHandler.execute(SaveHandler.java:54)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:293)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.executeCommand(WorkbenchKeyboard.java:468)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.press(WorkbenchKeyboard.java:786)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.processKeyEvent(WorkbenchKeyboard.java:885)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.filterKeySequenceBindings(WorkbenchKeyboard.java:567)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.access$3(WorkbenchKeyboard.java:508)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard$KeyDownFilter.handleEvent(WorkbenchKeyboard.java:123)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1262)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1052)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1077)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1062)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1104)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1100)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1509)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4640)
+	at org.eclipse.swt.widgets.Tree.WM_CHAR(Tree.java:5941)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4528)
+	at org.eclipse.swt.widgets.Tree.windowProc(Tree.java:5937)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4972)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2531)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3752)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2012-05-28 14:54:14.820
+!MESSAGE org.dejava.component.util.test.test [in src [in Test]] does not exist
+
+!ENTRY org.eclipse.core.resources 4 2 2012-05-28 14:54:14.826
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2353)
+	at org.eclipse.ui.actions.WorkspaceModifyOperation.run(WorkspaceModifyOperation.java:118)
+	at org.eclipse.ui.internal.editors.text.WorkspaceOperationRunner.run(WorkspaceOperationRunner.java:75)
+	at org.eclipse.ui.internal.editors.text.WorkspaceOperationRunner.run(WorkspaceOperationRunner.java:65)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.executeOperation(TextFileDocumentProvider.java:456)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.saveDocument(TextFileDocumentProvider.java:772)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.performSave(AbstractTextEditor.java:5048)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.performSave(CompilationUnitEditor.java:1247)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.doSave(CompilationUnitEditor.java:1301)
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.doSave(AbstractTextEditor.java:7177)
+	at org.eclipse.ui.Saveable.doSave(Saveable.java:214)
+	at org.eclipse.ui.internal.SaveableHelper.doSaveModel(SaveableHelper.java:349)
+	at org.eclipse.ui.internal.SaveableHelper$3.run(SaveableHelper.java:195)
+	at org.eclipse.ui.internal.SaveableHelper$5.run(SaveableHelper.java:277)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:464)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:372)
+	at org.eclipse.jface.window.ApplicationWindow$1.run(ApplicationWindow.java:759)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.window.ApplicationWindow.run(ApplicationWindow.java:756)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2649)
+	at org.eclipse.ui.internal.SaveableHelper.runProgressMonitorOperation(SaveableHelper.java:285)
+	at org.eclipse.ui.internal.SaveableHelper.runProgressMonitorOperation(SaveableHelper.java:264)
+	at org.eclipse.ui.internal.SaveableHelper.saveModels(SaveableHelper.java:207)
+	at org.eclipse.ui.internal.SaveableHelper.savePart(SaveableHelper.java:144)
+	at org.eclipse.ui.internal.EditorManager.savePart(EditorManager.java:1399)
+	at org.eclipse.ui.internal.WorkbenchPage.savePart(WorkbenchPage.java:3416)
+	at org.eclipse.ui.internal.WorkbenchPage.saveEditor(WorkbenchPage.java:3429)
+	at org.eclipse.ui.internal.handlers.SaveHandler.execute(SaveHandler.java:54)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:293)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.executeCommand(WorkbenchKeyboard.java:468)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.press(WorkbenchKeyboard.java:786)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.processKeyEvent(WorkbenchKeyboard.java:885)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.filterKeySequenceBindings(WorkbenchKeyboard.java:567)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard.access$3(WorkbenchKeyboard.java:508)
+	at org.eclipse.ui.internal.keys.WorkbenchKeyboard$KeyDownFilter.handleEvent(WorkbenchKeyboard.java:123)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1262)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1052)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1077)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1062)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1104)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1100)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1509)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4640)
+	at org.eclipse.swt.widgets.Tree.WM_CHAR(Tree.java:5941)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4528)
+	at org.eclipse.swt.widgets.Tree.windowProc(Tree.java:5937)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4972)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2531)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3752)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:54:54.350
+!MESSAGE 43 markers applied on 15 files in 2ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 4 0 2012-05-28 14:54:54.392
+!MESSAGE message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@65355a03org.dejava.component.util.test.test [in src [in Test]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [org.dejava.component.util.test.test [in src [in Test]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newNotPresentException(JavaElement.java:495)
+	at org.eclipse.jdt.internal.core.PackageFragment.getUnderlyingResource(PackageFragment.java:350)
+	at org.eclipse.jdt.internal.core.Openable.getCorrespondingResource(Openable.java:319)
+	at net.sourceforge.pmd.eclipse.ui.model.PackageRecord.getResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2353)
+	at net.sourceforge.pmd.eclipse.runtime.cmd.ReviewCodeCmd.execute(Unknown Source)
+	at net.sourceforge.pmd.eclipse.runtime.cmd.JobCommandProcessor$1.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2012-05-28 14:54:54.392
+!MESSAGE org.dejava.component.util.test.test [in src [in Test]] does not exist
+
+!ENTRY org.eclipse.core.resources 4 2 2012-05-28 14:54:54.396
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2353)
+	at net.sourceforge.pmd.eclipse.runtime.cmd.ReviewCodeCmd.execute(Unknown Source)
+	at net.sourceforge.pmd.eclipse.runtime.cmd.JobCommandProcessor$1.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:54:54.479
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 379ms, that is about 25.266666 ms/file, 1.6266094 ms/rule, 0.10844063 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:54:54.499
+!MESSAGE Command ReviewCode excecuted in 570ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:55:40.155
+!MESSAGE 43 markers applied on 15 files in 2ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 4 0 2012-05-28 14:55:40.159
+!MESSAGE message.error.javamodel_exceptionnet.sourceforge.pmd.eclipse.ui.model.PackageRecord@65355a03org.dejava.component.util.test.test [in src [in Test]] does not exist
+!STACK 1
+Java Model Exception: Java Model Status [org.dejava.component.util.test.test [in src [in Test]] does not exist]
+	at org.eclipse.jdt.internal.core.JavaElement.newNotPresentException(JavaElement.java:495)
+	at org.eclipse.jdt.internal.core.PackageFragment.getUnderlyingResource(PackageFragment.java:350)
+	at org.eclipse.jdt.internal.core.Openable.getCorrespondingResource(Openable.java:319)
+	at net.sourceforge.pmd.eclipse.ui.model.PackageRecord.getResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2353)
+	at net.sourceforge.pmd.eclipse.runtime.cmd.ReviewCodeCmd.execute(Unknown Source)
+	at net.sourceforge.pmd.eclipse.runtime.cmd.JobCommandProcessor$1.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2012-05-28 14:55:40.159
+!MESSAGE org.dejava.component.util.test.test [in src [in Test]] does not exist
+
+!ENTRY org.eclipse.core.resources 4 2 2012-05-28 14:55:40.164
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at net.sourceforge.pmd.eclipse.ui.model.AbstractPMDRecord.findResource(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.searchProjectForModifications(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.updateFiles(Unknown Source)
+	at net.sourceforge.pmd.eclipse.ui.views.ViolationOverviewContentProvider.resourceChanged(Unknown Source)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2353)
+	at net.sourceforge.pmd.eclipse.runtime.cmd.ReviewCodeCmd.execute(Unknown Source)
+	at net.sourceforge.pmd.eclipse.runtime.cmd.JobCommandProcessor$1.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:55:40.167
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 407ms, that is about 27.133333 ms/file, 1.7467811 ms/rule, 0.116452076 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:55:40.169
+!MESSAGE Command ReviewCode excecuted in 451ms
+!SESSION 2012-05-28 14:57:05.088 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_26
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ecf.provider.filetransfer 4 0 2012-05-28 14:57:40.732
+!MESSAGE org.eclipse.core.runtime.Status[plugin=org.eclipse.ecf.provider.filetransfer;code=4;message=hardClose;severity4;exception=java.io.IOException: Stream closed;children=[]]
+!STACK 0
+java.io.IOException: Stream closed
+	at java.io.BufferedInputStream.getBufIfOpen(Unknown Source)
+	at java.io.BufferedInputStream.read(Unknown Source)
+	at org.apache.commons.httpclient.ContentLengthInputStream.read(ContentLengthInputStream.java:170)
+	at org.apache.commons.httpclient.ContentLengthInputStream.read(ContentLengthInputStream.java:184)
+	at org.apache.commons.httpclient.ChunkedInputStream.exhaustInputStream(ChunkedInputStream.java:369)
+	at org.apache.commons.httpclient.ContentLengthInputStream.close(ContentLengthInputStream.java:118)
+	at java.io.FilterInputStream.close(Unknown Source)
+	at org.apache.commons.httpclient.AutoCloseInputStream.notifyWatcher(AutoCloseInputStream.java:194)
+	at org.apache.commons.httpclient.AutoCloseInputStream.close(AutoCloseInputStream.java:158)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.hardClose(AbstractRetrieveFileTransfer.java:331)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.hardClose(HttpClientRetrieveFileTransfer.java:396)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.cancel(HttpClientRetrieveFileTransfer.java:382)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport$1.handleTransferEvent(ECFExamplesTransport.java:283)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.fireTransferReceiveDataEvent(AbstractRetrieveFileTransfer.java:388)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.fireTransferReceiveDataEvent(HttpClientRetrieveFileTransfer.java:1163)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.handleReceivedData(AbstractRetrieveFileTransfer.java:288)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer$1.performFileTransfer(AbstractRetrieveFileTransfer.java:173)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ecf.provider.filetransfer 4 0 2012-05-28 14:57:41.204
+!MESSAGE org.eclipse.core.runtime.Status[plugin=org.eclipse.ecf.provider.filetransfer;code=4;message=hardClose;severity4;exception=java.io.IOException: Stream closed;children=[]]
+!STACK 0
+java.io.IOException: Stream closed
+	at java.io.BufferedInputStream.getBufIfOpen(Unknown Source)
+	at java.io.BufferedInputStream.read(Unknown Source)
+	at org.apache.commons.httpclient.ContentLengthInputStream.read(ContentLengthInputStream.java:170)
+	at org.apache.commons.httpclient.ContentLengthInputStream.read(ContentLengthInputStream.java:184)
+	at org.apache.commons.httpclient.ChunkedInputStream.exhaustInputStream(ChunkedInputStream.java:369)
+	at org.apache.commons.httpclient.ContentLengthInputStream.close(ContentLengthInputStream.java:118)
+	at java.io.FilterInputStream.close(Unknown Source)
+	at org.apache.commons.httpclient.AutoCloseInputStream.notifyWatcher(AutoCloseInputStream.java:194)
+	at org.apache.commons.httpclient.AutoCloseInputStream.close(AutoCloseInputStream.java:158)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.hardClose(AbstractRetrieveFileTransfer.java:331)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.hardClose(HttpClientRetrieveFileTransfer.java:396)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.cancel(HttpClientRetrieveFileTransfer.java:382)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport$1.handleTransferEvent(ECFExamplesTransport.java:283)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.fireTransferReceiveDataEvent(AbstractRetrieveFileTransfer.java:388)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.fireTransferReceiveDataEvent(HttpClientRetrieveFileTransfer.java:1163)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.handleReceivedData(AbstractRetrieveFileTransfer.java:288)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer$1.performFileTransfer(AbstractRetrieveFileTransfer.java:173)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ecf.provider.filetransfer 4 0 2012-05-28 14:57:41.670
+!MESSAGE org.eclipse.core.runtime.Status[plugin=org.eclipse.ecf.provider.filetransfer;code=4;message=hardClose;severity4;exception=java.io.IOException: Stream closed;children=[]]
+!STACK 0
+java.io.IOException: Stream closed
+	at java.io.BufferedInputStream.getBufIfOpen(Unknown Source)
+	at java.io.BufferedInputStream.read(Unknown Source)
+	at org.apache.commons.httpclient.ContentLengthInputStream.read(ContentLengthInputStream.java:170)
+	at org.apache.commons.httpclient.ContentLengthInputStream.read(ContentLengthInputStream.java:184)
+	at org.apache.commons.httpclient.ChunkedInputStream.exhaustInputStream(ChunkedInputStream.java:369)
+	at org.apache.commons.httpclient.ContentLengthInputStream.close(ContentLengthInputStream.java:118)
+	at java.io.FilterInputStream.close(Unknown Source)
+	at org.apache.commons.httpclient.AutoCloseInputStream.notifyWatcher(AutoCloseInputStream.java:194)
+	at org.apache.commons.httpclient.AutoCloseInputStream.close(AutoCloseInputStream.java:158)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.hardClose(AbstractRetrieveFileTransfer.java:331)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.hardClose(HttpClientRetrieveFileTransfer.java:396)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.cancel(HttpClientRetrieveFileTransfer.java:382)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport$1.handleTransferEvent(ECFExamplesTransport.java:283)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.fireTransferReceiveDataEvent(AbstractRetrieveFileTransfer.java:388)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.fireTransferReceiveDataEvent(HttpClientRetrieveFileTransfer.java:1163)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.handleReceivedData(AbstractRetrieveFileTransfer.java:288)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer$1.performFileTransfer(AbstractRetrieveFileTransfer.java:173)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.jboss.tools.project.examples 8 0 2012-05-28 14:57:41.675
+!MESSAGE Cancelled by user
+!STACK 1
+org.eclipse.ecf.filetransfer.UserCancelledException: Cancelled by user
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.newUserCancelledException(AbstractRetrieveFileTransfer.java:442)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.setDoneCanceled(AbstractRetrieveFileTransfer.java:472)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.cancel(HttpClientRetrieveFileTransfer.java:350)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport$1.handleTransferEvent(ECFExamplesTransport.java:283)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.fireTransferReceiveDataEvent(AbstractRetrieveFileTransfer.java:388)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.fireTransferReceiveDataEvent(HttpClientRetrieveFileTransfer.java:1163)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.handleReceivedData(AbstractRetrieveFileTransfer.java:288)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer$1.performFileTransfer(AbstractRetrieveFileTransfer.java:173)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.ecf.identity 4 0 2012-05-28 14:57:41.676
+!MESSAGE Cancelled by user
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:58:32.158
+!MESSAGE 35 markers applied on 15 files in 3ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:58:32.168
+!MESSAGE Review code command terminated. 233 rules were executed against 15 files. Actual PMD duration is about 717ms, that is about 47.8 ms/file, 3.077253 ms/rule, 0.20515022 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-05-28 14:58:32.170
+!MESSAGE Command ReviewCode excecuted in 805ms

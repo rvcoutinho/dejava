@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.dejava.component.util.test.runner.dataset.impl.XMLTestDataProvider;
+import org.junit.Test.None;
 
 /**
  * Multiple data test. This annotation tells the JUnit (with the proper Runner) to run the annotated test
@@ -20,13 +21,30 @@ public @interface ParametricTest {
 	 * The test data provider for multiple data test.
 	 */
 	Class<? extends TestDataProvider> dataProvider() default XMLTestDataProvider.class;
-		
+	
 	/**
 	 * The parameters to instantiate the test data provider.
 	 * 
 	 * The data provider must have a constructor with the same number of String arguments given.
 	 */
 	String[] paramsValues() default {};
+	
+	/**
+	 * Exception class that is expected to be raised during the test method execution.
+	 */
+	Class<? extends Throwable> expectedExceptionClass() default None.class;
+	
+	/**
+	 * Exception message that is expected during the test method execution. Will only be used if an expected
+	 * exception class is given.
+	 */
+	String expectedExceptionMessage() default "";
+	
+	/**
+	 * Timeout in milliseconds to cause a test method to fail if it takes longer than that number of
+	 * milliseconds.
+	 */
+	int timeout() default 0;
 	
 	/**
 	 * The maximum number of test data objects that must be used in the test.

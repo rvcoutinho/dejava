@@ -11,16 +11,18 @@ import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.dejava.component.util.test.runner.statement.ParametricTestMethodInvoker;
 import org.junit.Ignore;
-import org.junit.Rule;
 import org.junit.Test;
+import org.junit.Test.None;
 import org.junit.internal.AssumptionViolatedException;
 import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.internal.runners.model.ReflectiveCallable;
 import org.junit.internal.runners.statements.Fail;
-import org.junit.rules.MethodRule;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.RunRules;
+import org.junit.rules.TestRule;
+import org.junit.rules.Timeout;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
-import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
@@ -86,57 +88,102 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	/**
-	 * Gets the rules for the given test.
+	 * Gets a new expected exception rule for the current test method.
 	 * 
-	 * @param test
-	 *            Test that the rules must be retrieved for.
-	 * @return The rules for the given test.
+	 * @param testMethod
+	 *            Test method that will be executed.
+	 * @return A new expected exception rule for the current test method.
 	 */
-	protected Collection<MethodRule> getRules(final Object test) {
-		// Creates the rules list.
-		final Collection<MethodRule> rules = new ArrayList<MethodRule>();
-		// For each field (rule) from the test class annotated with @Rule.
-		for (final FrameworkField currentRule : getTestClass().getAnnotatedFields(Rule.class)) {
-			// Tries to add the current rule to the list,
-			try {
-				rules.add((MethodRule) currentRule.get(test));
-			}
-			// If it is not possible to get the current rule.
-			catch (final Exception exception) {
-				// Throws an RuntimeException as it should not be possible to get a not accessible field.
-				// FIXME
-				throw new RuntimeException();
+	protected TestRule getExpectedExceptionRule(final FrameworkMethod testMethod) {
+		// Creates a new expected exception rule.
+		final ExpectedException expectedException = ExpectedException.none();
+		// Tries to get the @ParametricTest annotation.
+		final ParametricTest paramTestAnnotation = testMethod.getAnnotation(ParametricTest.class);
+		// If the @ParametricTest annotation is not present for the method.
+		if (paramTestAnnotation == null) {
+			// Tries to get the @Test annotation.
+			final Test testAnnotation = testMethod.getAnnotation(Test.class);
+			// If the @Test annotation is present for the method.
+			if (testAnnotation != null) {
+				// If the excepted exception is not None.
+				if (!None.class.equals(testAnnotation.expected())) {
+					// Adds the expected exception class to the Rule.
+					expectedException.expect(testAnnotation.expected());
+				}
 			}
 		}
-		// TODO Add default rules.
-		// Returns the rules.
-		return rules;
+		// If it is present.
+		else {
+			// If the excepted exception class is not None.
+			if (!None.class.equals(paramTestAnnotation.expectedExceptionClass())) {
+				// Adds the expected exception class to the Rule.
+				expectedException.expect(paramTestAnnotation.expectedExceptionClass());
+				// If there is an excepted exception message.
+				if ("".equals(paramTestAnnotation.expectedExceptionMessage())) {
+					// Adds the expected exception message to the Rule.
+					expectedException.expectMessage(paramTestAnnotation.expectedExceptionMessage());
+				}
+			}
+		}
+		// Returns the expected exception rule.
+		return expectedException;
 	}
 	
 	/**
-	 * Includes the given rules in a statement.
+	 * Gets a new timeout rule for the current test method.
+	 * 
+	 * @param testMethod
+	 *            Test method that will be executed.
+	 * @return A new timeout rule for the current test method.
+	 */
+	protected TestRule getTimeoutRule(final FrameworkMethod testMethod) {
+		// The default timeout is 0 (wait forever).
+		Integer timeout = 0;
+		// Tries to get the @ParametricTest annotation.
+		final ParametricTest paramTestAnnotation = testMethod.getAnnotation(ParametricTest.class);
+		// If the @ParametricTest annotation is not present for the method.
+		if (paramTestAnnotation == null) {
+			// Tries to get the @Test annotation.
+			final Test testAnnotation = testMethod.getAnnotation(Test.class);
+			// If the @Test annotation is present for the method.
+			if (testAnnotation != null) {
+				// Uses the @Test timeout.
+				timeout = new Float(testAnnotation.timeout()).intValue();
+			}
+		}
+		// If it is present.
+		else {
+			// Uses the @ParametricTest timeout.
+			timeout = paramTestAnnotation.timeout();
+		}
+		// Returns the timeout rule.
+		return new Timeout(timeout);
+	}
+	
+	/**
+	 * Gets the rules for the given test.
 	 * 
 	 * @param testMethod
 	 *            The test method for the statement.
 	 * @param test
-	 *            The test to be used in the statement.
-	 * @param currentTestStatement
-	 *            The current statement (to be wrapped by the new ones).
-	 * @param rules
-	 *            Rules to be applied to the current statement.
-	 * @return A new statement by wrapping the the given statement with the given rules.
+	 *            Test that the rules must be retrieved for.
+	 * @return The rules for the given test.
 	 */
-	private Statement includeRules(final FrameworkMethod testMethod, final Object test,
-			final Statement currentTestStatement, final Collection<MethodRule> rules) {
-		// The new test statement starts with the given one.
-		Statement newTestStatement = currentTestStatement;
-		// For each provided rule.
-		for (final MethodRule currentRule : rules) {
-			// The new statement is the old one wrapped with the current rule.
-			newTestStatement = currentRule.apply(newTestStatement, testMethod, test);
+	protected Collection<TestRule> getRules(final FrameworkMethod testMethod, final Object test) {
+		// Creates the rules list.
+		final List<TestRule> rules = new ArrayList<TestRule>();
+		// For each field (rule) from the test class annotated with @Rule.
+		for (final TestRule currentRule : super.getTestRules(test)) {
+			// Adds the current rule to the list,
+			rules.add(currentRule);
 		}
-		// Returns the new test statement.
-		return newTestStatement;
+		// Adds the expected exception rule.
+		rules.add(0, getExpectedExceptionRule(testMethod));
+		// Adds the timeout rule to the list.
+		rules.add(1, getTimeoutRule(testMethod));
+		// TODO Adds other default rules.
+		// Returns the rules.
+		return rules;
 	}
 	
 	/**
@@ -173,8 +220,8 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		// Creates the ParametricTestMethodInvoker statement.
 		Statement testMethodStatement = new ParametricTestMethodInvoker(test, testMethod, testParamsValues);
 		// Wraps the statement with the given rules.
-		testMethodStatement = includeRules(testMethod, test, testMethodStatement,
-				getRules(testMethodStatement));
+		testMethodStatement = new RunRules(testMethodStatement, getRules(testMethod, testMethodStatement),
+				describeChild(testMethod));
 		// Returns the test statement.
 		return testMethodStatement;
 	}

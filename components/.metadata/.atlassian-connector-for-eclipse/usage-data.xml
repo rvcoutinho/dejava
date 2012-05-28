@@ -1,51 +1,41 @@
 <interactionEvent>
   <kind>JOB</kind>
-  <date>2012-05-25 18:36:06.967 BRT</date>
+  <date>2012-05-28 14:10:14.576 BRT</date>
   <pluginId>com.atlassian.connector.eclipse.internal.jira.core</pluginId>
   <eventId>logout</eventId>
 </interactionEvent><interactionEvent>
   <kind>JOB</kind>
-  <date>2012-05-25 18:36:07.99 BRT</date>
+  <date>2012-05-28 14:10:14.606 BRT</date>
   <pluginId>com.atlassian.connector.eclipse.internal.jira.core</pluginId>
   <eventId>logout</eventId>
 </interactionEvent><interactionEvent>
   <kind>PREFERENCE</kind>
-  <date>2012-05-25 18:37:51.339 BRT</date>
+  <date>2012-05-28 14:11:34.514 BRT</date>
   <pluginId>com.atlassian.connector.eclipse.monitor.core</pluginId>
   <eventId>system info: os-arch</eventId>
   <details>x86</details>
 </interactionEvent><interactionEvent>
   <kind>PREFERENCE</kind>
-  <date>2012-05-25 18:37:51.372 BRT</date>
+  <date>2012-05-28 14:11:34.536 BRT</date>
   <pluginId>com.atlassian.connector.eclipse.monitor.core</pluginId>
   <eventId>system info: os</eventId>
   <details>win32</details>
 </interactionEvent><interactionEvent>
   <kind>PREFERENCE</kind>
-  <date>2012-05-25 18:37:51.373 BRT</date>
+  <date>2012-05-28 14:11:34.536 BRT</date>
   <pluginId>com.atlassian.connector.eclipse.monitor.core</pluginId>
   <eventId>system info: org.eclipse.core.runtime</eventId>
   <details>3.7.0.v20110110</details>
 </interactionEvent><interactionEvent>
   <kind>PREFERENCE</kind>
-  <date>2012-05-25 18:37:51.373 BRT</date>
+  <date>2012-05-28 14:11:34.537 BRT</date>
   <pluginId>com.atlassian.connector.eclipse.monitor.core</pluginId>
   <eventId>system info: connector-version</eventId>
   <details>3.0.2.v20111010</details>
 </interactionEvent><interactionEvent>
   <kind>PREFERENCE</kind>
-  <date>2012-05-25 18:37:51.374 BRT</date>
+  <date>2012-05-28 14:11:34.538 BRT</date>
   <pluginId>com.atlassian.connector.eclipse.monitor.core</pluginId>
   <eventId>system info: plugins</eventId>
   <details>{ui=3.0.2.v20111010, fisheye.ui=3.0.2.v20111010, commons.ui=3.0.2.v20111010, subclipse.core=3.0.2.v20111010, subclipse.ui=3.0.2.v20111010, crucible.core=3.0.2.v20111010, crucible.ui=3.0.2.v20111010, monitor.ui=3.0.2.v20111010, fisheye.core=3.0.2.v20111010, branding.ui=3.0.2.v20111010, bamboo.ui=3.0.2.v20111010, monitor.core=3.0.2.v20111010, help=3.0.2.v20111010, commons.core=3.0.2.v20111010, bamboo.core=3.0.2.v20111010, directclickthrough.ui=3.0.2.v20111010, core=3.0.2.v20111010, jira.ui=3.0.2.v20111010, cvs.ui=3.0.2.v20111010, jira.core=3.0.2.v20111010, cvs.core=3.0.2.v20111010}</details>
-</interactionEvent><interactionEvent>
-  <kind>JOB</kind>
-  <date>2012-05-25 19:04:25.800 BRT</date>
-  <pluginId>com.atlassian.connector.eclipse.internal.jira.core</pluginId>
-  <eventId>logout</eventId>
-</interactionEvent><interactionEvent>
-  <kind>JOB</kind>
-  <date>2012-05-25 19:04:25.806 BRT</date>
-  <pluginId>com.atlassian.connector.eclipse.internal.jira.core</pluginId>
-  <eventId>logout</eventId>
 </interactionEvent>

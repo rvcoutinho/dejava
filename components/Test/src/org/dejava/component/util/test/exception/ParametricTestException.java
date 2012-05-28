@@ -5,7 +5,7 @@ import org.dejava.component.util.test.constant.ErrorKeys;
 /**
  * Exception related to unavailable org.dejava.component.util.test.test data.
  */
-public class UnavailableTestDataException extends AbstractTestException {
+public class ParametricTestException extends AbstractTestException {
 	
 	/**
 	 * Generated serial.
@@ -20,7 +20,7 @@ public class UnavailableTestDataException extends AbstractTestException {
 	 * @param parameters
 	 *            Parameters for the exception (and message).
 	 */
-	public UnavailableTestDataException(final Throwable cause, final Object[] parameters) {
+	public ParametricTestException(final Throwable cause, final Object[] parameters) {
 		super(ErrorKeys.UNAVAILABLE_TEST_DATA, cause, parameters);
 	}
 	

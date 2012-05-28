@@ -28,12 +28,14 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
 /**
- * JUnit runner that injects test data into tests. It runs the same test multiple times (if multiple data is
- * given).
+ * JUnit runner that injects org.dejava.component.util.test.test data into tests. It runs the same
+ * org.dejava.component.util.test.test multiple times (if multiple data is given).
  * 
- * It uses a custom annotation named {@link ParametricTest} to decide how test data will be retrieved.
+ * It uses a custom annotation named {@link ParametricTest} to decide how org.dejava.component.util.test.test
+ * data will be retrieved.
  * 
- * It also runs regular JUnit test annotated with @Test. In this cases, there is no data injection.
+ * It also runs regular JUnit org.dejava.component.util.test.test annotated with @Test. In this cases, there
+ * is no data injection.
  */
 public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	
@@ -49,7 +51,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	 */
 	@Override
 	protected List<FrameworkMethod> computeTestMethods() {
-		// List of test methods.
+		// List of org.dejava.component.util.test.test methods.
 		final List<FrameworkMethod> testMethods = new ArrayList<FrameworkMethod>();
 		// Adds the methods annotated with @Test (as for default action).
 		testMethods.addAll(getTestClass().getAnnotatedMethods(Test.class));
@@ -57,42 +59,42 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		testMethods.removeAll(getTestClass().getAnnotatedMethods(ParametricTest.class));
 		// Adds the methods annotated with {@link ParametricTest} again.
 		testMethods.addAll(getTestClass().getAnnotatedMethods(ParametricTest.class));
-		// Returns the found test methods.
+		// Returns the found org.dejava.component.util.test.test methods.
 		return testMethods;
 	}
 	
 	/**
-	 * Gets the test data provider instance from the given annotation.
+	 * Gets the org.dejava.component.util.test.test data provider instance from the given annotation.
 	 * 
 	 * @param testMethod
 	 *            Test method that will be executed.
-	 * @return The test data provider instance from the given annotation.
+	 * @return The org.dejava.component.util.test.test data provider instance from the given annotation.
 	 * @throws UnavailableTestDataException
-	 *             If the test data provider cannot be created.
+	 *             If the org.dejava.component.util.test.test data provider cannot be created.
 	 */
 	protected TestDataProvider getTestDataProvider(final FrameworkMethod testMethod)
 			throws UnavailableTestDataException {
 		// Tries to get the provider.
 		try {
-			// Gets the annotation with the test data information.
+			// Gets the annotation with the org.dejava.component.util.test.test data information.
 			final ParametricTest parametricTest = testMethod.getAnnotation(ParametricTest.class);
-			// Returns the test data provider.
+			// Returns the org.dejava.component.util.test.test data provider.
 			return ConstructorHandler.invokeConstructor(parametricTest.dataProvider(), null,
 					parametricTest.paramsValues(), false);
 		}
 		// If the provider cannot be instantiated.
 		catch (final Exception exception) {
-			// Throws an exception. FIXME
-			throw new UnavailableTestDataException(null, exception, new Object[] { testMethod.getName() });
+			// Throws an exception.
+			throw new UnavailableTestDataException(exception, new Object[] { testMethod.getName() });
 		}
 	}
 	
 	/**
-	 * Gets a new expected exception rule for the current test method.
+	 * Gets a new expected exception rule for the current org.dejava.component.util.test.test method.
 	 * 
 	 * @param testMethod
 	 *            Test method that will be executed.
-	 * @return A new expected exception rule for the current test method.
+	 * @return A new expected exception rule for the current org.dejava.component.util.test.test method.
 	 */
 	protected TestRule getExpectedExceptionRule(final FrameworkMethod testMethod) {
 		// Creates a new expected exception rule.
@@ -130,11 +132,11 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	/**
-	 * Gets a new timeout rule for the current test method.
+	 * Gets a new timeout rule for the current org.dejava.component.util.test.test method.
 	 * 
 	 * @param testMethod
 	 *            Test method that will be executed.
-	 * @return A new timeout rule for the current test method.
+	 * @return A new timeout rule for the current org.dejava.component.util.test.test method.
 	 */
 	protected TestRule getTimeoutRule(final FrameworkMethod testMethod) {
 		// The default timeout is 0 (wait forever).
@@ -161,18 +163,18 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	/**
-	 * Gets the rules for the given test.
+	 * Gets the rules for the given org.dejava.component.util.test.test.
 	 * 
 	 * @param testMethod
-	 *            The test method for the statement.
+	 *            The org.dejava.component.util.test.test method for the statement.
 	 * @param test
 	 *            Test that the rules must be retrieved for.
-	 * @return The rules for the given test.
+	 * @return The rules for the given org.dejava.component.util.test.test.
 	 */
 	protected Collection<TestRule> getRules(final FrameworkMethod testMethod, final Object test) {
 		// Creates the rules list.
 		final List<TestRule> rules = new ArrayList<TestRule>();
-		// For each field (rule) from the test class annotated with @Rule.
+		// For each field (rule) from the org.dejava.component.util.test.test class annotated with @Rule.
 		for (final TestRule currentRule : super.getTestRules(test)) {
 			// Adds the current rule to the list,
 			rules.add(currentRule);
@@ -187,19 +189,19 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	/**
-	 * Gets the statement for a parametric test method.
+	 * Gets the statement for a parametric org.dejava.component.util.test.test method.
 	 * 
 	 * @param testMethod
-	 *            The test method for the statement.
+	 *            The org.dejava.component.util.test.test method for the statement.
 	 * @param testParamsValues
-	 *            The values of the parameters to be used in the test.
-	 * @return the statement for a parametric test method.
+	 *            The values of the parameters to be used in the org.dejava.component.util.test.test.
+	 * @return the statement for a parametric org.dejava.component.util.test.test method.
 	 */
 	protected Statement getTestMethodStatement(final FrameworkMethod testMethod,
 			final Object[] testParamsValues) {
 		// Test instance.
 		Object test = null;
-		// Tries to get a new test instance.
+		// Tries to get a new org.dejava.component.util.test.test instance.
 		try {
 			// Creates a new reflective call.
 			final ReflectiveCallable createTestCall = new ReflectiveCallable() {
@@ -209,10 +211,10 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 					return createTest();
 				}
 			};
-			// Creates the test instance.
+			// Creates the org.dejava.component.util.test.test instance.
 			test = createTestCall.run();
 		}
-		// If anything is raised by the test creation.
+		// If anything is raised by the org.dejava.component.util.test.test creation.
 		catch (final Throwable throwable) {
 			// Returns a fail statement.
 			return new Fail(throwable);
@@ -222,71 +224,71 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		// Wraps the statement with the given rules.
 		testMethodStatement = new RunRules(testMethodStatement, getRules(testMethod, testMethodStatement),
 				describeChild(testMethod));
-		// Returns the test statement.
+		// Returns the org.dejava.component.util.test.test statement.
 		return testMethodStatement;
 	}
 	
 	/**
-	 * Gets the statements for a parametric test method.
+	 * Gets the statements for a parametric org.dejava.component.util.test.test method.
 	 * 
 	 * @param testMethod
-	 *            The test method for the statements.
-	 * @return The statements for a parametric test method.
+	 *            The org.dejava.component.util.test.test method for the statements.
+	 * @return The statements for a parametric org.dejava.component.util.test.test method.
 	 * @throws UnavailableTestDataException
-	 *             If the test data is not available.
+	 *             If the org.dejava.component.util.test.test data is not available.
 	 */
 	protected Collection<Statement> getTestMethodStatements(final FrameworkMethod testMethod)
 			throws UnavailableTestDataException {
-		// Gets the annotation with the test data information.
+		// Gets the annotation with the org.dejava.component.util.test.test data information.
 		final ParametricTest parametricTest = testMethod.getAnnotation(ParametricTest.class);
-		// Creates the list with the statements for the current test.
+		// Creates the list with the statements for the current org.dejava.component.util.test.test.
 		final Collection<Statement> testMethodStatements = new ArrayList<Statement>();
 		// If the @ParametricTest annotation does not exist for the method.
 		if (parametricTest == null) {
-			// Gets only one statement for the test.
+			// Gets only one statement for the org.dejava.component.util.test.test.
 			final Statement testMethodStatement = getTestMethodStatement(testMethod, new Object[] {});
-			// Adds the test statement to the collection.
+			// Adds the org.dejava.component.util.test.test statement to the collection.
 			testMethodStatements.add(testMethodStatement);
 		}
 		// If it does exist.
 		else {
-			// Gets the test data for the method.
+			// Gets the org.dejava.component.util.test.test data for the method.
 			final List<?> testMethodParamsValues = new ArrayList<Object>(getTestDataProvider(testMethod)
 					.getTestData(testMethod));
 			// Shuffles the parameters values.
 			Collections.shuffle(testMethodParamsValues);
-			// Gets the maximum number of test data objects to be used.
+			// Gets the maximum number of org.dejava.component.util.test.test data objects to be used.
 			Integer maxTestParams = parametricTest.maxTestData();
 			// If the number is 0.
 			if (maxTestParams == 0) {
-				// The maximum number of test data objects is the list size.
+				// The maximum number of org.dejava.component.util.test.test data objects is the list size.
 				maxTestParams = testMethodParamsValues.size();
 			}
-			// For each test data object (until the maximum given).
+			// For each org.dejava.component.util.test.test data object (until the maximum given).
 			for (Integer currentDataObjIndex = 0; currentDataObjIndex < maxTestParams; currentDataObjIndex++) {
 				// Gets the current parameter value.
 				final Object currentTestParamValue = testMethodParamsValues.get(currentDataObjIndex);
-				// Gets the test statement for the current parameter value.
+				// Gets the org.dejava.component.util.test.test statement for the current parameter value.
 				final Statement testMethodStatement = getTestMethodStatement(testMethod,
 						new Object[] { currentTestParamValue });
-				// Adds the test statement to the collection.
+				// Adds the org.dejava.component.util.test.test statement to the collection.
 				testMethodStatements.add(testMethodStatement);
 			}
 		}
-		// Returns the statements for the test.
+		// Returns the statements for the org.dejava.component.util.test.test.
 		return testMethodStatements;
 	}
 	
 	/**
-	 * Runs a parametric test.
+	 * Runs a parametric org.dejava.component.util.test.test.
 	 * 
 	 * @param testMethod
-	 *            The test method to run.
+	 *            The org.dejava.component.util.test.test method to run.
 	 * @throws UnavailableTestDataException
-	 *             If the test data is not available.
+	 *             If the org.dejava.component.util.test.test data is not available.
 	 */
 	protected void runParametricTest(final FrameworkMethod testMethod) throws UnavailableTestDataException {
-		// Gets the statements for the test.
+		// Gets the statements for the org.dejava.component.util.test.test.
 		final Collection<Statement> testMethodStatements = getTestMethodStatements(testMethod);
 		// Creates a list for the failed tests.
 		final Collection<Exception> failedTests = new ArrayList<Exception>();
@@ -302,7 +304,7 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 			catch (final AssumptionViolatedException exception) {
 				// TODO Adds the
 			}
-			// If any other exception is raised by the current test statement.
+			// If any other exception is raised by the current org.dejava.component.util.test.test statement.
 			catch (final Throwable throwable) {
 				// TODO: handle exception
 			}
@@ -315,35 +317,35 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 	 */
 	@Override
 	protected void runChild(final FrameworkMethod testMethod, final RunNotifier notifier) {
-		// Creates a new notifier for the test.
+		// Creates a new notifier for the org.dejava.component.util.test.test.
 		final EachTestNotifier testNotifier = new EachTestNotifier(notifier, describeChild(testMethod));
 		// If the @Ignore annotation is not present.
 		if (testMethod.getAnnotation(Ignore.class) == null) {
-			// Notifies that the test has been started.
+			// Notifies that the org.dejava.component.util.test.test has been started.
 			testNotifier.fireTestStarted();
-			// Tries to run the test.
+			// Tries to run the org.dejava.component.util.test.test.
 			try {
 				runParametricTest(testMethod);
 			}
 			// If an assumption was violated.
 			catch (final AssumptionViolatedException exception) {
-				// Notifies that a test assumption has been violated.
+				// Notifies that a org.dejava.component.util.test.test assumption has been violated.
 				testNotifier.addFailedAssumption(exception);
 			}
 			// If any other exception is raised.
 			catch (final Throwable throwable) {
-				// Notifies that a test has failed.
+				// Notifies that a org.dejava.component.util.test.test has failed.
 				testNotifier.addFailure(throwable);
 			}
 			// Finally.
 			finally {
-				// Notifies that a test has finished.
+				// Notifies that a org.dejava.component.util.test.test has finished.
 				testNotifier.fireTestFinished();
 			}
 		}
 		// If it is present.
 		else {
-			// Notifies that the test has been ignored.
+			// Notifies that the org.dejava.component.util.test.test has been ignored.
 			testNotifier.fireTestIgnored();
 		}
 	}

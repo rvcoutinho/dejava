@@ -11,30 +11,30 @@ import org.dejava.component.util.test.runner.dataset.impl.XMLTestDataProvider;
 import org.junit.Test.None;
 
 /**
- * Parametric data test. This annotation tells the JUnit (with the proper Runner -
- * {@link ParametricJUnitRunner}) to run the annotated test multiple times by injecting each of the items in
- * the Collection returned by the test data provider.
+ * Parametric data org.dejava.component.util.test.test. This annotation tells the JUnit (with the proper Runner -
+ * {@link ParametricJUnitRunner}) to run the annotated org.dejava.component.util.test.test multiple times by injecting each of the items in
+ * the Collection returned by the org.dejava.component.util.test.test data provider.
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = ElementType.METHOD)
 public @interface ParametricTest {
 	
 	/**
-	 * The test data provider for multiple data test.
+	 * The org.dejava.component.util.test.test data provider for multiple data org.dejava.component.util.test.test.
 	 */
 	Class<? extends TestDataProvider> dataProvider() default XMLTestDataProvider.class;
 	
 	/**
-	 * The parameters to instantiate the test data provider.
+	 * The parameters to instantiate the org.dejava.component.util.test.test data provider.
 	 * 
 	 * The data provider must have a constructor with the same number of String arguments given.
 	 */
 	String[] paramsValues() default {};
 	
 	/**
-	 * The maximum number of test data objects that must be used in the test.
+	 * The maximum number of org.dejava.component.util.test.test data objects that must be used in the org.dejava.component.util.test.test.
 	 * 
-	 * If the provided data quantity is larger than the given number, only a subset of the test data (having
+	 * If the provided data quantity is larger than the given number, only a subset of the org.dejava.component.util.test.test data (having
 	 * the exact defined size) will be used. This subset will be random.
 	 * 
 	 * If the maximum is 0, all data will be used.
@@ -42,18 +42,18 @@ public @interface ParametricTest {
 	int maxTestData() default 0;
 	
 	/**
-	 * Exception class that is expected to be raised during the test method execution.
+	 * Exception class that is expected to be raised during the org.dejava.component.util.test.test method execution.
 	 */
 	Class<? extends Throwable> expectedExceptionClass() default None.class;
 	
 	/**
-	 * Exception message that is expected during the test method execution. Will only be used if an expected
+	 * Exception message that is expected during the org.dejava.component.util.test.test method execution. Will only be used if an expected
 	 * exception class is given.
 	 */
 	String expectedExceptionMessage() default "";
 	
 	/**
-	 * Timeout in milliseconds to cause a test method to fail if it takes longer than that number of
+	 * Timeout in milliseconds to cause a org.dejava.component.util.test.test method to fail if it takes longer than that number of
 	 * milliseconds.
 	 */
 	int timeout() default 0;

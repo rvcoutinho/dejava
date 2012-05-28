@@ -8,53 +8,53 @@ import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.junit.runners.model.FrameworkMethod;
 
 /**
- * Provides access to XML test data.
+ * Provides access to XML org.dejava.component.util.test.test data.
  */
 public class JNDITestDataProvider implements TestDataProvider {
 	
 	/**
-	 * The JNDI path for the object from which the test data provider method will be invoked.
+	 * The JNDI path for the object from which the org.dejava.component.util.test.test data provider method will be invoked.
 	 */
 	private String objectPath;
 	
 	/**
-	 * Gets the JNDI path for the object from which the test data provider method will be invoked.
+	 * Gets the JNDI path for the object from which the org.dejava.component.util.test.test data provider method will be invoked.
 	 * 
-	 * @return The JNDI path for the object from which the test data provider method will be invoked.
+	 * @return The JNDI path for the object from which the org.dejava.component.util.test.test data provider method will be invoked.
 	 */
 	public String getObjectPath() {
 		return objectPath;
 	}
 	
 	/**
-	 * Sets the JNDI path for the object from which the test data provider method will be invoked.
+	 * Sets the JNDI path for the object from which the org.dejava.component.util.test.test data provider method will be invoked.
 	 * 
 	 * @param objectPath
-	 *            New JNDI path for the object from which the test data provider method will be invoked.
+	 *            New JNDI path for the object from which the org.dejava.component.util.test.test data provider method will be invoked.
 	 */
 	public void setObjectPath(final String objectPath) {
 		this.objectPath = objectPath;
 	}
 	
 	/**
-	 * The method name for the test data provider.
+	 * The method name for the org.dejava.component.util.test.test data provider.
 	 */
 	private String methodName;
 	
 	/**
-	 * Gets the method name for the test data provider.
+	 * Gets the method name for the org.dejava.component.util.test.test data provider.
 	 * 
-	 * @return The method name for the test data provider.
+	 * @return The method name for the org.dejava.component.util.test.test data provider.
 	 */
 	public String getMethodName() {
 		return methodName;
 	}
 	
 	/**
-	 * Sets the method name for the test data provider.
+	 * Sets the method name for the org.dejava.component.util.test.test data provider.
 	 * 
 	 * @param methodName
-	 *            New method name for the test data provider.
+	 *            New method name for the org.dejava.component.util.test.test data provider.
 	 */
 	public void setMethodName(final String methodName) {
 		this.methodName = methodName;
@@ -64,9 +64,9 @@ public class JNDITestDataProvider implements TestDataProvider {
 	 * Default constructor.
 	 * 
 	 * @param objectPath
-	 *            The JNDI path for the object from which the test data provider method will be invoked.
+	 *            The JNDI path for the object from which the org.dejava.component.util.test.test data provider method will be invoked.
 	 * @param methodName
-	 *            The method name for the test data provider.
+	 *            The method name for the org.dejava.component.util.test.test data provider.
 	 */
 	public JNDITestDataProvider(final String objectPath, final String methodName) {
 		super();
@@ -81,14 +81,14 @@ public class JNDITestDataProvider implements TestDataProvider {
 	public Collection<?> getTestData(final FrameworkMethod testMethod) throws UnavailableTestDataException {
 		// Tries to get the data.
 		try {
-			// The test data is the return of the method invocation.
+			// The org.dejava.component.util.test.test data is the return of the method invocation.
 			return (Collection<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null, null,
 					false);
 		}
-		// If the test data cannot be retrieved.
+		// If the org.dejava.component.util.test.test data cannot be retrieved.
 		catch (final Exception exception) {
-			// Throws an exception. FIXME
-			throw new UnavailableTestDataException(null, exception, null);
+			// Throws an exception.
+			throw new UnavailableTestDataException(exception, new Object[] { testMethod.getName() });
 		}
 	}
 }

@@ -14,7 +14,7 @@ import org.junit.runners.model.FrameworkMethod;
 import org.w3c.dom.Document;
 
 /**
- * Provides access to XML test data.
+ * Provides access to XML org.dejava.component.util.test.test data.
  */
 public class XMLTestDataProvider implements TestDataProvider {
 	
@@ -25,16 +25,16 @@ public class XMLTestDataProvider implements TestDataProvider {
 			+ ".xml";
 	
 	/**
-	 * The XML file path (relative to the test class).
+	 * The XML file path (relative to the org.dejava.component.util.test.test class).
 	 */
 	private String filePath;
 	
 	/**
-	 * Gets the XML file path (relative to the test class).
+	 * Gets the XML file path (relative to the org.dejava.component.util.test.test class).
 	 * 
 	 * @param testMethod
 	 *            The JUnit framework method.
-	 * @return The XML file path (relative to the test class).
+	 * @return The XML file path (relative to the org.dejava.component.util.test.test class).
 	 */
 	public String getFilePath(final FrameworkMethod testMethod) {
 		// If the method name is not given.
@@ -50,23 +50,23 @@ public class XMLTestDataProvider implements TestDataProvider {
 	}
 	
 	/**
-	 * Sets the XML file path (relative to the test class).
+	 * Sets the XML file path (relative to the org.dejava.component.util.test.test class).
 	 * 
 	 * @param filePath
-	 *            New XML file path (relative to the test class).
+	 *            New XML file path (relative to the org.dejava.component.util.test.test class).
 	 */
 	public void setFilePath(final String filePath) {
 		this.filePath = filePath;
 	}
 	
 	/**
-	 * Gets the XML stream for the test data objects.
+	 * Gets the XML stream for the org.dejava.component.util.test.test data objects.
 	 * 
 	 * @param testMethod
 	 *            The JUnit framework method.
-	 * @return The XML stream for the test data objects.
+	 * @return The XML stream for the org.dejava.component.util.test.test data objects.
 	 * @throws EmptyParameterException
-	 *             If the test class cannot be accessed.
+	 *             If the org.dejava.component.util.test.test class cannot be accessed.
 	 */
 	private InputStream getXMLStream(final FrameworkMethod testMethod) throws EmptyParameterException {
 		// Gets the path for the XML.
@@ -87,13 +87,13 @@ public class XMLTestDataProvider implements TestDataProvider {
 			final InputStream xmlInputStream = getXMLStream(testMethod);
 			// Creates the XML document for the stream.
 			final Document xmlDocument = XMLCreator.createXMLDocument(xmlInputStream);
-			// Gets the test data object from the XML document. TODO Think about expected class
+			// Gets the org.dejava.component.util.test.test data object from the XML document. TODO Think about expected class
 			return (Collection<?>) XMLDecoder.fromXML(xmlDocument, null, null, null);
 		}
-		// If the test data cannot be retrieved.
+		// If the org.dejava.component.util.test.test data cannot be retrieved.
 		catch (final Exception exception) {
-			// Throws an exception. FIXME
-			throw new UnavailableTestDataException(null, exception, null);
+			// Throws an exception.
+			throw new UnavailableTestDataException(exception, new Object[] { testMethod.getName() });
 		}
 	}
 }

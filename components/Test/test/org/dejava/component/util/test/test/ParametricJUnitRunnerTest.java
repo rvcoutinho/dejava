@@ -17,12 +17,12 @@ public class ParametricJUnitRunnerTest extends TestCase {
 	
 	/**
 	 * Returns an instance of the {@link ParametricJUnitRunner} for the {@link FakeTest} that will be used to
-	 * test the TestRunner.
+	 * org.dejava.component.util.test.test the TestRunner.
 	 * 
 	 * @return An instance of the {@link ParametricJUnitRunner} for the {@link FakeTest} that will be used to
-	 *         test the TestRunner.
+	 *         org.dejava.component.util.test.test the TestRunner.
 	 * @throws InitializationError
-	 *             If the test runner cannot me initialized for the {@link FakeTest}.
+	 *             If the org.dejava.component.util.test.test runner cannot me initialized for the {@link FakeTest}.
 	 */
 	private ParametricJUnitRunner getFakeTestRunner() throws InitializationError {
 		// Returns a new instance of the runner for the FakeTest.
@@ -30,10 +30,10 @@ public class ParametricJUnitRunnerTest extends TestCase {
 	}
 	
 	/**
-	 * Tests if a normal test method (annotated with @Test) runs normally.
+	 * Tests if a normal org.dejava.component.util.test.test method (annotated with @Test) runs normally.
 	 * 
 	 * @throws InitializationError
-	 *             If the test runner cannot me initialized for the {@link FakeTest}.
+	 *             If the org.dejava.component.util.test.test runner cannot me initialized for the {@link FakeTest}.
 	 */
 	@Test
 	public void testTestNormalSuccess() throws InitializationError {
@@ -45,18 +45,18 @@ public class ParametricJUnitRunnerTest extends TestCase {
 		runNotifier.addListener(runListener);
 		// Tries to run the tests.
 		getFakeTestRunner().run(runNotifier);
-		// If the test is not finished without failures.
+		// If the org.dejava.component.util.test.test is not finished without failures.
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() != null)) {
-			// The test fails. FIXME
+			// The org.dejava.component.util.test.test fails. FIXME
 			fail();
 		}
 	}
 	
 	/**
-	 * Tests if a assumption failure test method (annotated with @Test) runs normally.
+	 * Tests if a assumption failure org.dejava.component.util.test.test method (annotated with @Test) runs normally.
 	 * 
 	 * @throws InitializationError
-	 *             If the test runner cannot me initialized for the {@link FakeTest}.
+	 *             If the org.dejava.component.util.test.test runner cannot me initialized for the {@link FakeTest}.
 	 */
 	@Test
 	public void testTestNormalAssumptionFailure() throws InitializationError {
@@ -68,19 +68,19 @@ public class ParametricJUnitRunnerTest extends TestCase {
 		runNotifier.addListener(runListener);
 		// Tries to run the tests.
 		getFakeTestRunner().run(runNotifier);
-		// If the test is not finished with expected failures.
+		// If the org.dejava.component.util.test.test is not finished with expected failures.
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)
 				|| (!(runListener.getFailure().getException() instanceof AssertionFailedError))) {
-			// The test fails. FIXME
+			// The org.dejava.component.util.test.test fails. FIXME
 			fail();
 		}
 	}
 	
 	/**
-	 * Tests if a failure test method (annotated with @Test) runs normally.
+	 * Tests if a failure org.dejava.component.util.test.test method (annotated with @Test) runs normally.
 	 * 
 	 * @throws InitializationError
-	 *             If the test runner cannot me initialized for the {@link FakeTest}.
+	 *             If the org.dejava.component.util.test.test runner cannot me initialized for the {@link FakeTest}.
 	 */
 	@Test
 	public void testTestNormalFailure() throws InitializationError {
@@ -92,10 +92,10 @@ public class ParametricJUnitRunnerTest extends TestCase {
 		runNotifier.addListener(runListener);
 		// Tries to run the tests.
 		getFakeTestRunner().run(runNotifier);
-		// If the test is not finished with expected failures.
+		// If the org.dejava.component.util.test.test is not finished with expected failures.
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)
 				|| ((runListener.getFailure().getException() instanceof AssertionFailedError))) {
-			// The test fails. FIXME
+			// The org.dejava.component.util.test.test fails. FIXME
 			fail();
 		}
 	}

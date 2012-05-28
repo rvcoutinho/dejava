@@ -5,13 +5,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.dejava.component.util.test.runner.ParametricJUnitRunner;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.dejava.component.util.test.runner.dataset.impl.XMLTestDataProvider;
 import org.junit.Test.None;
 
 /**
- * Multiple data test. This annotation tells the JUnit (with the proper Runner) to run the annotated test
- * multiple times by injecting each of the items in the Iterable returned by the test data provider.
+ * Parametric data test. This annotation tells the JUnit (with the proper Runner -
+ * {@link ParametricJUnitRunner}) to run the annotated test multiple times by injecting each of the items in
+ * the Collection returned by the test data provider.
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = ElementType.METHOD)
@@ -30,6 +32,16 @@ public @interface ParametricTest {
 	String[] paramsValues() default {};
 	
 	/**
+	 * The maximum number of test data objects that must be used in the test.
+	 * 
+	 * If the provided data quantity is larger than the given number, only a subset of the test data (having
+	 * the exact defined size) will be used. This subset will be random.
+	 * 
+	 * If the maximum is 0, all data will be used.
+	 */
+	int maxTestData() default 0;
+	
+	/**
 	 * Exception class that is expected to be raised during the test method execution.
 	 */
 	Class<? extends Throwable> expectedExceptionClass() default None.class;
@@ -45,14 +57,4 @@ public @interface ParametricTest {
 	 * milliseconds.
 	 */
 	int timeout() default 0;
-	
-	/**
-	 * The maximum number of test data objects that must be used in the test.
-	 * 
-	 * If the provided data quantity is larger than the given number, only a subset of the test data (having
-	 * the exact defined size) will be used. This subset will be random.
-	 * 
-	 * If the maximum is 0, all data will be used.
-	 */
-	int maxTestData() default 0;
 }

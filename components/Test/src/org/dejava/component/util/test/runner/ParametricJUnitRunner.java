@@ -286,9 +286,9 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 		// Gets the statements for the test.
 		final Collection<Statement> testMethodStatements = getTestMethodStatements(testMethod);
 		// Creates a list for the failed tests.
-		final Collection<Exception> failedTests = new ArrayList<Exception>();
+		final Collection<Throwable> testExceptions = new ArrayList<Throwable>();
 		// Creates a list for the assumption violated tests.
-		final Collection<Exception> assumptionViolatedTests = new ArrayList<Exception>();
+		final Collection<AssumptionViolatedException> testAssumptionViolations = new ArrayList<AssumptionViolatedException>();
 		// For each statement.
 		for (final Statement currentStatement : testMethodStatements) {
 			// Tries to evaluate the current statement.
@@ -297,13 +297,16 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 			}
 			// If an assumption is violated for the current statement.
 			catch (final AssumptionViolatedException exception) {
-				// TODO Adds the
+				// Adds the exception to the proper list.
+				testAssumptionViolations.add(exception);
 			}
 			// If any other exception is raised by the current test statement.
 			catch (final Throwable throwable) {
-				// TODO: handle exception
+				// Adds the exception to the proper list.
+				testExceptions.add(throwable);
 			}
 		}
+		// If the test statement evaluation has raised any exceptions.
 	}
 	
 	/**

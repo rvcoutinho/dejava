@@ -4,23 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.dejava.component.util.exception.localized.AbstractLocalizedException;
-
 /**
- * Exception related tests.
+ * TODO
  */
-public abstract class AbstractTestMethodException extends AbstractLocalizedException {
+public class SingleParametricTestException extends AbstractTestException {
 	
 	/**
 	 * Generated serial.
 	 */
-	private static final long serialVersionUID = -4585522559594211167L;
+	private static final long serialVersionUID = 975981736423667079L;
 	
 	/**
-	 * Basic constructor.
+	 * Default constructor.
 	 * 
-	 * @param messageKey
-	 *            Message key that describes the exception.
 	 * @param cause
 	 *            Exception cause.
 	 * @param testName
@@ -28,9 +24,10 @@ public abstract class AbstractTestMethodException extends AbstractLocalizedExcep
 	 * @param paramsValues
 	 *            The parameters values for the test method.
 	 */
-	public AbstractTestMethodException(final String messageKey, final Throwable cause, final String testName,
+	public SingleParametricTestException(final Throwable cause, final String testName,
 			final Object[] paramsValues) {
-		super(messageKey, cause, null);
+		// TODO
+		super(null, cause, null);
 		// List of exception parameters.
 		final List<Object> parameters = new ArrayList<Object>();
 		// Adds the test name as the first parameter.

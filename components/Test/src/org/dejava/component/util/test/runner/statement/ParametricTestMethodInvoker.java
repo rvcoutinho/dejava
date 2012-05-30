@@ -29,6 +29,6 @@ public class ParametricTestMethodInvoker extends AbstractParametricTestStatement
 	@Override
 	public void evaluate() throws Throwable {
 		// Invokes the test method with the given parameters values.
-		getTestMethod().invokeExplosively(getTargetTest(), new Object[] { getParamsValues() });
+		getTestMethod().invokeExplosively(getTargetTest(), getParamsValues());
 	}
 }

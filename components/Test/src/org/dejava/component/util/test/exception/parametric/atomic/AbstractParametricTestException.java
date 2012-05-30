@@ -1,14 +1,16 @@
-package org.dejava.component.util.test.exception;
+package org.dejava.component.util.test.exception.parametric.atomic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.dejava.component.util.test.exception.AbstractTestException;
+
 /**
- * A single parametric test exception. By single, it means a parametric test execution for only one of the
- * possible parameters values.
+ * An atomic parametric test exception. By atomic, it means a test execution for only one of the possible
+ * parameters values for a test.
  */
-public class SingleParametricTestException extends AbstractTestException {
+public abstract class AbstractParametricTestException extends AbstractTestException {
 	
 	/**
 	 * Generated serial.
@@ -18,6 +20,8 @@ public class SingleParametricTestException extends AbstractTestException {
 	/**
 	 * Default constructor.
 	 * 
+	 * @param messageKey
+	 *            Message key that describes the exception.
 	 * @param cause
 	 *            Exception cause.
 	 * @param testName
@@ -25,10 +29,9 @@ public class SingleParametricTestException extends AbstractTestException {
 	 * @param paramsValues
 	 *            The parameters values for the test method.
 	 */
-	public SingleParametricTestException(final Throwable cause, final String testName,
-			final Object[] paramsValues) {
-		// TODO
-		super(null, cause, null);
+	public AbstractParametricTestException(final String messageKey, final Throwable cause,
+			final String testName, final Object[] paramsValues) {
+		super(messageKey, cause, null);
 		// List of exception parameters.
 		final List<Object> parameters = new ArrayList<Object>();
 		// Adds the test name as the first parameter.

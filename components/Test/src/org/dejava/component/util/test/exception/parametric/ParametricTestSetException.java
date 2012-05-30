@@ -1,9 +1,11 @@
-package org.dejava.component.util.test.exception;
+package org.dejava.component.util.test.exception.parametric;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.junit.internal.AssumptionViolatedException;
+import org.dejava.component.util.test.exception.AbstractTestException;
+import org.dejava.component.util.test.exception.parametric.atomic.ParametricTestAssumptionException;
+import org.dejava.component.util.test.exception.parametric.atomic.ParametricTestNonAssumptionException;
 
 /**
  * Exception related to unavailable test data.
@@ -18,18 +20,18 @@ public class ParametricTestSetException extends AbstractTestException {
 	/**
 	 * Exceptions thrown during a parametric test.
 	 */
-	private Collection<Throwable> testExceptions;
+	private Collection<ParametricTestNonAssumptionException> testExceptions;
 	
 	/**
 	 * Gets the exceptions thrown during a parametric test.
 	 * 
 	 * @return The exceptions thrown during a parametric test.
 	 */
-	public Collection<Throwable> getTestExceptions() {
+	public Collection<ParametricTestNonAssumptionException> getTestExceptions() {
 		// If the collection is null.
 		if (testExceptions == null) {
 			// It is now a new list.
-			testExceptions = new ArrayList<Throwable>();
+			testExceptions = new ArrayList<ParametricTestNonAssumptionException>();
 		}
 		// Returns the exceptions.
 		return testExceptions;
@@ -41,25 +43,25 @@ public class ParametricTestSetException extends AbstractTestException {
 	 * @param testExceptions
 	 *            New exceptions thrown during a parametric test.
 	 */
-	public void setTestExceptions(final Collection<Throwable> testExceptions) {
+	public void setTestExceptions(final Collection<ParametricTestNonAssumptionException> testExceptions) {
 		this.testExceptions = testExceptions;
 	}
 	
 	/**
 	 * Assumption violated exceptions thrown during a parametric test.
 	 */
-	private Collection<AssumptionViolatedException> testAssumptionViolations;
+	private Collection<ParametricTestAssumptionException> testAssumptionViolations;
 	
 	/**
 	 * Gets the assumption violated exceptions thrown during a parametric test.
 	 * 
 	 * @return The assumption violated exceptions thrown during a parametric test.
 	 */
-	public Collection<AssumptionViolatedException> getTestAssumptionViolations() {
+	public Collection<ParametricTestAssumptionException> getTestAssumptionViolations() {
 		// If the collection is null.
 		if (testAssumptionViolations == null) {
 			// It is now a new list.
-			testAssumptionViolations = new ArrayList<AssumptionViolatedException>();
+			testAssumptionViolations = new ArrayList<ParametricTestAssumptionException>();
 		}
 		// Returns the exceptions.
 		return testAssumptionViolations;
@@ -72,15 +74,13 @@ public class ParametricTestSetException extends AbstractTestException {
 	 *            New assumption violated exceptions thrown during a parametric test.
 	 */
 	public void setTestAssumptionViolations(
-			final Collection<AssumptionViolatedException> testAssumptionViolations) {
+			final Collection<ParametricTestAssumptionException> testAssumptionViolations) {
 		this.testAssumptionViolations = testAssumptionViolations;
 	}
 	
 	/**
 	 * Default constructor.
 	 * 
-	 * @param messageKey
-	 *            Message key that describes the exception.
 	 * @param testExceptions
 	 *            Exceptions thrown during a parametric test.
 	 * @param testAssumptionViolations
@@ -88,9 +88,10 @@ public class ParametricTestSetException extends AbstractTestException {
 	 * @param testName
 	 *            The name of the test for the exception.
 	 */
-	public ParametricTestSetException(final String messageKey, final Collection<Throwable> testExceptions,
-			final Collection<AssumptionViolatedException> testAssumptionViolations, final String testName) {
-		super(messageKey, null, null);
+	public ParametricTestSetException(final Collection<ParametricTestNonAssumptionException> testExceptions,
+			final Collection<ParametricTestAssumptionException> testAssumptionViolations,
+			final String testName) {
+		super(null, null, testName);
 		// Sets the basic fields.
 		this.testExceptions = testExceptions;
 		this.testAssumptionViolations = testAssumptionViolations;

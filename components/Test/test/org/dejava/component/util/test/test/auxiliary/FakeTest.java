@@ -1,9 +1,9 @@
 package org.dejava.component.util.test.test.auxiliary;
 
-import junit.framework.TestCase;
 
 import org.dejava.component.util.exception.localized.BusinessRuleException;
 import org.dejava.component.util.test.runner.ParametricJUnitRunner;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
  * Fake org.dejava.component.util.test.test class to be used in the org.dejava.component.util.test.test framework tests.
  */
 @RunWith(value = ParametricJUnitRunner.class)
-public class FakeTest extends TestCase {
+public class FakeTest  {
 	
 	/**
 	 * Simulates a normal org.dejava.component.util.test.test success.
@@ -27,7 +27,7 @@ public class FakeTest extends TestCase {
 	 */
 	@Test
 	public void testNormalAssumptionFailure() {
-		fail("testNormalAssumptionFailure");
+		Assert.fail("testNormalAssumptionFailure");
 	}
 	
 	/**

@@ -10,7 +10,7 @@ public abstract class AbstractTestException extends AbstractLocalizedException {
 	/**
 	 * Generated serial.
 	 */
-	private static final long serialVersionUID = -4585522559594211167L;
+	private static final long serialVersionUID = 5069520548110477099L;
 	
 	/**
 	 * Basic constructor.

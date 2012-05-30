@@ -5,14 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * TODO
+ * A single parametric test exception. By single, it means a parametric test execution for only one of the
+ * possible parameters values.
  */
 public class SingleParametricTestException extends AbstractTestException {
 	
 	/**
 	 * Generated serial.
 	 */
-	private static final long serialVersionUID = 975981736423667079L;
+	private static final long serialVersionUID = -8001637603404931093L;
 	
 	/**
 	 * Default constructor.

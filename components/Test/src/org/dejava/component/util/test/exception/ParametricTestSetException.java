@@ -13,7 +13,7 @@ public class ParametricTestSetException extends AbstractTestException {
 	/**
 	 * Generated serial.
 	 */
-	private static final long serialVersionUID = -7501622556068793489L;
+	private static final long serialVersionUID = 2854622415815735145L;
 	
 	/**
 	 * Exceptions thrown during a parametric test.

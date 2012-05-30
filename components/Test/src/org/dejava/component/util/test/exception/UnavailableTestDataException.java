@@ -10,7 +10,7 @@ public class UnavailableTestDataException extends AbstractTestException {
 	/**
 	 * Generated serial.
 	 */
-	private static final long serialVersionUID = -7501622556068793489L;
+	private static final long serialVersionUID = -141551638307214890L;
 	
 	/**
 	 * Basic constructor.

@@ -3,7 +3,6 @@ package org.dejava.component.util.test.runner.notifier;
 import java.util.Collection;
 
 import org.dejava.component.util.test.exception.parametric.atomic.ParametricTestAssumptionException;
-import org.dejava.component.util.test.exception.parametric.atomic.ParametricTestNonAssumptionException;
 import org.junit.runner.Description;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
@@ -91,9 +90,9 @@ public class ParametricTestNotifier {
 	 * @param testExceptions
 	 *            The exceptions thrown during the test run.
 	 */
-	public void addFailures(final Collection<ParametricTestNonAssumptionException> testExceptions) {
+	public void addFailures(final Collection<? extends Throwable> testExceptions) {
 		// For each test exception.
-		for (final ParametricTestNonAssumptionException currentTestException : testExceptions) {
+		for (final Throwable currentTestException : testExceptions) {
 			// Fire a new failure for the current test exception.
 			addFailure(currentTestException);
 		}

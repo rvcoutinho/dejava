@@ -352,7 +352,9 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 			// If the test raises an exception.
 			catch (final ParametricTestSetException exception) {
 				// Notifies for each of the test assumption violations.
-				testNotifier.addFailedAssumptions(exception.getTestAssumptionViolations());
+				// testNotifier.addFailedAssumptions(exception.getTestAssumptionViolations());
+				// FIXME Why would JUnit pass the test for assumption violations?!
+				testNotifier.addFailures(exception.getTestAssumptionViolations());
 				// Notifies for each of the test exceptions.
 				testNotifier.addFailures(exception.getTestExceptions());
 			}

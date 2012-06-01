@@ -1,11 +1,11 @@
-package org.dejava.component.util.test.test;
+package org.dejava.component.util.test.runner.test;
 
 import junit.framework.AssertionFailedError;
 
 import org.dejava.component.util.test.LocalizedAssert;
 import org.dejava.component.util.test.runner.ParametricJUnitRunner;
-import org.dejava.component.util.test.test.auxiliary.FakeTest;
-import org.dejava.component.util.test.test.auxiliary.RunListenerLog;
+import org.dejava.component.util.test.runner.test.auxiliary.FakeTest;
+import org.dejava.component.util.test.runner.test.auxiliary.RunListenerLog;
 import org.junit.Test;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;

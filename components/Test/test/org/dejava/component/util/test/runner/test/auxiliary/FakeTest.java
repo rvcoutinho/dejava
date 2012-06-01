@@ -1,4 +1,4 @@
-package org.dejava.component.util.test.test.auxiliary;
+package org.dejava.component.util.test.runner.test.auxiliary;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,14 +13,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Fake org.dejava.component.util.test.test class to be used in the org.dejava.component.util.test.test
+ * Fake org.dejava.component.util.test.runner.test class to be used in the org.dejava.component.util.test.runner.test
  * framework tests.
  */
 @RunWith(value = ParametricJUnitRunner.class)
 public class FakeTest {
 	
 	/**
-	 * Simulates a normal org.dejava.component.util.test.test success.
+	 * Simulates a normal org.dejava.component.util.test.runner.test success.
 	 */
 	@Test
 	public void testNormalSuccess() {
@@ -28,7 +28,7 @@ public class FakeTest {
 	}
 	
 	/**
-	 * Simulates a normal assumption failure org.dejava.component.util.test.test.
+	 * Simulates a normal assumption failure org.dejava.component.util.test.runner.test.
 	 * 
 	 */
 	@Test
@@ -46,7 +46,7 @@ public class FakeTest {
 	}
 	
 	/**
-	 * Simulates a org.dejava.component.util.test.test failure.
+	 * Simulates a org.dejava.component.util.test.runner.test failure.
 	 * 
 	 * @param number
 	 *            eee

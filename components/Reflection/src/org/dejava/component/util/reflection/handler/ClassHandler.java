@@ -90,6 +90,8 @@ public final class ClassHandler {
 	 * 
 	 * @param depth
 	 *            Depth in the current stack for the desired class (0 is the first and so on).
+	 * @param initialize
+	 *            Whether the class must be initialized.
 	 * @param classLoader
 	 *            Class loader that must be used in the class recovery. If no class loader is given, the
 	 *            context class loader is used.
@@ -97,8 +99,8 @@ public final class ClassHandler {
 	 * @throws InvalidParameterException
 	 *             If the class loader cannot load the current class.
 	 */
-	public static Class<?> getCurrentClass(Integer depth, final ClassLoader classLoader)
-			throws InvalidParameterException {
+	public static Class<?> getCurrentClass(Integer depth, final Boolean initialize,
+			final ClassLoader classLoader) throws InvalidParameterException {
 		// If the given depth is null.
 		if (depth == null) {
 			// The depth is 0.
@@ -107,7 +109,7 @@ public final class ClassHandler {
 		// Gets the current class name for the given depth.
 		final String className = getCurrentClassName(depth + 1);
 		// Returns the class for the name.
-		return getClass(className, true, classLoader);
+		return getClass(className, initialize, classLoader);
 	}
 	
 	/**
@@ -126,7 +128,7 @@ public final class ClassHandler {
 			depth = 0;
 		}
 		// The context class loader is used to recover the current class.
-		return getCurrentClass(depth + 1, null);
+		return getCurrentClass(depth + 1, true, null);
 	}
 	
 	/**

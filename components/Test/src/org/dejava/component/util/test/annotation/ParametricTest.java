@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import org.dejava.component.util.test.runner.ParametricJUnitRunner;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
-import org.dejava.component.util.test.runner.dataset.impl.XMLTestDataProvider;
+import org.dejava.component.util.test.runner.dataset.impl.StaticMethodTestDataProvider;
 import org.junit.Test.None;
 
 /**
@@ -22,7 +22,7 @@ public @interface ParametricTest {
 	/**
 	 * The test data provider for multiple data test.
 	 */
-	Class<? extends TestDataProvider> dataProvider() default XMLTestDataProvider.class;
+	Class<? extends TestDataProvider> dataProvider() default StaticMethodTestDataProvider.class;
 	
 	/**
 	 * The parameters to instantiate the test data provider.

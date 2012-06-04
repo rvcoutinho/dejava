@@ -1,6 +1,10 @@
 package org.dejava.component.util.test.runner.test.auxiliary;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.dejava.component.util.exception.localized.BusinessRuleException;
+import org.dejava.component.util.test.annotation.ParametricTest;
 import org.dejava.component.util.test.runner.ParametricJUnitRunner;
 import org.junit.Assert;
 import org.junit.Test;
@@ -60,5 +64,29 @@ public class FakeTest {
 	@Test(expected = BusinessRuleException.class)
 	public void testRegularExceptedException() throws BusinessRuleException {
 		throw new BusinessRuleException("testRegularExceptedException", null, null);
+	}
+	
+	/**
+	 * Gets the parametric success test data.
+	 * 
+	 * @return The parametric success test data.
+	 */
+	public static List<Integer> testParametricSuccessData() {
+		return Arrays.asList(new Integer[] { -1, -2, -3, -4, -5 });
+	}
+	
+	/**
+	 * Simulates a parametric test success.
+	 * 
+	 * @param number
+	 *            Any number.
+	 */
+	@ParametricTest
+	public void testParametricSuccess(Integer number) {
+		// If the number greater than 0.
+		if (number > 0) {
+			// Fails the test.
+			Assert.fail("testParametricSuccess");
+		}
 	}
 }

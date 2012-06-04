@@ -30,22 +30,22 @@ public class ParametricJUnitRunnerTest {
 	}
 	
 	/**
-	 * Tests if a normal test method (annotated with @Test) runs normally.
+	 * Tests if a regular test method (annotated with @Test) runs regularly.
 	 * 
 	 * @throws InitializationError
 	 *             If the test runner cannot me initialized for the {@link FakeTest}.
 	 */
 	@Test
-	public void testTestNormalSuccess() throws InitializationError {
+	public void testTestRegularSuccess() throws InitializationError {
 		// Creates a new notifier.
 		final RunNotifier runNotifier = new RunNotifier();
 		// Creates a listener for the FakeTest.
-		final RunListenerLog runListener = new RunListenerLog("testNormalSuccess");
+		final RunListenerLog runListener = new RunListenerLog("testRegularSuccess");
 		// Adds the listener to the notifier.
 		runNotifier.addListener(runListener);
 		// Tries to run the tests.
 		getFakeTestRunner().run(runNotifier);
-		// If the test is not finished without failures.
+		// If the test is finished with failures.
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() != null)) {
 			// The test fails. FIXME
 			LocalizedAssert.fail();
@@ -53,17 +53,17 @@ public class ParametricJUnitRunnerTest {
 	}
 	
 	/**
-	 * Tests if a assumption failure test method (annotated with @Test) runs normally.
+	 * Tests if a assumption failure test method (annotated with @Test) runs regularly.
 	 * 
 	 * @throws InitializationError
 	 *             If the test runner cannot me initialized for the {@link FakeTest}.
 	 */
 	@Test
-	public void testTestNormalAssumptionFailure() throws InitializationError {
+	public void testTestRegularAssumptionFailure() throws InitializationError {
 		// Creates a new notifier.
 		final RunNotifier runNotifier = new RunNotifier();
 		// Creates a listener for the FakeTest.
-		final RunListenerLog runListener = new RunListenerLog("testNormalAssumptionFailure");
+		final RunListenerLog runListener = new RunListenerLog("testRegularAssumptionFailure");
 		// Adds the listener to the notifier.
 		runNotifier.addListener(runListener);
 		// Tries to run the tests.
@@ -77,24 +77,69 @@ public class ParametricJUnitRunnerTest {
 	}
 	
 	/**
-	 * Tests if a failure test method (annotated with @Test) runs normally.
+	 * Tests if a failure test method (annotated with @Test) runs regularly.
 	 * 
 	 * @throws InitializationError
 	 *             If the test runner cannot me initialized for the {@link FakeTest}.
 	 */
 	@Test
-	public void testTestNormalFailure() throws InitializationError {
+	public void testTestRegularFailure() throws InitializationError {
 		// Creates a new notifier.
 		final RunNotifier runNotifier = new RunNotifier();
 		// Creates a listener for the FakeTest.
-		final RunListenerLog runListener = new RunListenerLog("testNormalFailure");
+		final RunListenerLog runListener = new RunListenerLog("testRegularFailure");
 		// Adds the listener to the notifier.
 		runNotifier.addListener(runListener);
 		// Tries to run the tests.
 		getFakeTestRunner().run(runNotifier);
-		// If the test is not finished with expected failures.
-		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)
-				|| ((runListener.getFailure().getException() instanceof AssertionFailedError))) {
+		// If the test is not finished with failures.
+		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)) {
+			// The test fails. FIXME
+			LocalizedAssert.fail();
+		}
+	}
+	
+	/**
+	 * TODO
+	 * 
+	 * @throws InitializationError
+	 *             If the test runner cannot me initialized for the {@link FakeTest}.
+	 */
+	@Test
+	public void testTestRegularTimeoutFailure() throws InitializationError {
+		// Creates a new notifier.
+		final RunNotifier runNotifier = new RunNotifier();
+		// Creates a listener for the FakeTest.
+		final RunListenerLog runListener = new RunListenerLog("testRegularTimeoutFailure");
+		// Adds the listener to the notifier.
+		runNotifier.addListener(runListener);
+		// Tries to run the tests.
+		getFakeTestRunner().run(runNotifier);
+		// If the test is not finished with failures.
+		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)) {
+			// The test fails. FIXME
+			LocalizedAssert.fail();
+		}
+	}
+	
+	/**
+	 * TODO
+	 * 
+	 * @throws InitializationError
+	 *             If the test runner cannot me initialized for the {@link FakeTest}.
+	 */
+	@Test
+	public void testTestRegularExceptedException() throws InitializationError {
+		// Creates a new notifier.
+		final RunNotifier runNotifier = new RunNotifier();
+		// Creates a listener for the FakeTest.
+		final RunListenerLog runListener = new RunListenerLog("testRegularExceptedException");
+		// Adds the listener to the notifier.
+		runNotifier.addListener(runListener);
+		// Tries to run the tests.
+		getFakeTestRunner().run(runNotifier);
+		// If the test is finished with failures.
+		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() != null)) {
 			// The test fails. FIXME
 			LocalizedAssert.fail();
 		}

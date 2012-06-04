@@ -2,36 +2,14 @@ package org.dejava.component.util.xml;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.dejava.component.util.exception.localized.EmptyParameterException;
-import org.dejava.component.util.exception.localized.InvalidParameterException;
-import org.dejava.component.util.reflection.exception.InvocationException;
-import org.dejava.component.util.reflection.handler.ClassHandler;
-import org.dejava.component.util.reflection.handler.ConstructorHandler;
-import org.dejava.component.util.reflection.handler.FieldHandler;
-import org.dejava.component.util.reflection.handler.MethodHandler;
-import org.dejava.component.util.xml.annotation.XMLComplexNode;
 import org.dejava.component.util.xml.constant.ErrorKeys;
-import org.dejava.component.util.xml.exception.XMLConversionException;
 import org.dejava.component.util.xml.exception.XMLCreationException;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
 /**

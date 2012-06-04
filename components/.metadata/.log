@@ -2073,3 +2073,696 @@ java.lang.StackOverflowError
 	at net.sourceforge.pmd.RuleSetFactory.createRuleSet(RuleSetFactory.java:146)
 	at net.sourceforge.pmd.RuleSetFactory.parseRuleReferenceNode(RuleSetFactory.java:365)
 	at net.sourceforge.pmd.RuleSetFactory.parseRuleNode(RuleSetFactory.java:255)
+!SESSION 2012-06-02 13:31:02.816 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.7.0_04
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 13:32:21.791
+!MESSAGE 89 markers applied on 24 files in 12ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 13:32:21.822
+!MESSAGE Review code command terminated. 470 rules were executed against 24 files. Actual PMD duration is about 2703ms, that is about 112.625 ms/file, 5.751064 ms/rule, 0.23962766 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 13:32:21.823
+!MESSAGE Command ReviewCode excecuted in 3499ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 13:34:00.996
+!MESSAGE 89 markers applied on 24 files in 16ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 13:34:01.004
+!MESSAGE Review code command terminated. 470 rules were executed against 24 files. Actual PMD duration is about 1630ms, that is about 67.916664 ms/file, 3.468085 ms/rule, 0.14450355 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 13:34:01.005
+!MESSAGE Command ReviewCode excecuted in 1713ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 13:34:27.048
+!MESSAGE 0 markers applied on 0 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 13:34:27.050
+!MESSAGE Review code command terminated. 470 rules were executed against 0 files. PMD was not executed.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 13:34:27.050
+!MESSAGE Command ReviewCode excecuted in 21ms
+!SESSION 2012-06-02 13:37:44.621 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.7.0_04
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 15:39:52.338
+!MESSAGE 0 markers applied on 0 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 15:39:52.344
+!MESSAGE Review code command terminated. 470 rules were executed against 0 files. PMD was not executed.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-02 15:39:52.345
+!MESSAGE Command ReviewCode excecuted in 626ms
+!SESSION 2012-06-03 17:06:02.951 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.7.0_04
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2012-06-03 17:06:14.640
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at jar:file:/D:/usuarios/rvcoutinho/Desktop/64/eclipse/dropins/junit-4.10-src.jar!/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:393)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:675)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.loadMetadataRepository(Activator.java:99)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.getMetadataRepository(DropinsRepositoryListener.java:233)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.addRepository(DropinsRepositoryListener.java:122)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.added(DropinsRepositoryListener.java:96)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.processFile(DirectoryWatcher.java:197)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.scanDirectories(DirectoryWatcher.java:160)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:108)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchDropins(Activator.java:535)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:172)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:389)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1131)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:559)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:544)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:457)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:243)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:438)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2012-06-03 17:06:14.677
+!MESSAGE No repository found at jar:file:/D:/usuarios/rvcoutinho/Desktop/64/eclipse/dropins/junit-4.10-src.jar!/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2012-06-03 17:06:14.803
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at jar:file:/D:/usuarios/rvcoutinho/Desktop/64/eclipse/dropins/junit-4.10-src.jar!/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:393)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:675)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:100)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.loadArtifactRepository(Activator.java:142)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.getArtifactRepository(DropinsRepositoryListener.java:260)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.addRepository(DropinsRepositoryListener.java:123)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.added(DropinsRepositoryListener.java:96)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.processFile(DirectoryWatcher.java:197)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.scanDirectories(DirectoryWatcher.java:160)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:108)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchDropins(Activator.java:535)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:172)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:389)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1131)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:559)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:544)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:457)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:243)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:438)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+!SUBENTRY 1 org.eclipse.equinox.p2.artifact.repository 4 1000 2012-06-03 17:06:14.804
+!MESSAGE No repository found at jar:file:/D:/usuarios/rvcoutinho/Desktop/64/eclipse/dropins/junit-4.10-src.jar!/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2012-06-03 17:06:14.964
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at jar:file:/D:/usuarios/rvcoutinho/Desktop/64/eclipse/dropins/junit-4.10.jar!/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:393)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:675)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.loadMetadataRepository(Activator.java:99)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.getMetadataRepository(DropinsRepositoryListener.java:233)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.addRepository(DropinsRepositoryListener.java:122)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.added(DropinsRepositoryListener.java:96)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.processFile(DirectoryWatcher.java:197)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.scanDirectories(DirectoryWatcher.java:160)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:108)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchDropins(Activator.java:535)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:172)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:389)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1131)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:559)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:544)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:457)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:243)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:438)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2012-06-03 17:06:14.965
+!MESSAGE No repository found at jar:file:/D:/usuarios/rvcoutinho/Desktop/64/eclipse/dropins/junit-4.10.jar!/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2012-06-03 17:06:15.045
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at jar:file:/D:/usuarios/rvcoutinho/Desktop/64/eclipse/dropins/junit-4.10.jar!/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:393)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:675)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:100)
+	at org.eclipse.equinox.internal.p2.artifact.repository.ArtifactRepositoryManager.loadRepository(ArtifactRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.loadArtifactRepository(Activator.java:142)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.getArtifactRepository(DropinsRepositoryListener.java:260)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.addRepository(DropinsRepositoryListener.java:123)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.DropinsRepositoryListener.added(DropinsRepositoryListener.java:96)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.processFile(DirectoryWatcher.java:197)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.scanDirectories(DirectoryWatcher.java:160)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:108)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchDropins(Activator.java:535)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:172)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:389)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1131)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:559)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:544)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:457)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:243)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:438)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+!SUBENTRY 1 org.eclipse.equinox.p2.artifact.repository 4 1000 2012-06-03 17:06:15.046
+!MESSAGE No repository found at jar:file:/D:/usuarios/rvcoutinho/Desktop/64/eclipse/dropins/junit-4.10.jar!/.
+
+!ENTRY org.eclipse.ecf.provider.filetransfer 4 0 2012-06-03 17:07:07.938
+!MESSAGE org.eclipse.core.runtime.Status[plugin=org.eclipse.ecf.provider.filetransfer;code=4;message=hardClose;severity4;exception=java.io.IOException: Stream closed;children=[]]
+!STACK 0
+java.io.IOException: Stream closed
+	at java.io.BufferedInputStream.getBufIfOpen(Unknown Source)
+	at java.io.BufferedInputStream.read(Unknown Source)
+	at org.apache.commons.httpclient.ChunkedInputStream.read(ChunkedInputStream.java:182)
+	at org.apache.commons.httpclient.ChunkedInputStream.read(ChunkedInputStream.java:196)
+	at org.apache.commons.httpclient.ChunkedInputStream.exhaustInputStream(ChunkedInputStream.java:369)
+	at org.apache.commons.httpclient.ChunkedInputStream.close(ChunkedInputStream.java:346)
+	at java.io.FilterInputStream.close(Unknown Source)
+	at org.apache.commons.httpclient.AutoCloseInputStream.notifyWatcher(AutoCloseInputStream.java:194)
+	at org.apache.commons.httpclient.AutoCloseInputStream.close(AutoCloseInputStream.java:158)
+	at java.util.zip.InflaterInputStream.close(Unknown Source)
+	at java.util.zip.GZIPInputStream.close(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.hardClose(AbstractRetrieveFileTransfer.java:331)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.hardClose(HttpClientRetrieveFileTransfer.java:396)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.cancel(HttpClientRetrieveFileTransfer.java:382)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport$1.handleTransferEvent(ECFExamplesTransport.java:283)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.fireTransferReceiveDataEvent(AbstractRetrieveFileTransfer.java:388)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.fireTransferReceiveDataEvent(HttpClientRetrieveFileTransfer.java:1163)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.handleReceivedData(AbstractRetrieveFileTransfer.java:288)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer$1.performFileTransfer(AbstractRetrieveFileTransfer.java:173)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ecf.provider.filetransfer 4 0 2012-06-03 17:07:08.653
+!MESSAGE org.eclipse.core.runtime.Status[plugin=org.eclipse.ecf.provider.filetransfer;code=4;message=hardClose;severity4;exception=java.io.IOException: Stream closed;children=[]]
+!STACK 0
+java.io.IOException: Stream closed
+	at java.io.BufferedInputStream.getBufIfOpen(Unknown Source)
+	at java.io.BufferedInputStream.read(Unknown Source)
+	at org.apache.commons.httpclient.ChunkedInputStream.read(ChunkedInputStream.java:182)
+	at org.apache.commons.httpclient.ChunkedInputStream.read(ChunkedInputStream.java:196)
+	at org.apache.commons.httpclient.ChunkedInputStream.exhaustInputStream(ChunkedInputStream.java:369)
+	at org.apache.commons.httpclient.ChunkedInputStream.close(ChunkedInputStream.java:346)
+	at java.io.FilterInputStream.close(Unknown Source)
+	at org.apache.commons.httpclient.AutoCloseInputStream.notifyWatcher(AutoCloseInputStream.java:194)
+	at org.apache.commons.httpclient.AutoCloseInputStream.close(AutoCloseInputStream.java:158)
+	at java.util.zip.InflaterInputStream.close(Unknown Source)
+	at java.util.zip.GZIPInputStream.close(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.hardClose(AbstractRetrieveFileTransfer.java:331)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.hardClose(HttpClientRetrieveFileTransfer.java:396)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.cancel(HttpClientRetrieveFileTransfer.java:382)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport$1.handleTransferEvent(ECFExamplesTransport.java:283)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.fireTransferReceiveDataEvent(AbstractRetrieveFileTransfer.java:388)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.fireTransferReceiveDataEvent(HttpClientRetrieveFileTransfer.java:1163)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.handleReceivedData(AbstractRetrieveFileTransfer.java:288)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer$1.performFileTransfer(AbstractRetrieveFileTransfer.java:173)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ecf.provider.filetransfer 4 0 2012-06-03 17:07:09.551
+!MESSAGE org.eclipse.core.runtime.Status[plugin=org.eclipse.ecf.provider.filetransfer;code=4;message=hardClose;severity4;exception=java.io.IOException: Stream closed;children=[]]
+!STACK 0
+java.io.IOException: Stream closed
+	at java.io.BufferedInputStream.getBufIfOpen(Unknown Source)
+	at java.io.BufferedInputStream.read(Unknown Source)
+	at org.apache.commons.httpclient.ChunkedInputStream.read(ChunkedInputStream.java:182)
+	at org.apache.commons.httpclient.ChunkedInputStream.read(ChunkedInputStream.java:196)
+	at org.apache.commons.httpclient.ChunkedInputStream.exhaustInputStream(ChunkedInputStream.java:369)
+	at org.apache.commons.httpclient.ChunkedInputStream.close(ChunkedInputStream.java:346)
+	at java.io.FilterInputStream.close(Unknown Source)
+	at org.apache.commons.httpclient.AutoCloseInputStream.notifyWatcher(AutoCloseInputStream.java:194)
+	at org.apache.commons.httpclient.AutoCloseInputStream.close(AutoCloseInputStream.java:158)
+	at java.util.zip.InflaterInputStream.close(Unknown Source)
+	at java.util.zip.GZIPInputStream.close(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.hardClose(AbstractRetrieveFileTransfer.java:331)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.hardClose(HttpClientRetrieveFileTransfer.java:396)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.cancel(HttpClientRetrieveFileTransfer.java:382)
+	at org.jboss.tools.project.examples.filetransfer.ECFExamplesTransport$1.handleTransferEvent(ECFExamplesTransport.java:283)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.fireTransferReceiveDataEvent(AbstractRetrieveFileTransfer.java:388)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.fireTransferReceiveDataEvent(HttpClientRetrieveFileTransfer.java:1163)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.handleReceivedData(AbstractRetrieveFileTransfer.java:288)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer$1.performFileTransfer(AbstractRetrieveFileTransfer.java:173)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:08:21.421
+!MESSAGE 0 markers applied on 0 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:08:21.461
+!MESSAGE Review code command terminated. 470 rules were executed against 0 files. PMD was not executed.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:08:21.462
+!MESSAGE Command ReviewCode excecuted in 1128ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:09:16.121
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:09:16.130
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 1135ms, that is about 1135.0 ms/file, 2.4148936 ms/rule, 2.4148936 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:09:16.131
+!MESSAGE Command ReviewCode excecuted in 1182ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:12:18.012
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:12:18.022
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 208ms, that is about 208.0 ms/file, 0.4425532 ms/rule, 0.4425532 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:12:18.023
+!MESSAGE Command ReviewCode excecuted in 239ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:12:52.500
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:12:52.511
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 125ms, that is about 125.0 ms/file, 0.26595744 ms/rule, 0.26595744 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:12:52.511
+!MESSAGE Command ReviewCode excecuted in 151ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:15:35.990
+!MESSAGE 6 markers applied on 1 files in 2ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:15:36.000
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 245ms, that is about 245.0 ms/file, 0.5212766 ms/rule, 0.5212766 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:15:36.001
+!MESSAGE Command ReviewCode excecuted in 277ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:15:45.598
+!MESSAGE 6 markers applied on 1 files in 2ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:15:45.607
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 122ms, that is about 122.0 ms/file, 0.25957447 ms/rule, 0.25957447 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:15:45.608
+!MESSAGE Command ReviewCode excecuted in 152ms
+
+!ENTRY org.jboss.tools.ws.jaxrs.core 2 0 2012-06-03 17:16:01.863
+!MESSAGE Unable to find type with fully qualified name 'org.dejava.component.util.test.runner.test.auxiliary.Tes' in Java Project 'Test'
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:16:14.525
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:16:14.532
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 129ms, that is about 129.0 ms/file, 0.2744681 ms/rule, 0.2744681 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:16:14.533
+!MESSAGE Command ReviewCode excecuted in 152ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:16:33.779
+!MESSAGE 4 markers applied on 1 files in 2ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:16:33.788
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 162ms, that is about 162.0 ms/file, 0.34468085 ms/rule, 0.34468085 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:16:33.789
+!MESSAGE Command ReviewCode excecuted in 194ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:19:02.433
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:19:02.442
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 128ms, that is about 128.0 ms/file, 0.27234042 ms/rule, 0.27234042 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:19:02.444
+!MESSAGE Command ReviewCode excecuted in 152ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:19:28.116
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:19:28.123
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 113ms, that is about 113.0 ms/file, 0.24042553 ms/rule, 0.24042553 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:19:28.125
+!MESSAGE Command ReviewCode excecuted in 139ms
+
+!ENTRY org.eclipse.ui 4 4 2012-06-03 17:19:39.324
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.ProblemView.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:22:28.003
+!MESSAGE 7 markers applied on 1 files in 3ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:22:28.013
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 283ms, that is about 283.0 ms/file, 0.6021277 ms/rule, 0.6021277 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:22:28.014
+!MESSAGE Command ReviewCode excecuted in 319ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:23:03.143
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:23:03.150
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 176ms, that is about 176.0 ms/file, 0.3744681 ms/rule, 0.3744681 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:23:03.153
+!MESSAGE Command ReviewCode excecuted in 232ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:23:05.925
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:23:05.937
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 142ms, that is about 142.0 ms/file, 0.30212766 ms/rule, 0.30212766 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:23:05.938
+!MESSAGE Command ReviewCode excecuted in 176ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:24:31.357
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:24:31.362
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 125ms, that is about 125.0 ms/file, 0.26595744 ms/rule, 0.26595744 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:24:31.365
+!MESSAGE Command ReviewCode excecuted in 144ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:25:01.383
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:25:01.417
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 165ms, that is about 165.0 ms/file, 0.35106382 ms/rule, 0.35106382 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:25:01.418
+!MESSAGE Command ReviewCode excecuted in 213ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:25:08.343
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:25:08.350
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 231ms, that is about 231.0 ms/file, 0.49148935 ms/rule, 0.49148935 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:25:08.351
+!MESSAGE Command ReviewCode excecuted in 250ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:26:21.516
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:26:21.522
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 124ms, that is about 124.0 ms/file, 0.2638298 ms/rule, 0.2638298 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:26:21.523
+!MESSAGE Command ReviewCode excecuted in 146ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:26:49.581
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:26:49.616
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 88ms, that is about 88.0 ms/file, 0.18723404 ms/rule, 0.18723404 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:26:49.617
+!MESSAGE Command ReviewCode excecuted in 138ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:27:01.022
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:27:01.030
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 132ms, that is about 132.0 ms/file, 0.28085107 ms/rule, 0.28085107 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:27:01.031
+!MESSAGE Command ReviewCode excecuted in 156ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:29:46.890
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:29:46.896
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 123ms, that is about 123.0 ms/file, 0.26170212 ms/rule, 0.26170212 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:29:46.897
+!MESSAGE Command ReviewCode excecuted in 143ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:31:20.834
+!MESSAGE 4 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:31:20.840
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 88ms, that is about 88.0 ms/file, 0.18723404 ms/rule, 0.18723404 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:31:20.841
+!MESSAGE Command ReviewCode excecuted in 105ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:33:24.361
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:33:24.371
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 542ms, that is about 542.0 ms/file, 1.1531914 ms/rule, 1.1531914 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 17:33:24.372
+!MESSAGE Command ReviewCode excecuted in 566ms
+!SESSION 2012-06-03 21:25:52.230 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.7.0_04
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:48:27.817
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:48:27.839
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 906ms, that is about 906.0 ms/file, 1.9276596 ms/rule, 1.9276596 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:48:27.839
+!MESSAGE Command ReviewCode excecuted in 1917ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:48:44.032
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:48:44.048
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 285ms, that is about 285.0 ms/file, 0.60638297 ms/rule, 0.60638297 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:48:44.049
+!MESSAGE Command ReviewCode excecuted in 315ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:49:58.597
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:49:58.601
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 133ms, that is about 133.0 ms/file, 0.2829787 ms/rule, 0.2829787 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:49:58.602
+!MESSAGE Command ReviewCode excecuted in 144ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:50:38.986
+!MESSAGE 5 markers applied on 1 files in 2ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:50:38.991
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 146ms, that is about 146.0 ms/file, 0.3106383 ms/rule, 0.3106383 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:50:38.993
+!MESSAGE Command ReviewCode excecuted in 161ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:50:43.923
+!MESSAGE 5 markers applied on 1 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:50:43.928
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 149ms, that is about 149.0 ms/file, 0.31702128 ms/rule, 0.31702128 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:50:43.928
+!MESSAGE Command ReviewCode excecuted in 161ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:50:50.743
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:50:50.747
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 158ms, that is about 158.0 ms/file, 0.33617023 ms/rule, 0.33617023 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:50:50.748
+!MESSAGE Command ReviewCode excecuted in 168ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:51:05.351
+!MESSAGE 5 markers applied on 1 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:51:05.357
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 92ms, that is about 92.0 ms/file, 0.19574468 ms/rule, 0.19574468 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:51:05.357
+!MESSAGE Command ReviewCode excecuted in 108ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:51:10.273
+!MESSAGE 5 markers applied on 1 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:51:10.276
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 109ms, that is about 109.0 ms/file, 0.2319149 ms/rule, 0.2319149 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 21:51:10.277
+!MESSAGE Command ReviewCode excecuted in 121ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:19:15.233
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:19:15.238
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 68ms, that is about 68.0 ms/file, 0.14468086 ms/rule, 0.14468086 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:19:15.238
+!MESSAGE Command ReviewCode excecuted in 91ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:19:27.265
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:19:27.268
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 153ms, that is about 153.0 ms/file, 0.32553193 ms/rule, 0.32553193 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:19:27.269
+!MESSAGE Command ReviewCode excecuted in 165ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:19:57.405
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:19:57.412
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 91ms, that is about 91.0 ms/file, 0.19361702 ms/rule, 0.19361702 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:19:57.412
+!MESSAGE Command ReviewCode excecuted in 106ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:20:16.307
+!MESSAGE 5 markers applied on 1 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:20:16.313
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 93ms, that is about 93.0 ms/file, 0.19787234 ms/rule, 0.19787234 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:20:16.314
+!MESSAGE Command ReviewCode excecuted in 108ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:20:28.038
+!MESSAGE 5 markers applied on 1 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:20:28.041
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 83ms, that is about 83.0 ms/file, 0.17659575 ms/rule, 0.17659575 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:20:28.042
+!MESSAGE Command ReviewCode excecuted in 95ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:20:52.658
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:20:52.662
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 87ms, that is about 87.0 ms/file, 0.18510638 ms/rule, 0.18510638 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:20:52.662
+!MESSAGE Command ReviewCode excecuted in 99ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:22:47.282
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:22:47.286
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 67ms, that is about 67.0 ms/file, 0.1425532 ms/rule, 0.1425532 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:22:47.286
+!MESSAGE Command ReviewCode excecuted in 79ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:23:41.568
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:23:41.572
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 80ms, that is about 80.0 ms/file, 0.17021276 ms/rule, 0.17021276 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:23:41.573
+!MESSAGE Command ReviewCode excecuted in 92ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:23:46.850
+!MESSAGE 5 markers applied on 1 files in 0ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:23:46.854
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 92ms, that is about 92.0 ms/file, 0.19574468 ms/rule, 0.19574468 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:23:46.855
+!MESSAGE Command ReviewCode excecuted in 103ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:14.788
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:14.791
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 83ms, that is about 83.0 ms/file, 0.17659575 ms/rule, 0.17659575 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:14.792
+!MESSAGE Command ReviewCode excecuted in 93ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:23.225
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:23.230
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 97ms, that is about 97.0 ms/file, 0.20638297 ms/rule, 0.20638297 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:23.231
+!MESSAGE Command ReviewCode excecuted in 112ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:29.608
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:29.613
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 117ms, that is about 117.0 ms/file, 0.24893618 ms/rule, 0.24893618 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:29.614
+!MESSAGE Command ReviewCode excecuted in 129ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:33.861
+!MESSAGE 5 markers applied on 1 files in 1ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:33.865
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 74ms, that is about 74.0 ms/file, 0.1574468 ms/rule, 0.1574468 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:24:33.865
+!MESSAGE Command ReviewCode excecuted in 83ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:50:59.707
+!MESSAGE 29 markers applied on 1 files in 4ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:50:59.721
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 543ms, that is about 543.0 ms/file, 1.1553191 ms/rule, 1.1553191 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:50:59.721
+!MESSAGE Command ReviewCode excecuted in 568ms
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:55:11.607
+!MESSAGE 29 markers applied on 1 files in 5ms.
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:55:11.613
+!MESSAGE Review code command terminated. 470 rules were executed against 1 files. Actual PMD duration is about 376ms, that is about 376.0 ms/file, 0.8 ms/rule, 0.8 ms/filerule
+
+!ENTRY net.sourceforge.pmd.eclipse.plugin 1 0 2012-06-03 22:55:11.614
+!MESSAGE Command ReviewCode excecuted in 395ms

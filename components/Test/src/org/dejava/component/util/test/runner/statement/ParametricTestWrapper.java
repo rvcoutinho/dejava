@@ -1,7 +1,5 @@
 package org.dejava.component.util.test.runner.statement;
 
-import junit.framework.AssertionFailedError;
-
 import org.dejava.component.util.test.exception.parametric.atomic.ParametricTestAssumptionException;
 import org.dejava.component.util.test.exception.parametric.atomic.ParametricTestNonAssumptionException;
 import org.junit.internal.AssumptionViolatedException;

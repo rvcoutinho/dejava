@@ -1,4 +1,4 @@
-package org.dejava.component.util.message.processor;
+package org.dejava.component.util.message.source.processor;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,9 +25,9 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
 import org.dejava.component.util.exception.localized.InvalidParameterException;
-import org.dejava.component.util.message.annotation.MessageSource;
-import org.dejava.component.util.message.annotation.MessageSources;
-import org.dejava.component.util.message.model.MessageSourceClassType;
+import org.dejava.component.util.message.source.annotation.MessageSource;
+import org.dejava.component.util.message.source.annotation.MessageSources;
+import org.dejava.component.util.message.source.model.MessageSourceClassType;
 import org.dejava.component.util.reflection.handler.FieldHandler;
 
 /**

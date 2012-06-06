@@ -1,11 +1,11 @@
-package org.dejava.component.util.message.annotation;
+package org.dejava.component.util.message.source.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.dejava.component.util.message.model.MessageSourceClassType;
+import org.dejava.component.util.message.source.model.MessageSourceClassType;
 
 /**
  * Defines a source of messages.

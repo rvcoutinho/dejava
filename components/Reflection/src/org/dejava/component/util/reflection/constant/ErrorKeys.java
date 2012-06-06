@@ -1,8 +1,8 @@
 package org.dejava.component.util.reflection.constant;
 
-import org.dejava.component.util.message.annotation.MessageSource;
-import org.dejava.component.util.message.annotation.MessageSources;
-import org.dejava.component.util.message.model.MessageSourceClassType;
+import org.dejava.component.util.message.source.annotation.MessageSource;
+import org.dejava.component.util.message.source.annotation.MessageSources;
+import org.dejava.component.util.message.source.model.MessageSourceClassType;
 
 /**
  * Constants related to error keys of the package.

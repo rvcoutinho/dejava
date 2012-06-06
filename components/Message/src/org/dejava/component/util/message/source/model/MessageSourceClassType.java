@@ -1,4 +1,4 @@
-package org.dejava.component.util.message.model;
+package org.dejava.component.util.message.source.model;
 
 /**
  * Message source type.

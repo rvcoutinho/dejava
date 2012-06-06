@@ -1,4 +1,4 @@
-package org.dejava.component.util.message.annotation;
+package org.dejava.component.util.message.source.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

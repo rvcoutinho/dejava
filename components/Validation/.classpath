@@ -4,7 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Exception"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Reflection"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Message"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/I18n"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Date"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

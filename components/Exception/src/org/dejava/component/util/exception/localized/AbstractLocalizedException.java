@@ -2,9 +2,9 @@ package org.dejava.component.util.exception.localized;
 
 import java.util.Locale;
 
-import org.dejava.component.util.message.handler.I18nMessageHandler;
-import org.dejava.component.util.message.handler.impl.DefaultMessageHandler;
-import org.dejava.component.util.message.model.ApplicationMessageType;
+import org.dejava.component.util.i18n.message.handler.I18nMessageHandler;
+import org.dejava.component.util.i18n.message.handler.impl.DefaultMessageHandler;
+import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
 
 /**
  * General localized exception.
@@ -160,10 +160,10 @@ public abstract class AbstractLocalizedException extends Exception {
 		// Tries to return the localized message.
 		try {
 			return getMessageHandler().getMessage(getLocale(), ApplicationMessageType.ERROR, getMessageKey(),
-					getParameters(), true);
+					getParameters());
 		}
 		// If the localized message is not found.
-		catch (Exception exception) {
+		catch (final Exception exception) {
 			// Returns the raw message key.
 			return getMessageKey();
 		}

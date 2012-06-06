@@ -5,11 +5,11 @@ import java.util.Collection;
 
 import org.dejava.component.util.exception.localized.EmptyParameterException;
 import org.dejava.component.util.reflection.handler.PackageHandler;
+import org.dejava.component.util.serialization.xml.XMLCreator;
+import org.dejava.component.util.serialization.xml.XMLDecoder;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.dejava.component.util.test.runner.statement.ParametricTestMethodInvoker;
-import org.dejava.component.util.xml.XMLCreator;
-import org.dejava.component.util.xml.XMLDecoder;
 import org.junit.runners.model.FrameworkMethod;
 import org.w3c.dom.Document;
 

@@ -2,9 +2,9 @@ package org.dejava.component.util.test;
 
 import java.util.Locale;
 
-import org.dejava.component.util.message.handler.I18nMessageHandler;
-import org.dejava.component.util.message.handler.impl.DefaultMessageHandler;
-import org.dejava.component.util.message.model.ApplicationMessageType;
+import org.dejava.component.util.i18n.message.handler.I18nMessageHandler;
+import org.dejava.component.util.i18n.message.handler.impl.DefaultMessageHandler;
+import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
 import org.junit.Assert;
 
 /**

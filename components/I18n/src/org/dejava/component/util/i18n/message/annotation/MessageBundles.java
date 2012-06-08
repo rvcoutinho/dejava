@@ -14,6 +14,12 @@ import java.lang.annotation.Target;
 public @interface MessageBundles {
 	
 	/**
+	 * Default type for the bundle. Will be used by the default if no type is given during the message
+	 * retrieve.
+	 */
+	String defaultType() default "";
+	
+	/**
 	 * Message bundles for the class.
 	 */
 	MessageBundle[] messageBundles();

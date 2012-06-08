@@ -7,42 +7,51 @@ import org.dejava.component.util.i18n.message.annotation.MessageBundle;
 import org.dejava.component.util.i18n.message.annotation.MessageBundles;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.util.i18n.message.handler.MessageHandler;
-import org.dejava.component.util.i18n.message.handler.impl.DefaultMessageHandler;
+import org.dejava.component.util.i18n.message.handler.impl.DefaultI18nMessageHandler;
 import org.dejava.component.util.i18n.sample.constant.ErrorKeys;
 import org.dejava.component.util.i18n.sample.constant.InformationKeys;
 
 /**
- * I18n API sample.
+ * Java I18n API sample.
  */
-@MessageBundles(messageBundles = {
-		@MessageBundle(type = "information", baseName = "org.dejava.component.util.i18n.sample.properties.information"),
-		@MessageBundle(type = "error", baseName = "org.dejava.component.util.i18n.sample.properties.error") })
-public class Sample {
+@MessageBundles(defaultType = "information", messageBundles = {
+		@MessageBundle(type = "information", baseName = "org.dejava.component.util.i18n.message.test.properties.information"),
+		@MessageBundle(type = "error", baseName = "org.dejava.component.util.i18n.message.test.properties.error") })
+public final class Sample {
 	
 	/**
-	 * TODO
+	 * Default constructor for the i18n sample.
+	 */
+	private Sample() {
+		super();
+	}
+	
+	/**
+	 * Internationalization framework sample.
 	 * 
 	 * @param params
-	 *            TODO
-	 * @throws InvalidParameterException
-	 *             TODO
+	 *            Parameters for the method.
 	 * @throws MessageNotFoundException
-	 *             TODO
+	 *             If the message cannot be found.
+	 * @throws InvalidParameterException
+	 *             If the parameter values are not valid.
 	 */
 	public static void main(final String... params) throws MessageNotFoundException,
 			InvalidParameterException {
 		// Gets the default message handler for the pt_BR locale.
-		final MessageHandler ptbrMessageHandler = DefaultMessageHandler.getMessageHandler(new Locale("pt",
-				"BR"));
-		// Prints a message using the pt_BR locale.
-		System.out.println(ptbrMessageHandler.getMessage("information", InformationKeys.SUCCESS, null));
-		// Prints a message using the pt_BR locale.
-		System.out.println(ptbrMessageHandler.getMessage("error", ErrorKeys.FAILURE, null));
+		final MessageHandler ptbrMessageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale(
+				"pt", "BR"));
+		// Prints a message using the pt_BR locale and the default bundle.
+		System.out.println(ptbrMessageHandler.getMessage(InformationKeys.SUCCESS, null));
+		// Prints a message using the pt_BR locale, the "error" bundle and one parameter.
+		System.out.println(ptbrMessageHandler.getMessage("error", ErrorKeys.FAILURE,
+				new Object[] { "em português" }));
 		// Gets the default message handler for the en_US locale.
-		final MessageHandler enusMessageHandler = DefaultMessageHandler.getMessageHandler(Locale.US);
-		// Prints a message using the en_US locale.
-		System.out.println(enusMessageHandler.getMessage("information", InformationKeys.SUCCESS, null));
-		// Prints a message using the en_US locale.
-		System.out.println(enusMessageHandler.getMessage("error", ErrorKeys.FAILURE, null));
+		final MessageHandler enusMessageHandler = DefaultI18nMessageHandler.getMessageHandler(Locale.US);
+		// Prints a message using the en_US locale and the default bundle.
+		System.out.println(enusMessageHandler.getMessage(InformationKeys.SUCCESS, null));
+		// Prints a message using the en_US locale, the "error" bundle and one parameter.
+		System.out.println(enusMessageHandler.getMessage("error", ErrorKeys.FAILURE,
+				new Object[] { "in English" }));
 	}
 }

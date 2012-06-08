@@ -3,7 +3,7 @@ package org.dejava.component.util.exception.localized;
 import java.util.Locale;
 
 import org.dejava.component.util.i18n.message.handler.MessageHandler;
-import org.dejava.component.util.i18n.message.handler.impl.DefaultMessageHandler;
+import org.dejava.component.util.i18n.message.handler.impl.DefaultI18nMessageHandler;
 import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
 
 /**
@@ -63,7 +63,7 @@ public abstract class AbstractLocalizedException extends Exception {
 		// If the message handler is null.
 		if (messageHandler == null) {
 			// Creates a default message handler for the locale.
-			messageHandler = DefaultMessageHandler.getMessageHandler(getLocale());
+			messageHandler = DefaultI18nMessageHandler.getMessageHandler(getLocale());
 		}
 		// Returns the message handler.
 		return messageHandler;

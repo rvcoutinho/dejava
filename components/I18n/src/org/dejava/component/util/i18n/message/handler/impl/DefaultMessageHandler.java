@@ -11,7 +11,7 @@ import org.dejava.component.util.exception.localized.InvalidParameterException;
 import org.dejava.component.util.i18n.message.annotation.MessageBundle;
 import org.dejava.component.util.i18n.message.annotation.MessageBundles;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
-import org.dejava.component.util.i18n.message.handler.I18nMessageHandler;
+import org.dejava.component.util.i18n.message.handler.MessageHandler;
 import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
 import org.dejava.component.util.reflection.handler.AnnotationHandler;
 import org.dejava.component.util.reflection.handler.ClassHandler;
@@ -28,25 +28,25 @@ import org.dejava.component.util.reflection.handler.ClassHandler;
  * 
  * Enjoy!
  */
-public class DefaultMessageHandler implements I18nMessageHandler {
+public class DefaultMessageHandler implements MessageHandler {
 	
 	/**
 	 * Message handlers stored by locale.
 	 */
-	private static Map<Locale, I18nMessageHandler> messageHandlers;
+	private static Map<Locale, MessageHandler> messageHandlers;
 	
 	/**
 	 * Gets the message handlers stored by locale.
 	 * 
 	 * @return The message handlers stored by locale.
 	 */
-	public static Map<Locale, I18nMessageHandler> getMessageHandlers() {
+	public static Map<Locale, MessageHandler> getMessageHandlers() {
 		// Grants that the map will just me created once.
 		synchronized (DefaultMessageHandler.class) {
 			// If the map is null.
 			if (messageHandlers == null) {
 				// Creates a new map.
-				messageHandlers = new HashMap<Locale, I18nMessageHandler>();
+				messageHandlers = new HashMap<Locale, MessageHandler>();
 			}
 		}
 		// Returns the map.
@@ -59,7 +59,7 @@ public class DefaultMessageHandler implements I18nMessageHandler {
 	 * @param messageHandlers
 	 *            New message handlers stored by locale.
 	 */
-	public static void setMessageHandlers(final Map<Locale, I18nMessageHandler> messageHandlers) {
+	public static void setMessageHandlers(final Map<Locale, MessageHandler> messageHandlers) {
 		DefaultMessageHandler.messageHandlers = messageHandlers;
 	}
 	
@@ -133,9 +133,9 @@ public class DefaultMessageHandler implements I18nMessageHandler {
 	 *            Locale for the message handler to use.
 	 * @return The message handler for the current environment.
 	 */
-	public static I18nMessageHandler getMessageHandler(final Locale locale) {
+	public static MessageHandler getMessageHandler(final Locale locale) {
 		// Tries to get the default message handler for the locale in the map.
-		I18nMessageHandler messageHandler = getMessageHandlers().get(locale);
+		MessageHandler messageHandler = getMessageHandlers().get(locale);
 		// If the message handler is not yet.
 		if (messageHandler == null) {
 			// Creates a new instance of the default message handler.
@@ -203,11 +203,23 @@ public class DefaultMessageHandler implements I18nMessageHandler {
 	}
 	
 	/**
-	 * @see org.dejava.component.util.i18n.message.handler.I18nMessageHandler#getMessage(java.util.Locale,
-	 *      java.lang.String, java.lang.String, java.lang.Object[])
+	 * Gets a message with the given key and parameters values of the defined type.
+	 * 
+	 * @param locale
+	 *            Locale for the message.
+	 * @param type
+	 *            Type of the message.
+	 * @param key
+	 *            Key for the message in the bundle.
+	 * @param parametersValues
+	 *            Parameter values for the message.
+	 * @return A message with the given key and parameters values of the defined type.
+	 * @throws MessageNotFoundException
+	 *             If the message cannot be found.
+	 * @throws InvalidParameterException
+	 *             If the parameter values are not valid.
 	 */
-	@Override
-	public String getMessage(final Locale locale, final String type, final String key,
+	private String getMessage(final Locale locale, final String type, final String key,
 			final Object[] parametersValues) throws MessageNotFoundException, InvalidParameterException {
 		// Tries to get the current class in the stack.
 		Class<?> currentClass = ClassHandler.getCurrentClass(1);
@@ -243,18 +255,6 @@ public class DefaultMessageHandler implements I18nMessageHandler {
 	}
 	
 	/**
-	 * @see org.dejava.component.util.i18n.message.handler.I18nMessageHandler#getMessage(java.util.Locale,
-	 *      org.dejava.component.util.i18n.message.model.ApplicationMessageType, java.lang.String,
-	 *      java.lang.Object[])
-	 */
-	@Override
-	public String getMessage(final Locale locale, final ApplicationMessageType type, final String key,
-			final Object[] parametersValues) throws MessageNotFoundException, InvalidParameterException {
-		// Gets the message.
-		return getMessage(locale, type.name(), key, parametersValues);
-	}
-	
-	/**
 	 * Gets a message with the given key and parameters values of the defined type.
 	 * 
 	 * @param type
@@ -269,6 +269,7 @@ public class DefaultMessageHandler implements I18nMessageHandler {
 	 * @throws InvalidParameterException
 	 *             If the parameter values are not valid.
 	 */
+	@Override
 	public String getMessage(final String type, final String key, final Object[] parametersValues)
 			throws MessageNotFoundException, InvalidParameterException {
 		// Gets the message.
@@ -290,6 +291,7 @@ public class DefaultMessageHandler implements I18nMessageHandler {
 	 * @throws InvalidParameterException
 	 *             If the parameter values are not valid.
 	 */
+	@Override
 	public String getMessage(final ApplicationMessageType type, final String key,
 			final Object[] parametersValues) throws MessageNotFoundException, InvalidParameterException {
 		// Gets the message.

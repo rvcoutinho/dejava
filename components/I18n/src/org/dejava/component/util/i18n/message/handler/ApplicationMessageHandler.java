@@ -1,7 +1,5 @@
 package org.dejava.component.util.i18n.message.handler;
 
-import java.util.Locale;
-
 import org.dejava.component.util.exception.localized.InvalidParameterException;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
@@ -9,13 +7,11 @@ import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
 /**
  * Helps handling internationalization messages in a application environment.
  */
-public interface I18nApplicationMessageHandler extends I18nMessageHandler {
+public interface ApplicationMessageHandler extends MessageHandler {
 	
 	/**
 	 * Adds a message with the given key and parameters values of the defined type to the application.
 	 * 
-	 * @param locale
-	 *            Locale for the message.
 	 * @param type
 	 *            Type of the message.
 	 * @param key
@@ -28,14 +24,12 @@ public interface I18nApplicationMessageHandler extends I18nMessageHandler {
 	 * @throws InvalidParameterException
 	 *             If the parameter values are not valid.
 	 */
-	String addMessage(Locale locale, String type, String key, Object[] parametersValues)
-			throws MessageNotFoundException, InvalidParameterException;
+	String addMessage(String type, String key, Object[] parametersValues) throws MessageNotFoundException,
+			InvalidParameterException;
 	
 	/**
 	 * Adds a message with the given key and parameters values of the defined type to the application.
 	 * 
-	 * @param locale
-	 *            Locale for the message.
 	 * @param type
 	 *            Type of the message.
 	 * @param key
@@ -48,6 +42,6 @@ public interface I18nApplicationMessageHandler extends I18nMessageHandler {
 	 * @throws InvalidParameterException
 	 *             If the parameter values are not valid.
 	 */
-	String addMessage(Locale locale, ApplicationMessageType type, String key, Object[] parametersValues)
+	String addMessage(ApplicationMessageType type, String key, Object[] parametersValues)
 			throws MessageNotFoundException, InvalidParameterException;
 }

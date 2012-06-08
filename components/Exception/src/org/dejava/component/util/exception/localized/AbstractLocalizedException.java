@@ -2,7 +2,7 @@ package org.dejava.component.util.exception.localized;
 
 import java.util.Locale;
 
-import org.dejava.component.util.i18n.message.handler.I18nMessageHandler;
+import org.dejava.component.util.i18n.message.handler.MessageHandler;
 import org.dejava.component.util.i18n.message.handler.impl.DefaultMessageHandler;
 import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
 
@@ -52,14 +52,14 @@ public abstract class AbstractLocalizedException extends Exception {
 	/**
 	 * Message handler to render localized messages.
 	 */
-	private I18nMessageHandler messageHandler;
+	private MessageHandler messageHandler;
 	
 	/**
 	 * Gets the message handler to render localized messages.
 	 * 
 	 * @return The message handler to render localized messages.
 	 */
-	public I18nMessageHandler getMessageHandler() {
+	public MessageHandler getMessageHandler() {
 		// If the message handler is null.
 		if (messageHandler == null) {
 			// Creates a default message handler for the locale.
@@ -75,7 +75,7 @@ public abstract class AbstractLocalizedException extends Exception {
 	 * @param messageHandler
 	 *            The message handler to render localized messages.
 	 */
-	public void setMessageHandler(final I18nMessageHandler messageHandler) {
+	public void setMessageHandler(final MessageHandler messageHandler) {
 		this.messageHandler = messageHandler;
 	}
 	
@@ -159,7 +159,7 @@ public abstract class AbstractLocalizedException extends Exception {
 	public String getMessage() {
 		// Tries to return the localized message.
 		try {
-			return getMessageHandler().getMessage(getLocale(), ApplicationMessageType.ERROR, getMessageKey(),
+			return getMessageHandler().getMessage(ApplicationMessageType.ERROR, getMessageKey(),
 					getParameters());
 		}
 		// If the localized message is not found.

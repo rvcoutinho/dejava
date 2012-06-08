@@ -33,7 +33,7 @@ import org.dejava.component.util.reflection.handler.FieldHandler;
 /**
  * Annotation processor that processes and creates the defined message source bundles.
  */
-@SupportedSourceVersion(value = SourceVersion.RELEASE_6)
+@SupportedSourceVersion(value = SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes(value = { "org.dejava.component.util.i18n.source.annotation.MessageSources" })
 public class MessageSourceProcessor extends AbstractProcessor {
 	
@@ -82,7 +82,7 @@ public class MessageSourceProcessor extends AbstractProcessor {
 			propsInputStream.close();
 		}
 		// If no file is found.
-		catch (IOException exception) {
+		catch (final IOException exception) {
 			// Ignores it.
 		}
 		// Returns the properties object.
@@ -127,7 +127,7 @@ public class MessageSourceProcessor extends AbstractProcessor {
 			propsOutputStream.close();
 		}
 		// If no file is found.
-		catch (IOException exception) {
+		catch (final IOException exception) {
 			// Ignores it.
 		}
 	}
@@ -139,20 +139,20 @@ public class MessageSourceProcessor extends AbstractProcessor {
 	@Override
 	public boolean process(final Set<? extends TypeElement> annotations, final RoundEnvironment roundEnv) {
 		// For each class annotated with the message source annotation.
-		for (Element currentClass : roundEnv.getElementsAnnotatedWith(MessageSources.class)) {
+		for (final Element currentClass : roundEnv.getElementsAnnotatedWith(MessageSources.class)) {
 			// Gets the annotation information for this class.
 			final MessageSources msgSrcs = currentClass.getAnnotation(MessageSources.class);
 			// For each message source.
-			for (MessageSource currentMsgSrc : msgSrcs.sources()) {
+			for (final MessageSource currentMsgSrc : msgSrcs.sources()) {
 				// For each defined available locale.
-				for (String currentLocaleText : currentMsgSrc.availableLocales()) {
+				for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
 					// Get the properties content (if any).
 					final Properties msgSrcProps = getPropertiesContent(currentMsgSrc.sourcePath(),
 							currentMsgSrc.bundleBaseName(), currentLocaleText);
 					// For each enclosed elements of the class.
-					for (Element currentClassElement : currentClass.getEnclosedElements()) {
+					for (final Element currentClassElement : currentClass.getEnclosedElements()) {
 						// For each type of the source defined for the current class.
-						for (MessageSourceClassType currentSrcType : currentMsgSrc.types()) {
+						for (final MessageSourceClassType currentSrcType : currentMsgSrc.types()) {
 							// Current entry.
 							String currentEntry = null;
 							// Depending on the current type.
@@ -199,7 +199,7 @@ public class MessageSourceProcessor extends AbstractProcessor {
 															.getSimpleName().toString());
 										}
 										// If it is not a getter.
-										catch (InvalidParameterException exception) {
+										catch (final InvalidParameterException exception) {
 											// Ignores it.
 										}
 									}
@@ -255,21 +255,21 @@ public class MessageSourceProcessor extends AbstractProcessor {
 	 * @param args
 	 *            cd
 	 */
-	public static void main(String... args) {
+	public static void main(final String... args) {
 		// Get an instance of java compiler
-		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+		final JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 		
 		// Get a new instance of the standard file manager implementation
-		StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
+		final StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
 		
 		// Get the list of java file objects, in this case we have only one file, TestClass.java
-		Iterable<? extends JavaFileObject> compilationUnits1 = fileManager
+		final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager
 				.getJavaFileObjects("sample/org/dejava/component/util/i18n/sample/constant/ErrorKeys.java");
 		
-		CompilationTask task = compiler.getTask(null, fileManager, null, null, null, compilationUnits1);
+		final CompilationTask task = compiler.getTask(null, fileManager, null, null, null, compilationUnits1);
 		
 		// Create a list to hold annotation processors
-		LinkedList<AbstractProcessor> processors = new LinkedList<AbstractProcessor>();
+		final LinkedList<AbstractProcessor> processors = new LinkedList<AbstractProcessor>();
 		
 		// Add an annotation processor to the list
 		processors.add(new MessageSourceProcessor());

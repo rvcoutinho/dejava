@@ -9,13 +9,11 @@ import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
 /**
  * Helps handling internationalization messages.
  */
-public interface I18nMessageHandler {
+public interface MessageHandler {
 	
 	/**
 	 * Gets a message with the given key and parameters values of the defined type.
 	 * 
-	 * @param locale
-	 *            Locale for the message.
 	 * @param type
 	 *            Type of the message.
 	 * @param key
@@ -28,14 +26,12 @@ public interface I18nMessageHandler {
 	 * @throws InvalidParameterException
 	 *             If the parameter values are not valid.
 	 */
-	String getMessage(Locale locale, String type, String key, Object[] parametersValues)
+	String getMessage(String type, String key, Object[] parametersValues)
 			throws MessageNotFoundException, InvalidParameterException;
 	
 	/**
 	 * Gets a message with the given key and parameters values of the defined type.
 	 * 
-	 * @param locale
-	 *            Locale for the message.
 	 * @param type
 	 *            Type of the message.
 	 * @param key
@@ -48,6 +44,6 @@ public interface I18nMessageHandler {
 	 * @throws InvalidParameterException
 	 *             If the parameter values are not valid.
 	 */
-	String getMessage(Locale locale, ApplicationMessageType type, String key, Object[] parametersValues)
+	String getMessage(ApplicationMessageType type, String key, Object[] parametersValues)
 			throws MessageNotFoundException, InvalidParameterException;
 }

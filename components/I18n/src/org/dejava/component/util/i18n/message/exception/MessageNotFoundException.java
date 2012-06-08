@@ -1,7 +1,7 @@
 package org.dejava.component.util.i18n.message.exception;
 
 import org.dejava.component.util.exception.localized.AbstractLocalizedException;
-import org.dejava.component.util.i18n.sample.constant.ErrorKeys;
+import org.dejava.component.util.i18n.message.constant.ErrorKeys;
 
 /**
  * Exception related to unaccessible messages.

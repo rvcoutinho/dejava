@@ -2,7 +2,7 @@ package org.dejava.component.util.test;
 
 import java.util.Locale;
 
-import org.dejava.component.util.i18n.message.handler.I18nMessageHandler;
+import org.dejava.component.util.i18n.message.handler.MessageHandler;
 import org.dejava.component.util.i18n.message.handler.impl.DefaultMessageHandler;
 import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
 import org.junit.Assert;
@@ -48,14 +48,14 @@ public final class LocalizedAssert extends Assert {
 	/**
 	 * Message handler to render localized messages.
 	 */
-	private static I18nMessageHandler messageHandler;
+	private static MessageHandler messageHandler;
 	
 	/**
 	 * Gets the message handler to render localized messages.
 	 * 
 	 * @return The message handler to render localized messages.
 	 */
-	public static I18nMessageHandler getMessageHandler() {
+	public static MessageHandler getMessageHandler() {
 		// If the message handler is null.
 		if (messageHandler == null) {
 			// Creates a default message handler for the locale.
@@ -71,7 +71,7 @@ public final class LocalizedAssert extends Assert {
 	 * @param messageHandler
 	 *            The message handler to render localized messages.
 	 */
-	public static void setMessageHandler(final I18nMessageHandler messageHandler) {
+	public static void setMessageHandler(final MessageHandler messageHandler) {
 		LocalizedAssert.messageHandler = messageHandler;
 	}
 	
@@ -91,11 +91,11 @@ public final class LocalizedAssert extends Assert {
 	public static void fail(final String messageKey) {
 		// Tries to raise a new assertion error with the message for the given key.
 		try {
-			throw new AssertionError(getMessageHandler().getMessage(getLocale(),
-					ApplicationMessageType.ERROR, messageKey, null, true));
+			throw new AssertionError(getMessageHandler().getMessage(ApplicationMessageType.ERROR, messageKey,
+					null));
 		}
 		// If it is not possible to find the appropriate message.
-		catch (Exception exception) {
+		catch (final Exception exception) {
 			// Throws a new assertion error (with no message).
 			throw new AssertionError();
 		}

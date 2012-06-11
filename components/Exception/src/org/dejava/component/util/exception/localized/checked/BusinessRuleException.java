@@ -1,4 +1,5 @@
-package org.dejava.component.util.exception.localized;
+package org.dejava.component.util.exception.localized.checked;
+
 
 /**
  * Exception related business rules.

@@ -1,4 +1,4 @@
-package org.dejava.component.util.exception.localized;
+package org.dejava.component.util.exception.localized.unchecked;
 
 import org.dejava.component.util.exception.constant.ErrorKeys;
 
@@ -16,9 +16,9 @@ public class EmptyParameterException extends InvalidParameterException {
 	 * Public constructor.
 	 * 
 	 * @param emptyParameter
-	 *            The parameter that is empty.
+	 *            Parameter that is empty.
 	 */
-	public EmptyParameterException(final Object emptyParameter) {
-		super(ErrorKeys.EMPTY_PARAM, null, new Object[] { emptyParameter });
+	public EmptyParameterException(final Integer emptyParameter) {
+		super(ErrorKeys.EMPTY_PARAM, null, emptyParameter, null);
 	}
 }

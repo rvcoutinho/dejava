@@ -24,11 +24,10 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
-import org.dejava.component.util.exception.localized.InvalidParameterException;
+import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.i18n.source.annotation.MessageSource;
 import org.dejava.component.util.i18n.source.annotation.MessageSources;
 import org.dejava.component.util.i18n.source.model.MessageSourceClassType;
-import org.dejava.component.util.reflection.handler.FieldHandler;
 
 /**
  * Annotation processor that processes and creates the defined message source bundles.
@@ -264,7 +263,7 @@ public class MessageSourceProcessor extends AbstractProcessor {
 		
 		// Get the list of java file objects, in this case we have only one file, TestClass.java
 		final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager
-				.getJavaFileObjects("sample/org/dejava/component/util/i18n/sample/constant/ErrorKeys.java");
+				.getJavaFileObjects("test/org/dejava/component/util/i18n/test/constant/InformationKeys.java");
 		
 		final CompilationTask task = compiler.getTask(null, fileManager, null, null, null, compilationUnits1);
 		

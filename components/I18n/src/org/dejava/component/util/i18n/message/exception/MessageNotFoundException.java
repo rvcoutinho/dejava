@@ -1,12 +1,12 @@
 package org.dejava.component.util.i18n.message.exception;
 
-import org.dejava.component.util.exception.localized.AbstractLocalizedException;
+import org.dejava.component.util.exception.localized.unchecked.AbstractLocalizedRuntimeException;
 import org.dejava.component.util.i18n.message.constant.ErrorKeys;
 
 /**
  * Exception related to unaccessible messages.
  */
-public class MessageNotFoundException extends AbstractLocalizedException {
+public class MessageNotFoundException extends AbstractLocalizedRuntimeException {
 	
 	/**
 	 * Generated serial.
@@ -26,9 +26,9 @@ public class MessageNotFoundException extends AbstractLocalizedException {
 	}
 	
 	/**
-	 * @see AbstractLocalizedException#AbstractLocalizedException(String, Throwable, Object[])
+	 * @see AbstractLocalizedRuntimeException#AbstractLocalizedRuntimeException(String, Throwable, Object[])
 	 */
-	public MessageNotFoundException(final String message, final Throwable cause, final Object[] parameters) {
-		super(message, cause, parameters);
+	public MessageNotFoundException(final String messageKey, final Throwable cause, final Object[] parameters) {
+		super(messageKey, cause, parameters);
 	}
 }

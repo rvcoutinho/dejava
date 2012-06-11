@@ -7,15 +7,14 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import org.dejava.component.util.exception.localized.EmptyParameterException;
-import org.dejava.component.util.exception.localized.InvalidParameterException;
+import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.i18n.message.annotation.MessageBundle;
 import org.dejava.component.util.i18n.message.annotation.MessageBundles;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.util.i18n.message.handler.MessageHandler;
-import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
-import org.dejava.component.util.reflection.handler.AnnotationHandler;
-import org.dejava.component.util.reflection.handler.ClassHandler;
+import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
+import org.dejava.component.util.reflection.ClassMirror;
 
 /**
  * Default i18n message handler. Handles getting messages from within a class using the information provided
@@ -253,9 +252,9 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 			// Tries to get the localized message with the information on the current class on the stack.
 			try {
 				// Tries to get the current class in the stack.
-				final Class<?> currentClass = ClassHandler.getCurrentClass(currentStackDepth);
+				final ClassMirror<?> currentClass = new ClassMirror<Object>(currentStackDepth);
 				// Tries to get the annotation with the bundles for the current class.
-				final MessageBundles messageBundles = AnnotationHandler.getAnnotation(currentClass,
+				final MessageBundles messageBundles =  AnnotationHandler.getAnnotation(currentClass,
 						MessageBundles.class);
 				// If the annotation is found.
 				if (messageBundles != null) {
@@ -268,8 +267,11 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 							// Throws an exception.
 							throw new EmptyParameterException(2);
 						}
-						// The actual type is the default one.
-						actualType = messageBundles.defaultType();
+						// If it is given.
+						else {
+							// The actual type is the default one.
+							actualType = messageBundles.defaultType();
+						}
 					}
 					// For each defined localized message bundle.
 					for (final MessageBundle currentMessageBundle : messageBundles.messageBundles()) {
@@ -308,14 +310,21 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 	}
 	
 	/**
-	 * @see org.dejava.component.util.i18n.message.handler.MessageHandler#getMessage(org.dejava.component.util.i18n.message.model.ApplicationMessageType,
+	 * @see org.dejava.component.util.i18n.message.handler.MessageHandler#getMessage(org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType,
 	 *      java.lang.String, java.lang.Object[])
 	 */
 	@Override
 	public String getMessage(final ApplicationMessageType type, final String key,
 			final Object[] parametersValues) throws MessageNotFoundException, InvalidParameterException {
+		// The actual type is null.
+		String actualType = null;
+		// If the given type is null.
+		if (type != null) {
+			// The actual type is the type name.
+			actualType = type.name().toLowerCase();
+		}
 		// Gets the message.
-		return getMessage(type, key, parametersValues);
+		return getMessage(actualType, key, parametersValues);
 	}
 	
 	/**

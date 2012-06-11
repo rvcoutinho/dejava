@@ -1,8 +1,8 @@
 package org.dejava.component.util.i18n.message.handler;
 
-import org.dejava.component.util.exception.localized.InvalidParameterException;
+import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
-import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
+import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
 
 /**
  * Helps handling internationalization messages.

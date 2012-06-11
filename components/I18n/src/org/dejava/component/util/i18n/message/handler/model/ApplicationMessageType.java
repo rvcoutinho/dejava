@@ -1,4 +1,4 @@
-package org.dejava.component.util.i18n.message.model;
+package org.dejava.component.util.i18n.message.handler.model;
 
 /**
  * Message type in a application.

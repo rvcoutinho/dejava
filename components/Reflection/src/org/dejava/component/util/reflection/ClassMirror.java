@@ -150,11 +150,13 @@ public class ClassMirror<Reflected extends Object> {
 	 * @param initialize
 	 *            Whether the class must be initialized.
 	 * @return Returns the class with the name.
+	 * @throws EmptyParameterException
+	 *             If the class name is not given.
 	 * @throws InvalidParameterException
 	 *             If the class cannot be found for the name.
 	 */
 	public static Class<?> getClass(final String className, final ClassLoader classLoader,
-			final Boolean initialize) throws InvalidParameterException {
+			final Boolean initialize) throws InvalidParameterException, EmptyParameterException {
 		// If the given class name is null.
 		if ((className == null) || (className.isEmpty())) {
 			// Throws an exception.
@@ -265,10 +267,8 @@ public class ClassMirror<Reflected extends Object> {
 	 * Gets all the classes and interfaces inherited by the reflected class (including this one).
 	 * 
 	 * @return All the classes and interfaces inherited by the reflected class (including this one).
-	 * @throws EmptyParameterException
-	 *             If the reflected class is null (should never be).
 	 */
-	public Set<ClassMirror<?>> getSuperclasses() throws EmptyParameterException {
+	public Set<ClassMirror<?>> getSuperclasses() {
 		// All classes to be returned.
 		final Set<ClassMirror<?>> classes = new LinkedHashSet<ClassMirror<?>>();
 		// Adds the class itself to the list.
@@ -300,10 +300,13 @@ public class ClassMirror<Reflected extends Object> {
 	 * @param fieldName
 	 *            Name of the field to be found.
 	 * @return A field from the desired class.
+	 * @throws EmptyParameterException
+	 *             If the name is not given.
 	 * @throws InvalidParameterException
-	 *             If the parameters for the method are not valid (empty or not accessible).
+	 *             If the field cannot be found for the name.
 	 */
-	public FieldMirror getField(final String fieldName) throws InvalidParameterException {
+	public FieldMirror getField(final String fieldName) throws InvalidParameterException,
+			EmptyParameterException {
 		// If the field name is empty.
 		if ((fieldName == null) || (fieldName.isEmpty())) {
 			// Throws an exception.
@@ -331,7 +334,7 @@ public class ClassMirror<Reflected extends Object> {
 	 * @return All fields from a class (including inherited ones).
 	 */
 	public Collection<FieldMirror> getFields() {
-		// Collection to keep found fields.
+		// Collection to keep fields.
 		final Collection<FieldMirror> fields = new ArrayList<FieldMirror>();
 		// While there are super classes.
 		for (Class<?> currentClass = getReflectedClass(); currentClass != null; currentClass = currentClass
@@ -339,16 +342,10 @@ public class ClassMirror<Reflected extends Object> {
 			// For each field in the current class.
 			for (final Field currentField : currentClass.getDeclaredFields()) {
 				// Tries to add the current field to the collection.
-				try {
-					fields.add(new FieldMirror(currentField));
-				}
-				// If an invalid parameter exception is thrown.
-				catch (final InvalidParameterException exception) {
-					// Ignores it, as the current field should never be null.
-				}
+				fields.add(new FieldMirror(currentField));
 			}
 		}
-		// Return all the fields found in the search.
+		// Returns all the fields found in the search.
 		return fields;
 	}
 	
@@ -551,41 +548,33 @@ public class ClassMirror<Reflected extends Object> {
 	}
 	
 	/**
-	 * Returns an annotation from the passed class (and its inherited classes and interfaces).
+	 * Returns an annotation from the reflected class (or its inherited classes and interfaces). The first
+	 * annotation found for the given class is returned.
 	 * 
 	 * @param <AnyAnnotation>
 	 *            Any annotation being searched.
-	 * @param clazz
-	 *            Class from which the annotation will be searched for.
 	 * @param annotationClass
 	 *            Type of the annotation to be searched for.
-	 * @return An annotation from the passed class (and its inherited classes and interfaces).
+	 * @return An annotation from the reflected class (or its inherited classes and interfaces).
 	 * @throws EmptyParameterException
 	 *             If the passed class is null.
 	 */
-	public static <AnyAnnotation extends Annotation> AnyAnnotation getAnnotation(final Class<?> clazz,
+	public <AnyAnnotation extends Annotation> AnnotationMirror<AnyAnnotation> getAnnotation(
 			final Class<AnyAnnotation> annotationClass) throws EmptyParameterException {
-		// If the passed class is null.
-		if (clazz == null) {
-			// Throws an exception.
-			throw new EmptyParameterException("class"); // TODO
-		}
-		// If the passed annotation class is null.
+		// If the annotation class is null.
 		if (annotationClass == null) {
 			// Throws an exception.
-			throw new EmptyParameterException("annotation class");
+			throw new EmptyParameterException(1);
 		}
-		// For each superclass/interface.
-		for (final Class<?> currentClass : ClassHandler.getSuperclasses(clazz)) {
-			// Tries to get the desired annotation.
-			final AnyAnnotation annotation = currentClass.getAnnotation(annotationClass);
-			// If the annotation was correctly recovered.
-			if (annotation != null) {
-				// Returns it.
-				return annotation;
+		// For each annotation in the reflected class.
+		for (final AnnotationMirror<?> currentAnnotation : getAnnotations()) {
+			// If the current annotation is an instance of the given class. TODO
+			if (true) {
+				// Returns the current annotation.
+				return (AnnotationMirror<AnyAnnotation>) currentAnnotation;
 			}
 		}
-		// If no annotation was found, returns null.
+		// If the annotation was not found, return null.
 		return null;
 	}
 	
@@ -614,7 +603,7 @@ public class ClassMirror<Reflected extends Object> {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final ClassMirror other = (ClassMirror) obj;
+		final ClassMirror<?> other = (ClassMirror<?>) obj;
 		if (reflectedClass == null) {
 			if (other.reflectedClass != null) {
 				return false;

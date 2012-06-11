@@ -79,7 +79,7 @@ public class AnnotationMirror<Reflected extends Annotation> {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final AnnotationMirror other = (AnnotationMirror) obj;
+		final AnnotationMirror<?> other = (AnnotationMirror<?>) obj;
 		if (reflectedAnnotation == null) {
 			if (other.reflectedAnnotation != null) {
 				return false;

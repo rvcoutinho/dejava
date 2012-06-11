@@ -8,8 +8,8 @@ import org.dejava.component.util.i18n.message.annotation.MessageBundles;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.util.i18n.message.handler.MessageHandler;
 import org.dejava.component.util.i18n.message.handler.impl.DefaultI18nMessageHandler;
-import org.dejava.component.util.i18n.test.constant.ErrorKeys;
-import org.dejava.component.util.i18n.test.constant.InformationKeys;
+import org.dejava.component.util.i18n.sample.constant.ErrorKeys;
+import org.dejava.component.util.i18n.sample.constant.InformationKeys;
 
 /**
  * Java I18n API sample.

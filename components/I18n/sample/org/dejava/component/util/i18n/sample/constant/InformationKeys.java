@@ -7,7 +7,7 @@ import org.dejava.component.util.i18n.source.model.MessageSourceClassType;
 /**
  * Constants related to information message keys of the package.
  */
-@MessageSources(sources = { @MessageSource(sourcePath = "sample", bundleBaseName = "org.dejava.component.util.i18n.message.test.properties.information", types = { MessageSourceClassType.PUBLIC_CONSTANTS_VALUES }) })
+@MessageSources(sources = { @MessageSource(sourcePath = "sample", bundleBaseName = "org.dejava.component.util.i18n.test.message.properties.information", types = { MessageSourceClassType.PUBLIC_CONSTANTS_VALUES }) })
 public final class InformationKeys {
 	
 	/**

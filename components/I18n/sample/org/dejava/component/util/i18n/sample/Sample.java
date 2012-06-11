@@ -2,21 +2,21 @@ package org.dejava.component.util.i18n.sample;
 
 import java.util.Locale;
 
-import org.dejava.component.util.exception.localized.InvalidParameterException;
+import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.i18n.message.annotation.MessageBundle;
 import org.dejava.component.util.i18n.message.annotation.MessageBundles;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.util.i18n.message.handler.MessageHandler;
 import org.dejava.component.util.i18n.message.handler.impl.DefaultI18nMessageHandler;
-import org.dejava.component.util.i18n.sample.constant.ErrorKeys;
-import org.dejava.component.util.i18n.sample.constant.InformationKeys;
+import org.dejava.component.util.i18n.test.constant.ErrorKeys;
+import org.dejava.component.util.i18n.test.constant.InformationKeys;
 
 /**
  * Java I18n API sample.
  */
 @MessageBundles(defaultType = "information", messageBundles = {
-		@MessageBundle(type = "information", baseName = "org.dejava.component.util.i18n.message.test.properties.information"),
-		@MessageBundle(type = "error", baseName = "org.dejava.component.util.i18n.message.test.properties.error") })
+		@MessageBundle(type = "information", baseName = "org.dejava.component.util.i18n.sample.properties.information"),
+		@MessageBundle(type = "error", baseName = "org.dejava.component.util.i18n.sample.properties.error") })
 public final class Sample {
 	
 	/**

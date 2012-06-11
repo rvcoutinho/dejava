@@ -1,6 +1,6 @@
 package org.dejava.component.util.validation.exception;
 
-import org.dejava.component.util.exception.localized.AbstractLocalizedException;
+import org.dejava.component.util.exception.localized.checked.AbstractLocalizedException;
 
 /**
  * Exception related to the impossibility to run a validation.

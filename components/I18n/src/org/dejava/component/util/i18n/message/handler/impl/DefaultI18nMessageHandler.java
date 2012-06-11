@@ -205,7 +205,8 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		// If the key is not found.
 		catch (final MissingResourceException exception) {
 			// Throws an exception.
-			throw new MessageNotFoundException(exception, null);
+			throw new MessageNotFoundException(exception, new Object[] { locale, bundleBaseName, key,
+					parametersValues });
 		}
 	}
 	
@@ -254,7 +255,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 				// Tries to get the current class in the stack.
 				final ClassMirror<?> currentClass = new ClassMirror<Object>(currentStackDepth);
 				// Tries to get the annotation with the bundles for the current class.
-				final MessageBundles messageBundles =  AnnotationHandler.getAnnotation(currentClass,
+				final MessageBundles messageBundles = AnnotationHandler.getAnnotation(currentClass,
 						MessageBundles.class);
 				// If the annotation is found.
 				if (messageBundles != null) {

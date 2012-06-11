@@ -1,6 +1,6 @@
 package org.dejava.component.util.test.exception;
 
-import org.dejava.component.util.exception.localized.AbstractLocalizedException;
+import org.dejava.component.util.exception.localized.checked.AbstractLocalizedException;
 
 /**
  * Test related exceptions.

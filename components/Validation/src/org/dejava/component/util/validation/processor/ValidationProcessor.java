@@ -9,8 +9,8 @@ import java.util.Set;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.dejava.component.util.exception.localized.EmptyParameterException;
-import org.dejava.component.util.exception.localized.InvalidParameterException;
+import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.reflection.exception.InvocationException;
 import org.dejava.component.util.reflection.handler.ConstructorHandler;
 import org.dejava.component.util.reflection.handler.FieldHandler;

@@ -2,7 +2,7 @@ package org.dejava.component.util.validation.exception;
 
 import java.util.Collection;
 
-import org.dejava.component.util.exception.localized.BusinessRuleException;
+import org.dejava.component.util.exception.localized.checked.BusinessRuleException;
 
 /**
  * Exception related to an specific failed validation.

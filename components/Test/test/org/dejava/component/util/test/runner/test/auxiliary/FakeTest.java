@@ -3,7 +3,7 @@ package org.dejava.component.util.test.runner.test.auxiliary;
 import java.util.Arrays;
 import java.util.List;
 
-import org.dejava.component.util.exception.localized.BusinessRuleException;
+import org.dejava.component.util.exception.localized.checked.BusinessRuleException;
 import org.dejava.component.util.test.annotation.ParametricTest;
 import org.dejava.component.util.test.runner.ParametricJUnitRunner;
 import org.junit.Assert;

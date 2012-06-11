@@ -11,6 +11,39 @@ import org.dejava.component.util.i18n.source.model.MessageSourceClassType;
 public final class ErrorKeys {
 	
 	/**
+	 * Class not found error key.
+	 */
+	public static final String CLASS_NOT_FOUND = "reflection.class.notfound";
+	
+	/**
+	 * Unexpected class error key.
+	 */
+	public static final String UNEXPECTED_CLASS = "reflection.class.unexpected";
+	
+	/**
+	 * Field not found error key.
+	 */
+	public static final String FIELD_NOT_FOUND = "reflection.class.field.notfound";
+	
+	/**
+	 * Method not found error key.
+	 */
+	public static final String METHOD_NOT_FOUND = "reflection.class.method.notfound";
+	
+	/**
+	 * Empty parameter class error key.
+	 */
+	public static final String EMPTY_PARAM_CLASS = "reflection.class.method.parameter.class.empty";
+	
+	/**
+	 * Empty parameter value error key.
+	 */
+	public static final String EMPTY_PARAM_VALUE = "reflection.class.method.parameter.value.empty";
+	
+	
+	
+	
+	/**
 	 * Not getter/setter method error key.
 	 */
 	public static final String NOT_GETTER_SETTER = "reflection.method.notgettersetter";
@@ -56,11 +89,6 @@ public final class ErrorKeys {
 	public static final String EMPTY_OBJECT = "reflection.object.empty";
 	
 	/**
-	 * Empty parameter value error key.
-	 */
-	public static final String EMPTY_PARAM_VALUE = "reflection.parameter.value.empty";
-	
-	/**
 	 * Illegal parameters values error key.
 	 */
 	public static final String ILLEGAL_PARAMS_VALUES = "reflection.parameter.values.illegal";
@@ -71,11 +99,6 @@ public final class ErrorKeys {
 	public static final String METHOD_EXCEPTION = "reflection.method.exception";
 	
 	/**
-	 * Missing field error key.
-	 */
-	public static final String MISSING_FIELD = "reflection.field.missing";
-	
-	/**
 	 * Missing method error key.
 	 */
 	public static final String MISSING_METHOD = "reflection.method.missing";
@@ -84,11 +107,6 @@ public final class ErrorKeys {
 	 * Missing constructor error key.
 	 */
 	public static final String MISSING_CONSTRUCTOR = "reflection.constructor.missing";
-	
-	/**
-	 * Unaccessible class error key.
-	 */
-	public static final String UNACCESSIBLE_CLASS = "reflection.class.unaccessible";
 	
 	/**
 	 * Unaccessible constructor error key.

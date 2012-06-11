@@ -1,6 +1,7 @@
 package org.dejava.component.util.reflection.exception;
 
-import org.dejava.component.util.exception.localized.AbstractLocalizedException;
+import org.dejava.component.util.exception.localized.checked.AbstractLocalizedException;
+import org.dejava.component.util.reflection.constant.ErrorKeys;
 
 /**
  * Exception related to exceptions thrown by a target method.
@@ -13,9 +14,14 @@ public class InvocationException extends AbstractLocalizedException {
 	private static final long serialVersionUID = -315210606548717238L;
 	
 	/**
-	 * @see AbstractLocalizedException#AbstractLocalizedException(String, Throwable, Object[])
+	 * Basic constructor.
+	 * 
+	 * @param cause
+	 *            Exception cause.
+	 * @param parameters
+	 *            Parameters for the exception (and message).
 	 */
-	public InvocationException(final String message, final Throwable cause, final Object[] parameters) {
-		super(message, cause, parameters);
+	public InvocationException(final Throwable cause, final Object[] parameters) {
+		super(ErrorKeys.METHOD_EXCEPTION, cause, parameters);
 	}
 }

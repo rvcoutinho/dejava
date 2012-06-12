@@ -28,7 +28,7 @@ import org.dejava.component.util.reflection.ClassMirror;
  * found with the information of the first class in the stack, it keeps looking in the next classes until the
  * localized message is found or the maximum search depth is reached.
  * 
- * Enjoy java i18n and l10n!
+ * Enjoy Java i18n and l10n!
  */
 public class DefaultI18nMessageHandler implements MessageHandler {
 	

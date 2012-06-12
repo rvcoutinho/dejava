@@ -38,22 +38,9 @@ public class FieldMirror {
 	}
 	
 	/**
-	 * Public constructor for the reflection class.
-	 * 
-	 * @param reflectedField
-	 *            Field being reflected.
-	 * @throws EmptyParameterException
-	 *             If the reflected field is not given.
+	 * Declaring class of the field.
 	 */
-	public FieldMirror(final Field reflectedField) throws EmptyParameterException {
-		// If the field is null.
-		if (reflectedField == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(1);
-		}
-		// Sets the main reflection fields.
-		this.reflectedField = reflectedField;
-	}
+	private ClassMirror<?> declaringClass;
 	
 	/**
 	 * Gets the declaring class of the field.
@@ -61,8 +48,13 @@ public class FieldMirror {
 	 * @return The declaring class of the field.
 	 */
 	public ClassMirror<?> getDeclaringClass() {
-		// Gets the declaring class of the field.
-		return new ClassMirror<>(getReflectedField().getDeclaringClass());
+		// If the declaring class is null.
+		if (declaringClass == null) {
+			// Gets the declaring class of the field.
+			declaringClass = new ClassMirror<>(getReflectedField().getDeclaringClass());
+		}
+		// Returns the class.
+		return declaringClass;
 	}
 	
 	/**
@@ -98,29 +90,39 @@ public class FieldMirror {
 	}
 	
 	/**
-	 * Gets the getter for the reflected field. TODO Think about creating field.
+	 * Getter for the reflected field.
+	 */
+	private MethodMirror getter;
+	
+	/**
+	 * Gets the getter for the reflected field.
 	 * 
 	 * @return The getter for the reflected field.
 	 * @throws InvalidParameterException
 	 *             If the getter cannot be found.
 	 */
 	public MethodMirror getGetter() throws InvalidParameterException {
-		// Tries to get the getter for the field.
-		try {
-			return getDeclaringClass().getMethod(getGetterName(), null);
-		}
-		// If the method was not found.
-		catch (final Exception exception) {
-			// If field type is boolean.
-			if ((getReflectedField().getType().isAssignableFrom(Boolean.class))
-					|| (getReflectedField().getType().isAssignableFrom(boolean.class))) {
-				// Tries to get the boolean field getter.
-				return getDeclaringClass().getMethod(getBooleanGetterName(), null);
+		// If the getter is null.
+		if (getter == null) {
+			// Tries to get the getter for the field.
+			try {
+				getter = getDeclaringClass().getMethod(getGetterName(), null);
 			}
+			// If the method was not found.
+			catch (final Exception exception) {
+				// If field type is boolean.
+				if ((getReflectedField().getType().isAssignableFrom(Boolean.class))
+						|| (getReflectedField().getType().isAssignableFrom(boolean.class))) {
+					// Tries to get the boolean field getter.
+					getter = getDeclaringClass().getMethod(getBooleanGetterName(), null);
+				}
+			}
+			// If the getter cannot be found, throws an exception.
+			throw new InvalidParameterException(ErrorKeys.GETTER_NOT_FOUND, null,
+					new Object[] { getReflectedField() });
 		}
-		// If the getter cannot be found, throws an exception.
-		throw new InvalidParameterException(ErrorKeys.GETTER_NOT_FOUND, null,
-				new Object[] { getReflectedField() });
+		// Returns the getter.
+		return getter;
 	}
 	
 	/**
@@ -137,6 +139,54 @@ public class FieldMirror {
 		// Append the "set" followed by the field name (with upper case first letter).
 		return SETTER_PREFIX + getReflectedField().getName().substring(0, 1).toUpperCase()
 				+ getReflectedField().getName().substring(1);
+	}
+	
+	/**
+	 * Setter for the reflected field.
+	 */
+	private MethodMirror setter;
+	
+	/**
+	 * Gets the setter for the reflected field.
+	 * 
+	 * @return The setter for the reflected field.
+	 * @throws InvalidParameterException
+	 *             If the setter cannot be found.
+	 */
+	public MethodMirror getSetter() throws InvalidParameterException {
+		// If the setter is null.
+		if (setter == null) {
+			// Tries to get the setter for the field.
+			try {
+				setter = getDeclaringClass().getMethod(getSetterName(), null);
+			}
+			// If the setter cannot be found.
+			catch (final Exception exception) {
+				// Throws an exception.
+				throw new InvalidParameterException(ErrorKeys.SETTER_NOT_FOUND, null,
+						new Object[] { getReflectedField() });
+			}
+		}
+		// Returns the setter.
+		return setter;
+	}
+	
+	/**
+	 * Public constructor for the reflection class.
+	 * 
+	 * @param reflectedField
+	 *            Field being reflected.
+	 * @throws EmptyParameterException
+	 *             If the reflected field is not given.
+	 */
+	public FieldMirror(final Field reflectedField) throws EmptyParameterException {
+		// If the field is null.
+		if (reflectedField == null) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
+		// Sets the main reflection fields.
+		this.reflectedField = reflectedField;
 	}
 	
 	/**

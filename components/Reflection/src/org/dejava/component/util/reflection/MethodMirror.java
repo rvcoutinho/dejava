@@ -2,6 +2,7 @@ package org.dejava.component.util.reflection;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -119,13 +120,20 @@ public class MethodMirror {
 	 * @param ignoreAccess
 	 *            If the defined access for the method must be ignored.
 	 * @return Returns the object returned from the method being invoked.
+	 * @throws EmptyParameterException
+	 *             If the target object is null and the method is not static.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
 	 * @throws InvocationException
 	 *             If the method throws an exception itself.
 	 */
 	public Object invokeMethod(final Object object, final Object[] paramsValues, final Boolean ignoreAccess)
-			throws InvalidParameterException, InvocationException {
+			throws EmptyParameterException, InvalidParameterException, InvocationException {
+		// If the field is not static and the target object is null.
+		if ((object == null) && (!Modifier.isStatic(getReflectedMethod().getModifiers()))) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
 		// Tries to invoke the method.
 		try {
 			// Redefines the access of the method.
@@ -151,6 +159,11 @@ public class MethodMirror {
 			throw new InvalidParameterException(ErrorKeys.UNACCESSIBLE_METHOD, exception,
 					new Object[] { getReflectedMethod() });
 		}
+		// Finally.
+		finally {
+			// Reinforces the method accessibility.
+			getReflectedMethod().setAccessible(false);
+		}
 	}
 	
 	/**
@@ -168,8 +181,8 @@ public class MethodMirror {
 	 * @throws InvocationException
 	 *             If the method throws an exception itself.
 	 */
-	public Object invokeMethod(final String jndiPath, final Object[] paramsValues,
-			final Boolean ignoreAccess) throws InvalidParameterException, InvocationException {
+	public Object invokeMethod(final String jndiPath, final Object[] paramsValues, final Boolean ignoreAccess)
+			throws InvalidParameterException, InvocationException {
 		// If the JNDI path is empty.
 		if ((jndiPath == null) || (jndiPath.isEmpty())) {
 			// Throws an exception.
@@ -188,7 +201,7 @@ public class MethodMirror {
 			throw new InvalidParameterException(ErrorKeys.INVALID_JNDI_PATH, exception, null);
 		}
 	}
-
+	
 	/**
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -196,28 +209,33 @@ public class MethodMirror {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((reflectedMethod == null) ? 0 : reflectedMethod.hashCode());
+		result = (prime * result) + ((reflectedMethod == null) ? 0 : reflectedMethod.hashCode());
 		return result;
 	}
-
+	
 	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(final Object obj) {
+		if (this == obj) {
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MethodMirror other = (MethodMirror) obj;
-		if (reflectedMethod == null) {
-			if (other.reflectedMethod != null)
-				return false;
 		}
-		else if (!reflectedMethod.equals(other.reflectedMethod))
+		if (obj == null) {
 			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final MethodMirror other = (MethodMirror) obj;
+		if (reflectedMethod == null) {
+			if (other.reflectedMethod != null) {
+				return false;
+			}
+		}
+		else if (!reflectedMethod.equals(other.reflectedMethod)) {
+			return false;
+		}
 		return true;
 	}
 	

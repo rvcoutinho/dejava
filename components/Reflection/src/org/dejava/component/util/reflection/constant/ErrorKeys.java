@@ -42,6 +42,30 @@ public final class ErrorKeys {
 	
 	
 	
+	/**
+	 * Getter not found error key.
+	 */
+	public static final String GETTER_NOT_FOUND = "reflection.field.getter.notfound";
+	
+	/**
+	 * Setter not found error key.
+	 */
+	public static final String SETTER_NOT_FOUND = "reflection.field.setter.notfound";
+	
+	/**
+	 * Wrong target object error key.
+	 */
+	public static final String WRONG_TARGET_OBJ = "reflection.field.target.object.wrong";
+	
+	/**
+	 * Unaccessible field error key.
+	 */
+	public static final String UNACCESSIBLE_FIELD = "reflection.field.unaccessible";
+	
+	
+	
+	
+	
 	
 	/**
 	 * Not getter/setter method error key.
@@ -117,11 +141,6 @@ public final class ErrorKeys {
 	 * Unaccessible field path error key.
 	 */
 	public static final String UNACCESSIBLE_FIELD_PATH = "reflection.field.path.unaccessible";
-	
-	/**
-	 * Unaccessible field error key.
-	 */
-	public static final String UNACCESSIBLE_FIELD = "reflection.field.unaccessible";
 	
 	/**
 	 * Unaccessible method error key.

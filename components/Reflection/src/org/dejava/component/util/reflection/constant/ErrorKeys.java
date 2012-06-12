@@ -42,6 +42,20 @@ public final class ErrorKeys {
 	
 	
 	
+	/**
+	 * Wrong target object error key.
+	 */
+	public static final String WRONG_TARGET_OBJ = "reflection.field.target.object.wrong";
+	
+	/**
+	 * Unaccessible field error key.
+	 */
+	public static final String UNACCESSIBLE_FIELD = "reflection.field.unaccessible";
+
+	
+	
+	
+	
 	
 	/**
 	 * Not getter/setter method error key.
@@ -118,10 +132,6 @@ public final class ErrorKeys {
 	 */
 	public static final String UNACCESSIBLE_FIELD_PATH = "reflection.field.path.unaccessible";
 	
-	/**
-	 * Unaccessible field error key.
-	 */
-	public static final String UNACCESSIBLE_FIELD = "reflection.field.unaccessible";
 	
 	/**
 	 * Unaccessible method error key.

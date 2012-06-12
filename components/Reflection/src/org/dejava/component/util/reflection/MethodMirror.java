@@ -151,6 +151,11 @@ public class MethodMirror {
 			throw new InvalidParameterException(ErrorKeys.UNACCESSIBLE_METHOD, exception,
 					new Object[] { getReflectedMethod() });
 		}
+		// Finally.
+		finally {
+			// Reinforces the method accessibility.
+			getReflectedMethod().setAccessible(false);
+		}
 	}
 	
 	/**
@@ -168,8 +173,8 @@ public class MethodMirror {
 	 * @throws InvocationException
 	 *             If the method throws an exception itself.
 	 */
-	public Object invokeMethod(final String jndiPath, final Object[] paramsValues,
-			final Boolean ignoreAccess) throws InvalidParameterException, InvocationException {
+	public Object invokeMethod(final String jndiPath, final Object[] paramsValues, final Boolean ignoreAccess)
+			throws InvalidParameterException, InvocationException {
 		// If the JNDI path is empty.
 		if ((jndiPath == null) || (jndiPath.isEmpty())) {
 			// Throws an exception.
@@ -188,7 +193,7 @@ public class MethodMirror {
 			throw new InvalidParameterException(ErrorKeys.INVALID_JNDI_PATH, exception, null);
 		}
 	}
-
+	
 	/**
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -196,28 +201,33 @@ public class MethodMirror {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((reflectedMethod == null) ? 0 : reflectedMethod.hashCode());
+		result = (prime * result) + ((reflectedMethod == null) ? 0 : reflectedMethod.hashCode());
 		return result;
 	}
-
+	
 	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(final Object obj) {
+		if (this == obj) {
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MethodMirror other = (MethodMirror) obj;
-		if (reflectedMethod == null) {
-			if (other.reflectedMethod != null)
-				return false;
 		}
-		else if (!reflectedMethod.equals(other.reflectedMethod))
+		if (obj == null) {
 			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final MethodMirror other = (MethodMirror) obj;
+		if (reflectedMethod == null) {
+			if (other.reflectedMethod != null) {
+				return false;
+			}
+		}
+		else if (!reflectedMethod.equals(other.reflectedMethod)) {
+			return false;
+		}
 		return true;
 	}
 	

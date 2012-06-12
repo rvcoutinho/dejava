@@ -297,27 +297,29 @@ public class ClassMirror<Reflected extends Object> {
 	 * Returns a field from the reflected class. The search includes the inherited classes. The first field
 	 * found for the name is returned.
 	 * 
-	 * @param fieldName
-	 *            Name of the field to be found.
+	 * @param fieldPath
+	 *            Path of the field to be found.
 	 * @return A field from the desired class.
 	 * @throws EmptyParameterException
 	 *             If the name is not given.
 	 * @throws InvalidParameterException
 	 *             If the field cannot be found for the name.
 	 */
-	public FieldMirror getField(final String fieldName) throws InvalidParameterException,
+	public FieldMirror getField(final String fieldPath) throws InvalidParameterException,
 			EmptyParameterException {
-		// If the field name is empty.
-		if ((fieldName == null) || (fieldName.isEmpty())) {
+		// If the field path is empty.
+		if ((fieldPath == null) || (fieldPath.isEmpty())) {
 			// Throws an exception.
 			throw new EmptyParameterException(1);
 		}
+		// Split the fields from the passed path.
+		final String[] fieldsNames = fieldPath.split("\\.");
 		// While there are super classes.
 		for (Class<?> currentClass = getReflectedClass(); currentClass != null; currentClass = currentClass
 				.getSuperclass()) {
 			// Tries to return the desired field.
 			try {
-				return new FieldMirror(currentClass.getDeclaredField(fieldName));
+				return new FieldMirror(currentClass.getDeclaredField(fieldPath));
 			}
 			// If an exception is thrown.
 			catch (final Exception exception) {
@@ -325,7 +327,7 @@ public class ClassMirror<Reflected extends Object> {
 			}
 		}
 		// If no field was found for this name, throws an exception.
-		throw new InvalidParameterException(ErrorKeys.FIELD_NOT_FOUND, null, 1, fieldName);
+		throw new InvalidParameterException(ErrorKeys.FIELD_NOT_FOUND, null, 1, fieldPath);
 	}
 	
 	/**

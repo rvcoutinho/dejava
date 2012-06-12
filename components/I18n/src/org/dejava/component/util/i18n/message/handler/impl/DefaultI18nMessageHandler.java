@@ -14,6 +14,7 @@ import org.dejava.component.util.i18n.message.annotation.MessageBundles;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.util.i18n.message.handler.MessageHandler;
 import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
+import org.dejava.component.util.reflection.AnnotationMirror;
 import org.dejava.component.util.reflection.ClassMirror;
 
 /**
@@ -22,7 +23,7 @@ import org.dejava.component.util.reflection.ClassMirror;
  * 
  * It works by searching the localized message bundle information at runtime (via annotations). It looks the
  * classes at the current stack trace and tries to retrieve the annotations from these classes. The default
- * depth of the search is 10. You can change this behavior by setting a new maximum search depth (
+ * depth of the search is 5. You can change this behavior by setting a new maximum search depth (
  * {@link #setMaxSearchDepth}). If the localized message (with this internationalization handler) cannot be
  * found with the information of the first class in the stack, it keeps looking in the next classes until the
  * localized message is found or the maximum search depth is reached.
@@ -87,14 +88,14 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 	/**
 	 * Max depth to search for annotations with message bundles.
 	 * 
-	 * The default value is 10.
+	 * The default value is 5.
 	 */
-	private Integer maxSearchDepth = 10;
+	private Integer maxSearchDepth = 5;
 	
 	/**
 	 * Gets the max depth to search for annotations with message bundles.
 	 * 
-	 * The default value is 10.
+	 * The default value is 5.
 	 * 
 	 * @return The max depth to search for annotations with message bundles.
 	 */
@@ -241,22 +242,15 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 			// The actual locale is the object one.
 			actualLocale = getLocale();
 		}
-		// The max search depth is the given one.
-		Integer maxSearchDepth = getMaxSearchDepth();
-		// If the max search depth is greater than the stack trace size (less one for this method).
-		if (maxSearchDepth > (Thread.currentThread().getStackTrace().length - 1)) {
-			// The max search depth is the stack trace size (less one for this method).
-			maxSearchDepth = Thread.currentThread().getStackTrace().length - 1;
-		}
 		// While the annotation with bundles is not found (or max depth is reached).
-		for (Integer currentStackDepth = 1; currentStackDepth <= maxSearchDepth; currentStackDepth++) {
+		for (Integer currentStackDepth = 2; currentStackDepth <= (getMaxSearchDepth() + 2); currentStackDepth++) {
 			// Tries to get the localized message with the information on the current class on the stack.
 			try {
 				// Tries to get the current class in the stack.
 				final ClassMirror<?> currentClass = new ClassMirror<Object>(currentStackDepth);
 				// Tries to get the annotation with the bundles for the current class.
-				final MessageBundles messageBundles = AnnotationHandler.getAnnotation(currentClass,
-						MessageBundles.class);
+				final AnnotationMirror<MessageBundles> messageBundles = currentClass
+						.getAnnotation(MessageBundles.class);
 				// If the annotation is found.
 				if (messageBundles != null) {
 					// Actual type for the message.
@@ -264,18 +258,19 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 					// If the type is not given.
 					if (actualType == null) {
 						// If the default type is empty.
-						if (messageBundles.defaultType().isEmpty()) {
+						if (messageBundles.getReflectedAnnotation().defaultType().isEmpty()) {
 							// Throws an exception.
 							throw new EmptyParameterException(2);
 						}
 						// If it is given.
 						else {
 							// The actual type is the default one.
-							actualType = messageBundles.defaultType();
+							actualType = messageBundles.getReflectedAnnotation().defaultType();
 						}
 					}
 					// For each defined localized message bundle.
-					for (final MessageBundle currentMessageBundle : messageBundles.messageBundles()) {
+					for (final MessageBundle currentMessageBundle : messageBundles.getReflectedAnnotation()
+							.messageBundles()) {
 						// If the correct localized message bundle information is found.
 						if (currentMessageBundle.type().equalsIgnoreCase(actualType)) {
 							// Tries to get the message.

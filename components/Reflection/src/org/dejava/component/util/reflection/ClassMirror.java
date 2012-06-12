@@ -115,9 +115,16 @@ public class ClassMirror<Reflected extends Object> {
 	 */
 	public ClassMirror(final Integer depth, final ClassLoader classLoader, final Boolean initialize)
 			throws InvalidParameterException {
+		// Actual depth is the given one.
+		Integer actualDepth = depth;
+		// If the given depth is null.
+		if (actualDepth == null) {
+			// The depth is 0.
+			actualDepth = 0;
+		}
 		// Tries to set the reflected class.
 		try {
-			this.reflectedClass = (Class<Reflected>) getCurrentClass(depth, classLoader, initialize);
+			this.reflectedClass = (Class<Reflected>) getCurrentClass(actualDepth + 1, classLoader, initialize);
 		}
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
@@ -136,7 +143,22 @@ public class ClassMirror<Reflected extends Object> {
 	 *             size.
 	 */
 	public ClassMirror(final Integer depth) throws InvalidParameterException {
-		this(depth, null, true);
+		// Actual depth is the given one.
+		Integer actualDepth = depth;
+		// If the given depth is null.
+		if (actualDepth == null) {
+			// The depth is 0.
+			actualDepth = 0;
+		}
+		// Tries to set the reflected class.
+		try {
+			this.reflectedClass = (Class<Reflected>) getCurrentClass(actualDepth + 1, null, true);
+		}
+		// If the class cannot be casted.
+		catch (final ClassCastException exception) {
+			// Throws an exception.
+			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, 1, depth);
+		}
 	}
 	
 	/**
@@ -568,8 +590,8 @@ public class ClassMirror<Reflected extends Object> {
 		}
 		// For each annotation in the reflected class.
 		for (final AnnotationMirror<?> currentAnnotation : getAnnotations()) {
-			// If the current annotation is an instance of the given class. TODO
-			if (true) {
+			// If the current annotation is an instance of the given class.
+			if (currentAnnotation.getReflectedAnnotation().annotationType().equals(annotationClass)) {
 				// Returns the current annotation.
 				return (AnnotationMirror<AnyAnnotation>) currentAnnotation;
 			}

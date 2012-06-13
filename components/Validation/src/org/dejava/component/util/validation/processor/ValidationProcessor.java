@@ -1,6 +1,5 @@
 package org.dejava.component.util.validation.processor;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +12,7 @@ import org.dejava.component.util.exception.localized.unchecked.EmptyParameterExc
 import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.reflection.ClassMirror;
 import org.dejava.component.util.reflection.FieldMirror;
+import org.dejava.component.util.reflection.FieldPath;
 import org.dejava.component.util.reflection.exception.InvocationException;
 import org.dejava.component.util.validation.annotation.ValidationMethod;
 import org.dejava.component.util.validation.annotation.Validations;
@@ -117,11 +117,11 @@ public final class ValidationProcessor {
 			paramsClasses.add(field.getReflectedField().getType());
 			// For each complementary field.
 			for (final String currentComplementaryFieldPath : validationMethod.complementaryFieldsPaths()) {
-				// Gets the current complementary field.
-				final Field currentField = FieldHandler.getField(object.getClass(),
-						currentComplementaryFieldPath);
-				// Adds the current field type in the list.
-				paramsClasses.add(currentField.getType());
+				// Gets the current complementary field path.
+				final FieldPath currentFieldPath = new ClassMirror<>(object.getClass())
+						.getFieldPath(currentComplementaryFieldPath);
+				// Adds the current field path type (last field type) in the list.
+				paramsClasses.add(currentFieldPath.getFieldPath().peekLast().getType().getReflectedClass());
 			}
 			// For each other parameter class.
 			for (final Class<?> currentParameterClass : validationMethod.otherParametersClasses()) {
@@ -171,8 +171,8 @@ public final class ValidationProcessor {
 			// For each complementary field.
 			for (final String currentFieldPath : validationMethod.complementaryFieldsPaths()) {
 				// Gets the current complementary field value.
-				final Object currentFieldValue = FieldHandler.getFieldValue(object, currentFieldPath, false,
-						true);
+				final Object currentFieldValue = new ClassMirror<>(object.getClass()).getFieldPath(
+						currentFieldPath).getValue(object, false, false);
 				// Adds the current field value in the list.
 				paramsValues.add(currentFieldValue);
 			}
@@ -560,32 +560,17 @@ public final class ValidationProcessor {
 	 * @throws InvocationException
 	 *             If an exception is thrown by a getter of the field.
 	 */
-	public static void validateField(Object object, final String fieldPath)
+	public static void validateField(final Object object, final String fieldPath)
 			throws FailedValidationsException, InvalidParameterException, InvocationException {
 		// If the object is null.
 		if (object == null) {
 			// Throws an exception.
 			throw new EmptyParameterException(1);
 		}
-		// Find the position of the last '.'.
-		final Integer lastFieldStartPos = fieldPath.lastIndexOf('.') + 1;
-		// If there is only one field.
-		if (lastFieldStartPos <= 0) {
-			// Gets the path for the fields (but for the last one).
-			final String firstFieldsPath = fieldPath.substring(0, lastFieldStartPos - 1);
-			// Gets the value of the field right before the last one.
-			object = FieldHandler.getFieldValue(object, firstFieldsPath, false, true);
-		}
-		// If the object is not null.
-		if (object != null) {
-			// Gets the last field name.
-			final String lastFieldName = fieldPath.substring(lastFieldStartPos);
-			// Uses the value of the field before the last as the object to
-			// validate the field.
-			final Field field = FieldHandler.getField(object.getClass(), lastFieldName);
-			// Validates the field.
-			validateField(object, field);
-		}
+		// Creates the field path.
+		final FieldPath realFieldPath = new ClassMirror<>(object.getClass()).getFieldPath(fieldPath);
+		// Validates the field.
+		validateField(realFieldPath.getValue(object, false, false), realFieldPath.getFieldPath().peekLast());
 	}
 	
 	/**

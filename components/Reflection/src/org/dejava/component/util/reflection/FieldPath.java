@@ -1,6 +1,7 @@
 package org.dejava.component.util.reflection;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
@@ -15,18 +16,18 @@ public class FieldPath {
 	/**
 	 * Field path.
 	 */
-	private List<FieldMirror> fieldPath;
+	private LinkedList<FieldMirror> fieldPath;
 	
 	/**
 	 * Gets the field path.
 	 * 
 	 * @return The field path.
 	 */
-	public List<FieldMirror> getFieldPath() {
+	public LinkedList<FieldMirror> getFieldPath() {
 		// If field path is null.
 		if (fieldPath == null) {
 			// Creates a new list for the field path.
-			fieldPath = new ArrayList<>();
+			fieldPath = new LinkedList<>();
 		}
 		// Returns the field path.
 		return fieldPath;
@@ -38,7 +39,7 @@ public class FieldPath {
 	 * @param fieldPath
 	 *            New field path.
 	 */
-	public void setFields(final List<FieldMirror> fieldPath) {
+	public void setFields(final LinkedList<FieldMirror> fieldPath) {
 		this.fieldPath = fieldPath;
 	}
 	
@@ -48,7 +49,7 @@ public class FieldPath {
 	 * @param fieldPath
 	 *            Field path.
 	 */
-	public FieldPath(final List<FieldMirror> fieldPath) {
+	public FieldPath(final LinkedList<FieldMirror> fieldPath) {
 		this.fieldPath = fieldPath;
 	}
 	
@@ -109,7 +110,7 @@ public class FieldPath {
 		// For each field in the path.
 		for (final FieldMirror currentField : getFieldPath()) {
 			// If it is not the last field.
-			if (!currentField.equals(getFieldPath().get(getFieldPath().size() - 1))) {
+			if (!currentField.equals(getFieldPath().peekLast())) {
 				// Gets the value for the current field.
 				currentFieldValue = currentField.getValue(currentFieldValue, fieldAccess, ignoreAccess);
 			}

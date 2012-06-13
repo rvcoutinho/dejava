@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
@@ -316,43 +317,6 @@ public class ClassMirror<Reflected> {
 	}
 	
 	/**
-	 * Returns a field from the reflected class. The search includes the inherited classes. The first field
-	 * found for the name is returned.
-	 * 
-	 * @param fieldPath
-	 *            Path of the field to be found.
-	 * @return A field from the desired class.
-	 * @throws EmptyParameterException
-	 *             If the name is not given.
-	 * @throws InvalidParameterException
-	 *             If the field cannot be found for the name.
-	 */
-	public FieldMirror getField(final String fieldPath) throws InvalidParameterException,
-			EmptyParameterException {
-		// If the field path is empty.
-		if ((fieldPath == null) || (fieldPath.isEmpty())) {
-			// Throws an exception.
-			throw new EmptyParameterException(1);
-		}
-		// Split the fields from the passed path.
-		final String[] fieldsNames = fieldPath.split("\\.");
-		// While there are super classes.
-		for (Class<?> currentClass = getReflectedClass(); currentClass != null; currentClass = currentClass
-				.getSuperclass()) {
-			// Tries to return the desired field.
-			try {
-				return new FieldMirror(currentClass.getDeclaredField(fieldPath));
-			}
-			// If an exception is thrown.
-			catch (final Exception exception) {
-				// It will be ignored.
-			}
-		}
-		// If no field was found for this name, throws an exception.
-		throw new InvalidParameterException(ErrorKeys.FIELD_NOT_FOUND, null, 1, fieldPath);
-	}
-	
-	/**
 	 * Returns all fields from the reflected class (including inherited ones).
 	 * 
 	 * @return All fields from a class (including inherited ones).
@@ -371,6 +335,70 @@ public class ClassMirror<Reflected> {
 		}
 		// Returns all the fields found in the search.
 		return fields;
+	}
+	
+	/**
+	 * Returns a field from the reflected class. The search includes the inherited classes. The first field
+	 * found for the name is returned.
+	 * 
+	 * @param fieldName
+	 *            Name of the field to be found.
+	 * @return A field from the desired class.
+	 * @throws EmptyParameterException
+	 *             If the name is not given.
+	 * @throws InvalidParameterException
+	 *             If the field cannot be found for the name.
+	 */
+	public FieldMirror getField(final String fieldName) throws InvalidParameterException,
+			EmptyParameterException {
+		// If the field name is empty.
+		if ((fieldName == null) || (fieldName.isEmpty())) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
+		// While there are super classes.
+		for (Class<?> currentClass = getReflectedClass(); currentClass != null; currentClass = currentClass
+				.getSuperclass()) {
+			// Tries to return the desired field.
+			try {
+				return new FieldMirror(currentClass.getDeclaredField(fieldName));
+			}
+			// If an exception is thrown.
+			catch (final Exception exception) {
+				// It will be ignored.
+			}
+		}
+		// If no field was found for this name, throws an exception.
+		throw new InvalidParameterException(ErrorKeys.FIELD_NOT_FOUND, null, 1, fieldName);
+	}
+	
+	/**
+	 * Gets a field path for the reflected class.
+	 * 
+	 * @param fieldNamePath
+	 *            Field path using the desired field names. Using the format: "field1.field2.*.*".
+	 * @return field path for the reflected class.
+	 */
+	public FieldPath getFieldPath(final String fieldNamePath) {
+		// Split the fields from the given path.
+		final String[] fieldsNames = fieldNamePath.split("\\.");
+		// Creates the field path.
+		final LinkedList<FieldMirror> fieldPath = new LinkedList<>();
+		// The current field declaring class is this one.
+		ClassMirror<?> currentFieldDeclaringClass = this;
+		// For each field name.
+		for (final String currentFieldName : fieldsNames) {
+			// TODO
+			
+			// Gets the field for the current name.
+			final FieldMirror currentField = currentFieldDeclaringClass.getField(currentFieldName);
+			// Adds the current field to the field path.
+			fieldPath.add(currentField);
+			// The next field declaring class is the field class.
+			currentFieldDeclaringClass = currentField.getType();
+		}
+		// Returns the field path.
+		return new FieldPath(fieldPath);
 	}
 	
 	/**

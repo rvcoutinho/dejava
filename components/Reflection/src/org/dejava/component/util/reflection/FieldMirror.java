@@ -38,6 +38,36 @@ public class FieldMirror {
 	}
 	
 	/**
+	 * Type (class) of the reflected field.
+	 */
+	private ClassMirror<?> type;
+	
+	/**
+	 * Gets the type (class) of the reflected field.
+	 * 
+	 * @return The type (class) of the reflected field.
+	 */
+	public ClassMirror<?> getType() {
+		// If the type is null.
+		if (type == null) {
+			// Gets the field type.
+			type = new ClassMirror<>(getReflectedField().getType());
+		}
+		// Returns the type.
+		return type;
+	}
+	
+	/**
+	 * Sets the type (class) of the reflected field.
+	 * 
+	 * @param type
+	 *            New type (class) of the reflected field.
+	 */
+	public void setType(final ClassMirror<?> type) {
+		this.type = type;
+	}
+	
+	/**
 	 * Declaring class of the field.
 	 */
 	private ClassMirror<?> declaringClass;
@@ -342,7 +372,7 @@ public class FieldMirror {
 	private void setValue(final Object targetObject, final Object newValue, final Boolean ignoreAccess)
 			throws EmptyParameterException, InvalidParameterException, InvocationException {
 		// Tries to set the field value.
-		getSetter().invokeMethod(targetObject, new Object[]{newValue}, ignoreAccess);
+		getSetter().invokeMethod(targetObject, new Object[] { newValue }, ignoreAccess);
 	}
 	
 	/**

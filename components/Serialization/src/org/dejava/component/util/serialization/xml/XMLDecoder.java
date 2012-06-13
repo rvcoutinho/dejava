@@ -11,6 +11,7 @@ import javax.naming.NamingException;
 
 import org.dejava.component.util.exception.localized.EmptyParameterException;
 import org.dejava.component.util.exception.localized.InvalidParameterException;
+import org.dejava.component.util.reflection.ClassMirror;
 import org.dejava.component.util.reflection.exception.InvocationException;
 import org.dejava.component.util.reflection.handler.ClassHandler;
 import org.dejava.component.util.reflection.handler.ConstructorHandler;
@@ -103,20 +104,20 @@ public final class XMLDecoder {
 	 *            Probable class to be used for a node. It is used when no class attribute is given.
 	 * @return The node class.
 	 */
-	private static Class<? extends Object> getNodeClass(final Node node, final Class<?> probableClass) {
+	private static ClassMirror<?> getNodeClass(final Node node, final Class<?> probableClass) {
 		// Tries to get the node class.
 		try {
 			// Gets the value of attribute "id" from the given node.
 			final String nodeClassName = node.getAttributes().getNamedItem(CLASS_ATTR).getTextContent();
 			// Tries to get the class for the name.
-			final Class<?> classeNo = ClassHandler.getClass(nodeClassName);
+			final ClassMirror<?> classeNo = new ClassMirror<>(nodeClassName);
 			// Returns the class.
 			return classeNo;
 		}
 		// If an exception is thrown.
 		catch (Exception exception) {
 			// Returns the probable class.
-			return probableClass;
+			return new ClassMirror<>(probableClass);
 		}
 	}
 	
@@ -132,7 +133,7 @@ public final class XMLDecoder {
 	private static Boolean isCollection(final Node node, final Class<?> probableClass) {
 		// Tries to return if the node is a collection.
 		try {
-			return Collection.class.isAssignableFrom(getNodeClass(node, probableClass));
+			return Collection.class.isAssignableFrom(getNodeClass(node, probableClass).getReflectedClass());
 		}
 		// If an exception is thrown.
 		catch (Exception exception) {
@@ -549,7 +550,7 @@ public final class XMLDecoder {
 		// If the object node is null.
 		if (node == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(""); // TODO
+			throw new EmptyParameterException(1); // TODO
 		}
 		// Tries to get the object for the node.
 		try {

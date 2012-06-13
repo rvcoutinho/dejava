@@ -1,16 +1,15 @@
 package org.dejava.component.util.serialization.xml;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.dejava.component.util.exception.localized.EmptyParameterException;
-import org.dejava.component.util.exception.localized.InvalidParameterException;
+import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.util.reflection.ClassMirror;
+import org.dejava.component.util.reflection.ConstructorMirror;
+import org.dejava.component.util.reflection.FieldMirror;
 import org.dejava.component.util.reflection.exception.InvocationException;
-import org.dejava.component.util.reflection.handler.ConstructorHandler;
-import org.dejava.component.util.reflection.handler.FieldHandler;
 import org.dejava.component.util.serialization.xml.annotation.XMLComplexNode;
 import org.dejava.component.util.serialization.xml.constant.ErrorKeys;
 import org.dejava.component.util.serialization.xml.exception.XMLConversionException;
@@ -106,16 +105,15 @@ public final class XMLEncoder {
 		try { // Fields node list.
 			List<Element> nodeList = new ArrayList<Element>();
 			// For each field of the complex object.
-			for (Field currentField : FieldHandler.getAllFields(object.getClass())) {
+			for (FieldMirror currentField : new ClassMirror<>(object.getClass()).getFields()) {
 				// Gets the field value.
-				Object currentFieldValue = FieldHandler.getFieldValue(object, currentField.getName(), false,
-						false);
+				Object currentFieldValue = currentField.getValue(object, false, false);
 				// If the field value is not null.
 				if (currentFieldValue != null) {
 					// If it should force the node class (false by default).
 					Boolean forceThisNodeClass = false;
 					// If the current field value class is different than the field class.
-					if (currentField.getType().equals(currentFieldValue.getClass())) {
+					if (currentField.getReflectedField().getType().equals(currentFieldValue.getClass())) {
 						// Set to force this node class.
 						forceThisNodeClass = true;
 					}
@@ -249,10 +247,10 @@ public final class XMLEncoder {
 	 */
 	private static <Type extends Object> Boolean isComplexNode(final Class<Type> clazz) {
 		// One string parameter constructor.
-		Constructor<Type> oneStringConstructor = null;
+		ConstructorMirror<Type> oneStringConstructor = null;
 		// Tries to get a constructor with a String parameter for the given class.
 		try {
-			oneStringConstructor = ConstructorHandler.getConstructor(clazz, new Class<?>[] { String.class });
+			oneStringConstructor = new ClassMirror<>(clazz).getConstructor(new Class<?>[] { String.class });
 		}
 		// If an exception is thrown.
 		catch (Exception exception) {
@@ -301,7 +299,7 @@ public final class XMLEncoder {
 		// If the given object is null.
 		if (object == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(""); // TODO
+			throw new EmptyParameterException(2); // TODO
 		}
 		// Tries to create the node.
 		try {

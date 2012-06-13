@@ -478,7 +478,7 @@ public class ClassMirror<Reflected> {
 		}
 		// If there are parameters.
 		else {
-			// For each parameters classes.
+			// For each parameters class.
 			for (Integer currentParamIndex = 0; currentParamIndex < paramsClasses.length; currentParamIndex++) {
 				// Gets the current parameter class.
 				final Class<?> currentParamClass = paramsClasses[currentParamIndex];
@@ -642,8 +642,8 @@ public class ClassMirror<Reflected> {
 					}
 				}
 			}
-			// If no constructor was found, throws an exception. TODO
-			throw new InvalidParameterException(ErrorKeys.METHOD_NOT_FOUND, null,
+			// If no constructor was found, throws an exception.
+			throw new InvalidParameterException(ErrorKeys.CONSTRUCTOR_NOT_FOUND, null,
 					new Object[] { Arrays.asList(paramsClasses) });
 		}
 		// In all cases.
@@ -673,8 +673,8 @@ public class ClassMirror<Reflected> {
 			}
 			// If the constructor cannot be found or accessed.
 			catch (final Exception exception) {
-				// Throws an exception. TODO
-				throw new InvalidParameterException(ErrorKeys.METHOD_NOT_FOUND, null,
+				// Throws an exception.
+				throw new InvalidParameterException(ErrorKeys.CONSTRUCTOR_NOT_FOUND, null,
 						new Object[] { Arrays.asList(paramsClasses) });
 			}
 		}
@@ -694,6 +694,22 @@ public class ClassMirror<Reflected> {
 			// Tries to get the constructor varying the first parameter class.
 			return getConstructor(paramsClasses, 0);
 		}
+	}
+	
+	/**
+	 * Gets a constructor from the reflected class for the given parameters. The search includes the inherited
+	 * classes and interfaces of each parameter class.
+	 * 
+	 * @param paramsValues
+	 *            Parameters values to be used during the constructor invocation.
+	 * @return A constructor from the reflected class for the given parameters.
+	 * @throws InvalidParameterException
+	 *             If the constructor cannot be found or one of the parameters values is empty.
+	 */
+	public ConstructorMirror<Reflected> getConstructor(final Object[] paramsValues)
+			throws InvalidParameterException {
+		// Tries to get the constructor.
+		return getConstructor(getParamsClasses(paramsValues));
 	}
 	
 	/**

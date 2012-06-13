@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.Collection;
 
 import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.util.reflection.ClassMirror;
 import org.dejava.component.util.reflection.handler.PackageHandler;
 import org.dejava.component.util.serialization.xml.XMLCreator;
 import org.dejava.component.util.serialization.xml.XMLDecoder;
@@ -70,8 +71,8 @@ public class XMLTestDataProvider implements TestDataProvider {
 	 */
 	private InputStream getXMLStream(final FrameworkMethod testMethod) throws EmptyParameterException {
 		// Gets the path for the XML.
-		final String xmlPath = PackageHandler.getPackageAsDirPath(testMethod.getMethod().getDeclaringClass())
-				+ '/' + getFilePath(testMethod);
+		final String xmlPath = new ClassMirror<>(testMethod.getMethod().getDeclaringClass())
+				.getPackageAsDirPath() + '/' + getFilePath(testMethod);
 		// Returns the XML stream.
 		return Thread.currentThread().getContextClassLoader().getResourceAsStream(xmlPath);
 	}

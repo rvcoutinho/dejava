@@ -2,7 +2,7 @@ package org.dejava.component.util.test.runner.dataset.impl;
 
 import java.util.Collection;
 
-import org.dejava.component.util.reflection.handler.MethodHandler;
+import org.dejava.component.util.reflection.ClassMirror;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.dejava.component.util.test.runner.statement.ParametricTestMethodInvoker;
@@ -81,9 +81,11 @@ public class StaticMethodTestDataProvider implements TestDataProvider {
 	public Collection<?> getTestData(final FrameworkMethod testMethod) throws UnavailableTestDataException {
 		// Tries to get the data.
 		try {
+			// Gets the test class mirror.
+			final ClassMirror<?> testClass = new ClassMirror<>(testMethod.getMethod().getDeclaringClass());
 			// The test data is the return of the method invocation.
-			return (Collection<?>) MethodHandler.invokeStaticMethod(testMethod.getMethod()
-					.getDeclaringClass(), getMethodName(testMethod), null, null, true);
+			return (Collection<?>) testClass.getMethod(getMethodName(testMethod), null).invokeMethod(null,
+					null, true);
 		}
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {

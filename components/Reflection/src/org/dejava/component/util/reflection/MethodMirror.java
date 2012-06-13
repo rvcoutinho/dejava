@@ -123,7 +123,7 @@ public class MethodMirror {
 	 * @throws EmptyParameterException
 	 *             If the target object is null and the method is not static.
 	 * @throws InvalidParameterException
-	 *             If the parameters for this method are not valid (empty or method could not be accessed).
+	 *             If the given parameters are from the wrong type or if the method is unaccessible.
 	 * @throws InvocationException
 	 *             If the method throws an exception itself.
 	 */

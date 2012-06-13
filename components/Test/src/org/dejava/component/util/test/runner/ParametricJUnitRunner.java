@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.dejava.component.util.reflection.handler.ConstructorHandler;
+import org.dejava.component.util.reflection.ClassMirror;
 import org.dejava.component.util.test.annotation.ParametricTest;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.exception.parametric.InvalidParametricTestMethodException;
@@ -82,8 +82,8 @@ public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
 			// Gets the annotation with the test data information.
 			final ParametricTest parametricTest = testMethod.getAnnotation(ParametricTest.class);
 			// Returns the test data provider.
-			return ConstructorHandler.invokeConstructor(parametricTest.dataProvider(), null,
-					parametricTest.paramsValues(), false);
+			return new ClassMirror<>(parametricTest.dataProvider()).getConstructor(
+					parametricTest.paramsValues()).newInstance(parametricTest.paramsValues(), false);
 		}
 		// If the provider cannot be instantiated.
 		catch (final Exception exception) {

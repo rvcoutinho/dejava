@@ -11,10 +11,9 @@ import javax.naming.NamingException;
 
 import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.util.reflection.ClassMirror;
+import org.dejava.component.util.reflection.FieldMirror;
 import org.dejava.component.util.reflection.exception.InvocationException;
-import org.dejava.component.util.reflection.handler.ConstructorHandler;
-import org.dejava.component.util.reflection.handler.FieldHandler;
-import org.dejava.component.util.reflection.handler.MethodHandler;
 import org.dejava.component.util.validation.annotation.ValidationMethod;
 import org.dejava.component.util.validation.annotation.Validations;
 import org.dejava.component.util.validation.exception.FailedValidationException;
@@ -28,7 +27,6 @@ import org.dejava.component.util.validation.exception.ImpossibleValidationExcept
  * {@link ValidationMethod} annotations at your object fields at your will.
  * 
  * You can either validate a single annotated field (
- * {@link #validateField(java.lang.Object, java.lang.reflect.Field)} or
  * {@link #validateField(java.lang.Object, java.lang.String)}) of an object or the whole object (
  * {@link #validateObject}).
  * 
@@ -72,13 +70,15 @@ public final class ValidationProcessor {
 	 *            Validation method that cannot be verified.
 	 * @return The key that represents the validation error.
 	 */
-	private static String getFailedValidationKey(final Field field, final ValidationMethod validationMethod) {
+	private static String getFailedValidationKey(final FieldMirror field,
+			final ValidationMethod validationMethod) {
 		// The initial validation key is retrieved from the template.
 		String validationKey = FAILED_VALIDATION_KEY_TEMPLATE;
 		// Updates the class name in the template.
-		validationKey = validationKey.replace(CLASS_EXPRESSION, field.getDeclaringClass().getSimpleName());
+		validationKey = validationKey.replace(CLASS_EXPRESSION, field.getReflectedField().getDeclaringClass()
+				.getSimpleName());
 		// Updates the field name in the template.
-		validationKey = validationKey.replace(FIELD_EXPRESSION, field.getName());
+		validationKey = validationKey.replace(FIELD_EXPRESSION, field.getReflectedField().getName());
 		// If no method is given.
 		if (validationMethod == null) {
 			// Removes the validation method name in the template.
@@ -106,32 +106,33 @@ public final class ValidationProcessor {
 	 * @throws ImpossibleValidationException
 	 *             If it is not possible to retrieve the field value for the validation.
 	 */
-	private static Class<?>[] getValidationMethodParametersClasses(final Object object, final Field field,
-			final ValidationMethod validationMethod) throws ImpossibleValidationException {
+	private static Class<?>[] getValidationMethodParametersClasses(final Object object,
+			final FieldMirror field, final ValidationMethod validationMethod)
+			throws ImpossibleValidationException {
 		// Tries to get the parameters.
 		try {
 			// List with the classes of the parameters for the method.
-			final List<Class<?>> parametersClasses = new ArrayList<Class<?>>();
+			final List<Class<?>> paramsClasses = new ArrayList<Class<?>>();
 			// Puts the field type in the first position.
-			parametersClasses.add(field.getType());
+			paramsClasses.add(field.getReflectedField().getType());
 			// For each complementary field.
-			for (String currentComplementaryFieldPath : validationMethod.complementaryFieldsPaths()) {
+			for (final String currentComplementaryFieldPath : validationMethod.complementaryFieldsPaths()) {
 				// Gets the current complementary field.
 				final Field currentField = FieldHandler.getField(object.getClass(),
 						currentComplementaryFieldPath);
 				// Adds the current field type in the list.
-				parametersClasses.add(currentField.getType());
+				paramsClasses.add(currentField.getType());
 			}
 			// For each other parameter class.
-			for (Class<?> currentParameterClass : validationMethod.otherParametersClasses()) {
+			for (final Class<?> currentParameterClass : validationMethod.otherParametersClasses()) {
 				// Adds the current parameter class in the list.
-				parametersClasses.add(currentParameterClass);
+				paramsClasses.add(currentParameterClass);
 			}
 			// Returns the list in a array.
-			return parametersClasses.toArray(new Class<?>[parametersClasses.size()]);
+			return paramsClasses.toArray(new Class<?>[paramsClasses.size()]);
 		}
 		// If the field for the given information cannot be found.
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Throws an exception.
 			throw new ImpossibleValidationException(getFailedValidationKey(field, validationMethod),
 					exception, null);
@@ -158,22 +159,22 @@ public final class ValidationProcessor {
 	 * @throws ImpossibleValidationException
 	 *             If it is not possible to retrieve the complementary parameters value for the validation.
 	 */
-	private static Object[] getValidationMethodParametersValues(final Object object, final Field field,
+	private static Object[] getValidationMethodParametersValues(final Object object, final FieldMirror field,
 			final Object fieldValue, final ValidationMethod validationMethod)
 			throws ImpossibleValidationException {
 		// Tries to get the parameters values.
 		try {
 			// List with the values of the parameters for the method.
-			final List<Object> parametersValues = new ArrayList<Object>();
+			final List<Object> paramsValues = new ArrayList<Object>();
 			// Adds the field value in the first position.
-			parametersValues.add(fieldValue);
+			paramsValues.add(fieldValue);
 			// For each complementary field.
-			for (String currentFieldPath : validationMethod.complementaryFieldsPaths()) {
+			for (final String currentFieldPath : validationMethod.complementaryFieldsPaths()) {
 				// Gets the current complementary field value.
 				final Object currentFieldValue = FieldHandler.getFieldValue(object, currentFieldPath, false,
 						true);
 				// Adds the current field value in the list.
-				parametersValues.add(currentFieldValue);
+				paramsValues.add(currentFieldValue);
 			}
 			// For each other parameter class.
 			for (Integer currentParamIndex = 0; currentParamIndex < validationMethod.otherParametersClasses().length; currentParamIndex++) {
@@ -183,31 +184,32 @@ public final class ValidationProcessor {
 				if ((ValidationMethod.NULL_EXPRESSION.equals(currentParamValue))
 						|| (ValidationMethod.NULL_EXPRESSION.equals(currentParamValue))) {
 					// Null is used for current parameter value.
-					parametersValues.add(null);
+					paramsValues.add(null);
 				}
 				// Otherwise.
 				else {
 					// Tries to get the parameter actual value (using the given class).
-					currentParamValue = ConstructorHandler.invokeConstructor(
-							validationMethod.otherParametersClasses()[currentParamIndex],
-							new Class<?>[] { String.class }, new Object[] { currentParamValue }, false);
+					currentParamValue = new ClassMirror<>(
+							validationMethod.otherParametersClasses()[currentParamIndex]).getConstructor(
+							new Class<?>[] { String.class }).newInstance(new Object[] { currentParamValue },
+							false);
 					// Adds the current parameter actual value in the list.
-					parametersValues.add(currentParamValue);
+					paramsValues.add(currentParamValue);
 				}
 			}
 			// Returns the list in a array.
-			return parametersValues.toArray();
+			return paramsValues.toArray();
 		}
 		// If the value for one of the parameters cannot be retrieved caused to wrong values given to its
 		// constructor/getter.
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Throws an exception.
 			throw new ImpossibleValidationException(getFailedValidationKey(field, validationMethod),
 					exception, null);
 		}
 		// If the value for one of the parameters cannot be retrieved caused to an exception in its
 		// constructor/getter.
-		catch (InvocationException exception) {
+		catch (final InvocationException exception) {
 			// Throws an exception.
 			throw new ImpossibleValidationException(getFailedValidationKey(field, validationMethod),
 					exception, null);
@@ -225,41 +227,42 @@ public final class ValidationProcessor {
 	 *            The class from which the validation method must be invoked.
 	 * @param methodObject
 	 *            The object from which the validation method must be invoked.
-	 * @param parametersClasses
+	 * @param paramsClasses
 	 *            Parameters classes for the method to be invoked.
-	 * @param parametersValues
+	 * @param paramsValues
 	 *            Parameters values to be used during the invocation.
 	 * @return If the field value cannot be validated for this field and validation method.
 	 * @throws ImpossibleValidationException
 	 *             If it is not possible to execute the validation (due to invalid information or an exception
 	 *             during the validation).
 	 */
-	private static Boolean validateField(final Field field, final ValidationMethod validationMethod,
-			final Class<?> methodClass, final Object methodObject, final Class<?>[] parametersClasses,
-			final Object[] parametersValues) throws ImpossibleValidationException {
+	private static Boolean validateField(final FieldMirror field, final ValidationMethod validationMethod,
+			final Class<?> methodClass, final Object methodObject, final Class<?>[] paramsClasses,
+			final Object[] paramsValues) throws ImpossibleValidationException {
 		// Tries to validate the field.
 		try {
 			// If the object is null.
 			if (methodObject == null) {
 				// Tries to perform the validation as a static method.
-				return (Boolean) MethodHandler.invokeStaticMethod(methodClass, validationMethod.methodName(),
-						parametersClasses, parametersValues, false);
+				return (Boolean) new ClassMirror<>(methodClass).getMethod(validationMethod.methodName(),
+						paramsClasses).invokeMethod(null, paramsValues, false);
 			}
 			// If there is a validation method object.
 			else {
 				// Tries to perform the validation as an object method.
-				return (Boolean) MethodHandler.invokeMethod(methodObject, validationMethod.methodName(),
-						parametersClasses, parametersValues, false);
+				return (Boolean) new ClassMirror<>(methodObject.getClass()).getMethod(
+						validationMethod.methodName(), paramsClasses).invokeMethod(methodObject,
+						paramsValues, false);
 			}
 		}
 		// If the parameters for this validation method are not valid (empty or method could not be accessed).
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Throws an exception.
 			throw new ImpossibleValidationException(getFailedValidationKey(field, validationMethod),
 					exception, null);
 		}
 		// If the validation method throws an exception itself.
-		catch (InvocationException exception) {
+		catch (final InvocationException exception) {
 			// Throws an exception.
 			throw new ImpossibleValidationException(getFailedValidationKey(field, validationMethod),
 					exception, null);
@@ -280,18 +283,18 @@ public final class ValidationProcessor {
 	 * @throws FailedValidationException
 	 *             If the validation has failed.
 	 */
-	private static void validateField(final Object object, final Field field,
+	private static void validateField(final Object object, final FieldMirror field,
 			final ValidationMethod validationMethod) throws ImpossibleValidationException,
 			FailedValidationException {
 		// Tries to validate the field.
 		try {
 			// Gets the field value.
-			final Object fieldValue = FieldHandler.getFieldValue(object, field.getName(), false, true);
+			final Object fieldValue = field.getValue(object, false, false);
 			// Gets the parameters classes to invoke the method.
-			Class<?>[] parametersClasses = getValidationMethodParametersClasses(object, field,
+			final Class<?>[] paramsClasses = getValidationMethodParametersClasses(object, field,
 					validationMethod);
 			// Gets the parameters values to invoke the method.
-			Object[] parametersValues = getValidationMethodParametersValues(object, field, fieldValue,
+			final Object[] paramsValues = getValidationMethodParametersValues(object, field, fieldValue,
 					validationMethod);
 			// By default, the validation method class is the one in the validation
 			// method annotation.
@@ -311,14 +314,14 @@ public final class ValidationProcessor {
 					// If the field value is an array.
 					if (fieldValue.getClass().isArray()) {
 						// For each object in the array.
-						for (Object currentFieldValueItem : (Object[]) fieldValue) {
+						for (final Object currentFieldValueItem : (Object[]) fieldValue) {
 							// Resets the first parameter class.
-							parametersClasses[0] = currentFieldValueItem.getClass();
+							paramsClasses[0] = currentFieldValueItem.getClass();
 							// Resets the first parameter value.
-							parametersValues[0] = currentFieldValueItem;
+							paramsValues[0] = currentFieldValueItem;
 							// If the validation is not successful.
 							if (!validateField(field, validationMethod, methodClass, methodObject,
-									parametersClasses, parametersValues)) {
+									paramsClasses, paramsValues)) {
 								// Throws an exception.
 								throw new FailedValidationException(getFailedValidationKey(field,
 										validationMethod), null, null);
@@ -328,14 +331,14 @@ public final class ValidationProcessor {
 					// If it is iterable.
 					else if (Iterable.class.isAssignableFrom(fieldValue.getClass())) {
 						// For each object in the array.
-						for (Object currentFieldValueItem : (Iterable<?>) fieldValue) {
+						for (final Object currentFieldValueItem : (Iterable<?>) fieldValue) {
 							// Resets the first parameter class.
-							parametersClasses[0] = currentFieldValueItem.getClass();
+							paramsClasses[0] = currentFieldValueItem.getClass();
 							// Resets the first parameter value.
-							parametersValues[0] = currentFieldValueItem;
+							paramsValues[0] = currentFieldValueItem;
 							// If the validation is not successful.
 							if (!validateField(field, validationMethod, methodClass, methodObject,
-									parametersClasses, parametersValues)) {
+									paramsClasses, paramsValues)) {
 								// Throws an exception.
 								throw new FailedValidationException(getFailedValidationKey(field,
 										validationMethod), null, null);
@@ -347,8 +350,8 @@ public final class ValidationProcessor {
 			// If it is supposed to validate the field value itself.
 			else {
 				// If the validation is not successful.
-				if (!validateField(field, validationMethod, methodClass, methodObject, parametersClasses,
-						parametersValues)) {
+				if (!validateField(field, validationMethod, methodClass, methodObject, paramsClasses,
+						paramsValues)) {
 					// Throws an exception.
 					throw new FailedValidationException(getFailedValidationKey(field, validationMethod),
 							null, null);
@@ -356,19 +359,19 @@ public final class ValidationProcessor {
 			}
 		}
 		// If the the field value cannot be retrieved due to invalid information.
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Throws an exception.
 			throw new ImpossibleValidationException(getFailedValidationKey(field, validationMethod),
 					exception, null);
 		}
 		// If the the field value cannot be retrieved due to a getter exception.
-		catch (InvocationException exception) {
+		catch (final InvocationException exception) {
 			// Throws an exception.
 			throw new ImpossibleValidationException(getFailedValidationKey(field, validationMethod),
 					exception, null);
 		}
 		// If the JNDI object cannot be retrieved.
-		catch (NamingException exception) {
+		catch (final NamingException exception) {
 			// Throws an exception.
 			throw new ImpossibleValidationException(getFailedValidationKey(field, validationMethod),
 					exception, null);
@@ -388,19 +391,19 @@ public final class ValidationProcessor {
 	 * @throws FailedValidationsException
 	 *             If there are failed validations for the field.
 	 */
-	private static void validateFieldRecursively(final Object object, final Field field,
+	private static void validateFieldRecursively(final Object object, final FieldMirror field,
 			final Set<Object> underValidation) throws FailedValidationsException {
 		// List with the failed validations.
 		final List<Exception> failedValidations = new ArrayList<Exception>();
 		// Tries to get the field value.
 		try {
-			final Object fieldValue = FieldHandler.getFieldValue(object, field.getName(), false, true);
+			final Object fieldValue = field.getValue(object, false, false);
 			// If the field value is not null.
 			if (fieldValue != null) {
 				// If the field value is an array.
 				if (fieldValue.getClass().isArray()) {
 					// For each object in the array.
-					for (Object currentFieldValueItem : (Object[]) fieldValue) {
+					for (final Object currentFieldValueItem : (Object[]) fieldValue) {
 						// If the current value is not null.
 						if (currentFieldValueItem != null) {
 							// Tries to validate the value as an object.
@@ -408,7 +411,7 @@ public final class ValidationProcessor {
 								validateObject(currentFieldValueItem, underValidation);
 							}
 							// If the validation has failed.
-							catch (FailedValidationsException exception) {
+							catch (final FailedValidationsException exception) {
 								// Adds the failed validations to the list.
 								failedValidations.addAll(exception.getFailedValidations());
 							}
@@ -418,7 +421,7 @@ public final class ValidationProcessor {
 				// If it is iterable.
 				else if (Iterable.class.isAssignableFrom(fieldValue.getClass())) {
 					// For each object in the array.
-					for (Object currentFieldValueItem : (Iterable<?>) fieldValue) {
+					for (final Object currentFieldValueItem : (Iterable<?>) fieldValue) {
 						// If the current value is not null.
 						if (currentFieldValueItem != null) {
 							// Tries to validate the value as an object.
@@ -426,7 +429,7 @@ public final class ValidationProcessor {
 								validateObject(currentFieldValueItem, underValidation);
 							}
 							// If the validation has failed.
-							catch (FailedValidationsException exception) {
+							catch (final FailedValidationsException exception) {
 								// Adds the failed validations to the list.
 								failedValidations.addAll(exception.getFailedValidations());
 							}
@@ -440,7 +443,7 @@ public final class ValidationProcessor {
 						validateObject(fieldValue, underValidation);
 					}
 					// If the validation has failed.
-					catch (FailedValidationsException exception) {
+					catch (final FailedValidationsException exception) {
 						// Adds the failed validations to the list.
 						failedValidations.addAll(exception.getFailedValidations());
 					}
@@ -448,13 +451,13 @@ public final class ValidationProcessor {
 			}
 		}
 		// If the getter cannot be invoked.
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Add a failed validation exception to the list.
 			failedValidations.add(new ImpossibleValidationException(getFailedValidationKey(field, null),
 					exception, null));
 		}
 		// If the getter throws an exception.
-		catch (InvocationException exception) {
+		catch (final InvocationException exception) {
 			// Add a failed validation exception to the list.
 			failedValidations.add(new ImpossibleValidationException(getFailedValidationKey(field, null),
 					exception, null));
@@ -478,22 +481,22 @@ public final class ValidationProcessor {
 	 * @throws FailedValidationsException
 	 *             If there are failed validations for the field.
 	 */
-	private static void validateField(final Object object, final Field field,
+	private static void validateField(final Object object, final FieldMirror field,
 			final Set<Object> underValidation) throws FailedValidationsException {
 		// List with the failed validations.
 		final List<Exception> failedValidations = new ArrayList<Exception>();
 		// Gets the annotation with the validations information.
-		final Validations validations = field.getAnnotation(Validations.class);
+		final Validations validations = field.getReflectedField().getAnnotation(Validations.class);
 		// If there are any validations.
 		if (validations != null) {
 			// For each validation method.
-			for (ValidationMethod currentValidationMethod : validations.validationMethods()) {
+			for (final ValidationMethod currentValidationMethod : validations.validationMethods()) {
 				// Tries to run the current validation method.
 				try {
 					validateField(object, field, currentValidationMethod);
 				}
 				// If the validation has failed.
-				catch (Exception exception) {
+				catch (final Exception exception) {
 					// Adds the failed validation in the failed validations list.
 					failedValidations.add(exception);
 				}
@@ -505,7 +508,7 @@ public final class ValidationProcessor {
 					validateFieldRecursively(object, field, underValidation);
 				}
 				// If the validation has failed.
-				catch (FailedValidationsException exception) {
+				catch (final FailedValidationsException exception) {
 					// Adds the failed validations in the failed validations list.
 					failedValidations.addAll(exception.getFailedValidations());
 				}
@@ -530,12 +533,12 @@ public final class ValidationProcessor {
 	 * @throws InvalidParameterException
 	 *             If the parameters for the method are not valid (empty).
 	 */
-	public static void validateField(final Object object, final Field field)
+	private static void validateField(final Object object, final FieldMirror field)
 			throws FailedValidationsException, InvalidParameterException {
 		// If the object is null.
 		if (object == null) {
 			// Throws an exception.
-			throw new EmptyParameterException("class"); // TODO
+			throw new EmptyParameterException(1);
 		}
 		// Objects already under validation (used to prevent infinity cycles).
 		final Set<Object> underValidation = new HashSet<Object>();
@@ -562,7 +565,7 @@ public final class ValidationProcessor {
 		// If the object is null.
 		if (object == null) {
 			// Throws an exception.
-			throw new EmptyParameterException("class"); // TODO
+			throw new EmptyParameterException(1);
 		}
 		// Find the position of the last '.'.
 		final Integer lastFieldStartPos = fieldPath.lastIndexOf('.') + 1;
@@ -602,7 +605,7 @@ public final class ValidationProcessor {
 		// If the object is null.
 		if (object == null) {
 			// Throws an exception.
-			throw new EmptyParameterException("class"); // TODO
+			throw new EmptyParameterException(1);
 		}
 		// List with the failed validations.
 		final List<Exception> failedValidations = new ArrayList<Exception>();
@@ -611,13 +614,13 @@ public final class ValidationProcessor {
 			// Adds it to the validation list.
 			underValidation.add(object);
 			// For each field of the object.
-			for (Field currentField : FieldHandler.getAllFields(object.getClass())) {
+			for (final FieldMirror currentField : new ClassMirror<>(object.getClass()).getFields()) {
 				// Tries to validate the current field.
 				try {
 					validateField(object, currentField, underValidation);
 				}
 				// If the validation has failed.
-				catch (FailedValidationsException exception) {
+				catch (final FailedValidationsException exception) {
 					// Adds the failed validations in the failed validations list.
 					failedValidations.addAll(exception.getFailedValidations());
 				}

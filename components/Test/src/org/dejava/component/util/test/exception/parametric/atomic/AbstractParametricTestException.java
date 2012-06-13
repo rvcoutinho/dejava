@@ -39,6 +39,6 @@ public abstract class AbstractParametricTestException extends AbstractTestExcept
 		// Adds all the parameters values for the test method.
 		parameters.addAll(Arrays.asList(paramsValues));
 		// Sets the parameters of the exception.
-		setParameters(parameters.toArray());
+		getMessageCommand().setParameters(parameters.toArray());
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Locale;
 
 import org.dejava.component.util.i18n.message.handler.MessageHandler;
 import org.dejava.component.util.i18n.message.handler.impl.DefaultI18nMessageHandler;
-import org.dejava.component.util.i18n.message.model.ApplicationMessageType;
+import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
 import org.junit.Assert;
 
 /**

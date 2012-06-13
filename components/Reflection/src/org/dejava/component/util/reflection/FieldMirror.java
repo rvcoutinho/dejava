@@ -228,7 +228,7 @@ public class FieldMirror {
 	}
 	
 	/**
-	 * Gets the value of a field accessed by its getter.
+	 * Gets the value of a field accessed through its getter.
 	 * 
 	 * @param targetObject
 	 *            The target object to get the field value from. Might be null if it is a static field.
@@ -281,6 +281,105 @@ public class FieldMirror {
 		else {
 			// Gets the field value through its getter.
 			return getValue(targetObject, ignoreAccess);
+		}
+	}
+	
+	/**
+	 * Sets the value of a field accessed directly (field access).
+	 * 
+	 * @param targetObject
+	 *            The target object to set the field value. Might be null if it is a static field.
+	 * @param newValue
+	 *            The new value for the field.
+	 * @param ignoreAccess
+	 *            If the defined access (private or protected) must be ignored.
+	 * @throws InvalidParameterException
+	 *             If the field/setter cannot be accessed or found.
+	 */
+	private void setValueDirectly(final Object targetObject, final Object newValue, final Boolean ignoreAccess)
+			throws InvalidParameterException {
+		// Defines the accessibility of the field.
+		getReflectedField().setAccessible(ignoreAccess);
+		// Tries to set the field value.
+		try {
+			getReflectedField().set(targetObject, newValue);
+		}
+		// If the target object is not from the declaring class type of the reflected field.
+		catch (final IllegalArgumentException exception) {
+			// Throws an exception.
+			throw new InvalidParameterException(ErrorKeys.WRONG_TARGET_OBJ, exception, new Object[] {
+					getReflectedField(), targetObject });
+		}
+		// If the field cannot be accessed (modifiers).
+		catch (final IllegalAccessException exception) {
+			// Throws an exception.
+			throw new InvalidParameterException(ErrorKeys.UNACCESSIBLE_FIELD, exception,
+					new Object[] { getReflectedField() });
+		}
+		// Finally.
+		finally {
+			// Reinforces the field accessibility.
+			getReflectedField().setAccessible(false);
+		}
+	}
+	
+	/**
+	 * Sets the value of a field accessed through its setter.
+	 * 
+	 * @param targetObject
+	 *            The target object to set the field value. Might be null if it is a static field.
+	 * @param newValue
+	 *            The new value for the field.
+	 * @param ignoreAccess
+	 *            If the defined access (private or protected) must be ignored.
+	 * @throws EmptyParameterException
+	 *             If the target object is null and the setter is not static.
+	 * @throws InvalidParameterException
+	 *             If the setter cannot be accessed or found. Or if the new value is invalid.
+	 * @throws InvocationException
+	 *             If the setter for the field throws an exception.
+	 */
+	private void setValue(final Object targetObject, final Object newValue, final Boolean ignoreAccess)
+			throws EmptyParameterException, InvalidParameterException, InvocationException {
+		// Tries to set the field value.
+		getSetter().invokeMethod(targetObject, new Object[]{newValue}, ignoreAccess);
+	}
+	
+	/**
+	 * Sets the value of a field.
+	 * 
+	 * @param targetObject
+	 *            The target object to set the field value. Might be null if it is a static field.
+	 * @param newValue
+	 *            The new value for the field.
+	 * @param fieldAccess
+	 *            If the field must be accessed directly (or via setter).
+	 * @param ignoreAccess
+	 *            If the defined access (private or protected) must be ignored.
+	 * @throws EmptyParameterException
+	 *             If the target object is null and the field/setter is not static.
+	 * @throws InvalidParameterException
+	 *             If the field/setter cannot be accessed or found. Or if the new value is invalid.
+	 * @throws InvocationException
+	 *             If the setter for the field throws an exception.
+	 */
+	public void setValue(final Object targetObject, final Object newValue, final Boolean fieldAccess,
+			final Boolean ignoreAccess) throws EmptyParameterException, InvalidParameterException,
+			InvocationException {
+		// If the field is not static and the target object is null.
+		if ((targetObject == null) && (!Modifier.isStatic(getReflectedField().getModifiers()))) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
+		// If the value must be accessed directly.
+		if (fieldAccess) {
+			// Sets the field value directly.
+			setValueDirectly(targetObject, newValue, ignoreAccess);
+		}
+		// If the value must be accessed through its setter.
+		else {
+			// Sets the field value through its setter.
+			setValue(targetObject, newValue, ignoreAccess);
 		}
 	}
 	

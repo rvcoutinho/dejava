@@ -18,19 +18,19 @@ import org.dejava.component.util.reflection.constant.ErrorKeys;
  * @param <Reflected>
  *            The class to be reflected.
  */
-public class ClassMirror<Reflected extends Object> {
+public class ClassMirror<Reflected> {
 	
 	/**
 	 * Class being reflected.
 	 */
-	private Class<? extends Reflected> reflectedClass;
+	private Class<Reflected> reflectedClass;
 	
 	/**
 	 * Gets the class being reflected.
 	 * 
 	 * @return The class being reflected.
 	 */
-	public Class<? extends Reflected> getReflectedClass() {
+	public Class<Reflected> getReflectedClass() {
 		return reflectedClass;
 	}
 	
@@ -40,7 +40,7 @@ public class ClassMirror<Reflected extends Object> {
 	 * @param reflectedClass
 	 *            New class being reflected.
 	 */
-	protected void setReflectedClass(final Class<? extends Reflected> reflectedClass) {
+	protected void setReflectedClass(final Class<Reflected> reflectedClass) {
 		this.reflectedClass = reflectedClass;
 	}
 	
@@ -52,7 +52,7 @@ public class ClassMirror<Reflected extends Object> {
 	 * @throws EmptyParameterException
 	 *             If the reflected class is not given.
 	 */
-	public ClassMirror(final Class<? extends Reflected> reflectedClass) throws EmptyParameterException {
+	public ClassMirror(final Class<Reflected> reflectedClass) throws EmptyParameterException {
 		// If the given class is null.
 		if (reflectedClass == null) {
 			// Throws an exception.
@@ -298,7 +298,7 @@ public class ClassMirror<Reflected extends Object> {
 		// If the class has any superclass.
 		if (getReflectedClass().getSuperclass() != null) {
 			// Calls the same method recursively with its superclass (adding the classes to the list).
-			classes.addAll(new ClassMirror<Object>(getReflectedClass().getSuperclass()).getSuperclasses());
+			classes.addAll(new ClassMirror<>(getReflectedClass().getSuperclass()).getSuperclasses());
 		}
 		// If the class has any interfaces.
 		if (getReflectedClass().getInterfaces() != null) {
@@ -306,7 +306,7 @@ public class ClassMirror<Reflected extends Object> {
 			for (final Class<?> currentInterface : getReflectedClass().getInterfaces()) {
 				// Calls the same method recursively with the current interface (adding the classes to the
 				// list).
-				classes.addAll(new ClassMirror<Object>(currentInterface).getSuperclasses());
+				classes.addAll(new ClassMirror<>(currentInterface).getSuperclasses());
 			}
 		}
 		// Adds the Object class.
@@ -408,8 +408,8 @@ public class ClassMirror<Reflected extends Object> {
 		// Tries to get the method.
 		try {
 			// For each class inherited by the current parameter being varied.
-			for (final ClassMirror<?> currentParamClass : new ClassMirror<Object>(
-					paramsClasses[varyingParamIndex]).getSuperclasses()) {
+			for (final ClassMirror<?> currentParamClass : new ClassMirror<>(paramsClasses[varyingParamIndex])
+					.getSuperclasses()) {
 				// Changes the parameter class with the current superclass/interface.
 				paramsClasses[varyingParamIndex] = currentParamClass.getReflectedClass();
 				// Tries to return the method with the exact parameters classes.
@@ -598,6 +598,102 @@ public class ClassMirror<Reflected extends Object> {
 		}
 		// If the annotation was not found, return null.
 		return null;
+	}
+	
+	/**
+	 * Gets a constructor from the reflected class for the given parameters. The search includes the inherited
+	 * classes and interfaces of each parameter class.
+	 * 
+	 * @param paramsClasses
+	 *            Parameters classes for the constructor to be found.
+	 * @param varyingParamIndex
+	 *            Index of the parameter class that will be varied with inherited classes/interfaces.
+	 * @return A constructor from the reflected class for the given parameters.
+	 * @throws InvalidParameterException
+	 *             If the constructor cannot be found.
+	 */
+	private ConstructorMirror<Reflected> getConstructor(final Class<?>[] paramsClasses,
+			final Integer varyingParamIndex) throws InvalidParameterException {
+		// Keeps the original value of the parameter that will be changed.
+		final Class<?> initialParamClass = paramsClasses[varyingParamIndex];
+		// Tries to get the constructor.
+		try {
+			// For each class inherited by the current parameter being varied.
+			for (final ClassMirror<?> currentParamClass : new ClassMirror<>(paramsClasses[varyingParamIndex])
+					.getSuperclasses()) {
+				// Changes the parameter class with the current superclass/interface.
+				paramsClasses[varyingParamIndex] = currentParamClass.getReflectedClass();
+				// Tries to return the constructor with the exact parameters classes.
+				try {
+					return new ConstructorMirror<>(getReflectedClass().getConstructor(paramsClasses));
+				}
+				// If it is not possible to get the constructor.
+				catch (final Exception exception) {
+					// If the current varying parameter class is not the last parameter class.
+					if (varyingParamIndex < (paramsClasses.length - 1)) {
+						// Tries to get the constructor varying the next parameter.
+						try {
+							return getConstructor(paramsClasses, varyingParamIndex + 1);
+						}
+						// If it is not possible to get the constructor.
+						catch (final Exception exception2) {
+							// Ignores and continues the loop.
+						}
+					}
+				}
+			}
+			// If no constructor was found, throws an exception. TODO
+			throw new InvalidParameterException(ErrorKeys.METHOD_NOT_FOUND, null,
+					new Object[] { Arrays.asList(paramsClasses) });
+		}
+		// In all cases.
+		finally {
+			// At the end, returns the parameter class being varied to its original value.
+			paramsClasses[varyingParamIndex] = initialParamClass;
+		}
+	}
+	
+	/**
+	 * Gets a constructor from the reflected class for the given parameters. The search includes the inherited
+	 * classes and interfaces of each parameter class.
+	 * 
+	 * @param paramsClasses
+	 *            Parameters classes for the constructor to be found.
+	 * @return A constructor from the reflected class for the given parameters.
+	 * @throws InvalidParameterException
+	 *             If the constructor cannot be found or one of the parameters classes is empty.
+	 */
+	public ConstructorMirror<Reflected> getConstructor(final Class<?>[] paramsClasses)
+			throws InvalidParameterException {
+		// If there are no parameters for the constructor to be found.
+		if ((paramsClasses == null) || (paramsClasses.length == 0)) {
+			// Tries to get the constructor normally using the reflection API.
+			try {
+				return new ConstructorMirror<>(getReflectedClass().getConstructor());
+			}
+			// If the constructor cannot be found or accessed.
+			catch (final Exception exception) {
+				// Throws an exception. TODO
+				throw new InvalidParameterException(ErrorKeys.METHOD_NOT_FOUND, null,
+						new Object[] { Arrays.asList(paramsClasses) });
+			}
+		}
+		// If there are parameters.
+		else {
+			// For each parameters classes.
+			for (Integer currentParamIndex = 0; currentParamIndex < paramsClasses.length; currentParamIndex++) {
+				// Gets the current parameter class.
+				final Class<?> currentParamClass = paramsClasses[currentParamIndex];
+				// If the current parameter class is empty.
+				if (currentParamClass == null) {
+					// Throws an exception.
+					throw new InvalidParameterException(ErrorKeys.EMPTY_PARAM_CLASS, null,
+							new Object[] { currentParamIndex + 1 });
+				}
+			}
+			// Tries to get the constructor varying the first parameter class.
+			return getConstructor(paramsClasses, 0);
+		}
 	}
 	
 	/**

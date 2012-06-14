@@ -1,13 +1,13 @@
-package org.dejava.component.util.i18n.test.constant;
+package org.dejava.component.util.i18n.test.message.constant;
 
 import org.dejava.component.util.i18n.source.annotation.MessageSource;
 import org.dejava.component.util.i18n.source.annotation.MessageSources;
-import org.dejava.component.util.i18n.source.model.MessageSourceClassType;
+import org.dejava.component.util.i18n.source.processor.impl.ConstantValuesEntryProcessor;
 
 /**
  * Constants related to error message keys of the package.
  */
-@MessageSources(sources = { @MessageSource(sourcePath = "test", bundleBaseName = "org.dejava.component.util.i18n.test.message.properties.error", types = { MessageSourceClassType.PUBLIC_CONSTANTS_VALUES }) })
+@MessageSources(sources = { @MessageSource(sourcePath = "test", bundleBaseName = "org.dejava.component.util.i18n.test.message.properties.error", processors = { "org.dejava.component.util.i18n.source.processor.impl.ConstantValuesEntryProcessor" }) })
 public final class ErrorKeys {
 	
 	/**

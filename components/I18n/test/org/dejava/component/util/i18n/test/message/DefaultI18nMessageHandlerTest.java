@@ -12,7 +12,7 @@ import org.dejava.component.util.i18n.message.exception.MessageNotFoundException
 import org.dejava.component.util.i18n.message.handler.MessageHandler;
 import org.dejava.component.util.i18n.message.handler.impl.DefaultI18nMessageHandler;
 import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
-import org.dejava.component.util.i18n.test.constant.InformationKeys;
+import org.dejava.component.util.i18n.test.message.constant.InformationKeys;
 import org.dejava.component.util.test.runner.ParametricJUnitRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -215,6 +215,52 @@ public class DefaultI18nMessageHandlerTest {
 		Assert.assertEquals(message1, message2);
 	}
 	
+	/**
+	 * TODO
+	 */
+	@Test
+	public void testGetMessageByKeySuccess() {
+		
+	}
 	
+	/**
+	 * TODO
+	 */
+	@Test
+	public void testGetMessageByTypeAndKeySuccess() {
+		
+	}
+	
+	/**
+	 * TODO
+	 */
+	@Test
+	public void testGetMessageByStringTypeAndKeySuccess() {
+		
+	}
+	
+	/**
+	 * TODO
+	 */
+	@Test
+	public void testGetMessageByKeyWithParametersSuccess() {
+		
+	}
+	
+	/**
+	 * TODO
+	 */
+	@Test
+	public void testGetMessageByTypeAndKeyWithParametersSuccess() {
+		
+	}
+	
+	/**
+	 * TODO
+	 */
+	@Test
+	public void testGetMessageByStringTypeAndKeyWithParametersSuccess() {
+		
+	}
 	
 }

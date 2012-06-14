@@ -26,6 +26,7 @@ import org.dejava.component.util.i18n.source.annotation.MessageSource;
 import org.dejava.component.util.i18n.source.annotation.MessageSources;
 import org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor;
 import org.dejava.component.util.reflection.ClassMirror;
+import org.dejava.component.util.reflection.exception.InvocationException;
 
 /**
  * Annotation processor that processes and creates the defined message source bundles.
@@ -130,6 +131,36 @@ public class MessageSourceCreator extends AbstractProcessor {
 	}
 	
 	/**
+	 * Adds the given entries to the desired message source properties file.
+	 * 
+	 * @param sourcePath
+	 *            The source path where the source files should be created.
+	 * @param bundleBaseName
+	 *            The base name of the message source bundle.
+	 * @param localeText
+	 *            The locale of the message source bundle.
+	 * @param entries
+	 *            The entries for the message source properties.
+	 * @param description
+	 *            Description of the message properties file.
+	 */
+	private void addEntries(final String sourcePath, final String bundleBaseName, final String localeText,
+			final Set<String> entries, final String description) {
+		// Get the properties content (if any).
+		final Properties msgSrcProps = getPropertiesContent(sourcePath, bundleBaseName, localeText);
+		// For each entry in the set.
+		for (final String currentEntry : entries) {
+			// If the entry does not exist.
+			if (msgSrcProps.get(currentEntry) == null) {
+				// Creates the entry.
+				msgSrcProps.put(currentEntry, "");
+			}
+		}
+		// Saves the properties file content.
+		savePropertiesContent(sourcePath, bundleBaseName, localeText, msgSrcProps, description);
+	}
+	
+	/**
 	 * @see javax.annotation.processing.AbstractProcessor#process(java.util.Set,
 	 *      javax.annotation.processing.RoundEnvironment)
 	 */
@@ -144,32 +175,25 @@ public class MessageSourceCreator extends AbstractProcessor {
 				// Creates an entry set for the message source.
 				final Set<String> entries = new LinkedHashSet<>();
 				// For each processor defined for the current message source.
-				for (final Class<MessageSourceEntryProcessor> currentProcessorClass : currentMsgSrc
-						.processors()) {
-					// Creates an instance for the current processor.
-					final MessageSourceEntryProcessor currentProcessor = new ClassMirror<>(
-							currentProcessorClass).getConstructor(null).newInstance(null, true);
-					// Adds the entries for the current processor to the entry set.
-					entries.addAll(currentProcessor.processClass(currentClass));
-					// For each defined available locale.
-					for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
-						// Get the properties content (if any).
-						final Properties msgSrcProps = getPropertiesContent(currentMsgSrc.sourcePath(),
-								currentMsgSrc.bundleBaseName(), currentLocaleText);
-						// If the entry is defined.
-						if (currentEntry != null) {
-							// Puts the current entry in lower case.
-							currentEntry = currentEntry.toLowerCase();
-							// If there is no entry in the properties file for current entry.
-							if (msgSrcProps.get(currentEntry) == null) {
-								// Creates the entry.
-								msgSrcProps.put(currentEntry, "");
-							}
+				for (final String currentProcessorClassName : currentMsgSrc.processors()) {
+					// Tries to add the processed entries for the message source.
+					try {
+						// Creates an instance for the current processor.
+						final MessageSourceEntryProcessor currentProcessor = (MessageSourceEntryProcessor) new ClassMirror<>(
+								currentProcessorClassName).getConstructor(null).newInstance(null, true);
+						// Adds the entries for the current processor to the entry set.
+						entries.addAll(currentProcessor.processClass(currentClass));
+						// For each defined available locale.
+						for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
+							// Adds the entries to the current properties file.
+							addEntries(currentMsgSrc.sourcePath(), currentMsgSrc.bundleBaseName(),
+									currentLocaleText, entries, currentMsgSrc.description());
 						}
 					}
-					// Saves the properties file content.
-					savePropertiesContent(currentMsgSrc.sourcePath(), currentMsgSrc.bundleBaseName(),
-							currentLocaleText, msgSrcProps, currentLocaleText);
+					// If the current processor cannot be instantiated.
+					catch (final InvocationException exception) {
+						// Ignores and continues with the left processors and sources.
+					}
 				}
 			}
 		}
@@ -191,7 +215,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 		
 		// Get the list of java file objects, in this case we have only one file, TestClass.java
 		final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager
-				.getJavaFileObjects("test/org/dejava/component/util/i18n/test/constant/InformationKeys.java");
+				.getJavaFileObjects("test/org/dejava/component/util/i18n/test/message/constant/InformationKeys.java");
 		
 		final CompilationTask task = compiler.getTask(null, fileManager, null, null, null, compilationUnits1);
 		

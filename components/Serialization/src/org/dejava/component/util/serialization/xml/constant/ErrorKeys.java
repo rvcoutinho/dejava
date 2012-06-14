@@ -2,12 +2,12 @@ package org.dejava.component.util.serialization.xml.constant;
 
 import org.dejava.component.util.i18n.source.annotation.MessageSource;
 import org.dejava.component.util.i18n.source.annotation.MessageSources;
-import org.dejava.component.util.i18n.source.model.MessageSourceClassType;
+import org.dejava.component.util.i18n.source.processor.impl.ConstantValuesEntryProcessor;
 
 /**
  * Constants related to error keys of the package.
  */
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.component.util.serialization.xml.properties.errors", types = { MessageSourceClassType.PUBLIC_CONSTANTS_VALUES }) })
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.component.util.serialization.xml.properties.errors", processors = { ConstantValuesEntryProcessor.class }) })
 public final class ErrorKeys {
 	
 	/**

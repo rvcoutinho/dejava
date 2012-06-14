@@ -2,10 +2,11 @@ package org.dejava.component.util.test.runner.dataset.impl;
 
 import java.util.Collection;
 
-import org.dejava.component.util.reflection.handler.MethodHandler;
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.junit.runners.model.FrameworkMethod;
+
+import com.sun.xml.internal.ws.client.sei.MethodHandler;
 
 /**
  * Provides access to XML test data.

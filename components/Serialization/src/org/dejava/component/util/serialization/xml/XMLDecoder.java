@@ -9,20 +9,17 @@ import java.util.Map;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.dejava.component.util.exception.localized.EmptyParameterException;
-import org.dejava.component.util.exception.localized.InvalidParameterException;
+import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.util.reflection.ClassMirror;
 import org.dejava.component.util.reflection.exception.InvocationException;
-import org.dejava.component.util.reflection.handler.ClassHandler;
-import org.dejava.component.util.reflection.handler.ConstructorHandler;
-import org.dejava.component.util.reflection.handler.FieldHandler;
-import org.dejava.component.util.reflection.handler.MethodHandler;
 import org.dejava.component.util.serialization.xml.annotation.XMLComplexNode;
 import org.dejava.component.util.serialization.xml.constant.ErrorKeys;
 import org.dejava.component.util.serialization.xml.exception.XMLConversionException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.sun.xml.internal.ws.client.sei.MethodHandler;
 
 /**
  * Helps handling XML creation/conversion.

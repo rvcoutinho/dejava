@@ -41,5 +41,5 @@ public @interface MessageSource {
 	/**
 	 * Types of message source that the annotated class represents.
 	 */
-	Class<MessageSourceEntryProcessor>[] processors();
+	Class<? extends MessageSourceEntryProcessor>[] processors();
 }

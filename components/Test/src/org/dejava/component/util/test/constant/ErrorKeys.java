@@ -2,7 +2,6 @@ package org.dejava.component.util.test.constant;
 
 import org.dejava.component.util.i18n.source.annotation.MessageSource;
 import org.dejava.component.util.i18n.source.annotation.MessageSources;
-import org.dejava.component.util.i18n.source.processor.impl.ConstantValuesEntryProcessor;
 
 /**
  * Constants related to error keys of the package.

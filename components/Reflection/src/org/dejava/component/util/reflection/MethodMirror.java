@@ -83,7 +83,7 @@ public class MethodMirror {
 	/**
 	 * Regular expression for getter methods.
 	 */
-	public static final String GETTER_REGEX = "get[A-Z0-9_\\$].*";
+	public static final String GETTER_REGEX = "(get|is)[A-Z0-9_\\$].*";
 	
 	/**
 	 * Returns if the method name is from a getter.
@@ -94,6 +94,7 @@ public class MethodMirror {
 		// Returns if the method name matches the getter regular expression.
 		return getReflectedMethod().getName().matches(GETTER_REGEX);
 	}
+	
 	
 	/**
 	 * Regular expression for setter methods.

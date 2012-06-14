@@ -936,6 +936,6 @@
             <ruleset>Unused Code Rules</ruleset>
         </rule>
     </rules>
-    <includeDerivedFiles>true</includeDerivedFiles>
+    <includeDerivedFiles>false</includeDerivedFiles>
     <violationsAsErrors>true</violationsAsErrors>
 </pmd>

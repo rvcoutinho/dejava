@@ -1,9 +1,10 @@
-package org.dejava.component.util.i18n.source.processor;
+package org.dejava.component.util.i18n.source;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Properties;
 import java.util.Set;
@@ -14,27 +15,24 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
-import javax.lang.model.element.VariableElement;
 import javax.tools.JavaCompiler;
 import javax.tools.JavaCompiler.CompilationTask;
 import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
-import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.i18n.source.annotation.MessageSource;
 import org.dejava.component.util.i18n.source.annotation.MessageSources;
-import org.dejava.component.util.i18n.source.model.MessageSourceClassType;
+import org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor;
+import org.dejava.component.util.reflection.ClassMirror;
 
 /**
  * Annotation processor that processes and creates the defined message source bundles.
  */
 @SupportedSourceVersion(value = SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes(value = { "org.dejava.component.util.i18n.source.annotation.MessageSources" })
-public class MessageSourceProcessor extends AbstractProcessor {
+public class MessageSourceCreator extends AbstractProcessor {
 	
 	/**
 	 * Gets the message source properties file.
@@ -143,99 +141,29 @@ public class MessageSourceProcessor extends AbstractProcessor {
 			final MessageSources msgSrcs = currentClass.getAnnotation(MessageSources.class);
 			// For each message source.
 			for (final MessageSource currentMsgSrc : msgSrcs.sources()) {
-				// For each defined available locale.
-				for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
-					// Get the properties content (if any).
-					final Properties msgSrcProps = getPropertiesContent(currentMsgSrc.sourcePath(),
-							currentMsgSrc.bundleBaseName(), currentLocaleText);
-					// For each enclosed elements of the class.
-					for (final Element currentClassElement : currentClass.getEnclosedElements()) {
-						// For each type of the source defined for the current class.
-						for (final MessageSourceClassType currentSrcType : currentMsgSrc.types()) {
-							// Current entry.
-							String currentEntry = null;
-							// Depending on the current type.
-							switch (currentSrcType) {
-							// If the source type is the name of the annotated class.
-								case NAME:
-									// The current entry is the class name.
-									currentEntry = currentClass.getSimpleName().toString();
-									// Finishes the case.
-									break;
-								// If the source type are the public constants of the class.
-								case PUBLIC_CONSTANTS_VALUES:
-									// If the element is a public final field.
-									if ((currentClassElement.getKind() == ElementKind.FIELD)
-											&& (currentClassElement.getModifiers().contains(Modifier.FINAL))
-											&& (currentClassElement.getModifiers().contains(Modifier.PUBLIC))) {
-										// The current entry is the field value.
-										currentEntry = ((VariableElement) currentClassElement)
-												.getConstantValue().toString();
-									}
-									// Finishes the case.
-									break;
-								// If the source type are the fields of the class.
-								case OBJECT_FIELDS:
-									// If the element is an object field.
-									if ((currentClassElement.getKind() == ElementKind.FIELD)
-											&& (!currentClassElement.getModifiers().contains(Modifier.STATIC))) {
-										// The current entry is the class name followed by field name.
-										currentEntry = currentClass.getSimpleName().toString() + '.'
-												+ currentClassElement.getSimpleName().toString();
-									}
-									// Finishes the case.
-									break;
-								// If the source type are the public getters of the class.
-								case PUBLIC_GETTERS:
-									// If the element is a public method.
-									if ((currentClassElement.getKind() == ElementKind.METHOD)
-											&& (currentClassElement.getModifiers().contains(Modifier.PUBLIC))) {
-										// The current entry is the class name followed by the field name.
-										try {
-											currentEntry = currentClass.getSimpleName().toString()
-													+ '.'
-													+ FieldHandler.getFieldName(currentClassElement
-															.getSimpleName().toString());
-										}
-										// If it is not a getter.
-										catch (final InvalidParameterException exception) {
-											// Ignores it.
-										}
-									}
-									// Finishes the case.
-									break;
-								// If the source type are the public methods of the class.
-								case PUBLIC_METHODS:
-									// If the element is a public method.
-									if ((currentClassElement.getKind() == ElementKind.METHOD)
-											&& (currentClassElement.getModifiers().contains(Modifier.PUBLIC))) {
-										// The current entry is the class name followed by the method name.
-										currentEntry = currentClass.getSimpleName().toString() + '.'
-												+ currentClassElement.getSimpleName().toString();
-									}
-									// Finishes the case.
-									break;
-								// If the source type are the constants of the enumerated.
-								case ENUM_TYPES:
-									// If the element is a enumerated type.
-									if (currentClassElement.getKind() == ElementKind.ENUM_CONSTANT) {
-										// The current entry is the enumerated name followed by the constant
-										// name.
-										currentEntry = currentClass.getSimpleName().toString() + '.'
-												+ currentClassElement.getSimpleName().toString();
-									}
-									// Finishes the case.
-									break;
-							}
-							// If the entry is defined.
-							if (currentEntry != null) {
-								// Puts the current entry in lower case.
-								currentEntry = currentEntry.toLowerCase();
-								// If there is no entry in the properties file for current entry.
-								if (msgSrcProps.get(currentEntry) == null) {
-									// Creates the entry.
-									msgSrcProps.put(currentEntry, "");
-								}
+				// Creates an entry set for the message source.
+				final Set<String> entries = new LinkedHashSet<>();
+				// For each processor defined for the current message source.
+				for (final Class<MessageSourceEntryProcessor> currentProcessorClass : currentMsgSrc
+						.processors()) {
+					// Creates an instance for the current processor.
+					final MessageSourceEntryProcessor currentProcessor = new ClassMirror<>(
+							currentProcessorClass).getConstructor(null).newInstance(null, true);
+					// Adds the entries for the current processor to the entry set.
+					entries.addAll(currentProcessor.processClass(currentClass));
+					// For each defined available locale.
+					for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
+						// Get the properties content (if any).
+						final Properties msgSrcProps = getPropertiesContent(currentMsgSrc.sourcePath(),
+								currentMsgSrc.bundleBaseName(), currentLocaleText);
+						// If the entry is defined.
+						if (currentEntry != null) {
+							// Puts the current entry in lower case.
+							currentEntry = currentEntry.toLowerCase();
+							// If there is no entry in the properties file for current entry.
+							if (msgSrcProps.get(currentEntry) == null) {
+								// Creates the entry.
+								msgSrcProps.put(currentEntry, "");
 							}
 						}
 					}
@@ -271,7 +199,7 @@ public class MessageSourceProcessor extends AbstractProcessor {
 		final LinkedList<AbstractProcessor> processors = new LinkedList<AbstractProcessor>();
 		
 		// Add an annotation processor to the list
-		processors.add(new MessageSourceProcessor());
+		processors.add(new MessageSourceCreator());
 		
 		// Set the annotation processor to the compiler task
 		task.setProcessors(processors);

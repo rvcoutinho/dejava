@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.dejava.component.util.i18n.source.model.MessageSourceClassType;
+import org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor;
 
 /**
  * Defines a source of messages.
@@ -41,5 +41,5 @@ public @interface MessageSource {
 	/**
 	 * Types of message source that the annotated class represents.
 	 */
-	MessageSourceClassType[] types();
+	Class<MessageSourceEntryProcessor>[] processors();
 }

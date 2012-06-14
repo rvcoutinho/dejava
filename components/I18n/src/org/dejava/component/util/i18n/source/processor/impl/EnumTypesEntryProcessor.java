@@ -1,0 +1,37 @@
+package org.dejava.component.util.i18n.source.processor.impl;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import javax.lang.model.element.Element;
+import javax.lang.model.element.ElementKind;
+
+import org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor;
+
+/**
+ * Processes an enumerated and retrieves entries for its constants ("enumname.constantname").
+ */
+public class EnumTypesEntryProcessor implements MessageSourceEntryProcessor {
+	
+	/**
+	 * @see org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.Element)
+	 */
+	@Override
+	public Set<String> processClass(final Element clazz) {
+		// Creates an entry set.
+		final Set<String> entries = new LinkedHashSet<>();
+		// For each enclosed elements of the class.
+		for (final Element currentClassElement : clazz.getEnclosedElements()) {
+			// If the element is a enumerated type.
+			if (currentClassElement.getKind() == ElementKind.ENUM_CONSTANT) {
+				// Adds the enumerated type to the entry set.
+				entries.add(clazz.getSimpleName().toString() + '.'
+						+ currentClassElement.getSimpleName().toString());
+			}
+		}
+		// Returns he retrieved entries.
+		return entries;
+		
+	}
+	
+}

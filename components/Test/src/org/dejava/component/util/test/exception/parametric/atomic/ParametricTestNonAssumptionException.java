@@ -1,6 +1,5 @@
 package org.dejava.component.util.test.exception.parametric.atomic;
 
-
 /**
  * A single parametric test non-assumption exception.
  * 

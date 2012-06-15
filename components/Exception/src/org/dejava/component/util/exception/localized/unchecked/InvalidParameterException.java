@@ -1,6 +1,5 @@
 package org.dejava.component.util.exception.localized.unchecked;
 
-
 /**
  * Exception related invalid parameter use.
  */

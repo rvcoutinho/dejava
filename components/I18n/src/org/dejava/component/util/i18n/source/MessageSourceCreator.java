@@ -175,22 +175,12 @@ public class MessageSourceCreator extends AbstractProcessor {
 				// Creates an entry set for the message source.
 				final Set<String> entries = new LinkedHashSet<>();
 				// For each processor defined for the current message source.
-<<<<<<< HEAD
 				for (final String currentProcessorClassName : currentMsgSrc.processors()) {
 					// Tries to add the processed entries for the message source.
 					try {
 						// Creates an instance for the current processor.
 						final MessageSourceEntryProcessor currentProcessor = (MessageSourceEntryProcessor) new ClassMirror<>(
 								currentProcessorClassName).getConstructor(null).newInstance(null, true);
-=======
-				for (final Class<? extends MessageSourceEntryProcessor> currentProcessorClass : currentMsgSrc
-						.processors()) {
-					// Tries to add the processed entries for the message source.
-					try {
-						// Creates an instance for the current processor.
-						final MessageSourceEntryProcessor currentProcessor = new ClassMirror<>(
-								currentProcessorClass).getConstructor(null).newInstance(null, true);
->>>>>>> eb2d948de12e98e4841d87df0edafce7ee7e9a4e
 						// Adds the entries for the current processor to the entry set.
 						entries.addAll(currentProcessor.processClass(currentClass));
 						// For each defined available locale.

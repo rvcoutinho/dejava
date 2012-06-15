@@ -4,7 +4,6 @@ import org.dejava.component.util.exception.localized.unchecked.InvalidParameterE
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
 
-
 /**
  * Helps handling internationalization messages in a application environment.
  */

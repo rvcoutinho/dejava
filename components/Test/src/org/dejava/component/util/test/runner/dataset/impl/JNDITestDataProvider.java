@@ -14,29 +14,24 @@ import com.sun.xml.internal.ws.client.sei.MethodHandler;
 public class JNDITestDataProvider implements TestDataProvider {
 	
 	/**
-	 * The JNDI path for the object from which the test data provider method
-	 * will be invoked.
+	 * The JNDI path for the object from which the test data provider method will be invoked.
 	 */
 	private String objectPath;
 	
 	/**
-	 * Gets the JNDI path for the object from which the test data provider
-	 * method will be invoked.
+	 * Gets the JNDI path for the object from which the test data provider method will be invoked.
 	 * 
-	 * @return The JNDI path for the object from which the test data provider
-	 *         method will be invoked.
+	 * @return The JNDI path for the object from which the test data provider method will be invoked.
 	 */
 	public String getObjectPath() {
 		return objectPath;
 	}
 	
 	/**
-	 * Sets the JNDI path for the object from which the test data provider
-	 * method will be invoked.
+	 * Sets the JNDI path for the object from which the test data provider method will be invoked.
 	 * 
 	 * @param objectPath
-	 *            New JNDI path for the object from which the test data
-	 *            provider method will be invoked.
+	 *            New JNDI path for the object from which the test data provider method will be invoked.
 	 */
 	public void setObjectPath(final String objectPath) {
 		this.objectPath = objectPath;
@@ -70,8 +65,7 @@ public class JNDITestDataProvider implements TestDataProvider {
 	 * Default constructor.
 	 * 
 	 * @param objectPath
-	 *            The JNDI path for the object from which the test data
-	 *            provider method will be invoked.
+	 *            The JNDI path for the object from which the test data provider method will be invoked.
 	 * @param methodName
 	 *            The method name for the test data provider.
 	 */

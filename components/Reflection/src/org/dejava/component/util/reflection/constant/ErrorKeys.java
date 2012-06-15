@@ -44,9 +44,6 @@ public final class ErrorKeys {
 	 */
 	public static final String CONSTRUCTOR_NOT_FOUND = "reflection.class.constructor.notfound";
 	
-	
-	
-	
 	/**
 	 * Getter not found error key.
 	 */
@@ -67,9 +64,6 @@ public final class ErrorKeys {
 	 */
 	public static final String UNACCESSIBLE_FIELD = "reflection.field.unaccessible";
 	
-	
-	
-	
 	/**
 	 * Unaccessible constructor error key.
 	 */
@@ -79,9 +73,6 @@ public final class ErrorKeys {
 	 * Abstract class error key.
 	 */
 	public static final String ABSTRACT_CLASS = "reflection.constructor.abstract";
-	
-	
-	
 	
 	/**
 	 * Not getter/setter method error key.
@@ -97,11 +88,6 @@ public final class ErrorKeys {
 	 * Empty annotation class error key.
 	 */
 	public static final String EMPTY_ANNOTATION_CLASS = "reflection.annotation.class.empty";
-	
-	
-	
-	
-	
 	
 	/**
 	 * Illegal parameters values error key.
@@ -122,7 +108,6 @@ public final class ErrorKeys {
 	 * Missing constructor error key.
 	 */
 	public static final String MISSING_CONSTRUCTOR = "reflection.constructor.missing";
-	
 	
 	/**
 	 * Unaccessible field path error key.

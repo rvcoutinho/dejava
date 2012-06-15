@@ -9,5 +9,4 @@ import org.junit.runner.RunWith;
 @RunWith(ParametricJUnitRunner.class)
 public class ClassMirrorTest {
 	
-	 
 }

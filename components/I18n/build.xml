@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<project default="">
+	
+	<!-- Project information. -->
+	<property name="project-name" value="dejava-i18n" />
+	<!-- Version information. -->
+	<property name="version-base" value="0.1" />
+	<property name="version-status" value="" />
+	<property name="version" value="${version-base}${version-status}" />
+	<!-- Source path information. -->
+	<property name="test" location="test" />
+	<property name="sample" value="sample" />
+	<property name="src" value="src" />
+	<property name="doc" value="doc" />
+	<!-- Bytecode information. -->
+	<property name="bin" location="bin" />
+	<!-- Jar information. -->
+	<property name="bin-jar" value="${project-name}-${version}.jar" />
+	<property name="src-jar" value="${project-name}-${version}-src.jar" />
+	<property name="doc-jar" value="${project-name}-${version}-doc.jar" />
+
+	<target name="clean">
+
+		<delete dir="build" />
+	</target>
+
+	<target name="compile">
+
+		<mkdir dir="build/classes" />
+
+		<javac destdir="build/classes" srcdir="src" />
+	</target>
+
+	<target name="jar">
+
+		<mkdir dir="build/jar" />
+
+		<jar basedir="build/classes" destfile="build/jar/HelloWorld.jar">
+
+			<manifest>
+
+				<attribute name="Main-Class" value="oata.HelloWorld" />
+			</manifest>
+		</jar>
+	</target>
+
+
+</project>

@@ -70,7 +70,7 @@ public final class XMLEncoder {
 	private static Boolean isObjectUnderConversion(final Object object,
 			final Collection<Object> objectsUnderConversion) {
 		// For each object under conversion.
-		for (Object objectAtual : objectsUnderConversion) {
+		for (final Object objectAtual : objectsUnderConversion) {
 			// If the object is the same.
 			if (object == objectAtual) {
 				// Returns true.
@@ -103,11 +103,11 @@ public final class XMLEncoder {
 			final Collection<Object> objectsUnderConversion) throws XMLConversionException {
 		// Tries to create a complex node.
 		try { // Fields node list.
-			List<Element> nodeList = new ArrayList<Element>();
+			final List<Element> nodeList = new ArrayList<Element>();
 			// For each field of the complex object.
-			for (FieldMirror currentField : new ClassMirror<>(object.getClass()).getFields()) {
+			for (final FieldMirror currentField : new ClassMirror<>(object.getClass()).getFields()) {
 				// Gets the field value.
-				Object currentFieldValue = currentField.getValue(object, false, false);
+				final Object currentFieldValue = currentField.getValue(object, false, false);
 				// If the field value is not null.
 				if (currentFieldValue != null) {
 					// If it should force the node class (false by default).
@@ -118,7 +118,7 @@ public final class XMLEncoder {
 						forceThisNodeClass = true;
 					}
 					// Creates the node for the field.
-					Element currentFieldNode = createNode(xmlDocument, currentFieldValue,
+					final Element currentFieldNode = createNode(xmlDocument, currentFieldValue,
 							currentField.getName(), forceAllNodeClasses, forceThisNodeClass,
 							objectsUnderConversion);
 					// Adds the current node to the list.
@@ -129,12 +129,12 @@ public final class XMLEncoder {
 			return nodeList;
 		}
 		// If invalid parameters are given to get the field (or fields).
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.INVALID_GETTER_PARAMS, exception, null);
 		}
 		// If the getter for the field throws an exception.
-		catch (InvocationException exception) {
+		catch (final InvocationException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.GETTER_EXCEPTION, exception, null);
 		}
@@ -163,7 +163,7 @@ public final class XMLEncoder {
 			final Element node, final Boolean forceAllNodeClasses,
 			final Collection<Object> objectsUnderConversion) throws XMLConversionException {
 		// For each field node for the complex object.
-		for (Node noAtual : createComplexObjectFieldNodes(xmlDocument, object, forceAllNodeClasses,
+		for (final Node noAtual : createComplexObjectFieldNodes(xmlDocument, object, forceAllNodeClasses,
 				objectsUnderConversion)) {
 			// Appends it to the complex object node.
 			node.appendChild(noAtual);
@@ -203,10 +203,10 @@ public final class XMLEncoder {
 			final Collection<Object> objectsUnderConversion) throws EmptyParameterException,
 			XMLConversionException {
 		// For each object in the collection.
-		for (Object currentCollectionItem : (Collection<?>) object) {
+		for (final Object currentCollectionItem : (Collection<?>) object) {
 			// Creates a new object node.
-			Element noItemAtualColecao = createNode(xmlDocument, currentCollectionItem, COLLECTION_NODE,
-					forceAllNodeClasses, true, objectsUnderConversion);
+			final Element noItemAtualColecao = createNode(xmlDocument, currentCollectionItem,
+					COLLECTION_NODE, forceAllNodeClasses, true, objectsUnderConversion);
 			// Appends the new node to the collection node.
 			node.appendChild(noItemAtualColecao);
 		}
@@ -227,9 +227,9 @@ public final class XMLEncoder {
 	 */
 	private static Element createTextNode(final Document xmlDocument, final Object object, final Element node) {
 		// Gets the object as a String.
-		String nodeVale = object.toString();
+		final String nodeVale = object.toString();
 		// Creates a new text node within the current object node.
-		Text textnode = xmlDocument.createTextNode(nodeVale);
+		final Text textnode = xmlDocument.createTextNode(nodeVale);
 		// Adds the text node object as a current object node child.
 		node.appendChild(textnode);
 		// Returns the object node.
@@ -253,7 +253,7 @@ public final class XMLEncoder {
 			oneStringConstructor = new ClassMirror<>(clazz).getConstructor(new Class<?>[] { String.class });
 		}
 		// If an exception is thrown.
-		catch (Exception exception) {
+		catch (final Exception exception) {
 			// It is ignored.
 		}
 		// If there is not a one parameter string constructor or if the class is annotated with
@@ -309,7 +309,7 @@ public final class XMLEncoder {
 				objectsUnderConversion = new ArrayList<Object>();
 			}
 			// Creates the node for the object from the XML document.
-			Element node = xmlDocument.createElement(nodeName);
+			final Element node = xmlDocument.createElement(nodeName);
 			// If it is told to force node class.
 			if ((forceAllNodeClasses) || (forceThisNodeClass)) {
 				// Sets the node class.
@@ -329,7 +329,7 @@ public final class XMLEncoder {
 				return node;
 			}
 			// Gets the class of the object.
-			Class<?> objectClass = object.getClass();
+			final Class<?> objectClass = object.getClass();
 			// If the object is a collection.
 			if (Collection.class.isAssignableFrom(objectClass)) {
 				// Tries to create the node as a collection.
@@ -349,7 +349,7 @@ public final class XMLEncoder {
 			}
 		}
 		// If an conversion exception is thrown.
-		catch (XMLConversionException exception) {
+		catch (final XMLConversionException exception) {
 			// If no object was used as a exception parameter.
 			if (exception.getParameters().length == 0) {
 				// Adds the node name as a parameter.
@@ -385,9 +385,9 @@ public final class XMLEncoder {
 			final Boolean forceAllNodeClasses, final Collection<Object> objectsUnderConversion)
 			throws XMLConversionException, EmptyParameterException, XMLCreationException {
 		// Creates an empty XML document.
-		Document xmlDocument = XMLCreator.createXMLDocument();
+		final Document xmlDocument = XMLCreator.createXMLDocument();
 		// Creates the first node.
-		Element firstNode = createNode(xmlDocument, object, nodeName, forceAllNodeClasses, true,
+		final Element firstNode = createNode(xmlDocument, object, nodeName, forceAllNodeClasses, true,
 				objectsUnderConversion);
 		// Appends the first node to the XML.
 		xmlDocument.appendChild(firstNode);
@@ -423,15 +423,15 @@ public final class XMLEncoder {
 			final Collection<Object> objectsUnderConversion) throws XMLConversionException,
 			EmptyParameterException, XMLCreationException {
 		// Creates an empty XML document.
-		Document xmlDocument = XMLCreator.createXMLDocument();
+		final Document xmlDocument = XMLCreator.createXMLDocument();
 		// Creates the first node.
-		Element firstNode = xmlDocument.createElement(collectionNodeName);
+		final Element firstNode = xmlDocument.createElement(collectionNodeName);
 		// Appends the first node to the XML.
 		xmlDocument.appendChild(firstNode);
 		// For each object.
-		for (Object currentObject : objects) {
+		for (final Object currentObject : objects) {
 			// Creates the node for the object.
-			Element noPrincipalAtual = createNode(xmlDocument, currentObject, collectionItemNodeName,
+			final Element noPrincipalAtual = createNode(xmlDocument, currentObject, collectionItemNodeName,
 					forceAllNodeClasses, true, objectsUnderConversion);
 			// Appends the current object to the first node.
 			firstNode.appendChild(noPrincipalAtual);

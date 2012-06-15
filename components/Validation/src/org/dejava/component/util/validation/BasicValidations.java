@@ -668,7 +668,7 @@ public final class BasicValidations {
 		// Gets the forbidden words from the given text.
 		final String[] forbiddenWordsArray = forbiddenWords.split(splitRegEx);
 		// For each forbidden word.
-		for (String currentForbiddenWord : forbiddenWordsArray) {
+		for (final String currentForbiddenWord : forbiddenWordsArray) {
 			// If the text has the forbidden word.
 			if (!validateForbiddenWord(object, currentForbiddenWord.trim(), asSequence)) {
 				// Returns false.

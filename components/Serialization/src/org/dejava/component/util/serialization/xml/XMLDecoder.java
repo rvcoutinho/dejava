@@ -81,7 +81,7 @@ public final class XMLDecoder {
 			return node.getAttributes().getNamedItem(ID_ATTR).getTextContent();
 		}
 		// If it is not possible to get the id.
-		catch (Exception exception) {
+		catch (final Exception exception) {
 			// Returns null.
 			return null;
 		}
@@ -112,7 +112,7 @@ public final class XMLDecoder {
 			return classeNo;
 		}
 		// If an exception is thrown.
-		catch (Exception exception) {
+		catch (final Exception exception) {
 			// Returns the probable class.
 			return new ClassMirror<>(probableClass);
 		}
@@ -133,7 +133,7 @@ public final class XMLDecoder {
 			return Collection.class.isAssignableFrom(getNodeClass(node, probableClass).getReflectedClass());
 		}
 		// If an exception is thrown.
-		catch (Exception exception) {
+		catch (final Exception exception) {
 			// Return false.
 			return false;
 		}
@@ -232,7 +232,7 @@ public final class XMLDecoder {
 					// Tries to get the current parameter class.
 					try {
 						// Gets the current parameter class name.
-						String currentJNDIParameterClass = node.getAttributes()
+						final String currentJNDIParameterClass = node.getAttributes()
 								.getNamedItem(JNDI_OBJ_METHOD_PARAM_CLASS_ATTR + currentParamIndex)
 								.getTextContent();
 						// Tries to get the class for the name and add it to the
@@ -240,13 +240,13 @@ public final class XMLDecoder {
 						jndiParamsClasses.add(ClassHandler.getClass(currentJNDIParameterClass));
 					}
 					// If the current parameter class is not given as attribute.
-					catch (NullPointerException exception) {
+					catch (final NullPointerException exception) {
 						// Stops searching for parameters.
 						break;
 					}
 				}
 				// Values of JNDI method parameters.
-				List<Object> jndiParamsValues = new ArrayList<Object>();
+				final List<Object> jndiParamsValues = new ArrayList<Object>();
 				// For each JNDI parameter class.
 				for (Integer currentParamIndex = 1; currentParamIndex <= jndiParamsClasses.size(); currentParamIndex++) {
 					// If the current parameter value is given.
@@ -286,19 +286,19 @@ public final class XMLDecoder {
 			}
 		}
 		// If the JNDI object cannot be found.
-		catch (NamingException exception) {
+		catch (final NamingException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.UNACCESSIBLE_JNDI_OBJ, exception, null);
 		}
 		// If the constructor for the parameter value or the JNDI method
 		// parameters are invalid (or class cannot be found).
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.INVALID_JNDI_METHOD_PARAMS, exception, null);
 		}
 		// If the constructor for the parameter value or the JNDI method throws
 		// an exception.
-		catch (InvocationException exception) {
+		catch (final InvocationException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.JNDI_METHOD_EXCEPTION, exception, null);
 		}
@@ -374,12 +374,12 @@ public final class XMLDecoder {
 		}
 		// If invalid parameters are given to the constructor of the node
 		// object.
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.INVALID_CONSTRUCTOR_PARAMS, exception, null);
 		}
 		// If the constructor for the object throws an exception.
-		catch (InvocationException exception) {
+		catch (final InvocationException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.CONSTRUCTOR_EXCEPTION, exception, null);
 		}
@@ -424,12 +424,12 @@ public final class XMLDecoder {
 			}
 		}
 		// If invalid parameters are given to the constructor of the node object.
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.INVALID_CONSTRUCTOR_PARAMS, exception, null);
 		}
 		// If the constructor for the object throws an exception.
-		catch (InvocationException exception) {
+		catch (final InvocationException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.CONSTRUCTOR_EXCEPTION, exception, null);
 		}
@@ -485,7 +485,7 @@ public final class XMLDecoder {
 					// If it is not a collection.
 					else {
 						// Gets the field class with the same name of the current field node.
-						Class<?> currentFieldClass = FieldHandler.getField(object.getClass(),
+						final Class<?> currentFieldClass = FieldHandler.getField(object.getClass(),
 								currentFieldNode.getNodeName()).getType();
 						// Initial field value.
 						Object initialFieldValue = null;
@@ -495,7 +495,7 @@ public final class XMLDecoder {
 									currentFieldNode.getNodeName(), false, false);
 						}
 						// If an exception is thrown.
-						catch (Exception exception) {
+						catch (final Exception exception) {
 							// Ignores it.
 						}
 						// Sets the current field value of the object with the result of the conversion for
@@ -512,12 +512,12 @@ public final class XMLDecoder {
 			return object;
 		}
 		// If invalid parameters are given to set the field.
-		catch (InvalidParameterException exception) {
+		catch (final InvalidParameterException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.INVALID_SETTER_PARAMS, exception, null);
 		}
 		// If the setter for the field throws an exception.
-		catch (InvocationException exception) {
+		catch (final InvocationException exception) {
 			// Throws an exception.
 			throw new XMLConversionException(ErrorKeys.SETTER_EXCEPTION, exception, null);
 		}
@@ -557,7 +557,7 @@ public final class XMLDecoder {
 				objectsUnderConversion = new HashMap<String, Object>();
 			}
 			// Tries to get the current node form the objects under conversion map.
-			Object objectInMap = objectsUnderConversion.get(getNodeId(node));
+			final Object objectInMap = objectsUnderConversion.get(getNodeId(node));
 			// If the object is in the map.
 			if (objectInMap != null) {
 				// Returns the object in the map.
@@ -568,7 +568,7 @@ public final class XMLDecoder {
 				// Normalize the object node.
 				node.normalize();
 				// Gets the child nodes from the given node.
-				NodeList childNodes = node.getChildNodes();
+				final NodeList childNodes = node.getChildNodes();
 				// If the there are 1 (or 0) child nodes, and the first child is
 				// a text node.
 				if ((childNodes.getLength() == 0)
@@ -586,7 +586,7 @@ public final class XMLDecoder {
 			}
 		}
 		// If an conversion exception is thrown.
-		catch (XMLConversionException exception) {
+		catch (final XMLConversionException exception) {
 			// If no node was used as a exception parameter.
 			if (exception.getParameters().length == 0) {
 				// Adds the node name as a parameter.
@@ -622,13 +622,13 @@ public final class XMLDecoder {
 			throw new EmptyParameterException(""); // TODO
 		}
 		// List of objects that represents the node list.
-		Collection<Object> objects = new ArrayList<Object>();
+		final Collection<Object> objects = new ArrayList<Object>();
 		// For each node in the given node list.
 		for (Integer currentNodeIndex = 0; currentNodeIndex < nodes.getLength(); currentNodeIndex++) {
 			// Gets the current node.
-			Node currentNode = nodes.item(currentNodeIndex);
+			final Node currentNode = nodes.item(currentNodeIndex);
 			// Create the current object.
-			Object currentObject = fromXML(currentNode, null, probableClass, objectsUnderConversion);
+			final Object currentObject = fromXML(currentNode, null, probableClass, objectsUnderConversion);
 			// Adds the current object to the list.
 			objects.add(currentObject);
 		}

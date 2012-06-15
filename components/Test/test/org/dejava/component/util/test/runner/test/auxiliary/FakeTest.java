@@ -82,7 +82,7 @@ public class FakeTest {
 	 *            Any number.
 	 */
 	@ParametricTest
-	public void testParametricSuccess(Integer number) {
+	public void testParametricSuccess(final Integer number) {
 		// If the number greater than 0.
 		if (number > 0) {
 			// Fails the test.

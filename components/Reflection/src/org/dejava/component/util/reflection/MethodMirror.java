@@ -95,7 +95,6 @@ public class MethodMirror {
 		return getReflectedMethod().getName().matches(GETTER_REGEX);
 	}
 	
-	
 	/**
 	 * Regular expression for setter methods.
 	 */

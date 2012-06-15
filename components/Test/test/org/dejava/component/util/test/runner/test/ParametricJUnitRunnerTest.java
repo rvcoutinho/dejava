@@ -2,10 +2,10 @@ package org.dejava.component.util.test.runner.test;
 
 import junit.framework.AssertionFailedError;
 
-import org.dejava.component.util.test.LocalizedAssert;
 import org.dejava.component.util.test.runner.ParametricJUnitRunner;
 import org.dejava.component.util.test.runner.test.auxiliary.FakeTest;
 import org.dejava.component.util.test.runner.test.auxiliary.RunListenerLog;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
@@ -48,7 +48,7 @@ public class ParametricJUnitRunnerTest {
 		// If the test is finished with failures.
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() != null)) {
 			// The test fails. FIXME
-			LocalizedAssert.fail();
+			Assert.fail();
 		}
 	}
 	
@@ -72,7 +72,7 @@ public class ParametricJUnitRunnerTest {
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)
 				|| (!(runListener.getFailure().getException() instanceof AssertionFailedError))) {
 			// The test fails. FIXME
-			LocalizedAssert.fail();
+			Assert.fail();
 		}
 	}
 	
@@ -95,7 +95,7 @@ public class ParametricJUnitRunnerTest {
 		// If the test is not finished with failures.
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)) {
 			// The test fails. FIXME
-			LocalizedAssert.fail();
+			Assert.fail();
 		}
 	}
 	
@@ -118,7 +118,7 @@ public class ParametricJUnitRunnerTest {
 		// If the test is not finished with failures.
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)) {
 			// The test fails. FIXME
-			LocalizedAssert.fail();
+			Assert.fail();
 		}
 	}
 	
@@ -141,7 +141,7 @@ public class ParametricJUnitRunnerTest {
 		// If the test is finished with failures.
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() != null)) {
 			// The test fails. FIXME
-			LocalizedAssert.fail();
+			Assert.fail();
 		}
 	}
 }

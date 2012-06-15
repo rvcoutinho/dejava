@@ -1,0 +1,4 @@
+<factorypath>
+    <factorypathentry kind="PLUGIN" id="org.eclipse.jst.ws.annotations.core" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/I18n/dejava-i18n-0.1.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>

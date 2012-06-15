@@ -11,6 +11,7 @@
 	<property name="test" value="test" />
 	<property name="sample" value="sample" />
 	<property name="src" value="src" />
+	<property name="metainf" value="META-INF" />
 	<property name="doc" value="doc" />
 	<!-- Related projects. -->
 	<property name="dejava-exception-project" value="../Exception" />
@@ -77,11 +78,15 @@
 	<!-- Creates the jar for the project. -->
 	<target name="jars" depends="compile">
 		<!-- Cretates the source jar. -->
-		<jar jarfile="${src-jar}" basedir="${src}" excludes="**/*.class" />
+		<jar jarfile="${src-jar}" basedir="${src}" excludes="**/*.class">
+			<metainf dir="${metainf}" />
+		</jar>
 		<!-- Creates the documentation jar. -->
 		<jar jarfile="${doc-jar}" basedir="${doc}" />
 		<!-- Creates the bytecode jar. -->
-		<jar jarfile="${bin-jar}" basedir="${bin}" excludes="**/*.java" />
+		<jar jarfile="${bin-jar}" basedir="${bin}" excludes="**/*.java">
+			<metainf dir="${metainf}" />
+		</jar>
 	</target>
 
 	<!-- Builds the project -->

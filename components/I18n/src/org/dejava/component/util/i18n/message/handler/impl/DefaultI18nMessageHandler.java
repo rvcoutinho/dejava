@@ -171,7 +171,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		// Otherwise.
 		else {
 			// Creates a new localized message format.
-			final MessageFormat messageFormat = new MessageFormat(message);
+			final MessageFormat messageFormat = new MessageFormat(message, getLocale());
 			// Format the message.
 			return messageFormat.format(parametersValues);
 		}

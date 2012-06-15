@@ -501,7 +501,7 @@ public class ClassMirror<Reflected> {
 			catch (final Exception exception) {
 				// Throws an exception.
 				throw new InvalidParameterException(ErrorKeys.METHOD_NOT_FOUND, null, new Object[] {
-						methodName, Arrays.asList(paramsClasses) });
+						methodName, paramsClasses });
 			}
 		}
 		// If there are parameters.

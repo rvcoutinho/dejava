@@ -1,5 +1,7 @@
 package org.dejava.component.util.i18n.test.message;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Locale;
 
 import junit.framework.Assert;
@@ -13,6 +15,9 @@ import org.dejava.component.util.i18n.message.handler.MessageHandler;
 import org.dejava.component.util.i18n.message.handler.impl.DefaultI18nMessageHandler;
 import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
 import org.dejava.component.util.i18n.test.message.constant.InformationKeys;
+import org.dejava.component.util.reflection.ClassMirror;
+import org.dejava.component.util.reflection.FieldMirror;
+import org.dejava.component.util.test.annotation.ParametricTest;
 import org.dejava.component.util.test.runner.ParametricJUnitRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +42,7 @@ public class DefaultI18nMessageHandlerTest {
 	private static final String ERROR_BUNDLE = "error";
 	
 	/**
-	 * Tests the getting a message by key with a null key.
+	 * Tests getting a message by key with a null key.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -54,7 +59,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests the getting a message by type (type) and key with a null key.
+	 * Tests getting a message by type (type) and key with a null key.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -72,7 +77,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests the getting a message by type (String) and key with a null key.
+	 * Tests getting a message by type (String) and key with a null key.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -90,7 +95,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests the getting a message by key that is not found.
+	 * Tests getting a message by key that is not found.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -107,7 +112,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests the getting a message by type (type) and key that is not found.
+	 * Tests getting a message by type (type) and key that is not found.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -125,7 +130,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests the getting a message by type (String) and key that is not found.
+	 * Tests getting a message by type (String) and key that is not found.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -143,7 +148,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests the getting a message by key for a not found locale.
+	 * Tests getting a message by key for a not found locale.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -166,7 +171,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests the getting a message by type (type) and key for a not found locale.
+	 * Tests getting a message by type (type) and key for a not found locale.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -192,7 +197,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests the getting a message by type (String) and key for a not found locale.
+	 * Tests getting a message by type (String) and key for a not found locale.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -216,27 +221,79 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * TODO
+	 * Gets the keys defined in the information key class.
+	 * 
+	 * @return The keys defined in the information key class.
 	 */
-	@Test
-	public void testGetMessageByKeySuccess() {
-		
+	public static Collection<String> testGetMessageSuccessKeys() {
+		// Creates the list of the keys.
+		final Collection<String> keys = new ArrayList<>();
+		// Gets the information key class.
+		final ClassMirror<InformationKeys> infoKeys = new ClassMirror<>(InformationKeys.class);
+		// For each field in the class.
+		for (final FieldMirror currentField : infoKeys.getFields()) {
+			// Tries to add the current key to the list.
+			try {
+				keys.add((String) currentField.getValue(null, true, false));
+			}
+			// If the field value cannot be retrieved.
+			catch (final Exception exception) {
+				// Ignores and continues the loop.
+			}
+		}
+		// Returns the retrieved keys.
+		return keys;
 	}
 	
 	/**
-	 * TODO
+	 * Tests getting a message by an existent key.
+	 * 
+	 * @param key
+	 *            A key that exists in the resource bundle.
 	 */
-	@Test
-	public void testGetMessageByTypeAndKeySuccess() {
-		
+	@ParametricTest(paramsValues = { "testGetMessageSuccessKeys" })
+	public void testGetMessageByKeySuccess(final String key) {
+		// Gets the message handler.
+		final MessageHandler messageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
+				"BR"));
+		// Tries to get the message.
+		final String message = messageHandler.getMessage(key, null);
+		// Assert that the message was retrieved (key exists).
+		Assert.assertNotNull(message);
 	}
 	
 	/**
-	 * TODO
+	 * Tests getting a message by type (type) and an existent key.
+	 * 
+	 * @param key
+	 *            A key that exists in the resource bundle.
 	 */
-	@Test
-	public void testGetMessageByStringTypeAndKeySuccess() {
-		
+	@ParametricTest(paramsValues = { "testGetMessageSuccessKeys" })
+	public void testGetMessageByTypeAndKeySuccess(final String key) {
+		// Gets the message handler.
+		final MessageHandler messageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
+				"BR"));
+		// Tries to get the message.
+		final String message = messageHandler.getMessage(ApplicationMessageType.INFORMATION, key, null);
+		// Assert that the message was retrieved (key exists).
+		Assert.assertNotNull(message);
+	}
+	
+	/**
+	 * Tests getting a message by type (String) and an existent key.
+	 * 
+	 * @param key
+	 *            A key that exists in the resource bundle.
+	 */
+	@ParametricTest(paramsValues = { "testGetMessageSuccessKeys" })
+	public void testGetMessageByStringTypeAndKeySuccess(final String key) {
+		// Gets the message handler.
+		final MessageHandler messageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
+				"BR"));
+		// Tries to get the message.
+		final String message = messageHandler.getMessage(INFO_BUNDLE, key, null);
+		// Assert that the message was retrieved (key exists).
+		Assert.assertNotNull(message);
 	}
 	
 	/**

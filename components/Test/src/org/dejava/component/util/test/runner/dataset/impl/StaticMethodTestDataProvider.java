@@ -84,8 +84,8 @@ public class StaticMethodTestDataProvider implements TestDataProvider {
 			// Gets the test class mirror.
 			final ClassMirror<?> testClass = new ClassMirror<>(testMethod.getMethod().getDeclaringClass());
 			// The test data is the return of the method invocation.
-			return (Collection<?>) testClass.getMethod(getMethodName(testMethod), null).invokeMethod(null,
-					null, true);
+			return (Collection<?>) testClass.getMethod(getMethodName(testMethod), null).invokeMethod(
+					(Object) null, null, true);
 		}
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {

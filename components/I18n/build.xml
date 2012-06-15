@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<project default="">
-	
+<project>
+
 	<!-- Project information. -->
 	<property name="project-name" value="dejava-i18n" />
 	<!-- Version information. -->
@@ -19,9 +19,12 @@
 	<property name="src-jar" value="${project-name}-${version}-src.jar" />
 	<property name="doc-jar" value="${project-name}-${version}-doc.jar" />
 
+	<!-- Cleans everinthing before starting. -->
 	<target name="clean">
-
-		<delete dir="build" />
+		<!-- Deletes the bin directory. -->
+		<delete dir="${bin}" />
+		<!-- Deletes the older project jars. -->
+		<delete dir="" includes="${project-name}*.jar"/>
 	</target>
 
 	<target name="compile">

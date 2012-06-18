@@ -246,6 +246,16 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
+	 * The en_US message for the success keys.
+	 */
+	public static final String SUCCESS_MESSAGE_EN_US = "success";
+	
+	/**
+	 * The pt_BR message for the success keys.
+	 */
+	public static final String SUCCESS_MESSAGE_PT_BR = "sucesso";
+	
+	/**
 	 * Tests getting a message by an existent key.
 	 * 
 	 * @param key
@@ -253,13 +263,20 @@ public class DefaultI18nMessageHandlerTest {
 	 */
 	@ParametricTest(paramsValues = { "testGetMessageSuccessKeys" })
 	public void testGetMessageByKeySuccess(final String key) {
-		// Gets the message handler.
-		final MessageHandler messageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
+		// Gets the message handler (en_US).
+		final MessageHandler messageHandlerUS = DefaultI18nMessageHandler.getMessageHandler(new Locale("en",
+				"US"));
+		// Tries to get the message (en_US).
+		final String messageUS = messageHandlerUS.getMessage(key, null);
+		// Assert that the message was retrieved correctly (en_US).
+		Assert.assertTrue(messageUS.startsWith(SUCCESS_MESSAGE_EN_US));
+		// Gets the message handler (pt_BR).
+		final MessageHandler messageHandlerBR = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
 				"BR"));
-		// Tries to get the message.
-		final String message = messageHandler.getMessage(key, null);
-		// Assert that the message was retrieved (key exists).
-		Assert.assertNotNull(message);
+		// Tries to get the message (pt_BR).
+		final String messageBR = messageHandlerBR.getMessage(key, null);
+		// Assert that the message was retrieved correctly (pt_BR).
+		Assert.assertTrue(messageBR.startsWith(SUCCESS_MESSAGE_PT_BR));
 	}
 	
 	/**
@@ -270,13 +287,20 @@ public class DefaultI18nMessageHandlerTest {
 	 */
 	@ParametricTest(paramsValues = { "testGetMessageSuccessKeys" })
 	public void testGetMessageByTypeAndKeySuccess(final String key) {
-		// Gets the message handler.
-		final MessageHandler messageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
+		// Gets the message handler (en_US).
+		final MessageHandler messageHandlerUS = DefaultI18nMessageHandler.getMessageHandler(new Locale("en",
+				"US"));
+		// Tries to get the message (en_US).
+		final String messageUS = messageHandlerUS.getMessage(ApplicationMessageType.INFORMATION, key, null);
+		// Assert that the message was retrieved correctly (en_US).
+		Assert.assertTrue(messageUS.startsWith(SUCCESS_MESSAGE_EN_US));
+		// Gets the message handler (pt_BR).
+		final MessageHandler messageHandlerBR = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
 				"BR"));
-		// Tries to get the message.
-		final String message = messageHandler.getMessage(ApplicationMessageType.INFORMATION, key, null);
-		// Assert that the message was retrieved (key exists).
-		Assert.assertNotNull(message);
+		// Tries to get the message (pt_BR).
+		final String messageBR = messageHandlerBR.getMessage(ApplicationMessageType.INFORMATION, key, null);
+		// Assert that the message was retrieved correctly (pt_BR).
+		Assert.assertTrue(messageBR.startsWith(SUCCESS_MESSAGE_PT_BR));
 	}
 	
 	/**
@@ -287,36 +311,79 @@ public class DefaultI18nMessageHandlerTest {
 	 */
 	@ParametricTest(paramsValues = { "testGetMessageSuccessKeys" })
 	public void testGetMessageByStringTypeAndKeySuccess(final String key) {
+		// Gets the message handler (en_US).
+		final MessageHandler messageHandlerUS = DefaultI18nMessageHandler.getMessageHandler(new Locale("en",
+				"US"));
+		// Tries to get the message (en_US).
+		final String messageUS = messageHandlerUS.getMessage(INFO_BUNDLE, key, null);
+		// Assert that the message was retrieved correctly (en_US).
+		Assert.assertTrue(messageUS.startsWith(SUCCESS_MESSAGE_EN_US));
+		// Gets the message handler (pt_BR).
+		final MessageHandler messageHandlerBR = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
+				"BR"));
+		// Tries to get the message (pt_BR).
+		final String messageBR = messageHandlerBR.getMessage(INFO_BUNDLE, key, null);
+		// Assert that the message was retrieved correctly (pt_BR).
+		Assert.assertTrue(messageBR.startsWith(SUCCESS_MESSAGE_PT_BR));
+	}
+	
+	/**
+	 * Gets some simple parameters to be tested in a parameterized message.
+	 * 
+	 * @return Some simple parameters to be tested in a parameterized message.
+	 */
+	public static Collection<String[]> testGetMessageSuccessSimpleParameters() {
+		// Creates a new parameters list.
+		final Collection<String[]> parameters = new ArrayList<>();
+		// Adds several parameters combinations...
+		parameters.add(new String[] { "dsa", "fre" });
+		parameters.add(new String[] { "t43", "b fg" });
+		parameters.add(new String[] { "54bsdg", "bzcv" });
+		parameters.add(new String[] { "cxvb", "4gfds" });
+		parameters.add(new String[] { "bsdgh", "o8uy67" });
+		parameters.add(new String[] { "lçi", "tiuk" });
+		// Returns the parameters.
+		return parameters;
+	}
+	
+	/**
+	 * The key for a parameterized message (with to parameters at the end of the message).
+	 */
+	public static final String PARAM_MESSAGE_KEY = "message.sample.success6";
+	
+	/**
+	 * TODO
+	 * 
+	 * @param simpleParams
+	 */
+	@ParametricTest(paramsValues = { "testGetMessageSuccessSimpleParameters" })
+	public void testGetMessageByKeyWithSimpleParametersSuccess(final String[] simpleParams) {
 		// Gets the message handler.
 		final MessageHandler messageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
 				"BR"));
 		// Tries to get the message.
-		final String message = messageHandler.getMessage(INFO_BUNDLE, key, null);
-		// Assert that the message was retrieved (key exists).
-		Assert.assertNotNull(message);
+		final String messageUS = messageHandler.getMessage(INFO_BUNDLE, PARAM_MESSAGE_KEY, simpleParams);
+		// Assert that the message was retrieved correctly.
+		Assert.assertEquals(SUCCESS_MESSAGE_PT_BR + simpleParams[0] + simpleParams[1], messageUS);
 	}
 	
 	/**
 	 * TODO
+	 * 
+	 * @param simpleParams
 	 */
-	@Test
-	public void testGetMessageByKeyWithParametersSuccess() {
+	@ParametricTest(paramsValues = { "testGetMessageSuccessSimpleParameters" })
+	public void testGetMessageByTypeAndKeyWithSimpleParametersSuccess(final String[] simpleParams) {
 		
 	}
 	
 	/**
 	 * TODO
+	 * 
+	 * @param simpleParams
 	 */
-	@Test
-	public void testGetMessageByTypeAndKeyWithParametersSuccess() {
-		
-	}
-	
-	/**
-	 * TODO
-	 */
-	@Test
-	public void testGetMessageByStringTypeAndKeyWithParametersSuccess() {
+	@ParametricTest(paramsValues = { "testGetMessageSuccessSimpleParameters" })
+	public void testGetMessageByStringTypeAndKeyWithSimpleParametersSuccess(final String[] simpleParams) {
 		
 	}
 	

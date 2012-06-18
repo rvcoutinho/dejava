@@ -25,8 +25,6 @@ import javax.tools.ToolProvider;
 import org.dejava.component.util.i18n.source.annotation.MessageSource;
 import org.dejava.component.util.i18n.source.annotation.MessageSources;
 import org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor;
-import org.dejava.component.util.reflection.ClassMirror;
-import org.dejava.component.util.reflection.exception.InvocationException;
 
 /**
  * Annotation processor that processes and creates the defined message source bundles.
@@ -179,8 +177,8 @@ public class MessageSourceCreator extends AbstractProcessor {
 					// Tries to add the processed entries for the message source.
 					try {
 						// Creates an instance for the current processor.
-						final MessageSourceEntryProcessor currentProcessor = (MessageSourceEntryProcessor) new ClassMirror<>(
-								currentProcessorClassName).getConstructor(null).newInstance(null, true);
+						final MessageSourceEntryProcessor currentProcessor = (MessageSourceEntryProcessor) Class
+								.forName(currentProcessorClassName).newInstance();
 						// Adds the entries for the current processor to the entry set.
 						entries.addAll(currentProcessor.processClass(currentClass));
 						// For each defined available locale.
@@ -190,8 +188,8 @@ public class MessageSourceCreator extends AbstractProcessor {
 									currentLocaleText, entries, currentMsgSrc.description());
 						}
 					}
-					// If the current processor cannot be instantiated.
-					catch (final InvocationException exception) {
+					// If any exception is raised.
+					catch (final Exception exception) {
 						// Ignores and continues with the left processors and sources.
 					}
 				}

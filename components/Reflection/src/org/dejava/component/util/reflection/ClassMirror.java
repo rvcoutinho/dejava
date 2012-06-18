@@ -24,14 +24,14 @@ public class ClassMirror<Reflected> {
 	/**
 	 * Class being reflected.
 	 */
-	private Class<Reflected> reflectedClass;
+	private Class<? extends Reflected> reflectedClass;
 	
 	/**
 	 * Gets the class being reflected.
 	 * 
 	 * @return The class being reflected.
 	 */
-	public Class<Reflected> getReflectedClass() {
+	public Class<? extends Reflected> getReflectedClass() {
 		return reflectedClass;
 	}
 	
@@ -41,7 +41,7 @@ public class ClassMirror<Reflected> {
 	 * @param reflectedClass
 	 *            New class being reflected.
 	 */
-	protected void setReflectedClass(final Class<Reflected> reflectedClass) {
+	protected void setReflectedClass(final Class<? extends Reflected> reflectedClass) {
 		this.reflectedClass = reflectedClass;
 	}
 	
@@ -53,7 +53,7 @@ public class ClassMirror<Reflected> {
 	 * @throws EmptyParameterException
 	 *             If the reflected class is not given.
 	 */
-	public ClassMirror(final Class<Reflected> reflectedClass) throws EmptyParameterException {
+	public ClassMirror(final Class<? extends Reflected> reflectedClass) throws EmptyParameterException {
 		// If the given class is null.
 		if (reflectedClass == null) {
 			// Throws an exception.
@@ -435,9 +435,10 @@ public class ClassMirror<Reflected> {
 		final Class<?> initialParamClass = paramsClasses[varyingParamIndex];
 		// Tries to get the method.
 		try {
+			// Gets the current varying class.
+			final ClassMirror<?> currentVaryingClass = new ClassMirror<>(paramsClasses[varyingParamIndex]);
 			// For each class inherited by the current parameter being varied.
-			for (final ClassMirror<?> currentParamClass : new ClassMirror<>(paramsClasses[varyingParamIndex])
-					.getSuperclasses()) {
+			for (final ClassMirror<?> currentParamClass : currentVaryingClass.getSuperclasses()) {
 				// Changes the parameter class with the current superclass/interface.
 				paramsClasses[varyingParamIndex] = currentParamClass.getReflectedClass();
 				// Tries to return the method with the exact parameters classes.

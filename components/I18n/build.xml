@@ -72,7 +72,8 @@
 		<!-- Makes sure that the bin directory exists. -->
 		<mkdir dir="${bin}" />
 		<!-- Compiles the code. -->
-		<javac classpathref="project-path" destdir="${bin}" srcdir="${src}" />
+		<javac classpathref="project-path" destdir="${bin}" srcdir="${src}">
+		</javac>
 	</target>
 
 	<!-- Creates the jar for the project. -->

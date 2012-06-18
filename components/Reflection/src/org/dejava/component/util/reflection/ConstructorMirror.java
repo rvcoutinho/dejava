@@ -18,14 +18,14 @@ public class ConstructorMirror<Reflected> {
 	/**
 	 * Constructor being reflected.
 	 */
-	private Constructor<Reflected> reflectedConstructor;
+	private Constructor<? extends Reflected> reflectedConstructor;
 	
 	/**
 	 * Gets the constructor being reflected.
 	 * 
 	 * @return The constructor being reflected.
 	 */
-	public Constructor<Reflected> getReflectedConstructor() {
+	public Constructor<? extends Reflected> getReflectedConstructor() {
 		return reflectedConstructor;
 	}
 	
@@ -35,7 +35,7 @@ public class ConstructorMirror<Reflected> {
 	 * @param reflectedConstructor
 	 *            New constructor being reflected.
 	 */
-	public void setReflectedConstructor(final Constructor<Reflected> reflectedConstructor) {
+	public void setReflectedConstructor(final Constructor<? extends Reflected> reflectedConstructor) {
 		this.reflectedConstructor = reflectedConstructor;
 	}
 	
@@ -45,7 +45,7 @@ public class ConstructorMirror<Reflected> {
 	 * @param reflectedConstructor
 	 *            Constructor being reflected.
 	 */
-	public ConstructorMirror(final Constructor<Reflected> reflectedConstructor) {
+	public ConstructorMirror(final Constructor<? extends Reflected> reflectedConstructor) {
 		this.reflectedConstructor = reflectedConstructor;
 	}
 	

@@ -59,7 +59,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests getting a message by type (type) and key with a null key.
+	 * Tests getting a message by type and key with a null key.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -112,7 +112,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests getting a message by type (type) and key that is not found.
+	 * Tests getting a message by type and key that is not found.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -171,7 +171,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests getting a message by type (type) and key for a not found locale.
+	 * Tests getting a message by type and key for a not found locale.
 	 * 
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
@@ -280,7 +280,7 @@ public class DefaultI18nMessageHandlerTest {
 	}
 	
 	/**
-	 * Tests getting a message by type (type) and an existent key.
+	 * Tests getting a message by type and an existent key.
 	 * 
 	 * @param key
 	 *            A key that exists in the resource bundle.
@@ -352,9 +352,10 @@ public class DefaultI18nMessageHandlerTest {
 	public static final String PARAM_MESSAGE_KEY = "message.sample.success6";
 	
 	/**
-	 * TODO
+	 * Tests getting a message an existent key and some simple parameters.
 	 * 
 	 * @param simpleParams
+	 *            The parameters to be used in the message.
 	 */
 	@ParametricTest(paramsValues = { "testGetMessageSuccessSimpleParameters" })
 	public void testGetMessageByKeyWithSimpleParametersSuccess(final String[] simpleParams) {
@@ -362,29 +363,44 @@ public class DefaultI18nMessageHandlerTest {
 		final MessageHandler messageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
 				"BR"));
 		// Tries to get the message.
-		final String messageUS = messageHandler.getMessage(INFO_BUNDLE, PARAM_MESSAGE_KEY, simpleParams);
+		final String messageUS = messageHandler.getMessage(PARAM_MESSAGE_KEY, simpleParams);
 		// Assert that the message was retrieved correctly.
 		Assert.assertEquals(SUCCESS_MESSAGE_PT_BR + simpleParams[0] + simpleParams[1], messageUS);
 	}
 	
 	/**
-	 * TODO
+	 * Tests getting a message by type and an existent key and some simple parameters.
 	 * 
 	 * @param simpleParams
+	 *            The parameters to be used in the message.
 	 */
 	@ParametricTest(paramsValues = { "testGetMessageSuccessSimpleParameters" })
 	public void testGetMessageByTypeAndKeyWithSimpleParametersSuccess(final String[] simpleParams) {
-		
+		// Gets the message handler.
+		final MessageHandler messageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
+				"BR"));
+		// Tries to get the message.
+		final String messageUS = messageHandler.getMessage(ApplicationMessageType.INFORMATION,
+				PARAM_MESSAGE_KEY, simpleParams);
+		// Assert that the message was retrieved correctly.
+		Assert.assertEquals(SUCCESS_MESSAGE_PT_BR + simpleParams[0] + simpleParams[1], messageUS);
 	}
 	
 	/**
-	 * TODO
+	 * Tests getting a message by type (String) and an existent key and some simple parameters.
 	 * 
 	 * @param simpleParams
+	 *            The parameters to be used in the message.
 	 */
 	@ParametricTest(paramsValues = { "testGetMessageSuccessSimpleParameters" })
 	public void testGetMessageByStringTypeAndKeyWithSimpleParametersSuccess(final String[] simpleParams) {
-		
+		// Gets the message handler.
+		final MessageHandler messageHandler = DefaultI18nMessageHandler.getMessageHandler(new Locale("pt",
+				"BR"));
+		// Tries to get the message.
+		final String messageUS = messageHandler.getMessage(INFO_BUNDLE, PARAM_MESSAGE_KEY, simpleParams);
+		// Assert that the message was retrieved correctly.
+		Assert.assertEquals(SUCCESS_MESSAGE_PT_BR + simpleParams[0] + simpleParams[1], messageUS);
 	}
 	
 }

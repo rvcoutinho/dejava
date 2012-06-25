@@ -44,7 +44,7 @@
 	<path id="dejava-test-project">
 		<pathelement location="${dejava-test-project}/${bin}" />
 	</path>
-	<!-- Project path -->
+	<!-- Project path. -->
 	<path id="project-path">
 		<pathelement location="${bin}" />
 		<path refid="dejava-exception-path" />

@@ -1,7 +1,5 @@
 package org.dejava.component.util.exception.localized.unchecked;
 
-import java.util.Locale;
-
 import org.dejava.component.util.i18n.message.handler.MessageCommand;
 import org.dejava.component.util.i18n.message.handler.impl.DefaultMessageCommand;
 import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
@@ -73,19 +71,5 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 	public String getMessage() {
 		// Tries to return the localized message.
 		return getMessageCommand().getMessage();
-	}
-	
-	/**
-	 * Returns the localized message for the given locale.
-	 * 
-	 * @param locale
-	 *            Locale to render the message.
-	 * @return The localized message for the given locale.
-	 */
-	public String getMessage(final Locale locale) {
-		// Sets the locale for the exception.
-		getMessageCommand().setLocale(locale);
-		// Returns the localized message.
-		return getLocalizedMessage();
 	}
 }

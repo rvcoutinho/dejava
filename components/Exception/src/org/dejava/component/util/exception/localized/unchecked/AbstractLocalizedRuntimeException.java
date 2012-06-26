@@ -1,7 +1,7 @@
 package org.dejava.component.util.exception.localized.unchecked;
 
+import org.dejava.component.util.exception.localized.ExceptionMessageCommand;
 import org.dejava.component.util.i18n.message.handler.MessageCommand;
-import org.dejava.component.util.i18n.message.handler.impl.DefaultMessageCommand;
 import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
 
 /**
@@ -28,7 +28,7 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 		// If the message command is null.
 		if (messageCommand == null) {
 			// Creates a new message command.
-			messageCommand = new DefaultMessageCommand();
+			messageCommand = new ExceptionMessageCommand();
 		}
 		// Returns the message command.
 		return messageCommand;

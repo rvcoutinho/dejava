@@ -2,6 +2,7 @@ package org.dejava.component.util.i18n.message.handler.impl;
 
 import java.util.Locale;
 
+import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.util.i18n.message.handler.MessageCommand;
 import org.dejava.component.util.i18n.message.handler.MessageHandler;
 
@@ -20,7 +21,7 @@ public class DefaultMessageCommand implements MessageCommand {
 	 * 
 	 * @return The message handler to render localized messages.
 	 */
-	private MessageHandler getMessageHandler() {
+	protected MessageHandler getMessageHandler() {
 		// If the message handler is null.
 		if (messageHandler == null) {
 			// Creates a default message handler for the default locale.
@@ -36,7 +37,7 @@ public class DefaultMessageCommand implements MessageCommand {
 	 * @param messageHandler
 	 *            The message handler to render localized messages.
 	 */
-	private void setMessageHandler(final MessageHandler messageHandler) {
+	protected final void setMessageHandler(final MessageHandler messageHandler) {
 		this.messageHandler = messageHandler;
 	}
 	
@@ -155,15 +156,8 @@ public class DefaultMessageCommand implements MessageCommand {
 	 * @see org.dejava.component.util.i18n.message.handler.MessageCommand#getMessage()
 	 */
 	@Override
-	public String getMessage() {
+	public String getMessage() throws MessageNotFoundException {
 		// Tries to return the localized message.
-		try {
-			return getMessageHandler().getMessage(getType(), getMessageKey(), getParameters());
-		}
-		// If the localized message is not found.
-		catch (final Exception exception) {
-			// Returns the raw message key.
-			return getMessageKey();
-		}
+		return getMessageHandler().getMessage(getType(), getMessageKey(), getParameters());
 	}
 }

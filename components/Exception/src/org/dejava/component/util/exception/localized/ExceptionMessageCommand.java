@@ -9,7 +9,7 @@ import org.dejava.component.util.i18n.message.exception.MessageNotFoundException
 import org.dejava.component.util.i18n.message.handler.impl.DefaultMessageCommand;
 
 /**
- * TODO
+ * Default exception message command.
  */
 @MessageBundles(defaultType = "error", messageBundles = { @MessageBundle(baseName = "org.dejava.component.util.exception.properties.error", type = "error") })
 public class ExceptionMessageCommand extends DefaultMessageCommand {

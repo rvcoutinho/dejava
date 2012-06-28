@@ -5,7 +5,7 @@ import java.util.Locale;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 
 /**
- * An implementation of the Command design pattern in order to enable messages to be processed later.
+ * An implementation of the command design pattern in order to enable messages to be processed later.
  */
 public interface MessageCommand {
 	

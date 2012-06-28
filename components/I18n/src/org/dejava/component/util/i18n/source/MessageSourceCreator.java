@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.Properties;
 import java.util.Set;
 
@@ -16,18 +15,13 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
-import javax.tools.JavaCompiler;
-import javax.tools.JavaCompiler.CompilationTask;
-import javax.tools.JavaFileObject;
-import javax.tools.StandardJavaFileManager;
-import javax.tools.ToolProvider;
 
 import org.dejava.component.util.i18n.source.annotation.MessageSource;
 import org.dejava.component.util.i18n.source.annotation.MessageSources;
 import org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor;
 
 /**
- * Annotation processor that processes and creates the defined message source bundles.
+ * Annotation processor that processes and creates the defined message source bundles (and keys).
  */
 @SupportedSourceVersion(value = SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes(value = { "org.dejava.component.util.i18n.source.annotation.MessageSources" })
@@ -197,36 +191,5 @@ public class MessageSourceCreator extends AbstractProcessor {
 		}
 		// Mark that the message sources annotations have been processed.
 		return true;
-	}
-	
-	/**
-	 * 
-	 * @param args
-	 *            cd
-	 */
-	public static void main(final String... args) {
-		// Get an instance of java compiler
-		final JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-		
-		// Get a new instance of the standard file manager implementation
-		final StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
-		
-		// Get the list of java file objects, in this case we have only one file, TestClass.java
-		final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager
-				.getJavaFileObjects("test/org/dejava/component/util/i18n/test/message/constant/InformationKeys.java");
-		
-		final CompilationTask task = compiler.getTask(null, fileManager, null, null, null, compilationUnits1);
-		
-		// Create a list to hold annotation processors
-		final LinkedList<AbstractProcessor> processors = new LinkedList<AbstractProcessor>();
-		
-		// Add an annotation processor to the list
-		processors.add(new MessageSourceCreator());
-		
-		// Set the annotation processor to the compiler task
-		task.setProcessors(processors);
-		
-		// Perform the compilation task.
-		task.call();
 	}
 }

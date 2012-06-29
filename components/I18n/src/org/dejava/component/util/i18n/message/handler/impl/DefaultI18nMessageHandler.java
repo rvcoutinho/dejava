@@ -144,7 +144,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		MessageHandler messageHandler = getMessageHandlers().get(locale);
 		// If the message handler is not yet.
 		if (messageHandler == null) {
-			// Creates a new instance of the default dejava i18n message handler.
+			// Creates a new instance of the default i18n message handler.
 			messageHandler = new DefaultI18nMessageHandler(locale);
 			// Puts it in the map.
 			getMessageHandlers().put(locale, messageHandler);

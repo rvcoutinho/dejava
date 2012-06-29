@@ -380,6 +380,11 @@ public class ClassMirror<Reflected> {
 	 * @return field path for the reflected class.
 	 */
 	public FieldPath getFieldPath(final String fieldNamePath) {
+		// If the field path is null or empty.
+		if ((fieldNamePath == null) || (fieldNamePath.isEmpty())) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
 		// Split the fields from the given path.
 		final String[] fieldsNames = fieldNamePath.split("\\.");
 		// Creates the field path.
@@ -388,8 +393,6 @@ public class ClassMirror<Reflected> {
 		ClassMirror<?> currentFieldDeclaringClass = this;
 		// For each field name.
 		for (final String currentFieldName : fieldsNames) {
-			// TODO
-			
 			// Gets the field for the current name.
 			final FieldMirror currentField = currentFieldDeclaringClass.getField(currentFieldName);
 			// Adds the current field to the field path.

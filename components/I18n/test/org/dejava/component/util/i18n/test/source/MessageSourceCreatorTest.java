@@ -1,5 +1,6 @@
 package org.dejava.component.util.i18n.test.source;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -41,8 +42,10 @@ public class MessageSourceCreatorTest {
 	 * 
 	 * @param sourceFilePath
 	 *            The path for the source file to be compiled.
+	 * @throws IOException
+	 *             TODO
 	 */
-	public void compile(final String sourceFilePath) {
+	public void compile(final String sourceFilePath) throws IOException {
 		// Gets an instance of Java compiler.
 		final JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 		// Get as new instance of the standard file manager implementation.
@@ -60,13 +63,20 @@ public class MessageSourceCreatorTest {
 		task.setProcessors(processors);
 		// Performs the compilation task.
 		task.call();
+		// Flushes the file manager.
+		fileManager.flush();
+		// Closes the file manager.
+		fileManager.close();
 	}
 	
 	/**
 	 * TODO
+	 * 
+	 * @throws IOException
+	 *             TODO
 	 */
 	@Test
-	public void test() {
+	public void test() throws IOException {
 		// Compiles the file.
 		compile("test/org/dejava/component/util/i18n/test/source/auxiliary/InformationKeys.java");
 		// Gets the message source annotation.

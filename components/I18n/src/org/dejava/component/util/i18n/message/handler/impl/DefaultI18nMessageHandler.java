@@ -71,10 +71,9 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 	private transient Locale locale;
 	
 	/**
-	 * Gets the locale to find the messages.
-	 * 
-	 * @return The locale to find the messages.
+	 * @see org.dejava.component.util.i18n.message.handler.MessageHandler#getLocale()
 	 */
+	@Override
 	public Locale getLocale() {
 		// If the locale is null.
 		if (locale == null) {

@@ -8,7 +8,7 @@ import javax.lang.model.element.Element;
 import org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor;
 
 /**
- * TODO
+ * Processes a class and retrieves an entry for its name ("classname").
  */
 public class NameEntryProcessor implements MessageSourceEntryProcessor {
 	

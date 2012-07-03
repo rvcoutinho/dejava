@@ -5,8 +5,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.dejava.component.util.i18n.source.MessageSourceCreator;
+import org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor;
+
 /**
- * Defines a source of messages.
+ * Defines a source of messages (will be processed with the {@link MessageSourceCreator} annotation
+ * processor).
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = ElementType.ANNOTATION_TYPE)
@@ -37,7 +41,13 @@ public @interface MessageSource {
 	String[] availableLocales() default { "en_US", "pt_BR" };
 	
 	/**
-	 * Full qualified names of the processors classes.
+	 * Full qualified names of the processors classes (that must implement the
+	 * {@link MessageSourceEntryProcessor} interface).
+	 * 
+	 * The initial idea was to return an array of {@link MessageSourceEntryProcessor} classes. But when
+	 * resolving them at the annotation processor, a MirroredTypesException was raised. The work around was to
+	 * set the classes qualified names instead and resolve them via reflection later (at the annotation
+	 * processor).
 	 */
 	String[] processors();
 }

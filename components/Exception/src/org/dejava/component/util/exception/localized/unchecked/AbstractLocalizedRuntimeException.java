@@ -68,7 +68,7 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 	 * @see Throwable#getLocalizedMessage()
 	 */
 	@Override
-	public String getMessage() {
+	public String getLocalizedMessage() {
 		// Tries to return the localized message.
 		return getMessageCommand().getMessage();
 	}

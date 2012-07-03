@@ -51,6 +51,14 @@ public class DefaultMessageCommand implements MessageCommand {
 	}
 	
 	/**
+	 * @see org.dejava.component.util.i18n.message.handler.MessageCommand#getLocale()
+	 */
+	@Override
+	public Locale getLocale() {
+		return getMessageHandler().getLocale();
+	}
+	
+	/**
 	 * Type for the message.
 	 */
 	private String type;

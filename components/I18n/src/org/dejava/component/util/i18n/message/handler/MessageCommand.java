@@ -18,6 +18,13 @@ public interface MessageCommand {
 	void setLocale(final Locale locale);
 	
 	/**
+	 * Gets the locale for the message.
+	 * 
+	 * @return Locale for the message.
+	 */
+	Locale getLocale();
+	
+	/**
 	 * Sets the type for the message.
 	 * 
 	 * @param type

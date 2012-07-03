@@ -1,5 +1,7 @@
 package org.dejava.component.util.i18n.message.handler;
 
+import java.util.Locale;
+
 import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageType;
@@ -8,6 +10,13 @@ import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageTy
  * Helps handling internationalization messages.
  */
 public interface MessageHandler {
+	
+	/**
+	 * Gets the locale for the messages.
+	 * 
+	 * @return Locale for the messages.
+	 */
+	Locale getLocale();
 	
 	/**
 	 * Gets a message with the given key and parameters values of the defined type.

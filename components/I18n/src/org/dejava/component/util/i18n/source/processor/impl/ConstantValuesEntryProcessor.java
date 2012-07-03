@@ -11,7 +11,7 @@ import javax.lang.model.element.VariableElement;
 import org.dejava.component.util.i18n.source.processor.MessageSourceEntryProcessor;
 
 /**
- * Processes a class and retrieves entries for its public constant values.
+ * Processes a class and retrieves entries for its public constant (static) values.
  */
 public class ConstantValuesEntryProcessor implements MessageSourceEntryProcessor {
 	

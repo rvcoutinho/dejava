@@ -26,7 +26,7 @@ public class PublicGettersEntryProcessor implements MessageSourceEntryProcessor 
 			// If the element is a public method.
 			if ((currentClassElement.getKind() == ElementKind.METHOD)
 					&& (currentClassElement.getModifiers().contains(Modifier.PUBLIC))) {
-				// TODO Adds the current getter to the entry set.
+				// FIXME Adds the current getter to the entry set.
 				entries.add(clazz.getSimpleName().toString() + '.'
 						+ currentClassElement.getSimpleName().toString());
 			}

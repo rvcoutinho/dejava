@@ -11,12 +11,6 @@ import org.dejava.component.util.i18n.message.handler.model.ApplicationMessageTy
  */
 public interface MessageHandler {
 	
-	/**
-	 * Gets the locale for the messages.
-	 * 
-	 * @return Locale for the messages.
-	 */
-	Locale getLocale();
 	
 	/**
 	 * Gets a message with the given key and parameters values of the defined type.

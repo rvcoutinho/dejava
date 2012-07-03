@@ -44,4 +44,20 @@ public class ExceptionMessageCommand extends DefaultMessageCommand {
 			return getMessageHandler().getMessage(ErrorKeys.GENERIC, null);
 		}
 	}
+	
+	/**
+	 * @see org.dejava.component.util.i18n.message.handler.impl.DefaultMessageCommand#getUsMessage()
+	 */
+	@Override
+	public String getUsMessage() throws MessageNotFoundException {
+		// Tries to return the localized message.
+		try {
+			return super.getUsMessage();
+		}
+		// If the message cannot be found.
+		catch (final Exception exception) {
+			// Returns a generic error message.
+			return getUsMessageHandler().getMessage(ErrorKeys.GENERIC, null);
+		}
+	}
 }

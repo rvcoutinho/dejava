@@ -18,13 +18,6 @@ public interface MessageCommand {
 	void setLocale(final Locale locale);
 	
 	/**
-	 * Gets the locale for the message.
-	 * 
-	 * @return Locale for the message.
-	 */
-	Locale getLocale();
-	
-	/**
 	 * Sets the type for the message.
 	 * 
 	 * @param type
@@ -56,5 +49,14 @@ public interface MessageCommand {
 	 *             If the message cannot be found.
 	 */
 	String getMessage() throws MessageNotFoundException;
+	
+	/**
+	 * Gets a message by evaluating the given information for the en_US locale.
+	 * 
+	 * @return The evaluated localized message for the en_US locale.
+	 * @throws MessageNotFoundException
+	 *             If the message cannot be found.
+	 */
+	String getUsMessage() throws MessageNotFoundException;
 	
 }

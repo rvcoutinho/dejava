@@ -73,4 +73,12 @@ public abstract class AbstractLocalizedException extends Exception {
 		return getMessageCommand().getMessage();
 	}
 	
+	/**
+	 * @see Throwable#getMessage()
+	 */
+	@Override
+	public String getMessage() {
+		// Tries to return the localized message.
+		return getMessageCommand().getUsMessage();
+	}
 }

@@ -42,20 +42,32 @@ public class DefaultMessageCommand implements MessageCommand {
 	}
 	
 	/**
+	 * Message handler to render messages for the en_US locale.
+	 */
+	private MessageHandler usMessageHandler;
+	
+	/**
+	 * Gets the message handler to render messages for the en_US locale.
+	 * 
+	 * @return The message handler to render messages for the en_US locale.
+	 */
+	protected MessageHandler getUsMessageHandler() {
+		// If the message handler is null.
+		if (messageHandler == null) {
+			// Creates a default message handler for the default locale.
+			messageHandler = DefaultI18nMessageHandler.getMessageHandler(Locale.US);
+		}
+		// Returns the message handler.
+		return messageHandler;
+	}
+	
+	/**
 	 * @see org.dejava.component.util.i18n.message.handler.MessageCommand#setLocale(java.util.Locale)
 	 */
 	@Override
 	public final void setLocale(final Locale locale) {
 		// Creates a new message handler for the given locale.
 		setMessageHandler(DefaultI18nMessageHandler.getMessageHandler(locale));
-	}
-	
-	/**
-	 * @see org.dejava.component.util.i18n.message.handler.MessageCommand#getLocale()
-	 */
-	@Override
-	public Locale getLocale() {
-		return getMessageHandler().getLocale();
 	}
 	
 	/**
@@ -167,5 +179,14 @@ public class DefaultMessageCommand implements MessageCommand {
 	public String getMessage() throws MessageNotFoundException {
 		// Tries to return the localized message.
 		return getMessageHandler().getMessage(getType(), getMessageKey(), getParameters());
+	}
+	
+	/**
+	 * @see org.dejava.component.util.i18n.message.handler.MessageCommand#getUsMessage()
+	 */
+	@Override
+	public String getUsMessage() throws MessageNotFoundException {
+		// Tries to return the localized message.
+		return getUsMessageHandler().getMessage(getType(), getMessageKey(), getParameters());
 	}
 }

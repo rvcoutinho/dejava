@@ -31,5 +31,5 @@ public interface MessageSourceEntryProcessor {
 	 *            The class from which the entries for the message source will be retrieved.
 	 * @return The entries for the message source.
 	 */
-	public Set<String> processClass(final Element clazz);
+	Set<String> processClass(final Element clazz);
 }

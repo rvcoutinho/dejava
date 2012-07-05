@@ -14,7 +14,8 @@ import org.dejava.component.util.exception.localized.unchecked.InvalidParameterE
 import org.dejava.component.util.reflection.constant.ErrorKeys;
 
 /**
- * TODO
+ * Extends the behavior of the Class type. It is part of an extended Java reflection API, that intends to make
+ * reflection easier.
  * 
  * @param <Reflected>
  *            The class to be reflected.
@@ -67,7 +68,7 @@ public class ClassMirror<Reflected> {
 	 * Public constructor for the reflection class.
 	 * 
 	 * @param reflectedClassName
-	 *            Name of the class being reflected.
+	 *            Full qualified name of the class being reflected.
 	 * @param classLoader
 	 *            Class loader to be used with the reflected class. If no class loader is given, the context
 	 *            class loader is used.
@@ -93,7 +94,7 @@ public class ClassMirror<Reflected> {
 	 * Public constructor for the reflection class.
 	 * 
 	 * @param reflectedClassName
-	 *            Name of the class being reflected.
+	 *            Full qualified name of the class being reflected.
 	 * @throws InvalidParameterException
 	 *             If the class cannot be found for the name.
 	 */
@@ -296,11 +297,6 @@ public class ClassMirror<Reflected> {
 		final Set<ClassMirror<?>> classes = new LinkedHashSet<ClassMirror<?>>();
 		// Adds the class itself to the list.
 		classes.add(this);
-		// If the class has any superclass.
-		if (getReflectedClass().getSuperclass() != null) {
-			// Calls the same method recursively with its superclass (adding the classes to the list).
-			classes.addAll(new ClassMirror<>(getReflectedClass().getSuperclass()).getSuperclasses());
-		}
 		// If the class has any interfaces.
 		if (getReflectedClass().getInterfaces() != null) {
 			// For each interface.
@@ -310,6 +306,11 @@ public class ClassMirror<Reflected> {
 				classes.addAll(new ClassMirror<>(currentInterface).getSuperclasses());
 			}
 		}
+		// If the class has any superclass.
+		if (getReflectedClass().getSuperclass() != null) {
+			// Calls the same method recursively with its superclass (adding the classes to the list).
+			classes.addAll(new ClassMirror<>(getReflectedClass().getSuperclass()).getSuperclasses());
+		}
 		// Adds the Object class.
 		classes.add(new ClassMirror<Object>(Object.class));
 		// Returns all found classes.
@@ -317,7 +318,7 @@ public class ClassMirror<Reflected> {
 	}
 	
 	/**
-	 * Returns all fields from the reflected class (including inherited ones).
+	 * Returns all fields (public or not) from the reflected class (including inherited ones).
 	 * 
 	 * @return All fields from a class (including inherited ones).
 	 */
@@ -581,7 +582,7 @@ public class ClassMirror<Reflected> {
 	}
 	
 	/**
-	 * Gets all annotations form a class. The search includes super classes and interfaces (but only the first
+	 * Gets all annotations from a class. The search includes super classes and interfaces (but only the first
 	 * annotation found for a type is kept).
 	 * 
 	 * @return All annotations form a class.

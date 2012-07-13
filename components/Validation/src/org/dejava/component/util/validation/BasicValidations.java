@@ -13,11 +13,11 @@ public final class BasicValidations {
 	/**
 	 * Private constructor.
 	 */
-	public BasicValidations() {
+	private BasicValidations() {
 	}
 	
 	/**
-	 * Validate if two objects are equal.
+	 * Validates if two objects are equal.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -55,7 +55,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if two objects are not equal.
+	 * Validates if two objects are not equal.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -69,27 +69,19 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if an object is not null.
+	 * Validates if an object is not null.
 	 * 
 	 * @param object
 	 *            Object to be validated.
 	 * @return If an object is not null.
 	 */
 	public static Boolean validateNotNull(final Object object) {
-		// If the object is null.
-		if (object == null) {
-			// Returns false;
-			return false;
-		}
-		// If it is not null.
-		else {
-			// Returns true.
-			return true;
-		}
+		// Returns if the object is not null.
+		return object != null;
 	}
 	
 	/**
-	 * Validate if an object is null.
+	 * Validates if an object is null.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -101,7 +93,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the minimum value of an object.
+	 * Validates the minimum value of an object.
 	 * 
 	 * @param <AnyComparable>
 	 *            Any comparable class.
@@ -118,7 +110,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the maximum value of an object.
+	 * Validates the maximum value of an object.
 	 * 
 	 * @param <AnyComparable>
 	 *            Any comparable class.
@@ -135,7 +127,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the minimum value of an object. The minimum value will be evaluated adding the giving amount
+	 * Validates the minimum value of an object. The minimum value will be evaluated adding the giving amount
 	 * (for the given calendar field) to the current date.
 	 * 
 	 * @param object
@@ -154,7 +146,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the maximum value of an object. The maximum value will be evaluated adding the giving amount
+	 * Validates the maximum value of an object. The maximum value will be evaluated adding the giving amount
 	 * (for the given calendar field) to the current date.
 	 * 
 	 * @param object
@@ -173,27 +165,19 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if a object is not empty.
+	 * Validates if a object is not empty.
 	 * 
 	 * @param object
 	 *            Object to be validated.
 	 * @return If a object is not empty.
 	 */
 	public static Boolean validateNotEmpty(final Collection<?> object) {
-		// If the object is empty.
-		if (object.isEmpty()) {
-			// Returns false.
-			return false;
-		}
-		// Otherwise.
-		else {
-			// Returns true.
-			return true;
-		}
+		// Returns if the object is not empty.
+		return !object.isEmpty();
 	}
 	
 	/**
-	 * Validate if a object is empty.
+	 * Validates if a object is empty.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -205,7 +189,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if an object has the given size.
+	 * Validates if an object has the given size.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -219,7 +203,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if an object does not have the given size.
+	 * Validates if an object does not have the given size.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -233,7 +217,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the minimum size of an object.
+	 * Validates the minimum size of an object.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -247,7 +231,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the maximum size of an object.
+	 * Validates the maximum size of an object.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -261,7 +245,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if a object is not empty.
+	 * Validates if a object is not empty.
 	 * 
 	 * @param <AnyObject>
 	 *            Any object class.
@@ -270,20 +254,12 @@ public final class BasicValidations {
 	 * @return If a object is not empty.
 	 */
 	public static <AnyObject extends Object> Boolean validateNotEmpty(final AnyObject[] object) {
-		// If the object is empty.
-		if (object.length == 0) {
-			// Returns false.
-			return false;
-		}
-		// Otherwise.
-		else {
-			// Returns true.
-			return true;
-		}
+		// Returns if the object is not empty.
+		return object.length != 0;
 	}
 	
 	/**
-	 * Validate if a object is empty.
+	 * Validates if a object is empty.
 	 * 
 	 * @param <AnyObject>
 	 *            Any object class.
@@ -297,7 +273,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if an object has the given size.
+	 * Validates if an object has the given size.
 	 * 
 	 * @param <AnyObject>
 	 *            Any object class.
@@ -314,7 +290,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if an object does not have the given size.
+	 * Validates if an object does not have the given size.
 	 * 
 	 * @param <AnyObject>
 	 *            Any object class.
@@ -331,7 +307,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the minimum size of an object.
+	 * Validates the minimum size of an object.
 	 * 
 	 * @param <AnyObject>
 	 *            Any object class.
@@ -348,7 +324,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the maximum size of an object.
+	 * Validates the maximum size of an object.
 	 * 
 	 * @param <AnyObject>
 	 *            Any object class.
@@ -365,27 +341,19 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if a object is not empty.
+	 * Validates if a object is not empty.
 	 * 
 	 * @param object
 	 *            Object to be validated.
 	 * @return If a object is not empty.
 	 */
 	public static Boolean validateNotEmpty(final String object) {
-		// If the object is empty.
-		if (object.isEmpty()) {
-			// Returns false.
-			return false;
-		}
-		// Otherwise.
-		else {
-			// Returns true.
-			return true;
-		}
+		// Returns if the object is not empty.
+		return !object.isEmpty();
 	}
 	
 	/**
-	 * Validate if a object is empty.
+	 * Validates if a object is empty.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -397,7 +365,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if an object has the given size.
+	 * Validates if an object has the given size.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -411,7 +379,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate if an object does not have the given size.
+	 * Validates if an object does not have the given size.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -425,7 +393,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the minimum size of an object.
+	 * Validates the minimum size of an object.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -439,7 +407,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validate the maximum size of an object.
+	 * Validates the maximum size of an object.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -453,7 +421,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validates if a text match a regular expression.
+	 * Validatess if a text match a regular expression.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -467,7 +435,7 @@ public final class BasicValidations {
 	}
 	
 	/**
-	 * Validates if a text does not match a regular expression.
+	 * Validatess if a text does not match a regular expression.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -486,7 +454,7 @@ public final class BasicValidations {
 	public static final String EMAIL_REGEX = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	
 	/**
-	 * Validates an e-mail address.
+	 * Validatess an e-mail address.
 	 * 
 	 * @param object
 	 *            Object to be validated.
@@ -631,19 +599,21 @@ public final class BasicValidations {
 	 *            must not be isolated in the text (between characters that are not letters or numbers).
 	 * @return If a text has the given forbidden word.
 	 */
-	public static Boolean validateForbiddenWord(final String object, String forbiddenWord,
+	public static Boolean validateForbiddenWord(final String object, final String forbiddenWord,
 			final Boolean asSequence) {
+		// Initially, the forbidden expression is the forbidden word.
+		String forbiddenExpression = forbiddenWord;
 		// If the forbidden word cannot be found as a sequence of characters.
 		if (asSequence) {
 			// Adds the regular expression for any character at the beginning and at the end of the word.
-			forbiddenWord = ANYTHING_REGEX + forbiddenWord + ANYTHING_REGEX;
+			forbiddenExpression = ANYTHING_REGEX + forbiddenExpression + ANYTHING_REGEX;
 		}
 		// If the forbidden word cannot be found as an isolated word.
 		else {
 			// Adds the regular expression to force the forbidden word not to be isolated in the text (between
 			// characters that are not letters or numbers).
-			forbiddenWord = "((" + ANYTHING_REGEX + ")" + NOT_LETTER_NUMBER + ")?" + forbiddenWord + "("
-					+ NOT_LETTER_NUMBER + "(" + ANYTHING_REGEX + "))?";
+			forbiddenExpression = "((" + ANYTHING_REGEX + ")" + NOT_LETTER_NUMBER + ")?"
+					+ forbiddenExpression + "(" + NOT_LETTER_NUMBER + "(" + ANYTHING_REGEX + "))?";
 		}
 		// Validate the regular expression for the forbidden word.
 		return validateNotRegExMatch(object, forbiddenWord);

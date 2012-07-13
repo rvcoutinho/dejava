@@ -6,19 +6,20 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Define validations for an object field.
+ * Define validations to be executed in a object field. The validations are defined using a set of
+ * {@link ValidationMethod} annotations.
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.FIELD })
 public @interface Validations {
 	
 	/**
-	 * Validations for the field.
+	 * Validations for the annotated field.
 	 */
 	ValidationMethod[] validationMethods() default {};
 	
 	/**
-	 * Se the validation must be invoked recursively for the object(s) in the annotated field.
+	 * If the validation must be invoked recursively for the object(s) in the annotated field.
 	 */
 	boolean recursiveValidation() default false;
 }

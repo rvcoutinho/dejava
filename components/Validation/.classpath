@@ -6,5 +6,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Reflection"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/I18n"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Date"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Test"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -2,7 +2,7 @@
 <project default="project">
 
 	<!-- Project information. -->
-	<property name="project-name" value="dejava-reflection" />
+	<property name="project-name" value="dejava-validation" />
 	<!-- Version information. -->
 	<property name="version-base" value="0.1" />
 	<property name="version-status" value="" />
@@ -16,6 +16,8 @@
 	<!-- Related projects. -->
 	<property name="dejava-exception-project" value="../Exception" />
 	<property name="dejava-i18n-project" value="../I18n" />
+	<property name="dejava-date-project" value="../Date" />
+	<property name="dejava-reflection-project" value="../Reflection" />
 	<property name="dejava-test-project" value="../Test" />
 	<!-- Bytecode information. -->
 	<property name="bin" value="bin" />
@@ -40,6 +42,14 @@
 	<path id="dejava-i18n-project">
 		<pathelement location="${dejava-i18n-project}/${bin}" />
 	</path>
+	<!-- Date path. -->
+	<path id="dejava-date-project">
+		<pathelement location="${dejava-date-project}/${bin}" />
+	</path>
+	<!-- Reflection path. -->
+	<path id="dejava-reflection-project">
+		<pathelement location="${dejava-reflection-project}/${bin}" />
+	</path>
 	<!-- Test path. -->
 	<path id="dejava-test-project">
 		<pathelement location="${dejava-test-project}/${bin}" />
@@ -49,6 +59,8 @@
 		<pathelement location="${bin}" />
 		<path refid="dejava-exception-path" />
 		<path refid="dejava-i18n-project" />
+		<path refid="dejava-date-project" />
+		<path refid="dejava-reflection-project" />
 		<path refid="dejava-test-project" />
 	</path>
 

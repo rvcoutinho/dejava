@@ -16,10 +16,11 @@ public @interface Validations {
 	/**
 	 * Validations for the annotated field.
 	 */
-	ValidationMethod[] validationMethods() default {};
+	ValidationMethod[] validationMethods();
 	
 	/**
-	 * If the validation must be invoked recursively for the object(s) in the annotated field.
+	 * If the validation must be invoked recursively for the object(s) in the annotated field. Default is
+	 * false.
 	 */
 	boolean recursiveValidation() default false;
 }

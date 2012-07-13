@@ -21,10 +21,10 @@ import org.dejava.component.util.validation.exception.FailedValidationsException
 import org.dejava.component.util.validation.exception.ImpossibleValidationException;
 
 /**
- * Processes validation on fields or objects.
+ * Processes validation on fields and objects.
  * 
  * The rules for the validations are the ones defined at {@link ValidationMethod}. Use {@link Validations} and
- * {@link ValidationMethod} annotations at your object fields at your will.
+ * {@link ValidationMethod} annotations on your object fields at your will.
  * 
  * You can either validate a single annotated field (
  * {@link #validateField(java.lang.Object, java.lang.String)}) of an object or the whole object (

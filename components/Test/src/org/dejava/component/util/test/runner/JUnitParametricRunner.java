@@ -40,12 +40,12 @@ import org.junit.runners.model.Statement;
  * 
  * It also runs regular JUnit test annotated with @Test. In this cases, there is no data injection.
  */
-public class ParametricJUnitRunner extends BlockJUnit4ClassRunner {
+public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 	
 	/**
 	 * @see BlockJUnit4ClassRunner#BlockJUnit4ClassRunner(java.lang.Class)
 	 */
-	public ParametricJUnitRunner(final Class<?> clazz) throws InitializationError {
+	public JUnitParametricRunner(final Class<?> clazz) throws InitializationError {
 		super(clazz);
 	}
 	

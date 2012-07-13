@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.dejava.component.util.exception.localized.checked.BusinessRuleException;
 import org.dejava.component.util.test.annotation.ParametricTest;
-import org.dejava.component.util.test.runner.ParametricJUnitRunner;
+import org.dejava.component.util.test.runner.JUnitParametricRunner;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 /**
  * Fake test class to be used in the test framework tests.
  */
-@RunWith(value = ParametricJUnitRunner.class)
+@RunWith(value = JUnitParametricRunner.class)
 public class FakeTest {
 	
 	/**

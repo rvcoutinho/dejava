@@ -5,11 +5,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.dejava.component.util.test.runner.ParametricJUnitRunner;
+import org.dejava.component.util.test.runner.JUnitParametricRunner;
 
 /**
  * Defines testing groups in a test class. Must be used with proper JUnit runner (as for
- * {@link ParametricJUnitRunner})
+ * {@link JUnitParametricRunner})
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.TYPE, ElementType.METHOD })

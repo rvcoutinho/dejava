@@ -18,7 +18,7 @@ import org.dejava.component.util.i18n.test.message.constant.InformationKeys;
 import org.dejava.component.util.reflection.ClassMirror;
 import org.dejava.component.util.reflection.FieldMirror;
 import org.dejava.component.util.test.annotation.ParametricTest;
-import org.dejava.component.util.test.runner.ParametricJUnitRunner;
+import org.dejava.component.util.test.runner.JUnitParametricRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -28,7 +28,7 @@ import org.junit.runner.RunWith;
 @MessageBundles(defaultType = "information", messageBundles = {
 		@MessageBundle(type = "information", baseName = "org.dejava.component.util.i18n.test.message.properties.information"),
 		@MessageBundle(type = "error", baseName = "org.dejava.component.util.i18n.test.message.properties.error") })
-@RunWith(value = ParametricJUnitRunner.class)
+@RunWith(value = JUnitParametricRunner.class)
 public class DefaultI18nMessageHandlerTest {
 	
 	/**

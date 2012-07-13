@@ -3,12 +3,12 @@ package org.dejava.component.util.test.runner.dataset;
 import java.util.Collection;
 
 import org.dejava.component.util.test.exception.UnavailableTestDataException;
-import org.dejava.component.util.test.runner.ParametricJUnitRunner;
+import org.dejava.component.util.test.runner.JUnitParametricRunner;
 import org.dejava.component.util.test.runner.statement.ParametricTestMethodInvoker;
 import org.junit.runners.model.FrameworkMethod;
 
 /**
- * Defines how test data must be provided for the {@link ParametricJUnitRunner} and
+ * Defines how test data must be provided for the {@link JUnitParametricRunner} and
  * {@link ParametricTestMethodInvoker}.
  */
 public interface TestDataProvider {

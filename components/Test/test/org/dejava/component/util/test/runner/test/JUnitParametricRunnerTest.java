@@ -2,7 +2,7 @@ package org.dejava.component.util.test.runner.test;
 
 import junit.framework.AssertionFailedError;
 
-import org.dejava.component.util.test.runner.ParametricJUnitRunner;
+import org.dejava.component.util.test.runner.JUnitParametricRunner;
 import org.dejava.component.util.test.runner.test.auxiliary.FakeTest;
 import org.dejava.component.util.test.runner.test.auxiliary.RunListenerLog;
 import org.junit.Assert;
@@ -11,22 +11,22 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 
 /**
- * Test cases for the ParametricJUnitRunner.
+ * Test cases for the JUnitParametricRunner.
  */
-public class ParametricJUnitRunnerTest {
+public class JUnitParametricRunnerTest {
 	
 	/**
-	 * Returns an instance of the {@link ParametricJUnitRunner} for the {@link FakeTest} that will be used to
+	 * Returns an instance of the {@link JUnitParametricRunner} for the {@link FakeTest} that will be used to
 	 * test the TestRunner.
 	 * 
-	 * @return An instance of the {@link ParametricJUnitRunner} for the {@link FakeTest} that will be used to
+	 * @return An instance of the {@link JUnitParametricRunner} for the {@link FakeTest} that will be used to
 	 *         test the TestRunner.
 	 * @throws InitializationError
 	 *             If the test runner cannot me initialized for the {@link FakeTest}.
 	 */
-	private ParametricJUnitRunner getFakeTestRunner() throws InitializationError {
+	private JUnitParametricRunner getFakeTestRunner() throws InitializationError {
 		// Returns a new instance of the runner for the FakeTest.
-		return new ParametricJUnitRunner(FakeTest.class);
+		return new JUnitParametricRunner(FakeTest.class);
 	}
 	
 	/**

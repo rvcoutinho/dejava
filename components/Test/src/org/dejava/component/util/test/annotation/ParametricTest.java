@@ -5,14 +5,14 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.dejava.component.util.test.runner.ParametricJUnitRunner;
+import org.dejava.component.util.test.runner.JUnitParametricRunner;
 import org.dejava.component.util.test.runner.dataset.TestDataProvider;
 import org.dejava.component.util.test.runner.dataset.impl.StaticMethodTestDataProvider;
 import org.junit.Test.None;
 
 /**
  * Parametric data test. This annotation tells the JUnit (with the proper Runner -
- * {@link ParametricJUnitRunner}) to run the annotated test multiple times by injecting each of the items in
+ * {@link JUnitParametricRunner}) to run the annotated test multiple times by injecting each of the items in
  * the Collection returned by the test data provider.
  */
 @Retention(value = RetentionPolicy.RUNTIME)

@@ -6,6 +6,23 @@
 	<artifactId>i18n</artifactId>
 	<version>0.0.1</version>
 
+	<repositories>
+		<repository>
+			<id>dejava-components</id>
+			<url>https://github.com/rvcoutinho/dejava/tree/master/components/maven</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>repo</id>
+			<url>file:../maven/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot-repo</id>
+			<url>file:../maven/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
@@ -56,17 +73,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<distributionManagement>
-		<repository>
-			<id>repo</id>
-			<url>file:../maven/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshot-repo</id>
-			<url>file:../maven/releases</url>
-		</snapshotRepository>
-	</distributionManagement>
-
 
 </project>

@@ -6,6 +6,24 @@
 	<artifactId>exception</artifactId>
 	<version>0.0.1</version>
 
+	<repositories>
+		<repository>
+			<id>dejava-components</id>
+			<url>https://github.com/rvcoutinho/dejava/tree/master/components/maven/releases</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>repo</id>
+			<url>file:../maven/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot-repo</id>
+			<url>file:../maven/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 
 	<build>
 		<plugins>
@@ -16,11 +34,6 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
-					<generatedSourcesDirectory>generated-sources/src/main/java</generatedSourcesDirectory>
-
-					<annotationProcessors>
-						<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
-					</annotationProcessors>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -56,6 +69,12 @@
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>i18n</artifactId>
+			<version>0.0.1</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 </project>

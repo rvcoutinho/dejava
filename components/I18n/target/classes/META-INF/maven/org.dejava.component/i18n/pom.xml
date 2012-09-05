@@ -57,4 +57,16 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<repository>
+			<id>repo</id>
+			<url>file:../maven/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot-repo</id>
+			<url>file:../maven/releases</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
 </project>

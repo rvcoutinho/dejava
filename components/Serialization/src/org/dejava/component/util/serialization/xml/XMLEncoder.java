@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
-import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.reflection.ClassMirror;
 import org.dejava.component.util.reflection.ConstructorMirror;
 import org.dejava.component.util.reflection.FieldMirror;

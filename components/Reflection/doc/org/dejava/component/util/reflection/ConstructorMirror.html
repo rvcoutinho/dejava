@@ -226,13 +226,13 @@ extends java.lang.Object</pre>
 <h4>newInstance</h4>
 <pre>public&nbsp;<a href="../../../../../org/dejava/component/util/reflection/ConstructorMirror.html" title="type parameter in ConstructorMirror">Reflected</a>&nbsp;newInstance(java.lang.Object[]&nbsp;paramsValues,
                     java.lang.Boolean&nbsp;ignoreAccess)
-                      throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException,
+                      throws org.dejava.component.exception.localized.unchecked.InvalidParameterException,
                              <a href="../../../../../org/dejava/component/util/reflection/exception/InvocationException.html" title="class in org.dejava.component.util.reflection.exception">InvocationException</a></pre>
 <div class="block">Invokes a constructor for a class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>paramsValues</code> - Parameters values to be used during the invocation.</dd><dd><code>ignoreAccess</code> - If the defined access for the constructor must be ignored.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>Returns the object returned from the constructor being invoked.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the given parameters are from the wrong type, if the constructor is unaccessible or if
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the given parameters are from the wrong type, if the constructor is unaccessible or if
              the class is abstract.</dd>
 <dd><code><a href="../../../../../org/dejava/component/util/reflection/exception/InvocationException.html" title="class in org.dejava.component.util.reflection.exception">InvocationException</a></code> - If the constructor throws an exception itself.</dd></dl>
 </li>

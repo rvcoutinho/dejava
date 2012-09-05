@@ -305,11 +305,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>FieldMirror</h4>
 <pre>public&nbsp;FieldMirror(java.lang.reflect.Field&nbsp;reflectedField)
-            throws org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</pre>
+            throws org.dejava.component.exception.localized.unchecked.EmptyParameterException</pre>
 <div class="block">Public constructor for the reflection class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>reflectedField</code> - Field being reflected.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</code> - If the reflected field is not given.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.EmptyParameterException</code> - If the reflected field is not given.</dd></dl>
 </li>
 </ul>
 </li>
@@ -382,11 +382,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getGetter</h4>
 <pre>public&nbsp;<a href="../../../../../org/dejava/component/util/reflection/MethodMirror.html" title="class in org.dejava.component.util.reflection">MethodMirror</a>&nbsp;getGetter()
-                       throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+                       throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Gets the getter for the reflected field.</div>
 <dl><dt><span class="strong">Returns:</span></dt><dd>The getter for the reflected field.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the getter cannot be found.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the getter cannot be found.</dd></dl>
 </li>
 </ul>
 <a name="getSetter()">
@@ -396,11 +396,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSetter</h4>
 <pre>public&nbsp;<a href="../../../../../org/dejava/component/util/reflection/MethodMirror.html" title="class in org.dejava.component.util.reflection">MethodMirror</a>&nbsp;getSetter()
-                       throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+                       throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Gets the setter for the reflected field.</div>
 <dl><dt><span class="strong">Returns:</span></dt><dd>The setter for the reflected field.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the setter cannot be found.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the setter cannot be found.</dd></dl>
 </li>
 </ul>
 <a name="getValue(java.lang.Object, java.lang.Boolean, java.lang.Boolean)">
@@ -412,15 +412,15 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;java.lang.Object&nbsp;getValue(java.lang.Object&nbsp;targetObject,
                         java.lang.Boolean&nbsp;fieldAccess,
                         java.lang.Boolean&nbsp;ignoreAccess)
-                          throws org.dejava.component.util.exception.localized.unchecked.EmptyParameterException,
-                                 org.dejava.component.util.exception.localized.unchecked.InvalidParameterException,
+                          throws org.dejava.component.exception.localized.unchecked.EmptyParameterException,
+                                 org.dejava.component.exception.localized.unchecked.InvalidParameterException,
                                  <a href="../../../../../org/dejava/component/util/reflection/exception/InvocationException.html" title="class in org.dejava.component.util.reflection.exception">InvocationException</a></pre>
 <div class="block">Gets the value of a field.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>targetObject</code> - The target object to get the field value from. Might be null if it is a static field.</dd><dd><code>fieldAccess</code> - If the field must be accessed directly (or via getter).</dd><dd><code>ignoreAccess</code> - If the defined access (private or protected) must be ignored.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>Returns the field value.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</code> - If the target object is null and the field/getter is not static.</dd>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the field/getter cannot be accessed or found.</dd>
+<dd><code>org.dejava.component.exception.localized.unchecked.EmptyParameterException</code> - If the target object is null and the field/getter is not static.</dd>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the field/getter cannot be accessed or found.</dd>
 <dd><code><a href="../../../../../org/dejava/component/util/reflection/exception/InvocationException.html" title="class in org.dejava.component.util.reflection.exception">InvocationException</a></code> - If the getter for the field throws an exception.</dd></dl>
 </li>
 </ul>
@@ -434,14 +434,14 @@ extends java.lang.Object</pre>
             java.lang.Object&nbsp;newValue,
             java.lang.Boolean&nbsp;fieldAccess,
             java.lang.Boolean&nbsp;ignoreAccess)
-              throws org.dejava.component.util.exception.localized.unchecked.EmptyParameterException,
-                     org.dejava.component.util.exception.localized.unchecked.InvalidParameterException,
+              throws org.dejava.component.exception.localized.unchecked.EmptyParameterException,
+                     org.dejava.component.exception.localized.unchecked.InvalidParameterException,
                      <a href="../../../../../org/dejava/component/util/reflection/exception/InvocationException.html" title="class in org.dejava.component.util.reflection.exception">InvocationException</a></pre>
 <div class="block">Sets the value of a field.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>targetObject</code> - The target object to set the field value. Might be null if it is a static field.</dd><dd><code>newValue</code> - The new value for the field.</dd><dd><code>fieldAccess</code> - If the field must be accessed directly (or via setter).</dd><dd><code>ignoreAccess</code> - If the defined access (private or protected) must be ignored.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</code> - If the target object is null and the field/setter is not static.</dd>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the field/setter cannot be accessed or found. Or if the new value is invalid.</dd>
+<dd><code>org.dejava.component.exception.localized.unchecked.EmptyParameterException</code> - If the target object is null and the field/setter is not static.</dd>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the field/setter cannot be accessed or found. Or if the new value is invalid.</dd>
 <dd><code><a href="../../../../../org/dejava/component/util/reflection/exception/InvocationException.html" title="class in org.dejava.component.util.reflection.exception">InvocationException</a></code> - If the setter for the field throws an exception.</dd></dl>
 </li>
 </ul>

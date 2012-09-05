@@ -9,8 +9,8 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
-import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
-import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.reflection.constant.ErrorKeys;
 
 /**

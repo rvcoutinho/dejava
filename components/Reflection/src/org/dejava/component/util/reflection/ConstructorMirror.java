@@ -3,7 +3,7 @@ package org.dejava.component.util.reflection;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.reflection.constant.ErrorKeys;
 import org.dejava.component.util.reflection.exception.InvocationException;
 

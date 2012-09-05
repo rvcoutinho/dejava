@@ -305,11 +305,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>ClassMirror</h4>
 <pre>public&nbsp;ClassMirror(java.lang.Class&lt;? extends <a href="../../../../../org/dejava/component/util/reflection/ClassMirror.html" title="type parameter in ClassMirror">Reflected</a>&gt;&nbsp;reflectedClass)
-            throws org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</pre>
+            throws org.dejava.component.exception.localized.unchecked.EmptyParameterException</pre>
 <div class="block">Public constructor for the reflection class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>reflectedClass</code> - Class being reflected.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</code> - If the reflected class is not given.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.EmptyParameterException</code> - If the reflected class is not given.</dd></dl>
 </li>
 </ul>
 <a name="ClassMirror(java.lang.String, java.lang.ClassLoader, java.lang.Boolean)">
@@ -321,12 +321,12 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;ClassMirror(java.lang.String&nbsp;reflectedClassName,
            java.lang.ClassLoader&nbsp;classLoader,
            java.lang.Boolean&nbsp;initialize)
-            throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+            throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Public constructor for the reflection class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>reflectedClassName</code> - Name of the class being reflected.</dd><dd><code>classLoader</code> - Class loader to be used with the reflected class. If no class loader is given, the context
             class loader is used.</dd><dd><code>initialize</code> - Whether the class must be initialized. Default is true.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name.</dd></dl>
 </li>
 </ul>
 <a name="ClassMirror(java.lang.String)">
@@ -336,11 +336,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>ClassMirror</h4>
 <pre>public&nbsp;ClassMirror(java.lang.String&nbsp;reflectedClassName)
-            throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+            throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Public constructor for the reflection class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>reflectedClassName</code> - Name of the class being reflected.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name.</dd></dl>
 </li>
 </ul>
 <a name="ClassMirror(java.lang.Integer, java.lang.ClassLoader, java.lang.Boolean)">
@@ -352,11 +352,11 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;ClassMirror(java.lang.Integer&nbsp;depth,
            java.lang.ClassLoader&nbsp;classLoader,
            java.lang.Boolean&nbsp;initialize)
-            throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+            throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Public constructor for the reflection class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>depth</code> - Depth in the current stack for the desired class (0 is the first and so on).</dd><dd><code>classLoader</code> - Class loader to be used with the reflected class.</dd><dd><code>initialize</code> - Whether the class must be initialized.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name or if the depth is greater than the stack trace
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name or if the depth is greater than the stack trace
              size.</dd></dl>
 </li>
 </ul>
@@ -367,11 +367,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>ClassMirror</h4>
 <pre>public&nbsp;ClassMirror(java.lang.Integer&nbsp;depth)
-            throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+            throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Public constructor for the reflection class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>depth</code> - Depth in the current stack for the desired class (0 is the first and so on).</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name or if the depth is greater than the stack trace
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name or if the depth is greater than the stack trace
              size.</dd></dl>
 </li>
 </ul>
@@ -414,15 +414,15 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;java.lang.Class&lt;?&gt;&nbsp;getClass(java.lang.String&nbsp;className,
                           java.lang.ClassLoader&nbsp;classLoader,
                           java.lang.Boolean&nbsp;initialize)
-                                   throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException,
-                                          org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</pre>
+                                   throws org.dejava.component.exception.localized.unchecked.InvalidParameterException,
+                                          org.dejava.component.exception.localized.unchecked.EmptyParameterException</pre>
 <div class="block">Gets a class with the given name from a given class loader.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>className</code> - Name of the class to be found.</dd><dd><code>classLoader</code> - Class loader to load the class. If no class loader is given, the context class loader is
             used.</dd><dd><code>initialize</code> - Whether the class must be initialized.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>Returns the class with the name.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</code> - If the class name is not given.</dd>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.EmptyParameterException</code> - If the class name is not given.</dd>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name.</dd></dl>
 </li>
 </ul>
 <a name="getCurrentClassName(java.lang.Integer)">
@@ -432,12 +432,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCurrentClassName</h4>
 <pre>public static&nbsp;java.lang.String&nbsp;getCurrentClassName(java.lang.Integer&nbsp;depth)
-                                            throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+                                            throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Gets the name of the current class (with the selected depth) being executed.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>depth</code> - Depth in the current stack for the desired class (0 is the first and so on).</dd>
 <dt><span class="strong">Returns:</span></dt><dd>The name of the current class (with the selected depth) being executed.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the depth is greater than the stack trace size.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the depth is greater than the stack trace size.</dd></dl>
 </li>
 </ul>
 <a name="getCurrentClass(java.lang.Integer, java.lang.ClassLoader, java.lang.Boolean)">
@@ -449,13 +449,13 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;java.lang.Class&lt;?&gt;&nbsp;getCurrentClass(java.lang.Integer&nbsp;depth,
                                  java.lang.ClassLoader&nbsp;classLoader,
                                  java.lang.Boolean&nbsp;initialize)
-                                          throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+                                          throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Gets the current class (with the selected depth) being executed.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>depth</code> - Depth in the current stack for the desired class (0 is the first and so on).</dd><dd><code>classLoader</code> - Class loader that must be used in the class recovery. If no class loader is given, the
             context class loader is used.</dd><dd><code>initialize</code> - Whether the class must be initialized.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>The current class (with the selected depth) being executed.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name or if the depth is greater than the stack trace
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name or if the depth is greater than the stack trace
              size.</dd></dl>
 </li>
 </ul>
@@ -466,12 +466,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCurrentClass</h4>
 <pre>public static&nbsp;java.lang.Class&lt;?&gt;&nbsp;getCurrentClass(java.lang.Integer&nbsp;depth)
-                                          throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+                                          throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Gets the current class (with the selected depth) being executed.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>depth</code> - Depth in the current stack for the desired class (0 is the first and so on).</dd>
 <dt><span class="strong">Returns:</span></dt><dd>The current class (with the selected depth) being executed.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name or if the depth is greater than the stack trace
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the class cannot be found for the name or if the depth is greater than the stack trace
              size.</dd></dl>
 </li>
 </ul>
@@ -504,15 +504,15 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getField</h4>
 <pre>public&nbsp;<a href="../../../../../org/dejava/component/util/reflection/FieldMirror.html" title="class in org.dejava.component.util.reflection">FieldMirror</a>&nbsp;getField(java.lang.String&nbsp;fieldName)
-                     throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException,
-                            org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</pre>
+                     throws org.dejava.component.exception.localized.unchecked.InvalidParameterException,
+                            org.dejava.component.exception.localized.unchecked.EmptyParameterException</pre>
 <div class="block">Returns a field from the reflected class. The search includes the inherited classes. The first field
  found for the name is returned.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>fieldName</code> - Name of the field to be found.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A field from the desired class.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</code> - If the name is not given.</dd>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the field cannot be found for the name.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.EmptyParameterException</code> - If the name is not given.</dd>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the field cannot be found for the name.</dd></dl>
 </li>
 </ul>
 <a name="getFieldPath(java.lang.String)">
@@ -546,15 +546,15 @@ extends java.lang.Object</pre>
 <h4>getMethod</h4>
 <pre>public&nbsp;<a href="../../../../../org/dejava/component/util/reflection/MethodMirror.html" title="class in org.dejava.component.util.reflection">MethodMirror</a>&nbsp;getMethod(java.lang.String&nbsp;methodName,
                      java.lang.Class&lt;?&gt;[]&nbsp;paramsClasses)
-                       throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException,
-                              org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</pre>
+                       throws org.dejava.component.exception.localized.unchecked.InvalidParameterException,
+                              org.dejava.component.exception.localized.unchecked.EmptyParameterException</pre>
 <div class="block">Gets a method from the reflected class for the given parameters. The search includes the inherited
  classes and interfaces of each parameter class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>methodName</code> - Name of the method to be found.</dd><dd><code>paramsClasses</code> - Parameters classes for the method to be found.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A method from the reflected class for the given parameters.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</code> - If the method name is empty.</dd>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the method cannot be found or one of the parameters classes is empty.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.EmptyParameterException</code> - If the method name is empty.</dd>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the method cannot be found or one of the parameters classes is empty.</dd></dl>
 </li>
 </ul>
 <a name="getMethod(java.lang.String, java.lang.Object[])">
@@ -565,15 +565,15 @@ extends java.lang.Object</pre>
 <h4>getMethod</h4>
 <pre>public&nbsp;<a href="../../../../../org/dejava/component/util/reflection/MethodMirror.html" title="class in org.dejava.component.util.reflection">MethodMirror</a>&nbsp;getMethod(java.lang.String&nbsp;methodName,
                      java.lang.Object[]&nbsp;paramsValues)
-                       throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException,
-                              org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</pre>
+                       throws org.dejava.component.exception.localized.unchecked.InvalidParameterException,
+                              org.dejava.component.exception.localized.unchecked.EmptyParameterException</pre>
 <div class="block">Gets a method from the reflected class for the given parameters. The search includes the inherited
  classes and interfaces of each parameter class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>methodName</code> - Name of the method to be found.</dd><dd><code>paramsValues</code> - Parameters values to be used during the method invocation.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A method from the reflected class for the given parameters.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</code> - If the method name is empty.</dd>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the method cannot be found or one of the parameters values is empty.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.EmptyParameterException</code> - If the method name is empty.</dd>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the method cannot be found or one of the parameters values is empty.</dd></dl>
 </li>
 </ul>
 <a name="getAnnotations()">
@@ -595,13 +595,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAnnotation</h4>
 <pre>public&nbsp;&lt;AnyAnnotation extends java.lang.annotation.Annotation&gt;&nbsp;<a href="../../../../../org/dejava/component/util/reflection/AnnotationMirror.html" title="class in org.dejava.component.util.reflection">AnnotationMirror</a>&lt;AnyAnnotation&gt;&nbsp;getAnnotation(java.lang.Class&lt;AnyAnnotation&gt;&nbsp;annotationClass)
-                                                                                      throws org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</pre>
+                                                                                      throws org.dejava.component.exception.localized.unchecked.EmptyParameterException</pre>
 <div class="block">Returns an annotation from the reflected class (or its inherited classes and interfaces). The first
  annotation found for the given class is returned.</div>
 <dl><dt><span class="strong">Type Parameters:</span></dt><dd><code>AnyAnnotation</code> - Any annotation being searched.</dd><dt><span class="strong">Parameters:</span></dt><dd><code>annotationClass</code> - Type of the annotation to be searched for.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>An annotation from the reflected class (or its inherited classes and interfaces).</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.EmptyParameterException</code> - If the passed class is null.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.EmptyParameterException</code> - If the passed class is null.</dd></dl>
 </li>
 </ul>
 <a name="getConstructor(java.lang.Class[])">
@@ -611,13 +611,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getConstructor</h4>
 <pre>public&nbsp;<a href="../../../../../org/dejava/component/util/reflection/ConstructorMirror.html" title="class in org.dejava.component.util.reflection">ConstructorMirror</a>&lt;<a href="../../../../../org/dejava/component/util/reflection/ClassMirror.html" title="type parameter in ClassMirror">Reflected</a>&gt;&nbsp;getConstructor(java.lang.Class&lt;?&gt;[]&nbsp;paramsClasses)
-                                            throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+                                            throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Gets a constructor from the reflected class for the given parameters. The search includes the inherited
  classes and interfaces of each parameter class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>paramsClasses</code> - Parameters classes for the constructor to be found.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A constructor from the reflected class for the given parameters.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the constructor cannot be found or one of the parameters classes is empty.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the constructor cannot be found or one of the parameters classes is empty.</dd></dl>
 </li>
 </ul>
 <a name="getConstructor(java.lang.Object[])">
@@ -627,13 +627,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getConstructor</h4>
 <pre>public&nbsp;<a href="../../../../../org/dejava/component/util/reflection/ConstructorMirror.html" title="class in org.dejava.component.util.reflection">ConstructorMirror</a>&lt;<a href="../../../../../org/dejava/component/util/reflection/ClassMirror.html" title="type parameter in ClassMirror">Reflected</a>&gt;&nbsp;getConstructor(java.lang.Object[]&nbsp;paramsValues)
-                                            throws org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</pre>
+                                            throws org.dejava.component.exception.localized.unchecked.InvalidParameterException</pre>
 <div class="block">Gets a constructor from the reflected class for the given parameters. The search includes the inherited
  classes and interfaces of each parameter class.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>paramsValues</code> - Parameters values to be used during the constructor invocation.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A constructor from the reflected class for the given parameters.</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>org.dejava.component.util.exception.localized.unchecked.InvalidParameterException</code> - If the constructor cannot be found or one of the parameters values is empty.</dd></dl>
+<dd><code>org.dejava.component.exception.localized.unchecked.InvalidParameterException</code> - If the constructor cannot be found or one of the parameters values is empty.</dd></dl>
 </li>
 </ul>
 <a name="hashCode()">

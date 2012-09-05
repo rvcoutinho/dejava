@@ -2,7 +2,7 @@ package org.dejava.component.util.reflection;
 
 import java.lang.annotation.Annotation;
 
-import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 
 /**
  * TODO

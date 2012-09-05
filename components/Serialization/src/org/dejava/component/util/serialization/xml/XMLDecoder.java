@@ -9,7 +9,7 @@ import java.util.Map;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.util.reflection.ClassMirror;
 import org.dejava.component.util.reflection.exception.InvocationException;
 import org.dejava.component.util.serialization.xml.annotation.XMLComplexNode;

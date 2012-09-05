@@ -25,7 +25,7 @@
 	<property name="bin-jar" value="${project-name}-${version}.jar" />
 	<!-- Annotation processor information. -->
 	<property name="processor-path" value="../I18n/dejava-i18n-0.1.jar" />
-	<property name="processor" value="org.dejava.component.util.i18n.source.MessageSourceCreator" />
+	<property name="processor" value="org.dejava.component.i18n.test.source.MessageSourceCreator" />
 
 	<!-- JUnit path. -->
 	<path id="junit-path">

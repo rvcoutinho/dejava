@@ -7,8 +7,8 @@ import java.lang.reflect.Modifier;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.dejava.component.util.exception.localized.unchecked.EmptyParameterException;
-import org.dejava.component.util.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.util.reflection.constant.ErrorKeys;
 import org.dejava.component.util.reflection.exception.InvocationException;
 

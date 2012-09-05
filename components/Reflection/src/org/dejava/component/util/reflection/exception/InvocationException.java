@@ -1,6 +1,6 @@
 package org.dejava.component.util.reflection.exception;
 
-import org.dejava.component.util.exception.localized.checked.AbstractLocalizedException;
+import org.dejava.component.exception.localized.checked.AbstractLocalizedException;
 import org.dejava.component.util.reflection.constant.ErrorKeys;
 
 /**

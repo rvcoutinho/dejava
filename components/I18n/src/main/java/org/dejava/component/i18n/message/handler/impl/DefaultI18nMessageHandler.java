@@ -14,8 +14,8 @@ import org.dejava.component.i18n.message.annotation.MessageBundles;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.MessageHandler;
 import org.dejava.component.i18n.message.handler.model.ApplicationMessageType;
-import org.dejava.component.util.reflection.AnnotationMirror;
-import org.dejava.component.util.reflection.ClassMirror;
+import org.dejava.component.reflection.AnnotationMirror;
+import org.dejava.component.reflection.ClassMirror;
 
 /**
  * Default i18n message handler. Handles getting messages from within a class using the information provided

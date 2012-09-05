@@ -1,3 +1,3 @@
-org.dejava.component.util.reflection
-org.dejava.component.util.reflection.constant
-org.dejava.component.util.reflection.exception
+org.dejava.component.reflection
+org.dejava.component.reflection.constant
+org.dejava.component.reflection.exception

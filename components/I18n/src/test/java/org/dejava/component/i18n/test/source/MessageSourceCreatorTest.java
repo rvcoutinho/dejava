@@ -19,7 +19,7 @@ import org.dejava.component.i18n.source.MessageSourceCreator;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.i18n.test.source.auxiliary.InformationKeys;
 import org.dejava.component.i18n.test.source.auxiliary.SampleEntryProvider;
-import org.dejava.component.util.reflection.ClassMirror;
+import org.dejava.component.reflection.ClassMirror;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;

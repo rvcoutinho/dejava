@@ -15,10 +15,10 @@ import org.dejava.component.i18n.message.handler.MessageHandler;
 import org.dejava.component.i18n.message.handler.impl.DefaultI18nMessageHandler;
 import org.dejava.component.i18n.message.handler.model.ApplicationMessageType;
 import org.dejava.component.i18n.test.message.constant.InformationKeys;
-import org.dejava.component.util.reflection.ClassMirror;
-import org.dejava.component.util.reflection.FieldMirror;
-import org.dejava.component.util.test.annotation.ParametricTest;
-import org.dejava.component.util.test.runner.JUnitParametricRunner;
+import org.dejava.component.reflection.ClassMirror;
+import org.dejava.component.reflection.FieldMirror;
+import org.dejava.component.test.annotation.ParametricTest;
+import org.dejava.component.test.runner.JUnitParametricRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

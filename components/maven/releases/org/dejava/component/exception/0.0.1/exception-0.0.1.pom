@@ -9,7 +9,7 @@
 	<repositories>
 		<repository>
 			<id>dejava-components</id>
-			<url>https://github.com/rvcoutinho/dejava/tree/master/components/maven/releases</url>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
 		</repository>
 	</repositories>
 
@@ -31,7 +31,6 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<verbose>true</verbose>
 					<source>1.7</source>
 					<target>1.7</target>
 					<annotationProcessors>
@@ -79,5 +78,12 @@
 			<version>0.0.1</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>test</artifactId>
+			<version>0.0.1</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+
 </project>

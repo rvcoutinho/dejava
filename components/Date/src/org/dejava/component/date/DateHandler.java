@@ -1,4 +1,4 @@
-package org.dejava.component.util.date;
+package org.dejava.component.date;
 
 import java.util.Calendar;
 import java.util.Date;

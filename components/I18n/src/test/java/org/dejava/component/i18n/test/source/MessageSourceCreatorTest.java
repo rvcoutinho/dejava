@@ -78,7 +78,7 @@ public class MessageSourceCreatorTest {
 	@Test
 	public void test() throws IOException {
 		// Compiles the file.
-		compile("test/org/dejava/component/util/i18n/test/source/auxiliary/InformationKeys.java");
+		compile("src/test/java/org/dejava/component/i18n/test/source/auxiliary/InformationKeys.java");
 		// Gets the message source annotation.
 		final MessageSources messageSources = new ClassMirror<InformationKeys>(InformationKeys.class)
 				.getAnnotation(MessageSources.class).getReflectedAnnotation();

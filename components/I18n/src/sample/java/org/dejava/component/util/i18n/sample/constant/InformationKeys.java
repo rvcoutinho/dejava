@@ -6,7 +6,7 @@ import org.dejava.component.i18n.test.source.annotation.MessageSources;
 /**
  * Constants related to information message keys of the package.
  */
-@MessageSources(sources = { @MessageSource(sourcePath = "sample", bundleBaseName = "org.dejava.component.i18n.test.test.message.properties.information", processors = { "org.dejava.component.i18n.test.source.processor.impl.ConstantValuesEntryProcessor" }) })
+@MessageSources(sources = { @MessageSource(sourcePath = "src/sample/resources", bundleBaseName = "org.dejava.component.i18n.test.test.message.properties.information", processors = { "org.dejava.component.i18n.test.source.processor.impl.ConstantValuesEntryProcessor" }) })
 public final class InformationKeys {
 	
 	/**

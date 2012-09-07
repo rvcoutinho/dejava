@@ -21,7 +21,7 @@ public @interface MessageSource {
 	 * 
 	 * "src" is used by default.
 	 */
-	String sourcePath() default "src";
+	String sourcePath() default "src/main/resources";
 	
 	/**
 	 * Base name of the bundle that the class provides messages to.

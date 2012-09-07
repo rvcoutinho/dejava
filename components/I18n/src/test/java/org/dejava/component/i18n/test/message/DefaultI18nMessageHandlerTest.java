@@ -26,8 +26,8 @@ import org.junit.runner.RunWith;
  * Tests for the default i18n message handler.
  */
 @MessageBundles(defaultType = "information", messageBundles = {
-		@MessageBundle(type = "information", baseName = "org.dejava.component.i18n.test.test.message.properties.information"),
-		@MessageBundle(type = "error", baseName = "org.dejava.component.i18n.test.test.message.properties.error") })
+		@MessageBundle(type = "information", baseName = "org.dejava.component.i18n.test.message.properties.information"),
+		@MessageBundle(type = "error", baseName = "org.dejava.component.i18n.test.message.properties.error") })
 @RunWith(value = JUnitParametricRunner.class)
 public class DefaultI18nMessageHandlerTest {
 	

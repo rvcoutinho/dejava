@@ -28,7 +28,7 @@ import org.junit.rules.TemporaryFolder;
 /**
  * TODO
  */
-@MessageBundles(defaultType = "information", messageBundles = { @MessageBundle(type = "information", baseName = "org.dejava.component.i18n.test.test.source.properties.information") })
+@MessageBundles(defaultType = "information", messageBundles = { @MessageBundle(type = "information", baseName = "org.dejava.component.i18n.test.source.properties.information") })
 public class MessageSourceCreatorTest {
 	
 	/**

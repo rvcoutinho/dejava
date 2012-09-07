@@ -290,7 +290,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 	}
 	
 	/**
-	 * @see org.dejava.component.i18n.test.message.handler.MessageHandler#getMessage(java.lang.String,
+	 * @see org.dejava.component.i18n.message.handler.MessageHandler#getMessage(java.lang.String,
 	 *      java.lang.String, java.lang.Object[])
 	 */
 	@Override
@@ -306,7 +306,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 	}
 	
 	/**
-	 * @see org.dejava.component.i18n.test.message.handler.MessageHandler#getMessage(org.dejava.component.i18n.test.message.handler.model.ApplicationMessageType,
+	 * @see org.dejava.component.i18n.message.handler.MessageHandler#getMessage(org.dejava.component.i18n.message.handler.model.ApplicationMessageType,
 	 *      java.lang.String, java.lang.Object[])
 	 */
 	@Override
@@ -324,7 +324,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 	}
 	
 	/**
-	 * @see org.dejava.component.i18n.test.message.handler.MessageHandler#getMessage(java.lang.String,
+	 * @see org.dejava.component.i18n.message.handler.MessageHandler#getMessage(java.lang.String,
 	 *      java.lang.Object[])
 	 */
 	@Override

@@ -30,7 +30,7 @@ public class ExceptionMessageCommand extends DefaultMessageCommand {
 	}
 	
 	/**
-	 * @see org.dejava.component.util.i18n.message.handler.impl.DefaultMessageCommand#getMessage()
+	 * @see org.dejava.component.i18n.message.handler.impl.DefaultMessageCommand#getMessage()
 	 */
 	@Override
 	public String getMessage() throws MessageNotFoundException {
@@ -46,7 +46,7 @@ public class ExceptionMessageCommand extends DefaultMessageCommand {
 	}
 	
 	/**
-	 * @see org.dejava.component.util.i18n.message.handler.impl.DefaultMessageCommand#getUsMessage()
+	 * @see org.dejava.component.i18n.message.handler.impl.DefaultMessageCommand#getUsMessage()
 	 */
 	@Override
 	public String getUsMessage() throws MessageNotFoundException {

@@ -9,7 +9,7 @@
 	<repositories>
 		<repository>
 			<id>dejava-components</id>
-			<url>https://github.com/rvcoutinho/dejava/tree/master/components/maven/releases</url>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
 		</repository>
 	</repositories>
 

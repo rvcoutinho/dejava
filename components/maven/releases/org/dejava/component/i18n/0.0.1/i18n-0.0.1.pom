@@ -9,7 +9,7 @@
 	<repositories>
 		<repository>
 			<id>dejava-components</id>
-			<url>https://github.com/rvcoutinho/dejava/tree/master/components/maven</url>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
 		</repository>
 	</repositories>
 
@@ -70,6 +70,24 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>exception</artifactId>
+			<version>0.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>reflection</artifactId>
+			<version>0.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>test</artifactId>
+			<version>0.0.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

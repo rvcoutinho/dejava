@@ -1,7 +1,5 @@
 package org.dejava.component.i18n.message.handler;
 
-import java.util.Locale;
-
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.model.ApplicationMessageType;

@@ -13,7 +13,7 @@ import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
 public class NameEntryProcessor implements MessageSourceEntryProcessor {
 	
 	/**
-	 * @see org.dejava.component.i18n.test.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.Element)
+	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.Element)
 	 */
 	@Override
 	public Set<String> processClass(final Element clazz) {

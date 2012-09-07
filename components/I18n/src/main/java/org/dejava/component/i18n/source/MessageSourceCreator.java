@@ -24,7 +24,7 @@ import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
  * Annotation processor that processes and creates the defined message source bundles (and keys).
  */
 @SupportedSourceVersion(value = SourceVersion.RELEASE_7)
-@SupportedAnnotationTypes(value = { "org.dejava.component.i18n.test.source.annotation.MessageSources" })
+@SupportedAnnotationTypes(value = { "org.dejava.component.i18n.source.annotation.MessageSources" })
 public class MessageSourceCreator extends AbstractProcessor {
 	
 	/**

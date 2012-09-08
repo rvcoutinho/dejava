@@ -1,7 +1,7 @@
 package org.dejava.component.test.runner.statement;
 
-import org.dejava.component.test.exception.parametric.atomic.ParametricTestAssumptionException;
-import org.dejava.component.test.exception.parametric.atomic.ParametricTestNonAssumptionException;
+import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestAssertionError;
+import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestException;
 import org.junit.internal.AssumptionViolatedException;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
@@ -11,12 +11,12 @@ import org.junit.runners.model.Statement;
  * raising exceptions.
  */
 public class ParametricTestWrapper extends AbstractParametricTestStatement {
-	
+
 	/**
 	 * Nested test statement for the parametric test.
 	 */
 	private Statement testStatement;
-	
+
 	/**
 	 * Gets the nested test statement for the parametric test.
 	 * 
@@ -25,7 +25,7 @@ public class ParametricTestWrapper extends AbstractParametricTestStatement {
 	public Statement getTestStatement() {
 		return testStatement;
 	}
-	
+
 	/**
 	 * Sets the nested test statement for the parametric test.
 	 * 
@@ -35,7 +35,7 @@ public class ParametricTestWrapper extends AbstractParametricTestStatement {
 	public void setTestStatement(final Statement testStatement) {
 		this.testStatement = testStatement;
 	}
-	
+
 	/**
 	 * Default constructor.
 	 * 
@@ -54,33 +54,26 @@ public class ParametricTestWrapper extends AbstractParametricTestStatement {
 		// Sets the basic fields values.
 		this.testStatement = testStatement;
 	}
-	
+
 	/**
 	 * @see Statement#evaluate()
 	 */
 	@Override
-	public void evaluate() throws ParametricTestAssumptionException, ParametricTestNonAssumptionException {
+	public void evaluate() throws AtomParametricTestAssertionError, AtomParametricTestException {
 		// Tries to evaluate the current statement.
 		try {
 			getTestStatement().evaluate();
 		}
 		// If an assertion has failed for the current statement.
-		catch (final AssertionError exception) {
+		catch (final AssertionError | AssumptionViolatedException exception) {
 			// Wraps the exception with a single parametric test assumption exception.
-			throw new ParametricTestAssumptionException(exception, getTestMethod().getName(),
-					getParamsValues());
-		}
-		// If an assumption is violated for the current statement.
-		catch (final AssumptionViolatedException exception) {
-			// Wraps the exception with a single parametric test assumption exception.
-			throw new ParametricTestAssumptionException(exception, getTestMethod().getName(),
+			throw new AtomParametricTestAssertionError(exception, getTestMethod().getName(),
 					getParamsValues());
 		}
 		// If any other exception is raised by the current test statement.
 		catch (final Throwable throwable) {
 			// Wraps the exception with a single parametric test exception.
-			throw new ParametricTestNonAssumptionException(throwable, getTestMethod().getName(),
-					getParamsValues());
+			throw new AtomParametricTestException(throwable, getTestMethod().getName(), getParamsValues());
 		}
 	}
 }

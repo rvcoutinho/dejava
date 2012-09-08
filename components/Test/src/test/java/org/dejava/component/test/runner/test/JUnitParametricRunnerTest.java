@@ -1,7 +1,5 @@
 package org.dejava.component.test.runner.test;
 
-import junit.framework.AssertionFailedError;
-
 import org.dejava.component.test.runner.JUnitParametricRunner;
 import org.dejava.component.test.runner.test.auxiliary.FakeTest;
 import org.dejava.component.test.runner.test.auxiliary.RunListenerLog;
@@ -70,7 +68,7 @@ public class JUnitParametricRunnerTest {
 		getFakeTestRunner().run(runNotifier);
 		// If the test is not finished with expected failures.
 		if ((!runListener.getStarted()) || (!runListener.getFinished()) || (runListener.getFailure() == null)
-				|| (!(runListener.getFailure().getException() instanceof AssertionFailedError))) {
+				|| (!(runListener.getFailure().getException() instanceof AssertionError))) {
 			// The test fails. FIXME
 			Assert.fail();
 		}

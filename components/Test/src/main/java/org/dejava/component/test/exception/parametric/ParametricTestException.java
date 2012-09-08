@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.dejava.component.test.exception.AbstractTestException;
-import org.dejava.component.test.exception.parametric.atomic.ParametricTestAssumptionException;
-import org.dejava.component.test.exception.parametric.atomic.ParametricTestNonAssumptionException;
+import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestAssertionError;
+import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestException;
 
 /**
- * Exception related to unavailable test data.
+ * Exception related to a parametric test exceptions (and/or assertion errors).
  */
-public class ParametricTestSetException extends AbstractTestException {
+public class ParametricTestException extends AbstractTestException {
 	
 	/**
 	 * Generated serial.
@@ -20,18 +20,18 @@ public class ParametricTestSetException extends AbstractTestException {
 	/**
 	 * Exceptions thrown during a parametric test.
 	 */
-	private Collection<ParametricTestNonAssumptionException> testExceptions;
+	private Collection<AtomParametricTestException> testExceptions;
 	
 	/**
 	 * Gets the exceptions thrown during a parametric test.
 	 * 
 	 * @return The exceptions thrown during a parametric test.
 	 */
-	public Collection<ParametricTestNonAssumptionException> getTestExceptions() {
+	public Collection<AtomParametricTestException> getTestExceptions() {
 		// If the collection is null.
 		if (testExceptions == null) {
 			// It is now a new list.
-			testExceptions = new ArrayList<ParametricTestNonAssumptionException>();
+			testExceptions = new ArrayList<AtomParametricTestException>();
 		}
 		// Returns the exceptions.
 		return testExceptions;
@@ -43,25 +43,25 @@ public class ParametricTestSetException extends AbstractTestException {
 	 * @param testExceptions
 	 *            New exceptions thrown during a parametric test.
 	 */
-	public void setTestExceptions(final Collection<ParametricTestNonAssumptionException> testExceptions) {
+	public void setTestExceptions(final Collection<AtomParametricTestException> testExceptions) {
 		this.testExceptions = testExceptions;
 	}
 	
 	/**
 	 * Assumption violated exceptions thrown during a parametric test.
 	 */
-	private Collection<ParametricTestAssumptionException> testAssumptionViolations;
+	private Collection<AtomParametricTestAssertionError> testAssumptionViolations;
 	
 	/**
 	 * Gets the assumption violated exceptions thrown during a parametric test.
 	 * 
 	 * @return The assumption violated exceptions thrown during a parametric test.
 	 */
-	public Collection<ParametricTestAssumptionException> getTestAssumptionViolations() {
+	public Collection<AtomParametricTestAssertionError> getTestAssumptionViolations() {
 		// If the collection is null.
 		if (testAssumptionViolations == null) {
 			// It is now a new list.
-			testAssumptionViolations = new ArrayList<ParametricTestAssumptionException>();
+			testAssumptionViolations = new ArrayList<AtomParametricTestAssertionError>();
 		}
 		// Returns the exceptions.
 		return testAssumptionViolations;
@@ -74,7 +74,7 @@ public class ParametricTestSetException extends AbstractTestException {
 	 *            New assumption violated exceptions thrown during a parametric test.
 	 */
 	public void setTestAssumptionViolations(
-			final Collection<ParametricTestAssumptionException> testAssumptionViolations) {
+			final Collection<AtomParametricTestAssertionError> testAssumptionViolations) {
 		this.testAssumptionViolations = testAssumptionViolations;
 	}
 	
@@ -88,8 +88,8 @@ public class ParametricTestSetException extends AbstractTestException {
 	 * @param testName
 	 *            The name of the test for the exception.
 	 */
-	public ParametricTestSetException(final Collection<ParametricTestNonAssumptionException> testExceptions,
-			final Collection<ParametricTestAssumptionException> testAssumptionViolations,
+	public ParametricTestException(final Collection<AtomParametricTestException> testExceptions,
+			final Collection<AtomParametricTestAssertionError> testAssumptionViolations,
 			final String testName) {
 		super(null, null, testName);
 		// Sets the basic fields.

@@ -2,7 +2,7 @@ package org.dejava.component.test.runner.notifier;
 
 import java.util.Collection;
 
-import org.dejava.component.test.exception.parametric.atomic.ParametricTestAssumptionException;
+import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestAssertionError;
 import org.junit.runner.Description;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
@@ -115,9 +115,9 @@ public class ParametricTestNotifier {
 	 * @param testFailedAssumptions
 	 *            The failed assumptions that occurred during the test run.
 	 */
-	public void addFailedAssumptions(final Collection<ParametricTestAssumptionException> testFailedAssumptions) {
+	public void addFailedAssumptions(final Collection<AtomParametricTestAssertionError> testFailedAssumptions) {
 		// For each test exception.
-		for (final ParametricTestAssumptionException currentTestException : testFailedAssumptions) {
+		for (final AtomParametricTestAssertionError currentTestException : testFailedAssumptions) {
 			// Fire a new fail assumption for the current test exception.
 			addFailedAssumption(currentTestException);
 		}

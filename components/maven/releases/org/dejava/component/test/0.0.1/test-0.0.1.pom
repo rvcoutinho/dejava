@@ -9,7 +9,7 @@
 	<repositories>
 		<repository>
 			<id>dejava-components</id>
-			<url>https://github.com/rvcoutinho/dejava/tree/master/components/maven</url>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
 		</repository>
 	</repositories>
 
@@ -33,6 +33,9 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+					<annotationProcessors>
+						<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
+					</annotationProcessors>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -80,6 +83,12 @@
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>i18n</artifactId>
+			<version>0.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>reflection</artifactId>
 			<version>0.0.1</version>
 			<scope>compile</scope>
 		</dependency>

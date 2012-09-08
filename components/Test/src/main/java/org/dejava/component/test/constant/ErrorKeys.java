@@ -12,12 +12,12 @@ public final class ErrorKeys {
 	/**
 	 * Unavailable parametric test data.
 	 */
-	public static final String UNAVAILABLE_TEST_DATA = "test.test.data.unavailable";
+	public static final String UNAVAILABLE_TEST_DATA = "test.data.unavailable";
 	
 	/**
 	 * Invalid parametric test method.
 	 */
-	public static final String INVALID_PARAM_TEST_METHOD = "test.test.parametric.method.invalid";
+	public static final String INVALID_PARAM_TEST_METHOD = "test.parametric.method.invalid";
 	
 	/**
 	 * Private constructor.

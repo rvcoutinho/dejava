@@ -2,7 +2,8 @@ package org.dejava.component.test.runner.dataset.impl;
 
 import java.util.Collection;
 
-import org.dejava.component.test.exception.UnavailableTestDataException;
+import org.dejava.component.test.constant.ErrorKeys;
+import org.dejava.component.test.exception.parametric.InvalidParametricTestException;
 import org.dejava.component.test.runner.dataset.TestDataProvider;
 import org.junit.runners.model.FrameworkMethod;
 
@@ -10,12 +11,12 @@ import org.junit.runners.model.FrameworkMethod;
  * Provides access to XML test data.
  */
 public class JNDITestDataProvider implements TestDataProvider {
-	
+
 	/**
 	 * The JNDI path for the object from which the test data provider method will be invoked.
 	 */
 	private String objectPath;
-	
+
 	/**
 	 * Gets the JNDI path for the object from which the test data provider method will be invoked.
 	 * 
@@ -24,7 +25,7 @@ public class JNDITestDataProvider implements TestDataProvider {
 	public String getObjectPath() {
 		return objectPath;
 	}
-	
+
 	/**
 	 * Sets the JNDI path for the object from which the test data provider method will be invoked.
 	 * 
@@ -34,12 +35,12 @@ public class JNDITestDataProvider implements TestDataProvider {
 	public void setObjectPath(final String objectPath) {
 		this.objectPath = objectPath;
 	}
-	
+
 	/**
 	 * The method name for the test data provider.
 	 */
 	private String methodName;
-	
+
 	/**
 	 * Gets the method name for the test data provider.
 	 * 
@@ -48,7 +49,7 @@ public class JNDITestDataProvider implements TestDataProvider {
 	public String getMethodName() {
 		return methodName;
 	}
-	
+
 	/**
 	 * Sets the method name for the test data provider.
 	 * 
@@ -58,7 +59,7 @@ public class JNDITestDataProvider implements TestDataProvider {
 	public void setMethodName(final String methodName) {
 		this.methodName = methodName;
 	}
-	
+
 	/**
 	 * Default constructor.
 	 * 
@@ -72,22 +73,22 @@ public class JNDITestDataProvider implements TestDataProvider {
 		this.objectPath = objectPath;
 		this.methodName = methodName;
 	}
-	
+
 	/**
 	 * @see org.dejava.component.test.runner.dataset.TestDataProvider#getTestData(org.junit.runners.model.FrameworkMethod)
 	 */
 	@Override
-	public Collection<?> getTestData(final FrameworkMethod testMethod) throws UnavailableTestDataException {
+	public Collection<?> getTestData(final FrameworkMethod testMethod) throws InvalidParametricTestException {
 		// Tries to get the data.
 		try {
 			// The test data is the return of the method invocation. FIXME
-			//return (Collection<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null, null,false);
+			// return (Collection<?>) MethodHandler.invokeMethod(getObjectPath(), getMethodName(), null, null,false);
 			return null;
 		}
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {
 			// Throws an exception.
-			throw new UnavailableTestDataException(exception, testMethod.getName());
+			throw new InvalidParametricTestException(ErrorKeys.UNAVAILABLE_TEST_DATA, exception, testMethod.getName());
 		}
 	}
 }

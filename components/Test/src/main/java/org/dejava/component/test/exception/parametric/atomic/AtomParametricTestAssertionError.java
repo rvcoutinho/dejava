@@ -4,24 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.dejava.component.test.exception.AbstractTestException;
+import org.dejava.component.test.exception.AbstractTestAssertionError;
 
 /**
- * An atomic parametric test exception. By atomic, it means a test execution for only one of the possible
- * parameters values for a test.
+ * A single parametric test assertion error.
  */
-public abstract class AbstractParametricTestException extends AbstractTestException {
-	
+public class AtomParametricTestAssertionError extends AbstractTestAssertionError {
+
 	/**
 	 * Generated serial.
 	 */
-	private static final long serialVersionUID = -8001637603404931093L;
-	
+	private static final long serialVersionUID = 5433554643543299211L;
+
 	/**
 	 * Default constructor.
 	 * 
-	 * @param messageKey
-	 *            Message key that describes the exception.
 	 * @param cause
 	 *            Exception cause.
 	 * @param testName
@@ -29,9 +26,10 @@ public abstract class AbstractParametricTestException extends AbstractTestExcept
 	 * @param paramsValues
 	 *            The parameters values for the test method.
 	 */
-	public AbstractParametricTestException(final String messageKey, final Throwable cause,
-			final String testName, final Object[] paramsValues) {
-		super(messageKey, cause, null);
+	public AtomParametricTestAssertionError(final Throwable cause, final String testName,
+			final Object[] paramsValues) {
+		// TODO
+		super(null, cause, testName);
 		// List of exception parameters.
 		final List<Object> parameters = new ArrayList<Object>();
 		// Adds the test name as the first parameter.

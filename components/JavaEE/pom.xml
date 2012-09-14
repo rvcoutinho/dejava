@@ -8,6 +8,13 @@
 	<packaging>pom</packaging>
 	<name>Java EE</name>
 
+	<repositories>
+		<repository>
+			<id>dejava-components</id>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
+		</repository>
+	</repositories>
+
 	<properties>
 		<!-- Explicitly declaring the source encoding eliminates the following 
 			message: -->
@@ -33,6 +40,8 @@
 				<version>0.0.1-SNAPSHOT</version>
 				<type>ejb</type>
 			</dependency>
+
+
 
 			<!-- JBoss distributes a complete set of Java EE 6 APIs including a Bill 
 				of Materials (BOM). A BOM specifies the versions of a "stack" (or a collection) 
@@ -79,7 +88,26 @@
 				<artifactId>junit</artifactId>
 				<version>4.10</version>
 				<type>jar</type>
-				<scope>test</scope>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.dejava.component</groupId>
+				<artifactId>i18n</artifactId>
+				<version>0.0.1</version>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.component</groupId>
+				<artifactId>reflection</artifactId>
+				<version>0.0.1</version>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.component</groupId>
+				<artifactId>exception</artifactId>
+				<version>0.0.1</version>
+				<scope>import</scope>
 			</dependency>
 
 		</dependencies>

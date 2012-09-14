@@ -17,35 +17,35 @@ import javax.persistence.Table;
 public class FakeEntity implements Serializable {
 
 	/**
-	 * Generated setial.
+	 * Generated serial.
 	 */
 	private static final long serialVersionUID = 1089614179485837298L;
 
 	/**
-	 * Id for the party.
+	 * Identifier for the party.
 	 */
-	private Integer id;
+	private Integer identifier;
 
 	/**
-	 * Gets the id for the party.
+	 * Gets the identifier for the party.
 	 * 
-	 * @return The id for the party.
+	 * @return The identifier for the party.
 	 */
 	@Id
-	@Column(name = "id")
+	@Column(name = "identifier")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return id;
+	public Integer getIdentifier() {
+		return identifier;
 	}
 
 	/**
-	 * Sets the id for the party.
+	 * Sets the identifier for the party.
 	 * 
-	 * @param id
-	 *            New id for the party.
+	 * @param identifier
+	 *            New identifier for the party.
 	 */
-	public void setId(final Integer id) {
-		this.id = id;
+	public void setIdentifier(final Integer identifier) {
+		this.identifier = identifier;
 	}
 
 	/**
@@ -71,6 +71,60 @@ public class FakeEntity implements Serializable {
 	 */
 	public void setName(final String name) {
 		this.name = name;
+	}
+
+	/**
+	 * Default constructor.
+	 */
+	public FakeEntity() {
+		super();
+	}
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param name
+	 *            Name of the fake entity.
+	 */
+	public FakeEntity(final String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((identifier == null) ? 0 : identifier.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	/**
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FakeEntity other = (FakeEntity) obj;
+		if (identifier == null) {
+			if (other.identifier != null)
+				return false;
+		} else if (!identifier.equals(other.identifier))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
 
 }

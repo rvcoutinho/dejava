@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 /**
  * Resources to be injected via CDI.
  */
-public class Resources {
+public class EJBResources {
 
 	/**
 	 * Entity manager.

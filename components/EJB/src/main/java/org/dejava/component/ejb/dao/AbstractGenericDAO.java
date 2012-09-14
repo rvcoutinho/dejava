@@ -85,6 +85,32 @@ public abstract class AbstractGenericDAO<Entity> {
 	}
 
 	/**
+	 * Merges the entity with the persistence context (so its state is persisted).
+	 * 
+	 * @param entity
+	 *            The entity to be merged.
+	 * @return The merged instance.
+	 */
+	public Entity merge(final Entity entity) {
+		// TODO Check if already is persisted?
+		// Merges the given entity with the persistence context.
+		return getEntityManager().merge(entity);
+	}
+
+	/**
+	 * Removes a persistent entity.
+	 * 
+	 * @param entity
+	 *            Entity to be removed.
+	 */
+	public void remove(final Entity entity) {
+		// Tries to merge the entity.
+		final Entity mergedEntity = getEntityManager().merge(entity);
+		// Tries to remove the entity.
+		getEntityManager().remove(mergedEntity);
+	}
+
+	/**
 	 * Gets an entity by its id.
 	 * 
 	 * @param identifier

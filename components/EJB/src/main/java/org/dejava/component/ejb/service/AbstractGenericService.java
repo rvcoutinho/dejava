@@ -1,5 +1,6 @@
 package org.dejava.component.ejb.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.inject.Inject;
@@ -21,6 +22,76 @@ public abstract class AbstractGenericService<Entity> {
 	private AbstractGenericDAO<Entity> entityDAO;
 
 	/**
+	 * Gets the entityDAO.
+	 * 
+	 * @return The entityDAO.
+	 */
+	public AbstractGenericDAO<Entity> getEntityDAO() {
+		return entityDAO;
+	}
+
+	/**
+	 * Adds or update the persistent entity.
+	 * 
+	 * @param entity
+	 *            The entity to be persisted.
+	 * @return The persisted (and updated) entity.
+	 */
+	public Entity addOrUpdate(final Entity entity) {
+		// If the given entity is null.
+		if (entity == null) {
+			// Throws
+			throw BRE
+		}
+		// Merges the entity.
+		return getEntityDAO().merge(entity);
+	}
+
+	/**
+	 * Adds or update all the persistent entities.
+	 * 
+	 * @param entities
+	 *            The entities to be persisted.
+	 * @return The persisted (and updated) entity.
+	 */
+	public Collection<Entity> addOrUpdateAll(final Collection<Entity> entities) {
+		// Creates a new list of entities.
+		final Collection<Entity> mergedEntities = new ArrayList<>();
+		// For each given entity.
+		for (final Entity currentEntity : entities) {
+			// Tries to add or update the current entity.
+			mergedEntities.add(addOrUpdate(currentEntity));
+		}
+		// Returns the list of merged entities.
+		return mergedEntities;
+	}
+
+	/**
+	 * Removes a persistent entity.
+	 * 
+	 * @param entity
+	 *            Entity to be removed.
+	 */
+	public void remove(final Entity entity) {
+		// Tries to remove the entity.
+		getEntityDAO().remove(entity);
+	}
+
+	/**
+	 * Removes persistent entities.
+	 * 
+	 * @param entities
+	 *            The entities to be removed.
+	 */
+	public void removeAll(final Collection<Entity> entities) {
+		// For each given entity.
+		for (final Entity currentEntity : entities) {
+			// Tries to remove the current entity.
+			remove(currentEntity);
+		}
+	}
+
+	/**
 	 * Gets an entity by its id.
 	 * 
 	 * @param identifier
@@ -29,7 +100,7 @@ public abstract class AbstractGenericService<Entity> {
 	 */
 	public Entity getEntityById(final Object identifier) {
 		// Tries to return the entity.
-		return entityDAO.getEntityById(identifier);
+		return getEntityDAO().getEntityById(identifier);
 	}
 
 	/**
@@ -48,7 +119,7 @@ public abstract class AbstractGenericService<Entity> {
 	public Collection<Entity> getEntitiesByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getEntitiesByAttribute(attributeName, attributeValue, firstResult, maxResults);
+		return getEntityDAO().getEntitiesByAttribute(attributeName, attributeValue, firstResult, maxResults);
 	}
 
 	/**
@@ -63,7 +134,6 @@ public abstract class AbstractGenericService<Entity> {
 	 */
 	public Collection<Entity> getAllEntities(final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getAllEntities(firstResult, maxResults);
+		return getEntityDAO().getAllEntities(firstResult, maxResults);
 	}
-
 }

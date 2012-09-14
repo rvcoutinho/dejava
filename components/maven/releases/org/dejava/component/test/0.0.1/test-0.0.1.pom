@@ -84,19 +84,16 @@
 			<groupId>org.dejava.component</groupId>
 			<artifactId>i18n</artifactId>
 			<version>0.0.1</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>reflection</artifactId>
 			<version>0.0.1</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>exception</artifactId>
 			<version>0.0.1</version>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

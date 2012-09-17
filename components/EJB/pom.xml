@@ -3,46 +3,69 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<artifactId>javaee</artifactId>
-		<groupId>org.dejava.component</groupId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-
+	<groupId>org.dejava.component</groupId>
 	<artifactId>ejb</artifactId>
-	<packaging>jar</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>EJB</name>
+
+	<repositories>
+		<repository>
+			<id>dejava-components</id>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>repo</id>
+			<url>file:../maven/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot-repo</id>
+			<url>file:../maven/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.as</groupId>
+				<artifactId>jboss-as-parent</artifactId>
+				<version>7.1.1.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>exception</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>reflection</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>i18n</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>test</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.dejava.component.exce</groupId>
-			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Declare the APIs we depend on and need for compilation. All of them 
-			are provided by JBoss AS 7 -->
 
 		<!-- Import the EJB API, we use provided scope as the API is included in 
 			JBoss AS 7 -->
@@ -74,25 +97,10 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Now we declare any tools needed -->
-
-		<!-- Annotation processor to generate the JPA 2.0 metamodel classes for 
-			typesafe criteria queries -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-jpamodelgen</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Annotation processor that raising compilation errors whenever constraint 
-			annotations are incorrectly used. -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator-annotation-processor</artifactId>
-			<scope>provided</scope>
-		</dependency>
 
 		<!-- Test scope dependencies -->
 		<dependency>
@@ -128,6 +136,17 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<annotationProcessors>
+						<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
+					</annotationProcessors>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<executions>
@@ -150,6 +169,12 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.1.1.Final</version>
+				<inherited>true</inherited>
 			</plugin>
 		</plugins>
 	</build>

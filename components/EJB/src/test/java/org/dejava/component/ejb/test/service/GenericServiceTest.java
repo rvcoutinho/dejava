@@ -2,18 +2,20 @@ package org.dejava.component.ejb.test.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
 import org.dejava.component.ejb.test.auxiliary.FakeEntity;
 import org.dejava.component.ejb.test.auxiliary.FakeEntityService;
+import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.jboss.shrinkwrap.resolver.api.DependencyResolvers;
+import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -33,7 +35,18 @@ public class GenericServiceTest {
 	 */
 	@Deployment
 	public static Archive<?> createTestArchive() {
-		return ShrinkWrap.create(WebArchive.class, "test.war").addPackages(true, "org.dejava.component.ejb")
+		final String aPom = "pom.xml";
+		final MavenDependencyResolver dependencyResolver = DependencyResolvers
+				.use(MavenDependencyResolver.class).loadMetadataFromPom(aPom);
+		return ShrinkWrap
+				.create(WebArchive.class, "test.war")
+				.addPackages(true, "org.dejava.component.ejb")
+				.addAsLibraries(
+						dependencyResolver.artifact("org.dejava.component.exception").resolveAsFiles())
+				.addAsLibraries(
+						dependencyResolver.artifact("org.dejava.component.i18n.message").resolveAsFiles())
+				.addAsLibraries(
+						dependencyResolver.artifact("org.dejava.component.reflection").resolveAsFiles())
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml");
@@ -53,12 +66,6 @@ public class GenericServiceTest {
 	public FakeEntityService getFakeEntityService() {
 		return fakeEntityService;
 	}
-
-	/**
-	 * Logger.
-	 */
-	@Inject
-	protected Logger log;
 
 	/**
 	 * Default names for fake entities.
@@ -115,6 +122,15 @@ public class GenericServiceTest {
 		final FakeEntity sameFakeEntity = getFakeEntityService().getEntityById(fakeEntity.getIdentifier());
 		// Assert that the two entities are the same.
 		Assert.assertEquals(fakeEntity, sameFakeEntity);
+	}
+
+	/**
+	 * Tests the method addOrUpdate with null entity.
+	 */
+	@Test(expected = EmptyParameterException.class)
+	public void testAddOrUpdateNullEntity() {
+		// Tries to add a fake entity.
+		getFakeEntityService().addOrUpdate(null);
 	}
 
 	/**

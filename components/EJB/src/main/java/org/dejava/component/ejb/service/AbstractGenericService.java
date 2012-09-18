@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.inject.Inject;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
+import org.dejava.component.exception.localized.checked.BusinessRuleException;
 
 /**
  * Implements the default behavior of an JPA entity EJB service.
@@ -38,11 +39,7 @@ public abstract class AbstractGenericService<Entity> {
 	 * @return The persisted (and updated) entity.
 	 */
 	public Entity addOrUpdate(final Entity entity) {
-		// If the given entity is null.
-		if (entity == null) {
-			// Throws
-			throw BRE
-		}
+		System.out.println("teste 1");
 		// Merges the entity.
 		return getEntityDAO().merge(entity);
 	}
@@ -54,13 +51,16 @@ public abstract class AbstractGenericService<Entity> {
 	 *            The entities to be persisted.
 	 * @return The persisted (and updated) entity.
 	 */
-	public Collection<Entity> addOrUpdateAll(final Collection<Entity> entities) {
+	public Collection<Entity> addOrUpdateAll(final Collection<Entity> entities)  {
 		// Creates a new list of entities.
 		final Collection<Entity> mergedEntities = new ArrayList<>();
-		// For each given entity.
-		for (final Entity currentEntity : entities) {
-			// Tries to add or update the current entity.
-			mergedEntities.add(addOrUpdate(currentEntity));
+		// If the given collection is not empty.
+		if (entities != null) {
+			// For each given entity.
+			for (final Entity currentEntity : entities) {
+				// Tries to add or update the current entity.
+				mergedEntities.add(addOrUpdate(currentEntity));
+			}
 		}
 		// Returns the list of merged entities.
 		return mergedEntities;
@@ -84,10 +84,13 @@ public abstract class AbstractGenericService<Entity> {
 	 *            The entities to be removed.
 	 */
 	public void removeAll(final Collection<Entity> entities) {
-		// For each given entity.
-		for (final Entity currentEntity : entities) {
-			// Tries to remove the current entity.
-			remove(currentEntity);
+		// If the given collection is not empty.
+		if (entities != null) {
+			// For each given entity.
+			for (final Entity currentEntity : entities) {
+				// Tries to remove the current entity.
+				remove(currentEntity);
+			}
 		}
 	}
 

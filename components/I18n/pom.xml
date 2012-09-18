@@ -1,10 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<name>I18n</name>
+
 	<groupId>org.dejava.component</groupId>
 	<artifactId>i18n</artifactId>
 	<version>0.0.1</version>
+
+	<name>I18n</name>
 
 	<repositories>
 		<repository>
@@ -15,15 +18,15 @@
 
 	<distributionManagement>
 		<repository>
-			<id>repo</id>
+			<id>dejava-components-releases</id>
 			<url>file:../maven/releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>snapshot-repo</id>
+			<id>dejava-components-snapshots</id>
 			<url>file:../maven/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-
+	
 	<build>
 		<plugins>
 			<plugin>

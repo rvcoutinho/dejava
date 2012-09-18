@@ -10,6 +10,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
+
 /**
  * Implements the default behavior of an JPA entity DAO.
  * 
@@ -92,6 +94,11 @@ public abstract class AbstractGenericDAO<Entity> {
 	 * @return The merged instance.
 	 */
 	public Entity merge(final Entity entity) {
+		// If the given entity is null.
+		if (entity == null) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
 		// TODO Check if already is persisted?
 		// Merges the given entity with the persistence context.
 		return getEntityManager().merge(entity);
@@ -104,6 +111,11 @@ public abstract class AbstractGenericDAO<Entity> {
 	 *            Entity to be removed.
 	 */
 	public void remove(final Entity entity) {
+		// If the given entity is null.
+		if (entity == null) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
 		// Tries to merge the entity.
 		final Entity mergedEntity = getEntityManager().merge(entity);
 		// Tries to remove the entity.
@@ -118,6 +130,11 @@ public abstract class AbstractGenericDAO<Entity> {
 	 * @return An entity by its id.
 	 */
 	public Entity getEntityById(final Object identifier) {
+		// If the given identifier is null.
+		if (identifier == null) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
 		// Tries to return the entity.
 		return getEntityManager().find(getEntityClass(), identifier);
 	}
@@ -137,6 +154,11 @@ public abstract class AbstractGenericDAO<Entity> {
 	 */
 	public Collection<Entity> getEntitiesByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults) {
+		// If the given attribute name is null.
+		if (attributeName == null) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
 		// Creates a new criteria query.
 		final CriteriaQuery<Entity> criteriaQuery = getCriteriaBuilder().createQuery(getEntityClass());
 		// Creates the root for the query.

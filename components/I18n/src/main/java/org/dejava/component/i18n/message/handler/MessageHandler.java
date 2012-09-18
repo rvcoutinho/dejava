@@ -1,5 +1,7 @@
 package org.dejava.component.i18n.message.handler;
 
+import java.io.Serializable;
+
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.model.ApplicationMessageType;
@@ -7,9 +9,8 @@ import org.dejava.component.i18n.message.handler.model.ApplicationMessageType;
 /**
  * Helps handling internationalization messages.
  */
-public interface MessageHandler {
-	
-	
+public interface MessageHandler extends Serializable {
+
 	/**
 	 * Gets a message with the given key and parameters values of the defined type.
 	 * 
@@ -25,7 +26,7 @@ public interface MessageHandler {
 	 */
 	String getMessage(String key, Object[] parametersValues) throws MessageNotFoundException,
 			InvalidParameterException;
-	
+
 	/**
 	 * Gets a message with the given key and parameters values of the defined type.
 	 * 
@@ -43,7 +44,7 @@ public interface MessageHandler {
 	 */
 	String getMessage(String type, String key, Object[] parametersValues) throws MessageNotFoundException,
 			InvalidParameterException;
-	
+
 	/**
 	 * Gets a message with the given key and parameters values of the defined type.
 	 * 

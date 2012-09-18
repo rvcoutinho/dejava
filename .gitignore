@@ -1,3 +1,5 @@
 
 /components/.metadata/**/*
 /components/.metadata/*
+/services/.metadata/**/*
+/services/.metadata/*

@@ -11,7 +11,7 @@
 
 	<repositories>
 		<repository>
-			<id>dejava-components</id>
+			<id>dejava-components-releases</id>
 			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
 		</repository>
 	</repositories>
@@ -70,7 +70,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.12.3</version>
 				<configuration>
-					<skipTests>true</skipTests>
+					<excludes>
+						<exclude>**/FakeTest.java</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 		</plugins>

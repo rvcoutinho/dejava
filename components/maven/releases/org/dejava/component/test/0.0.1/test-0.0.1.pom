@@ -70,7 +70,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.12.3</version>
 				<configuration>
-					<skipTests>true</skipTests>
+					<excludes>
+						<exclude>**/FakeTest.java</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 		</plugins>

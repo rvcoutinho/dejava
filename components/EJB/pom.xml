@@ -11,7 +11,7 @@
 
 	<repositories>
 		<repository>
-			<id>dejava-components</id>
+			<id>dejava-components-releases</id>
 			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
 		</repository>
 	</repositories>

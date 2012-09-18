@@ -18,11 +18,11 @@
 
 	<distributionManagement>
 		<repository>
-			<id>dejava-components-releases</id>
+			<id>dejava-components-releases-local</id>
 			<url>file:../maven/releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>dejava-components-snapshots</id>
+			<id>dejava-components-snapshots-local</id>
 			<url>file:../maven/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>

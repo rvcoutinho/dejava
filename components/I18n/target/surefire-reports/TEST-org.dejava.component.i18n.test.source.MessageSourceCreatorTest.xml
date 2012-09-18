@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.674" errors="0" skipped="0" tests="1" name="org.dejava.component.i18n.test.source.MessageSourceCreatorTest">
+<testsuite failures="0" time="0.001" errors="1" skipped="0" tests="1" name="org.dejava.component.i18n.test.source.MessageSourceCreatorTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_07\jre\bin"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf5179289269387112481.tmp"/>
+    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf4923288887671008374.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_07\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Java\jdk1.7.0_07\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files (x86)\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -43,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.7.0_07\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B deploy"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pt"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -60,5 +60,79 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.667" classname="org.dejava.component.i18n.test.source.MessageSourceCreatorTest" name="test"/>
+  <testcase time="0" classname="org.dejava.component.i18n.test.source.MessageSourceCreatorTest" name="test">
+    <error message="Unresolved compilation problems: 
+	The import org.dejava.component.i18n.message.annotation cannot be resolved
+	The import org.dejava.component.i18n.message.annotation cannot be resolved
+	The import org.dejava.component.i18n.source cannot be resolved
+	The import org.dejava.component.i18n.source cannot be resolved
+	The import org.dejava.component.i18n.test.source.auxiliary cannot be resolved
+	The import org.dejava.component.i18n.test.source.auxiliary cannot be resolved
+	MessageBundles cannot be resolved to a type
+	The attribute defaultType is undefined for the annotation type MessageBundles
+	The attribute messageBundles is undefined for the annotation type MessageBundles
+	MessageBundle cannot be resolved to a type
+	The attribute type is undefined for the annotation type MessageBundle
+	The attribute baseName is undefined for the annotation type MessageBundle
+	MessageSourceCreator cannot be resolved to a type
+	MessageSources cannot be resolved to a type
+	The constructor ClassMirror&lt;InformationKeys&gt;(Class&lt;? extends InformationKeys&gt;) refers to the missing type InformationKeys
+	InformationKeys cannot be resolved to a type
+	InformationKeys cannot be resolved to a type
+	Bound mismatch: The generic method getAnnotation(Class&lt;AnyAnnotation&gt;) of type ClassMirror&lt;Reflected&gt; is not applicable for the arguments (Class&lt;MessageSources&gt;). The inferred type MessageSources is not a valid substitute for the bounded parameter &lt;AnyAnnotation extends Annotation&gt;
+	MessageSources cannot be resolved to a type
+	SampleEntryProvider cannot be resolved to a variable
+" type="java.lang.Error">java.lang.Error: Unresolved compilation problems: 
+	The import org.dejava.component.i18n.message.annotation cannot be resolved
+	The import org.dejava.component.i18n.message.annotation cannot be resolved
+	The import org.dejava.component.i18n.source cannot be resolved
+	The import org.dejava.component.i18n.source cannot be resolved
+	The import org.dejava.component.i18n.test.source.auxiliary cannot be resolved
+	The import org.dejava.component.i18n.test.source.auxiliary cannot be resolved
+	MessageBundles cannot be resolved to a type
+	The attribute defaultType is undefined for the annotation type MessageBundles
+	The attribute messageBundles is undefined for the annotation type MessageBundles
+	MessageBundle cannot be resolved to a type
+	The attribute type is undefined for the annotation type MessageBundle
+	The attribute baseName is undefined for the annotation type MessageBundle
+	MessageSourceCreator cannot be resolved to a type
+	MessageSources cannot be resolved to a type
+	The constructor ClassMirror&lt;InformationKeys&gt;(Class&lt;? extends InformationKeys&gt;) refers to the missing type InformationKeys
+	InformationKeys cannot be resolved to a type
+	InformationKeys cannot be resolved to a type
+	Bound mismatch: The generic method getAnnotation(Class&lt;AnyAnnotation&gt;) of type ClassMirror&lt;Reflected&gt; is not applicable for the arguments (Class&lt;MessageSources&gt;). The inferred type MessageSources is not a valid substitute for the bounded parameter &lt;AnyAnnotation extends Annotation&gt;
+	MessageSources cannot be resolved to a type
+	SampleEntryProvider cannot be resolved to a variable
+
+	at org.dejava.component.i18n.test.source.MessageSourceCreatorTest.&lt;init&gt;(MessageSourceCreatorTest.java:15)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
+	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:187)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.runReflectiveCall(BlockJUnit4ClassRunner.java:236)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.BlockJUnit4ClassRunner.methodBlock(BlockJUnit4ClassRunner.java:233)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+</error>
+  </testcase>
 </testsuite>

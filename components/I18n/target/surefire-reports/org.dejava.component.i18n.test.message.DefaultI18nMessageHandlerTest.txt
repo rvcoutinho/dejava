@@ -1,4 +1,40 @@
 -------------------------------------------------------------------------------
 Test set: org.dejava.component.i18n.test.message.DefaultI18nMessageHandlerTest
 -------------------------------------------------------------------------------
-Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 sec
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.082 sec <<< FAILURE!
+org.dejava.component.i18n.test.message.DefaultI18nMessageHandlerTest  Time elapsed: 0.015 sec  <<< ERROR!
+java.lang.Error: Unresolved compilation problems: 
+	No exception of type MessageNotFoundException can be thrown; an exception type must be a subclass of Throwable
+	The method getMessage(String, Object[]) from the type MessageHandler refers to the missing type InvalidParameterException
+
+	at org.dejava.component.exception.localized.ExceptionMessageCommand.getMessage(ExceptionMessageCommand.java:36)
+	at org.dejava.component.exception.localized.checked.AbstractLocalizedException.getLocalizedMessage(AbstractLocalizedException.java:73)
+	at org.apache.maven.surefire.booter.ForkingRunListener.encode(ForkingRunListener.java:314)
+	at org.apache.maven.surefire.booter.ForkingRunListener.toString(ForkingRunListener.java:252)
+	at org.apache.maven.surefire.booter.ForkingRunListener.testError(ForkingRunListener.java:130)
+	at org.apache.maven.surefire.common.junit4.JUnit4RunListener.testFailure(JUnit4RunListener.java:101)
+	at org.junit.runner.notification.RunNotifier$4.notifyListener(RunNotifier.java:100)
+	at org.junit.runner.notification.RunNotifier$SafeNotifier.run(RunNotifier.java:41)
+	at org.junit.runner.notification.RunNotifier.fireTestFailure(RunNotifier.java:97)
+	at org.dejava.component.test.runner.notifier.ParametricTestNotifier.addFailure(ParametricTestNotifier.java:84)
+	at org.dejava.component.test.runner.notifier.ParametricTestNotifier.addFailures(ParametricTestNotifier.java:97)
+	at org.dejava.component.test.runner.JUnitParametricRunner.runChild(JUnitParametricRunner.java:359)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)

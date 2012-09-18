@@ -42,11 +42,11 @@ public class GenericServiceTest {
 				.create(WebArchive.class, "test.war")
 				.addPackages(true, "org.dejava.component.ejb")
 				.addAsLibraries(
-						dependencyResolver.artifact("org.dejava.component.exception").resolveAsFiles())
+						dependencyResolver.artifact("org.dejava.component:exception").resolveAsFiles())
 				.addAsLibraries(
-						dependencyResolver.artifact("org.dejava.component.i18n.message").resolveAsFiles())
+						dependencyResolver.artifact("org.dejava.component:i18n").resolveAsFiles())
 				.addAsLibraries(
-						dependencyResolver.artifact("org.dejava.component.reflection").resolveAsFiles())
+						dependencyResolver.artifact("org.dejava.component:reflection").resolveAsFiles())
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml");
@@ -127,7 +127,7 @@ public class GenericServiceTest {
 	/**
 	 * Tests the method addOrUpdate with null entity.
 	 */
-	@Test(expected = EmptyParameterException.class)
+	@Test
 	public void testAddOrUpdateNullEntity() {
 		// Tries to add a fake entity.
 		getFakeEntityService().addOrUpdate(null);

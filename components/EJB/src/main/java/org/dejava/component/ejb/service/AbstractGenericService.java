@@ -39,7 +39,6 @@ public abstract class AbstractGenericService<Entity> {
 	 * @return The persisted (and updated) entity.
 	 */
 	public Entity addOrUpdate(final Entity entity) {
-		System.out.println("teste 1");
 		// Merges the entity.
 		return getEntityDAO().merge(entity);
 	}

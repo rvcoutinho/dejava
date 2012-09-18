@@ -1,4 +1,4 @@
-package org.dejava.component.ejb.test.auxiliary;
+package org.dejava.component.ejb.test.util;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;

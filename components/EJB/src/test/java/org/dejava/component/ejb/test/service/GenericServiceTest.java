@@ -6,8 +6,8 @@ import java.util.Collection;
 import javax.ejb.EJBException;
 import javax.inject.Inject;
 
-import org.dejava.component.ejb.test.auxiliary.FakeEntity;
-import org.dejava.component.ejb.test.auxiliary.FakeEntityService;
+import org.dejava.component.ejb.test.util.FakeEntity;
+import org.dejava.component.ejb.test.util.FakeEntityService;
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -36,9 +36,10 @@ public class GenericServiceTest {
 	 */
 	@Deployment
 	public static Archive<?> createTestArchive() {
-		final String aPom = "pom.xml";
+		// Gets the maven dependency resolver.
 		final MavenDependencyResolver dependencyResolver = DependencyResolvers.use(
-				MavenDependencyResolver.class).loadMetadataFromPom(aPom);
+				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
+		// Defines and returns the archive definition.
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addPackages(true, "org.dejava.component.ejb")

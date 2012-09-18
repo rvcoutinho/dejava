@@ -1,4 +1,4 @@
-package org.dejava.component.ejb.test.auxiliary;
+package org.dejava.component.ejb.test.util;
 
 import java.io.Serializable;
 

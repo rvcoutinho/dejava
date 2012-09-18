@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.dejava.component.ejb.test.auxiliary.FakeEntity;
 import org.dejava.component.ejb.test.auxiliary.FakeEntityService;
+import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -36,15 +37,14 @@ public class GenericServiceTest {
 	@Deployment
 	public static Archive<?> createTestArchive() {
 		final String aPom = "pom.xml";
-		final MavenDependencyResolver dependencyResolver = DependencyResolvers
-				.use(MavenDependencyResolver.class).loadMetadataFromPom(aPom);
+		final MavenDependencyResolver dependencyResolver = DependencyResolvers.use(
+				MavenDependencyResolver.class).loadMetadataFromPom(aPom);
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addPackages(true, "org.dejava.component.ejb")
 				.addAsLibraries(
 						dependencyResolver.artifact("org.dejava.component:exception").resolveAsFiles())
-				.addAsLibraries(
-						dependencyResolver.artifact("org.dejava.component:i18n").resolveAsFiles())
+				.addAsLibraries(dependencyResolver.artifact("org.dejava.component:i18n").resolveAsFiles())
 				.addAsLibraries(
 						dependencyResolver.artifact("org.dejava.component:reflection").resolveAsFiles())
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
@@ -90,13 +90,13 @@ public class GenericServiceTest {
 	}
 
 	/**
-	 * Assert that there are no entities persisted before the test.
+	 * Assert that there are no entities persisted.
 	 */
 	@Before
 	public void assertNoEntitiesPersisted() {
 		// Gets all entities.
 		final Collection<FakeEntity> allEntities = getFakeEntityService().getAllEntities(null, null);
-		// Assert that there are no entities persisted before the test.
+		// Assert that there are no entities persisted.
 		Assert.assertTrue(allEntities.isEmpty());
 	}
 
@@ -126,11 +126,21 @@ public class GenericServiceTest {
 
 	/**
 	 * Tests the method addOrUpdate with null entity.
+	 * 
+	 * @throws Throwable
+	 *             Expected exception.
 	 */
-	@Test(expected = EJBException.class)
-	public void testAddOrUpdateNullEntity() {
+	@Test(expected = EmptyParameterException.class)
+	public void testAddOrUpdateNullEntity() throws Throwable {
 		// Tries to add a fake entity.
-		getFakeEntityService().addOrUpdate(null);
+		try {
+			getFakeEntityService().addOrUpdate(null);
+		}
+		// Expects an EJB exception.
+		catch (final EJBException exception) {
+			// Throws the root of the exception.
+			throw exception.getCause();
+		}
 	}
 
 	/**
@@ -144,6 +154,17 @@ public class GenericServiceTest {
 		final Collection<FakeEntity> sameFakeEntities = getFakeEntityService().getAllEntities(null, null);
 		// Assert that the two collections have the same entities (there were no persistent entities before).
 		Assert.assertEquals(entities, sameFakeEntities);
+	}
+
+	/**
+	 * Tests the method addOrUpdateAll with null entity.
+	 */
+	@Test
+	public void testAddOrUpdateAllNullEntity() {
+		// Tries to add fake entities.
+		getFakeEntityService().addOrUpdateAll(null);
+		// Assert that there are no entities persisted.
+		assertNoEntitiesPersisted();
 	}
 
 	/**
@@ -162,6 +183,25 @@ public class GenericServiceTest {
 	}
 
 	/**
+	 * Tests the method remove with null entity.
+	 * 
+	 * @throws Throwable
+	 *             Expected exception.
+	 */
+	@Test(expected = EmptyParameterException.class)
+	public void testRemoveNullEntity() throws Throwable {
+		// Tries to remove a null entity.
+		try {
+			getFakeEntityService().remove(null);
+		}
+		// Expects an EJB exception.
+		catch (final EJBException exception) {
+			// Throws the root of the exception.
+			throw exception.getCause();
+		}
+	}
+
+	/**
 	 * Tests a successful approach for the method removeAll.
 	 */
 	@Test
@@ -177,6 +217,17 @@ public class GenericServiceTest {
 	}
 
 	/**
+	 * Tests the method removelAll with null entity.
+	 */
+	@Test
+	public void testRemoveAllNullEntity() {
+		// Tries to remove fake entities (null).
+		getFakeEntityService().removeAll(null);
+		// Assert that there are no entities persisted.
+		assertNoEntitiesPersisted();
+	}
+
+	/**
 	 * Tests a successful approach for the method getEntityById.
 	 */
 	@Test
@@ -187,6 +238,25 @@ public class GenericServiceTest {
 		final FakeEntity sameFakeEntity = getFakeEntityService().getEntityById(fakeEntity.getIdentifier());
 		// Assert that the two entities are the same.
 		Assert.assertEquals(fakeEntity, sameFakeEntity);
+	}
+
+	/**
+	 * Tests the method getEntityById with null id.
+	 * 
+	 * @throws Throwable
+	 *             Expected exception.
+	 */
+	@Test(expected = EmptyParameterException.class)
+	public void testGetEntityByIdNullId() throws Throwable {
+		// Tries to get a fake entity with null id.
+		try {
+			getFakeEntityService().getEntityById(null);
+		}
+		// Expects an EJB exception.
+		catch (final EJBException exception) {
+			// Throws the root of the exception.
+			throw exception.getCause();
+		}
 	}
 
 	/**
@@ -205,6 +275,25 @@ public class GenericServiceTest {
 		Assert.assertEquals(1, sameFirstEntity.size());
 		// Assert that the two entities are the same.
 		Assert.assertEquals(firstEntity, sameFirstEntity.iterator().next());
+	}
+
+	/**
+	 * Tests the method getEntitiesByAttribute with null attribute name.
+	 * 
+	 * @throws Throwable
+	 *             Expected exception.
+	 */
+	@Test(expected = EmptyParameterException.class)
+	public void testGetEntitiesByAttributeNullAttributeName() throws Throwable {
+		// Tries to get a fake entity with null attribute name.
+		try {
+			getFakeEntityService().getEntitiesByAttribute(null, null, null, null);
+		}
+		// Expects an EJB exception.
+		catch (final EJBException exception) {
+			// Throws the root of the exception.
+			throw exception.getCause();
+		}
 	}
 
 	/**

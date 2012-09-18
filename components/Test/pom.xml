@@ -5,7 +5,9 @@
 
 	<groupId>org.dejava.component</groupId>
 	<artifactId>test</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>Test</name>
 
 	<name>Test</name>
 
@@ -86,17 +88,17 @@
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>i18n</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>reflection</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>exception</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

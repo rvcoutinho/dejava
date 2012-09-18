@@ -5,7 +5,9 @@
 
 	<groupId>org.dejava.component</groupId>
 	<artifactId>exception</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>Exception</name>
 
 	<name>Exception</name>
 
@@ -80,13 +82,13 @@
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>i18n</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>test</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

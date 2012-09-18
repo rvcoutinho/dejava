@@ -1,5 +1,6 @@
 package org.dejava.component.i18n.message.handler;
 
+import java.io.Serializable;
 import java.util.Locale;
 
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
@@ -7,8 +8,8 @@ import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 /**
  * An implementation of the command design pattern in order to enable messages to be processed later.
  */
-public interface MessageCommand {
-	
+public interface MessageCommand extends Serializable {
+
 	/**
 	 * Sets the locale for the message.
 	 * 
@@ -16,7 +17,7 @@ public interface MessageCommand {
 	 *            New locale for the message.
 	 */
 	void setLocale(final Locale locale);
-	
+
 	/**
 	 * Sets the type for the message.
 	 * 
@@ -24,7 +25,7 @@ public interface MessageCommand {
 	 *            New type for the message.
 	 */
 	void setType(String type);
-	
+
 	/**
 	 * Sets the parameters for the message.
 	 * 
@@ -32,7 +33,7 @@ public interface MessageCommand {
 	 *            New parameters for the message.
 	 */
 	void setParameters(final Object[] parameters);
-	
+
 	/**
 	 * Sets the key for the message.
 	 * 
@@ -40,7 +41,7 @@ public interface MessageCommand {
 	 *            New key for the message.
 	 */
 	void setMessageKey(final String messageKey);
-	
+
 	/**
 	 * Gets a message by evaluating the given information.
 	 * 
@@ -49,7 +50,7 @@ public interface MessageCommand {
 	 *             If the message cannot be found.
 	 */
 	String getMessage() throws MessageNotFoundException;
-	
+
 	/**
 	 * Gets a message by evaluating the given information for the en_US locale.
 	 * 
@@ -58,5 +59,5 @@ public interface MessageCommand {
 	 *             If the message cannot be found.
 	 */
 	String getUsMessage() throws MessageNotFoundException;
-	
+
 }

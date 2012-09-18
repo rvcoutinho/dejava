@@ -3,11 +3,11 @@ package org.dejava.component.ejb.test.service;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.ejb.EJBException;
 import javax.inject.Inject;
 
 import org.dejava.component.ejb.test.auxiliary.FakeEntity;
 import org.dejava.component.ejb.test.auxiliary.FakeEntityService;
-import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -120,14 +120,14 @@ public class GenericServiceTest {
 		final FakeEntity fakeEntity = getFakeEntityService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
 		// Tries to get the same entity by its new id.
 		final FakeEntity sameFakeEntity = getFakeEntityService().getEntityById(fakeEntity.getIdentifier());
-		// Assert that the two entities are the same.
+		// Assert that the two entities are the sOame.
 		Assert.assertEquals(fakeEntity, sameFakeEntity);
 	}
 
 	/**
 	 * Tests the method addOrUpdate with null entity.
 	 */
-	@Test
+	@Test(expected = EJBException.class)
 	public void testAddOrUpdateNullEntity() {
 		// Tries to add a fake entity.
 		getFakeEntityService().addOrUpdate(null);

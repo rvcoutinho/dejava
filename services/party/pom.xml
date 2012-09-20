@@ -2,11 +2,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>org.dejava.services</groupId>
 	<artifactId>party</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
 	<name>party application</name>
+
+	<repositories>
+		<repository>
+			<id>dejava-components-releases</id>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>dejava-components-releases-local</id>
+			<url>file:../maven/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>dejava-components-snapshots-local</id>
+			<url>file:../maven/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 
 	<modules>
 		<module>party-ejb</module>
@@ -49,6 +70,38 @@
 				<type>war</type>
 				<scope>compile</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>org.dejava.component</groupId>
+				<artifactId>ejb</artifactId>
+				<version>0.0.1</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.component</groupId>
+				<artifactId>exception</artifactId>
+				<version>0.0.1</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.component</groupId>
+				<artifactId>reflection</artifactId>
+				<version>0.0.1</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.component</groupId>
+				<artifactId>i18n</artifactId>
+				<version>0.0.1</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.component</groupId>
+				<artifactId>test</artifactId>
+				<version>0.0.1</version>
+				<scope>test</scope>
+			</dependency>
+
 
 			<!-- JBoss distributes a complete set of Java EE 6 APIs including a Bill 
 				of Materials (BOM). A BOM specifies the versions of a "stack" (or a collection) 

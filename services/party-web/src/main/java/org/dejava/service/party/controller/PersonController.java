@@ -2,6 +2,7 @@ package org.dejava.service.party.controller;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 import org.dejava.component.javaee.controller.AbstractGenericController;
@@ -34,7 +35,8 @@ public class PersonController extends AbstractGenericController<Person> {
 	/**
 	 * TODO
 	 */
-	@Path(value = "teste")
+	@GET
+	@Path(value = "/teste")
 	public void teste() {
 		// Creates a new person.
 		final Person person = new Person();

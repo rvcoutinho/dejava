@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>pom</artifactId>
+		<groupId>org.dejava.service</groupId>
+		<version>0.0.1</version>
+	</parent>
+
+	<artifactId>ear</artifactId>
+	<packaging>ear</packaging>
+
+	<name>EAR</name>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>party-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>party-web</artifactId>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>javaee</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>exception</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>reflection</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>i18n</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>test</artifactId>
+			<type>jar</type>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules></modules>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-ear-plugin</artifactId>
+										<versionRange>[1.0)</versionRange>
+										<goals>
+											<goal>compile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

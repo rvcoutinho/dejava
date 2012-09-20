@@ -7,7 +7,6 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -81,7 +80,6 @@ public abstract class AbstractGenericController<Entity> implements GenericServic
 	 * @see org.dejava.component.javaee.service.GenericService#getEntityById(java.lang.Object)
 	 */
 	@GET
-	@Path(value = "/{id:[0-9][0-9]*}")
 	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Override
 	public Entity getEntityById(final Object identifier) {

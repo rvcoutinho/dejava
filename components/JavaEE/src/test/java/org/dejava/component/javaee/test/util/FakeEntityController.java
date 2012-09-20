@@ -1,7 +1,7 @@
 package org.dejava.component.javaee.test.util;
 
+import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.dejava.component.javaee.controller.AbstractGenericController;
 import org.dejava.component.javaee.service.AbstractGenericService;
@@ -9,7 +9,7 @@ import org.dejava.component.javaee.service.AbstractGenericService;
 /**
  * Fake entity JSF Controller.
  */
-@Named
+@Model
 public class FakeEntityController extends AbstractGenericController<FakeEntity> {
 
 	/**

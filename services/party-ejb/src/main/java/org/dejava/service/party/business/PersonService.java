@@ -9,6 +9,6 @@ import org.dejava.service.party.model.Person;
  * TODO
  */
 @Stateless
-public class PersonService extends AbstractGenericService<Person> {
+public class PersonService extends AbstractGenericService<Person, Integer> {
 
 }

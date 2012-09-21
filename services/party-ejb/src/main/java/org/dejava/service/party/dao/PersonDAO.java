@@ -9,7 +9,7 @@ import org.dejava.service.party.model.Person;
 /**
  * TODO
  */
-public class PersonDAO extends AbstractGenericDAO<Person> {
+public class PersonDAO extends AbstractGenericDAO<Person, Integer> {
 
 	/**
 	 * Entity manager being used.

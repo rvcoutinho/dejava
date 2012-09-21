@@ -16,7 +16,7 @@ import org.dejava.service.party.model.Person;
  */
 @Model
 @Path("/person")
-public class PersonController extends AbstractGenericController<Person> {
+public class PersonController extends AbstractGenericController<Person, Integer> {
 
 	/**
 	 * The person EJB service.
@@ -28,7 +28,7 @@ public class PersonController extends AbstractGenericController<Person> {
 	 * @see org.dejava.component.javaee.controller.AbstractGenericController#getBusinessService()
 	 */
 	@Override
-	protected AbstractGenericService<Person> getBusinessService() {
+	protected AbstractGenericService<Person, Integer> getBusinessService() {
 		return personService;
 	}
 

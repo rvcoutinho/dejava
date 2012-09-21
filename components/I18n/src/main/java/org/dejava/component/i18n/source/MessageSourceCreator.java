@@ -26,7 +26,7 @@ import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
 @SupportedSourceVersion(value = SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes(value = { "org.dejava.component.i18n.source.annotation.MessageSources" })
 public class MessageSourceCreator extends AbstractProcessor {
-	
+
 	/**
 	 * Gets the message source properties file.
 	 * 
@@ -44,7 +44,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 		return new File(sourcePath + "/" + bundleBaseName.replace('.', '/') + "_" + localeText
 				+ ".properties");
 	}
-	
+
 	/**
 	 * Gets the properties with its current file content.
 	 * 
@@ -78,7 +78,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 		// Returns the properties object.
 		return msgSrcProps;
 	}
-	
+
 	/**
 	 * Saves the properties content into the appropriate file.
 	 * 
@@ -121,7 +121,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 			// Ignores it.
 		}
 	}
-	
+
 	/**
 	 * Adds the given entries to the desired message source properties file.
 	 * 
@@ -141,7 +141,9 @@ public class MessageSourceCreator extends AbstractProcessor {
 		// Get the properties content (if any).
 		final Properties msgSrcProps = getPropertiesContent(sourcePath, bundleBaseName, localeText);
 		// For each entry in the set.
-		for (final String currentEntry : entries) {
+		for (String currentEntry : entries) {
+			// The current entry must be lower case.
+			currentEntry = currentEntry.toLowerCase();
 			// If the entry does not exist.
 			if (msgSrcProps.get(currentEntry) == null) {
 				// Creates the entry.
@@ -151,7 +153,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 		// Saves the properties file content.
 		savePropertiesContent(sourcePath, bundleBaseName, localeText, msgSrcProps, description);
 	}
-	
+
 	/**
 	 * @see javax.annotation.processing.AbstractProcessor#process(java.util.Set,
 	 *      javax.annotation.processing.RoundEnvironment)

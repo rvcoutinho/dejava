@@ -184,8 +184,11 @@ public class MessageSourceCreator extends AbstractProcessor {
 					// Gets the class element.
 					final TypeElement currentSuperClass = (TypeElement) ((DeclaredType) currentSuperClassMirror)
 							.asElement();
-					// Adds the superclass in the list.
-					classesToProcess.add(currentSuperClass);
+					// If the class is not Object.
+					if (!"java.lang.Object".equals(currentSuperClass.getQualifiedName())) {
+						// Adds the super class in the list.
+						classesToProcess.add(currentSuperClass);
+					}
 					// The current super class is now the next one.
 					currentSuperClassMirror = currentSuperClass.getSuperclass();
 				}

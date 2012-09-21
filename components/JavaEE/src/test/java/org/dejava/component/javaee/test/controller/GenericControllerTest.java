@@ -56,7 +56,7 @@ public class GenericControllerTest extends AbstractGenericServiceTest {
 	 * @see org.dejava.component.javaee.test.service.AbstractGenericServiceTest#getService()
 	 */
 	@Override
-	protected GenericService<FakeEntity> getService() {
+	protected GenericService<FakeEntity, Integer> getService() {
 		return fakeEntityController;
 	}
 

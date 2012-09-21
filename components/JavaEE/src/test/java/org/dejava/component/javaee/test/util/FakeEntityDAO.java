@@ -8,7 +8,7 @@ import org.dejava.component.javaee.dao.AbstractGenericDAO;
 /**
  * Fake entity DAO.
  */
-public class FakeEntityDAO extends AbstractGenericDAO<FakeEntity> {
+public class FakeEntityDAO extends AbstractGenericDAO<FakeEntity, Integer> {
 
 	/**
 	 * Entity manager.

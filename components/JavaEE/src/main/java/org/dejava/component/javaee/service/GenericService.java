@@ -7,8 +7,10 @@ import java.util.Collection;
  * 
  * @param <Entity>
  *            Any entity.
+ * @param <Key>
+ *            Key of the entity.
  */
-public interface GenericService<Entity> {
+public interface GenericService<Entity, Key> {
 
 	/**
 	 * Adds or update the persistent entity.
@@ -32,7 +34,7 @@ public interface GenericService<Entity> {
 	 * Removes a persistent entity.
 	 * 
 	 * @param entity
-	 *            Entity to be removed.
+	 *            The entity to be removed.
 	 */
 	void remove(final Entity entity);
 
@@ -45,13 +47,13 @@ public interface GenericService<Entity> {
 	void removeAll(final Collection<Entity> entities);
 
 	/**
-	 * Gets an entity by its id.
+	 * Gets an entity by its identifier.
 	 * 
 	 * @param identifier
-	 *            The id of the entity.
-	 * @return An entity by its id.
+	 *            The identifier of the entity.
+	 * @return An entity by its identifier.
 	 */
-	Entity getEntityById(final Object identifier);
+	Entity getEntityById(final Key identifier);
 
 	/**
 	 * Gets all entities with the given attribute value.

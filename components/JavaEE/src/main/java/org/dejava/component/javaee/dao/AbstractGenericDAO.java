@@ -17,8 +17,10 @@ import org.dejava.component.exception.localized.unchecked.EmptyParameterExceptio
  * 
  * @param <Entity>
  *            Any entity.
+ * @param <Key>
+ *            Key of the entity.
  */
-public abstract class AbstractGenericDAO<Entity> {
+public abstract class AbstractGenericDAO<Entity, Key> {
 
 	/**
 	 * The class of the generic entity.
@@ -108,28 +110,28 @@ public abstract class AbstractGenericDAO<Entity> {
 	 * Removes a persistent entity.
 	 * 
 	 * @param entity
-	 *            Entity to be removed.
+	 *            The entity to be persisted.
 	 */
 	public void remove(final Entity entity) {
-		// If the given entity is null.
+		// If the entity is null.
 		if (entity == null) {
 			// Throws an exception.
 			throw new EmptyParameterException(1);
 		}
-		// Tries to merge the entity.
+		// Merges the given entity with the persistence context.
 		final Entity mergedEntity = getEntityManager().merge(entity);
 		// Tries to remove the entity.
 		getEntityManager().remove(mergedEntity);
 	}
 
 	/**
-	 * Gets an entity by its id.
+	 * Gets an entity by its identifier.
 	 * 
 	 * @param identifier
-	 *            The id of the entity.
-	 * @return An entity by its id.
+	 *            The identifier of the entity.
+	 * @return An entity by its identifier.
 	 */
-	public Entity getEntityById(final Object identifier) {
+	public Entity getEntityById(final Key identifier) {
 		// If the given identifier is null.
 		if (identifier == null) {
 			// Throws an exception.

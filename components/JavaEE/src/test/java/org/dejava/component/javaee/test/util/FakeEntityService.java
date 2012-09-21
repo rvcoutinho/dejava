@@ -8,6 +8,6 @@ import org.dejava.component.javaee.service.AbstractGenericService;
  * Fake entity stateless service.
  */
 @Stateless
-public class FakeEntityService extends AbstractGenericService<FakeEntity> {
+public class FakeEntityService extends AbstractGenericService<FakeEntity, Integer> {
 
 }

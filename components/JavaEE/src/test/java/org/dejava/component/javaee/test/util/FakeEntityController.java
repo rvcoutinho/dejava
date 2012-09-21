@@ -10,7 +10,7 @@ import org.dejava.component.javaee.service.AbstractGenericService;
  * Fake entity JSF Controller.
  */
 @Model
-public class FakeEntityController extends AbstractGenericController<FakeEntity> {
+public class FakeEntityController extends AbstractGenericController<FakeEntity, Integer> {
 
 	/**
 	 * Fake entity EJB service.
@@ -22,7 +22,7 @@ public class FakeEntityController extends AbstractGenericController<FakeEntity> 
 	 * @see org.dejava.component.javaee.controller.AbstractGenericController#getBusinessService()
 	 */
 	@Override
-	protected AbstractGenericService<FakeEntity> getBusinessService() {
+	protected AbstractGenericService<FakeEntity, Integer> getBusinessService() {
 		return fakeEntityService;
 	}
 

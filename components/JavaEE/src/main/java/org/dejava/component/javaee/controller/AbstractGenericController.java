@@ -5,8 +5,9 @@ import java.util.Collection;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -18,21 +19,22 @@ import org.dejava.component.javaee.service.GenericService;
  * 
  * @param <Entity>
  *            Any entity.
+ * @param <Key>
+ *            Key of the entity.
  */
-public abstract class AbstractGenericController<Entity> implements GenericService<Entity> {
+public abstract class AbstractGenericController<Entity, Key> implements GenericService<Entity, Key> {
 
 	/**
 	 * Gets the business service related to the entity.
 	 * 
 	 * @return The business service related to the entity.
 	 */
-	protected abstract AbstractGenericService<Entity> getBusinessService();
+	protected abstract AbstractGenericService<Entity, Key> getBusinessService();
 
 	/**
 	 * @see org.dejava.component.javaee.service.GenericService#addOrUpdate(java.lang.Object)
 	 */
 	@PUT
-	@POST
 	@Consumes(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Override
@@ -45,7 +47,7 @@ public abstract class AbstractGenericController<Entity> implements GenericServic
 	 * @see org.dejava.component.javaee.service.GenericService#addOrUpdateAll(java.util.Collection)
 	 */
 	@PUT
-	@POST
+	@Path(value = "/s")
 	@Consumes(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Override
@@ -68,8 +70,6 @@ public abstract class AbstractGenericController<Entity> implements GenericServic
 	/**
 	 * @see org.dejava.component.javaee.service.GenericService#removeAll(java.util.Collection)
 	 */
-	@DELETE
-	@Consumes(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Override
 	public void removeAll(final Collection<Entity> entities) {
 		// Tries to remove the entities.
@@ -80,9 +80,10 @@ public abstract class AbstractGenericController<Entity> implements GenericServic
 	 * @see org.dejava.component.javaee.service.GenericService#getEntityById(java.lang.Object)
 	 */
 	@GET
+	@Path(value = "/{identifier}")
 	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Override
-	public Entity getEntityById(final Object identifier) {
+	public Entity getEntityById(@PathParam(value = "identifier") final Key identifier) {
 		// Tries to return the entity.
 		return getBusinessService().getEntityById(identifier);
 	}
@@ -91,8 +92,6 @@ public abstract class AbstractGenericController<Entity> implements GenericServic
 	 * @see org.dejava.component.javaee.service.GenericService#getEntitiesByAttribute(java.lang.String,
 	 *      java.lang.Object, java.lang.Integer, java.lang.Integer)
 	 */
-	@GET
-	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Override
 	public Collection<Entity> getEntitiesByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults) {

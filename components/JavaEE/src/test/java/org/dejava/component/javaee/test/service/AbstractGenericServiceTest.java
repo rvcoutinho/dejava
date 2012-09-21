@@ -23,7 +23,7 @@ public abstract class AbstractGenericServiceTest {
 	 * 
 	 * @return The service to test.
 	 */
-	protected abstract GenericService<FakeEntity> getService();
+	protected abstract GenericService<FakeEntity, Integer> getService();
 
 	/**
 	 * Default names for fake entities.

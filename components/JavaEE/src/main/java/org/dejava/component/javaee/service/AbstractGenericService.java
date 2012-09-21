@@ -12,21 +12,23 @@ import org.dejava.component.javaee.dao.AbstractGenericDAO;
  * 
  * @param <Entity>
  *            Any entity.
+ * @param <Key>
+ *            Key of the entity.
  */
-public abstract class AbstractGenericService<Entity> implements GenericService<Entity> {
+public abstract class AbstractGenericService<Entity, Key> implements GenericService<Entity, Key> {
 
 	/**
 	 * Entity DAO.
 	 */
 	@Inject
-	private AbstractGenericDAO<Entity> entityDAO;
+	private AbstractGenericDAO<Entity, Key> entityDAO;
 
 	/**
 	 * Gets the entityDAO.
 	 * 
 	 * @return The entityDAO.
 	 */
-	public AbstractGenericDAO<Entity> getEntityDAO() {
+	public AbstractGenericDAO<Entity, Key> getEntityDAO() {
 		return entityDAO;
 	}
 
@@ -86,7 +88,7 @@ public abstract class AbstractGenericService<Entity> implements GenericService<E
 	 * @see org.dejava.component.javaee.service.GenericService#getEntityById(java.lang.Object)
 	 */
 	@Override
-	public Entity getEntityById(final Object identifier) {
+	public Entity getEntityById(final Key identifier) {
 		// Tries to return the entity.
 		return getEntityDAO().getEntityById(identifier);
 	}

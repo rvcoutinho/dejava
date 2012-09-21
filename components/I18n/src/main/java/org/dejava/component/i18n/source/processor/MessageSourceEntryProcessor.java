@@ -27,10 +27,12 @@ public interface MessageSourceEntryProcessor {
 	/**
 	 * Processes a class that defines message sources.
 	 * 
-	 * @param clazz
+	 * @param originalClass
+	 *            The original class being processed.
+	 * @param currentClass
 	 *            The class from which the entries for the message source will be retrieved.
 	 * @return The entries for the message source.
 	 */
-	Set<String> processClass(final TypeElement clazz);
+	Set<String> processClass(final TypeElement originalClass, final TypeElement currentClass);
 
 }

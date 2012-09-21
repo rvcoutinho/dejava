@@ -17,21 +17,22 @@ import org.dejava.component.reflection.MethodMirror;
 public class PublicGettersEntryProcessor implements MessageSourceEntryProcessor {
 
 	/**
-	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement)
+	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement,
+	 *      javax.lang.model.element.TypeElement)
 	 */
 	@Override
-	public Set<String> processClass(final TypeElement clazz) {
+	public Set<String> processClass(final TypeElement originalClass, final TypeElement currentClass) {
 		// Creates an entry set.
 		final Set<String> entries = new LinkedHashSet<>();
 		// For each enclosed elements of the class.
-		for (final Element currentClassElement : clazz.getEnclosedElements()) {
+		for (final Element currentClassElement : currentClass.getEnclosedElements()) {
 			// If the element is a public method.
 			if ((currentClassElement.getKind() == ElementKind.METHOD)
 					&& (currentClassElement.getModifiers().contains(Modifier.PUBLIC))) {
 				// If the name is from a getter.
 				if (MethodMirror.isGetter(currentClassElement.getSimpleName().toString())) {
 					// Adds the current field (from the getter) to the entry set.
-					entries.add(clazz.getSimpleName().toString() + '.'
+					entries.add(originalClass.getSimpleName().toString() + '.'
 							+ MethodMirror.getFieldName(currentClassElement.getSimpleName().toString()));
 				}
 			}

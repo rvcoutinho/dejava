@@ -225,7 +225,8 @@ public class MessageSourceCreator extends AbstractProcessor {
 						for (final TypeElement currentClassToProcess : getClassesToProcess(
 								(TypeElement) currentClass, currentMsgSrc.processSuperclasses())) {
 							// Adds the entries for the current processor to the entry set.
-							entries.addAll(currentProcessor.processClass(currentClassToProcess));
+							entries.addAll(currentProcessor.processClass((TypeElement) currentClass,
+									currentClassToProcess));
 							// For each defined available locale.
 							for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
 								// Adds the entries to the current properties file.

@@ -8,11 +8,15 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
+
 /**
  * Represents a person.
  */
 @Entity
 @Table(name = "person")
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class Person extends Party {
 
 	/**

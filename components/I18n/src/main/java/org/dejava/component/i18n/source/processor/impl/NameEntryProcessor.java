@@ -13,14 +13,15 @@ import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
 public class NameEntryProcessor implements MessageSourceEntryProcessor {
 
 	/**
-	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement)
+	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement,
+	 *      javax.lang.model.element.TypeElement)
 	 */
 	@Override
-	public Set<String> processClass(final TypeElement clazz) {
+	public Set<String> processClass(final TypeElement originalClass, final TypeElement currentClass) {
 		// Creates an entry set.
 		final Set<String> entries = new LinkedHashSet<>();
 		// Adds the current class name as an entry.
-		entries.add(clazz.getSimpleName().toString());
+		entries.add(currentClass.getSimpleName().toString());
 		// Returns the retrieved entries.
 		return entries;
 	}

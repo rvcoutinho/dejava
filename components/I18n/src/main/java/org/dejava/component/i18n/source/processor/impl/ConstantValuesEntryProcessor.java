@@ -17,14 +17,13 @@ import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
 public class ConstantValuesEntryProcessor implements MessageSourceEntryProcessor {
 	
 	/**
-	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement)
+	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement, javax.lang.model.element.TypeElement)
 	 */
-	@Override
-	public Set<String> processClass(final TypeElement clazz) {
+	public Set<String> processClass(TypeElement originalClass, TypeElement currentClass) {
 		// Creates an entry set.
 		final Set<String> entries = new LinkedHashSet<>();
 		// For each enclosed elements of the class.
-		for (final Element currentClassElement : clazz.getEnclosedElements()) {
+		for (final Element currentClassElement : currentClass.getEnclosedElements()) {
 			// If the element is a public final field.
 			if ((currentClassElement.getKind() == ElementKind.FIELD)
 					&& (currentClassElement.getModifiers().contains(Modifier.FINAL))

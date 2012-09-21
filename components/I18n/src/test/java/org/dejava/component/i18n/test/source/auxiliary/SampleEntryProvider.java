@@ -19,10 +19,11 @@ public class SampleEntryProvider implements MessageSourceEntryProcessor {
 	public static final String[] KEYS = { "test1", "test2", "test.3", "test.3.1" };
 	
 	/**
-	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement)
+	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement,
+	 *      javax.lang.model.element.TypeElement)
 	 */
 	@Override
-	public Set<String> processClass(final TypeElement clazz) {
+	public Set<String> processClass(final TypeElement originalClass, final TypeElement currentClass) {
 		// Returns the keys.
 		return new LinkedHashSet<>(Arrays.asList(KEYS));
 	}

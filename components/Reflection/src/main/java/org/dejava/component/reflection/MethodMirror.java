@@ -16,12 +16,12 @@ import org.dejava.component.reflection.exception.InvocationException;
  * TODO
  */
 public class MethodMirror {
-	
+
 	/**
 	 * Method being reflected.
 	 */
 	private Method reflectedMethod;
-	
+
 	/**
 	 * Gets the method being reflected.
 	 * 
@@ -30,7 +30,7 @@ public class MethodMirror {
 	public Method getReflectedMethod() {
 		return reflectedMethod;
 	}
-	
+
 	/**
 	 * Sets the method being reflected.
 	 * 
@@ -40,7 +40,7 @@ public class MethodMirror {
 	public void setReflectedMethod(final Method reflectedMethod) {
 		this.reflectedMethod = reflectedMethod;
 	}
-	
+
 	/**
 	 * Public constructor for the reflection class.
 	 * 
@@ -58,7 +58,7 @@ public class MethodMirror {
 		// Sets the main reflection fields.
 		this.reflectedMethod = reflectedMethod;
 	}
-	
+
 	/**
 	 * Gets the name of the current method (with the selected depth) being executed.
 	 * 
@@ -79,12 +79,24 @@ public class MethodMirror {
 		// Returns the name of the method in the selected depth.
 		return stackTrace[2 + actualDepth].getMethodName();
 	}
-	
+
 	/**
 	 * Regular expression for getter methods.
 	 */
 	public static final String GETTER_REGEX = "(get|is)[A-Z0-9_\\$].*";
-	
+
+	/**
+	 * Returns if the method name is from a getter.
+	 * 
+	 * @param methodName
+	 *            The method name.
+	 * @return If the method name is from a getter.
+	 */
+	public static Boolean isGetter(final String methodName) {
+		// Returns if the method name matches the getter regular expression.
+		return methodName.matches(GETTER_REGEX);
+	}
+
 	/**
 	 * Returns if the method name is from a getter.
 	 * 
@@ -92,14 +104,26 @@ public class MethodMirror {
 	 */
 	public Boolean isGetter() {
 		// Returns if the method name matches the getter regular expression.
-		return getReflectedMethod().getName().matches(GETTER_REGEX);
+		return isGetter(getReflectedMethod().getName());
 	}
-	
+
 	/**
 	 * Regular expression for setter methods.
 	 */
 	public static final String SETTER_REGEX = "set[A-Z0-9_\\$].*";
-	
+
+	/**
+	 * Returns if the method name is from a setter.
+	 * 
+	 * @param methodName
+	 *            The method name.
+	 * @return If the method name is from a setter.
+	 */
+	public static Boolean isSetter(final String methodName) {
+		// Returns if the method name matches the setter regular expression.
+		return methodName.matches(SETTER_REGEX);
+	}
+
 	/**
 	 * Returns if the method name is from a setter.
 	 * 
@@ -107,9 +131,51 @@ public class MethodMirror {
 	 */
 	public Boolean isSetter() {
 		// Returns if the method name matches the setter regular expression.
-		return getReflectedMethod().getName().matches(SETTER_REGEX);
+		return isSetter(getReflectedMethod().getName());
 	}
-	
+
+	/**
+	 * Gets the field name from a getter/setter.
+	 * 
+	 * @param methodName
+	 *            The method name.
+	 * @return The field name from a getter/setter. Or null, if the method is not a getter/setter.
+	 */
+	public static String getFieldName(final String methodName) {
+		// The field name.
+		String fieldName = null;
+		// If the method is a setter.
+		if (isSetter(methodName)) {
+			// The field name is the method name without "set".
+			fieldName = methodName.substring(3, 4).toLowerCase() + methodName.substring(4);
+		}
+		// Otherwise, if it is a getter.
+		if (isGetter(methodName)) {
+			// If the method starts with "get".
+			if (methodName.startsWith(FieldMirror.GETTER_PREFIX)) {
+				// The field name is the method name without "get".
+				fieldName = methodName.substring(3, 4).toLowerCase() + methodName.substring(4);
+			}
+			// If it does not ("is").
+			else {
+				// The field name is the method name without "is".
+				fieldName = methodName.substring(2, 3).toLowerCase() + methodName.substring(3);
+			}
+		}
+		// Returns the field name.
+		return fieldName;
+	}
+
+	/**
+	 * Gets the field name from a getter/setter.
+	 * 
+	 * @return The field name from a getter/setter. Or null, if the method is not a getter/setter.
+	 */
+	public String getFieldName() {
+		// Gets the field name from a getter/setter.
+		return getFieldName(getReflectedMethod().getName());
+	}
+
 	/**
 	 * Invokes a method from an object/class.
 	 * 
@@ -165,7 +231,7 @@ public class MethodMirror {
 			getReflectedMethod().setAccessible(false);
 		}
 	}
-	
+
 	/**
 	 * Invokes a method from a JNDI object.
 	 * 
@@ -201,7 +267,7 @@ public class MethodMirror {
 			throw new InvalidParameterException(ErrorKeys.INVALID_JNDI_PATH, exception, null);
 		}
 	}
-	
+
 	/**
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -212,7 +278,7 @@ public class MethodMirror {
 		result = (prime * result) + ((reflectedMethod == null) ? 0 : reflectedMethod.hashCode());
 		return result;
 	}
-	
+
 	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -232,11 +298,10 @@ public class MethodMirror {
 			if (other.reflectedMethod != null) {
 				return false;
 			}
-		}
-		else if (!reflectedMethod.equals(other.reflectedMethod)) {
+		} else if (!reflectedMethod.equals(other.reflectedMethod)) {
 			return false;
 		}
 		return true;
 	}
-	
+
 }

@@ -21,12 +21,12 @@ import org.dejava.component.reflection.constant.ErrorKeys;
  *            The class to be reflected.
  */
 public class ClassMirror<Reflected> {
-	
+
 	/**
 	 * Class being reflected.
 	 */
 	private Class<? extends Reflected> reflectedClass;
-	
+
 	/**
 	 * Gets the class being reflected.
 	 * 
@@ -35,7 +35,7 @@ public class ClassMirror<Reflected> {
 	public Class<? extends Reflected> getReflectedClass() {
 		return reflectedClass;
 	}
-	
+
 	/**
 	 * Sets the class being reflected.
 	 * 
@@ -45,7 +45,7 @@ public class ClassMirror<Reflected> {
 	protected void setReflectedClass(final Class<? extends Reflected> reflectedClass) {
 		this.reflectedClass = reflectedClass;
 	}
-	
+
 	/**
 	 * Public constructor for the reflection class.
 	 * 
@@ -63,7 +63,7 @@ public class ClassMirror<Reflected> {
 		// Sets the main reflection fields.
 		this.reflectedClass = reflectedClass;
 	}
-	
+
 	/**
 	 * Public constructor for the reflection class.
 	 * 
@@ -89,7 +89,7 @@ public class ClassMirror<Reflected> {
 			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, 1, reflectedClassName);
 		}
 	}
-	
+
 	/**
 	 * Public constructor for the reflection class.
 	 * 
@@ -101,40 +101,7 @@ public class ClassMirror<Reflected> {
 	public ClassMirror(final String reflectedClassName) throws InvalidParameterException {
 		this(reflectedClassName, null, true);
 	}
-	
-	/**
-	 * Public constructor for the reflection class.
-	 * 
-	 * @param depth
-	 *            Depth in the current stack for the desired class (0 is the first and so on).
-	 * @param classLoader
-	 *            Class loader to be used with the reflected class.
-	 * @param initialize
-	 *            Whether the class must be initialized.
-	 * @throws InvalidParameterException
-	 *             If the class cannot be found for the name or if the depth is greater than the stack trace
-	 *             size.
-	 */
-	public ClassMirror(final Integer depth, final ClassLoader classLoader, final Boolean initialize)
-			throws InvalidParameterException {
-		// Actual depth is the given one.
-		Integer actualDepth = depth;
-		// If the given depth is null.
-		if (actualDepth == null) {
-			// The depth is 0.
-			actualDepth = 0;
-		}
-		// Tries to set the reflected class.
-		try {
-			this.reflectedClass = (Class<Reflected>) getCurrentClass(actualDepth + 1, classLoader, initialize);
-		}
-		// If the class cannot be casted.
-		catch (final ClassCastException exception) {
-			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, 1, depth);
-		}
-	}
-	
+
 	/**
 	 * Public constructor for the reflection class.
 	 * 
@@ -154,7 +121,7 @@ public class ClassMirror<Reflected> {
 		}
 		// Tries to set the reflected class.
 		try {
-			this.reflectedClass = (Class<Reflected>) getCurrentClass(actualDepth + 1, null, true);
+			this.reflectedClass = (Class<Reflected>) getCurrentClass(actualDepth + 1);
 		}
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
@@ -162,7 +129,7 @@ public class ClassMirror<Reflected> {
 			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, 1, depth);
 		}
 	}
-	
+
 	/**
 	 * Gets a class with the given name from a given class loader.
 	 * 
@@ -203,7 +170,7 @@ public class ClassMirror<Reflected> {
 			throw new InvalidParameterException(ErrorKeys.CLASS_NOT_FOUND, exception, 1, className);
 		}
 	}
-	
+
 	/**
 	 * Gets the name of the current class (with the selected depth) being executed.
 	 * 
@@ -234,37 +201,7 @@ public class ClassMirror<Reflected> {
 			throw new InvalidParameterException(ErrorKeys.CLASS_NOT_FOUND, exception, 1, depth);
 		}
 	}
-	
-	/**
-	 * Gets the current class (with the selected depth) being executed.
-	 * 
-	 * @param depth
-	 *            Depth in the current stack for the desired class (0 is the first and so on).
-	 * @param classLoader
-	 *            Class loader that must be used in the class recovery. If no class loader is given, the
-	 *            context class loader is used.
-	 * @param initialize
-	 *            Whether the class must be initialized.
-	 * @return The current class (with the selected depth) being executed.
-	 * @throws InvalidParameterException
-	 *             If the class cannot be found for the name or if the depth is greater than the stack trace
-	 *             size.
-	 */
-	public static Class<?> getCurrentClass(final Integer depth, final ClassLoader classLoader,
-			final Boolean initialize) throws InvalidParameterException {
-		// Actual depth is the given one.
-		Integer actualDepth = depth;
-		// If the given depth is null.
-		if (actualDepth == null) {
-			// The depth is 0.
-			actualDepth = 0;
-		}
-		// Gets the current class name for the given depth.
-		final String className = getCurrentClassName(actualDepth + 1);
-		// Returns the class for the name.
-		return getClass(className, classLoader, initialize);
-	}
-	
+
 	/**
 	 * Gets the current class (with the selected depth) being executed.
 	 * 
@@ -283,10 +220,12 @@ public class ClassMirror<Reflected> {
 			// The depth is 0.
 			actualDepth = 0;
 		}
-		// The context class loader is used to recover the current class.
-		return getCurrentClass(actualDepth + 1, null, true);
+		// Gets the current class name for the given depth.
+		final String className = getCurrentClassName(actualDepth + 1);
+		// Returns the class for the name.
+		return getClass(className, null, true);
 	}
-	
+
 	/**
 	 * Gets all the classes and interfaces inherited by the reflected class (including this one).
 	 * 
@@ -316,7 +255,7 @@ public class ClassMirror<Reflected> {
 		// Returns all found classes.
 		return classes;
 	}
-	
+
 	/**
 	 * Returns all fields (public or not) from the reflected class (including inherited ones).
 	 * 
@@ -337,7 +276,7 @@ public class ClassMirror<Reflected> {
 		// Returns all the fields found in the search.
 		return fields;
 	}
-	
+
 	/**
 	 * Returns a field from the reflected class. The search includes the inherited classes. The first field
 	 * found for the name is returned.
@@ -372,7 +311,7 @@ public class ClassMirror<Reflected> {
 		// If no field was found for this name, throws an exception.
 		throw new InvalidParameterException(ErrorKeys.FIELD_NOT_FOUND, null, 1, fieldName);
 	}
-	
+
 	/**
 	 * Gets a field path for the reflected class.
 	 * 
@@ -404,7 +343,7 @@ public class ClassMirror<Reflected> {
 		// Returns the field path.
 		return new FieldPath(fieldPath);
 	}
-	
+
 	/**
 	 * Gets the class package as a directory path.
 	 * 
@@ -418,7 +357,7 @@ public class ClassMirror<Reflected> {
 		// Returns the directory path.
 		return dirPath;
 	}
-	
+
 	/**
 	 * Gets a method from the reflected class for the given parameters. The search includes the inherited
 	 * classes and interfaces of each parameter class.
@@ -474,7 +413,7 @@ public class ClassMirror<Reflected> {
 			paramsClasses[varyingParamIndex] = initialParamClass;
 		}
 	}
-	
+
 	/**
 	 * Gets a method from the reflected class for the given parameters. The search includes the inherited
 	 * classes and interfaces of each parameter class.
@@ -526,7 +465,7 @@ public class ClassMirror<Reflected> {
 			return getMethod(methodName, paramsClasses, 0);
 		}
 	}
-	
+
 	/**
 	 * Returns the classes of the parameters from its values.
 	 * 
@@ -560,7 +499,7 @@ public class ClassMirror<Reflected> {
 		// Returns the classes of the parameters.
 		return paramsClasses;
 	}
-	
+
 	/**
 	 * Gets a method from the reflected class for the given parameters. The search includes the inherited
 	 * classes and interfaces of each parameter class.
@@ -580,7 +519,7 @@ public class ClassMirror<Reflected> {
 		// Tries to get the method.
 		return getMethod(methodName, getParamsClasses(paramsValues));
 	}
-	
+
 	/**
 	 * Gets all annotations from a class. The search includes super classes and interfaces (but only the first
 	 * annotation found for a type is kept).
@@ -601,7 +540,7 @@ public class ClassMirror<Reflected> {
 		// Returns the annotations found.
 		return annotations;
 	}
-	
+
 	/**
 	 * Returns an annotation from the reflected class (or its inherited classes and interfaces). The first
 	 * annotation found for the given class is returned.
@@ -632,7 +571,7 @@ public class ClassMirror<Reflected> {
 		// If the annotation was not found, return null.
 		return null;
 	}
-	
+
 	/**
 	 * Gets a constructor from the reflected class for the given parameters. The search includes the inherited
 	 * classes and interfaces of each parameter class.
@@ -685,7 +624,7 @@ public class ClassMirror<Reflected> {
 			paramsClasses[varyingParamIndex] = initialParamClass;
 		}
 	}
-	
+
 	/**
 	 * Gets a constructor from the reflected class for the given parameters. The search includes the inherited
 	 * classes and interfaces of each parameter class.
@@ -728,7 +667,7 @@ public class ClassMirror<Reflected> {
 			return getConstructor(paramsClasses, 0);
 		}
 	}
-	
+
 	/**
 	 * Gets a constructor from the reflected class for the given parameters. The search includes the inherited
 	 * classes and interfaces of each parameter class.
@@ -744,7 +683,7 @@ public class ClassMirror<Reflected> {
 		// Tries to get the constructor.
 		return getConstructor(getParamsClasses(paramsValues));
 	}
-	
+
 	/**
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -755,7 +694,7 @@ public class ClassMirror<Reflected> {
 		result = (prime * result) + ((reflectedClass == null) ? 0 : reflectedClass.hashCode());
 		return result;
 	}
-	
+
 	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -775,11 +714,10 @@ public class ClassMirror<Reflected> {
 			if (other.reflectedClass != null) {
 				return false;
 			}
-		}
-		else if (!reflectedClass.equals(other.reflectedClass)) {
+		} else if (!reflectedClass.equals(other.reflectedClass)) {
 			return false;
 		}
 		return true;
 	}
-	
+
 }

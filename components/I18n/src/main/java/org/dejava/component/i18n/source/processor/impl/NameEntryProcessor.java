@@ -3,7 +3,7 @@ package org.dejava.component.i18n.source.processor.impl;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.lang.model.element.Element;
+import javax.lang.model.element.TypeElement;
 
 import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
 
@@ -11,12 +11,12 @@ import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
  * Processes a class and retrieves an entry for its name ("classname").
  */
 public class NameEntryProcessor implements MessageSourceEntryProcessor {
-	
+
 	/**
-	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.Element)
+	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement)
 	 */
 	@Override
-	public Set<String> processClass(final Element clazz) {
+	public Set<String> processClass(final TypeElement clazz) {
 		// Creates an entry set.
 		final Set<String> entries = new LinkedHashSet<>();
 		// Adds the current class name as an entry.
@@ -24,5 +24,5 @@ public class NameEntryProcessor implements MessageSourceEntryProcessor {
 		// Returns the retrieved entries.
 		return entries;
 	}
-	
+
 }

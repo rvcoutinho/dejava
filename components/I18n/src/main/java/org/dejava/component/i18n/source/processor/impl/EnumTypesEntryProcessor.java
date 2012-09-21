@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
+import javax.lang.model.element.TypeElement;
 
 import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
 
@@ -12,12 +13,12 @@ import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
  * Processes an enumerated and retrieves entries for its constants ("enumname.constantname").
  */
 public class EnumTypesEntryProcessor implements MessageSourceEntryProcessor {
-	
+
 	/**
-	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.Element)
+	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement)
 	 */
 	@Override
-	public Set<String> processClass(final Element clazz) {
+	public Set<String> processClass(final TypeElement clazz) {
 		// Creates an entry set.
 		final Set<String> entries = new LinkedHashSet<>();
 		// For each enclosed elements of the class.
@@ -31,7 +32,7 @@ public class EnumTypesEntryProcessor implements MessageSourceEntryProcessor {
 		}
 		// Returns he retrieved entries.
 		return entries;
-		
+
 	}
-	
+
 }

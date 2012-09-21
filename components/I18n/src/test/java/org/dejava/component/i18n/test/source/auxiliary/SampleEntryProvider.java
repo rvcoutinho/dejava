@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.lang.model.element.Element;
+import javax.lang.model.element.TypeElement;
 
 import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
 
@@ -19,10 +19,10 @@ public class SampleEntryProvider implements MessageSourceEntryProcessor {
 	public static final String[] KEYS = { "test1", "test2", "test.3", "test.3.1" };
 	
 	/**
-	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.Element)
+	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.TypeElement)
 	 */
 	@Override
-	public Set<String> processClass(final Element clazz) {
+	public Set<String> processClass(final TypeElement clazz) {
 		// Returns the keys.
 		return new LinkedHashSet<>(Arrays.asList(KEYS));
 	}

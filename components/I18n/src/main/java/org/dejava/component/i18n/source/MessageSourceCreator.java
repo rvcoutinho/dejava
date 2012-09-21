@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
@@ -15,6 +17,9 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.type.DeclaredType;
+import javax.lang.model.type.NoType;
+import javax.lang.model.type.TypeMirror;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
@@ -155,6 +160,47 @@ public class MessageSourceCreator extends AbstractProcessor {
 	}
 
 	/**
+	 * Gets the classes (given class e possible super classes) that should be processed.
+	 * 
+	 * @param clazz
+	 *            The class being processed.
+	 * @param processSuperClasses
+	 *            If the super classes should be processed.
+	 * @return The classes (given class e possible super classes) that should be processed.
+	 */
+	private Collection<TypeElement> getClassesToProcess(final TypeElement clazz,
+			final Boolean processSuperClasses) {
+		// Creates a list with the classes to process.
+		final ArrayList<TypeElement> classesToProcess = new ArrayList<>();
+		// Adds the given class to the list.
+		classesToProcess.add(clazz);
+		// If the super classes should be processed.
+		if (processSuperClasses) {
+			// For each super class,
+			for (TypeMirror currentSuperClassMirror = clazz.getSuperclass(); (currentSuperClassMirror == null)
+					|| !(currentSuperClassMirror instanceof NoType);) {
+				// If the type is a class.
+				if (currentSuperClassMirror instanceof DeclaredType) {
+					// Gets the class element.
+					final TypeElement currentSuperClass = (TypeElement) ((DeclaredType) currentSuperClassMirror)
+							.asElement();
+					// Adds the superclass in the list.
+					classesToProcess.add(currentSuperClass);
+					// The current super class is now the next one.
+					currentSuperClassMirror = currentSuperClass.getSuperclass();
+				}
+				// If it is not.
+				else {
+					// The next super class is null.
+					currentSuperClassMirror = null;
+				}
+			}
+		}
+		// Returns the classes to be processed.
+		return classesToProcess;
+	}
+
+	/**
 	 * @see javax.annotation.processing.AbstractProcessor#process(java.util.Set,
 	 *      javax.annotation.processing.RoundEnvironment)
 	 */
@@ -175,13 +221,17 @@ public class MessageSourceCreator extends AbstractProcessor {
 						// Creates an instance for the current processor.
 						final MessageSourceEntryProcessor currentProcessor = (MessageSourceEntryProcessor) Class
 								.forName(currentProcessorClassName).newInstance();
-						// Adds the entries for the current processor to the entry set.
-						entries.addAll(currentProcessor.processClass(currentClass));
-						// For each defined available locale.
-						for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
-							// Adds the entries to the current properties file.
-							addEntries(currentMsgSrc.sourcePath(), currentMsgSrc.bundleBaseName(),
-									currentLocaleText, entries, currentMsgSrc.description());
+						// For each class to be processed.
+						for (final TypeElement currentClassToProcess : getClassesToProcess(
+								(TypeElement) currentClass, currentMsgSrc.processSuperclasses())) {
+							// Adds the entries for the current processor to the entry set.
+							entries.addAll(currentProcessor.processClass(currentClassToProcess));
+							// For each defined available locale.
+							for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
+								// Adds the entries to the current properties file.
+								addEntries(currentMsgSrc.sourcePath(), currentMsgSrc.bundleBaseName(),
+										currentLocaleText, entries, currentMsgSrc.description());
+							}
 						}
 					}
 					// If any exception is raised.

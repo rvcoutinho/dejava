@@ -2,7 +2,7 @@ package org.dejava.component.i18n.source.processor;
 
 import java.util.Set;
 
-import javax.lang.model.element.Element;
+import javax.lang.model.element.TypeElement;
 
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.i18n.source.processor.impl.ConstantValuesEntryProcessor;
@@ -23,7 +23,7 @@ import org.dejava.component.i18n.source.processor.impl.PublicMethodsEntryProcess
  * {@link PublicGettersEntryProcessor}, {@link PublicMethodsEntryProcessor}.
  */
 public interface MessageSourceEntryProcessor {
-	
+
 	/**
 	 * Processes a class that defines message sources.
 	 * 
@@ -31,5 +31,6 @@ public interface MessageSourceEntryProcessor {
 	 *            The class from which the entries for the message source will be retrieved.
 	 * @return The entries for the message source.
 	 */
-	Set<String> processClass(final Element clazz);
+	Set<String> processClass(final TypeElement clazz);
+
 }

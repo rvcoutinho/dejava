@@ -35,8 +35,8 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	 * @see org.dejava.component.javaee.service.GenericService#addOrUpdate(java.lang.Object)
 	 */
 	@PUT
-	@Consumes(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes(value = { MediaType.APPLICATION_JSON })
+	@Produces(value = { MediaType.APPLICATION_JSON })
 	@Override
 	public Entity addOrUpdate(final Entity entity) {
 		// Adds the entity.
@@ -48,8 +48,8 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	 */
 	@PUT
 	@Path(value = "/s")
-	@Consumes(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes(value = { MediaType.APPLICATION_JSON })
+	@Produces(value = { MediaType.APPLICATION_JSON })
 	@Override
 	public Collection<Entity> addOrUpdateAll(final Collection<Entity> entities) {
 		// Adds the entities.
@@ -60,7 +60,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	 * @see org.dejava.component.javaee.service.GenericService#remove(java.lang.Object)
 	 */
 	@DELETE
-	@Consumes(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes(value = { MediaType.APPLICATION_JSON })
 	@Override
 	public void remove(final Entity entity) {
 		// Tries to remove the entity.
@@ -70,6 +70,9 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	/**
 	 * @see org.dejava.component.javaee.service.GenericService#removeAll(java.util.Collection)
 	 */
+	@DELETE
+	@Path(value = "/s")
+	@Consumes(value = { MediaType.APPLICATION_JSON })
 	@Override
 	public void removeAll(final Collection<Entity> entities) {
 		// Tries to remove the entities.
@@ -81,7 +84,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	 */
 	@GET
 	@Path(value = "/{identifier}")
-	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces(value = { MediaType.APPLICATION_JSON })
 	@Override
 	public Entity getEntityById(@PathParam(value = "identifier") final Key identifier) {
 		// Tries to return the entity.
@@ -105,7 +108,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	 *      java.lang.Integer)
 	 */
 	@GET
-	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces(value = { MediaType.APPLICATION_JSON })
 	@Override
 	public Collection<Entity> getAllEntities(final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.

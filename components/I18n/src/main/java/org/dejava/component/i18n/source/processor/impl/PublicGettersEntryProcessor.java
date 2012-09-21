@@ -8,12 +8,13 @@ import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.Modifier;
 
 import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
+import org.dejava.component.reflection.MethodMirror;
 
 /**
  * Processes a class and retrieves entries for its non-static public getters ("classname.fieldname").
  */
 public class PublicGettersEntryProcessor implements MessageSourceEntryProcessor {
-	
+
 	/**
 	 * @see org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor#processClass(javax.lang.model.element.Element)
 	 */
@@ -26,13 +27,16 @@ public class PublicGettersEntryProcessor implements MessageSourceEntryProcessor 
 			// If the element is a public method.
 			if ((currentClassElement.getKind() == ElementKind.METHOD)
 					&& (currentClassElement.getModifiers().contains(Modifier.PUBLIC))) {
-				// FIXME Adds the current getter to the entry set.
-				entries.add(clazz.getSimpleName().toString() + '.'
-						+ currentClassElement.getSimpleName().toString());
+				// If the name is from a getter.
+				if (MethodMirror.isGetter(currentClassElement.getSimpleName().toString())) {
+					// Adds the current field (from the getter) to the entry set.
+					entries.add(clazz.getSimpleName().toString() + '.'
+							+ MethodMirror.getFieldName(currentClassElement.getSimpleName().toString()));
+				}
 			}
 		}
 		// Returns the retrieved entries.
 		return entries;
 	}
-	
+
 }

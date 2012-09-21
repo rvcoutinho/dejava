@@ -30,17 +30,17 @@ import org.junit.runner.RunWith;
 		@MessageBundle(type = "error", baseName = "org.dejava.component.i18n.test.message.properties.error") })
 @RunWith(value = JUnitParametricRunner.class)
 public class DefaultI18nMessageHandlerTest {
-	
+
 	/**
 	 * The information message bundle name.
 	 */
 	private static final String INFO_BUNDLE = "information";
-	
+
 	/**
 	 * The error message bundle name.
 	 */
 	private static final String ERROR_BUNDLE = "error";
-	
+
 	/**
 	 * Tests getting a message by key with a null key.
 	 * 
@@ -57,7 +57,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Tries to get the message.
 		messageHandler.getMessage(null, null);
 	}
-	
+
 	/**
 	 * Tests getting a message by type and key with a null key.
 	 * 
@@ -75,7 +75,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Tries to get the message.
 		messageHandler.getMessage(ApplicationMessageType.ERROR, null, null);
 	}
-	
+
 	/**
 	 * Tests getting a message by type (String) and key with a null key.
 	 * 
@@ -93,7 +93,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Tries to get the message.
 		messageHandler.getMessage(ERROR_BUNDLE, null, null);
 	}
-	
+
 	/**
 	 * Tests getting a message by key that is not found.
 	 * 
@@ -110,7 +110,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Tries to get the message.
 		messageHandler.getMessage("test", null);
 	}
-	
+
 	/**
 	 * Tests getting a message by type and key that is not found.
 	 * 
@@ -128,7 +128,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Tries to get the message.
 		messageHandler.getMessage(ApplicationMessageType.INFORMATION, "test", null);
 	}
-	
+
 	/**
 	 * Tests getting a message by type (String) and key that is not found.
 	 * 
@@ -146,7 +146,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Tries to get the message.
 		messageHandler.getMessage(INFO_BUNDLE, "test", null);
 	}
-	
+
 	/**
 	 * Tests getting a message by key for a not found locale.
 	 * 
@@ -169,7 +169,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Assert that the messages are the same.
 		Assert.assertEquals(message1, message2);
 	}
-	
+
 	/**
 	 * Tests getting a message by type and key for a not found locale.
 	 * 
@@ -195,7 +195,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Assert that the messages are the same.
 		Assert.assertEquals(message1, message2);
 	}
-	
+
 	/**
 	 * Tests getting a message by type (String) and key for a not found locale.
 	 * 
@@ -219,13 +219,13 @@ public class DefaultI18nMessageHandlerTest {
 		// Assert that the messages are the same.
 		Assert.assertEquals(message1, message2);
 	}
-	
+
 	/**
 	 * Gets the keys defined in the information key class.
 	 * 
 	 * @return The keys defined in the information key class.
 	 */
-	public static Collection<String> testGetMessageSuccessKeys() {
+	public static Collection<String> getTestGetMessageSuccessParams() {
 		// Creates the list of the keys.
 		final Collection<String> keys = new ArrayList<>();
 		// Gets the information key class.
@@ -244,24 +244,24 @@ public class DefaultI18nMessageHandlerTest {
 		// Returns the retrieved keys.
 		return keys;
 	}
-	
+
 	/**
 	 * The en_US message for the success keys.
 	 */
 	public static final String SUCCESS_MESSAGE_EN_US = "success";
-	
+
 	/**
 	 * The pt_BR message for the success keys.
 	 */
 	public static final String SUCCESS_MESSAGE_PT_BR = "sucesso";
-	
+
 	/**
 	 * Tests getting a message by an existent key.
 	 * 
 	 * @param key
 	 *            A key that exists in the resource bundle.
 	 */
-	@ParametricTest(paramsValues = { "testGetMessageSuccessKeys" })
+	@ParametricTest(paramsValues = { "getTestGetMessageSuccessParams" })
 	public void testGetMessageByKeySuccess(final String key) {
 		// Gets the message handler (en_US).
 		final MessageHandler messageHandlerUS = DefaultI18nMessageHandler.getMessageHandler(new Locale("en",
@@ -278,14 +278,14 @@ public class DefaultI18nMessageHandlerTest {
 		// Assert that the message was retrieved correctly (pt_BR).
 		Assert.assertTrue(messageBR.startsWith(SUCCESS_MESSAGE_PT_BR));
 	}
-	
+
 	/**
 	 * Tests getting a message by type and an existent key.
 	 * 
 	 * @param key
 	 *            A key that exists in the resource bundle.
 	 */
-	@ParametricTest(paramsValues = { "testGetMessageSuccessKeys" })
+	@ParametricTest(paramsValues = { "getTestGetMessageSuccessParams" })
 	public void testGetMessageByTypeAndKeySuccess(final String key) {
 		// Gets the message handler (en_US).
 		final MessageHandler messageHandlerUS = DefaultI18nMessageHandler.getMessageHandler(new Locale("en",
@@ -302,14 +302,14 @@ public class DefaultI18nMessageHandlerTest {
 		// Assert that the message was retrieved correctly (pt_BR).
 		Assert.assertTrue(messageBR.startsWith(SUCCESS_MESSAGE_PT_BR));
 	}
-	
+
 	/**
 	 * Tests getting a message by type (String) and an existent key.
 	 * 
 	 * @param key
 	 *            A key that exists in the resource bundle.
 	 */
-	@ParametricTest(paramsValues = { "testGetMessageSuccessKeys" })
+	@ParametricTest(paramsValues = { "getTestGetMessageSuccessParams" })
 	public void testGetMessageByStringTypeAndKeySuccess(final String key) {
 		// Gets the message handler (en_US).
 		final MessageHandler messageHandlerUS = DefaultI18nMessageHandler.getMessageHandler(new Locale("en",
@@ -326,7 +326,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Assert that the message was retrieved correctly (pt_BR).
 		Assert.assertTrue(messageBR.startsWith(SUCCESS_MESSAGE_PT_BR));
 	}
-	
+
 	/**
 	 * Gets some simple parameters to be tested in a parameterized message.
 	 * 
@@ -345,12 +345,12 @@ public class DefaultI18nMessageHandlerTest {
 		// Returns the parameters.
 		return parameters;
 	}
-	
+
 	/**
 	 * The key for a parameterized message (with to parameters at the end of the message).
 	 */
 	public static final String PARAM_MESSAGE_KEY = "message.sample.success6";
-	
+
 	/**
 	 * Tests getting a message an existent key and some simple parameters.
 	 * 
@@ -367,7 +367,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Assert that the message was retrieved correctly.
 		Assert.assertEquals(SUCCESS_MESSAGE_PT_BR + simpleParams[0] + simpleParams[1], messageUS);
 	}
-	
+
 	/**
 	 * Tests getting a message by type and an existent key and some simple parameters.
 	 * 
@@ -385,7 +385,7 @@ public class DefaultI18nMessageHandlerTest {
 		// Assert that the message was retrieved correctly.
 		Assert.assertEquals(SUCCESS_MESSAGE_PT_BR + simpleParams[0] + simpleParams[1], messageUS);
 	}
-	
+
 	/**
 	 * Tests getting a message by type (String) and an existent key and some simple parameters.
 	 * 
@@ -402,5 +402,5 @@ public class DefaultI18nMessageHandlerTest {
 		// Assert that the message was retrieved correctly.
 		Assert.assertEquals(SUCCESS_MESSAGE_PT_BR + simpleParams[0] + simpleParams[1], messageUS);
 	}
-	
+
 }

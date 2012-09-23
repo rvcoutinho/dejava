@@ -185,7 +185,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 					final TypeElement currentSuperClass = (TypeElement) ((DeclaredType) currentSuperClassMirror)
 							.asElement();
 					// If the class is not Object.
-					if (!Object.class.getName().equals(currentSuperClass.getQualifiedName())) {
+					if (!Object.class.getName().equals(currentSuperClass.getQualifiedName().toString())) {
 						// Adds the super class in the list.
 						classesToProcess.add(currentSuperClass);
 					}

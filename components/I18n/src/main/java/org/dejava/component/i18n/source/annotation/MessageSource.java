@@ -19,7 +19,7 @@ public @interface MessageSource {
 	/**
 	 * The source path where the source files should be created.
 	 * 
-	 * "src" is used by default.
+	 * "src/main/resources" is used by default.
 	 */
 	String sourcePath() default "src/main/resources";
 

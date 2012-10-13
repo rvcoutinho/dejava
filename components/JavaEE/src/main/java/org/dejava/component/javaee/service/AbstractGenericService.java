@@ -3,8 +3,6 @@ package org.dejava.component.javaee.service;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.inject.Inject;
-
 import org.dejava.component.javaee.dao.AbstractGenericDAO;
 
 /**
@@ -18,19 +16,11 @@ import org.dejava.component.javaee.dao.AbstractGenericDAO;
 public abstract class AbstractGenericService<Entity, Key> implements GenericService<Entity, Key> {
 
 	/**
-	 * Entity DAO.
-	 */
-	@Inject
-	private AbstractGenericDAO<Entity, Key> entityDAO;
-
-	/**
 	 * Gets the entityDAO.
 	 * 
 	 * @return The entityDAO.
 	 */
-	public AbstractGenericDAO<Entity, Key> getEntityDAO() {
-		return entityDAO;
-	}
+	public abstract AbstractGenericDAO<Entity, Key> getEntityDAO();
 
 	/**
 	 * @see org.dejava.component.javaee.service.GenericService#addOrUpdate(java.lang.Object)

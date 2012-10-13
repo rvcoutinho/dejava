@@ -34,6 +34,20 @@
 
 			<dependency>
 				<groupId>org.dejava.service</groupId>
+				<artifactId>accesscontrol-ejb</artifactId>
+				<version>0.0.1</version>
+				<type>ejb</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.service</groupId>
+				<artifactId>accesscontrol-web</artifactId>
+				<version>0.0.1</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.service</groupId>
 				<artifactId>party-ejb</artifactId>
 				<version>0.0.1</version>
 				<type>ejb</type>
@@ -75,6 +89,23 @@
 				<groupId>org.dejava.component</groupId>
 				<artifactId>test</artifactId>
 				<version>0.0.1</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-web</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>1.7.1</version>
 				<scope>test</scope>
 			</dependency>
 

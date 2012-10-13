@@ -16,15 +16,19 @@
 			<id>dejava-components-releases</id>
 			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
 		</repository>
+		<repository>
+			<id>dejava-services-releases</id>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/services/maven/releases</url>
+		</repository>
 	</repositories>
 
 	<distributionManagement>
 		<repository>
-			<id>dejava-components-releases-local</id>
+			<id>dejava-services-releases-local</id>
 			<url>file:../maven/releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>dejava-components-snapshots-local</id>
+			<id>dejava-services-snapshots-local</id>
 			<url>file:../maven/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>

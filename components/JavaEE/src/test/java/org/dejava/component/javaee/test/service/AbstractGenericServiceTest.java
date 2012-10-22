@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.ejb.EJBException;
 
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.javaee.service.GenericService;
 import org.dejava.component.javaee.test.util.FakeEntity;
 import org.junit.After;
@@ -246,6 +247,61 @@ public abstract class AbstractGenericServiceTest {
 		// Tries to get a fake entity with null attribute name.
 		try {
 			getService().getEntitiesByAttribute(null, null, null, null);
+		}
+		// Expects an EJB exception.
+		catch (final EJBException exception) {
+			// Throws the root of the exception.
+			throw exception.getCause();
+		}
+	}
+
+	/**
+	 * Tests a successful approach for the method getEntityByAttribute.
+	 */
+	@Test
+	public void testGetEntityByAttributeSuccess() {
+		// Tries to add a fake entity.
+		final FakeEntity fakeEntity = getService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
+		// Tries to get an entity by the name.
+		final FakeEntity sameFakeEntity = getService().getEntityByAttribute("name", fakeEntity.getName());
+		// Assert that the two entities are the same.
+		Assert.assertEquals(fakeEntity, sameFakeEntity);
+	}
+
+	/**
+	 * Tests the method getEntityByAttribute with null attribute name.
+	 * 
+	 * @throws Throwable
+	 *             Expected exception.
+	 */
+	@Test(expected = EmptyParameterException.class)
+	public void testGetEntityByAttributeNullAttributeName() throws Throwable {
+		// Tries to get a fake entity with null attribute name.
+		try {
+			getService().getEntityByAttribute(null, null);
+		}
+		// Expects an EJB exception.
+		catch (final EJBException exception) {
+			// Throws the root of the exception.
+			throw exception.getCause();
+		}
+	}
+
+	/**
+	 * Tests the method getEntityByAttribute with a attribute being duplicated in two entities.
+	 * 
+	 * @throws Throwable
+	 *             Expected exception.
+	 */
+	@Test(expected = InvalidParameterException.class)
+	public void testGetEntityByAttributeDuplicateAttribute() throws Throwable {
+		// Tries to add a fake entity.
+		final FakeEntity fakeEntity = getService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
+		// Tries to add a similar fake entity.
+		final FakeEntity similarFakeEntity = getService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
+		// Tries to get an entity by the name.
+		try {
+			getService().getEntityByAttribute("name", fakeEntity.getName());
 		}
 		// Expects an EJB exception.
 		catch (final EJBException exception) {

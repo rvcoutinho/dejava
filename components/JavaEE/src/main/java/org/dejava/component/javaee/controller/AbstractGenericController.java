@@ -104,6 +104,16 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	}
 
 	/**
+	 * @see org.dejava.component.javaee.service.GenericService#getEntityByAttribute(java.lang.String,
+	 *      java.lang.Object)
+	 */
+	@Override
+	public Entity getEntityByAttribute(final String attributeName, final Object attributeValue) {
+		// Tries to get the entity.
+		return getBusinessService().getEntityByAttribute(attributeName, attributeValue);
+	}
+
+	/**
 	 * @see org.dejava.component.javaee.service.GenericService#getAllEntities(java.lang.Integer,
 	 *      java.lang.Integer)
 	 */

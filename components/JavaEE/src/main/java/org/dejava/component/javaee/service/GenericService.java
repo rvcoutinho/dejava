@@ -72,6 +72,17 @@ public interface GenericService<Entity, Key> {
 			final Integer firstResult, final Integer maxResults);
 
 	/**
+	 * Gets an entity by its attribute.
+	 * 
+	 * @param attributeName
+	 *            The attribute name.
+	 * @param attributeValue
+	 *            The attribute value.
+	 * @return The entity by its attribute.
+	 */
+	Entity getEntityByAttribute(final String attributeName, final Object attributeValue);
+
+	/**
 	 * Gets all entities of the kind.
 	 * 
 	 * @param firstResult

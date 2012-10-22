@@ -3,6 +3,7 @@ package org.dejava.component.javaee.service;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.javaee.dao.AbstractGenericDAO;
 
 /**
@@ -92,6 +93,34 @@ public abstract class AbstractGenericService<Entity, Key> implements GenericServ
 			final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
 		return getEntityDAO().getEntitiesByAttribute(attributeName, attributeValue, firstResult, maxResults);
+	}
+
+	/**
+	 * @see org.dejava.component.javaee.service.GenericService#getEntityByAttribute(java.lang.String,
+	 *      java.lang.Object)
+	 */
+	@Override
+	public Entity getEntityByAttribute(final String attributeName, final Object attributeValue) {
+		// Tries to get the entities.
+		final Collection<Entity> entities = getEntityDAO().getEntitiesByAttribute(attributeName,
+				attributeValue, null, null);
+		// The entity is null by default.
+		Entity entity = null;
+		// If there are any entities.
+		if ((entities != null) && (!entities.isEmpty())) {
+			// If there is more than a single entity.
+			if (entities.size() > 1) {
+				// Throws an exception. TODO
+				throw new InvalidParameterException("", null, null);
+			}
+			// If there is a single entity.
+			else {
+				// Gets the first entity.
+				entity = entities.iterator().next();
+			}
+		}
+		// Return the entity found.
+		return entity;
 	}
 
 	/**

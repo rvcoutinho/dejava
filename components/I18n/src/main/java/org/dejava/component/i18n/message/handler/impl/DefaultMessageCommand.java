@@ -12,6 +12,11 @@ import org.dejava.component.i18n.message.handler.MessageHandler;
 public class DefaultMessageCommand implements MessageCommand {
 
 	/**
+	 * Generated serial.
+	 */
+	private static final long serialVersionUID = 4013415156070982536L;
+
+	/**
 	 * Message handler to render localized messages.
 	 */
 	private MessageHandler messageHandler;
@@ -25,8 +30,7 @@ public class DefaultMessageCommand implements MessageCommand {
 		// If the message handler is null.
 		if (messageHandler == null) {
 			// Creates a default message handler for the default locale.
-			messageHandler = DefaultI18nMessageHandler.getMessageHandler(Locale
-					.getDefault());
+			messageHandler = DefaultI18nMessageHandler.getMessageHandler(Locale.getDefault());
 		}
 		// Returns the message handler.
 		return messageHandler;
@@ -56,8 +60,7 @@ public class DefaultMessageCommand implements MessageCommand {
 		// If the message handler is null.
 		if (usMessageHandler == null) {
 			// Creates a default message handler for the default locale.
-			usMessageHandler = DefaultI18nMessageHandler
-					.getMessageHandler(Locale.US);
+			usMessageHandler = DefaultI18nMessageHandler.getMessageHandler(Locale.US);
 		}
 		// Returns the message handler.
 		return usMessageHandler;
@@ -163,8 +166,8 @@ public class DefaultMessageCommand implements MessageCommand {
 	 * @param messageKey
 	 *            Key for the message.
 	 */
-	public DefaultMessageCommand(final Locale locale, final String type,
-			final Object[] parameters, final String messageKey) {
+	public DefaultMessageCommand(final Locale locale, final String type, final Object[] parameters,
+			final String messageKey) {
 		super();
 		// Sets the locale.
 		setLocale(locale);
@@ -180,8 +183,7 @@ public class DefaultMessageCommand implements MessageCommand {
 	@Override
 	public String getMessage() throws MessageNotFoundException {
 		// Tries to return the localized message.
-		return getMessageHandler().getMessage(getType(), getMessageKey(),
-				getParameters());
+		return getMessageHandler().getMessage(getType(), getMessageKey(), getParameters());
 	}
 
 	/**
@@ -190,7 +192,6 @@ public class DefaultMessageCommand implements MessageCommand {
 	@Override
 	public String getUsMessage() throws MessageNotFoundException {
 		// Tries to return the localized message.
-		return getUsMessageHandler().getMessage(getType(), getMessageKey(),
-				getParameters());
+		return getUsMessageHandler().getMessage(getType(), getMessageKey(), getParameters());
 	}
 }

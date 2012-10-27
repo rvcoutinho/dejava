@@ -31,12 +31,17 @@ import org.dejava.component.reflection.ClassMirror;
  * Enjoy Java i18n and l10n!
  */
 public class DefaultI18nMessageHandler implements MessageHandler {
-	
+
+	/**
+	 * Generated serial.
+	 */
+	private static final long serialVersionUID = -6806683128717270649L;
+
 	/**
 	 * Localized message handlers stored by locale.
 	 */
 	private static Map<Locale, MessageHandler> messageHandlers;
-	
+
 	/**
 	 * Gets the localized message handlers stored by locale.
 	 * 
@@ -54,7 +59,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		// Returns the map.
 		return messageHandlers;
 	}
-	
+
 	/**
 	 * Sets the localized message handlers stored by locale.
 	 * 
@@ -64,12 +69,12 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 	public static void setMessageHandlers(final Map<Locale, MessageHandler> messageHandlers) {
 		DefaultI18nMessageHandler.messageHandlers = messageHandlers;
 	}
-	
+
 	/**
 	 * Locale to find the messages.
 	 */
 	private transient Locale locale;
-	
+
 	/**
 	 * Gets the locale for the messages.
 	 * 
@@ -84,14 +89,14 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		// Returns the locale.
 		return locale;
 	}
-	
+
 	/**
 	 * Max depth to search for annotations with message bundles.
 	 * 
 	 * The default value is 5.
 	 */
 	private Integer maxSearchDepth = 5;
-	
+
 	/**
 	 * Gets the max depth to search for annotations with message bundles.
 	 * 
@@ -102,7 +107,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 	public Integer getMaxSearchDepth() {
 		return maxSearchDepth;
 	}
-	
+
 	/**
 	 * Sets the max depth to search for annotations with message bundles.
 	 * 
@@ -112,14 +117,14 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 	public void setMaxSearchDepth(final Integer maxSearchDepth) {
 		this.maxSearchDepth = maxSearchDepth;
 	}
-	
+
 	/**
 	 * Protected constructor for the default internationalization message handler.
 	 */
 	protected DefaultI18nMessageHandler() {
 		super();
 	}
-	
+
 	/**
 	 * Protected constructor for the default internationalization message handler.
 	 * 
@@ -131,7 +136,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		// Sets the locale.
 		this.locale = locale;
 	}
-	
+
 	/**
 	 * Gets the message handler for the current environment.
 	 * 
@@ -152,7 +157,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		// Returns the message handler.
 		return messageHandler;
 	}
-	
+
 	/**
 	 * Adds the parameter values to a given message.
 	 * 
@@ -176,7 +181,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 			return messageFormat.format(parametersValues);
 		}
 	}
-	
+
 	/**
 	 * Gets a localized message from a given bundle.
 	 * 
@@ -210,7 +215,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 					parametersValues });
 		}
 	}
-	
+
 	/**
 	 * Gets a localized message with the given key and parameters values of the defined type.
 	 * 
@@ -288,7 +293,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		// If no localized message is found, throws an exception.
 		throw new MessageNotFoundException(null, null);
 	}
-	
+
 	/**
 	 * @see org.dejava.component.i18n.message.handler.MessageHandler#getMessage(java.lang.String,
 	 *      java.lang.String, java.lang.Object[])
@@ -304,7 +309,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		// Gets the message.
 		return getMessage(getLocale(), type, key, parametersValues);
 	}
-	
+
 	/**
 	 * @see org.dejava.component.i18n.message.handler.MessageHandler#getMessage(org.dejava.component.i18n.message.handler.model.ApplicationMessageType,
 	 *      java.lang.String, java.lang.Object[])
@@ -322,7 +327,7 @@ public class DefaultI18nMessageHandler implements MessageHandler {
 		// Gets the message.
 		return getMessage(actualType, key, parametersValues);
 	}
-	
+
 	/**
 	 * @see org.dejava.component.i18n.message.handler.MessageHandler#getMessage(java.lang.String,
 	 *      java.lang.Object[])

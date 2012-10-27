@@ -15,6 +15,11 @@ import org.dejava.component.i18n.message.handler.impl.DefaultMessageCommand;
 public class ExceptionMessageCommand extends DefaultMessageCommand {
 	
 	/**
+	 * Generated serial.
+	 */
+	private static final long serialVersionUID = 2192474983110077792L;
+
+	/**
 	 * @see DefaultMessageCommand#DefaultMessageCommand()
 	 */
 	public ExceptionMessageCommand() {

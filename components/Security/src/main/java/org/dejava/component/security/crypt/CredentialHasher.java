@@ -1,127 +1,61 @@
 package org.dejava.component.security.crypt;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.security.crypt.constant.ErrorKeys;
 
 /**
  * Handles the hash calculation for user credentials.
  */
-public class CredentialHasher {
+public final class CredentialHasher {
 
 	/**
-	 * Names of the algorithms to be used in the hash calculation. The first algorithm is also used in other
+	 * Names of the algorithms used by default.
+	 */
+	public static final String[] DEFAULT_ALGS_NAMES = { "SHA-1", "SHA-256", "SHA-384", "MD5" };
+
+	/**
+	 * The algorithms to be used in the hash calculation. The first algorithm is also used in other
 	 * calculations.
 	 */
-	private String[] possibleAlgorithmsNames = { "MD5", "SHA-1", "SHA-256", "SHA-384" };
-
-	/**
-	 * Gets the names of the algorithms to be used in the hash calculation.
-	 * 
-	 * @return The names of the algorithms to be used in the hash calculation.
-	 */
-	public String[] getPossibleAlgorithmsNames() {
-		return possibleAlgorithmsNames;
-	}
-
-	/**
-	 * Sets the names of the algorithms to be used in the hash calculation.
-	 * 
-	 * @param possibleAlgorithms
-	 *            New names of the algorithms to be used in the hash calculation. The first algorithm is also
-	 *            used in other calculations.
-	 */
-	public void setPossibleAlgorithms(final String[] possibleAlgorithms) {
-		this.possibleAlgorithmsNames = possibleAlgorithms;
-	}
-
-	/**
-	 * The algorithms to be used in the hash calculation.
-	 */
-	private MessageDigest[] possibleAlgorithms;
+	private MessageDigest[] algorithms;
 
 	/**
 	 * Gets the algorithms to be used in the hash calculation.
 	 * 
 	 * @return The algorithms to be used in the hash calculation.
 	 */
-	public MessageDigest[] getPossibleAlgorithms() {
-		return possibleAlgorithms;
+	public MessageDigest[] getAlgorithms() {
+		return algorithms;
 	}
 
 	/**
-	 * The fixed salt to be used in the hash calculation.
-	 */
-	private String fixedSalt = "Super_Dej4v4_s41t_crypt_10ng";
-
-	/**
-	 * Gets the fixed salt to be used in the hash calculation.
+	 * Sets the algorithms (with the given names) to be used in the hash calculation.
 	 * 
-	 * @return The fixed salt to be used in the hash calculation.
+	 * @param algorithmsNames
+	 *            Names of the algorithms to be used in the hash calculation. The first algorithm is also used
+	 *            in other calculations.
 	 */
-	public String getFixedSalt() {
-		return fixedSalt;
-	}
-
-	/**
-	 * Sets the fixed salt to be used in the hash calculation.
-	 * 
-	 * @param fixedSalt
-	 *            New fixed salt to be used in the hash calculation.
-	 */
-	public void setFixedSalt(final String fixedSalt) {
-		this.fixedSalt = fixedSalt;
-	}
-
-	/**
-	 * The unique (by user) salt to be used in the hash calculation.
-	 */
-	private String principalSalt;
-
-	/**
-	 * Gets the unique (by user) salt to be used in the hash calculation.
-	 * 
-	 * @return The unique (by user) salt to be used in the hash calculation.
-	 */
-	public String getPrincipalSalt() {
-		return principalSalt;
-	}
-
-	/**
-	 * Sets the unique (by user) salt to be used in the hash calculation.
-	 * 
-	 * @param principalSalt
-	 *            New unique (by user) salt to be used in the hash calculation.
-	 */
-	public void setPrincipalSalt(final String principalSalt) {
-		this.principalSalt = principalSalt;
-	}
-
-	/**
-	 * Gets the complete salt to be used in the has calculation.
-	 * 
-	 * @return The complete salt to be used in the has calculation.
-	 */
-	public String getSalt() {
-		return getFixedSalt() + getPrincipalSalt();
-	}
-
-	/**
-	 * Gets an arbitrary number from a given string (always the same for an equal string).
-	 * 
-	 * @param text
-	 *            The text to get the number from.
-	 * @return An arbitrary number from a given string (always the same for an equal string)
-	 */
-	private Integer getArbitraryNumber(final String text) {
-		// Gets the first hash algorithm.
-		final MessageDigest digest = getPossibleAlgorithms()[0];
-		// Makes sure the message digest is empty.
-		digest.reset();
-		// Digests the text.
-		final String hash = new String(digest.digest(text.getBytes()));
-		// Replaces all non-digit characters by an empty string.
-		final String hashNumbers = hash.replaceAll("[^0-9]", "");
-		// Returns the numbers in the hash.
-		return Integer.valueOf(hashNumbers);
+	public void setAlgorithms(final String[] algorithmsNames) {
+		// Creates a new array for the algorithms.
+		algorithms = new MessageDigest[algorithmsNames.length];
+		// For each algorithm name.
+		for (Integer currentAlgorithmIdx = 0; currentAlgorithmIdx < algorithmsNames.length; currentAlgorithmIdx++) {
+			// Tries to get the current algorithm by its name.
+			try {
+				algorithms[currentAlgorithmIdx] = MessageDigest
+						.getInstance(algorithmsNames[currentAlgorithmIdx]);
+			}
+			// If the algorithm for the name cannot be found.
+			catch (final NoSuchAlgorithmException exception) {
+				// Throws an exception.
+				throw new InvalidParameterException(ErrorKeys.INVALID_ALG_NAME, exception,
+						new Object[] { algorithmsNames[currentAlgorithmIdx] });
+			}
+		}
 	}
 
 	/**
@@ -151,7 +85,7 @@ public class CredentialHasher {
 	/**
 	 * The maximum number of hash cycles to be used in the hash calculation.
 	 */
-	private Integer maxCycles = 110;
+	private Integer maxCycles = 150;
 
 	/**
 	 * Gets the maximum number of hash cycles to be used in the hash calculation.
@@ -221,85 +155,133 @@ public class CredentialHasher {
 	}
 
 	/**
-	 * TODO
+	 * Public constructor.
+	 */
+	public CredentialHasher() {
+		super();
+		setAlgorithms(DEFAULT_ALGS_NAMES);
+	}
+
+	/**
+	 * Public constructor.
 	 * 
-	 * @param algorithms
-	 *            Algorithms to be used in the hash calculation. The first algorithm is also used in other
-	 *            calculations.
-	 * @param fixedSalt
-	 *            The fixed salt to be used in the hash calculation.
-	 * @param principalSalt
-	 *            The unique (by user) salt to be used in the hash calculation.
+	 * @param algorithmsNames
+	 *            Names of the algorithms to be used in the hash calculation. The first algorithm is also used
+	 *            in other calculations.
 	 * @param minCycles
 	 *            The minimum number of hash cycles to be used in the hash calculation.
 	 * @param maxCycles
 	 *            The maximum number of hash cycles to be used in the hash calculation.
 	 */
-	public CredentialHasher(final String[] algorithms, final String fixedSalt, final String principalSalt,
-			final Integer minCycles, final Integer maxCycles) {
+	public CredentialHasher(final String[] algorithmsNames, final Integer minCycles, final Integer maxCycles) {
 		super();
-		this.possibleAlgorithmsNames = algorithms;
-		this.fixedSalt = fixedSalt;
-		this.principalSalt = principalSalt;
-		this.minCycles = minCycles;
-		this.maxCycles = maxCycles;
+		setAlgorithms(algorithmsNames);
+		setMinCycles(minCycles);
+		setMaxCycles(maxCycles);
 	}
 
 	/**
 	 * Gets the number of cycles to be used when getting the hash for the credential.
 	 * 
+	 * @param salt
+	 *            Salt to be used in the hash calculation. It is a good idea to have an unique salt per user.
 	 * @return The number of cycles to be used when getting the hash for the credential.
 	 */
-	private Integer getHashCycles() {
+	private Integer getHashCycles(final String salt) {
 		// Gets the number of possible cycles.
 		final Integer possibleCycles = (1 + getMaxCycles()) - getMinCycles();
-		// Returns the modulo of the salt (and prime) by the number of possible cycles (plus the minimum).
-		return ((getArbitraryNumber(getSalt()) + getCyclePrime()) % possibleCycles)) + getMinCycles();
+		// Gets an arbitrary (yet repeatable) number for the iteration (using the salt).
+		final Integer arbitraryNumber = (salt + getCyclePrime()).hashCode() + getCyclePrime();
+		// Calculates the modulo of the salt (and prime) by the number of possible cycles (plus the minimum).
+		Integer hashCycles = (arbitraryNumber % possibleCycles) + getMinCycles();
+		// Makes sure the number of cycles is not negative.
+		hashCycles = hashCycles * Integer.signum(hashCycles);
+		// Returns the number of hash cycles.
+		return hashCycles;
 	}
 
 	/**
-	 * TODO
+	 * Gets the algorithms (in order) to be used in the hash calculation (iteration).
 	 * 
-	 * @return
+	 * @param salt
+	 *            Salt to be used in the hash calculation. It is a good idea to have an unique salt per user.
+	 * @return The algorithms (in order) to be used in the hash calculation (iteration).
 	 */
-	private String[] get() {
+	private MessageDigest[] getAlgorithmsOrder(final String salt) {
 		// Gets the number of hash cycles.
-		final Integer hashCycles = getHashCycles();
+		final Integer hashCycles = getHashCycles(salt);
 		// Creates a new array with the same size of the cycles.
-		final String[] algorithms = new String[hashCycles];
+		final MessageDigest[] algorithmsOrder = new MessageDigest[hashCycles];
 		// Gets the number of possible algorithms.
-		final Integer possibleAlgorithmsNumber = getPossibleAlgorithmsNames().length;
+		final Integer algorithmsNumber = getAlgorithms().length;
 		// For each hash cycle.
 		for (Integer currentCycle = 0; currentCycle < hashCycles; currentCycle++) {
-			// TODO
-			final Integer algorithmIndex = ((getArbitraryNumber(getSalt()) + getAlgorithmPrime()) % possibleAlgorithmsNumber)
-					+ getMinCycles();
+			// Gets an arbitrary (yet repeatable) number for the iteration (using the salt).
+			final Integer arbitraryNumber = (salt + getAlgorithmPrime() + currentCycle).hashCode()
+					+ getAlgorithmPrime();
+			// Calculates the algorithm to be used (by index).
+			Integer algorithmIndex = arbitraryNumber % algorithmsNumber;
+			// Makes sure the index is not negative.
+			algorithmIndex = algorithmIndex * Integer.signum(algorithmIndex);
 			// Sets the algorithm for the current cycle.
-			algorithms[currentCycle] = getPossibleAlgorithmsNames()[algorithmIndex];
+			algorithmsOrder[currentCycle] = getAlgorithms()[algorithmIndex];
 		}
+		// Returns the algorithms order.
+		return algorithmsOrder;
 	}
 
 	/**
 	 * Gets the hash from a given credential.
 	 * 
+	 * @param credential
+	 *            The credential to be hashed.
+	 * @param salt
+	 *            Salt to be used in the hash calculation. It is a good idea to have an unique salt per user.
 	 * @return The hash from a given credential.
 	 */
-	public String hash() {
-		// Gets the digest.
-		final MessageDigest digest = MessageDigest.getInstance(algorithm);
-		// Makes sure the digest is reset.
-		digest.reset();
-		// Adds the salt to the digest.
-		digest.update(salt.getBytes());
+	public byte[] hash(final byte[] credential, final String salt) {
+		// If the credential is null or empty.
+		if ((credential == null) || (credential.length == 0)) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
+		// If the salt is null or empty.
+		if ((salt == null) || (salt.isEmpty())) {
+			// Throws an exception.
+			throw new EmptyParameterException(2);
+		}
 		// The hashed credential is initially the credential itself.
-		byte[] hashedCredential = credential.getBytes();
-		// For the number of given cycles.
-		for (Integer currentCycle = 0; currentCycle < hashCycles; currentCycle++) {
+		byte[] hashedCredential = credential;
+		// For each algorithm to be used.
+		for (final MessageDigest currentDigest : getAlgorithmsOrder(salt)) {
+			// Makes sure the digest is reset.
+			currentDigest.reset();
+			// Adds the salt to the digest.
+			currentDigest.update(salt.getBytes());
 			// Generates the hash for the current cycle.
-			hashedCredential = digest.digest(hashedCredential);
+			hashedCredential = currentDigest.digest(hashedCredential);
 		}
 		// Returns the hashed cycle.
-		return new String(hashedCredential);
+		return hashedCredential;
+	}
+
+	/**
+	 * Gets the hash from a given credential.
+	 * 
+	 * @param credential
+	 *            The credential to be hashed.
+	 * @param salt
+	 *            Salt to be used in the hash calculation. It is a good idea to have an unique salt per user.
+	 * @return The hash from a given credential.
+	 */
+	public byte[] hash(final String credential, final String salt) {
+		// If the credential is null or empty.
+		if ((credential == null) || (credential.isEmpty())) {
+			// Throws an exception.
+			throw new EmptyParameterException(1);
+		}
+		// Tries to hash the credential.
+		return hash(credential.getBytes(), salt);
 	}
 
 }

@@ -247,9 +247,8 @@ public class SimpleMessageHandler implements MessageHandler {
 	 * Gets a localized message with the given key and parameters values of the defined type.
 	 * 
 	 * @param annotatedClass
-	 *            Class that contains the message bundle information (via
-	 *            org.dejava.component.i18n.message.annotation.MessageBundles). The given class must not be
-	 *            null.
+	 *            Class that contains the message bundle information (via {@link MessageBundles}). The given
+	 *            class must not be null.
 	 * @param locale
 	 *            Locale for the message. If no locale is provided, the message handler locale is used.
 	 * @param type
@@ -325,9 +324,9 @@ public class SimpleMessageHandler implements MessageHandler {
 	 * message found with the given information is retrieved.
 	 * 
 	 * @param annotatedClasses
-	 *            Classes that might contain the message bundle information (via
-	 *            org.dejava.component.i18n.message.annotation.MessageBundles). The interfaces and super
-	 *            classes are also taken under consideration. The given collection must not be empty or null.
+	 *            Classes that might contain the message bundle information (via {@link MessageBundles}). The
+	 *            interfaces and super classes are also taken under consideration. The given collection must
+	 *            not be empty or null.
 	 * @param locale
 	 *            Locale for the message. If no locale is provided, the message handler locale is used.
 	 * @param type
@@ -350,6 +349,11 @@ public class SimpleMessageHandler implements MessageHandler {
 			// Throws an exception.
 			throw new EmptyParameterException(MessageHandlerParamKeys.ANNOTATED_CLASSES);
 		}
+		// If the key is not given.
+		if ((key == null) || (key.isEmpty())) {
+			// Throws an exception.
+			throw new EmptyParameterException(MessageHandlerParamKeys.KEY);
+		}
 		// For each class in the collection.
 		for (final Class<?> currentAnnotatedClass : annotatedClasses) {
 			// Tries to return the message for the current class.
@@ -368,8 +372,7 @@ public class SimpleMessageHandler implements MessageHandler {
 	/**
 	 * Gets a localized message with the given key and parameters values of the defined type. The first
 	 * message found with the given information is retrieved. The classes in the stack trace (limited by the
-	 * maximum search depth) are used to find the bundle information (via
-	 * org.dejava.component.i18n.message.annotation.MessageBundles).
+	 * maximum search depth) are used to find the bundle information (via {@link MessageBundles}).
 	 * 
 	 * @param locale
 	 *            Locale for the message. If no locale is provided, the message handler locale is used.
@@ -392,8 +395,14 @@ public class SimpleMessageHandler implements MessageHandler {
 	}
 
 	/**
+	 * 
+	 * If the bundle info is a class, search for {@link MessageBundles} annotations. If it is a collection,
+	 * search the classes in the collection for {@link MessageBundles} annotations. Otherwise, check the stack
+	 * trace classes for {@link MessageBundles} annotations
+	 * 
 	 * @see org.dejava.component.i18n.message.handler.MessageHandler#getMessage(java.lang.Object,
 	 *      java.util.Locale, java.lang.String, java.lang.String, java.lang.Object[])
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override

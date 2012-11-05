@@ -16,7 +16,8 @@ public class Resources {
 	 * Entity manager.
 	 */
 	@Produces
-	@PersistenceContext
+	@AccessControl
+	@PersistenceContext(unitName = "AccessControlPU")
 	private EntityManager entityManager;
 
 	/**
@@ -27,6 +28,7 @@ public class Resources {
 	 * @return A logger instance.
 	 */
 	@Produces
+	@AccessControl
 	public Logger produceLog(final InjectionPoint injectionPoint) {
 		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
 	}

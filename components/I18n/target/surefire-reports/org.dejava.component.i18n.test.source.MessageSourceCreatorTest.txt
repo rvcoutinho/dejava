@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.dejava.component.i18n.test.source.MessageSourceCreatorTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.046 sec <<< FAILURE!
-test(org.dejava.component.i18n.test.source.MessageSourceCreatorTest)  Time elapsed: 45 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.044 sec <<< FAILURE!
+test(org.dejava.component.i18n.test.source.MessageSourceCreatorTest)  Time elapsed: 44 sec  <<< ERROR!
 java.lang.Error: Unresolved compilation problem: 
 	The method getMessage(Object, Locale, String, String, Object[]) in the type MessageHandler is not applicable for the arguments (null, String, null)
 

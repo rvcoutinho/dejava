@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.dejava.component.i18n.test.message.SimpleMessageHandlerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.084 sec <<< FAILURE!
-testGetMessageValidParams(org.dejava.component.i18n.test.message.SimpleMessageHandlerTest)  Time elapsed: 32 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.075 sec <<< FAILURE!
+testGetMessageValidParams(org.dejava.component.i18n.test.message.SimpleMessageHandlerTest)  Time elapsed: 31 sec  <<< ERROR!
 org.dejava.component.test.exception.parametric.atomic.AtomParametricTestException: Um erro inesperado foi encontrado. Tente novamente em alguns instantes.
 	at org.dejava.component.test.runner.statement.ParametricTestWrapper.evaluate(ParametricTestWrapper.java:76)
 	at org.dejava.component.test.runner.JUnitParametricRunner.runParametricTest(JUnitParametricRunner.java:314)

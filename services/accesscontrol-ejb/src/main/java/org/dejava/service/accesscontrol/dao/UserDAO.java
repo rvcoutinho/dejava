@@ -5,9 +5,10 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.javaee.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.model.User;
+import org.dejava.service.accesscontrol.util.AccessControl;
 
 /**
- * TODO
+ * DAO for user.
  */
 public class UserDAO extends AbstractGenericDAO<User, Integer> {
 
@@ -15,6 +16,7 @@ public class UserDAO extends AbstractGenericDAO<User, Integer> {
 	 * Entity manager being used.
 	 */
 	@Inject
+	@AccessControl
 	private EntityManager entityManager;
 
 	/**

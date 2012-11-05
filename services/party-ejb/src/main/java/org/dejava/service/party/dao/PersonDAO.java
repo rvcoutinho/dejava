@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.javaee.dao.AbstractGenericDAO;
 import org.dejava.service.party.model.Person;
+import org.dejava.service.party.util.Party;
 
 /**
  * TODO
@@ -15,6 +16,7 @@ public class PersonDAO extends AbstractGenericDAO<Person, Integer> {
 	 * Entity manager being used.
 	 */
 	@Inject
+	@Party
 	private EntityManager entityManager;
 
 	/**

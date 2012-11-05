@@ -6,36 +6,36 @@ import org.dejava.component.exception.constant.ErrorKeys;
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.annotation.MessageBundles;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
-import org.dejava.component.i18n.message.handler.impl.DefaultMessageCommand;
+import org.dejava.component.i18n.message.handler.impl.SimpleMessageCommand;
 
 /**
  * Default exception message command.
  */
 @MessageBundles(defaultType = "error", messageBundles = { @MessageBundle(baseName = "org.dejava.component.exception.properties.error", type = "error") })
-public class ExceptionMessageCommand extends DefaultMessageCommand {
-	
+public class ExceptionMessageCommand extends SimpleMessageCommand {
+
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = 2192474983110077792L;
 
 	/**
-	 * @see DefaultMessageCommand#DefaultMessageCommand()
+	 * @see SimpleMessageCommand#SimpleMessageCommand()
 	 */
 	public ExceptionMessageCommand() {
 		super();
 	}
-	
+
 	/**
-	 * @see DefaultMessageCommand#DefaultMessageCommand(Locale, String, Object[], String)
+	 * @see SimpleMessageCommand#SimpleMessageCommand(Object, Locale, String, String, Object[])
 	 */
-	public ExceptionMessageCommand(final Locale locale, final String type, final Object[] parameters,
-			final String messageKey) {
-		super(locale, type, parameters, messageKey);
+	public ExceptionMessageCommand(final Object bundleInfo, final Locale locale, final String type,
+			final String messageKey, final Object[] parameters) {
+		super(bundleInfo, locale, type, messageKey, parameters);
 	}
-	
+
 	/**
-	 * @see org.dejava.component.i18n.message.handler.impl.DefaultMessageCommand#getMessage()
+	 * @see org.dejava.component.i18n.message.handler.impl.SimpleMessageCommand#getMessage()
 	 */
 	@Override
 	public String getMessage() throws MessageNotFoundException {
@@ -46,12 +46,13 @@ public class ExceptionMessageCommand extends DefaultMessageCommand {
 		// If the message cannot be found.
 		catch (final Exception exception) {
 			// Returns a generic error message.
-			return getMessageHandler().getMessage(ErrorKeys.GENERIC, null);
+			return getMessageHandler().getMessage(ExceptionMessageCommand.class, getLocale(), null,
+					ErrorKeys.GENERIC, null);
 		}
 	}
-	
+
 	/**
-	 * @see org.dejava.component.i18n.message.handler.impl.DefaultMessageCommand#getUsMessage()
+	 * @see org.dejava.component.i18n.message.handler.impl.SimpleMessageCommand#getUsMessage()
 	 */
 	@Override
 	public String getUsMessage() throws MessageNotFoundException {
@@ -62,7 +63,8 @@ public class ExceptionMessageCommand extends DefaultMessageCommand {
 		// If the message cannot be found.
 		catch (final Exception exception) {
 			// Returns a generic error message.
-			return getUsMessageHandler().getMessage(ErrorKeys.GENERIC, null);
+			return getMessageHandler().getMessage(ExceptionMessageCommand.class, Locale.US, null,
+					ErrorKeys.GENERIC, null);
 		}
 	}
 }

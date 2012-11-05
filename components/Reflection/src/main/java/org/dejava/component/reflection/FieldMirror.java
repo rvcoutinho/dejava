@@ -6,18 +6,19 @@ import java.lang.reflect.Modifier;
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.reflection.constant.ErrorKeys;
+import org.dejava.component.reflection.constant.FieldParamKeys;
 import org.dejava.component.reflection.exception.InvocationException;
 
 /**
  * TODO
  */
 public class FieldMirror {
-	
+
 	/**
 	 * Field being reflected.
 	 */
 	private Field reflectedField;
-	
+
 	/**
 	 * Gets the field being reflected.
 	 * 
@@ -26,7 +27,7 @@ public class FieldMirror {
 	public Field getReflectedField() {
 		return reflectedField;
 	}
-	
+
 	/**
 	 * Sets the field being reflected.
 	 * 
@@ -36,12 +37,12 @@ public class FieldMirror {
 	public void setReflectedField(final Field reflectedField) {
 		this.reflectedField = reflectedField;
 	}
-	
+
 	/**
 	 * Type (class) of the reflected field.
 	 */
 	private ClassMirror<?> type;
-	
+
 	/**
 	 * Gets the type (class) of the reflected field.
 	 * 
@@ -56,7 +57,7 @@ public class FieldMirror {
 		// Returns the type.
 		return type;
 	}
-	
+
 	/**
 	 * Sets the type (class) of the reflected field.
 	 * 
@@ -66,12 +67,12 @@ public class FieldMirror {
 	public void setType(final ClassMirror<?> type) {
 		this.type = type;
 	}
-	
+
 	/**
 	 * Declaring class of the field.
 	 */
 	private ClassMirror<?> declaringClass;
-	
+
 	/**
 	 * Gets the declaring class of the field.
 	 * 
@@ -86,12 +87,12 @@ public class FieldMirror {
 		// Returns the class.
 		return declaringClass;
 	}
-	
+
 	/**
 	 * The field getter prefix.
 	 */
 	public static final String GETTER_PREFIX = "get";
-	
+
 	/**
 	 * Get the getter name for a field.
 	 * 
@@ -102,12 +103,12 @@ public class FieldMirror {
 		return GETTER_PREFIX + getReflectedField().getName().substring(0, 1).toUpperCase()
 				+ getReflectedField().getName().substring(1);
 	}
-	
+
 	/**
 	 * The boolean field getter prefix.
 	 */
 	public static final String BOOL_GETTER_PREFIX = "is";
-	
+
 	/**
 	 * Get the getter name for a boolean field.
 	 * 
@@ -118,12 +119,12 @@ public class FieldMirror {
 		return BOOL_GETTER_PREFIX + getReflectedField().getName().substring(0, 1).toUpperCase()
 				+ getReflectedField().getName().substring(1);
 	}
-	
+
 	/**
 	 * Getter for the reflected field.
 	 */
 	private MethodMirror getter;
-	
+
 	/**
 	 * Gets the getter for the reflected field.
 	 * 
@@ -154,12 +155,12 @@ public class FieldMirror {
 		// Returns the getter.
 		return getter;
 	}
-	
+
 	/**
 	 * The field setter prefix.
 	 */
 	public static final String SETTER_PREFIX = "set";
-	
+
 	/**
 	 * Get the setter name for a field.
 	 * 
@@ -170,12 +171,12 @@ public class FieldMirror {
 		return SETTER_PREFIX + getReflectedField().getName().substring(0, 1).toUpperCase()
 				+ getReflectedField().getName().substring(1);
 	}
-	
+
 	/**
 	 * Setter for the reflected field.
 	 */
 	private MethodMirror setter;
-	
+
 	/**
 	 * Gets the setter for the reflected field.
 	 * 
@@ -200,7 +201,7 @@ public class FieldMirror {
 		// Returns the setter.
 		return setter;
 	}
-	
+
 	/**
 	 * Public constructor for the reflection class.
 	 * 
@@ -213,12 +214,12 @@ public class FieldMirror {
 		// If the field is null.
 		if (reflectedField == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(FieldParamKeys.FIELD);
 		}
 		// Sets the main reflection fields.
 		this.reflectedField = reflectedField;
 	}
-	
+
 	/**
 	 * Gets the value of a field accessed directly (field access).
 	 * 
@@ -256,7 +257,7 @@ public class FieldMirror {
 			getReflectedField().setAccessible(false);
 		}
 	}
-	
+
 	/**
 	 * Gets the value of a field accessed through its getter.
 	 * 
@@ -277,7 +278,7 @@ public class FieldMirror {
 		// Tries to return the field value.
 		return getGetter().invokeMethod(targetObject, null, ignoreAccess);
 	}
-	
+
 	/**
 	 * Gets the value of a field.
 	 * 
@@ -300,7 +301,7 @@ public class FieldMirror {
 		// If the field is not static and the target object is null.
 		if ((targetObject == null) && (!Modifier.isStatic(getReflectedField().getModifiers()))) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(FieldParamKeys.TARGET_OBJECT);
 		}
 		// If the value must be accessed directly.
 		if (fieldAccess) {
@@ -313,7 +314,7 @@ public class FieldMirror {
 			return getValue(targetObject, ignoreAccess);
 		}
 	}
-	
+
 	/**
 	 * Sets the value of a field accessed directly (field access).
 	 * 
@@ -352,7 +353,7 @@ public class FieldMirror {
 			getReflectedField().setAccessible(false);
 		}
 	}
-	
+
 	/**
 	 * Sets the value of a field accessed through its setter.
 	 * 
@@ -374,7 +375,7 @@ public class FieldMirror {
 		// Tries to set the field value.
 		getSetter().invokeMethod(targetObject, new Object[] { newValue }, ignoreAccess);
 	}
-	
+
 	/**
 	 * Sets the value of a field.
 	 * 
@@ -399,7 +400,7 @@ public class FieldMirror {
 		// If the field is not static and the target object is null.
 		if ((targetObject == null) && (!Modifier.isStatic(getReflectedField().getModifiers()))) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(FieldParamKeys.TARGET_OBJECT);
 		}
 		// If the value must be accessed directly.
 		if (fieldAccess) {
@@ -412,7 +413,7 @@ public class FieldMirror {
 			setValue(targetObject, newValue, ignoreAccess);
 		}
 	}
-	
+
 	/**
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -423,7 +424,7 @@ public class FieldMirror {
 		result = (prime * result) + ((reflectedField == null) ? 0 : reflectedField.hashCode());
 		return result;
 	}
-	
+
 	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -443,11 +444,10 @@ public class FieldMirror {
 			if (other.reflectedField != null) {
 				return false;
 			}
-		}
-		else if (!reflectedField.equals(other.reflectedField)) {
+		} else if (!reflectedField.equals(other.reflectedField)) {
 			return false;
 		}
 		return true;
 	}
-	
+
 }

@@ -5,17 +5,21 @@ import java.security.NoSuchAlgorithmException;
 
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.i18n.message.annotation.MessageBundle;
+import org.dejava.component.i18n.message.annotation.MessageBundles;
+import org.dejava.component.security.crypt.constant.CredentialHasherParamKeys;
 import org.dejava.component.security.crypt.constant.ErrorKeys;
 
 /**
  * Handles the hash calculation for user credentials.
  */
+@MessageBundles(defaultType = "error", messageBundles = { @MessageBundle(baseName = "org.dejava.component.security.crypt.properties.error", type = "error") })
 public final class CredentialHasher {
 
 	/**
 	 * Names of the algorithms used by default.
 	 */
-	public static final String[] DEFAULT_ALGS_NAMES = { "SHA-1", "SHA-256", "SHA-384", "MD5" };
+	public static final String[] ALGS_NAMES = { "SHA-256", "SHA-384", "SHA-512" };
 
 	/**
 	 * The algorithms to be used in the hash calculation. The first algorithm is also used in other
@@ -59,6 +63,11 @@ public final class CredentialHasher {
 	}
 
 	/**
+	 * The minimum for the minimum number of hash cycles.
+	 */
+	public static final Integer MIN_MIN_CYCLES = 1;
+
+	/**
 	 * The minimum number of hash cycles to be used in the hash calculation.
 	 */
 	private Integer minCycles = 100;
@@ -79,8 +88,20 @@ public final class CredentialHasher {
 	 *            New minimum number of hash cycles to be used in the hash calculation.
 	 */
 	public void setMinCycles(final Integer minCycles) {
+		// If the given minimum is greater than the maximum (or less than the minimum).
+		if ((minCycles == null) || (minCycles > getMaxCycles()) || (minCycles < MIN_MIN_CYCLES)) {
+			// Throws an exception.
+			throw new InvalidParameterException(ErrorKeys.INVALID_MIN_CYCLES, null, new Object[] {
+					getMaxCycles(), MIN_MIN_CYCLES });
+		}
+		// Sets the new minimum.
 		this.minCycles = minCycles;
 	}
+
+	/**
+	 * The maximum for the maximum number of hash cycles.
+	 */
+	public static final Integer MAX_MAX_CYCLES = 10000;
 
 	/**
 	 * The maximum number of hash cycles to be used in the hash calculation.
@@ -103,6 +124,13 @@ public final class CredentialHasher {
 	 *            New maximum number of hash cycles to be used in the hash calculation.
 	 */
 	public void setMaxCycles(final Integer maxCycles) {
+		// If the given minimum is lesser than the maximum (or greater than the maximum).
+		if ((maxCycles == null) || (maxCycles < getMinCycles()) || (maxCycles > MAX_MAX_CYCLES)) {
+			// Throws an exception.
+			throw new InvalidParameterException(ErrorKeys.INVALID_MAX_CYCLES, null, new Object[] {
+					getMinCycles(), MAX_MAX_CYCLES });
+		}
+		// Sets the new maximum.
 		this.maxCycles = maxCycles;
 	}
 
@@ -127,6 +155,12 @@ public final class CredentialHasher {
 	 *            New prime to be used in the algorithm selection.
 	 */
 	public void setAlgorithmPrime(final Integer algorithmPrime) {
+		// If the number is null.
+		if (algorithmPrime == null) {
+			// Throws an exception.
+			throw new EmptyParameterException(CredentialHasherParamKeys.ALG_PRIME);
+		}
+		// Sets the new number.
 		this.algorithmPrime = algorithmPrime;
 	}
 
@@ -151,6 +185,12 @@ public final class CredentialHasher {
 	 *            New prime to be used in the cycle selection.
 	 */
 	public void setCyclePrime(final Integer cyclePrime) {
+		// If the number is null.
+		if (cyclePrime == null) {
+			// Throws an exception.
+			throw new EmptyParameterException(CredentialHasherParamKeys.CYCLE_PRIME);
+		}
+		// Sets the new number.
 		this.cyclePrime = cyclePrime;
 	}
 
@@ -159,7 +199,7 @@ public final class CredentialHasher {
 	 */
 	public CredentialHasher() {
 		super();
-		setAlgorithms(DEFAULT_ALGS_NAMES);
+		setAlgorithms(ALGS_NAMES);
 	}
 
 	/**
@@ -175,9 +215,14 @@ public final class CredentialHasher {
 	 */
 	public CredentialHasher(final String[] algorithmsNames, final Integer minCycles, final Integer maxCycles) {
 		super();
+		// Sets the minimum cycles to 1 (so the maximum could not be lesser).
+		setMinCycles(MIN_MIN_CYCLES);
+		// Sets the maximum cycles to 10000 (so the minimum could not be greater).
+		setMaxCycles(MAX_MAX_CYCLES);
+		// Sets the fields.
 		setAlgorithms(algorithmsNames);
-		setMinCycles(minCycles);
 		setMaxCycles(maxCycles);
+		setMinCycles(minCycles);
 	}
 
 	/**
@@ -243,12 +288,12 @@ public final class CredentialHasher {
 		// If the credential is null or empty.
 		if ((credential == null) || (credential.length == 0)) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIAL);
 		}
 		// If the salt is null or empty.
 		if ((salt == null) || (salt.isEmpty())) {
 			// Throws an exception.
-			throw new EmptyParameterException(2);
+			throw new EmptyParameterException(CredentialHasherParamKeys.SALT);
 		}
 		// The hashed credential is initially the credential itself.
 		byte[] hashedCredential = credential;
@@ -278,7 +323,7 @@ public final class CredentialHasher {
 		// If the credential is null or empty.
 		if ((credential == null) || (credential.isEmpty())) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIAL);
 		}
 		// Tries to hash the credential.
 		return hash(credential.getBytes(), salt);

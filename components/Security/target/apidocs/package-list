@@ -1,4 +1,3 @@
-org.dejava.component.security.auth.test
-org.dejava.component.exception.localized
-org.dejava.component.exception.localized.checked
-org.dejava.component.exception.localized.unchecked
+org.dejava.component.security.auth.constant
+org.dejava.component.security.crypt
+org.dejava.component.security.crypt.constant

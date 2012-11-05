@@ -2,23 +2,22 @@ package org.dejava.component.exception.localized.unchecked;
 
 import org.dejava.component.exception.localized.ExceptionMessageCommand;
 import org.dejava.component.i18n.message.handler.MessageCommand;
-import org.dejava.component.i18n.message.handler.model.ApplicationMessageType;
 
 /**
  * General localized runtime exception.
  */
 public abstract class AbstractLocalizedRuntimeException extends RuntimeException {
-	
+
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = -6987571772328004454L;
-	
+
 	/**
 	 * Message command for the exception.
 	 */
 	private MessageCommand messageCommand;
-	
+
 	/**
 	 * Gets the messageCommand.
 	 * 
@@ -33,7 +32,7 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 		// Returns the message command.
 		return messageCommand;
 	}
-	
+
 	/**
 	 * Sets the messageCommand.
 	 * 
@@ -43,7 +42,7 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 	public void setMessageCommand(final MessageCommand messageCommand) {
 		this.messageCommand = messageCommand;
 	}
-	
+
 	/**
 	 * Basic constructor.
 	 * 
@@ -59,11 +58,10 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 		// Calls the Exception constructor.
 		super(cause);
 		// Sets the basic fields.
-		getMessageCommand().setType(ApplicationMessageType.ERROR.name());
 		getMessageCommand().setMessageKey(messageKey);
 		getMessageCommand().setParameters(parameters);
 	}
-	
+
 	/**
 	 * @see Throwable#getLocalizedMessage()
 	 */
@@ -72,7 +70,7 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 		// Tries to return the localized message.
 		return getMessageCommand().getMessage();
 	}
-	
+
 	/**
 	 * @see Throwable#getMessage()
 	 */

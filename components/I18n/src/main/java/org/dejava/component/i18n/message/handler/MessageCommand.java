@@ -11,6 +11,14 @@ import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 public interface MessageCommand extends Serializable {
 
 	/**
+	 * Sets the information regarding the message bundle to be used in the message retrieval.
+	 * 
+	 * @param bundleInfo
+	 *            Information regarding the message bundle to be used in the message retrieval.
+	 */
+	void setBundleInfo(final Object bundleInfo);
+
+	/**
 	 * Sets the locale for the message.
 	 * 
 	 * @param locale
@@ -27,20 +35,20 @@ public interface MessageCommand extends Serializable {
 	void setType(String type);
 
 	/**
-	 * Sets the parameters for the message.
-	 * 
-	 * @param parameters
-	 *            New parameters for the message.
-	 */
-	void setParameters(final Object[] parameters);
-
-	/**
 	 * Sets the key for the message.
 	 * 
 	 * @param messageKey
 	 *            New key for the message.
 	 */
 	void setMessageKey(final String messageKey);
+
+	/**
+	 * Sets the parameters for the message.
+	 * 
+	 * @param parameters
+	 *            New parameters for the message.
+	 */
+	void setParameters(final Object[] parameters);
 
 	/**
 	 * Gets a message by evaluating the given information.

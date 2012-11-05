@@ -16,9 +16,9 @@ public class EmptyParameterException extends InvalidParameterException {
 	 * Public constructor.
 	 * 
 	 * @param emptyParameter
-	 *            Parameter that is empty (1 is the first).
+	 *            Parameter that is empty.
 	 */
-	public EmptyParameterException(final Integer emptyParameter) {
+	public EmptyParameterException(final String emptyParameter) {
 		super(ErrorKeys.EMPTY_PARAM, null, emptyParameter, null);
 	}
 }

@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.reflection.constant.ErrorKeys;
+import org.dejava.component.reflection.constant.MethodParamKeys;
 import org.dejava.component.reflection.exception.InvocationException;
 
 /**
@@ -53,7 +54,7 @@ public class MethodMirror {
 		// If the field is null.
 		if (reflectedMethod == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(MethodParamKeys.METHOD);
 		}
 		// Sets the main reflection fields.
 		this.reflectedMethod = reflectedMethod;
@@ -179,8 +180,8 @@ public class MethodMirror {
 	/**
 	 * Invokes a method from an object/class.
 	 * 
-	 * @param object
-	 *            The object from which the method will be invoked.
+	 * @param targetObject
+	 *            The target object from which the method will be invoked.
 	 * @param paramsValues
 	 *            Parameters values to be used during the invocation.
 	 * @param ignoreAccess
@@ -193,24 +194,25 @@ public class MethodMirror {
 	 * @throws InvocationException
 	 *             If the method throws an exception itself.
 	 */
-	public Object invokeMethod(final Object object, final Object[] paramsValues, final Boolean ignoreAccess)
-			throws EmptyParameterException, InvalidParameterException, InvocationException {
+	public Object invokeMethod(final Object targetObject, final Object[] paramsValues,
+			final Boolean ignoreAccess) throws EmptyParameterException, InvalidParameterException,
+			InvocationException {
 		// If the field is not static and the target object is null.
-		if ((object == null) && (!Modifier.isStatic(getReflectedMethod().getModifiers()))) {
+		if ((targetObject == null) && (!Modifier.isStatic(getReflectedMethod().getModifiers()))) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(MethodParamKeys.TARGET_OBJECT);
 		}
 		// Tries to invoke the method.
 		try {
 			// Redefines the access of the method.
 			getReflectedMethod().setAccessible(ignoreAccess);
 			// Tries to invoke it.
-			return getReflectedMethod().invoke(object, paramsValues);
+			return getReflectedMethod().invoke(targetObject, paramsValues);
 		}
 		// If an exception is thrown by the method itself.
 		catch (final InvocationTargetException exception) {
 			// Throws an exception using the exception thrown as its cause.
-			throw new InvocationException(exception, new Object[] { getReflectedMethod(), object,
+			throw new InvocationException(exception, new Object[] { getReflectedMethod(), targetObject,
 					paramsValues });
 		}
 		// If the parameter values are illegal for the method.
@@ -252,7 +254,7 @@ public class MethodMirror {
 		// If the JNDI path is empty.
 		if ((jndiPath == null) || (jndiPath.isEmpty())) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(MethodParamKeys.JNDI_PATH);
 		}
 		// Tries to invoke the method.
 		try {

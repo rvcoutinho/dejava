@@ -11,6 +11,7 @@ import java.util.Set;
 
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.reflection.constant.ClassParamKeys;
 import org.dejava.component.reflection.constant.ErrorKeys;
 
 /**
@@ -58,7 +59,7 @@ public class ClassMirror<Reflected> {
 		// If the given class is null.
 		if (reflectedClass == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(ClassParamKeys.CLASS);
 		}
 		// Sets the main reflection fields.
 		this.reflectedClass = reflectedClass;
@@ -86,7 +87,8 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, 1, reflectedClassName);
+			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, ClassParamKeys.CLASS,
+					reflectedClassName);
 		}
 	}
 
@@ -126,7 +128,8 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, 1, depth);
+			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, ClassParamKeys.CLASS,
+					depth);
 		}
 	}
 
@@ -151,7 +154,7 @@ public class ClassMirror<Reflected> {
 		// If the given class name is null.
 		if ((className == null) || (className.isEmpty())) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(ClassParamKeys.CLASS_NAME);
 		}
 		// Actual class loader default value is the current class loader.
 		ClassLoader actualClassLoader = Thread.currentThread().getContextClassLoader();
@@ -167,7 +170,8 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be found.
 		catch (final ClassNotFoundException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.CLASS_NOT_FOUND, exception, 1, className);
+			throw new InvalidParameterException(ErrorKeys.CLASS_NOT_FOUND, exception,
+					ClassParamKeys.CLASS_NAME, className);
 		}
 	}
 
@@ -198,7 +202,8 @@ public class ClassMirror<Reflected> {
 		// If the depth is deeper than the stack.
 		catch (final IndexOutOfBoundsException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.CLASS_NOT_FOUND, exception, 1, depth);
+			throw new InvalidParameterException(ErrorKeys.CLASS_NOT_FOUND, exception,
+					ClassParamKeys.CLASS_DEPTH, depth);
 		}
 	}
 
@@ -294,7 +299,7 @@ public class ClassMirror<Reflected> {
 		// If the field name is empty.
 		if ((fieldName == null) || (fieldName.isEmpty())) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(ClassParamKeys.FIELD_NAME);
 		}
 		// While there are super classes.
 		for (Class<?> currentClass = getReflectedClass(); currentClass != null; currentClass = currentClass
@@ -309,7 +314,8 @@ public class ClassMirror<Reflected> {
 			}
 		}
 		// If no field was found for this name, throws an exception.
-		throw new InvalidParameterException(ErrorKeys.FIELD_NOT_FOUND, null, 1, fieldName);
+		throw new InvalidParameterException(ErrorKeys.FIELD_NOT_FOUND, null, ClassParamKeys.FIELD_NAME,
+				fieldName);
 	}
 
 	/**
@@ -323,7 +329,7 @@ public class ClassMirror<Reflected> {
 		// If the field path is null or empty.
 		if ((fieldNamePath == null) || (fieldNamePath.isEmpty())) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(ClassParamKeys.FIELD_NAME_PATH);
 		}
 		// Split the fields from the given path.
 		final String[] fieldsNames = fieldNamePath.split("\\.");
@@ -433,7 +439,7 @@ public class ClassMirror<Reflected> {
 		// If the method name is empty.
 		if ((methodName == null) || (methodName.isEmpty())) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(ClassParamKeys.METHOD_NAME);
 		}
 		// If there are no parameters for the method to be found.
 		if ((paramsClasses == null) || (paramsClasses.length == 0)) {
@@ -558,7 +564,7 @@ public class ClassMirror<Reflected> {
 		// If the annotation class is null.
 		if (annotationClass == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(ClassParamKeys.ANNOTATION_CLASS);
 		}
 		// For each annotation in the reflected class.
 		for (final AnnotationMirror<?> currentAnnotation : getAnnotations()) {

@@ -14,7 +14,7 @@ import javax.tools.ToolProvider;
 
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.annotation.MessageBundles;
-import org.dejava.component.i18n.message.handler.impl.DefaultI18nMessageHandler;
+import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
 import org.dejava.component.i18n.source.MessageSourceCreator;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.i18n.test.source.auxiliary.InformationKeys;
@@ -30,13 +30,13 @@ import org.junit.rules.TemporaryFolder;
  */
 @MessageBundles(defaultType = "information", messageBundles = { @MessageBundle(type = "information", baseName = "org.dejava.component.i18n.test.source.properties.information") })
 public class MessageSourceCreatorTest {
-	
+
 	/**
 	 * Makes sure that the folders created for the test are excluded in the end.
 	 */
 	@Rule
 	public TemporaryFolder temporaryFolder = new TemporaryFolder();
-	
+
 	/**
 	 * Compiles a file using the message source creator annotation processor.
 	 * 
@@ -68,7 +68,7 @@ public class MessageSourceCreatorTest {
 		// Closes the file manager.
 		fileManager.close();
 	}
-	
+
 	/**
 	 * TODO
 	 * 
@@ -93,28 +93,29 @@ public class MessageSourceCreatorTest {
 				// Depending on the number of parameters.
 				switch (currentLocaleParams.length) {
 				// If there is one parameter.
-					case 1:
-						// Gets the locale for the current configuration.
-						currentLocale = new Locale(currentLocaleParams[0]);
-						// Ends the case.
-						break;
-					// If there are two parameter.
-					case 2:
-						// Gets the locale for the current configuration.
-						currentLocale = new Locale(currentLocaleParams[0], currentLocaleParams[1]);
-						// Ends the case.
-						break;
-					// If there are three parameter.
-					case 3:
-						// Gets the locale for the current configuration.
-						currentLocale = new Locale(currentLocaleParams[0], currentLocaleParams[1],
-								currentLocaleParams[2]);
-						// Ends the case.
-						break;
+				case 1:
+					// Gets the locale for the current configuration.
+					currentLocale = new Locale(currentLocaleParams[0]);
+					// Ends the case.
+					break;
+				// If there are two parameter.
+				case 2:
+					// Gets the locale for the current configuration.
+					currentLocale = new Locale(currentLocaleParams[0], currentLocaleParams[1]);
+					// Ends the case.
+					break;
+				// If there are three parameter.
+				case 3:
+					// Gets the locale for the current configuration.
+					currentLocale = new Locale(currentLocaleParams[0], currentLocaleParams[1],
+							currentLocaleParams[2]);
+					// Ends the case.
+					break;
 				}
 				// Tries to get the message for the key.
 				try {
-					DefaultI18nMessageHandler.getMessageHandler(currentLocale).getMessage(currentKey, null);
+					SimpleMessageHandler.getMessageHandler(currentLocale).getMessage(null, currentKey,
+							null);
 				}
 				// If the message cannot be found.
 				catch (final Exception exception) {

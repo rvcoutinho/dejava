@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.javaee.constant.DAOParamKeys;
 
 /**
  * Implements the default behavior of an JPA entity DAO.
@@ -99,7 +100,7 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 		// If the given entity is null.
 		if (entity == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(DAOParamKeys.ENTITY);
 		}
 		// TODO Check if already is persisted?
 		// Merges the given entity with the persistence context.
@@ -116,7 +117,7 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 		// If the entity is null.
 		if (entity == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(DAOParamKeys.ENTITY);
 		}
 		// Merges the given entity with the persistence context.
 		final Entity mergedEntity = getEntityManager().merge(entity);
@@ -135,7 +136,7 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 		// If the given identifier is null.
 		if (identifier == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(DAOParamKeys.IDENTIFIER);
 		}
 		// Tries to return the entity.
 		return getEntityManager().find(getEntityClass(), identifier);
@@ -159,7 +160,7 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 		// If the given attribute name is null.
 		if (attributeName == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(DAOParamKeys.ATTR_NAME);
 		}
 		// Creates a new criteria query.
 		final CriteriaQuery<Entity> criteriaQuery = getCriteriaBuilder().createQuery(getEntityClass());

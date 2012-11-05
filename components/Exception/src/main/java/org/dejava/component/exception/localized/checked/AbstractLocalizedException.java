@@ -2,23 +2,22 @@ package org.dejava.component.exception.localized.checked;
 
 import org.dejava.component.exception.localized.ExceptionMessageCommand;
 import org.dejava.component.i18n.message.handler.MessageCommand;
-import org.dejava.component.i18n.message.handler.model.ApplicationMessageType;
 
 /**
  * General localized exception.
  */
 public abstract class AbstractLocalizedException extends Exception {
-	
+
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = -6987571772328004454L;
-	
+
 	/**
 	 * Message command for the localized exception.
 	 */
 	private MessageCommand messageCommand;
-	
+
 	/**
 	 * Gets the message command for the localized exception.
 	 * 
@@ -33,7 +32,7 @@ public abstract class AbstractLocalizedException extends Exception {
 		// Returns the message command.
 		return messageCommand;
 	}
-	
+
 	/**
 	 * Sets the message command for the localized exception.
 	 * 
@@ -43,7 +42,7 @@ public abstract class AbstractLocalizedException extends Exception {
 	public void setMessageCommand(final MessageCommand messageCommand) {
 		this.messageCommand = messageCommand;
 	}
-	
+
 	/**
 	 * Basic constructor.
 	 * 
@@ -59,11 +58,10 @@ public abstract class AbstractLocalizedException extends Exception {
 		// Calls the Exception constructor.
 		super(cause);
 		// Sets the basic fields.
-		getMessageCommand().setType(ApplicationMessageType.ERROR.name());
 		getMessageCommand().setMessageKey(messageKey);
 		getMessageCommand().setParameters(parameters);
 	}
-	
+
 	/**
 	 * @see Throwable#getLocalizedMessage()
 	 */
@@ -72,7 +70,7 @@ public abstract class AbstractLocalizedException extends Exception {
 		// Tries to return the localized message.
 		return getMessageCommand().getMessage();
 	}
-	
+
 	/**
 	 * @see Throwable#getMessage()
 	 */

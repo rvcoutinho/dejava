@@ -15,6 +15,16 @@ public final class ErrorKeys {
 	public static final String INVALID_ALG_NAME = "algorithm.name.invalid";
 
 	/**
+	 * Invalid minimum hash cycles error key.
+	 */
+	public static final String INVALID_MIN_CYCLES = "hash.cycles.min.invalid";
+
+	/**
+	 * Invalid maximum hash cycles error key.
+	 */
+	public static final String INVALID_MAX_CYCLES = "hash.cycles.max.invalid";
+
+	/**
 	 * Private constructor.
 	 */
 	private ErrorKeys() {

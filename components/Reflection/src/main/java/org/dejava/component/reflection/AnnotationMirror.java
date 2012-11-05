@@ -3,6 +3,7 @@ package org.dejava.component.reflection;
 import java.lang.annotation.Annotation;
 
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
+import org.dejava.component.reflection.constant.AnnotationParamKeys;
 
 /**
  * TODO
@@ -11,12 +12,12 @@ import org.dejava.component.exception.localized.unchecked.EmptyParameterExceptio
  *            The annotation to be reflected.
  */
 public class AnnotationMirror<Reflected extends Annotation> {
-	
+
 	/**
 	 * Annotation being reflected.
 	 */
 	private Reflected reflectedAnnotation;
-	
+
 	/**
 	 * Gets the annotation being reflected.
 	 * 
@@ -25,7 +26,7 @@ public class AnnotationMirror<Reflected extends Annotation> {
 	public Reflected getReflectedAnnotation() {
 		return reflectedAnnotation;
 	}
-	
+
 	/**
 	 * Sets the annotation being reflected.
 	 * 
@@ -35,7 +36,7 @@ public class AnnotationMirror<Reflected extends Annotation> {
 	public void setReflectedAnnotation(final Reflected reflectedAnnotation) {
 		this.reflectedAnnotation = reflectedAnnotation;
 	}
-	
+
 	/**
 	 * Public constructor for the reflection class.
 	 * 
@@ -48,12 +49,12 @@ public class AnnotationMirror<Reflected extends Annotation> {
 		// If the given annotation is null.
 		if (reflectedAnnotation == null) {
 			// Throws an exception.
-			throw new EmptyParameterException(1);
+			throw new EmptyParameterException(AnnotationParamKeys.ANNOTATION);
 		}
 		// Sets the main fields.
 		this.reflectedAnnotation = reflectedAnnotation;
 	}
-	
+
 	/**
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -64,7 +65,7 @@ public class AnnotationMirror<Reflected extends Annotation> {
 		result = (prime * result) + ((reflectedAnnotation == null) ? 0 : reflectedAnnotation.hashCode());
 		return result;
 	}
-	
+
 	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -84,8 +85,7 @@ public class AnnotationMirror<Reflected extends Annotation> {
 			if (other.reflectedAnnotation != null) {
 				return false;
 			}
-		}
-		else if (!reflectedAnnotation.equals(other.reflectedAnnotation)) {
+		} else if (!reflectedAnnotation.equals(other.reflectedAnnotation)) {
 			return false;
 		}
 		return true;

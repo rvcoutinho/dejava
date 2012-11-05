@@ -2,9 +2,11 @@ package org.dejava.component.i18n.test.message;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Locale;
 
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.annotation.MessageBundles;
+import org.dejava.component.i18n.test.message.auxiliary.AnnotatedClass;
 import org.dejava.component.i18n.test.message.auxiliary.TestMessageCommand;
 import org.dejava.component.i18n.test.message.constant.SomeKeys;
 import org.dejava.component.test.annotation.ParametricTest;
@@ -23,18 +25,112 @@ import org.junit.runner.RunWith;
 public class SimpleMessageHandlerTest {
 
 	/**
-	 * TODO
+	 * Locale (en_US) message.
+	 */
+	private static final String EN_US = "(en_US)";
+
+	/**
+	 * Locale (pt_BR) message.
+	 */
+	private static final String PT_BR = "(pt_BR)";
+
+	/**
+	 * Stack trace (1) message.
+	 */
+	private static final String STACK_1 = "stacktrace1";
+
+	/**
+	 * Stack trace (2) message.
+	 */
+	private static final String STACK_2 = "stacktrace2";
+
+	/**
+	 * Class message.
+	 */
+	private static final String CLASS = "class";
+
+	/**
+	 * Super class key.
+	 */
+	private static final String SUPERCLASS_KEY = "somekeys.somekey";
+
+	/**
+	 * Super class message.
+	 */
+	private static final String SUPERCLASS = "superclass";
+
+	/**
+	 * Interface key.
+	 */
+	private static final String INTERFACE_KEY = "somekeys";
+
+	/**
+	 * Interface message.
+	 */
+	private static final String INTERFACE = "interface";
+
+	/**
+	 * Some parameter to be used in the message retrieval.
+	 */
+	private static final String PARAM_1 = "some param";
+
+	/**
+	 * Some parameter to be used in the message retrieval.
+	 */
+	private static final String PARAM_2 = "another param";
+
+	/**
+	 * Some parameter to be used in the message retrieval.
+	 */
+	private static final String PARAM_3 = "yet another param";
+
+	/**
+	 * Some parameter to be used in the message retrieval.
+	 */
+	private static final String PARAM_4 = "last param";
+
+	/**
+	 * Gets some valid message commands to be tested.
 	 * 
-	 * @return TODO
+	 * @return Some valid message commands to be tested.
 	 */
 	public static Collection<TestMessageCommand> getValidMessageCommands() {
 		// Creates a new list with valid message commands to be tested.
 		Collection<TestMessageCommand> msgCommands = new ArrayList<>();
-		
-		// Test commands giving no bundle info (using the stack trace).
-		msgCommands.add(new TestMessageCommand(null, null, null, SomeKeys.KEY1, null, ""));
-		
-		
+		// Tests commands giving no bundle info (using the stack trace).
+		msgCommands.add(new TestMessageCommand(null, null, null, SomeKeys.KEY1, null, STACK_1 + PT_BR));
+		// Tests commands with given locales.
+		msgCommands.add(new TestMessageCommand(null, Locale.US, null, SomeKeys.KEY1, null, STACK_1 + EN_US));
+		msgCommands.add(new TestMessageCommand(null, new Locale("pt", "BR"), null, SomeKeys.KEY1, null,
+				STACK_1 + PT_BR));
+		msgCommands.add(new TestMessageCommand(null, Locale.CANADA, null, SomeKeys.KEY1, null, STACK_1
+				+ PT_BR));
+		// Tests commands with parameters.
+		msgCommands.add(new TestMessageCommand(null, null, null, SomeKeys.KEY2, new Object[] { PARAM_1 },
+				STACK_1 + PT_BR + " " + PARAM_1));
+		msgCommands.add(new TestMessageCommand(null, Locale.US, null, SomeKeys.KEY2,
+				new Object[] { PARAM_2 }, STACK_1 + EN_US + " " + PARAM_2));
+		msgCommands.add(new TestMessageCommand(null, null, null, SomeKeys.KEY2, new Object[] { PARAM_3,
+				PARAM_4 }, STACK_1 + PT_BR + " " + PARAM_3));
+		msgCommands.add(new TestMessageCommand(null, Locale.US, null, SomeKeys.KEY3, new Object[] { PARAM_2,
+				PARAM_4 }, STACK_1 + EN_US + " " + PARAM_2 + " " + PARAM_4));
+		msgCommands.add(new TestMessageCommand(null, null, null, SomeKeys.KEY3, new Object[] { PARAM_3 },
+				STACK_1 + PT_BR + " " + PARAM_3 + " {1}"));
+		// Tests some commands with a defined type.
+		msgCommands.add(new TestMessageCommand(null, null, STACK_1, SomeKeys.KEY1, null, STACK_1 + PT_BR));
+		msgCommands.add(new TestMessageCommand(null, null, STACK_2, SomeKeys.KEY1, null, STACK_2 + PT_BR));
+		// Tests commands with a different bundle information.
+		msgCommands.add(new TestMessageCommand(AnnotatedClass.class, null, CLASS, SomeKeys.KEY1, null, CLASS
+				+ PT_BR));
+		msgCommands.add(new TestMessageCommand(AnnotatedClass.class, Locale.US, CLASS, SomeKeys.KEY1, null,
+				CLASS + EN_US));
+		msgCommands.add(new TestMessageCommand(AnnotatedClass.class, null, null, SomeKeys.KEY2,
+				new Object[] { PARAM_1 }, CLASS + PT_BR + " " + PARAM_1));
+		// Tests commands for bundles in super classes and interfaces.
+		msgCommands.add(new TestMessageCommand(AnnotatedClass.class, null, INTERFACE, INTERFACE_KEY, null,
+				INTERFACE + PT_BR));
+		msgCommands.add(new TestMessageCommand(AnnotatedClass.class, Locale.US, SUPERCLASS, SUPERCLASS_KEY,
+				null, SUPERCLASS + EN_US));
 		// Returns the list.
 		return msgCommands;
 	}
@@ -42,13 +138,14 @@ public class SimpleMessageHandlerTest {
 	/**
 	 * Tests the simple message handler with valid parameters.
 	 * 
-	 * @param testMessageCommand
+	 * @param testMsgCommand
 	 *            The command with the required information to get a message (using the message handler).
 	 */
 	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getValidMessageCommands" })
-	public void testGetMessageValidParams(final TestMessageCommand testMessageCommand) {
+	public void testGetMessageValidParams(final TestMessageCommand testMsgCommand) {
 		// Assert that the message is the expected one.
-		Assert.assertEquals("TODO", testMessageCommand.getExpectedMessage(), testMessageCommand.getMessage());
+		Assert.assertEquals("The retrieved message is different than the expected.",
+				testMsgCommand.getExpectedMessage(), testMsgCommand.getMessage());
 	}
 
 }

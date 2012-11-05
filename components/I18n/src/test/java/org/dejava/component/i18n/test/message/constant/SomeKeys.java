@@ -28,6 +28,11 @@ public final class SomeKeys {
 	 * Some message key.
 	 */
 	public static final String KEY3 = "message.sample.key3";
+	
+	/**
+	 * Some key.
+	 */
+	protected Integer someKey;
 
 	/**
 	 * Private constructor.

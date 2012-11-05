@@ -284,34 +284,35 @@ public class SimpleMessageHandler implements MessageHandler {
 			// The actual locale is the object one.
 			actualLocale = getLocale();
 		}
-		// Tries to get the annotation with the bundles for the annotated class.
-		final AnnotationMirror<MessageBundles> messageBundles = new ClassMirror<>(annotatedClass)
-				.getAnnotation(MessageBundles.class);
-		// If the annotation is found.
-		if (messageBundles != null) {
-			// Actual type for the message.
-			String actualType = type;
-			// If the type is not given.
-			if (actualType == null) {
-				// If the default type is empty.
-				if (messageBundles.getReflectedAnnotation().defaultType().isEmpty()) {
-					// Throws an exception.
-					throw new EmptyParameterException(MessageHandlerParamKeys.TYPE);
+		// For each bundle annotation.
+		for (AnnotationMirror<MessageBundles> currentMsgBundles : new ClassMirror<>(annotatedClass)
+				.getAnnotations(MessageBundles.class)) {
+			// If the annotation is found.
+			if (currentMsgBundles != null) {
+				// Actual type for the message.
+				String actualType = type;
+				// If the type is not given.
+				if (actualType == null) {
+					// If the default type is empty.
+					if (currentMsgBundles.getReflectedAnnotation().defaultType().isEmpty()) {
+						// Throws an exception.
+						throw new EmptyParameterException(MessageHandlerParamKeys.TYPE);
+					}
+					// If it is given.
+					else {
+						// The actual type is the default one.
+						actualType = currentMsgBundles.getReflectedAnnotation().defaultType();
+					}
 				}
-				// If it is given.
-				else {
-					// The actual type is the default one.
-					actualType = messageBundles.getReflectedAnnotation().defaultType();
-				}
-			}
-			// For each defined localized message bundle.
-			for (final MessageBundle currentMessageBundle : messageBundles.getReflectedAnnotation()
-					.messageBundles()) {
-				// If the correct localized message bundle information is found.
-				if (currentMessageBundle.type().equalsIgnoreCase(actualType)) {
-					// Tries to get the message.
-					return getMessageByBundle(actualLocale, currentMessageBundle.baseName(), key,
-							parametersValues);
+				// For each defined localized message bundle.
+				for (final MessageBundle currentMessageBundle : currentMsgBundles.getReflectedAnnotation()
+						.messageBundles()) {
+					// If the correct localized message bundle information is found.
+					if (currentMessageBundle.type().equalsIgnoreCase(actualType)) {
+						// Tries to get the message.
+						return getMessageByBundle(actualLocale, currentMessageBundle.baseName(), key,
+								parametersValues);
+					}
 				}
 			}
 		}

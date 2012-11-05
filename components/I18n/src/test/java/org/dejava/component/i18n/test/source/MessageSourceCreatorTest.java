@@ -114,12 +114,12 @@ public class MessageSourceCreatorTest {
 				}
 				// Tries to get the message for the key.
 				try {
-					SimpleMessageHandler.getMessageHandler(currentLocale).getMessage(null, currentKey,
+					SimpleMessageHandler.getMessageHandler(currentLocale).getMessage(null, null, null, currentKey,
 							null);
 				}
 				// If the message cannot be found.
 				catch (final Exception exception) {
-					// TODO: handle exception
+					// Fails the test. TODO
 					Assert.fail();
 				}
 			}

@@ -530,7 +530,7 @@ public class ClassMirror<Reflected> {
 	 * Gets all annotations from a class. The search includes super classes and interfaces (but only the first
 	 * annotation found for a type is kept).
 	 * 
-	 * @return All annotations form a class.
+	 * @return All annotations from a class.
 	 */
 	public Set<AnnotationMirror<?>> getAnnotations() {
 		// Creates the set for the annotations.
@@ -541,6 +541,33 @@ public class ClassMirror<Reflected> {
 			for (final Annotation currentAnnotation : currentClass.getReflectedClass().getAnnotations()) {
 				// Adds the annotation to the set.
 				annotations.add(new AnnotationMirror<>(currentAnnotation));
+			}
+		}
+		// Returns the annotations found.
+		return annotations;
+	}
+
+	/**
+	 * Gets all annotations with a given type. The search includes super classes and interfaces.
+	 * 
+	 * @param <AnyAnnotation>
+	 *            Any annotation being searched.
+	 * @param annotationClass
+	 *            Type of the annotation to be searched for.
+	 * @return All annotations with the given type.
+	 */
+	public <AnyAnnotation extends Annotation> Collection<AnnotationMirror<AnyAnnotation>> getAnnotations(
+			final Class<AnyAnnotation> annotationClass) {
+		// Creates the set for the annotations.
+		final Collection<AnnotationMirror<AnyAnnotation>> annotations = new ArrayList<>();
+		// For each super class of the reflected class.
+		for (final ClassMirror<?> currentClass : getSuperclasses()) {
+			// Tries to get the annotation for the current class.
+			AnyAnnotation annotation = currentClass.getReflectedClass().getAnnotation(annotationClass);
+			// If the annotation is found.
+			if (annotation != null) {
+				// Adds the annotation to the list.
+				annotations.add(new AnnotationMirror<>(annotation));
 			}
 		}
 		// Returns the annotations found.

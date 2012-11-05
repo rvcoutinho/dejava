@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.dejava.component.test.runner.test.JUnitParametricRunnerTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.089 sec <<< FAILURE!
-testTestRegularSuccess(org.dejava.component.test.runner.test.JUnitParametricRunnerTest)  Time elapsed: 38 sec  <<< FAILURE!
+Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.091 sec <<< FAILURE!
+testTestRegularSuccess(org.dejava.component.test.runner.test.JUnitParametricRunnerTest)  Time elapsed: 43 sec  <<< FAILURE!
 java.lang.AssertionError
 	at org.junit.Assert.fail(Assert.java:92)
 	at org.junit.Assert.fail(Assert.java:100)
@@ -37,7 +37,7 @@ java.lang.AssertionError
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-testTestRegularFailure(org.dejava.component.test.runner.test.JUnitParametricRunnerTest)  Time elapsed: 2 sec  <<< FAILURE!
+testTestRegularFailure(org.dejava.component.test.runner.test.JUnitParametricRunnerTest)  Time elapsed: 1 sec  <<< FAILURE!
 java.lang.AssertionError
 	at org.junit.Assert.fail(Assert.java:92)
 	at org.junit.Assert.fail(Assert.java:100)

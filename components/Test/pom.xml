@@ -71,8 +71,9 @@
 				<version>2.12.3</version>
 				<configuration>
 					<excludes>
-						<exclude>**/FakeTest.java</exclude>
-					</excludes>
+<!-- 						<exclude>**/FakeTest.java</exclude>
+ -->					<exclude>**</exclude>
+ 					</excludes>
 				</configuration>
 			</plugin>
 		</plugins>

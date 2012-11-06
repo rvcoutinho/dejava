@@ -1,8 +1,8 @@
 package org.dejava.component.test.runner.test;
 
 import org.dejava.component.test.runner.JUnitParametricRunner;
-import org.dejava.component.test.runner.test.auxiliary.FakeTest;
-import org.dejava.component.test.runner.test.auxiliary.RunListenerLog;
+import org.dejava.component.test.runner.test.util.FakeTest;
+import org.dejava.component.test.runner.test.util.RunListenerLog;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.notification.RunNotifier;

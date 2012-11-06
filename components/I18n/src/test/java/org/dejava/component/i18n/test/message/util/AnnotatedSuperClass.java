@@ -1,4 +1,4 @@
-package org.dejava.component.i18n.test.message.auxiliary;
+package org.dejava.component.i18n.test.message.util;
 
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.annotation.MessageBundles;

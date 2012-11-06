@@ -1,4 +1,4 @@
-package org.dejava.component.i18n.test.message.auxiliary;
+package org.dejava.component.i18n.test.message.util;
 
 import java.util.Locale;
 

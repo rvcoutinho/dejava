@@ -1,4 +1,4 @@
-package org.dejava.component.test.runner.test.auxiliary;
+package org.dejava.component.test.runner.test.util;
 
 import java.util.Arrays;
 import java.util.List;

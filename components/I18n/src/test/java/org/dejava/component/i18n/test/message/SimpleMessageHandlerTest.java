@@ -9,11 +9,11 @@ import org.dejava.component.exception.localized.unchecked.InvalidParameterExcept
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.annotation.MessageBundles;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
-import org.dejava.component.i18n.test.message.auxiliary.AnnotatedClass;
-import org.dejava.component.i18n.test.message.auxiliary.AnnotatedInterface;
-import org.dejava.component.i18n.test.message.auxiliary.AnnotatedSuperClass;
-import org.dejava.component.i18n.test.message.auxiliary.TestMessageCommand;
 import org.dejava.component.i18n.test.message.constant.SomeKeys;
+import org.dejava.component.i18n.test.message.util.AnnotatedClass;
+import org.dejava.component.i18n.test.message.util.AnnotatedInterface;
+import org.dejava.component.i18n.test.message.util.AnnotatedSuperClass;
+import org.dejava.component.i18n.test.message.util.TestMessageCommand;
 import org.dejava.component.test.annotation.ParametricTest;
 import org.dejava.component.test.runner.JUnitParametricRunner;
 import org.dejava.component.test.runner.dataset.impl.StaticMethodTestDataProvider;

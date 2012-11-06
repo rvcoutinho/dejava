@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.reflection.constant.ErrorKeys;
 import org.dejava.component.reflection.exception.InvocationException;
+import org.dejava.component.reflection.util.Resources;
 
 /**
  * TODO
@@ -14,12 +15,12 @@ import org.dejava.component.reflection.exception.InvocationException;
  *            The class for the reflected constructor.
  */
 public class ConstructorMirror<Reflected> {
-	
+
 	/**
 	 * Constructor being reflected.
 	 */
 	private Constructor<? extends Reflected> reflectedConstructor;
-	
+
 	/**
 	 * Gets the constructor being reflected.
 	 * 
@@ -28,7 +29,7 @@ public class ConstructorMirror<Reflected> {
 	public Constructor<? extends Reflected> getReflectedConstructor() {
 		return reflectedConstructor;
 	}
-	
+
 	/**
 	 * Sets the constructor being reflected.
 	 * 
@@ -38,7 +39,7 @@ public class ConstructorMirror<Reflected> {
 	public void setReflectedConstructor(final Constructor<? extends Reflected> reflectedConstructor) {
 		this.reflectedConstructor = reflectedConstructor;
 	}
-	
+
 	/**
 	 * Public constructor for the reflection class.
 	 * 
@@ -48,7 +49,7 @@ public class ConstructorMirror<Reflected> {
 	public ConstructorMirror(final Constructor<? extends Reflected> reflectedConstructor) {
 		this.reflectedConstructor = reflectedConstructor;
 	}
-	
+
 	/**
 	 * Invokes a constructor for a class.
 	 * 
@@ -75,25 +76,26 @@ public class ConstructorMirror<Reflected> {
 		// If an exception is thrown by the constructor itself.
 		catch (final InvocationTargetException exception) {
 			// Throws an exception using the exception thrown as its cause.
-			throw new InvocationException(exception, new Object[] { getReflectedConstructor(), paramsValues });
+			throw new InvocationException(new Object[] { getReflectedConstructor(), paramsValues,
+					ignoreAccess }, exception);
 		}
 		// If the parameter values are illegal for the constructor.
 		catch (final IllegalArgumentException exception) {
-			// Throws an exception. TODO
-			throw new InvalidParameterException(ErrorKeys.ILLEGAL_PARAMS_VALUES, exception, new Object[] {
-					getReflectedConstructor(), paramsValues });
+			// Throws an exception.
+			throw new InvalidParameterException(Resources.class, ErrorKeys.ILLEGAL_PARAMS_VALUES,
+					new Object[] { getReflectedConstructor(), paramsValues, ignoreAccess }, exception);
 		}
 		// If the constructor cannot be accessed.
 		catch (final IllegalAccessException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.UNACCESSIBLE_CONSTRUCTOR, exception,
-					new Object[] { getReflectedConstructor() });
+			throw new InvalidParameterException(Resources.class, ErrorKeys.UNACCESSIBLE_CONSTRUCTOR,
+					new Object[] { getReflectedConstructor(), paramsValues, ignoreAccess }, exception);
 		}
 		// If the class is abstract.
 		catch (final InstantiationException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.ABSTRACT_CLASS, exception,
-					new Object[] { getReflectedConstructor() });
+			throw new InvalidParameterException(Resources.class, ErrorKeys.ABSTRACT_CLASS, new Object[] {
+					getReflectedConstructor(), paramsValues, ignoreAccess }, exception);
 		}
 		// Finally.
 		finally {
@@ -101,5 +103,5 @@ public class ConstructorMirror<Reflected> {
 			getReflectedConstructor().setAccessible(false);
 		}
 	}
-	
+
 }

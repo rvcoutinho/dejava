@@ -3,7 +3,6 @@ package org.dejava.component.reflection;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -13,6 +12,7 @@ import org.dejava.component.exception.localized.unchecked.EmptyParameterExceptio
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.reflection.constant.ClassParamKeys;
 import org.dejava.component.reflection.constant.ErrorKeys;
+import org.dejava.component.reflection.util.Resources;
 
 /**
  * Extends the behavior of the Class type. It is part of an extended Java reflection API, that intends to make
@@ -87,8 +87,8 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, ClassParamKeys.CLASS,
-					reflectedClassName);
+			throw new InvalidParameterException(Resources.class, ErrorKeys.UNEXPECTED_CLASS, new Object[] {
+					getReflectedClass(), ClassParamKeys.CLASS, reflectedClassName }, exception);
 		}
 	}
 
@@ -128,8 +128,9 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.UNEXPECTED_CLASS, exception, ClassParamKeys.CLASS,
-					depth);
+			throw new InvalidParameterException(Resources.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
+					getReflectedClass(), ClassParamKeys.CLASS_DEPTH, depth }, exception);
+
 		}
 	}
 
@@ -170,8 +171,8 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be found.
 		catch (final ClassNotFoundException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.CLASS_NOT_FOUND, exception,
-					ClassParamKeys.CLASS_NAME, className);
+			throw new InvalidParameterException(Resources.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
+					ClassParamKeys.CLASS_NAME, className }, exception);
 		}
 	}
 
@@ -202,8 +203,8 @@ public class ClassMirror<Reflected> {
 		// If the depth is deeper than the stack.
 		catch (final IndexOutOfBoundsException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.CLASS_NOT_FOUND, exception,
-					ClassParamKeys.CLASS_DEPTH, depth);
+			throw new InvalidParameterException(Resources.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
+					ClassParamKeys.CLASS_DEPTH, depth }, exception);
 		}
 	}
 
@@ -314,8 +315,9 @@ public class ClassMirror<Reflected> {
 			}
 		}
 		// If no field was found for this name, throws an exception.
-		throw new InvalidParameterException(ErrorKeys.FIELD_NOT_FOUND, null, ClassParamKeys.FIELD_NAME,
-				fieldName);
+		throw new InvalidParameterException(Resources.class, ErrorKeys.FIELD_NOT_FOUND, new Object[] {
+				getReflectedClass(), ClassParamKeys.FIELD_NAME, fieldName }, null);
+
 	}
 
 	/**
@@ -410,8 +412,8 @@ public class ClassMirror<Reflected> {
 				}
 			}
 			// If no method was found, throws an exception.
-			throw new InvalidParameterException(ErrorKeys.METHOD_NOT_FOUND, null, new Object[] { methodName,
-					Arrays.asList(paramsClasses) });
+			throw new InvalidParameterException(Resources.class, ErrorKeys.METHOD_NOT_FOUND, new Object[] {
+					getReflectedClass(), methodName, paramsClasses, varyingParamIndex }, null);
 		}
 		// In all cases.
 		finally {
@@ -450,8 +452,8 @@ public class ClassMirror<Reflected> {
 			// If the method cannot be found or accessed.
 			catch (final Exception exception) {
 				// Throws an exception.
-				throw new InvalidParameterException(ErrorKeys.METHOD_NOT_FOUND, null, new Object[] {
-						methodName, paramsClasses });
+				throw new InvalidParameterException(Resources.class, ErrorKeys.METHOD_NOT_FOUND,
+						new Object[] { getReflectedClass(), methodName, paramsClasses }, null);
 			}
 		}
 		// If there are parameters.
@@ -463,8 +465,9 @@ public class ClassMirror<Reflected> {
 				// If the current parameter class is empty.
 				if (currentParamClass == null) {
 					// Throws an exception.
-					throw new InvalidParameterException(ErrorKeys.EMPTY_PARAM_CLASS, null,
-							new Object[] { currentParamIndex + 1 });
+
+					throw new InvalidParameterException(Resources.class, ErrorKeys.EMPTY_PARAM_CLASS,
+							new Object[] { currentParamIndex + 1 }, null);
 				}
 			}
 			// Tries to get the method varying the first parameter class.
@@ -494,8 +497,8 @@ public class ClassMirror<Reflected> {
 				// If the value for the parameter is null.
 				if (paramsValues[currentParamIndex] == null) {
 					// Throws an exception.
-					throw new InvalidParameterException(ErrorKeys.EMPTY_PARAM_VALUE, null,
-							new Object[] { currentParamIndex + 1 });
+					throw new InvalidParameterException(Resources.class, ErrorKeys.EMPTY_PARAM_VALUE,
+							new Object[] { currentParamIndex + 1 }, null);
 				}
 				// Gets the class for the current parameter and puts it in the
 				// correspondent position inside array.
@@ -563,7 +566,7 @@ public class ClassMirror<Reflected> {
 		// For each super class of the reflected class.
 		for (final ClassMirror<?> currentClass : getSuperclasses()) {
 			// Tries to get the annotation for the current class.
-			AnyAnnotation annotation = currentClass.getReflectedClass().getAnnotation(annotationClass);
+			final AnyAnnotation annotation = currentClass.getReflectedClass().getAnnotation(annotationClass);
 			// If the annotation is found.
 			if (annotation != null) {
 				// Adds the annotation to the list.
@@ -648,8 +651,9 @@ public class ClassMirror<Reflected> {
 				}
 			}
 			// If no constructor was found, throws an exception.
-			throw new InvalidParameterException(ErrorKeys.CONSTRUCTOR_NOT_FOUND, null,
-					new Object[] { Arrays.asList(paramsClasses) });
+
+			throw new InvalidParameterException(Resources.class, ErrorKeys.CONSTRUCTOR_NOT_FOUND,
+					new Object[] { getReflectedClass(), paramsClasses, varyingParamIndex }, null);
 		}
 		// In all cases.
 		finally {
@@ -679,8 +683,8 @@ public class ClassMirror<Reflected> {
 			// If the constructor cannot be found or accessed.
 			catch (final Exception exception) {
 				// Throws an exception.
-				throw new InvalidParameterException(ErrorKeys.CONSTRUCTOR_NOT_FOUND, null,
-						new Object[] { Arrays.asList(paramsClasses) });
+				throw new InvalidParameterException(Resources.class, ErrorKeys.CONSTRUCTOR_NOT_FOUND,
+						new Object[] { getReflectedClass(), paramsClasses }, null);
 			}
 		}
 		// If there are parameters.
@@ -692,8 +696,8 @@ public class ClassMirror<Reflected> {
 				// If the current parameter class is empty.
 				if (currentParamClass == null) {
 					// Throws an exception.
-					throw new InvalidParameterException(ErrorKeys.EMPTY_PARAM_CLASS, null,
-							new Object[] { currentParamIndex + 1 });
+					throw new InvalidParameterException(Resources.class, ErrorKeys.EMPTY_PARAM_CLASS,
+							new Object[] { currentParamIndex + 1 }, null);
 				}
 			}
 			// Tries to get the constructor varying the first parameter class.

@@ -204,9 +204,32 @@ public class CredentialHasherTest {
 		// Sets the maximum cycles to the given value.
 		credentialHasher.setMaxCycles(maxCycles);
 		// For some numbers over the minimum cycles.
-		for (Integer currentValidMinCycles = maxCycles - 1; (currentValidMinCycles >= (maxCycles - CYCLES_TRIES)); currentValidMinCycles--) {
+		for (Integer currentValidMinCycles = maxCycles; (currentValidMinCycles >= (maxCycles - CYCLES_TRIES))
+				&& (currentValidMinCycles >= CredentialHasher.MIN_MIN_CYCLES); currentValidMinCycles--) {
 			// Tries to set the minimum cycles to the current valid minimum.
 			credentialHasher.setMinCycles(currentValidMinCycles);
+		}
+	}
+
+	/**
+	 * Tests setting valid maximum hash cycles to the credential hasher.
+	 * 
+	 * @param minCycles
+	 *            A valid number for the minimum hash cycles.
+	 */
+	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidCycles" })
+	public void testSetMaxCyclesValid(final Integer minCycles) {
+		// Creates a new credential hasher.
+		final CredentialHasher credentialHasher = new CredentialHasher();
+		// Sets the maximum cycles to 1.
+		credentialHasher.setMaxCycles(CredentialHasher.MAX_MAX_CYCLES);
+		// Sets the minimum cycles to the given value.
+		credentialHasher.setMinCycles(minCycles);
+		// For some numbers over the maximum cycles.
+		for (Integer currentValidMaxCycles = minCycles; (currentValidMaxCycles <= (minCycles + CYCLES_TRIES))
+				&& (currentValidMaxCycles <= CredentialHasher.MAX_MAX_CYCLES); currentValidMaxCycles++) {
+			// Tries to set the maximum cycles to the current valid maximum.
+			credentialHasher.setMaxCycles(currentValidMaxCycles);
 		}
 	}
 
@@ -222,6 +245,20 @@ public class CredentialHasherTest {
 		final CredentialHasher credentialHasher = new CredentialHasher();
 		// Tries to set the minimum cycles with an invalid value.
 		credentialHasher.setMinCycles(invalidCycle);
+	}
+
+	/**
+	 * Tests setting invalid (always) maximum hash cycles to the credential hasher.
+	 * 
+	 * @param invalidCycle
+	 *            An invalid number for the maximum hash cycles.
+	 */
+	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeInvalidCycles" }, expectedExceptionClass = InvalidParameterException.class)
+	public void testSetMaxCyclesAlwaysInvalid(final Integer invalidCycle) {
+		// Creates a new credential hasher.
+		final CredentialHasher credentialHasher = new CredentialHasher();
+		// Tries to set the maximum cycles with an invalid value.
+		credentialHasher.setMaxCycles(invalidCycle);
 	}
 
 	/**
@@ -250,20 +287,6 @@ public class CredentialHasherTest {
 			catch (final InvalidParameterException exception) {
 			}
 		}
-	}
-
-	/**
-	 * Tests setting invalid (always) maximum hash cycles to the credential hasher.
-	 * 
-	 * @param invalidCycle
-	 *            An invalid number for the maximum hash cycles.
-	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeInvalidCycles" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testSetMaxCyclesAlwaysInvalid(final Integer invalidCycle) {
-		// Creates a new credential hasher.
-		final CredentialHasher credentialHasher = new CredentialHasher();
-		// Tries to set the maximum cycles with an invalid value.
-		credentialHasher.setMaxCycles(invalidCycle);
 	}
 
 	/**

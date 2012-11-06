@@ -72,8 +72,11 @@ public abstract class AbstractTestAssertionError extends AssertionError {
 		final List<Object> allParams = new ArrayList<Object>();
 		// Adds the test name as the first parameter.
 		allParams.add(testName);
-		// Adds all the parameters values for the test method.
-		allParams.addAll(Arrays.asList(parameters));
+		// If there are any parameters.
+		if (parameters != null) {
+			// Adds all the parameters values for the test method.
+			allParams.addAll(Arrays.asList(parameters));
+		}
 		// Sets the parameters of the exception.
 		getMessageCommand().setParameters(allParams.toArray());
 	}

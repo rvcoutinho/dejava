@@ -14,7 +14,7 @@ public interface MessageCommand extends Serializable {
 	 * Sets the information regarding the message bundle to be used in the message retrieval.
 	 * 
 	 * @param bundleInfo
-	 *            Information regarding the message bundle to be used in the message retrieval.
+	 *            New information regarding the message bundle to be used in the message retrieval.
 	 */
 	void setBundleInfo(final Object bundleInfo);
 

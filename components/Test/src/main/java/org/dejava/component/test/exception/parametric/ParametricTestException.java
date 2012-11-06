@@ -11,17 +11,17 @@ import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestE
  * Exception related to a parametric test exceptions (and/or assertion errors).
  */
 public class ParametricTestException extends AbstractTestException {
-	
+
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = 2854622415815735145L;
-	
+
 	/**
 	 * Exceptions thrown during a parametric test.
 	 */
 	private Collection<AtomParametricTestException> testExceptions;
-	
+
 	/**
 	 * Gets the exceptions thrown during a parametric test.
 	 * 
@@ -36,7 +36,7 @@ public class ParametricTestException extends AbstractTestException {
 		// Returns the exceptions.
 		return testExceptions;
 	}
-	
+
 	/**
 	 * Sets the exceptions thrown during a parametric test.
 	 * 
@@ -46,12 +46,12 @@ public class ParametricTestException extends AbstractTestException {
 	public void setTestExceptions(final Collection<AtomParametricTestException> testExceptions) {
 		this.testExceptions = testExceptions;
 	}
-	
+
 	/**
 	 * Assumption violated exceptions thrown during a parametric test.
 	 */
 	private Collection<AtomParametricTestAssertionError> testAssumptionViolations;
-	
+
 	/**
 	 * Gets the assumption violated exceptions thrown during a parametric test.
 	 * 
@@ -66,7 +66,7 @@ public class ParametricTestException extends AbstractTestException {
 		// Returns the exceptions.
 		return testAssumptionViolations;
 	}
-	
+
 	/**
 	 * Sets the assumption violated exceptions thrown during a parametric test.
 	 * 
@@ -77,21 +77,23 @@ public class ParametricTestException extends AbstractTestException {
 			final Collection<AtomParametricTestAssertionError> testAssumptionViolations) {
 		this.testAssumptionViolations = testAssumptionViolations;
 	}
-	
+
 	/**
 	 * Default constructor.
 	 * 
+	 * @param testName
+	 *            The test name.
+	 * @param parameters
+	 *            Parameters for the exception (and message). The name of the test for the exception.
 	 * @param testExceptions
 	 *            Exceptions thrown during a parametric test.
 	 * @param testAssumptionViolations
 	 *            Assumption violated exceptions thrown during a parametric test.
-	 * @param testName
-	 *            The name of the test for the exception.
 	 */
-	public ParametricTestException(final Collection<AtomParametricTestException> testExceptions,
-			final Collection<AtomParametricTestAssertionError> testAssumptionViolations,
-			final String testName) {
-		super(null, null, testName);
+	public ParametricTestException(final String testName, final Object[] parameters,
+			final Collection<AtomParametricTestException> testExceptions,
+			final Collection<AtomParametricTestAssertionError> testAssumptionViolations) {
+		super(null, null, testName, parameters, null);
 		// Sets the basic fields.
 		this.testExceptions = testExceptions;
 		this.testAssumptionViolations = testAssumptionViolations;

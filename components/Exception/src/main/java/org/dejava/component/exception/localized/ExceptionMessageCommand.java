@@ -3,15 +3,13 @@ package org.dejava.component.exception.localized;
 import java.util.Locale;
 
 import org.dejava.component.exception.constant.ErrorKeys;
-import org.dejava.component.i18n.message.annotation.MessageBundle;
-import org.dejava.component.i18n.message.annotation.MessageBundles;
+import org.dejava.component.exception.util.Resources;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageCommand;
 
 /**
  * Default exception message command.
  */
-@MessageBundles(defaultType = "error", messageBundles = { @MessageBundle(baseName = "org.dejava.component.exception.properties.error", type = "error") })
 public class ExceptionMessageCommand extends SimpleMessageCommand {
 
 	/**
@@ -46,8 +44,8 @@ public class ExceptionMessageCommand extends SimpleMessageCommand {
 		// If the message cannot be found.
 		catch (final Exception exception) {
 			// Returns a generic error message.
-			return getMessageHandler().getMessage(ExceptionMessageCommand.class, getLocale(), null,
-					ErrorKeys.GENERIC, null);
+			return getMessageHandler()
+					.getMessage(Resources.class, getLocale(), null, ErrorKeys.GENERIC, null);
 		}
 	}
 
@@ -63,8 +61,7 @@ public class ExceptionMessageCommand extends SimpleMessageCommand {
 		// If the message cannot be found.
 		catch (final Exception exception) {
 			// Returns a generic error message.
-			return getMessageHandler().getMessage(ExceptionMessageCommand.class, Locale.US, null,
-					ErrorKeys.GENERIC, null);
+			return getMessageHandler().getMessage(Resources.class, Locale.US, null, ErrorKeys.GENERIC, null);
 		}
 	}
 }

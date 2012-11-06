@@ -3,6 +3,7 @@ org.dejava.component.i18n.message.constant
 org.dejava.component.i18n.message.exception
 org.dejava.component.i18n.message.handler
 org.dejava.component.i18n.message.handler.impl
+org.dejava.component.i18n.message.util
 org.dejava.component.i18n.source
 org.dejava.component.i18n.source.annotation
 org.dejava.component.i18n.source.model

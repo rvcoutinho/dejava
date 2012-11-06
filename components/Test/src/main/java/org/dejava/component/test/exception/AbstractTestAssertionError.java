@@ -1,5 +1,9 @@
 package org.dejava.component.test.exception;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.dejava.component.exception.localized.ExceptionMessageCommand;
 import org.dejava.component.i18n.message.handler.MessageCommand;
 
@@ -46,19 +50,32 @@ public abstract class AbstractTestAssertionError extends AssertionError {
 	/**
 	 * Basic constructor.
 	 * 
+	 * @param bundleInfo
+	 *            The information regarding the message bundle to be used in the message retrieval
 	 * @param messageKey
-	 *            Message key that describes the error.
+	 *            Message key that describes the exception.
+	 * @param testName
+	 *            The test name.
+	 * @param parameters
+	 *            Parameters for the exception (and message).
 	 * @param cause
 	 *            Error cause.
-	 * @param testName
-	 *            The name of the test for the error.
 	 */
-	public AbstractTestAssertionError(final String messageKey, final Throwable cause, final String testName) {
+	public AbstractTestAssertionError(final Object bundleInfo, final String messageKey,
+			final String testName, final Object[] parameters, final Throwable cause) {
 		// Calls the Exception constructor.
 		super(cause);
 		// Sets the basic fields.
+		getMessageCommand().setBundleInfo(bundleInfo);
 		getMessageCommand().setMessageKey(messageKey);
-		getMessageCommand().setParameters(new Object[] { testName });
+		// List of exception parameters (including test name).
+		final List<Object> allParams = new ArrayList<Object>();
+		// Adds the test name as the first parameter.
+		allParams.add(testName);
+		// Adds all the parameters values for the test method.
+		allParams.addAll(Arrays.asList(parameters));
+		// Sets the parameters of the exception.
+		getMessageCommand().setParameters(allParams.toArray());
 	}
 
 	/**

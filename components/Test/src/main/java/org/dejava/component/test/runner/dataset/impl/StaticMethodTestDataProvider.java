@@ -7,6 +7,7 @@ import org.dejava.component.test.constant.ErrorKeys;
 import org.dejava.component.test.exception.parametric.InvalidParametricTestException;
 import org.dejava.component.test.runner.dataset.TestDataProvider;
 import org.dejava.component.test.runner.statement.ParametricTestMethodInvoker;
+import org.dejava.component.test.util.Resources;
 import org.junit.runners.model.FrameworkMethod;
 
 /**
@@ -89,7 +90,8 @@ public class StaticMethodTestDataProvider implements TestDataProvider {
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {
 			// Throws an exception.
-			throw new InvalidParametricTestException(ErrorKeys.UNAVAILABLE_TEST_DATA, exception, testMethod.getName());
+			throw new InvalidParametricTestException(Resources.class, ErrorKeys.UNAVAILABLE_TEST_DATA,
+					testMethod.getName(), null, exception);
 		}
 	}
 }

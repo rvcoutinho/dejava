@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(value = JUnitParametricRunner.class)
 public class FakeTest {
-	
+
 	/**
 	 * Simulates a regular test success.
 	 */
@@ -23,7 +23,7 @@ public class FakeTest {
 	public void testRegularSuccess() {
 		// Success...
 	}
-	
+
 	/**
 	 * Simulates a regular assumption failure test.
 	 * 
@@ -32,7 +32,7 @@ public class FakeTest {
 	public void testRegularAssumptionFailure() {
 		Assert.fail("testRegularAssumptionFailure");
 	}
-	
+
 	/**
 	 * Simulates a regular test failure.
 	 * 
@@ -41,9 +41,9 @@ public class FakeTest {
 	 */
 	@Test
 	public void testRegularFailure() throws BusinessRuleException {
-		throw new BusinessRuleException("testRegularFailure", null, null);
+		throw new BusinessRuleException(null, "testRegularFailure", null, null);
 	}
-	
+
 	/**
 	 * Simulates a regular timeout failure.
 	 * 
@@ -54,7 +54,7 @@ public class FakeTest {
 	public void testRegularTimeoutFailure() throws InterruptedException {
 		Thread.currentThread().wait(200000);
 	}
-	
+
 	/**
 	 * Simulates a expected exception test.
 	 * 
@@ -63,9 +63,9 @@ public class FakeTest {
 	 */
 	@Test(expected = BusinessRuleException.class)
 	public void testRegularExceptedException() throws BusinessRuleException {
-		throw new BusinessRuleException("testRegularExceptedException", null, null);
+		throw new BusinessRuleException(null, "testRegularExceptedException", null, null);
 	}
-	
+
 	/**
 	 * Gets the parametric success test data.
 	 * 
@@ -74,7 +74,7 @@ public class FakeTest {
 	public static List<Integer> testParametricSuccessData() {
 		return Arrays.asList(new Integer[] { -1, -2, -3, -4, -5 });
 	}
-	
+
 	/**
 	 * Simulates a parametric test success.
 	 * 

@@ -17,6 +17,7 @@ import org.dejava.component.test.runner.notifier.ParametricTestNotifier;
 import org.dejava.component.test.runner.rule.ParametricTestWrapperRule;
 import org.dejava.component.test.runner.statement.ParametricTestMethodInvoker;
 import org.dejava.component.test.runner.statement.ParametricTestWrapper;
+import org.dejava.component.test.util.Resources;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Test.None;
@@ -41,14 +42,14 @@ import org.junit.runners.model.Statement;
  * It also runs regular JUnit test annotated with @Test. In this cases, there is no data injection.
  */
 public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
-	
+
 	/**
 	 * @see BlockJUnit4ClassRunner#BlockJUnit4ClassRunner(java.lang.Class)
 	 */
 	public JUnitParametricRunner(final Class<?> clazz) throws InitializationError {
 		super(clazz);
 	}
-	
+
 	/**
 	 * @see BlockJUnit4ClassRunner#computeTestMethods()
 	 */
@@ -65,7 +66,7 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		// Returns the found test methods.
 		return testMethods;
 	}
-	
+
 	/**
 	 * Gets the test data provider instance from the given annotation.
 	 * 
@@ -88,10 +89,11 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		// If the provider cannot be instantiated.
 		catch (final Exception exception) {
 			// Throws an exception.
-			throw new InvalidParametricTestException(ErrorKeys.UNAVAILABLE_TEST_DATA, exception, testMethod.getName());
+			throw new InvalidParametricTestException(Resources.class, ErrorKeys.UNAVAILABLE_TEST_DATA,
+					testMethod.getName(), null, exception);
 		}
 	}
-	
+
 	/**
 	 * Gets a new expected exception rule for the current test method.
 	 * 
@@ -130,7 +132,7 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		// Returns the expected exception rule.
 		return expectedException;
 	}
-	
+
 	/**
 	 * Gets a new timeout rule for the current test method.
 	 * 
@@ -161,7 +163,7 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		// Returns the timeout rule.
 		return new Timeout(timeout);
 	}
-	
+
 	/**
 	 * Gets the rules for the given test.
 	 * 
@@ -192,7 +194,7 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		// Returns the rules.
 		return rules;
 	}
-	
+
 	/**
 	 * Gets the statement for a parametric test method.
 	 * 
@@ -210,7 +212,7 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		try {
 			// Creates a new reflective call.
 			final ReflectiveCallable createTestCall = new ReflectiveCallable() {
-				
+
 				@Override
 				protected Object runReflectiveCall() throws Throwable {
 					return createTest();
@@ -236,7 +238,7 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		// Returns the test statement.
 		return (ParametricTestWrapper) testMethodStatement;
 	}
-	
+
 	/**
 	 * Gets the statements for a parametric test method.
 	 * 
@@ -288,7 +290,7 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		// Returns the statements for the test.
 		return testMethodStatements;
 	}
-	
+
 	/**
 	 * Runs a parametric test.
 	 * 
@@ -327,11 +329,11 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		// If the test statement evaluation has raised any exceptions.
 		if ((!testExceptions.isEmpty()) || (!testAssumptionViolations.isEmpty())) {
 			// Throws a new parametric test set exception.
-			throw new ParametricTestException(testExceptions, testAssumptionViolations,
-					testMethod.getName());
+			throw new ParametricTestException(testMethod.getName(), null, testExceptions,
+					testAssumptionViolations);
 		}
 	}
-	
+
 	/**
 	 * @see org.junit.runners.BlockJUnit4ClassRunner#runChild(org.junit.runners.model.FrameworkMethod,
 	 *      org.junit.runner.notification.RunNotifier)
@@ -375,7 +377,7 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 			testNotifier.fireTestIgnored();
 		}
 	}
-	
+
 	/**
 	 * Validate the passed methods (usually methods annotated with @Test but not @ParametricTest) as
 	 * "public void no args".
@@ -395,7 +397,7 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 			currentTestMethod.validatePublicVoidNoArg(isStatic, errors);
 		}
 	}
-	
+
 	/**
 	 * Validate the passed methods (usually methods annotated with @ParametricTest) as "public void one arg".
 	 * 
@@ -415,11 +417,11 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 			// If there is not one and only one parameter.
 			if (currentTestMethod.getMethod().getParameterTypes().length != 1) {
 				// Adds an error.
-				errors.add(new InvalidParametricTestException(currentTestMethod.getName()));
+				errors.add(new InvalidParametricTestException(currentTestMethod.getName(), null));
 			}
 		}
 	}
-	
+
 	/**
 	 * @see BlockJUnit4ClassRunner#validateTestMethods(java.util.List)
 	 */

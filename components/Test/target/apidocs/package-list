@@ -9,3 +9,4 @@ org.dejava.component.test.runner.dataset.impl
 org.dejava.component.test.runner.notifier
 org.dejava.component.test.runner.rule
 org.dejava.component.test.runner.statement
+org.dejava.component.test.util

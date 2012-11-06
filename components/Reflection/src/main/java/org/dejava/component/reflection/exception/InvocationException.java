@@ -7,21 +7,23 @@ import org.dejava.component.reflection.constant.ErrorKeys;
  * Exception related to exceptions thrown by a target method.
  */
 public class InvocationException extends AbstractLocalizedException {
-	
+
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = -315210606548717238L;
-	
+
 	/**
 	 * Basic constructor.
 	 * 
-	 * @param cause
-	 *            Exception cause.
+	 * @param bundleInfo
+	 *            The information regarding the message bundle to be used in the message retrieval
 	 * @param parameters
 	 *            Parameters for the exception (and message).
+	 * @param cause
+	 *            Exception cause.
 	 */
-	public InvocationException(final Throwable cause, final Object[] parameters) {
-		super(ErrorKeys.METHOD_EXCEPTION, cause, parameters);
+	public InvocationException(final Object bundleInfo, final Object[] parameters, final Throwable cause) {
+		super(bundleInfo, ErrorKeys.METHOD_EXCEPTION, parameters, cause);
 	}
 }

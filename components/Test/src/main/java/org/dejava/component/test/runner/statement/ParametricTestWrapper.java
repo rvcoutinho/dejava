@@ -67,13 +67,13 @@ public class ParametricTestWrapper extends AbstractParametricTestStatement {
 		// If an assertion has failed for the current statement.
 		catch (final AssertionError | AssumptionViolatedException exception) {
 			// Wraps the exception with a single parametric test assumption exception.
-			throw new AtomParametricTestAssertionError(exception, getTestMethod().getName(),
-					getParamsValues());
+			throw new AtomParametricTestAssertionError(getTestMethod().getName(), getParamsValues(),
+					exception);
 		}
 		// If any other exception is raised by the current test statement.
 		catch (final Throwable throwable) {
 			// Wraps the exception with a single parametric test exception.
-			throw new AtomParametricTestException(throwable, getTestMethod().getName(), getParamsValues());
+			throw new AtomParametricTestException(getTestMethod().getName(), getParamsValues(), throwable);
 		}
 	}
 }

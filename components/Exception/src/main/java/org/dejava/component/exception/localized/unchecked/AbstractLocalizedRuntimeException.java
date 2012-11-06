@@ -46,18 +46,21 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 	/**
 	 * Basic constructor.
 	 * 
+	 * @param bundleInfo
+	 *            The information regarding the message bundle to be used in the message retrieval
 	 * @param messageKey
 	 *            Message key that describes the exception.
-	 * @param cause
-	 *            Exception cause.
 	 * @param parameters
 	 *            Parameters for the exception (and message).
+	 * @param cause
+	 *            Exception cause.
 	 */
-	public AbstractLocalizedRuntimeException(final String messageKey, final Throwable cause,
-			final Object[] parameters) {
-		// Calls the Exception constructor.
+	public AbstractLocalizedRuntimeException(final Object bundleInfo, final String messageKey,
+			final Object[] parameters, final Throwable cause) {
+		// Calls the exception constructor.
 		super(cause);
 		// Sets the basic fields.
+		getMessageCommand().setBundleInfo(bundleInfo);
 		getMessageCommand().setMessageKey(messageKey);
 		getMessageCommand().setParameters(parameters);
 	}

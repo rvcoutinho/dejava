@@ -2,10 +2,10 @@ package org.dejava.component.test.exception.parametric;
 
 import org.dejava.component.test.constant.ErrorKeys;
 import org.dejava.component.test.exception.AbstractTestException;
+import org.dejava.component.test.util.Resources;
 
 /**
- * Exception related to an invalid parametric test method (that should be public
- * void with one argument).
+ * Exception related to an invalid parametric test method (that should be public void with one argument).
  */
 public class InvalidParametricTestException extends AbstractTestException {
 
@@ -15,20 +15,22 @@ public class InvalidParametricTestException extends AbstractTestException {
 	private static final long serialVersionUID = -141551638307214890L;
 
 	/**
-	 * @see AbstractTestException#AbstractTestException(String, Throwable, String)
+	 * @see AbstractTestException#AbstractTestException(Object, String, String, Object[], Throwable)
 	 */
-	public InvalidParametricTestException(final String messageKey,
-			final Throwable cause, final String testName) {
-		super(messageKey, cause, testName);
+	public InvalidParametricTestException(final Object bundleInfo, final String messageKey,
+			final String testName, final Object[] parameters, final Throwable cause) {
+		super(bundleInfo, messageKey, testName, parameters, cause);
 	}
 
 	/**
 	 * Basic constructor.
 	 * 
 	 * @param testName
-	 *            The name of the test for the exception.
+	 *            The test name.
+	 * @param parameters
+	 *            Parameters for the exception (and message).
 	 */
-	public InvalidParametricTestException(final String testName) {
-		super(ErrorKeys.INVALID_PARAM_TEST_METHOD, null, testName);
+	public InvalidParametricTestException(final String testName, final Object[] parameters) {
+		super(Resources.class, ErrorKeys.INVALID_PARAM_TEST_METHOD, testName, parameters, null);
 	}
 }

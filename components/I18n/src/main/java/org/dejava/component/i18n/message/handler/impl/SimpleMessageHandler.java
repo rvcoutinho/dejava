@@ -238,8 +238,8 @@ public class SimpleMessageHandler implements MessageHandler {
 		// If the key is not found.
 		catch (final MissingResourceException exception) {
 			// Throws an exception.
-			throw new MessageNotFoundException(exception, new Object[] { locale, bundleBaseName, key,
-					parametersValues });
+			throw new MessageNotFoundException(
+					new Object[] { locale, bundleBaseName, key, parametersValues }, exception);
 		}
 	}
 
@@ -284,7 +284,7 @@ public class SimpleMessageHandler implements MessageHandler {
 			actualLocale = getLocale();
 		}
 		// For each bundle annotation.
-		for (AnnotationMirror<MessageBundles> currentMsgBundles : new ClassMirror<>(annotatedClass)
+		for (final AnnotationMirror<MessageBundles> currentMsgBundles : new ClassMirror<>(annotatedClass)
 				.getAnnotations(MessageBundles.class)) {
 			// If the annotation is found.
 			if (currentMsgBundles != null) {
@@ -316,7 +316,8 @@ public class SimpleMessageHandler implements MessageHandler {
 			}
 		}
 		// If no localized message is found, throws an exception.
-		throw new MessageNotFoundException(null, null);
+		throw new MessageNotFoundException(
+				new Object[] { annotatedClass, locale, type, key, parametersValues }, null);
 	}
 
 	/**
@@ -366,7 +367,8 @@ public class SimpleMessageHandler implements MessageHandler {
 			}
 		}
 		// If no localized message is found, throws an exception.
-		throw new MessageNotFoundException(null, null);
+		throw new MessageNotFoundException(new Object[] { annotatedClasses, locale, type, key,
+				parametersValues }, null);
 	}
 
 	/**

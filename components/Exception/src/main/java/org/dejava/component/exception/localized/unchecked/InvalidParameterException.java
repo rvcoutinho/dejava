@@ -1,5 +1,7 @@
 package org.dejava.component.exception.localized.unchecked;
 
+import org.dejava.component.exception.constant.ErrorKeys;
+
 /**
  * Exception related invalid parameter use.
  */
@@ -13,24 +15,27 @@ public class InvalidParameterException extends AbstractLocalizedRuntimeException
 	/**
 	 * Basic constructor.
 	 * 
-	 * @param messageKey
-	 *            Message key that describes the exception.
-	 * @param cause
-	 *            Exception cause.
+	 * @param bundleInfo
+	 *            The information regarding the message bundle to be used in the message retrieval
 	 * @param invalidParameter
 	 *            Parameter that is invalid.
 	 * @param InvalidParamValue
 	 *            Invalid parameter value.
+	 * @param cause
+	 *            Exception cause.
 	 */
-	public InvalidParameterException(final String messageKey, final Throwable cause,
-			final String invalidParameter, final Object InvalidParamValue) {
-		super(messageKey, cause, new Object[] { invalidParameter, InvalidParamValue });
+	public InvalidParameterException(final Object bundleInfo, final String invalidParameter,
+			final Object InvalidParamValue, final Throwable cause) {
+		super(bundleInfo, ErrorKeys.INVALID_PARAM, new Object[] { invalidParameter, InvalidParamValue },
+				cause);
 	}
 
 	/**
-	 * @see AbstractLocalizedRuntimeException#AbstractLocalizedRuntimeException(String, Throwable, Object[])
+	 * @see AbstractLocalizedRuntimeException#AbstractLocalizedRuntimeException(Object, String, Object[],
+	 *      Throwable)
 	 */
-	public InvalidParameterException(final String messageKey, final Throwable cause, final Object[] parameters) {
-		super(messageKey, cause, parameters);
+	public InvalidParameterException(final Object bundleInfo, final String messageKey,
+			final Object[] parameters, final Throwable cause) {
+		super(bundleInfo, messageKey, parameters, cause);
 	}
 }

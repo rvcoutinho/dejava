@@ -9,6 +9,7 @@ import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.annotation.MessageBundles;
 import org.dejava.component.security.crypt.constant.CredentialHasherParamKeys;
 import org.dejava.component.security.crypt.constant.ErrorKeys;
+import org.dejava.component.security.crypt.util.Resources;
 
 /**
  * Handles the hash calculation for user credentials.
@@ -56,8 +57,8 @@ public final class CredentialHasher {
 			// If the algorithm for the name cannot be found.
 			catch (final NoSuchAlgorithmException exception) {
 				// Throws an exception.
-				throw new InvalidParameterException(ErrorKeys.INVALID_ALG_NAME, exception,
-						new Object[] { algorithmsNames[currentAlgorithmIdx] });
+				throw new InvalidParameterException(Resources.class, ErrorKeys.INVALID_ALG_NAME,
+						new Object[] { algorithmsNames[currentAlgorithmIdx] }, exception);
 			}
 		}
 	}
@@ -91,8 +92,8 @@ public final class CredentialHasher {
 		// If the given minimum is greater than the maximum (or less than the minimum).
 		if ((minCycles == null) || (minCycles > getMaxCycles()) || (minCycles < MIN_MIN_CYCLES)) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.INVALID_MIN_CYCLES, null, new Object[] {
-					getMaxCycles(), MIN_MIN_CYCLES });
+			throw new InvalidParameterException(Resources.class, ErrorKeys.INVALID_MIN_CYCLES, new Object[] {
+					getMaxCycles(), MIN_MIN_CYCLES }, null);
 		}
 		// Sets the new minimum.
 		this.minCycles = minCycles;
@@ -127,8 +128,8 @@ public final class CredentialHasher {
 		// If the given minimum is lesser than the maximum (or greater than the maximum).
 		if ((maxCycles == null) || (maxCycles < getMinCycles()) || (maxCycles > MAX_MAX_CYCLES)) {
 			// Throws an exception.
-			throw new InvalidParameterException(ErrorKeys.INVALID_MAX_CYCLES, null, new Object[] {
-					getMinCycles(), MAX_MAX_CYCLES });
+			throw new InvalidParameterException(Resources.class, ErrorKeys.INVALID_MAX_CYCLES, new Object[] {
+					getMinCycles(), MAX_MAX_CYCLES }, null);
 		}
 		// Sets the new maximum.
 		this.maxCycles = maxCycles;

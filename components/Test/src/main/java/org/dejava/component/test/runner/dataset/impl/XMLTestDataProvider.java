@@ -10,6 +10,7 @@ import org.dejava.component.test.constant.ErrorKeys;
 import org.dejava.component.test.exception.parametric.InvalidParametricTestException;
 import org.dejava.component.test.runner.dataset.TestDataProvider;
 import org.dejava.component.test.runner.statement.ParametricTestMethodInvoker;
+import org.dejava.component.test.util.Resources;
 import org.junit.runners.model.FrameworkMethod;
 import org.w3c.dom.Document;
 
@@ -21,7 +22,8 @@ public class XMLTestDataProvider implements TestDataProvider {
 	/**
 	 * Default path for the XML.
 	 */
-	public static final String DEFAULT_XML_PATH = "xml/" + ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION + ".xml";
+	public static final String DEFAULT_XML_PATH = "xml/" + ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION
+			+ ".xml";
 
 	/**
 	 * The XML file path (relative to the test class).
@@ -41,7 +43,8 @@ public class XMLTestDataProvider implements TestDataProvider {
 			// The default method name is used.
 			filePath = DEFAULT_XML_PATH;
 			// Replaces the method name in the path.
-			filePath = filePath.replace(ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION, testMethod.getName());
+			filePath = filePath.replace(ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION,
+					testMethod.getName());
 		}
 		// Returns the method name.
 		return filePath;
@@ -68,8 +71,8 @@ public class XMLTestDataProvider implements TestDataProvider {
 	 */
 	private InputStream getXMLStream(final FrameworkMethod testMethod) throws EmptyParameterException {
 		// Gets the path for the XML.
-		final String xmlPath = new ClassMirror<>(testMethod.getMethod().getDeclaringClass()).getPackageAsDirPath()
-				+ '/' + getFilePath(testMethod);
+		final String xmlPath = new ClassMirror<>(testMethod.getMethod().getDeclaringClass())
+				.getPackageAsDirPath() + '/' + getFilePath(testMethod);
 		// Returns the XML stream.
 		return Thread.currentThread().getContextClassLoader().getResourceAsStream(xmlPath);
 	}
@@ -92,7 +95,8 @@ public class XMLTestDataProvider implements TestDataProvider {
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {
 			// Throws an exception.
-			throw new InvalidParametricTestException(ErrorKeys.UNAVAILABLE_TEST_DATA, exception, testMethod.getName());
+			throw new InvalidParametricTestException(Resources.class, ErrorKeys.UNAVAILABLE_TEST_DATA,
+					testMethod.getName(), null, exception);
 		}
 	}
 }

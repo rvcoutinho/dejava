@@ -5,8 +5,7 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.realm.jdbc.JdbcRealm;
+import org.apache.shiro.realm.AuthenticatingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -19,7 +18,7 @@ import org.dejava.service.accesscontrol.model.credential.Password;
 /**
  * TODO
  */
-public class DBRealm extends JdbcRealm {
+public class DBRealm extends AuthenticatingRealm {
 
 	/**
 	 * The email EJB service.
@@ -89,15 +88,6 @@ public class DBRealm extends JdbcRealm {
 		authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(password.getSalt()));
 		// Returns the authentication information.
 		return authenticationInfo;
-	}
-
-	/**
-	 * @see org.apache.shiro.realm.AuthorizingRealm#doGetAuthorizationInfo(org.apache.shiro.subject.PrincipalCollection)
-	 */
-	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(final PrincipalCollection principals) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

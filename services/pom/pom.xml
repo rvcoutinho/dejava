@@ -73,6 +73,12 @@
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.component</groupId>
+				<artifactId>security</artifactId>
+				<version>0.0.1</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.component</groupId>
 				<artifactId>exception</artifactId>
 				<version>0.0.1</version>
 				<scope>compile</scope>

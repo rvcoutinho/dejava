@@ -1,0 +1,185 @@
+* {
+	font-family: Calibri, Arial;
+}
+
+body {
+	margin: 0px;
+	font-size: 1em;
+	text-align: justify;
+	color: #4F5B5A;
+}
+
+input {
+	color: #4F5B5A;
+	padding: 5px;
+	border: none;
+	border-radius: 3px;
+}
+
+input[type=button],input[type=submit] {
+	padding: 5px 15px;
+}
+
+h1,h2,h3,h4,h5 {
+	font-family: inherit;
+	color: inherit;
+	margin: 0px;
+	text-align: left;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+a {
+	font-family: inherit;
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.min-width {
+	min-width: 960px;
+}
+
+.content-width {
+	margin: auto;
+	max-width: 960px;
+}
+
+.gray-text {
+	color: #4F5B5A;
+}
+
+.green-text {
+	color: #1C9BA5;
+}
+
+.orange-text {
+	color: #F8971D;
+}
+
+.white-text {
+	color: #FFFFFF;
+}
+
+.orange-background {
+	background-color: #F8971D;
+}
+
+.green-background-1 {
+	background-color: #44BFC6;
+}
+
+.green-background-2 {
+	background-color: #1C9BA5;
+}
+
+.padding-1 {
+	padding: 15px;
+}
+
+.padding-2 {
+	padding: 30px 15px;
+}
+
+.padding-3 {
+	padding: 30px;
+}
+
+#header {
+	background: url("../image/texture-gray-1.png") repeat;
+}
+
+#header * {
+	vertical-align: middle;
+}
+
+#header img {
+	height: 40px;
+}
+
+#header #soupport {
+	margin-top: 5px;
+	float: right;
+}
+
+#header #soupport #tagline {
+	margin-right: 15px;
+	display: inline;
+	font-size: 0.8em;
+}
+
+#video-section {
+	background: url("../image/texture-green-1.png") repeat;
+}
+
+#video-section div div,#video-section div header {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#video-section #video-text {
+	width: 270px;
+}
+
+#video-section #video-circle {
+	z-index: 1;
+	float: right;
+	height: 0px;
+	width: 0px;
+	margin-right: 595px;
+	margin-top: -15px;
+	overflow: visible;
+}
+
+#video-section #video-circle img {
+	width: 600px;
+	height: 450px;
+}
+
+#video-section #teaser-video {
+	float: right;
+}
+
+#graphs-section {
+	background: url("../image/texture-gray-1.png") repeat;
+}
+
+#graphs-section #graphs img {
+	width: 960px;
+}
+
+#text-section {
+	background: url("../image/texture-gray-2.png") repeat;
+}
+
+#footer {
+	
+}
+
+#footer #arrow {
+	margin-top: -110px;
+	margin-left: -30px;
+}
+
+#footer #arrow img {
+	width: 250px;
+}
+
+#footer div div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#footer #subscription-2 {
+	
+}
+
+#footer #social-media {
+	float: right;
+}
+
+#footer #social-media img {
+	margin-left: 5px;
+	width: 24px;
+}

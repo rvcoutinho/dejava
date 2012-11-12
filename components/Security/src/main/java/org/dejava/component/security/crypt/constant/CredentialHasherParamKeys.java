@@ -18,7 +18,7 @@ public final class CredentialHasherParamKeys {
 	/**
 	 * The credential parameter key.
 	 */
-	public static final String CREDENTIAL = "credential";
+	public static final String CREDENTIALS = "credential";
 
 	/**
 	 * The salt parameter key.

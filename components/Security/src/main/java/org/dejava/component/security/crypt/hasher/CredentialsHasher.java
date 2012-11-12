@@ -1,4 +1,4 @@
-package org.dejava.component.security.crypt;
+package org.dejava.component.security.crypt.hasher;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -7,6 +7,7 @@ import org.dejava.component.exception.localized.unchecked.EmptyParameterExceptio
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.annotation.MessageBundles;
+import org.dejava.component.security.auth.credential.HashedCredentials;
 import org.dejava.component.security.crypt.constant.CredentialHasherParamKeys;
 import org.dejava.component.security.crypt.constant.ErrorKeys;
 import org.dejava.component.security.crypt.util.Resources;
@@ -15,7 +16,7 @@ import org.dejava.component.security.crypt.util.Resources;
  * Handles the hash calculation for user credentials.
  */
 @MessageBundles(defaultType = "error", messageBundles = { @MessageBundle(baseName = "org.dejava.component.security.crypt.properties.error", type = "error") })
-public final class CredentialHasher {
+public final class CredentialsHasher {
 
 	/**
 	 * Names of the algorithms used by default.
@@ -196,9 +197,49 @@ public final class CredentialHasher {
 	}
 
 	/**
+	 * Sets the credential hasher with basic information on hash calculation.
+	 * 
+	 * @param algorithmsNames
+	 *            Names of the algorithms to be used in the hash calculation. The first algorithm is also used
+	 *            in other calculations.
+	 * @param minCycles
+	 *            The minimum number of hash cycles to be used in the hash calculation.
+	 * @param maxCycles
+	 *            The maximum number of hash cycles to be used in the hash calculation.
+	 */
+	public void setCredentialHasher(final String[] algorithmsNames, final Integer minCycles,
+			final Integer maxCycles) {
+		// Sets the minimum cycles to 1 (so the maximum could not be lesser).
+		setMinCycles(MIN_MIN_CYCLES);
+		// Sets the maximum cycles to 10000 (so the minimum could not be greater).
+		setMaxCycles(MAX_MAX_CYCLES);
+		// Sets the fields.
+		setAlgorithms(algorithmsNames);
+		setMaxCycles(maxCycles);
+		setMinCycles(minCycles);
+	}
+
+	/**
+	 * Sets the credential hasher with basic information on hash calculation.
+	 * 
+	 * @param hashedCredentials
+	 *            A credential containing information on how to be hashed.
+	 */
+	public void setCredentialHasher(final HashedCredentials hashedCredentials) {
+		// If the given credential is null.
+		if (hashedCredentials == null) {
+			// Throws an exception.
+			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIALS);
+		}
+		// Sets the basic information for the credential hasher.
+		setCredentialHasher(hashedCredentials.getAlgorithmsNames(), hashedCredentials.getMinCycles(),
+				hashedCredentials.getMaxCycles());
+	}
+
+	/**
 	 * Public constructor.
 	 */
-	public CredentialHasher() {
+	public CredentialsHasher() {
 		super();
 		setAlgorithms(ALGS_NAMES);
 	}
@@ -214,16 +255,22 @@ public final class CredentialHasher {
 	 * @param maxCycles
 	 *            The maximum number of hash cycles to be used in the hash calculation.
 	 */
-	public CredentialHasher(final String[] algorithmsNames, final Integer minCycles, final Integer maxCycles) {
+	public CredentialsHasher(final String[] algorithmsNames, final Integer minCycles, final Integer maxCycles) {
 		super();
-		// Sets the minimum cycles to 1 (so the maximum could not be lesser).
-		setMinCycles(MIN_MIN_CYCLES);
-		// Sets the maximum cycles to 10000 (so the minimum could not be greater).
-		setMaxCycles(MAX_MAX_CYCLES);
-		// Sets the fields.
-		setAlgorithms(algorithmsNames);
-		setMaxCycles(maxCycles);
-		setMinCycles(minCycles);
+		// Sets the basic information for the credential hasher.
+		setCredentialHasher(algorithmsNames, minCycles, maxCycles);
+	}
+
+	/**
+	 * Public constructor.
+	 * 
+	 * @param hashedCredentials
+	 *            A credential containing information on how to be hashed.
+	 * 
+	 */
+	public CredentialsHasher(final HashedCredentials hashedCredentials) {
+		// Sets the basic information for the credential hasher.
+		setCredentialHasher(hashedCredentials);
 	}
 
 	/**
@@ -289,7 +336,7 @@ public final class CredentialHasher {
 		// If the credential is null or empty.
 		if ((credential == null) || (credential.length == 0)) {
 			// Throws an exception.
-			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIAL);
+			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIALS);
 		}
 		// If the salt is null or empty.
 		if ((salt == null) || (salt.isEmpty())) {
@@ -312,22 +359,21 @@ public final class CredentialHasher {
 	}
 
 	/**
-	 * Gets the hash from a given credential.
+	 * Gets the hash from a given credentials.
 	 * 
-	 * @param credential
+	 * @param credentials
 	 *            The credential to be hashed.
 	 * @param salt
 	 *            Salt to be used in the hash calculation. It is a good idea to have an unique salt per user.
 	 * @return The hash from a given credential.
 	 */
-	public byte[] hash(final String credential, final String salt) {
-		// If the credential is null or empty.
-		if ((credential == null) || (credential.isEmpty())) {
+	public byte[] hash(final String credentials, final String salt) {
+		// If the credentials is null or empty.
+		if ((credentials == null) || (credentials.isEmpty())) {
 			// Throws an exception.
-			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIAL);
+			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIALS);
 		}
-		// Tries to hash the credential.
-		return hash(credential.getBytes(), salt);
+		// Tries to hash the credentials.
+		return hash(credentials.getBytes(), salt);
 	}
-
 }

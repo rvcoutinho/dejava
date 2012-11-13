@@ -1,6 +1,5 @@
 package org.dejava.service.accesscontrol.business.principal;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -12,8 +11,7 @@ import org.dejava.service.accesscontrol.model.principal.Email;
 /**
  * EJB service for email.
  */
-@Remote
-@Stateless(name = "AccessControl/EmailService/remote")
+@Stateless
 public class EmailService extends AbstractGenericService<Email, Integer> {
 
 	/**

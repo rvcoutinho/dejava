@@ -10,7 +10,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.DependencyResolvers;
 import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
@@ -30,22 +30,28 @@ public class EJBRealmTest {
 	 */
 	@Deployment
 	public static Archive<?> createTestArchive() {
-		// Gets the maven dependency resolver.
+		// Gets the maven dependency resolver (for the regular libs).
 		final MavenDependencyResolver dependencyResolver = DependencyResolvers.use(
 				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
+		// Gets the maven dependency resolver (for the ejb module).
+		final MavenDependencyResolver dependencyResolver2 = DependencyResolvers.use(
+				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
+		// Gets the EJB jar.
+		final JavaArchive ejbJar = dependencyResolver2.artifact("org.dejava.service:accesscontrol-ejb")
+				.resolveAs(JavaArchive.class).iterator().next();
+		// Removes the persistence.xml from the jar.
+		ejbJar.delete("META-INF/persistence.xml");
 		// Defines and returns the archive definition.
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
+				.merge(ejbJar, "WEB-INF/classes")
 				.addPackages(true, "org.dejava.component.accesscontrol")
-				.addAsLibraries(dependencyResolver.artifact("org.dejava.component:security").resolveAsFiles())
-				.addAsLibraries(dependencyResolver.artifact("org.dejava.component:javaee").resolveAsFiles())
 				.addAsLibraries(
-						dependencyResolver.artifact("org.dejava.component:exception").resolveAsFiles())
-				.addAsLibraries(dependencyResolver.artifact("org.dejava.component:i18n").resolveAsFiles())
-				.addAsLibraries(
-						dependencyResolver.artifact("org.dejava.component:reflection").resolveAsFiles())
+						dependencyResolver.artifacts("org.dejava.component:security",
+								"org.dejava.component:javaee", "org.dejava.component:exception",
+								"org.dejava.component:i18n", "org.dejava.component:reflection").resolveAs(
+								JavaArchive.class))
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
-				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml");
 	}
 
@@ -64,12 +70,12 @@ public class EJBRealmTest {
 		// Creates a new user.
 		User user = new User();
 		// Creates a new user name.
-		Name name = new Name();
+		final Name name = new Name();
 		// Sets the user name fields.
 		name.setName("rvcoutinho");
 		name.setUser(user);
 		// Creates a new password.
-		Password password = new Password();
+		final Password password = new Password();
 		// Sets the password fields.
 		password.setRawPassword("1234");
 		password.setUser(user);

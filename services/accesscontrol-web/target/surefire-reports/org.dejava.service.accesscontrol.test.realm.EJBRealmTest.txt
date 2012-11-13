@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: org.dejava.service.accesscontrol.test.realm.EJBRealmTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 9.757 sec <<< FAILURE!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 9.455 sec <<< FAILURE!
 org.dejava.service.accesscontrol.test.realm.EJBRealmTest  Time elapsed: 0 sec  <<< ERROR!
 java.lang.RuntimeException: Could not invoke deployment method: public static org.jboss.shrinkwrap.api.Archive org.dejava.service.accesscontrol.test.realm.EJBRealmTest.createTestArchive()
 	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.invoke(AnnotationDeploymentScenarioGenerator.java:160)
@@ -68,17 +68,10 @@ Caused by: java.lang.reflect.InvocationTargetException
 	at java.lang.reflect.Method.invoke(Method.java:601)
 	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.invoke(AnnotationDeploymentScenarioGenerator.java:156)
 	... 56 more
-Caused by: org.jboss.shrinkwrap.resolver.api.ResolutionException: Unable to create artifact from coordinates org.dejava.component:security, they are either invalid or version information was not specified in loaded POM file (maybe the POM file wasn't load at all)
-	at org.jboss.shrinkwrap.resolver.impl.maven.MavenConverter.asArtifact(MavenConverter.java:139)
-	at org.jboss.shrinkwrap.resolver.impl.maven.MavenConverter.asDependency(MavenConverter.java:116)
-	at org.jboss.shrinkwrap.resolver.impl.maven.MavenConverter.asDependencies(MavenConverter.java:125)
-	at org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl.resolveAsFiles(MavenBuilderImpl.java:357)
-	at org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl.resolveAsFiles(MavenBuilderImpl.java:342)
-	at org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl$MavenArtifactBuilderImpl.resolveAsFiles(MavenBuilderImpl.java:533)
+Caused by: java.lang.IllegalArgumentException: No dependencies were set for resolution
+	at org.jboss.shrinkwrap.resolver.impl.maven.Validate.notEmpty(Validate.java:62)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl.resolveAsFiles(MavenBuilderImpl.java:355)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl.resolveAs(MavenBuilderImpl.java:442)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl.resolveAs(MavenBuilderImpl.java:406)
 	at org.dejava.service.accesscontrol.test.realm.EJBRealmTest.createTestArchive(EJBRealmTest.java:37)
 	... 61 more
-Caused by: java.lang.IllegalArgumentException: Bad artifact coordinates, expected format is <groupId>:<artifactId>[:<extension>[:<classifier>]]:<version>
-	at org.sonatype.aether.util.artifact.DefaultArtifact.<init>(DefaultArtifact.java:70)
-	at org.sonatype.aether.util.artifact.DefaultArtifact.<init>(DefaultArtifact.java:54)
-	at org.jboss.shrinkwrap.resolver.impl.maven.MavenConverter.asArtifact(MavenConverter.java:135)
-	... 67 more

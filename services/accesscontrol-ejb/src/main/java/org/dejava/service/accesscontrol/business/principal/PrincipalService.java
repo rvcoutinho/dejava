@@ -1,6 +1,5 @@
 package org.dejava.service.accesscontrol.business.principal;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -12,8 +11,7 @@ import org.dejava.service.accesscontrol.model.principal.Principal;
 /**
  * EJB service for principal.
  */
-@Remote
-@Stateless(name = "AccessControl/PrincipalService/remote")
+@Stateless
 public class PrincipalService extends AbstractGenericService<Principal, Integer> {
 
 	/**

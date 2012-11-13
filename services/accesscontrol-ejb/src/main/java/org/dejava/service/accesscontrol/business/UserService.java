@@ -1,6 +1,5 @@
 package org.dejava.service.accesscontrol.business;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -12,8 +11,7 @@ import org.dejava.service.accesscontrol.model.User;
 /**
  * EJB service for user.
  */
-@Remote
-@Stateless(name = "AccessControl/UserService/remote")
+@Stateless
 public class UserService extends AbstractGenericService<User, Integer> {
 
 	/**

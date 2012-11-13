@@ -30,9 +30,9 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.jboss.as</groupId>
-				<artifactId>jboss-as-parent</artifactId>
-				<version>7.1.1.Final</version>
+				<groupId>org.jboss.bom</groupId>
+				<artifactId>jboss-javaee-6.0-with-tools</artifactId>
+				<version>1.0.2.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -89,12 +89,6 @@
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
 			<scope>provided</scope>
 		</dependency>
 

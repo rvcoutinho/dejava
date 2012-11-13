@@ -1,7 +1,6 @@
 package org.dejava.service.accesscontrol.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -16,14 +15,14 @@ import javax.persistence.Transient;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
-import org.dejava.service.accesscontrol.model.credential.Credential;
+import org.dejava.service.accesscontrol.model.credentials.Credentials;
 import org.dejava.service.accesscontrol.model.principal.Principal;
 
 /**
  * Represents a system user.
  */
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class User implements Serializable {
 
@@ -121,24 +120,6 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * Gets the raw principal values.
-	 * 
-	 * @return The raw principal values.
-	 */
-	@Transient
-	public Collection<Object> getRawPrincipals() {
-		// Creates a new list for the raw principals.
-		final Collection<Object> rawPrincipals = new ArrayList<>();
-		// For each principal.
-		for (final Principal currentPrincipal : getPrincipals()) {
-			// Adds the raw value of the principal to the list.
-			rawPrincipals.add(currentPrincipal.getValue());
-		}
-		// Returns the raw principals.
-		return rawPrincipals;
-	}
-
-	/**
 	 * Sets the principals for this user.
 	 * 
 	 * @param principals
@@ -152,7 +133,7 @@ public class User implements Serializable {
 	 * Credentials for this user.
 	 * 
 	 */
-	private Collection<Credential> credentials;
+	private Collection<Credentials> credentials;
 
 	/**
 	 * Gets the credentials for this user.
@@ -160,7 +141,7 @@ public class User implements Serializable {
 	 * @return The credentials for this user.
 	 */
 	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL })
-	public Collection<Credential> getCredentials() {
+	public Collection<Credentials> getCredentials() {
 		return credentials;
 	}
 
@@ -174,27 +155,10 @@ public class User implements Serializable {
 	 * @return The credential with the given type (there should not be more than an object for given type).
 	 */
 	@Transient
-	public <ConcreteCredential extends Credential> ConcreteCredential getCredential(
+	public <ConcreteCredential extends Credentials> ConcreteCredential getCredential(
 			final Class<ConcreteCredential> credentialType) {
 		// Returns the credential with the given type.
 		return getObjectByClass(getCredentials(), credentialType);
-	}
-
-	/**
-	 * Gets the raw credential values.
-	 * 
-	 * @return The raw credential values.
-	 */
-	public Collection<Object> getRawCredentials() {
-		// Creates a new list for the raw credentials.
-		final Collection<Object> rawCredentials = new ArrayList<>();
-		// For each credential.
-		for (final Credential currentCredential : getCredentials()) {
-			// Adds the raw value of the credential to the list.
-			rawCredentials.add(currentCredential.getValue());
-		}
-		// Returns the raw credentials.
-		return rawCredentials;
 	}
 
 	/**
@@ -203,7 +167,7 @@ public class User implements Serializable {
 	 * @param credentials
 	 *            New credentials for this user.
 	 */
-	public void setCredentials(final Collection<Credential> credentials) {
+	public void setCredentials(final Collection<Credentials> credentials) {
 		this.credentials = credentials;
 	}
 

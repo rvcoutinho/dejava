@@ -8,17 +8,16 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.realm.AuthenticatingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.apache.shiro.util.ByteSource;
-import org.dejava.service.accesscontrol.business.crendential.PasswordService;
+import org.dejava.service.accesscontrol.business.crendentials.PasswordService;
 import org.dejava.service.accesscontrol.business.principal.EmailService;
 import org.dejava.service.accesscontrol.business.principal.NameService;
 import org.dejava.service.accesscontrol.model.User;
-import org.dejava.service.accesscontrol.model.credential.Password;
+import org.dejava.service.accesscontrol.model.credentials.Password;
 
 /**
- * TODO
+ * Authentication and authorization realm via EJB services.
  */
-public class DBRealm extends AuthenticatingRealm {
+public class EJBRealm extends AuthenticatingRealm {
 
 	/**
 	 * The email EJB service.
@@ -82,10 +81,7 @@ public class DBRealm extends AuthenticatingRealm {
 		// Gets the password for the user.
 		final Password password = getPasswordService().getEntityByAttribute("user", user);
 		// Creates a new simple authentication (with the user principals and credentials).
-		final SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principals, password
-				.getPassword().toCharArray());
-		// Sets the salt to be used by the credential the hashed credential matcher.
-		authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(password.getSalt()));
+		final SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principals, password);
 		// Returns the authentication information.
 		return authenticationInfo;
 	}

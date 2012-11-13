@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
@@ -59,7 +60,7 @@ public abstract class Principal {
 	 * 
 	 * @return The user for this principal.
 	 */
-	@Column(name = "user")
+	@JoinColumn(name = "user")
 	@ManyToOne(fetch = FetchType.EAGER)
 	public User getUser() {
 		return user;

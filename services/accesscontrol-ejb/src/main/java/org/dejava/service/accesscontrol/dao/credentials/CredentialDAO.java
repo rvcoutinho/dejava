@@ -1,16 +1,16 @@
-package org.dejava.service.accesscontrol.dao.credential;
+package org.dejava.service.accesscontrol.dao.credentials;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import org.dejava.component.javaee.dao.AbstractGenericDAO;
-import org.dejava.service.accesscontrol.model.credential.Credential;
+import org.dejava.service.accesscontrol.model.credentials.Credentials;
 import org.dejava.service.accesscontrol.util.AccessControl;
 
 /**
  * DAO for credential.
  */
-public class CredentialDAO extends AbstractGenericDAO<Credential, Integer> {
+public class CredentialDAO extends AbstractGenericDAO<Credentials, Integer> {
 
 	/**
 	 * Entity manager being used.

@@ -1,4 +1,4 @@
-package org.dejava.service.accesscontrol.business.crendential;
+package org.dejava.service.accesscontrol.business.crendentials;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -6,8 +6,8 @@ import javax.inject.Inject;
 
 import org.dejava.component.javaee.dao.AbstractGenericDAO;
 import org.dejava.component.javaee.service.AbstractGenericService;
-import org.dejava.service.accesscontrol.dao.credential.PasswordDAO;
-import org.dejava.service.accesscontrol.model.credential.Password;
+import org.dejava.service.accesscontrol.dao.credentials.PasswordDAO;
+import org.dejava.service.accesscontrol.model.credentials.Password;
 
 /**
  * EJB service for password.

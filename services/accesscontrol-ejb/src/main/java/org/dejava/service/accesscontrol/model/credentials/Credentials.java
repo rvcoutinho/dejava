@@ -1,4 +1,4 @@
-package org.dejava.service.accesscontrol.model.credential;
+package org.dejava.service.accesscontrol.model.credentials;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
@@ -15,22 +16,22 @@ import javax.persistence.Transient;
 import org.dejava.service.accesscontrol.model.User;
 
 /**
- * Credential to be used in the authentication/authorization.
+ * Credentials to be used in the authentication/authorization.
  */
-@Table(name = "credential")
+@Table(name = "credentials")
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Credential {
+public abstract class Credentials {
 
 	/**
-	 * Id for the credential.
+	 * Id for the credentials.
 	 */
 	private Integer id;
 
 	/**
-	 * Gets the id for the credential.
+	 * Gets the id for the credentials.
 	 * 
-	 * @return The id for the credential.
+	 * @return The id for the credentials.
 	 */
 	@Id
 	@Column(name = "id")
@@ -40,45 +41,45 @@ public abstract class Credential {
 	}
 
 	/**
-	 * Sets the id for the credential.
+	 * Sets the id for the credentials.
 	 * 
 	 * @param id
-	 *            New id for the credential.
+	 *            New id for the credentials.
 	 */
 	public void setId(final Integer id) {
 		this.id = id;
 	}
 
 	/**
-	 * The user for this credential.
+	 * The user for this credentials.
 	 */
 	private User user;
 
 	/**
-	 * Gets the user for this credential.
+	 * Gets the user for this credentials.
 	 * 
-	 * @return The user for this credential.
+	 * @return The user for this credentials.
 	 */
-	@Column(name = "user")
+	@JoinColumn(name = "user")
 	@ManyToOne(fetch = FetchType.EAGER)
 	public User getUser() {
 		return user;
 	}
 
 	/**
-	 * Sets the user for this credential.
+	 * Sets the user for this credentials.
 	 * 
 	 * @param user
-	 *            New user for this credential.
+	 *            New user for this credentials.
 	 */
 	public void setUser(final User user) {
 		this.user = user;
 	}
 
 	/**
-	 * Gets the value for the credential.
+	 * Gets the value for the credentials.
 	 * 
-	 * @return The value for the credential.
+	 * @return The value for the credentials.
 	 */
 	@Transient
 	public abstract Object getValue();

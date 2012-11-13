@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="9.756" errors="1" skipped="0" tests="1" name="org.dejava.service.accesscontrol.test.realm.EJBRealmTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_07\jre\bin"/>
+    <property name="java.vm.version" value="23.3-b01"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-web"/>
+    <property name="java.runtime.version" value="1.7.0_07-b10"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jdk1.7.0_07\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\RVCOUT~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\services\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf18529013317372969.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_07\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Java\jdk1.7.0_07\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files (x86)\eclipse;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="D:\usuarios\rvcoutinho"/>
+    <property name="user.timezone" value="America/Sao_Paulo"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="rvcoutinho"/>
+    <property name="java.class.path" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\boot\plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.7.0_07\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B deploy"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="pt"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="1.7.0_07"/>
+    <property name="java.ext.dirs" value="C:\Program Files (x86)\Java\jdk1.7.0_07\jre\lib\ext;C:\windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jdk1.7.0_07\jre\lib\resources.jar;C:\Program Files (x86)\Java\jdk1.7.0_07\jre\lib\rt.jar;C:\Program Files (x86)\Java\jdk1.7.0_07\jre\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jdk1.7.0_07\jre\lib\jsse.jar;C:\Program Files (x86)\Java\jdk1.7.0_07\jre\lib\jce.jar;C:\Program Files (x86)\Java\jdk1.7.0_07\jre\lib\charsets.jar;C:\Program Files (x86)\Java\jdk1.7.0_07\jre\lib\jfr.jar;C:\Program Files (x86)\Java\jdk1.7.0_07\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase time="0" classname="org.dejava.service.accesscontrol.test.realm.EJBRealmTest" name="org.dejava.service.accesscontrol.test.realm.EJBRealmTest">
+    <error message="Could not invoke deployment method: public static org.jboss.shrinkwrap.api.Archive org.dejava.service.accesscontrol.test.realm.EJBRealmTest.createTestArchive()" type="java.lang.RuntimeException">java.lang.RuntimeException: Could not invoke deployment method: public static org.jboss.shrinkwrap.api.Archive org.dejava.service.accesscontrol.test.realm.EJBRealmTest.createTestArchive()
+	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.invoke(AnnotationDeploymentScenarioGenerator.java:160)
+	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.generateDeployment(AnnotationDeploymentScenarioGenerator.java:94)
+	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.generate(AnnotationDeploymentScenarioGenerator.java:57)
+	at org.jboss.arquillian.container.test.impl.client.deployment.DeploymentGenerator.generateDeployment(DeploymentGenerator.java:79)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.test.impl.client.ContainerEventController.execute(ContainerEventController.java:100)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeClass(EventTestRunnerAdaptor.java:80)
+	at org.jboss.arquillian.junit.Arquillian$2.evaluate(Arquillian.java:182)
+	at org.jboss.arquillian.junit.Arquillian.multiExecute(Arquillian.java:314)
+	at org.jboss.arquillian.junit.Arquillian.access$100(Arquillian.java:46)
+	at org.jboss.arquillian.junit.Arquillian$3.evaluate(Arquillian.java:199)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.jboss.arquillian.junit.Arquillian.run(Arquillian.java:147)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.invoke(AnnotationDeploymentScenarioGenerator.java:156)
+	... 56 more
+Caused by: org.jboss.shrinkwrap.resolver.api.ResolutionException: Unable to create artifact from coordinates org.dejava.component:security, they are either invalid or version information was not specified in loaded POM file (maybe the POM file wasn&apos;t load at all)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenConverter.asArtifact(MavenConverter.java:139)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenConverter.asDependency(MavenConverter.java:116)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenConverter.asDependencies(MavenConverter.java:125)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl.resolveAsFiles(MavenBuilderImpl.java:357)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl.resolveAsFiles(MavenBuilderImpl.java:342)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl$MavenArtifactBuilderImpl.resolveAsFiles(MavenBuilderImpl.java:533)
+	at org.dejava.service.accesscontrol.test.realm.EJBRealmTest.createTestArchive(EJBRealmTest.java:37)
+	... 61 more
+Caused by: java.lang.IllegalArgumentException: Bad artifact coordinates, expected format is &lt;groupId&gt;:&lt;artifactId&gt;[:&lt;extension&gt;[:&lt;classifier&gt;]]:&lt;version&gt;
+	at org.sonatype.aether.util.artifact.DefaultArtifact.&lt;init&gt;(DefaultArtifact.java:70)
+	at org.sonatype.aether.util.artifact.DefaultArtifact.&lt;init&gt;(DefaultArtifact.java:54)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenConverter.asArtifact(MavenConverter.java:135)
+	... 67 more
+</error>
+    <system-out>02:19:38,563 INFO  [org.jboss.modules] JBoss Modules version 1.1.1.GA
+02:19:38,753 INFO  [org.jboss.msc] JBoss MSC version 1.0.2.GA
+02:19:38,812 INFO  [org.jboss.as] JBAS015899: JBoss AS 7.1.1.Final &quot;Brontes&quot; starting
+02:19:39,900 INFO  [org.xnio] XNIO Version 3.0.3.GA
+02:19:39,903 INFO  [org.jboss.as.server] JBAS015888: Creating http management service using socket-binding (management-http)
+02:19:39,913 INFO  [org.xnio.nio] XNIO NIO Implementation Version 3.0.3.GA
+02:19:39,925 INFO  [org.jboss.remoting] JBoss Remoting version 3.2.3.GA
+02:19:39,952 INFO  [org.jboss.as.logging] JBAS011502: Removing bootstrap log handlers
+02:19:39,954 INFO  [org.jboss.as.configadmin] (ServerService Thread Pool -- 26) JBAS016200: Activating ConfigAdmin Subsystem
+02:19:39,992 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 31) JBAS010280: Activating Infinispan subsystem.
+02:19:40,034 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 38) JBAS011800: Activating Naming Subsystem
+02:19:40,041 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+02:19:40,044 INFO  [org.jboss.as.osgi] (ServerService Thread Pool -- 39) JBAS011940: Activating OSGi Subsystem
+02:19:40,051 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010404: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 9.1)
+02:19:40,053 INFO  [org.jboss.as.connector] (MSC service thread 1-1) JBAS010408: Starting JCA Subsystem (JBoss IronJacamar 1.0.9.Final)
+02:19:40,061 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 44) JBAS013101: Activating Security Subsystem
+02:19:40,081 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 48) JBAS015537: Activating WebServices Extension
+02:19:40,082 INFO  [org.jboss.as.security] (MSC service thread 1-2) JBAS013100: Current PicketBox version=4.0.7.Final
+02:19:40,282 INFO  [org.jboss.as.naming] (MSC service thread 1-2) JBAS011802: Starting Naming Service
+02:19:40,297 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-2) JBAS015400: Bound mail session [java:jboss/mail/Default]
+02:19:40,337 INFO  [org.jboss.ws.common.management.AbstractServerConfig] (MSC service thread 1-4) JBoss Web Services - Stack CXF Server 4.0.2.GA
+02:19:40,676 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-4) JBAS015012: Started FileSystemDeploymentService for directory C:\servidores\jboss-as-7.1.1.Final\standalone\deployments
+02:19:40,748 INFO  [org.jboss.as.remoting] (MSC service thread 1-7) JBAS017100: Listening on /127.0.0.1:9999
+02:19:40,748 INFO  [org.jboss.as.remoting] (MSC service thread 1-2) JBAS017100: Listening on /127.0.0.1:4447
+02:19:40,765 INFO  [org.apache.coyote.http11.Http11Protocol] (MSC service thread 1-1) Starting Coyote HTTP/1.1 on http--127.0.0.1-8080
+02:19:40,894 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+02:19:40,917 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) JBAS015876: Starting deployment of &quot;ear-0.0.1.ear&quot;
+02:19:41,274 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) JBAS015876: Starting deployment of &quot;accesscontrol-ejb-0.0.1.jar&quot;
+02:19:41,274 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) JBAS015876: Starting deployment of &quot;party-web-0.0.1.war&quot;
+02:19:41,274 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) JBAS015876: Starting deployment of &quot;accesscontrol-web-0.0.1.war&quot;
+02:19:41,274 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015876: Starting deployment of &quot;party-ejb-0.0.1.jar&quot;
+02:19:41,985 INFO  [org.jboss.as.jpa] (MSC service thread 1-5) JBAS011401: Read persistence.xml for AccessControlPU
+02:19:41,985 INFO  [org.jboss.as.jpa] (MSC service thread 1-6) JBAS011401: Read persistence.xml for PartyPU
+02:19:42,079 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016002: Processing weld deployment ear-0.0.1.ear
+02:19:42,119 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016002: Processing weld deployment party-ejb-0.0.1.jar
+02:19:42,121 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named PersonService in deployment unit subdeployment &quot;party-ejb-0.0.1.jar&quot; of deployment &quot;ear-0.0.1.ear&quot; are as follows:
+
+	java:global/ear-0.0.1/party-ejb-0.0.1/PersonService!org.dejava.service.party.business.PersonService
+	java:app/party-ejb-0.0.1/PersonService!org.dejava.service.party.business.PersonService
+	java:module/PersonService!org.dejava.service.party.business.PersonService
+	java:global/ear-0.0.1/party-ejb-0.0.1/PersonService
+	java:app/party-ejb-0.0.1/PersonService
+	java:module/PersonService
+
+02:19:42,129 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) JBAS016002: Processing weld deployment accesscontrol-ejb-0.0.1.jar
+02:19:42,131 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-5) JNDI bindings for session bean named UserService in deployment unit subdeployment &quot;accesscontrol-ejb-0.0.1.jar&quot; of deployment &quot;ear-0.0.1.ear&quot; are as follows:
+
+	java:global/ear-0.0.1/accesscontrol-ejb-0.0.1/UserService!org.dejava.service.accesscontrol.business.UserService
+	java:app/accesscontrol-ejb-0.0.1/UserService!org.dejava.service.accesscontrol.business.UserService
+	java:module/UserService!org.dejava.service.accesscontrol.business.UserService
+	java:global/ear-0.0.1/accesscontrol-ejb-0.0.1/UserService
+	java:app/accesscontrol-ejb-0.0.1/UserService
+	java:module/UserService
+
+02:19:42,150 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) JBAS016002: Processing weld deployment party-web-0.0.1.war
+02:19:42,151 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016002: Processing weld deployment accesscontrol-web-0.0.1.war
+02:19:42,166 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016005: Starting Services for CDI deployment: ear-0.0.1.ear
+02:19:42,193 INFO  [org.jboss.weld.Version] (MSC service thread 1-8) WELD-000900 1.1.5 (AS71)
+02:19:42,225 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) JBAS010400: Bound data source [datasource/PartyDS]
+02:19:42,227 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) JBAS010400: Bound data source [datasource/AccessControlDS]
+02:19:42,505 INFO  [org.jboss.as.jpa] (MSC service thread 1-2) JBAS011402: Starting Persistence Unit Service &apos;ear-0.0.1.ear/accesscontrol-ejb-0.0.1.jar#AccessControlPU&apos;
+02:19:42,603 INFO  [org.jboss.as.jpa] (MSC service thread 1-8) JBAS011402: Starting Persistence Unit Service &apos;ear-0.0.1.ear/party-ejb-0.0.1.jar#PartyPU&apos;
+02:19:42,829 INFO  [org.hibernate.annotations.common.Version] (MSC service thread 1-2) HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+02:19:42,836 INFO  [org.hibernate.Version] (MSC service thread 1-2) HHH000412: Hibernate Core {4.0.1.Final}
+02:19:42,838 INFO  [org.hibernate.cfg.Environment] (MSC service thread 1-2) HHH000206: hibernate.properties not found
+02:19:42,841 INFO  [org.hibernate.cfg.Environment] (MSC service thread 1-2) HHH000021: Bytecode provider name : javassist
+02:19:42,871 INFO  [org.hibernate.ejb.Ejb3Configuration] (MSC service thread 1-8) HHH000204: Processing PersistenceUnitInfo [
+	name: PartyPU
+	...]
+02:19:42,871 INFO  [org.hibernate.ejb.Ejb3Configuration] (MSC service thread 1-2) HHH000204: Processing PersistenceUnitInfo [
+	name: AccessControlPU
+	...]
+02:19:43,039 INFO  [org.hibernate.service.jdbc.connections.internal.ConnectionProviderInitiator] (MSC service thread 1-2) HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+02:19:43,044 INFO  [org.hibernate.service.jdbc.connections.internal.ConnectionProviderInitiator] (MSC service thread 1-8) HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+02:19:43,245 INFO  [org.hibernate.dialect.Dialect] (MSC service thread 1-8) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+02:19:43,279 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (MSC service thread 1-8) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+02:19:43,293 INFO  [org.hibernate.engine.transaction.internal.TransactionFactoryInitiator] (MSC service thread 1-8) HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
+02:19:43,299 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (MSC service thread 1-8) HHH000397: Using ASTQueryTranslatorFactory
+02:19:43,321 INFO  [org.hibernate.dialect.Dialect] (MSC service thread 1-2) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+02:19:43,323 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (MSC service thread 1-2) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+02:19:43,325 INFO  [org.hibernate.engine.transaction.internal.TransactionFactoryInitiator] (MSC service thread 1-2) HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
+02:19:43,327 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (MSC service thread 1-2) HHH000397: Using ASTQueryTranslatorFactory
+02:19:43,348 INFO  [org.hibernate.validator.util.Version] (MSC service thread 1-2) Hibernate Validator 4.2.0.Final
+02:19:43,775 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-2) HHH000228: Running hbm2ddl schema update
+02:19:43,775 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-8) HHH000228: Running hbm2ddl schema update
+02:19:43,775 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-2) HHH000102: Fetching database metadata
+02:19:43,776 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-8) HHH000102: Fetching database metadata
+02:19:43,787 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-8) HHH000396: Updating schema
+02:19:43,787 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-2) HHH000396: Updating schema
+02:19:43,794 INFO  [java.sql.DatabaseMetaData] (MSC service thread 1-2) HHH000262: Table not found: user
+02:19:43,797 INFO  [java.sql.DatabaseMetaData] (MSC service thread 1-2) HHH000262: Table not found: user
+02:19:43,800 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-2) HHH000388: Unsuccessful: create table user (id int4 not null, primary key (id))
+02:19:43,801 ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-2) ERRO: erro de sintaxe em ou pr�ximo a &quot;user&quot;
+  Posi��o: 14
+02:19:43,802 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-2) HHH000232: Schema update complete
+02:19:43,828 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (MSC service thread 1-8) HHH000261: Table found: public.party
+02:19:43,829 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (MSC service thread 1-8) HHH000037: Columns: [id, name]
+02:19:43,829 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (MSC service thread 1-8) HHH000108: Foreign keys: []
+02:19:43,830 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (MSC service thread 1-8) HHH000126: Indexes: [party_pkey]
+02:19:43,856 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (MSC service thread 1-8) HHH000261: Table found: public.person
+02:19:43,856 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (MSC service thread 1-8) HHH000037: Columns: [id, birth_date, middle_name, last_name, gender]
+02:19:43,857 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (MSC service thread 1-8) HHH000108: Foreign keys: [fkc4e39b55fe7cd89a]
+02:19:43,858 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (MSC service thread 1-8) HHH000126: Indexes: [person_pkey]
+02:19:43,858 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (MSC service thread 1-8) HHH000232: Schema update complete
+02:19:43,860 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016008: Starting weld service for deployment ear-0.0.1.ear
+02:19:44,584 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[default-host].[/accesscontrol-web]] (MSC service thread 1-1) Initializing Shiro environment
+02:19:44,584 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[default-host].[/party-web]] (MSC service thread 1-4) Initializing Shiro environment
+02:19:44,585 INFO  [org.apache.shiro.web.env.EnvironmentLoader] (MSC service thread 1-1) Starting Shiro environment initialization.
+02:19:44,585 INFO  [org.apache.shiro.web.env.EnvironmentLoader] (MSC service thread 1-4) Starting Shiro environment initialization.
+02:19:44,777 INFO  [org.apache.shiro.realm.text.IniRealm] (MSC service thread 1-4) IniRealm defined, but there is no [users] section defined.  This realm will not be populated with any users and it is assumed that they will be populated programatically.  Users must be defined for this Realm instance to be useful.
+02:19:44,783 INFO  [org.apache.shiro.web.env.EnvironmentLoader] (MSC service thread 1-4) Shiro environment initialized in 196 ms.
+02:19:44,786 INFO  [org.apache.shiro.web.env.EnvironmentLoader] (MSC service thread 1-1) Shiro environment initialized in 200 ms.
+02:19:44,830 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-4) Inicializando Mojarra 2.1.7-jbossorg-1 (20120227-1401) para o contexto &apos;/party-web&apos;
+02:19:44,830 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-1) Inicializando Mojarra 2.1.7-jbossorg-1 (20120227-1401) para o contexto &apos;/accesscontrol-web&apos;
+02:19:46,071 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (MSC service thread 1-4) Running on PrimeFaces 3.4
+02:19:46,071 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (MSC service thread 1-1) Running on PrimeFaces 3.4
+02:19:46,096 INFO  [org.apache.shiro.web.servlet.IniShiroFilter] (MSC service thread 1-4) Null or empty configuration specified via &apos;config&apos; init-param.  Checking path-based configuration.
+02:19:46,096 INFO  [org.apache.shiro.web.servlet.IniShiroFilter] (MSC service thread 1-1) Null or empty configuration specified via &apos;config&apos; init-param.  Checking path-based configuration.
+02:19:46,097 INFO  [org.apache.shiro.web.servlet.IniShiroFilter] (MSC service thread 1-4) Null or empty configuration specified via &apos;config&apos; or &apos;configPath&apos; filter parameters.  Trying the default /WEB-INF/shiro.ini file.
+02:19:46,098 INFO  [org.apache.shiro.web.servlet.IniShiroFilter] (MSC service thread 1-1) Null or empty configuration specified via &apos;config&apos; or &apos;configPath&apos; filter parameters.  Trying the default /WEB-INF/shiro.ini file.
+02:19:46,100 INFO  [org.apache.shiro.realm.text.IniRealm] (MSC service thread 1-4) IniRealm defined, but there is no [users] section defined.  This realm will not be populated with any users and it is assumed that they will be populated programatically.  Users must be defined for this Realm instance to be useful.
+02:19:46,115 INFO  [org.jboss.web] (MSC service thread 1-1) JBAS018210: Registering web context: /accesscontrol-web
+02:19:46,115 INFO  [org.jboss.web] (MSC service thread 1-4) JBAS018210: Registering web context: /party-web
+02:19:46,118 INFO  [org.jboss.as] (MSC service thread 1-3) JBAS015951: Admin console listening on http://127.0.0.1:9990
+02:19:46,119 INFO  [org.jboss.as] (MSC service thread 1-3) JBAS015874: JBoss AS 7.1.1.Final &quot;Brontes&quot; started in 7872ms - Started 410 of 495 services (84 services are passive or on-demand)
+</system-out>
+    <system-err>log4j:WARN No appenders could be found for logger (org.jboss.logging).
+log4j:WARN Please initialize the log4j system properly.
+Nov 13, 2012 2:19:38 AM org.jboss.as.arquillian.container.managed.ManagedDeployableContainer startInternal
+INFO: Starting container with: [&quot;C:\Program Files (x86)\Java\jdk1.7.0_07\bin\java&quot;, -Xmx512m, -XX:MaxPermSize=128m, -ea, -Djboss.home.dir=C:/servidores/jboss-as-7.1.1.Final, -Dorg.jboss.boot.log.file=C:/servidores/jboss-as-7.1.1.Final/standalone/log/boot.log, -Dlogging.configuration=file:C:/servidores/jboss-as-7.1.1.Final/standalone/configuration/logging.properties, -Djboss.modules.dir=C:\servidores\jboss-as-7.1.1.Final\modules, -Djboss.bundles.dir=C:\servidores\jboss-as-7.1.1.Final\bundles, -jar, C:\servidores\jboss-as-7.1.1.Final\jboss-modules.jar, -mp, C:/servidores/jboss-as-7.1.1.Final\modules, -jaxpmodule, javax.xml.jaxp-provider, org.jboss.as.standalone, -server-config, standalone.xml]
+</system-err>
+  </testcase>
+</testsuite>

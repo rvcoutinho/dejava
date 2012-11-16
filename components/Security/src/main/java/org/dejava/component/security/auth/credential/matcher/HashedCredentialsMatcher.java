@@ -1,5 +1,9 @@
 package org.dejava.component.security.auth.credential.matcher;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
@@ -43,8 +47,8 @@ public class HashedCredentialsMatcher implements CredentialsMatcher {
 					final byte[] hashedSubmittedCredentials = credentialsHasher.hash(
 							submittedCredentials.toString(), hashedCredentials.getSalt());
 					// Returns if the credentials are equals.
-					return hashedCredentials.getHashedCredentials().equals(
-							new String(hashedSubmittedCredentials));
+					return Arrays.equals(hashedCredentials.getHashedCredentials(), hashedSubmittedCredentials);
+							//hashedCredentials.getHashedCredentials().equals(new String(hashedSubmittedCredentials));
 				}
 			}
 		}

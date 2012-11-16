@@ -16,6 +16,7 @@ public class FakeEntityController extends AbstractGenericController<FakeEntity, 
 	 * Fake entity EJB service.
 	 */
 	@Inject
+	@JavaEE
 	private FakeEntityService fakeEntityService;
 
 	/**

@@ -102,13 +102,13 @@ public class FakeHashedCredentials implements HashedCredentials {
 	/**
 	 * Hashed credentials.
 	 */
-	private String hashedCredentials;
+	private byte[] hashedCredentials;
 
 	/**
 	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getHashedCredentials()
 	 */
 	@Override
-	public String getHashedCredentials() {
+	public byte[] getHashedCredentials() {
 		return hashedCredentials;
 	}
 
@@ -118,7 +118,7 @@ public class FakeHashedCredentials implements HashedCredentials {
 	 * @param hashedCredentials
 	 *            New hashed credentials.
 	 */
-	public void setHashedCredentials(final String hashedCredentials) {
+	public void setHashedCredentials(final byte[] hashedCredentials) {
 		this.hashedCredentials = hashedCredentials;
 	}
 
@@ -137,7 +137,7 @@ public class FakeHashedCredentials implements HashedCredentials {
 	 *            Hashed credentials.
 	 */
 	public FakeHashedCredentials(final String[] algorithmsNames, final Integer minCycles,
-			final Integer maxCycles, final String salt, final String hashedCredentials) {
+			final Integer maxCycles, final String salt, final byte[] hashedCredentials) {
 		super();
 		this.algorithmsNames = algorithmsNames;
 		this.minCycles = minCycles;

@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.dejava.component.javaee.service.GenericService;
 import org.dejava.component.javaee.test.util.FakeEntity;
 import org.dejava.component.javaee.test.util.FakeEntityService;
+import org.dejava.component.javaee.test.util.JavaEE;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -36,10 +37,9 @@ public class GenericServiceTest extends AbstractGenericServiceTest {
 				.create(WebArchive.class, "test.war")
 				.addPackages(true, "org.dejava.component.javaee")
 				.addAsLibraries(
-						dependencyResolver.artifact("org.dejava.component:exception").resolveAsFiles())
-				.addAsLibraries(dependencyResolver.artifact("org.dejava.component:i18n").resolveAsFiles())
-				.addAsLibraries(
-						dependencyResolver.artifact("org.dejava.component:reflection").resolveAsFiles())
+						dependencyResolver.artifacts("org.dejava.component:exception",
+								"org.dejava.component:i18n", "org.dejava.component:reflection")
+								.resolveAsFiles())
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml");
@@ -49,6 +49,7 @@ public class GenericServiceTest extends AbstractGenericServiceTest {
 	 * Fake entity service.
 	 */
 	@Inject
+	@JavaEE
 	private FakeEntityService fakeEntityService;
 
 	/**

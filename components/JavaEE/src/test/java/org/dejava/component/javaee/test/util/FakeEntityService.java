@@ -10,12 +10,14 @@ import org.dejava.component.javaee.service.AbstractGenericService;
  * Fake entity stateless service.
  */
 @Stateless
+@JavaEE
 public class FakeEntityService extends AbstractGenericService<FakeEntity, Integer> {
 
 	/**
 	 * The fake entity DAO.
 	 */
 	@Inject
+	@JavaEE
 	private FakeEntityDAO entityDAO;
 
 	/**

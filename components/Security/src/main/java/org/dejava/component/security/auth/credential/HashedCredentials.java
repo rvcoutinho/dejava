@@ -40,6 +40,6 @@ public interface HashedCredentials {
 	 * 
 	 * @return The hashed credentials.
 	 */
-	String getHashedCredentials();
+	byte[] getHashedCredentials();
 
 }

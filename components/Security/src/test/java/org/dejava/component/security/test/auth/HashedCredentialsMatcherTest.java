@@ -48,7 +48,7 @@ public class HashedCredentialsMatcherTest {
 		// Creates the credentials hasher.
 		final CredentialsHasher credentialsHasher = new CredentialsHasher(hashedCredentials);
 		// Sets the hashed credentials.
-		hashedCredentials.setHashedCredentials(new String(credentialsHasher.hash(rawCredentials, salt)));
+		hashedCredentials.setHashedCredentials(credentialsHasher.hash(rawCredentials, salt));
 		// Creates 3 tokens.
 		final FakeAuthenticationToken token1 = new FakeAuthenticationToken();
 		final FakeAuthenticationToken token2 = new FakeAuthenticationToken();
@@ -87,8 +87,7 @@ public class HashedCredentialsMatcherTest {
 			// Creates the credentials hasher.
 			final CredentialsHasher credentialsHasher = new CredentialsHasher(curHashedCredentials);
 			// Sets the hashed credentials.
-			curHashedCredentials.setHashedCredentials(new String(credentialsHasher.hash(curRawCredentials,
-					salt)));
+			curHashedCredentials.setHashedCredentials(credentialsHasher.hash(curRawCredentials, salt));
 			// Adds the current pair (raw/hashed) but with some minor modification in the raw credentials (so
 			// they do not match).
 			credentialsPairs.add(new Object[] { curRawCredentials + "dif", curHashedCredentials });

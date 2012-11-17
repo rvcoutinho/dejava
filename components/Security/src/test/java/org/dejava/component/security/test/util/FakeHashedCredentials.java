@@ -1,6 +1,6 @@
 package org.dejava.component.security.test.util;
 
-import org.dejava.component.security.auth.credential.HashedCredentials;
+import org.dejava.component.security.authc.credential.HashedCredentials;
 
 /**
  * Some fake hashed credentials.
@@ -13,7 +13,7 @@ public class FakeHashedCredentials implements HashedCredentials {
 	private String[] algorithmsNames;
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getAlgorithmsNames()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getAlgorithmsNames()
 	 */
 	@Override
 	public String[] getAlgorithmsNames() {
@@ -36,7 +36,7 @@ public class FakeHashedCredentials implements HashedCredentials {
 	private Integer minCycles;
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getMinCycles()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getMinCycles()
 	 */
 	@Override
 	public Integer getMinCycles() {
@@ -59,7 +59,7 @@ public class FakeHashedCredentials implements HashedCredentials {
 	private Integer maxCycles;
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getMaxCycles()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getMaxCycles()
 	 */
 	@Override
 	public Integer getMaxCycles() {
@@ -82,7 +82,7 @@ public class FakeHashedCredentials implements HashedCredentials {
 	private String salt;
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getSalt()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getSalt()
 	 */
 	@Override
 	public String getSalt() {
@@ -105,7 +105,7 @@ public class FakeHashedCredentials implements HashedCredentials {
 	private byte[] hashedCredentials;
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getHashedCredentials()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getHashedCredentials()
 	 */
 	@Override
 	public byte[] getHashedCredentials() {

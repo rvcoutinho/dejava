@@ -211,7 +211,7 @@ Dynamic libraries:
 
 VM Arguments:
 jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:55737 -Dfile.encoding=UTF-8 
-java_command: org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 55736 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -classNames org.dejava.component.security.test.auth.HashedCredentialsMatcherTest
+java_command: org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 55736 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -classNames org.dejava.component.security.test.authc.HashedCredentialsMatcherTest
 Launcher Type: SUN_STANDARD
 
 Environment Variables:

@@ -7,7 +7,7 @@ import org.dejava.component.exception.localized.unchecked.EmptyParameterExceptio
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.annotation.MessageBundles;
-import org.dejava.component.security.auth.credential.HashedCredentials;
+import org.dejava.component.security.authc.credential.HashedCredentials;
 import org.dejava.component.security.crypt.constant.CredentialHasherParamKeys;
 import org.dejava.component.security.crypt.constant.ErrorKeys;
 import org.dejava.component.security.crypt.util.Resources;

@@ -1,6 +1,6 @@
-org.dejava.component.security.auth.credential
-org.dejava.component.security.auth.credential.matcher
-org.dejava.component.security.auth.util
+org.dejava.component.security.authc.credential
+org.dejava.component.security.authc.credential.matcher
+org.dejava.component.security.authc.util
 org.dejava.component.security.crypt.constant
 org.dejava.component.security.crypt.hasher
 org.dejava.component.security.crypt.util

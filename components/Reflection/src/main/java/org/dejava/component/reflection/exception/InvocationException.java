@@ -2,7 +2,7 @@ package org.dejava.component.reflection.exception;
 
 import org.dejava.component.exception.localized.checked.AbstractLocalizedException;
 import org.dejava.component.reflection.constant.ErrorKeys;
-import org.dejava.component.reflection.util.Resources;
+import org.dejava.component.reflection.util.Severity;
 
 /**
  * Exception related to exceptions thrown by a target method.
@@ -23,15 +23,15 @@ public class InvocationException extends AbstractLocalizedException {
 	 *            Exception cause.
 	 */
 	public InvocationException(final Object[] parameters, final Throwable cause) {
-		super(Resources.class, ErrorKeys.METHOD_EXCEPTION, parameters, cause);
+		super(Severity.Error.class, ErrorKeys.METHOD_EXCEPTION, parameters, cause);
 	}
 
 	/**
 	 * @see AbstractLocalizedException#AbstractLocalizedException(Object, String, Object[], Throwable)
 	 */
-	public InvocationException(final Object bundleInfo, final String messageKey, final Object[] parameters,
+	public InvocationException(final Object type, final String messageKey, final Object[] parameters,
 			final Throwable cause) {
-		super(bundleInfo, messageKey, parameters, cause);
+		super(type, messageKey, parameters, cause);
 	}
 
 }

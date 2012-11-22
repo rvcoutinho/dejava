@@ -39,14 +39,12 @@ public class TestMessageCommand extends SimpleMessageCommand {
 	}
 
 	/**
-	 * @param bundleInfo
-	 *            Information regarding the message bundle to be used in the message retrieval. It might be a
-	 *            class (annotated with org.dejava.component.i18n.message.annotation.MessageBundles), a
-	 *            collection of annotated classes, or null (the stack trace classes will be used).
-	 * @param locale
-	 *            Locale for the message.
+	 * Public constructor.
+	 * 
 	 * @param type
 	 *            Type for the message.
+	 * @param locale
+	 *            Locale for the message.
 	 * @param messageKey
 	 *            Key for the message.
 	 * @param parameters
@@ -54,9 +52,9 @@ public class TestMessageCommand extends SimpleMessageCommand {
 	 * @param expectedMessage
 	 *            The expected message for this message command.
 	 */
-	public TestMessageCommand(final Object bundleInfo, final Locale locale, final String type,
-			final String messageKey, final Object[] parameters, final String expectedMessage) {
-		super(bundleInfo, locale, type, messageKey, parameters);
+	public TestMessageCommand(final Class<?> type, final Locale locale, final String messageKey,
+			final Object[] parameters, final String expectedMessage) {
+		super(type, locale, messageKey, parameters);
 		// Sets the expected message.
 		this.expectedMessage = expectedMessage;
 	}

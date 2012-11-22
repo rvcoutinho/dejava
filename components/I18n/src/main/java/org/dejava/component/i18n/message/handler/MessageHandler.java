@@ -14,12 +14,10 @@ public interface MessageHandler extends Serializable {
 	/**
 	 * Gets a message with the given key and parameters values of the defined type.
 	 * 
-	 * @param bundleInfo
-	 *            Information regarding the message bundle to be used in the message retrieval.
+	 * @param type
+	 *            Type of the message (containing the bundle information).
 	 * @param locale
 	 *            Locale for the message.
-	 * @param type
-	 *            Type of the message.
 	 * @param key
 	 *            Key for the message in the bundle.
 	 * @param parametersValues
@@ -30,7 +28,7 @@ public interface MessageHandler extends Serializable {
 	 * @throws InvalidParameterException
 	 *             If any of the parameters values are not valid.
 	 */
-	String getMessage(Object bundleInfo, Locale locale, String type, String key, Object[] parametersValues)
+	String getMessage(Object type, Locale locale, String key, Object[] parametersValues)
 			throws MessageNotFoundException, InvalidParameterException;
 
 }

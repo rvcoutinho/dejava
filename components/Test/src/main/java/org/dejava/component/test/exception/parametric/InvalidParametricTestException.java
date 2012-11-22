@@ -1,8 +1,9 @@
 package org.dejava.component.test.exception.parametric;
 
+import javax.annotation.Resources;
+
 import org.dejava.component.test.constant.ErrorKeys;
 import org.dejava.component.test.exception.AbstractTestException;
-import org.dejava.component.test.util.Resources;
 
 /**
  * Exception related to an invalid parametric test method (that should be public void with one argument).
@@ -17,9 +18,9 @@ public class InvalidParametricTestException extends AbstractTestException {
 	/**
 	 * @see AbstractTestException#AbstractTestException(Object, String, String, Object[], Throwable)
 	 */
-	public InvalidParametricTestException(final Object bundleInfo, final String messageKey,
+	public InvalidParametricTestException(final Object type, final String messageKey,
 			final String testName, final Object[] parameters, final Throwable cause) {
-		super(bundleInfo, messageKey, testName, parameters, cause);
+		super(type, messageKey, testName, parameters, cause);
 	}
 
 	/**

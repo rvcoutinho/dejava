@@ -13,8 +13,8 @@ public class BusinessRuleException extends AbstractLocalizedException {
 	/**
 	 * @see AbstractLocalizedException#AbstractLocalizedException(Object, String, Object[], Throwable)
 	 */
-	public BusinessRuleException(final Object bundleInfo, final String messageKey,
+	public BusinessRuleException(final Object type, final String messageKey,
 			final Object[] parameters, final Throwable cause) {
-		super(bundleInfo, messageKey, parameters, cause);
+		super(type, messageKey, parameters, cause);
 	}
 }

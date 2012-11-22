@@ -13,7 +13,6 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
 import org.dejava.component.i18n.message.annotation.MessageBundle;
-import org.dejava.component.i18n.message.annotation.MessageBundles;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
 import org.dejava.component.i18n.source.MessageSourceCreator;
 import org.dejava.component.i18n.source.annotation.MessageSources;
@@ -28,7 +27,7 @@ import org.junit.rules.TemporaryFolder;
 /**
  * TODO
  */
-@MessageBundles(defaultType = "information", messageBundles = { @MessageBundle(type = "information", baseName = "org.dejava.component.i18n.test.source.properties.information") })
+@MessageBundle(baseName = "org.dejava.component.i18n.test.source.properties.information")
 public class MessageSourceCreatorTest {
 
 	/**
@@ -114,8 +113,8 @@ public class MessageSourceCreatorTest {
 				}
 				// Tries to get the message for the key.
 				try {
-					SimpleMessageHandler.getMessageHandler(currentLocale).getMessage(null, null, null, currentKey,
-							null);
+					SimpleMessageHandler.getMessageHandler(currentLocale).getMessage(
+							MessageSourceCreatorTest.class, null, currentKey, null);
 				}
 				// If the message cannot be found.
 				catch (final Exception exception) {

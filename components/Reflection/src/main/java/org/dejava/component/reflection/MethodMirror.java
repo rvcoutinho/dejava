@@ -12,7 +12,7 @@ import org.dejava.component.exception.localized.unchecked.InvalidParameterExcept
 import org.dejava.component.reflection.constant.ErrorKeys;
 import org.dejava.component.reflection.constant.MethodParamKeys;
 import org.dejava.component.reflection.exception.InvocationException;
-import org.dejava.component.reflection.util.Resources;
+import org.dejava.component.reflection.util.Severity;
 
 /**
  * TODO
@@ -219,15 +219,16 @@ public class MethodMirror {
 		// If the parameter values are illegal for the method.
 		catch (final IllegalArgumentException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Resources.class, ErrorKeys.ILLEGAL_PARAMS_VALUES,
+			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.ILLEGAL_PARAMS_VALUES,
 					new Object[] { getReflectedMethod(), targetObject, paramsValues, ignoreAccess },
 					exception);
 		}
 		// If the method cannot be accessed.
 		catch (final IllegalAccessException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Resources.class, ErrorKeys.UNACCESSIBLE_METHOD, new Object[] {
-					getReflectedMethod(), targetObject, paramsValues, ignoreAccess }, exception);
+			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.UNACCESSIBLE_METHOD,
+					new Object[] { getReflectedMethod(), targetObject, paramsValues, ignoreAccess },
+					exception);
 		}
 		// Finally.
 		finally {
@@ -268,7 +269,7 @@ public class MethodMirror {
 		// If the object cannot be found.
 		catch (final NamingException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Resources.class, ErrorKeys.INVALID_JNDI_PATH,
+			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.INVALID_JNDI_PATH,
 					new Object[] { getReflectedMethod() }, exception);
 		}
 	}

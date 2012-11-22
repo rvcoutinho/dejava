@@ -6,16 +6,6 @@ package org.dejava.component.i18n.message.constant;
 public final class MessageHandlerParamKeys {
 
 	/**
-	 * The annotated classes parameter key.
-	 */
-	public static final String ANNOTATED_CLASSES = "annotated classes";
-
-	/**
-	 * The annotated class parameter key.
-	 */
-	public static final String ANNOTATED_CLASS = "annotated class";
-
-	/**
 	 * The type parameter key.
 	 */
 	public static final String TYPE = "type";

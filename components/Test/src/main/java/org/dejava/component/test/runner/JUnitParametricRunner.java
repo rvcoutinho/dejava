@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.Resources;
+
 import org.dejava.component.reflection.ClassMirror;
 import org.dejava.component.test.annotation.ParametricTest;
 import org.dejava.component.test.constant.ErrorKeys;
@@ -17,7 +19,6 @@ import org.dejava.component.test.runner.notifier.ParametricTestNotifier;
 import org.dejava.component.test.runner.rule.ParametricTestWrapperRule;
 import org.dejava.component.test.runner.statement.ParametricTestMethodInvoker;
 import org.dejava.component.test.runner.statement.ParametricTestWrapper;
-import org.dejava.component.test.util.Resources;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Test.None;

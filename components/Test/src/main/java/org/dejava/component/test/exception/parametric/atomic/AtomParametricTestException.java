@@ -1,6 +1,7 @@
 package org.dejava.component.test.exception.parametric.atomic;
 
 import org.dejava.component.test.exception.AbstractTestException;
+import org.dejava.component.test.util.Severity;
 
 /**
  * A single parametric test exception.
@@ -23,6 +24,6 @@ public class AtomParametricTestException extends AbstractTestException {
 	 *            Exception cause.
 	 */
 	public AtomParametricTestException(final String testName, final Object[] parameters, final Throwable cause) {
-		super(null, null, testName, parameters, cause);
+		super(Severity.Error.class, null, testName, parameters, cause);
 	}
 }

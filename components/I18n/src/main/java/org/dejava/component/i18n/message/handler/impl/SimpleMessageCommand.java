@@ -2,9 +2,13 @@ package org.dejava.component.i18n.message.handler.impl;
 
 import java.util.Locale;
 
+import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
+import org.dejava.component.i18n.message.annotation.MessageBundle;
+import org.dejava.component.i18n.message.constant.ErrorKeys;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.MessageCommand;
 import org.dejava.component.i18n.message.handler.MessageHandler;
+import org.dejava.component.i18n.message.util.Severity;
 
 /**
  * The default implementation of the {@link MessageCommand}.
@@ -37,37 +41,6 @@ public class SimpleMessageCommand implements MessageCommand {
 	}
 
 	/**
-	 * Information regarding the message bundle to be used in the message retrieval. It might be a class
-	 * (annotated with org.dejava.component.i18n.message.annotation.MessageBundles), a collection of annotated
-	 * classes, or null (the stack trace classes will be used).
-	 */
-	private Object bundleInfo;
-
-	/**
-	 * Gets the information regarding the message bundle to be used in the message retrieval.
-	 * 
-	 * @return The information regarding the message bundle to be used in the message retrieval. It might be a
-	 *         class (annotated with org.dejava.component.i18n.message.annotation.MessageBundles), a
-	 *         collection of annotated classes, or null (the stack trace classes will be used).
-	 */
-	public Object getBundleInfo() {
-		return bundleInfo;
-	}
-
-	/**
-	 * Sets the information regarding the message bundle to be used in the message retrieval.
-	 * 
-	 * @param bundleInfo
-	 *            New information regarding the message bundle to be used in the message retrieval. It might
-	 *            be a class (annotated with org.dejava.component.i18n.message.annotation.MessageBundles), a
-	 *            collection of annotated classes, or null (the stack trace classes will be used).
-	 */
-	@Override
-	public void setBundleInfo(final Object bundleInfo) {
-		this.bundleInfo = bundleInfo;
-	}
-
-	/**
 	 * Locale for the message.
 	 */
 	private Locale locale;
@@ -90,25 +63,34 @@ public class SimpleMessageCommand implements MessageCommand {
 	}
 
 	/**
-	 * Type for the message.
+	 * Type of the message. Must be annotated with {@link MessageBundle}.
 	 */
-	private String type;
+	private Class<?> type;
 
 	/**
 	 * Gets the type for the message.
 	 * 
-	 * @return The type for the message.
+	 * @return The type for the message. Must be annotated with {@link MessageBundle}.
 	 */
-	public String getType() {
+	public Class<?> getType() {
 		return type;
 	}
 
 	/**
-	 * @see org.dejava.component.i18n.message.handler.MessageCommand#setType(java.lang.String)
+	 * Sets the type for the message.
+	 * 
+	 * New type for the message. Must be a class annotated with {@link MessageBundle}.
 	 */
 	@Override
-	public void setType(final String type) {
-		this.type = type;
+	public void setType(final Object type) {
+		// If the type is not a class.
+		if (!(type instanceof Class<?>)) {
+			// Throws an exception.
+			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.INVALID_TYPE,
+					new Object[] { type }, null);
+		}
+		// Sets the new type.
+		this.type = (Class<?>) type;
 	}
 
 	/**
@@ -171,25 +153,20 @@ public class SimpleMessageCommand implements MessageCommand {
 	/**
 	 * Default message command constructor.
 	 * 
-	 * @param bundleInfo
-	 *            Information regarding the message bundle to be used in the message retrieval. It might be a
-	 *            class (annotated with org.dejava.component.i18n.message.annotation.MessageBundles), a
-	 *            collection of annotated classes, or null (the stack trace classes will be used).
+	 * @param type
+	 *            Type for the message. Must be annotated with {@link MessageBundle}.
 	 * @param locale
 	 *            Locale for the message.
-	 * @param type
-	 *            Type for the message.
 	 * @param messageKey
 	 *            Key for the message.
 	 * @param parameters
 	 *            Parameters for the message.
 	 */
-	public SimpleMessageCommand(final Object bundleInfo, final Locale locale, final String type,
-			final String messageKey, final Object[] parameters) {
+	public SimpleMessageCommand(final Class<?> type, final Locale locale, final String messageKey,
+			final Object[] parameters) {
 		// Sets the main fields for the object.
-		this.bundleInfo = bundleInfo;
-		this.locale = locale;
 		this.type = type;
+		this.locale = locale;
 		this.parameters = parameters;
 		this.messageKey = messageKey;
 	}
@@ -200,8 +177,7 @@ public class SimpleMessageCommand implements MessageCommand {
 	@Override
 	public String getMessage() throws MessageNotFoundException {
 		// Tries to return the localized message.
-		return getMessageHandler().getMessage(getBundleInfo(), getLocale(), getType(), getMessageKey(),
-				getParameters());
+		return getMessageHandler().getMessage(getType(), getLocale(), getMessageKey(), getParameters());
 	}
 
 	/**
@@ -210,7 +186,7 @@ public class SimpleMessageCommand implements MessageCommand {
 	@Override
 	public String getUsMessage() throws MessageNotFoundException {
 		// Tries to return the localized message.
-		return getMessageHandler().getMessage(getBundleInfo(), Locale.US, getType(), getMessageKey(),
-				getParameters());
+		return getMessageHandler().getMessage(getType(), getLocale(), getMessageKey(), getParameters());
 	}
+
 }

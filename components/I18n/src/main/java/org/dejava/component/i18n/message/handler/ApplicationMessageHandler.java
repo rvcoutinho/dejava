@@ -13,12 +13,10 @@ public interface ApplicationMessageHandler extends MessageHandler {
 	/**
 	 * Adds a message with the given key and parameters values of the defined type to the application.
 	 * 
-	 * @param bundleInfo
-	 *            Information regarding the message bundle to be used in the message retrieval.
+	 * @param type
+	 *            Type of the message (containing the bundle information).
 	 * @param locale
 	 *            Locale for the message.
-	 * @param type
-	 *            Type of the message.
 	 * @param key
 	 *            Key for the message in the bundle.
 	 * @param parametersValues
@@ -29,7 +27,7 @@ public interface ApplicationMessageHandler extends MessageHandler {
 	 * @throws InvalidParameterException
 	 *             If any of the parameters values are not valid.
 	 */
-	String addMessage(Object bundleInfo, Locale locale, String type, String key, Object[] parametersValues)
+	String addMessage(final Object type, final Locale locale, String key, Object[] parametersValues)
 			throws MessageNotFoundException, InvalidParameterException;
 
 }

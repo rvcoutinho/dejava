@@ -50,8 +50,8 @@ public abstract class AbstractTestAssertionError extends AssertionError {
 	/**
 	 * Basic constructor.
 	 * 
-	 * @param bundleInfo
-	 *            The information regarding the message bundle to be used in the message retrieval
+	 * @param type
+	 *            The type for the message.
 	 * @param messageKey
 	 *            Message key that describes the exception.
 	 * @param testName
@@ -61,12 +61,12 @@ public abstract class AbstractTestAssertionError extends AssertionError {
 	 * @param cause
 	 *            Error cause.
 	 */
-	public AbstractTestAssertionError(final Object bundleInfo, final String messageKey,
-			final String testName, final Object[] parameters, final Throwable cause) {
+	public AbstractTestAssertionError(final Object type, final String messageKey, final String testName,
+			final Object[] parameters, final Throwable cause) {
 		// Calls the Exception constructor.
 		super(cause);
 		// Sets the basic fields.
-		getMessageCommand().setBundleInfo(bundleInfo);
+		getMessageCommand().setType(type);
 		getMessageCommand().setMessageKey(messageKey);
 		// List of exception parameters (including test name).
 		final List<Object> allParams = new ArrayList<Object>();

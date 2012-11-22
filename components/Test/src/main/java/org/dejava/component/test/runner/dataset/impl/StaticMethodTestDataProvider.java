@@ -2,12 +2,13 @@ package org.dejava.component.test.runner.dataset.impl;
 
 import java.util.Collection;
 
+import javax.annotation.Resources;
+
 import org.dejava.component.reflection.ClassMirror;
 import org.dejava.component.test.constant.ErrorKeys;
 import org.dejava.component.test.exception.parametric.InvalidParametricTestException;
 import org.dejava.component.test.runner.dataset.TestDataProvider;
 import org.dejava.component.test.runner.statement.ParametricTestMethodInvoker;
-import org.dejava.component.test.util.Resources;
 import org.junit.runners.model.FrameworkMethod;
 
 /**

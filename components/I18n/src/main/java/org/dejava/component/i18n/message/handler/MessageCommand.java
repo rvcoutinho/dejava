@@ -9,14 +9,14 @@ import org.dejava.component.i18n.message.exception.MessageNotFoundException;
  * An implementation of the command design pattern in order to enable messages to be processed later.
  */
 public interface MessageCommand extends Serializable {
-
+	
 	/**
-	 * Sets the information regarding the message bundle to be used in the message retrieval.
+	 * Sets the type for the message.
 	 * 
-	 * @param bundleInfo
-	 *            New information regarding the message bundle to be used in the message retrieval.
+	 * @param type
+	 *            New type for the message.
 	 */
-	void setBundleInfo(final Object bundleInfo);
+	void setType(Object type);
 
 	/**
 	 * Sets the locale for the message.
@@ -25,14 +25,6 @@ public interface MessageCommand extends Serializable {
 	 *            New locale for the message.
 	 */
 	void setLocale(final Locale locale);
-
-	/**
-	 * Sets the type for the message.
-	 * 
-	 * @param type
-	 *            New type for the message.
-	 */
-	void setType(String type);
 
 	/**
 	 * Sets the key for the message.

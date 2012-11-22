@@ -46,8 +46,8 @@ public abstract class AbstractLocalizedException extends Exception {
 	/**
 	 * Basic constructor.
 	 * 
-	 * @param bundleInfo
-	 *            The information regarding the message bundle to be used in the message retrieval
+	 * @param type
+	 *            The type for the message.
 	 * @param messageKey
 	 *            Message key that describes the exception.
 	 * @param parameters
@@ -55,12 +55,12 @@ public abstract class AbstractLocalizedException extends Exception {
 	 * @param cause
 	 *            Exception cause.
 	 */
-	public AbstractLocalizedException(final Object bundleInfo, final String messageKey,
-			final Object[] parameters, final Throwable cause) {
+	public AbstractLocalizedException(final Object type, final String messageKey, final Object[] parameters,
+			final Throwable cause) {
 		// Calls the Exception constructor.
 		super(cause);
 		// Sets the basic fields.
-		getMessageCommand().setBundleInfo(bundleInfo);
+		getMessageCommand().setType(type);
 		getMessageCommand().setMessageKey(messageKey);
 		getMessageCommand().setParameters(parameters);
 	}

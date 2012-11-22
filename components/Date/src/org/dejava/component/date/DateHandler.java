@@ -9,8 +9,7 @@ import java.util.Date;
 public final class DateHandler {
 	
 	/**
-	 * Adds time to a given date.
-	 * 
+	 * Adds time to a given date.	 * 
 	 * @param date
 	 *            Date to add time.
 	 * @param calendarField

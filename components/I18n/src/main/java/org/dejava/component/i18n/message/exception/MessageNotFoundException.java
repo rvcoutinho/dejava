@@ -2,7 +2,7 @@ package org.dejava.component.i18n.message.exception;
 
 import org.dejava.component.exception.localized.unchecked.AbstractLocalizedRuntimeException;
 import org.dejava.component.i18n.message.constant.ErrorKeys;
-import org.dejava.component.i18n.message.util.Resources;
+import org.dejava.component.i18n.message.util.Severity;
 
 /**
  * Exception related to unaccessible messages.
@@ -18,9 +18,9 @@ public class MessageNotFoundException extends AbstractLocalizedRuntimeException 
 	 * @see AbstractLocalizedRuntimeException#AbstractLocalizedRuntimeException(Object, String, Object[],
 	 *      Throwable)
 	 */
-	public MessageNotFoundException(final Object bundleInfo, final String messageKey,
+	public MessageNotFoundException(final Object type, final String messageKey,
 			final Object[] parameters, final Throwable cause) {
-		super(bundleInfo, messageKey, parameters, cause);
+		super(type, messageKey, parameters, cause);
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class MessageNotFoundException extends AbstractLocalizedRuntimeException 
 	 *            Exception cause.
 	 */
 	public MessageNotFoundException(final Object[] parameters, final Throwable cause) {
-		super(Resources.class, ErrorKeys.MISSING_KEY, parameters, cause);
+		super(Severity.Error.class, ErrorKeys.MISSING_KEY, parameters, cause);
 	}
 
 }

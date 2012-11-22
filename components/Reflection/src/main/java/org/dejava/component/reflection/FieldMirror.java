@@ -8,7 +8,7 @@ import org.dejava.component.exception.localized.unchecked.InvalidParameterExcept
 import org.dejava.component.reflection.constant.ErrorKeys;
 import org.dejava.component.reflection.constant.FieldParamKeys;
 import org.dejava.component.reflection.exception.InvocationException;
-import org.dejava.component.reflection.util.Resources;
+import org.dejava.component.reflection.util.Severity;
 
 /**
  * TODO
@@ -150,7 +150,7 @@ public class FieldMirror {
 				}
 			}
 			// If the getter cannot be found, throws an exception.
-			throw new InvalidParameterException(Resources.class, ErrorKeys.GETTER_NOT_FOUND,
+			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.GETTER_NOT_FOUND,
 					new Object[] { getReflectedField() }, null);
 		}
 		// Returns the getter.
@@ -195,7 +195,7 @@ public class FieldMirror {
 			// If the setter cannot be found.
 			catch (final Exception exception) {
 				// Throws an exception.
-				throw new InvalidParameterException(Resources.class, ErrorKeys.SETTER_NOT_FOUND,
+				throw new InvalidParameterException(Severity.Error.class, ErrorKeys.SETTER_NOT_FOUND,
 						new Object[] { getReflectedField() }, null);
 			}
 		}
@@ -243,13 +243,13 @@ public class FieldMirror {
 		// If the target object is not from the declaring class type of the reflected field.
 		catch (final IllegalArgumentException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Resources.class, ErrorKeys.WRONG_TARGET_OBJ, new Object[] {
+			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.WRONG_TARGET_OBJ, new Object[] {
 					getReflectedField(), targetObject, ignoreAccess }, null);
 		}
 		// If the field cannot be accessed (modifiers).
 		catch (final IllegalAccessException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Resources.class, ErrorKeys.UNACCESSIBLE_FIELD, new Object[] {
+			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.UNACCESSIBLE_FIELD, new Object[] {
 					getReflectedField(), targetObject, ignoreAccess }, null);
 		}
 		// Finally.
@@ -339,13 +339,13 @@ public class FieldMirror {
 		// If the target object is not from the declaring class type of the reflected field.
 		catch (final IllegalArgumentException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Resources.class, ErrorKeys.WRONG_TARGET_OBJ, new Object[] {
+			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.WRONG_TARGET_OBJ, new Object[] {
 					getReflectedField(), targetObject, newValue, ignoreAccess }, exception);
 		}
 		// If the field cannot be accessed (modifiers).
 		catch (final IllegalAccessException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Resources.class, ErrorKeys.UNACCESSIBLE_FIELD, new Object[] {
+			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.UNACCESSIBLE_FIELD, new Object[] {
 					getReflectedField(), targetObject, newValue, ignoreAccess }, exception);
 		}
 		// Finally.

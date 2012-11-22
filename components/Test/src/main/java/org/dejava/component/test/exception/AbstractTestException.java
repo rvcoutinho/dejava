@@ -19,8 +19,8 @@ public abstract class AbstractTestException extends AbstractLocalizedException {
 	/**
 	 * Basic constructor.
 	 * 
-	 * @param bundleInfo
-	 *            The information regarding the message bundle to be used in the message retrieval
+	 * @param type
+	 *            The type for the message.
 	 * @param messageKey
 	 *            Message key that describes the exception.
 	 * @param testName
@@ -30,9 +30,9 @@ public abstract class AbstractTestException extends AbstractLocalizedException {
 	 * @param cause
 	 *            Exception cause.
 	 */
-	public AbstractTestException(final Object bundleInfo, final String messageKey, final String testName,
+	public AbstractTestException(final Object type, final String messageKey, final String testName,
 			final Object[] parameters, final Throwable cause) {
-		super(bundleInfo, messageKey, null, cause);
+		super(type, messageKey, null, cause);
 		// List of exception parameters (including test name).
 		final List<Object> allParams = new ArrayList<Object>();
 		// Adds the test name as the first parameter.

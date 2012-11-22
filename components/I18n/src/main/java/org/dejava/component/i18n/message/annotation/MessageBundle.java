@@ -6,18 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotation to define a message bundle to be used when getting messages from within a class. The annotations
- * are used to define the available bundles in for the message handler.
+ * Annotation to define a message bundle to be used when getting messages from a class.
  */
 @Retention(value = RetentionPolicy.RUNTIME)
-@Target(value = { ElementType.ANNOTATION_TYPE })
+@Target(value = { ElementType.TYPE })
 public @interface MessageBundle {
-	
-	/**
-	 * Type for the bundle.
-	 */
-	String type();
-	
+
 	/**
 	 * Base name for the message bundle.
 	 */

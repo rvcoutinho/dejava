@@ -1,7 +1,7 @@
 package org.dejava.component.exception.localized.unchecked;
 
 import org.dejava.component.exception.constant.ErrorKeys;
-import org.dejava.component.exception.util.Severity;
+import org.dejava.component.exception.util.MessageTypes;
 
 /**
  * Exception related empty parameter use.
@@ -20,6 +20,6 @@ public class EmptyParameterException extends InvalidParameterException {
 	 *            Parameter that is empty.
 	 */
 	public EmptyParameterException(final String emptyParameter) {
-		super(Severity.Error.class, ErrorKeys.EMPTY_PARAM, new Object[] { emptyParameter }, null);
+		super(MessageTypes.Error.class, ErrorKeys.EMPTY_PARAM, new Object[] { emptyParameter }, null);
 	}
 }

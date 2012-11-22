@@ -12,7 +12,7 @@ import org.dejava.component.exception.localized.unchecked.EmptyParameterExceptio
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.reflection.constant.ClassParamKeys;
 import org.dejava.component.reflection.constant.ErrorKeys;
-import org.dejava.component.reflection.util.Severity;
+import org.dejava.component.reflection.util.MessageTypes;
 
 /**
  * Extends the behavior of the Class type. It is part of an extended Java reflection API, that intends to make
@@ -87,7 +87,7 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.UNEXPECTED_CLASS, new Object[] {
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.UNEXPECTED_CLASS, new Object[] {
 					getReflectedClass(), ClassParamKeys.CLASS, reflectedClassName }, exception);
 		}
 	}
@@ -128,7 +128,7 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
 					getReflectedClass(), ClassParamKeys.CLASS_DEPTH, depth }, exception);
 
 		}
@@ -171,7 +171,7 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be found.
 		catch (final ClassNotFoundException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
 					ClassParamKeys.CLASS_NAME, className }, exception);
 		}
 	}
@@ -203,7 +203,7 @@ public class ClassMirror<Reflected> {
 		// If the depth is deeper than the stack.
 		catch (final IndexOutOfBoundsException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
 					ClassParamKeys.CLASS_DEPTH, depth }, exception);
 		}
 	}
@@ -315,7 +315,7 @@ public class ClassMirror<Reflected> {
 			}
 		}
 		// If no field was found for this name, throws an exception.
-		throw new InvalidParameterException(Severity.Error.class, ErrorKeys.FIELD_NOT_FOUND, new Object[] {
+		throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.FIELD_NOT_FOUND, new Object[] {
 				getReflectedClass(), ClassParamKeys.FIELD_NAME, fieldName }, null);
 
 	}
@@ -412,7 +412,7 @@ public class ClassMirror<Reflected> {
 				}
 			}
 			// If no method was found, throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.METHOD_NOT_FOUND, new Object[] {
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.METHOD_NOT_FOUND, new Object[] {
 					getReflectedClass(), methodName, paramsClasses, varyingParamIndex }, null);
 		}
 		// In all cases.
@@ -452,7 +452,7 @@ public class ClassMirror<Reflected> {
 			// If the method cannot be found or accessed.
 			catch (final Exception exception) {
 				// Throws an exception.
-				throw new InvalidParameterException(Severity.Error.class, ErrorKeys.METHOD_NOT_FOUND,
+				throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.METHOD_NOT_FOUND,
 						new Object[] { getReflectedClass(), methodName, paramsClasses }, null);
 			}
 		}
@@ -466,7 +466,7 @@ public class ClassMirror<Reflected> {
 				if (currentParamClass == null) {
 					// Throws an exception.
 
-					throw new InvalidParameterException(Severity.Error.class, ErrorKeys.EMPTY_PARAM_CLASS,
+					throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.EMPTY_PARAM_CLASS,
 							new Object[] { currentParamIndex + 1 }, null);
 				}
 			}
@@ -497,7 +497,7 @@ public class ClassMirror<Reflected> {
 				// If the value for the parameter is null.
 				if (paramsValues[currentParamIndex] == null) {
 					// Throws an exception.
-					throw new InvalidParameterException(Severity.Error.class, ErrorKeys.EMPTY_PARAM_VALUE,
+					throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.EMPTY_PARAM_VALUE,
 							new Object[] { currentParamIndex + 1 }, null);
 				}
 				// Gets the class for the current parameter and puts it in the
@@ -652,7 +652,7 @@ public class ClassMirror<Reflected> {
 			}
 			// If no constructor was found, throws an exception.
 
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.CONSTRUCTOR_NOT_FOUND,
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CONSTRUCTOR_NOT_FOUND,
 					new Object[] { getReflectedClass(), paramsClasses, varyingParamIndex }, null);
 		}
 		// In all cases.
@@ -683,7 +683,7 @@ public class ClassMirror<Reflected> {
 			// If the constructor cannot be found or accessed.
 			catch (final Exception exception) {
 				// Throws an exception.
-				throw new InvalidParameterException(Severity.Error.class, ErrorKeys.CONSTRUCTOR_NOT_FOUND,
+				throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CONSTRUCTOR_NOT_FOUND,
 						new Object[] { getReflectedClass(), paramsClasses }, null);
 			}
 		}
@@ -696,7 +696,7 @@ public class ClassMirror<Reflected> {
 				// If the current parameter class is empty.
 				if (currentParamClass == null) {
 					// Throws an exception.
-					throw new InvalidParameterException(Severity.Error.class, ErrorKeys.EMPTY_PARAM_CLASS,
+					throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.EMPTY_PARAM_CLASS,
 							new Object[] { currentParamIndex + 1 }, null);
 				}
 			}

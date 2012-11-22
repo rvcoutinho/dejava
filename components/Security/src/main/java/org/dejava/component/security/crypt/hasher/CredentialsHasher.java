@@ -8,7 +8,7 @@ import org.dejava.component.exception.localized.unchecked.InvalidParameterExcept
 import org.dejava.component.security.authc.credential.HashedCredentials;
 import org.dejava.component.security.crypt.constant.CredentialHasherParamKeys;
 import org.dejava.component.security.crypt.constant.ErrorKeys;
-import org.dejava.component.security.crypt.util.Severity;
+import org.dejava.component.security.crypt.util.MessageTypes;
 
 /**
  * Handles the hash calculation for user credentials.
@@ -55,7 +55,7 @@ public final class CredentialsHasher {
 			// If the algorithm for the name cannot be found.
 			catch (final NoSuchAlgorithmException exception) {
 				// Throws an exception.
-				throw new InvalidParameterException(Severity.Error.class, ErrorKeys.INVALID_ALG_NAME,
+				throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.INVALID_ALG_NAME,
 						new Object[] { algorithmsNames[currentAlgorithmIdx] }, exception);
 			}
 		}
@@ -90,7 +90,7 @@ public final class CredentialsHasher {
 		// If the given minimum is greater than the maximum (or less than the minimum).
 		if ((minCycles == null) || (minCycles > getMaxCycles()) || (minCycles < MIN_MIN_CYCLES)) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.INVALID_MIN_CYCLES, new Object[] {
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.INVALID_MIN_CYCLES, new Object[] {
 					getMaxCycles(), MIN_MIN_CYCLES }, null);
 		}
 		// Sets the new minimum.
@@ -126,7 +126,7 @@ public final class CredentialsHasher {
 		// If the given minimum is lesser than the maximum (or greater than the maximum).
 		if ((maxCycles == null) || (maxCycles < getMinCycles()) || (maxCycles > MAX_MAX_CYCLES)) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.INVALID_MAX_CYCLES, new Object[] {
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.INVALID_MAX_CYCLES, new Object[] {
 					getMinCycles(), MAX_MAX_CYCLES }, null);
 		}
 		// Sets the new maximum.

@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.dejava.component.test.exception.AbstractTestException;
 import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestAssertionError;
 import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestException;
-import org.dejava.component.test.util.Severity;
+import org.dejava.component.test.util.MessageTypes;
 
 /**
  * Exception related to a parametric test exceptions (and/or assertion errors).
@@ -94,7 +94,7 @@ public class ParametricTestException extends AbstractTestException {
 	public ParametricTestException(final String testName, final Object[] parameters,
 			final Collection<AtomParametricTestException> testExceptions,
 			final Collection<AtomParametricTestAssertionError> testAssumptionViolations) {
-		super(Severity.Error.class, null, testName, parameters, null);
+		super(MessageTypes.Error.class, null, testName, parameters, null);
 		// Sets the basic fields.
 		this.testExceptions = testExceptions;
 		this.testAssumptionViolations = testAssumptionViolations;

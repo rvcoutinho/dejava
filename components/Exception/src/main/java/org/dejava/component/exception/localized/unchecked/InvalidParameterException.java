@@ -1,7 +1,7 @@
 package org.dejava.component.exception.localized.unchecked;
 
 import org.dejava.component.exception.constant.ErrorKeys;
-import org.dejava.component.exception.util.Severity;
+import org.dejava.component.exception.util.MessageTypes;
 
 /**
  * Exception related invalid parameter use.
@@ -25,7 +25,7 @@ public class InvalidParameterException extends AbstractLocalizedRuntimeException
 	 */
 	public InvalidParameterException(final String invalidParameter, final Object InvalidParamValue,
 			final Throwable cause) {
-		super(Severity.Error.class, ErrorKeys.INVALID_PARAM, new Object[] { invalidParameter,
+		super(MessageTypes.Error.class, ErrorKeys.INVALID_PARAM, new Object[] { invalidParameter,
 				InvalidParamValue }, cause);
 	}
 

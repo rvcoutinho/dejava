@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.reflection.constant.ErrorKeys;
 import org.dejava.component.reflection.exception.InvocationException;
-import org.dejava.component.reflection.util.Severity;
+import org.dejava.component.reflection.util.MessageTypes;
 
 /**
  * TODO
@@ -82,19 +82,19 @@ public class ConstructorMirror<Reflected> {
 		// If the parameter values are illegal for the constructor.
 		catch (final IllegalArgumentException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.ILLEGAL_PARAMS_VALUES,
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.ILLEGAL_PARAMS_VALUES,
 					new Object[] { getReflectedConstructor(), paramsValues, ignoreAccess }, exception);
 		}
 		// If the constructor cannot be accessed.
 		catch (final IllegalAccessException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.UNACCESSIBLE_CONSTRUCTOR,
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.UNACCESSIBLE_CONSTRUCTOR,
 					new Object[] { getReflectedConstructor(), paramsValues, ignoreAccess }, exception);
 		}
 		// If the class is abstract.
 		catch (final InstantiationException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.ABSTRACT_CLASS, new Object[] {
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.ABSTRACT_CLASS, new Object[] {
 					getReflectedConstructor(), paramsValues, ignoreAccess }, exception);
 		}
 		// Finally.

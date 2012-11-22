@@ -8,7 +8,7 @@ import org.dejava.component.i18n.message.constant.ErrorKeys;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.MessageCommand;
 import org.dejava.component.i18n.message.handler.MessageHandler;
-import org.dejava.component.i18n.message.util.Severity;
+import org.dejava.component.i18n.message.util.MessageTypes;
 
 /**
  * The default implementation of the {@link MessageCommand}.
@@ -86,7 +86,7 @@ public class SimpleMessageCommand implements MessageCommand {
 		// If the type is not a class.
 		if (!(type instanceof Class<?>)) {
 			// Throws an exception.
-			throw new InvalidParameterException(Severity.Error.class, ErrorKeys.INVALID_TYPE,
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.INVALID_TYPE,
 					new Object[] { type }, null);
 		}
 		// Sets the new type.

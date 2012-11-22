@@ -3,7 +3,7 @@ package org.dejava.component.exception.localized;
 import java.util.Locale;
 
 import org.dejava.component.exception.constant.ErrorKeys;
-import org.dejava.component.exception.util.Severity;
+import org.dejava.component.exception.util.MessageTypes;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageCommand;
 
@@ -44,7 +44,7 @@ public class ExceptionMessageCommand extends SimpleMessageCommand {
 		// If the message cannot be found.
 		catch (final Exception exception) {
 			// Returns a generic error message.
-			return getMessageHandler().getMessage(Severity.Error.class, getLocale(), ErrorKeys.GENERIC, null);
+			return getMessageHandler().getMessage(MessageTypes.Error.class, getLocale(), ErrorKeys.GENERIC, null);
 		}
 	}
 
@@ -60,7 +60,7 @@ public class ExceptionMessageCommand extends SimpleMessageCommand {
 		// If the message cannot be found.
 		catch (final Exception exception) {
 			// Returns a generic error message.
-			return getMessageHandler().getMessage(Severity.Error.class, Locale.US, ErrorKeys.GENERIC, null);
+			return getMessageHandler().getMessage(MessageTypes.Error.class, Locale.US, ErrorKeys.GENERIC, null);
 		}
 	}
 }

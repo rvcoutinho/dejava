@@ -46,4 +46,22 @@ public class Name extends Principal {
 		return getName();
 	}
 
+	/**
+	 * Public constructor.
+	 */
+	public Name() {
+		super();
+	}
+
+	/**
+	 * Public constructor.
+	 * 
+	 * @param name
+	 *            Name of the user.
+	 */
+	public Name(final String name) {
+		super();
+		this.name = name;
+	}
+
 }

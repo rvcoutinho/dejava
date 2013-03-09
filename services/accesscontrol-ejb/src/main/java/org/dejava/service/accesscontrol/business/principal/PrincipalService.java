@@ -7,17 +7,20 @@ import org.dejava.component.javaee.dao.AbstractGenericDAO;
 import org.dejava.component.javaee.service.AbstractGenericService;
 import org.dejava.service.accesscontrol.dao.principal.PrincipalDAO;
 import org.dejava.service.accesscontrol.model.principal.Principal;
+import org.dejava.service.accesscontrol.util.AccessControl;
 
 /**
  * EJB service for principal.
  */
-@Stateless
+@AccessControl
+@Stateless(name = "Service/AccessControl/PrincipalService")
 public class PrincipalService extends AbstractGenericService<Principal, Integer> {
 
 	/**
 	 * The principal DAO.
 	 */
 	@Inject
+	@AccessControl
 	private PrincipalDAO principalDAO;
 
 	/**

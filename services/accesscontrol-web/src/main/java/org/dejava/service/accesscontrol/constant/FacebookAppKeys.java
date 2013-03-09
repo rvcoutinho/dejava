@@ -10,9 +10,14 @@ import org.dejava.component.i18n.source.annotation.MessageSources;
 public class FacebookAppKeys {
 
 	/**
-	 * Facebook connect url key.
+	 * Facebook login dialog url key.
 	 */
-	public static final String APP_CONNECT_URL = "facebook.app.connect.url";
+	public static final String APP_LOGIN_DIALOG_URL = "facebook.app.login.dialog.url";
+
+	/**
+	 * Facebook access token exchange url key.
+	 */
+	public static final String APP_TOKEN_EXCHANGE_URL = "facebook.app.login.token.exchange.url";
 
 	/**
 	 * Facebook app secret key.
@@ -33,5 +38,45 @@ public class FacebookAppKeys {
 	 * Facebook app default redirect url key.
 	 */
 	public static final String APP_DEFAULT_REDIRECT_URL = "facebook.app.redirect.url.default";
+
+	/**
+	 * The key of the session attribute (facebookValidationState) to be used in the facebook state validation.
+	 */
+	public static final String APP_STATE_ATTR = "facebook.app.attr.state";
+
+	/**
+	 * The key of parameter (client_id) to be used in the facebook connect url.
+	 */
+	public static final String APP_CLIENT_ID_PARAM = "facebook.app.param.client.id";
+
+	/**
+	 * The key of parameter (client_secret) to be used in the facebook connect url.
+	 */
+	public static final String APP_CLIENT_SECRET_PARAM = "facebook.app.param.client.secret";
+
+	/**
+	 * The key of parameter (state) to be used in the facebook connect url.
+	 */
+	public static final String APP_STATE_PARAM = "facebook.app.param.state";
+
+	/**
+	 * The key of parameter (scope) to be used in the facebook connect url.
+	 */
+	public static final String APP_SCOPE_PARAM = "facebook.app.param.scope";
+
+	/**
+	 * The key of parameter (redirect_uri) to be used in the facebook connect url.
+	 */
+	public static final String APP_REDIRECT_URI_PARAM = "facebook.app.param.redirect.uri";
+
+	/**
+	 * The key of parameter (code) to be used in the facebook connect url.
+	 */
+	public static final String APP_OAUTH_CODE_PARAM = "facebook.app.param.oauth.code";
+
+	/**
+	 * The key of parameter (access_token) to be used in the facebook connect url.
+	 */
+	public static final String APP_ACCESS_TOKEN_PARAM = "facebook.app.param.oauth.access.token";
 
 }

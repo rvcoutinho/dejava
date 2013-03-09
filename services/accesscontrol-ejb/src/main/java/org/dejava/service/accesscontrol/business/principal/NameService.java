@@ -7,17 +7,20 @@ import org.dejava.component.javaee.dao.AbstractGenericDAO;
 import org.dejava.component.javaee.service.AbstractGenericService;
 import org.dejava.service.accesscontrol.dao.principal.NameDAO;
 import org.dejava.service.accesscontrol.model.principal.Name;
+import org.dejava.service.accesscontrol.util.AccessControl;
 
 /**
  * EJB service for name.
  */
-@Stateless
+@AccessControl
+@Stateless(name = "Service/AccessControl/NameService")
 public class NameService extends AbstractGenericService<Name, Integer> {
 
 	/**
 	 * The name DAO.
 	 */
 	@Inject
+	@AccessControl
 	private NameDAO nameDAO;
 
 	/**

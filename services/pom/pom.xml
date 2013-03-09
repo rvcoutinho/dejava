@@ -64,6 +64,13 @@
 				<type>war</type>
 				<scope>compile</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.dejava.service</groupId>
+				<artifactId>soupsocial-web</artifactId>
+				<version>0.0.1</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
 
 			<dependency>
 				<groupId>org.dejava.component</groupId>
@@ -112,11 +119,17 @@
 				<artifactId>shiro-web</artifactId>
 				<version>1.2.1</version>
 			</dependency>
+
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-				<version>1.7.1</version>
-				<scope>test</scope>
+				<groupId>com.restfb</groupId>
+				<artifactId>restfb</artifactId>
+				<version>1.6.11</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>3.4</version>
 			</dependency>
 
 			<dependency>

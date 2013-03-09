@@ -10,6 +10,7 @@ import org.dejava.service.accesscontrol.util.AccessControl;
 /**
  * DAO for password.
  */
+@AccessControl
 public class PasswordDAO extends AbstractGenericDAO<Password, Integer> {
 
 	/**

@@ -7,17 +7,20 @@ import org.dejava.component.javaee.dao.AbstractGenericDAO;
 import org.dejava.component.javaee.service.AbstractGenericService;
 import org.dejava.service.accesscontrol.dao.UserDAO;
 import org.dejava.service.accesscontrol.model.User;
+import org.dejava.service.accesscontrol.util.AccessControl;
 
 /**
  * EJB service for user.
  */
-@Stateless
+@AccessControl
+@Stateless(name = "Service/AccessControl/UserService")
 public class UserService extends AbstractGenericService<User, Integer> {
 
 	/**
 	 * The user DAO.
 	 */
 	@Inject
+	@AccessControl
 	private UserDAO userDAO;
 
 	/**
@@ -27,5 +30,4 @@ public class UserService extends AbstractGenericService<User, Integer> {
 	public AbstractGenericDAO<User, Integer> getEntityDAO() {
 		return userDAO;
 	}
-
 }

@@ -7,17 +7,20 @@ import org.dejava.component.javaee.dao.AbstractGenericDAO;
 import org.dejava.component.javaee.service.AbstractGenericService;
 import org.dejava.service.accesscontrol.dao.principal.EmailDAO;
 import org.dejava.service.accesscontrol.model.principal.Email;
+import org.dejava.service.accesscontrol.util.AccessControl;
 
 /**
  * EJB service for email.
  */
-@Stateless
+@AccessControl
+@Stateless(name = "Service/AccessControl/EmailService")
 public class EmailService extends AbstractGenericService<Email, Integer> {
 
 	/**
 	 * The email DAO.
 	 */
 	@Inject
+	@AccessControl
 	private EmailDAO emailDAO;
 
 	/**

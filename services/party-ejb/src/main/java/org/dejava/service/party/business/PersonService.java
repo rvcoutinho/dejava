@@ -1,6 +1,5 @@
 package org.dejava.service.party.business;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -12,7 +11,6 @@ import org.dejava.service.party.model.Person;
 /**
  * TODO
  */
-@Remote
 @Stateless
 public class PersonService extends AbstractGenericService<Person, Integer> {
 

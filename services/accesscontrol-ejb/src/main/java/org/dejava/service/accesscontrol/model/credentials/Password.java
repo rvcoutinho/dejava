@@ -5,8 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.dejava.component.security.auth.credential.HashedCredentials;
+import org.dejava.component.security.authc.credential.HashedCredentials;
 import org.dejava.component.security.crypt.hasher.CredentialsHasher;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Password of the user (as credential).
@@ -21,7 +22,7 @@ public class Password extends Credentials implements HashedCredentials {
 	private static final transient String[] ALGS_NAMES = { "SHA-256", "SHA-384", "SHA-512" };
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getAlgorithmsNames()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getAlgorithmsNames()
 	 */
 	@Override
 	@Transient
@@ -35,7 +36,7 @@ public class Password extends Credentials implements HashedCredentials {
 	private static final transient Integer MIN_HASH_CYCLES = 38;
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getMinCycles()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getMinCycles()
 	 */
 	@Override
 	@Transient
@@ -49,7 +50,7 @@ public class Password extends Credentials implements HashedCredentials {
 	private static final transient Integer MAX_HASH_CYCLES = 97;
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getMaxCycles()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getMaxCycles()
 	 */
 	@Override
 	@Transient
@@ -63,7 +64,7 @@ public class Password extends Credentials implements HashedCredentials {
 	private static final transient String DEFAULT_SALT = "DéJ4V4-ment41ist_p0ney=Smith+4nn0nym0u5.1082348317";
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getSalt()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getSalt()
 	 */
 	@Override
 	@Transient
@@ -73,7 +74,7 @@ public class Password extends Credentials implements HashedCredentials {
 	}
 
 	/**
-	 * The raw password for the user.
+	 * Raw password for the user.
 	 */
 	private String rawPassword;
 
@@ -100,19 +101,20 @@ public class Password extends Credentials implements HashedCredentials {
 	/**
 	 * Password (salted and hashed) for the user.
 	 */
-	private String hashedPassword;
+	private byte[] hashedPassword;
 
 	/**
 	 * Gets the password (salted and hashed) for the user.
 	 * 
 	 * @return The password (salted and hashed) for the user.
 	 */
+	@NotEmpty
 	@Column(name = "password")
-	public String getHashedPassword() {
-		// If the hashed password is null (and there is a raw password).
-		if ((hashedPassword == null) && (getRawPassword() != null)) {
+	public byte[] getHashedPassword() {
+		// If there is a raw password.
+		if (getRawPassword() != null) {
 			// Hashes the raw password.
-			hashedPassword = new String(new CredentialsHasher(this).hash(getRawPassword(), getSalt()));
+			hashedPassword = new CredentialsHasher(this).hash(getRawPassword(), getSalt());
 		}
 		// Returns the hashed password.
 		return hashedPassword;
@@ -124,7 +126,7 @@ public class Password extends Credentials implements HashedCredentials {
 	 * @param hashedPassword
 	 *            New password (salted and hashed) for the user.
 	 */
-	public void setHashedPassword(final String hashedPassword) {
+	public void setHashedPassword(final byte[] hashedPassword) {
 		this.hashedPassword = hashedPassword;
 	}
 
@@ -138,12 +140,30 @@ public class Password extends Credentials implements HashedCredentials {
 	}
 
 	/**
-	 * @see org.dejava.component.security.auth.credential.HashedCredentials#getHashedCredentials()
+	 * @see org.dejava.component.security.authc.credential.HashedCredentials#getHashedCredentials()
 	 */
 	@Override
 	@Transient
-	public String getHashedCredentials() {
+	public byte[] getHashedCredentials() {
 		return getHashedPassword();
+	}
+
+	/**
+	 * Public constructor
+	 */
+	public Password() {
+		super();
+	}
+
+	/**
+	 * Public constructor
+	 * 
+	 * @param rawPassword
+	 *            Raw password for the user.
+	 */
+	public Password(final String rawPassword) {
+		super();
+		this.rawPassword = rawPassword;
 	}
 
 }

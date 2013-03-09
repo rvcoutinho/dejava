@@ -10,6 +10,7 @@ import org.dejava.service.accesscontrol.util.AccessControl;
 /**
  * DAO for name.
  */
+@AccessControl
 public class NameDAO extends AbstractGenericDAO<Name, Integer> {
 
 	/**

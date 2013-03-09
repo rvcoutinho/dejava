@@ -10,6 +10,7 @@ import org.dejava.service.accesscontrol.util.AccessControl;
 /**
  * DAO for credential.
  */
+@AccessControl
 public class CredentialDAO extends AbstractGenericDAO<Credentials, Integer> {
 
 	/**

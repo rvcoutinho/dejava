@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<h:outputStylesheet library="soupsocial" name="css/stylesheet.css" />
+	<ui:insert name="head"></ui:insert>
+	<script src="js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+		<script async="async" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</h:head>
+<h:body>
+	<header id="header" class="min-width light-gray-texture-bg padding-2">
+		<div class="content-width">
+			<a href="/"><img id="logo" src="image/logo.png" /></a>
+			<nav>
+				<ul>
+					<li class="first"><a href="soupsocial.html"
+						class="featured-text-1">O que é</a></li>
+					<li><a href="quem-somos.html" class="featured-text-1">Quem
+							somos</a></li>
+					<li><a href="como-funciona.html" class="featured-text-1">Como
+							funciona</a></li>
+					<li><a class="featured-text-1">Conectar</a></li>
+					<li><a href="http://www.facebook.com/SoupSocial"
+						target="_blank"><img class="media first"
+							src="image/media/facebook.png" /></a> <a
+						href="http://www.twitter.com/Soup_Social"><img class="media"
+							src="image/media/twitter.png" /></a> <a><img class="media"
+							src="image/media/rss.png" /></a></li>
+					<li class="last"><div class="fb-like"
+							data-href="http://www.soupsocial.com" data-send="false"
+							data-layout="button_count" data-width="100"
+							data-show-faces="true"></div></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<ui:insert name="content"></ui:insert>
+	<footer id="footer" class="min-width padding-2">
+		<nav class="content-width">
+			<ul>
+				<li class="title first"><a href="soupsocial.html"
+					class="featured-text-1">O que é</a></li>
+				<li><a href="soupsocial.html#soupsocial-idea"
+					class="small-text scroll"
+					onclick="$('#soupsocial-idea-content').slideDown(1000);">Nossa
+						ideia</a></li>
+				<li><a href="soupsocial.html#soupsocial-vision"
+					class="small-text scroll"
+					onclick="$('#soupsocial-vision-content').slideDown(1000);">Nossos
+						objetivos</a></li>
+				<li><a href="privacidade.xhtml" class="small-text">Política
+						de privacidade</a></li>
+				<li><a href="termos.html" class="small-text">Termos e
+						condições</a></li>
+			</ul>
+			<ul>
+				<li class="title"><a href="quem-somos.html"
+					class="featured-text-1">Quem somos</a></li>
+				<li><a href="quem-somos.html#who-ideas"
+					class="small-text scroll"
+					onclick="$('#who-ideas-content').slideDown(1000);">Idealizadores</a></li>
+				<li><a href="quem-somos.html#who-partners"
+					class="small-text scroll"
+					onclick="$('#who-partners-content').slideDown(1000);">Parceiros</a></li>
+				<li><a href="quem-somos.html#who-supporters"
+					class="small-text scroll"
+					onclick="$('#who-supporters-content').slideDown(1000);">Apoiadores</a></li>
+			</ul>
+			<ul>
+				<li class="title"><a href="como-funciona.html"
+					class="featured-text-1">Como funciona</a></li>
+				<li><a href="como-funciona.html#how-all"
+					class="small-text scroll"
+					onclick="$('#how-all-content').slideDown(1000);">Para todos</a></li>
+				<li><a href="como-funciona.html#how-ngos"
+					class="small-text scroll"
+					onclick="$('#how-ngos-content').slideDown(1000);">Para
+						instituições sem <br /> fins lucrativos
+				</a></li>
+				<li><a href="como-funciona.html#how-investors"
+					class="small-text scroll"
+					onclick="$('#how-investors-content').slideDown(1000);">Para
+						empresas</a></li>
+				<li><a href="http://ask.fm/SoupSocial" target="_blank" class="small-text">FAQ</a></li>
+			</ul>
+			<ul>
+				<li class="title"><a class="featured-text-1">Mudando o
+						mundo</a></li>
+				<li><a class="small-text">Dar novas ideias</a></li>
+				<li><a class="small-text">Abraçar ideias</a></li>
+				<li><a class="small-text">Criar novos projetos</a></li>
+				<li><a class="small-text">Patrocinar projetos</a></li>
+			</ul>
+			<ul>
+				<li class="title"><button class="dark-green-bg">
+						conectar <img class="spoon" src="image/spoon.png" />
+					</button></li>
+				<li><a class="small-text">Esqueci minha senha</a></li>
+			</ul>
+			<ul>
+				<li class="title last"><div class="fb-like"
+						data-href="http://www.soupsocial.com" data-send="false"
+						data-layout="button_count" data-width="100" data-show-faces="true"></div></li>
+				<li><span class="small-text">Designed and developed by
+						Soupsocial.<br />©Soupsocial. Soupsocial is a trademark.<br />All
+						rights reserved.
+				</span></li>
+			</ul>
+		</nav>
+	</footer>
+	<div id="fb-root"></div>
+	<script async="async">
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=164844580330852";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+</h:body>
+</html>

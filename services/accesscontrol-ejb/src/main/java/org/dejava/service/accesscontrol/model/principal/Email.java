@@ -46,4 +46,22 @@ public class Email extends Principal {
 		return getEmail();
 	}
 
+	/**
+	 * Public constructor.
+	 */
+	public Email() {
+		super();
+	}
+
+	/**
+	 * Public constructor.
+	 * 
+	 * @param email
+	 *            Email of the user.
+	 */
+	public Email(final String email) {
+		super();
+		this.email = email;
+	}
+
 }

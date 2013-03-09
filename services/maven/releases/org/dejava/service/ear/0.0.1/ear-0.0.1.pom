@@ -39,6 +39,11 @@
 
 		<dependency>
 			<groupId>org.dejava.component</groupId>
+			<artifactId>security</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
 			<artifactId>javaee</artifactId>
 			<type>jar</type>
 		</dependency>
@@ -63,6 +68,18 @@
 			<type>jar</type>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.restfb</groupId>
+			<artifactId>restfb</artifactId>
+			<type>jar</type>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -73,8 +90,8 @@
 				<version>2.7</version>
 				<configuration>
 					<version>6</version>
+					<applicationName>ear</applicationName>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
-					<modules></modules>
 				</configuration>
 			</plugin>
 			<plugin>

@@ -10,6 +10,7 @@ import org.dejava.service.accesscontrol.util.AccessControl;
 /**
  * DAO for principal.
  */
+@AccessControl
 public class PrincipalDAO extends AbstractGenericDAO<Principal, Integer> {
 
 	/**

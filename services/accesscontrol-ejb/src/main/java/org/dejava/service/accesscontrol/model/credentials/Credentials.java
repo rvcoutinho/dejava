@@ -1,6 +1,7 @@
 package org.dejava.service.accesscontrol.model.credentials;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,17 +10,18 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.service.accesscontrol.model.User;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Credentials to be used in the authentication/authorization.
  */
+@Entity
 @Table(name = "credentials")
-@MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Credentials {
 
@@ -60,7 +62,8 @@ public abstract class Credentials {
 	 * 
 	 * @return The user for this credentials.
 	 */
-	@JoinColumn(name = "user")
+	@NotNull
+	@JoinColumn(name = "u5er")
 	@ManyToOne(fetch = FetchType.EAGER)
 	public User getUser() {
 		return user;
@@ -81,6 +84,7 @@ public abstract class Credentials {
 	 * 
 	 * @return The value for the credentials.
 	 */
+	@NotEmpty
 	@Transient
 	public abstract Object getValue();
 }

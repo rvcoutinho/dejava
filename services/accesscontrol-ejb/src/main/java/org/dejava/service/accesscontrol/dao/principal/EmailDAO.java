@@ -10,6 +10,7 @@ import org.dejava.service.accesscontrol.util.AccessControl;
 /**
  * DAO for email.
  */
+@AccessControl
 public class EmailDAO extends AbstractGenericDAO<Email, Integer> {
 
 	/**

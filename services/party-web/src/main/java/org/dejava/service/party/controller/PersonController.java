@@ -20,13 +20,13 @@ public class PersonController extends AbstractGenericController<Person, Integer>
 	 * The person EJB service.
 	 */
 	@Inject
-	private PersonService PersonService;
+	private PersonService personService;
 
 	/**
 	 * @see org.dejava.component.javaee.controller.AbstractGenericController#getBusinessService()
 	 */
 	@Override
 	protected AbstractGenericService<Person, Integer> getBusinessService() {
-		return PersonService;
+		return personService;
 	}
 }

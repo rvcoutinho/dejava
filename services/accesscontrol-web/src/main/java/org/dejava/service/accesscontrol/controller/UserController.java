@@ -8,6 +8,7 @@ import org.dejava.component.javaee.controller.AbstractGenericController;
 import org.dejava.component.javaee.service.AbstractGenericService;
 import org.dejava.service.accesscontrol.business.UserService;
 import org.dejava.service.accesscontrol.model.User;
+import org.dejava.service.accesscontrol.util.AccessControl;
 
 /**
  * TODO
@@ -20,6 +21,7 @@ public class UserController extends AbstractGenericController<User, Integer> {
 	 * The person EJB service.
 	 */
 	@Inject
+	@AccessControl
 	private UserService userService;
 
 	/**

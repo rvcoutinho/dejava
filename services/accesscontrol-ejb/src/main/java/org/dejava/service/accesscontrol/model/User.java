@@ -1,11 +1,13 @@
 package org.dejava.service.accesscontrol.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,13 +18,17 @@ import javax.persistence.Transient;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.credentials.Credentials;
+import org.dejava.service.accesscontrol.model.credentials.Password;
+import org.dejava.service.accesscontrol.model.principal.Email;
+import org.dejava.service.accesscontrol.model.principal.Facebook;
+import org.dejava.service.accesscontrol.model.principal.Name;
 import org.dejava.service.accesscontrol.model.principal.Principal;
 
 /**
  * Represents a system user.
  */
 @Entity
-@Table(name = "users")
+@Table(name = "u5er")
 @MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class User implements Serializable {
 
@@ -73,14 +79,17 @@ public class User implements Serializable {
 	@Transient
 	@SuppressWarnings("unchecked")
 	private <Type> Type getObjectByClass(final Collection<?> collection, final Class<Type> type) {
-		// For each object in the collection.
-		for (final Object currentObject : collection) {
-			// If the current object is not null.
-			if (currentObject != null) {
-				// If the object is an instance from the class.
-				if (currentObject.getClass().equals(type)) {
-					// Returns the current object.
-					return (Type) currentObject;
+		// If the collection is not null.
+		if (collection != null) {
+			// For each object in the collection.
+			for (final Object currentObject : collection) {
+				// If the current object is not null.
+				if (currentObject != null) {
+					// If the object is an instance from the class.
+					if (currentObject.getClass().equals(type)) {
+						// Returns the current object.
+						return (Type) currentObject;
+					}
 				}
 			}
 		}
@@ -98,8 +107,32 @@ public class User implements Serializable {
 	 * 
 	 * @return The principals for this user.
 	 */
-	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	public Collection<Principal> getPrincipals() {
+		// If the collection is null.
+		if (principals == null) {
+			// Creates a new list for the collection.
+			principals = new ArrayList<>();
+		}
+		// Returns the collection.
+		return principals;
+	}
+
+	/**
+	 * Gets the raw principals for this user.
+	 * 
+	 * @return The raw principals for this user.
+	 */
+	@Transient
+	public Collection<Object> getRawPrincipals() {
+		// Creates a new array of principals.
+		final ArrayList<Object> principals = new ArrayList<>();
+		// For each principal.
+		for (final Principal currentPrincipal : getPrincipals()) {
+			// Adds the current raw principal to the list.
+			principals.add(currentPrincipal.getValue());
+		}
+		// Returns the principals.
 		return principals;
 	}
 
@@ -124,9 +157,46 @@ public class User implements Serializable {
 	 * 
 	 * @param principals
 	 *            New principals for this user.
+	 * @param updateRelationship
+	 *            If the relationship of the given principals should be updated.
+	 */
+	public void setPrincipals(final Collection<Principal> principals, final Boolean updateRelationship) {
+		// If there are principals (and they should be updated).
+		if ((principals != null) && (updateRelationship)) {
+			// For each principal.
+			for (final Principal currentPrincipal : principals) {
+				// Sets the user for the current principal.
+				currentPrincipal.setUser(this);
+			}
+		}
+		// Sets the principals.
+		this.principals = principals;
+	}
+
+	/**
+	 * Sets the principals for this user.
+	 * 
+	 * @param principals
+	 *            New principals for this user.
 	 */
 	public void setPrincipals(final Collection<Principal> principals) {
-		this.principals = principals;
+		setPrincipals(principals, false);
+	}
+
+	/**
+	 * Adds a principal to the user.
+	 * 
+	 * @param principal
+	 *            Principal to be added to the user.
+	 */
+	public void addPrincipal(final Principal principal) {
+		// If the principal is not null.
+		if (principal != null) {
+			// Sets the user for the principal.
+			principal.setUser(this);
+			// Adds the principal to the user.
+			getPrincipals().add(principal);
+		}
 	}
 
 	/**
@@ -142,23 +212,50 @@ public class User implements Serializable {
 	 */
 	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL })
 	public Collection<Credentials> getCredentials() {
+		// If the collection is null.
+		if (credentials == null) {
+			// Creates a new list for the collection.
+			credentials = new ArrayList<>();
+		}
+		// Returns the collection.
 		return credentials;
 	}
 
 	/**
-	 * Gets the credential with the given type (there should not be more than an object for given type).
+	 * Gets the credentials with the given type (there should not be more than an object for given type).
 	 * 
-	 * @param <ConcreteCredential>
-	 *            A concrete credential type.
-	 * @param credentialType
-	 *            The type for the credential being searched.
-	 * @return The credential with the given type (there should not be more than an object for given type).
+	 * @param <ConcreteCredentials>
+	 *            A concrete credentials type.
+	 * @param credentialsType
+	 *            The type for the credentials being searched.
+	 * @return The credentials with the given type (there should not be more than an object for given type).
 	 */
 	@Transient
-	public <ConcreteCredential extends Credentials> ConcreteCredential getCredential(
-			final Class<ConcreteCredential> credentialType) {
-		// Returns the credential with the given type.
-		return getObjectByClass(getCredentials(), credentialType);
+	public <ConcreteCredentials extends Credentials> ConcreteCredentials getCredentials(
+			final Class<ConcreteCredentials> credentialsType) {
+		// Returns the credentials with the given type.
+		return getObjectByClass(getCredentials(), credentialsType);
+	}
+
+	/**
+	 * Sets the credentials for this user.
+	 * 
+	 * @param credentials
+	 *            New credentials for this user.
+	 * @param updateRelationship
+	 *            If the relationship of the given principals should be updated.
+	 */
+	public void setCredentials(final Collection<Credentials> credentials, final Boolean updateRelationship) {
+		// If there are credentials (and they should be updated).
+		if ((credentials != null) && updateRelationship) {
+			// For each credentials.
+			for (final Credentials currentCredentials : credentials) {
+				// Sets the user for the current credentials.
+				currentCredentials.setUser(this);
+			}
+		}
+		// Sets the credentials.
+		this.credentials = credentials;
 	}
 
 	/**
@@ -168,7 +265,63 @@ public class User implements Serializable {
 	 *            New credentials for this user.
 	 */
 	public void setCredentials(final Collection<Credentials> credentials) {
-		this.credentials = credentials;
+		setCredentials(credentials, false);
 	}
 
+	/**
+	 * Adds credentials to the user.
+	 * 
+	 * @param credentials
+	 *            Credentials to be added to the user.
+	 */
+	public void addCredentials(final Credentials credentials) {
+		// If the credentials are not null.
+		if (credentials != null) {
+			// Sets the user for the credentials.
+			credentials.setUser(this);
+			// Adds the credentials to the user.
+			getCredentials().add(credentials);
+		}
+	}
+
+	/**
+	 * Default constructor.
+	 */
+	public User() {
+		super();
+	}
+
+	/**
+	 * Creates a new user with the given name and password.
+	 * 
+	 * @param name
+	 *            Name of the user.
+	 * @param email
+	 *            Email of the user.
+	 * @param rawPassword
+	 *            Password of the user.
+	 */
+	public User(final String name, final String email, final String rawPassword) {
+		// Adds the name to the user principals.
+		addPrincipal(new Name(name));
+		// Adds the email to the user principals.
+		addPrincipal(new Email(email));
+		// Adds the password to the user credentials.
+		addCredentials(new Password(rawPassword));
+	}
+
+	/**
+	 * Creates a new user with the facebook user information.
+	 * 
+	 * @param facebookUser
+	 *            Facebook user information.
+	 */
+	public User(final com.restfb.types.User facebookUser) {
+		// Adds the name to the user principals.
+		addPrincipal(new Name(facebookUser.getId()));
+		// Adds the email to the user principals.
+		addPrincipal(new Email(facebookUser.getEmail()));
+		// Adds the password to the user credentials.
+		addPrincipal(new Facebook(facebookUser.getId()));
+	}
 }

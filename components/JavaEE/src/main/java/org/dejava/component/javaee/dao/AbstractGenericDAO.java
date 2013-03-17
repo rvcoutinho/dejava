@@ -1,6 +1,7 @@
 package org.dejava.component.javaee.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.javaee.constant.DAOParamKeys;
 import org.dejava.component.validation.method.PreConditions;
 
@@ -105,6 +107,28 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	}
 
 	/**
+	 * Merges the entities with the persistence context (so its state is persisted).
+	 * 
+	 * @param entities
+	 *            The entities to be merged.
+	 * @return The merged instances.
+	 */
+	public Collection<Entity> merge(final Collection<Entity> entities) {
+		// Creates a new list of entities.
+		final Collection<Entity> mergedEntities = new ArrayList<>();
+		// If the given collection is not empty.
+		if (entities != null) {
+			// For each given entity.
+			for (final Entity currentEntity : entities) {
+				// Tries to add or update the current entity.
+				mergedEntities.add(merge(currentEntity));
+			}
+		}
+		// Returns the list of merged entities.
+		return mergedEntities;
+	}
+
+	/**
 	 * Removes a persistent entity.
 	 * 
 	 * @param entity
@@ -117,6 +141,23 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 		final Entity mergedEntity = getEntityManager().merge(entity);
 		// Tries to remove the entity.
 		getEntityManager().remove(mergedEntity);
+	}
+
+	/**
+	 * Removes a persistent entities.
+	 * 
+	 * @param entities
+	 *            The entities to be persisted.
+	 */
+	public void remove(final Collection<Entity> entities) {
+		// If the given collection is not empty.
+		if (entities != null) {
+			// For each given entity.
+			for (final Entity currentEntity : entities) {
+				// Tries to remove the current entity.
+				remove(currentEntity);
+			}
+		}
 	}
 
 	/**
@@ -162,6 +203,37 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 		limitResultList(query, firstResult, maxResults);
 		// Executes the query and gets all the entities.
 		return query.getResultList();
+	}
+
+	/**
+	 * Gets the entity with the given attribute value.
+	 * 
+	 * @param attributeName
+	 *            The attribute name.
+	 * @param attributeValue
+	 *            The attribute value.
+	 * @return The entity with the given attribute value.
+	 */
+	public Entity getByAttribute(final String attributeName, final Object attributeValue) {
+		// Tries to get the entities.
+		final Collection<Entity> entities = getByAttribute(attributeName, attributeValue, null, null);
+		// The entity is null by default.
+		Entity entity = null;
+		// If there are any entities.
+		if ((entities != null) && (!entities.isEmpty())) {
+			// If there is more than a single entity.
+			if (entities.size() > 1) {
+				// Throws an exception. TODO
+				throw new InvalidParameterException("", null, null);
+			}
+			// If there is a single entity.
+			else {
+				// Gets the first entity.
+				entity = entities.iterator().next();
+			}
+		}
+		// Return the entity found.
+		return entity;
 	}
 
 	/**

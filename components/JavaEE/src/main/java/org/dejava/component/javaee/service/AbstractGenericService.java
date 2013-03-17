@@ -1,9 +1,7 @@
 package org.dejava.component.javaee.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
-import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.javaee.dao.AbstractGenericDAO;
 
 /**
@@ -37,18 +35,8 @@ public abstract class AbstractGenericService<Entity, Key> implements GenericServ
 	 */
 	@Override
 	public Collection<Entity> addOrUpdate(final Collection<Entity> entities) {
-		// Creates a new list of entities.
-		final Collection<Entity> mergedEntities = new ArrayList<>();
-		// If the given collection is not empty.
-		if (entities != null) {
-			// For each given entity.
-			for (final Entity currentEntity : entities) {
-				// Tries to add or update the current entity.
-				mergedEntities.add(addOrUpdate(currentEntity));
-			}
-		}
-		// Returns the list of merged entities.
-		return mergedEntities;
+		// Merges the entities.
+		return getEntityDAO().merge(entities);
 	}
 
 	/**
@@ -65,14 +53,8 @@ public abstract class AbstractGenericService<Entity, Key> implements GenericServ
 	 */
 	@Override
 	public void remove(final Collection<Entity> entities) {
-		// If the given collection is not empty.
-		if (entities != null) {
-			// For each given entity.
-			for (final Entity currentEntity : entities) {
-				// Tries to remove the current entity.
-				remove(currentEntity);
-			}
-		}
+		// Tries to remove the entities.
+		getEntityDAO().remove(entities);
 	}
 
 	/**
@@ -101,31 +83,12 @@ public abstract class AbstractGenericService<Entity, Key> implements GenericServ
 	 */
 	@Override
 	public Entity getByAttribute(final String attributeName, final Object attributeValue) {
-		// Tries to get the entities.
-		final Collection<Entity> entities = getEntityDAO().getByAttribute(attributeName,
-				attributeValue, null, null);
-		// The entity is null by default.
-		Entity entity = null;
-		// If there are any entities.
-		if ((entities != null) && (!entities.isEmpty())) {
-			// If there is more than a single entity.
-			if (entities.size() > 1) {
-				// Throws an exception. TODO
-				throw new InvalidParameterException("", null, null);
-			}
-			// If there is a single entity.
-			else {
-				// Gets the first entity.
-				entity = entities.iterator().next();
-			}
-		}
-		// Return the entity found.
-		return entity;
+		// Tries to get the entity.
+		return getEntityDAO().getByAttribute(attributeName, attributeValue);
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#getAll(java.lang.Integer,
-	 *      java.lang.Integer)
+	 * @see org.dejava.component.javaee.service.GenericService#getAll(java.lang.Integer, java.lang.Integer)
 	 */
 	@Override
 	public Collection<Entity> getAll(final Integer firstResult, final Integer maxResults) {

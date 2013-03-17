@@ -2,13 +2,13 @@ package org.dejava.component.i18n.message.handler.impl;
 
 import java.util.Locale;
 
-import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.constant.ErrorKeys;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.MessageCommand;
 import org.dejava.component.i18n.message.handler.MessageHandler;
 import org.dejava.component.i18n.message.util.MessageTypes;
+import org.dejava.component.validation.method.PreConditions;
 
 /**
  * The default implementation of the {@link MessageCommand}.
@@ -83,12 +83,9 @@ public class SimpleMessageCommand implements MessageCommand {
 	 */
 	@Override
 	public void setType(final Object type) {
-		// If the type is not a class.
-		if (!(type instanceof Class<?>)) {
-			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.INVALID_TYPE,
-					new Object[] { type }, null);
-		}
+		// Assures that the type is a class.
+		PreConditions.assertParamValid(type instanceof Class<?>, MessageTypes.Error.class,
+				ErrorKeys.INVALID_TYPE, new Object[] { type });
 		// Sets the new type.
 		this.type = (Class<?>) type;
 	}

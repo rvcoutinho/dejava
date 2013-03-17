@@ -4,6 +4,7 @@ import java.lang.annotation.Annotation;
 
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.reflection.constant.AnnotationParamKeys;
+import org.dejava.component.validation.method.PreConditions;
 
 /**
  * TODO
@@ -46,11 +47,8 @@ public class AnnotationMirror<Reflected extends Annotation> {
 	 *             If the reflected annotation is not given.
 	 */
 	public AnnotationMirror(final Reflected reflectedAnnotation) throws EmptyParameterException {
-		// If the given annotation is null.
-		if (reflectedAnnotation == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(AnnotationParamKeys.ANNOTATION);
-		}
+		// Asserts that the annotation is not null.
+		PreConditions.assertParamNotNull(AnnotationParamKeys.ANNOTATION, reflectedAnnotation);
 		// Sets the main fields.
 		this.reflectedAnnotation = reflectedAnnotation;
 	}

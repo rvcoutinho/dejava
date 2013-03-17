@@ -13,6 +13,7 @@ import org.dejava.component.exception.localized.unchecked.InvalidParameterExcept
 import org.dejava.component.reflection.constant.ClassParamKeys;
 import org.dejava.component.reflection.constant.ErrorKeys;
 import org.dejava.component.reflection.util.MessageTypes;
+import org.dejava.component.validation.method.PreConditions;
 
 /**
  * Extends the behavior of the Class type. It is part of an extended Java reflection API, that intends to make
@@ -56,11 +57,8 @@ public class ClassMirror<Reflected> {
 	 *             If the reflected class is not given.
 	 */
 	public ClassMirror(final Class<? extends Reflected> reflectedClass) throws EmptyParameterException {
-		// If the given class is null.
-		if (reflectedClass == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(ClassParamKeys.CLASS);
-		}
+		// Asserts that the class is not null.
+		PreConditions.assertParamNotNull(ClassParamKeys.CLASS, reflectedClass);
 		// Sets the main reflection fields.
 		this.reflectedClass = reflectedClass;
 	}
@@ -87,8 +85,8 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.UNEXPECTED_CLASS, new Object[] {
-					getReflectedClass(), ClassParamKeys.CLASS, reflectedClassName }, exception);
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.UNEXPECTED_CLASS,
+					new Object[] { getReflectedClass(), ClassParamKeys.CLASS, reflectedClassName }, exception);
 		}
 	}
 
@@ -128,8 +126,8 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be casted.
 		catch (final ClassCastException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
-					getReflectedClass(), ClassParamKeys.CLASS_DEPTH, depth }, exception);
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CLASS_NOT_FOUND,
+					new Object[] { getReflectedClass(), ClassParamKeys.CLASS_DEPTH, depth }, exception);
 
 		}
 	}
@@ -152,11 +150,8 @@ public class ClassMirror<Reflected> {
 	 */
 	public static Class<?> getClass(final String className, final ClassLoader classLoader,
 			final Boolean initialize) throws InvalidParameterException, EmptyParameterException {
-		// If the given class name is null.
-		if ((className == null) || (className.isEmpty())) {
-			// Throws an exception.
-			throw new EmptyParameterException(ClassParamKeys.CLASS_NAME);
-		}
+		// Asserts that the class name is not empty.
+		PreConditions.assertParamNotEmpty(ClassParamKeys.CLASS_NAME, className);
 		// Actual class loader default value is the current class loader.
 		ClassLoader actualClassLoader = Thread.currentThread().getContextClassLoader();
 		// If the given class loader is not null.
@@ -171,8 +166,8 @@ public class ClassMirror<Reflected> {
 		// If the class cannot be found.
 		catch (final ClassNotFoundException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
-					ClassParamKeys.CLASS_NAME, className }, exception);
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CLASS_NOT_FOUND,
+					new Object[] { ClassParamKeys.CLASS_NAME, className }, exception);
 		}
 	}
 
@@ -203,8 +198,8 @@ public class ClassMirror<Reflected> {
 		// If the depth is deeper than the stack.
 		catch (final IndexOutOfBoundsException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CLASS_NOT_FOUND, new Object[] {
-					ClassParamKeys.CLASS_DEPTH, depth }, exception);
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CLASS_NOT_FOUND,
+					new Object[] { ClassParamKeys.CLASS_DEPTH, depth }, exception);
 		}
 	}
 
@@ -237,7 +232,7 @@ public class ClassMirror<Reflected> {
 	 * 
 	 * @return All the classes and interfaces inherited by the reflected class (including this one).
 	 */
-	public Set<ClassMirror<?>> getSuperclasses() {
+	public Set<ClassMirror<?>> getSuperClasses() {
 		// All classes to be returned.
 		final Set<ClassMirror<?>> classes = new LinkedHashSet<ClassMirror<?>>();
 		// Adds the class itself to the list.
@@ -248,13 +243,13 @@ public class ClassMirror<Reflected> {
 			for (final Class<?> currentInterface : getReflectedClass().getInterfaces()) {
 				// Calls the same method recursively with the current interface (adding the classes to the
 				// list).
-				classes.addAll(new ClassMirror<>(currentInterface).getSuperclasses());
+				classes.addAll(new ClassMirror<>(currentInterface).getSuperClasses());
 			}
 		}
 		// If the class has any superclass.
 		if (getReflectedClass().getSuperclass() != null) {
 			// Calls the same method recursively with its superclass (adding the classes to the list).
-			classes.addAll(new ClassMirror<>(getReflectedClass().getSuperclass()).getSuperclasses());
+			classes.addAll(new ClassMirror<>(getReflectedClass().getSuperclass()).getSuperClasses());
 		}
 		// Adds the Object class.
 		classes.add(new ClassMirror<Object>(Object.class));
@@ -297,11 +292,8 @@ public class ClassMirror<Reflected> {
 	 */
 	public FieldMirror getField(final String fieldName) throws InvalidParameterException,
 			EmptyParameterException {
-		// If the field name is empty.
-		if ((fieldName == null) || (fieldName.isEmpty())) {
-			// Throws an exception.
-			throw new EmptyParameterException(ClassParamKeys.FIELD_NAME);
-		}
+		// Asserts that the field name is not empty.
+		PreConditions.assertParamNotEmpty(ClassParamKeys.FIELD_NAME, fieldName);
 		// While there are super classes.
 		for (Class<?> currentClass = getReflectedClass(); currentClass != null; currentClass = currentClass
 				.getSuperclass()) {
@@ -315,8 +307,8 @@ public class ClassMirror<Reflected> {
 			}
 		}
 		// If no field was found for this name, throws an exception.
-		throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.FIELD_NOT_FOUND, new Object[] {
-				getReflectedClass(), ClassParamKeys.FIELD_NAME, fieldName }, null);
+		throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.FIELD_NOT_FOUND,
+				new Object[] { getReflectedClass(), ClassParamKeys.FIELD_NAME, fieldName }, null);
 
 	}
 
@@ -328,11 +320,8 @@ public class ClassMirror<Reflected> {
 	 * @return field path for the reflected class.
 	 */
 	public FieldPath getFieldPath(final String fieldNamePath) {
-		// If the field path is null or empty.
-		if ((fieldNamePath == null) || (fieldNamePath.isEmpty())) {
-			// Throws an exception.
-			throw new EmptyParameterException(ClassParamKeys.FIELD_NAME_PATH);
-		}
+		// Asserts that the field path is not empty.
+		PreConditions.assertParamNotEmpty(ClassParamKeys.FIELD_NAME_PATH, fieldNamePath);
 		// Split the fields from the given path.
 		final String[] fieldsNames = fieldNamePath.split("\\.");
 		// Creates the field path.
@@ -389,7 +378,7 @@ public class ClassMirror<Reflected> {
 			// Gets the current varying class.
 			final ClassMirror<?> currentVaryingClass = new ClassMirror<>(paramsClasses[varyingParamIndex]);
 			// For each class inherited by the current parameter being varied.
-			for (final ClassMirror<?> currentParamClass : currentVaryingClass.getSuperclasses()) {
+			for (final ClassMirror<?> currentParamClass : currentVaryingClass.getSuperClasses()) {
 				// Changes the parameter class with the current superclass/interface.
 				paramsClasses[varyingParamIndex] = currentParamClass.getReflectedClass();
 				// Tries to return the method with the exact parameters classes.
@@ -412,8 +401,8 @@ public class ClassMirror<Reflected> {
 				}
 			}
 			// If no method was found, throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.METHOD_NOT_FOUND, new Object[] {
-					getReflectedClass(), methodName, paramsClasses, varyingParamIndex }, null);
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.METHOD_NOT_FOUND,
+					new Object[] { getReflectedClass(), methodName, paramsClasses, varyingParamIndex }, null);
 		}
 		// In all cases.
 		finally {
@@ -438,11 +427,8 @@ public class ClassMirror<Reflected> {
 	 */
 	public MethodMirror getMethod(final String methodName, final Class<?>[] paramsClasses)
 			throws InvalidParameterException, EmptyParameterException {
-		// If the method name is empty.
-		if ((methodName == null) || (methodName.isEmpty())) {
-			// Throws an exception.
-			throw new EmptyParameterException(ClassParamKeys.METHOD_NAME);
-		}
+		// Asserts that the method name is not empty.
+		PreConditions.assertParamNotEmpty(ClassParamKeys.METHOD_NAME, methodName);
 		// If there are no parameters for the method to be found.
 		if ((paramsClasses == null) || (paramsClasses.length == 0)) {
 			// Tries to get the method normally using the reflection API.
@@ -465,9 +451,8 @@ public class ClassMirror<Reflected> {
 				// If the current parameter class is empty.
 				if (currentParamClass == null) {
 					// Throws an exception.
-
-					throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.EMPTY_PARAM_CLASS,
-							new Object[] { currentParamIndex + 1 }, null);
+					throw new InvalidParameterException(MessageTypes.Error.class,
+							ErrorKeys.EMPTY_PARAM_CLASS, new Object[] { currentParamIndex + 1 }, null);
 				}
 			}
 			// Tries to get the method varying the first parameter class.
@@ -497,8 +482,8 @@ public class ClassMirror<Reflected> {
 				// If the value for the parameter is null.
 				if (paramsValues[currentParamIndex] == null) {
 					// Throws an exception.
-					throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.EMPTY_PARAM_VALUE,
-							new Object[] { currentParamIndex + 1 }, null);
+					throw new InvalidParameterException(MessageTypes.Error.class,
+							ErrorKeys.EMPTY_PARAM_VALUE, new Object[] { currentParamIndex + 1 }, null);
 				}
 				// Gets the class for the current parameter and puts it in the
 				// correspondent position inside array.
@@ -539,7 +524,7 @@ public class ClassMirror<Reflected> {
 		// Creates the set for the annotations.
 		final Set<AnnotationMirror<?>> annotations = new LinkedHashSet<>();
 		// For each super class of the reflected class.
-		for (final ClassMirror<?> currentClass : getSuperclasses()) {
+		for (final ClassMirror<?> currentClass : getSuperClasses()) {
 			// For each annotation in the current class.
 			for (final Annotation currentAnnotation : currentClass.getReflectedClass().getAnnotations()) {
 				// Adds the annotation to the set.
@@ -564,7 +549,7 @@ public class ClassMirror<Reflected> {
 		// Creates the set for the annotations.
 		final Collection<AnnotationMirror<AnyAnnotation>> annotations = new ArrayList<>();
 		// For each super class of the reflected class.
-		for (final ClassMirror<?> currentClass : getSuperclasses()) {
+		for (final ClassMirror<?> currentClass : getSuperClasses()) {
 			// Tries to get the annotation for the current class.
 			final AnyAnnotation annotation = currentClass.getReflectedClass().getAnnotation(annotationClass);
 			// If the annotation is found.
@@ -591,11 +576,8 @@ public class ClassMirror<Reflected> {
 	 */
 	public <AnyAnnotation extends Annotation> AnnotationMirror<AnyAnnotation> getAnnotation(
 			final Class<AnyAnnotation> annotationClass) throws EmptyParameterException {
-		// If the annotation class is null.
-		if (annotationClass == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(ClassParamKeys.ANNOTATION_CLASS);
-		}
+		// Asserts that the class is not null.
+		PreConditions.assertParamNotNull(ClassParamKeys.ANNOTATION_CLASS, annotationClass);
 		// For each annotation in the reflected class.
 		for (final AnnotationMirror<?> currentAnnotation : getAnnotations()) {
 			// If the current annotation is an instance of the given class.
@@ -628,7 +610,7 @@ public class ClassMirror<Reflected> {
 		try {
 			// For each class inherited by the current parameter being varied.
 			for (final ClassMirror<?> currentParamClass : new ClassMirror<>(paramsClasses[varyingParamIndex])
-					.getSuperclasses()) {
+					.getSuperClasses()) {
 				// Changes the parameter class with the current superclass/interface.
 				paramsClasses[varyingParamIndex] = currentParamClass.getReflectedClass();
 				// Tries to return the constructor with the exact parameters classes.
@@ -683,8 +665,9 @@ public class ClassMirror<Reflected> {
 			// If the constructor cannot be found or accessed.
 			catch (final Exception exception) {
 				// Throws an exception.
-				throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.CONSTRUCTOR_NOT_FOUND,
-						new Object[] { getReflectedClass(), paramsClasses }, null);
+				throw new InvalidParameterException(MessageTypes.Error.class,
+						ErrorKeys.CONSTRUCTOR_NOT_FOUND, new Object[] { getReflectedClass(), paramsClasses },
+						null);
 			}
 		}
 		// If there are parameters.
@@ -696,8 +679,8 @@ public class ClassMirror<Reflected> {
 				// If the current parameter class is empty.
 				if (currentParamClass == null) {
 					// Throws an exception.
-					throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.EMPTY_PARAM_CLASS,
-							new Object[] { currentParamIndex + 1 }, null);
+					throw new InvalidParameterException(MessageTypes.Error.class,
+							ErrorKeys.EMPTY_PARAM_CLASS, new Object[] { currentParamIndex + 1 }, null);
 				}
 			}
 			// Tries to get the constructor varying the first parameter class.
@@ -756,5 +739,4 @@ public class ClassMirror<Reflected> {
 		}
 		return true;
 	}
-
 }

@@ -15,6 +15,11 @@ public final class ErrorKeys {
 	public static final String GENERIC = "generic";
 
 	/**
+	 * Invalid state error key.
+	 */
+	public static final String INVALID_STATE = "state.invalid";
+
+	/**
 	 * Invalid parameter error key.
 	 */
 	public static final String INVALID_PARAM = "parameter.invalid";

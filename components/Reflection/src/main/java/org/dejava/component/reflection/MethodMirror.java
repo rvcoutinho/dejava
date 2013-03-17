@@ -13,6 +13,7 @@ import org.dejava.component.reflection.constant.ErrorKeys;
 import org.dejava.component.reflection.constant.MethodParamKeys;
 import org.dejava.component.reflection.exception.InvocationException;
 import org.dejava.component.reflection.util.MessageTypes;
+import org.dejava.component.validation.method.PreConditions;
 
 /**
  * TODO
@@ -52,11 +53,8 @@ public class MethodMirror {
 	 *             If the reflected field is not given.
 	 */
 	public MethodMirror(final Method reflectedMethod) throws EmptyParameterException {
-		// If the field is null.
-		if (reflectedMethod == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(MethodParamKeys.METHOD);
-		}
+		// Asserts that the method is not null.
+		PreConditions.assertParamNotNull(MethodParamKeys.METHOD, reflectedMethod);
 		// Sets the main reflection fields.
 		this.reflectedMethod = reflectedMethod;
 	}
@@ -254,11 +252,8 @@ public class MethodMirror {
 	 */
 	public Object invokeMethod(final String jndiPath, final Object[] paramsValues, final Boolean ignoreAccess)
 			throws InvalidParameterException, InvocationException {
-		// If the JNDI path is empty.
-		if ((jndiPath == null) || (jndiPath.isEmpty())) {
-			// Throws an exception.
-			throw new EmptyParameterException(MethodParamKeys.JNDI_PATH);
-		}
+		// Asserts that the JNDI path is not empty.
+		PreConditions.assertParamNotEmpty(MethodParamKeys.JNDI_PATH, jndiPath);
 		// Tries to invoke the method.
 		try {
 			// Tries to retrieve the object.

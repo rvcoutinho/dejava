@@ -7,15 +7,16 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.constant.ErrorKeys;
 import org.dejava.component.i18n.message.constant.MessageHandlerParamKeys;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.MessageHandler;
+import org.dejava.component.i18n.message.util.MessageTypes;
 import org.dejava.component.reflection.AnnotationMirror;
 import org.dejava.component.reflection.ClassMirror;
+import org.dejava.component.validation.method.PreConditions;
 
 /**
  * Default i18n message handler. Handles getting messages from within a class using the information provided
@@ -195,16 +196,10 @@ public class SimpleMessageHandler implements MessageHandler {
 	 */
 	public String getMessage(final Class<?> type, final Locale locale, final String key,
 			final Object[] parametersValues) throws MessageNotFoundException, InvalidParameterException {
-		// If the type is not given.
-		if (type == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(MessageHandlerParamKeys.TYPE);
-		}
-		// If the key is not given.
-		if ((key == null) || (key.isEmpty())) {
-			// Throws an exception.
-			throw new EmptyParameterException(MessageHandlerParamKeys.KEY);
-		}
+		// Asserts that the type is not null.
+		PreConditions.assertParamNotNull(MessageHandlerParamKeys.TYPE, type);
+		// Asserts that the key is not empty.
+		PreConditions.assertParamNotEmpty(MessageHandlerParamKeys.KEY, key);
 		// The actual locale is the given one.
 		Locale actualLocale = locale;
 		// If the actual locale is null.
@@ -236,12 +231,9 @@ public class SimpleMessageHandler implements MessageHandler {
 	@Override
 	public String getMessage(final Object type, final Locale locale, final String key,
 			final Object[] parametersValues) throws MessageNotFoundException, InvalidParameterException {
-		// If the type is not a class.
-		if (!(type instanceof Class<?>)) {
-			// Throws an exception.
-			throw new InvalidParameterException(MessageHandlerParamKeys.TYPE, ErrorKeys.INVALID_TYPE,
-					new Object[] { type }, null);
-		}
+		// Assures that the type is a class.
+		PreConditions.assertParamValid(type instanceof Class<?>, MessageTypes.Error.class,
+				ErrorKeys.INVALID_TYPE, new Object[] { type });
 		// Tries to return the message.
 		return getMessage((Class<?>) type, locale, key, parametersValues);
 	}

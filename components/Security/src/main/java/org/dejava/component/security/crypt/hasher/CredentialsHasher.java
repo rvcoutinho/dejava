@@ -9,6 +9,7 @@ import org.dejava.component.security.authc.credential.HashedCredentials;
 import org.dejava.component.security.crypt.constant.CredentialHasherParamKeys;
 import org.dejava.component.security.crypt.constant.ErrorKeys;
 import org.dejava.component.security.crypt.util.MessageTypes;
+import org.dejava.component.validation.method.PreConditions;
 
 /**
  * Handles the hash calculation for user credentials.
@@ -87,12 +88,10 @@ public final class CredentialsHasher {
 	 *            New minimum number of hash cycles to be used in the hash calculation.
 	 */
 	public void setMinCycles(final Integer minCycles) {
-		// If the given minimum is greater than the maximum (or less than the minimum).
-		if ((minCycles == null) || (minCycles > getMaxCycles()) || (minCycles < MIN_MIN_CYCLES)) {
-			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.INVALID_MIN_CYCLES, new Object[] {
-					getMaxCycles(), MIN_MIN_CYCLES }, null);
-		}
+		// Asserts that the given minimum is lesser than the maximum (and greater than the basic minimum).
+		PreConditions.assertParamValid((minCycles != null) && (minCycles <= getMaxCycles())
+				&& (minCycles >= MIN_MIN_CYCLES), MessageTypes.Error.class, ErrorKeys.INVALID_MIN_CYCLES,
+				new Object[] { getMaxCycles(), MIN_MIN_CYCLES });
 		// Sets the new minimum.
 		this.minCycles = minCycles;
 	}
@@ -123,12 +122,10 @@ public final class CredentialsHasher {
 	 *            New maximum number of hash cycles to be used in the hash calculation.
 	 */
 	public void setMaxCycles(final Integer maxCycles) {
-		// If the given minimum is lesser than the maximum (or greater than the maximum).
-		if ((maxCycles == null) || (maxCycles < getMinCycles()) || (maxCycles > MAX_MAX_CYCLES)) {
-			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.INVALID_MAX_CYCLES, new Object[] {
-					getMinCycles(), MAX_MAX_CYCLES }, null);
-		}
+		// Asserts that the given maximum is greater than the minimum (and lesser than the basic maximum).
+		PreConditions.assertParamValid((maxCycles != null) && (maxCycles >= getMinCycles())
+				&& (maxCycles <= MAX_MAX_CYCLES), MessageTypes.Error.class, ErrorKeys.INVALID_MAX_CYCLES,
+				new Object[] { getMinCycles(), MAX_MAX_CYCLES });
 		// Sets the new maximum.
 		this.maxCycles = maxCycles;
 	}
@@ -154,11 +151,8 @@ public final class CredentialsHasher {
 	 *            New prime to be used in the algorithm selection.
 	 */
 	public void setAlgorithmPrime(final Integer algorithmPrime) {
-		// If the number is null.
-		if (algorithmPrime == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(CredentialHasherParamKeys.ALG_PRIME);
-		}
+		// Asserts that the parameter is not null.
+		PreConditions.assertParamNotNull(CredentialHasherParamKeys.ALG_PRIME, algorithmPrime);
 		// Sets the new number.
 		this.algorithmPrime = algorithmPrime;
 	}
@@ -184,11 +178,8 @@ public final class CredentialsHasher {
 	 *            New prime to be used in the cycle selection.
 	 */
 	public void setCyclePrime(final Integer cyclePrime) {
-		// If the number is null.
-		if (cyclePrime == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(CredentialHasherParamKeys.CYCLE_PRIME);
-		}
+		// Asserts that the parameter is not null.
+		PreConditions.assertParamNotNull(CredentialHasherParamKeys.CYCLE_PRIME, cyclePrime);
 		// Sets the new number.
 		this.cyclePrime = cyclePrime;
 	}
@@ -223,11 +214,8 @@ public final class CredentialsHasher {
 	 *            A credential containing information on how to be hashed.
 	 */
 	public void setCredentialHasher(final HashedCredentials hashedCredentials) {
-		// If the given credential is null.
-		if (hashedCredentials == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIALS);
-		}
+		// Asserts that the parameter is not null.
+		PreConditions.assertParamNotNull(CredentialHasherParamKeys.CREDENTIALS, hashedCredentials);
 		// Sets the basic information for the credential hasher.
 		setCredentialHasher(hashedCredentials.getAlgorithmsNames(), hashedCredentials.getMinCycles(),
 				hashedCredentials.getMaxCycles());
@@ -323,25 +311,23 @@ public final class CredentialsHasher {
 	/**
 	 * Gets the hash from a given credential.
 	 * 
-	 * @param credential
+	 * @param credentials
 	 *            The credential to be hashed.
 	 * @param salt
 	 *            Salt to be used in the hash calculation. It is a good idea to have an unique salt per user.
 	 * @return The hash from a given credential.
 	 */
-	public byte[] hash(final byte[] credential, final String salt) {
+	public byte[] hash(final byte[] credentials, final String salt) {
 		// If the credential is null or empty.
-		if ((credential == null) || (credential.length == 0)) {
+		if ((credentials == null) || (credentials.length == 0)) {
 			// Throws an exception.
 			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIALS);
 		}
+		// Asserts that the parameter is not empty.
+		PreConditions.assertParamNotEmpty(CredentialHasherParamKeys.SALT, salt);
 		// If the salt is null or empty.
-		if ((salt == null) || (salt.isEmpty())) {
-			// Throws an exception.
-			throw new EmptyParameterException(CredentialHasherParamKeys.SALT);
-		}
 		// The hashed credential is initially the credential itself.
-		byte[] hashedCredential = credential;
+		byte[] hashedCredential = credentials;
 		// For each algorithm to be used.
 		for (final MessageDigest currentDigest : getAlgorithmsOrder(salt)) {
 			// Makes sure the digest is reset.
@@ -365,11 +351,8 @@ public final class CredentialsHasher {
 	 * @return The hash from a given credential.
 	 */
 	public byte[] hash(final String credentials, final String salt) {
-		// If the credentials is null or empty.
-		if ((credentials == null) || (credentials.isEmpty())) {
-			// Throws an exception.
-			throw new EmptyParameterException(CredentialHasherParamKeys.CREDENTIALS);
-		}
+		// Asserts that the parameter is not empty.
+		PreConditions.assertParamNotEmpty(CredentialHasherParamKeys.CREDENTIALS, credentials);
 		// Tries to hash the credentials.
 		return hash(credentials.getBytes(), salt);
 	}

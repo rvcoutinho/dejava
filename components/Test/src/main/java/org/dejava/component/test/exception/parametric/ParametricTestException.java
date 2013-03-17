@@ -3,6 +3,7 @@ package org.dejava.component.test.exception.parametric;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.dejava.component.test.constant.ErrorKeys;
 import org.dejava.component.test.exception.AbstractTestException;
 import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestAssertionError;
 import org.dejava.component.test.exception.parametric.atomic.AtomParametricTestException;
@@ -94,7 +95,7 @@ public class ParametricTestException extends AbstractTestException {
 	public ParametricTestException(final String testName, final Object[] parameters,
 			final Collection<AtomParametricTestException> testExceptions,
 			final Collection<AtomParametricTestAssertionError> testAssumptionViolations) {
-		super(MessageTypes.Error.class, null, testName, parameters, null);
+		super(MessageTypes.Error.class, ErrorKeys.FAILED_PARAMETRIC_TEST, testName, parameters, null);
 		// Sets the basic fields.
 		this.testExceptions = testExceptions;
 		this.testAssumptionViolations = testAssumptionViolations;

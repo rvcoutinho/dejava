@@ -2,13 +2,12 @@ package org.dejava.component.test.runner.dataset.impl;
 
 import java.util.Collection;
 
-import javax.annotation.Resources;
-
 import org.dejava.component.reflection.ClassMirror;
 import org.dejava.component.test.constant.ErrorKeys;
 import org.dejava.component.test.exception.parametric.InvalidParametricTestException;
 import org.dejava.component.test.runner.dataset.TestDataProvider;
 import org.dejava.component.test.runner.statement.ParametricTestMethodInvoker;
+import org.dejava.component.test.util.MessageTypes;
 import org.junit.runners.model.FrameworkMethod;
 
 /**
@@ -19,7 +18,8 @@ public class StaticMethodTestDataProvider implements TestDataProvider {
 	/**
 	 * Default name for the test data objects method.
 	 */
-	public static final String DEFAULT_METHOD_NAME = ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION + "Data";
+	public static final String DEFAULT_METHOD_NAME = ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION
+			+ "Data";
 
 	/**
 	 * The method name for the test data provider.
@@ -39,7 +39,8 @@ public class StaticMethodTestDataProvider implements TestDataProvider {
 			// The default method name is used.
 			methodName = DEFAULT_METHOD_NAME;
 			// Replaces the method name in the path.
-			methodName = methodName.replace(ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION, testMethod.getName());
+			methodName = methodName.replace(ParametricTestMethodInvoker.METHOD_NAME_EXPRESSION,
+					testMethod.getName());
 		}
 		// Returns the method name.
 		return methodName;
@@ -85,14 +86,14 @@ public class StaticMethodTestDataProvider implements TestDataProvider {
 			// Gets the test class mirror.
 			final ClassMirror<?> testClass = new ClassMirror<>(testMethod.getMethod().getDeclaringClass());
 			// The test data is the return of the method invocation.
-			return (Collection<?>) testClass.getMethod(getMethodName(testMethod), null).invokeMethod((Object) null,
-					null, true);
+			return (Collection<?>) testClass.getMethod(getMethodName(testMethod), null).invokeMethod(
+					(Object) null, null, true);
 		}
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {
 			// Throws an exception.
-			throw new InvalidParametricTestException(Resources.class, ErrorKeys.UNAVAILABLE_TEST_DATA,
-					testMethod.getName(), null, exception);
+			throw new InvalidParametricTestException(MessageTypes.Error.class,
+					ErrorKeys.UNAVAILABLE_TEST_DATA, testMethod.getName(), null, exception);
 		}
 	}
 }

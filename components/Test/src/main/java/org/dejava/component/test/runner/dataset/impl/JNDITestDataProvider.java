@@ -2,11 +2,10 @@ package org.dejava.component.test.runner.dataset.impl;
 
 import java.util.Collection;
 
-import javax.annotation.Resources;
-
 import org.dejava.component.test.constant.ErrorKeys;
 import org.dejava.component.test.exception.parametric.InvalidParametricTestException;
 import org.dejava.component.test.runner.dataset.TestDataProvider;
+import org.dejava.component.test.util.MessageTypes;
 import org.junit.runners.model.FrameworkMethod;
 
 /**
@@ -91,8 +90,8 @@ public class JNDITestDataProvider implements TestDataProvider {
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {
 			// Throws an exception.
-			throw new InvalidParametricTestException(Resources.class, ErrorKeys.UNAVAILABLE_TEST_DATA,
-					testMethod.getName(), null, exception);
+			throw new InvalidParametricTestException(MessageTypes.Error.class,
+					ErrorKeys.UNAVAILABLE_TEST_DATA, testMethod.getName(), null, exception);
 		}
 	}
 }

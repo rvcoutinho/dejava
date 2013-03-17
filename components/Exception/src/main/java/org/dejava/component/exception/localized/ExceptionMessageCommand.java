@@ -1,6 +1,8 @@
 package org.dejava.component.exception.localized;
 
 import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.dejava.component.exception.constant.ErrorKeys;
 import org.dejava.component.exception.util.MessageTypes;
@@ -63,4 +65,5 @@ public class ExceptionMessageCommand extends SimpleMessageCommand {
 			return getMessageHandler().getMessage(MessageTypes.Error.class, Locale.US, ErrorKeys.GENERIC, null);
 		}
 	}
+	
 }

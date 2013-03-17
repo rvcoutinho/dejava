@@ -9,6 +9,7 @@ import org.dejava.component.reflection.constant.ErrorKeys;
 import org.dejava.component.reflection.constant.FieldParamKeys;
 import org.dejava.component.reflection.exception.InvocationException;
 import org.dejava.component.reflection.util.MessageTypes;
+import org.dejava.component.validation.method.PreConditions;
 
 /**
  * TODO
@@ -212,11 +213,8 @@ public class FieldMirror {
 	 *             If the reflected field is not given.
 	 */
 	public FieldMirror(final Field reflectedField) throws EmptyParameterException {
-		// If the field is null.
-		if (reflectedField == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(FieldParamKeys.FIELD);
-		}
+		// Asserts that the field is not null.
+		PreConditions.assertParamNotNull(FieldParamKeys.FIELD, reflectedField);
 		// Sets the main reflection fields.
 		this.reflectedField = reflectedField;
 	}
@@ -243,14 +241,14 @@ public class FieldMirror {
 		// If the target object is not from the declaring class type of the reflected field.
 		catch (final IllegalArgumentException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.WRONG_TARGET_OBJ, new Object[] {
-					getReflectedField(), targetObject, ignoreAccess }, null);
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.WRONG_TARGET_OBJ,
+					new Object[] { getReflectedField(), targetObject, ignoreAccess }, null);
 		}
 		// If the field cannot be accessed (modifiers).
 		catch (final IllegalAccessException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.UNACCESSIBLE_FIELD, new Object[] {
-					getReflectedField(), targetObject, ignoreAccess }, null);
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.UNACCESSIBLE_FIELD,
+					new Object[] { getReflectedField(), targetObject, ignoreAccess }, null);
 		}
 		// Finally.
 		finally {
@@ -339,14 +337,14 @@ public class FieldMirror {
 		// If the target object is not from the declaring class type of the reflected field.
 		catch (final IllegalArgumentException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.WRONG_TARGET_OBJ, new Object[] {
-					getReflectedField(), targetObject, newValue, ignoreAccess }, exception);
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.WRONG_TARGET_OBJ,
+					new Object[] { getReflectedField(), targetObject, newValue, ignoreAccess }, exception);
 		}
 		// If the field cannot be accessed (modifiers).
 		catch (final IllegalAccessException exception) {
 			// Throws an exception.
-			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.UNACCESSIBLE_FIELD, new Object[] {
-					getReflectedField(), targetObject, newValue, ignoreAccess }, exception);
+			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.UNACCESSIBLE_FIELD,
+					new Object[] { getReflectedField(), targetObject, newValue, ignoreAccess }, exception);
 		}
 		// Finally.
 		finally {

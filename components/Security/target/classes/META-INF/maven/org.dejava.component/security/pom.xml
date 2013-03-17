@@ -90,6 +90,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
+			<artifactId>validation</artifactId>
+			<version>0.0.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
 			<artifactId>test</artifactId>
 			<version>0.0.1</version>
 			<scope>test</scope>

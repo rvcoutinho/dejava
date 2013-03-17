@@ -1,6 +1,7 @@
 package org.dejava.component.test.exception.parametric.atomic;
 
 import org.dejava.component.test.exception.AbstractTestAssertionError;
+import org.dejava.component.test.util.MessageTypes;
 
 /**
  * A single parametric test assertion error.
@@ -14,7 +15,9 @@ public class AtomParametricTestAssertionError extends AbstractTestAssertionError
 
 	/**
 	 * Default constructor.
-	 * @param testName The test name.
+	 * 
+	 * @param testName
+	 *            The test name.
 	 * @param parameters
 	 *            Parameters for the exception (and message).
 	 * @param cause
@@ -22,6 +25,6 @@ public class AtomParametricTestAssertionError extends AbstractTestAssertionError
 	 */
 	public AtomParametricTestAssertionError(final String testName, final Object[] parameters,
 			final Throwable cause) {
-		super(null, null, testName, parameters, cause);
+		super(MessageTypes.Error.class, null, testName, parameters, cause);
 	}
 }

@@ -3,17 +3,14 @@ package org.dejava.component.test.runner.dataset.impl;
 import java.io.InputStream;
 import java.util.Collection;
 
-import javax.annotation.Resources;
-
 import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.reflection.ClassMirror;
-import org.dejava.component.serialization.xml.XMLCreator;
 import org.dejava.component.test.constant.ErrorKeys;
 import org.dejava.component.test.exception.parametric.InvalidParametricTestException;
 import org.dejava.component.test.runner.dataset.TestDataProvider;
 import org.dejava.component.test.runner.statement.ParametricTestMethodInvoker;
+import org.dejava.component.test.util.MessageTypes;
 import org.junit.runners.model.FrameworkMethod;
-import org.w3c.dom.Document;
 
 /**
  * Provides access to XML test data.
@@ -88,7 +85,7 @@ public class XMLTestDataProvider implements TestDataProvider {
 			// Gets the XML input stream.
 			final InputStream xmlInputStream = getXMLStream(testMethod);
 			// Creates the XML document for the stream.
-			final Document xmlDocument = XMLCreator.createXMLDocument(xmlInputStream);
+			// final Document xmlDocument = XMLCreator.createXMLDocument(xmlInputStream);
 			// Gets the test data object from the XML document. TODO Think about expected class FIXME
 			// return (Collection<?>) XMLDecoder.fromXML(xmlDocument, null, null, null);
 			return null;
@@ -96,8 +93,8 @@ public class XMLTestDataProvider implements TestDataProvider {
 		// If the test data cannot be retrieved.
 		catch (final Exception exception) {
 			// Throws an exception.
-			throw new InvalidParametricTestException(Resources.class, ErrorKeys.UNAVAILABLE_TEST_DATA,
-					testMethod.getName(), null, exception);
+			throw new InvalidParametricTestException(MessageTypes.Error.class,
+					ErrorKeys.UNAVAILABLE_TEST_DATA, testMethod.getName(), null, exception);
 		}
 	}
 }

@@ -22,4 +22,14 @@ public class EmptyParameterException extends InvalidParameterException {
 	public EmptyParameterException(final String emptyParameter) {
 		super(MessageTypes.Error.class, ErrorKeys.EMPTY_PARAM, new Object[] { emptyParameter }, null);
 	}
+
+	/**
+	 * @see AbstractLocalizedRuntimeException#AbstractLocalizedRuntimeException(Object, String, Object[],
+	 *      Throwable)
+	 */
+	public EmptyParameterException(final Object type, final String messageKey, final Object[] parameters,
+			final Throwable cause) {
+		super(type, messageKey, parameters, cause);
+	}
+
 }

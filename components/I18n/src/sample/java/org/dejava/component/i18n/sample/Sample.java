@@ -1,11 +1,10 @@
 package org.dejava.component.i18n.sample;
 
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
-import org.dejava.component.i18n.message.annotation.MessageBundle;
-import org.dejava.component.i18n.message.annotation.MessageBundles;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
 import org.dejava.component.i18n.message.handler.MessageHandler;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
@@ -15,9 +14,6 @@ import org.dejava.component.i18n.sample.constant.InformationKeys;
 /**
  * Java I18n API sample.
  */
-@MessageBundles(defaultType = "information", messageBundles = {
-		@MessageBundle(type = "information", baseName = "org.dejava.component.i18n.test.sample.properties.information"),
-		@MessageBundle(type = "error", baseName = "org.dejava.component.i18n.test.sample.properties.error") })
 public final class Sample {
 
 	/**
@@ -26,24 +22,25 @@ public final class Sample {
 	private Sample() {
 		super();
 	}
-	
+
 	/**
 	 * TODO
 	 */
-	private void regularI18nSample(){
+	private void regularI18nSample() {
 		// Gets the bundle.
-		ResourceBundle bundle = ResourceBundle.getBundle("org.dejava.component.i18n.test.sample.properties.information", Locale.US);
+		final ResourceBundle bundle = ResourceBundle.getBundle(
+				"org.dejava.component.i18n.test.sample.properties.information", Locale.US);
 		// Prints the bundle entry value.
 		System.out.println(bundle.getString(InformationKeys.SUCCESS));
 	}
-	
+
 	/**
 	 * TODO
 	 */
-	private void dejavaExtendedI18nSample(){
+	private void dejavaExtendedI18nSample() {
 		// Gets the default message handler for the pt_BR locale.
-		final MessageHandler ptbrMessageHandler = SimpleMessageHandler.getMessageHandler(new Locale(
-				"pt", "BR"));
+		final MessageHandler ptbrMessageHandler = SimpleMessageHandler.getMessageHandler(new Locale("pt",
+				"BR"));
 		// Prints a message using the pt_BR locale and the default bundle.
 		System.out.println(ptbrMessageHandler.getMessage(InformationKeys.SUCCESS, null));
 		// Prints a message using the pt_BR locale, the "error" bundle and one parameter.

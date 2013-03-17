@@ -5,8 +5,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import javax.annotation.Resources;
-
 import org.dejava.component.reflection.ClassMirror;
 import org.dejava.component.test.annotation.ParametricTest;
 import org.dejava.component.test.constant.ErrorKeys;
@@ -19,6 +17,7 @@ import org.dejava.component.test.runner.notifier.ParametricTestNotifier;
 import org.dejava.component.test.runner.rule.ParametricTestWrapperRule;
 import org.dejava.component.test.runner.statement.ParametricTestMethodInvoker;
 import org.dejava.component.test.runner.statement.ParametricTestWrapper;
+import org.dejava.component.test.util.MessageTypes;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Test.None;
@@ -90,8 +89,8 @@ public class JUnitParametricRunner extends BlockJUnit4ClassRunner {
 		// If the provider cannot be instantiated.
 		catch (final Exception exception) {
 			// Throws an exception.
-			throw new InvalidParametricTestException(Resources.class, ErrorKeys.UNAVAILABLE_TEST_DATA,
-					testMethod.getName(), null, exception);
+			throw new InvalidParametricTestException(MessageTypes.Error.class,
+					ErrorKeys.UNAVAILABLE_TEST_DATA, testMethod.getName(), null, exception);
 		}
 	}
 

@@ -231,11 +231,11 @@ public class EJBRealm extends AuthenticatingRealm {
 			// The user for the given principal.
 			User user = null;
 			// Tries to get a similar registered user name.
-			userPrincipal = getNameService().getEntityByAttribute("name", upToken.getUsername());
+			userPrincipal = getNameService().getByAttribute("name", upToken.getUsername());
 			// If there is no user for the name.
 			if (userPrincipal == null) {
 				// Tries to get a similar registered user email.
-				userPrincipal = getEmailService().getEntityByAttribute("email", upToken.getUsername());
+				userPrincipal = getEmailService().getByAttribute("email", upToken.getUsername());
 			}
 			// If there is an user for the given name/email.
 			if (userPrincipal != null) {
@@ -248,7 +248,7 @@ public class EJBRealm extends AuthenticatingRealm {
 				final PrincipalCollection principals = new SimplePrincipalCollection(user.getRawPrincipals(),
 						getName());
 				// Gets the password for the user.
-				final Password password = getPasswordService().getEntityByAttribute("user", user);
+				final Password password = getPasswordService().getByAttribute("user", user);
 				// Creates a new simple authentication (with the user principals and credentials).
 				final SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principals,
 						password);

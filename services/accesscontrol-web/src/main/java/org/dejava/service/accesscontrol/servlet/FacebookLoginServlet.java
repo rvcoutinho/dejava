@@ -197,14 +197,14 @@ public class FacebookLoginServlet extends HttpServlet {
 	}
 
 	/**
-	 * The facebook EJB service.
+	 * The facebook principal EJB service.
 	 */
 	@Inject
 	@AccessControl
 	private FacebookService facebookService;
 
 	/**
-	 * The email EJB service.
+	 * The email principal EJB service.
 	 */
 	@Inject
 	@AccessControl
@@ -247,8 +247,7 @@ public class FacebookLoginServlet extends HttpServlet {
 		// If there is a logged facebook user.
 		else {
 			// If there is not a facebook principal for the facebook user id.
-			// Think is this is the right place.
-			if (facebookService.getEntityByAttribute("identifier", fbUser.getId()) == null) {
+			if (userService.getByFacebookUser(fbUser) == null) {
 				// Adds a new user with the facebook user information.
 				userService.addOrUpdate(new User(fbUser));
 			}

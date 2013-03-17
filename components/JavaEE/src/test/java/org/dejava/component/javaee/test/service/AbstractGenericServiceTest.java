@@ -54,7 +54,7 @@ public abstract class AbstractGenericServiceTest {
 	@Before
 	public void assertNoEntitiesPersisted() {
 		// Gets all entities.
-		final Collection<FakeEntity> allEntities = getService().getAllEntities(null, null);
+		final Collection<FakeEntity> allEntities = getService().getAll(null, null);
 		// Assert that there are no entities persisted.
 		Assert.assertTrue(allEntities.isEmpty());
 	}
@@ -65,26 +65,26 @@ public abstract class AbstractGenericServiceTest {
 	@After
 	public void removeTestEntities() {
 		// Gets all entities.
-		final Collection<FakeEntity> allEntities = getService().getAllEntities(null, null);
+		final Collection<FakeEntity> allEntities = getService().getAll(null, null);
 		// Removes all persisted entities.
-		getService().removeAll(allEntities);
+		getService().remove(allEntities);
 	}
 
 	/**
-	 * Tests a successful approach for the method addOrUpdate.
+	 * Tests a successful approach for the method addOrUpdate (entity).
 	 */
 	@Test
 	public void testAddOrUpdateSuccess() {
 		// Tries to add a fake entity.
 		final FakeEntity fakeEntity = getService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
 		// Tries to get the same entity by its new id.
-		final FakeEntity sameFakeEntity = getService().getEntityById(fakeEntity.getIdentifier());
+		final FakeEntity sameFakeEntity = getService().getById(fakeEntity.getIdentifier());
 		// Assert that the two entities are the sOame.
 		Assert.assertEquals(fakeEntity, sameFakeEntity);
 	}
 
 	/**
-	 * Tests the method addOrUpdate with null entity.
+	 * Tests the method addOrUpdate (entity) with null entity.
 	 * 
 	 * @throws Throwable
 	 *             Expected exception.
@@ -93,7 +93,7 @@ public abstract class AbstractGenericServiceTest {
 	public void testAddOrUpdateNullEntity() throws Throwable {
 		// Tries to add a fake entity.
 		try {
-			getService().addOrUpdate(null);
+			getService().addOrUpdate((FakeEntity) null);
 		}
 		// Expects an EJB exception.
 		catch (final EJBException exception) {
@@ -103,31 +103,31 @@ public abstract class AbstractGenericServiceTest {
 	}
 
 	/**
-	 * Tests a successful approach for the method addOrUpdateAll.
+	 * Tests a successful approach for the method addOrUpdate (collection).
 	 */
 	@Test
-	public void testAddOrUpdateAllSuccess() {
+	public void testAddOrUpdateCollectionSuccess() {
 		// Tries to add fake entities (there are no persistent entities yet).
-		final Collection<FakeEntity> entities = getService().addOrUpdateAll(getTestEntities());
+		final Collection<FakeEntity> entities = getService().addOrUpdate(getTestEntities());
 		// Tries to get all persisted entities.
-		final Collection<FakeEntity> sameFakeEntities = getService().getAllEntities(null, null);
+		final Collection<FakeEntity> sameFakeEntities = getService().getAll(null, null);
 		// Assert that the two collections have the same entities (there were no persistent entities before).
 		Assert.assertEquals(entities, sameFakeEntities);
 	}
 
 	/**
-	 * Tests the method addOrUpdateAll with null entity.
+	 * Tests the method addOrUpdate (collection) with null entity.
 	 */
 	@Test
-	public void testAddOrUpdateAllNullEntity() {
+	public void testAddOrUpdateCollectionNullEntity() {
 		// Tries to add fake entities.
-		getService().addOrUpdateAll(null);
+		getService().addOrUpdate((Collection<FakeEntity>) null);
 		// Assert that there are no entities persisted.
 		assertNoEntitiesPersisted();
 	}
 
 	/**
-	 * Tests a successful approach for the method remove.
+	 * Tests a successful approach for the method remove (entity).
 	 */
 	@Test
 	public void testRemoveSuccess() {
@@ -136,13 +136,13 @@ public abstract class AbstractGenericServiceTest {
 		// Tries to remove the entity.
 		getService().remove(fakeEntity);
 		// Gets all entities.
-		final Collection<FakeEntity> allEntities = getService().getAllEntities(null, null);
+		final Collection<FakeEntity> allEntities = getService().getAll(null, null);
 		// Assert that there are no entities persisted.
 		Assert.assertTrue(allEntities.isEmpty());
 	}
 
 	/**
-	 * Tests the method remove with null entity.
+	 * Tests the method remove with null entity (entity).
 	 * 
 	 * @throws Throwable
 	 *             Expected exception.
@@ -151,7 +151,7 @@ public abstract class AbstractGenericServiceTest {
 	public void testRemoveNullEntity() throws Throwable {
 		// Tries to remove a null entity.
 		try {
-			getService().remove(null);
+			getService().remove((FakeEntity) null);
 		}
 		// Expects an EJB exception.
 		catch (final EJBException exception) {
@@ -161,55 +161,55 @@ public abstract class AbstractGenericServiceTest {
 	}
 
 	/**
-	 * Tests a successful approach for the method removeAll.
+	 * Tests a successful approach for the method remove (collection).
 	 */
 	@Test
-	public void testRemoveAllSuccess() {
+	public void testRemoveCollectionSuccess() {
 		// Tries to add fake entities.
-		final Collection<FakeEntity> fakeEntities = getService().addOrUpdateAll(getTestEntities());
+		final Collection<FakeEntity> fakeEntities = getService().addOrUpdate(getTestEntities());
 		// Tries to remove the entities.
-		getService().removeAll(fakeEntities);
+		getService().remove(fakeEntities);
 		// Gets all entities.
-		final Collection<FakeEntity> allEntities = getService().getAllEntities(null, null);
+		final Collection<FakeEntity> allEntities = getService().getAll(null, null);
 		// Assert that there are no entities persisted.
 		Assert.assertTrue(allEntities.isEmpty());
 	}
 
 	/**
-	 * Tests the method removelAll with null entity.
+	 * Tests the method remove (collection) with null entity.
 	 */
 	@Test
-	public void testRemoveAllNullEntity() {
+	public void testRemoveCollectionNullEntity() {
 		// Tries to remove fake entities (null).
-		getService().removeAll(null);
+		getService().remove((Collection<FakeEntity>) null);
 		// Assert that there are no entities persisted.
 		assertNoEntitiesPersisted();
 	}
 
 	/**
-	 * Tests a successful approach for the method getEntityById.
+	 * Tests a successful approach for the method getById.
 	 */
 	@Test
-	public void testGetEntityByIdSuccess() {
+	public void testGetByIdSuccess() {
 		// Tries to add a fake entity.
 		final FakeEntity fakeEntity = getService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
 		// Tries to get the same entity by its new id.
-		final FakeEntity sameFakeEntity = getService().getEntityById(fakeEntity.getIdentifier());
+		final FakeEntity sameFakeEntity = getService().getById(fakeEntity.getIdentifier());
 		// Assert that the two entities are the same.
 		Assert.assertEquals(fakeEntity, sameFakeEntity);
 	}
 
 	/**
-	 * Tests the method getEntityById with null id.
+	 * Tests the method getById with null id.
 	 * 
 	 * @throws Throwable
 	 *             Expected exception.
 	 */
 	@Test(expected = EmptyParameterException.class)
-	public void testGetEntityByIdNullId() throws Throwable {
+	public void testGetByIdNullId() throws Throwable {
 		// Tries to get a fake entity with null id.
 		try {
-			getService().getEntityById(null);
+			getService().getById(null);
 		}
 		// Expects an EJB exception.
 		catch (final EJBException exception) {
@@ -219,16 +219,16 @@ public abstract class AbstractGenericServiceTest {
 	}
 
 	/**
-	 * Tests a successful approach for the method getEntitiesByAttribute.
+	 * Tests a successful approach for the method getByAttribute (collection).
 	 */
 	@Test
-	public void testGetEntitiesByAttributeSuccess() {
+	public void testGetCollectionByAttributeSuccess() {
 		// Tries to add fake entities.
-		final Collection<FakeEntity> fakeEntities = getService().addOrUpdateAll(getTestEntities());
+		final Collection<FakeEntity> fakeEntities = getService().addOrUpdate(getTestEntities());
 		// Gets the first entity.
 		final FakeEntity firstEntity = fakeEntities.iterator().next();
 		// Tries to get an entity by the name.
-		final Collection<FakeEntity> sameFirstEntity = getService().getEntitiesByAttribute("name",
+		final Collection<FakeEntity> sameFirstEntity = getService().getByAttribute("name",
 				firstEntity.getName(), null, null);
 		// Assert that only one element is retrieved.
 		Assert.assertEquals(1, sameFirstEntity.size());
@@ -237,16 +237,16 @@ public abstract class AbstractGenericServiceTest {
 	}
 
 	/**
-	 * Tests the method getEntitiesByAttribute with null attribute name.
+	 * Tests the method getByAttribute (collection) with null attribute name.
 	 * 
 	 * @throws Throwable
 	 *             Expected exception.
 	 */
 	@Test(expected = EmptyParameterException.class)
-	public void testGetEntitiesByAttributeNullAttributeName() throws Throwable {
+	public void testGetCollectionByAttributeNullAttributeName() throws Throwable {
 		// Tries to get a fake entity with null attribute name.
 		try {
-			getService().getEntitiesByAttribute(null, null, null, null);
+			getService().getByAttribute(null, null, null, null);
 		}
 		// Expects an EJB exception.
 		catch (final EJBException exception) {
@@ -256,20 +256,20 @@ public abstract class AbstractGenericServiceTest {
 	}
 
 	/**
-	 * Tests a successful approach for the method getEntityByAttribute.
+	 * Tests a successful approach for the method getByAttribute (entity).
 	 */
 	@Test
 	public void testGetEntityByAttributeSuccess() {
 		// Tries to add a fake entity.
 		final FakeEntity fakeEntity = getService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
 		// Tries to get an entity by the name.
-		final FakeEntity sameFakeEntity = getService().getEntityByAttribute("name", fakeEntity.getName());
+		final FakeEntity sameFakeEntity = getService().getByAttribute("name", fakeEntity.getName());
 		// Assert that the two entities are the same.
 		Assert.assertEquals(fakeEntity, sameFakeEntity);
 	}
 
 	/**
-	 * Tests the method getEntityByAttribute with null attribute name.
+	 * Tests the method getByAttribute (entity) with null attribute name.
 	 * 
 	 * @throws Throwable
 	 *             Expected exception.
@@ -278,7 +278,7 @@ public abstract class AbstractGenericServiceTest {
 	public void testGetEntityByAttributeNullAttributeName() throws Throwable {
 		// Tries to get a fake entity with null attribute name.
 		try {
-			getService().getEntityByAttribute(null, null);
+			getService().getByAttribute(null, null);
 		}
 		// Expects an EJB exception.
 		catch (final EJBException exception) {
@@ -288,7 +288,7 @@ public abstract class AbstractGenericServiceTest {
 	}
 
 	/**
-	 * Tests the method getEntityByAttribute with a attribute being duplicated in two entities.
+	 * Tests the method getByAttribute (entity) with a attribute being duplicated in two entities.
 	 * 
 	 * @throws Throwable
 	 *             Expected exception.
@@ -298,10 +298,10 @@ public abstract class AbstractGenericServiceTest {
 		// Tries to add a fake entity.
 		final FakeEntity fakeEntity = getService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
 		// Tries to add a similar fake entity.
-		final FakeEntity similarFakeEntity = getService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
+		getService().addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
 		// Tries to get an entity by the name.
 		try {
-			getService().getEntityByAttribute("name", fakeEntity.getName());
+			getService().getByAttribute("name", fakeEntity.getName());
 		}
 		// Expects an EJB exception.
 		catch (final EJBException exception) {
@@ -311,14 +311,14 @@ public abstract class AbstractGenericServiceTest {
 	}
 
 	/**
-	 * Tests a successful approach for the method getAllEntities.
+	 * Tests a successful approach for the method getAll.
 	 */
 	@Test
-	public void testGetAllEntitiesSuccess() {
+	public void testGetAllSuccess() {
 		// Tries to add fake entities (there are no persistent entities yet).
-		final Collection<FakeEntity> entities = getService().addOrUpdateAll(getTestEntities());
+		final Collection<FakeEntity> entities = getService().addOrUpdate(getTestEntities());
 		// Tries to get all persisted entities.
-		final Collection<FakeEntity> sameFakeEntities = getService().getAllEntities(null, null);
+		final Collection<FakeEntity> sameFakeEntities = getService().getAll(null, null);
 		// Assert that the two collections have the same entities (there were no persistent entities before).
 		Assert.assertEquals(entities, sameFakeEntities);
 	}

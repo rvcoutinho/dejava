@@ -33,10 +33,10 @@ public abstract class AbstractGenericService<Entity, Key> implements GenericServ
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#addOrUpdateAll(java.util.Collection)
+	 * @see org.dejava.component.javaee.service.GenericService#addOrUpdate(java.util.Collection)
 	 */
 	@Override
-	public Collection<Entity> addOrUpdateAll(final Collection<Entity> entities) {
+	public Collection<Entity> addOrUpdate(final Collection<Entity> entities) {
 		// Creates a new list of entities.
 		final Collection<Entity> mergedEntities = new ArrayList<>();
 		// If the given collection is not empty.
@@ -61,10 +61,10 @@ public abstract class AbstractGenericService<Entity, Key> implements GenericServ
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#removeAll(java.util.Collection)
+	 * @see org.dejava.component.javaee.service.GenericService#remove(java.util.Collection)
 	 */
 	@Override
-	public void removeAll(final Collection<Entity> entities) {
+	public void remove(final Collection<Entity> entities) {
 		// If the given collection is not empty.
 		if (entities != null) {
 			// For each given entity.
@@ -76,33 +76,33 @@ public abstract class AbstractGenericService<Entity, Key> implements GenericServ
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#getEntityById(java.lang.Object)
+	 * @see org.dejava.component.javaee.service.GenericService#getById(java.lang.Object)
 	 */
 	@Override
-	public Entity getEntityById(final Key identifier) {
+	public Entity getById(final Key identifier) {
 		// Tries to return the entity.
-		return getEntityDAO().getEntityById(identifier);
+		return getEntityDAO().getById(identifier);
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#getEntitiesByAttribute(java.lang.String,
+	 * @see org.dejava.component.javaee.service.GenericService#getByAttribute(java.lang.String,
 	 *      java.lang.Object, java.lang.Integer, java.lang.Integer)
 	 */
 	@Override
-	public Collection<Entity> getEntitiesByAttribute(final String attributeName, final Object attributeValue,
+	public Collection<Entity> getByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getEntityDAO().getEntitiesByAttribute(attributeName, attributeValue, firstResult, maxResults);
+		return getEntityDAO().getByAttribute(attributeName, attributeValue, firstResult, maxResults);
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#getEntityByAttribute(java.lang.String,
+	 * @see org.dejava.component.javaee.service.GenericService#getByAttribute(java.lang.String,
 	 *      java.lang.Object)
 	 */
 	@Override
-	public Entity getEntityByAttribute(final String attributeName, final Object attributeValue) {
+	public Entity getByAttribute(final String attributeName, final Object attributeValue) {
 		// Tries to get the entities.
-		final Collection<Entity> entities = getEntityDAO().getEntitiesByAttribute(attributeName,
+		final Collection<Entity> entities = getEntityDAO().getByAttribute(attributeName,
 				attributeValue, null, null);
 		// The entity is null by default.
 		Entity entity = null;
@@ -124,12 +124,12 @@ public abstract class AbstractGenericService<Entity, Key> implements GenericServ
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#getAllEntities(java.lang.Integer,
+	 * @see org.dejava.component.javaee.service.GenericService#getAll(java.lang.Integer,
 	 *      java.lang.Integer)
 	 */
 	@Override
-	public Collection<Entity> getAllEntities(final Integer firstResult, final Integer maxResults) {
+	public Collection<Entity> getAll(final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getEntityDAO().getAllEntities(firstResult, maxResults);
+		return getEntityDAO().getAll(firstResult, maxResults);
 	}
 }

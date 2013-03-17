@@ -44,16 +44,16 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#addOrUpdateAll(java.util.Collection)
+	 * @see org.dejava.component.javaee.service.GenericService#addOrUpdate(java.util.Collection)
 	 */
 	@PUT
 	@Path(value = "/s")
 	@Consumes(value = { MediaType.APPLICATION_JSON })
 	@Produces(value = { MediaType.APPLICATION_JSON })
 	@Override
-	public Collection<Entity> addOrUpdateAll(final Collection<Entity> entities) {
+	public Collection<Entity> addOrUpdate(final Collection<Entity> entities) {
 		// Adds the entities.
-		return getBusinessService().addOrUpdateAll(entities);
+		return getBusinessService().addOrUpdate(entities);
 	}
 
 	/**
@@ -68,61 +68,61 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#removeAll(java.util.Collection)
+	 * @see org.dejava.component.javaee.service.GenericService#remove(java.util.Collection)
 	 */
 	@DELETE
 	@Path(value = "/s")
 	@Consumes(value = { MediaType.APPLICATION_JSON })
 	@Override
-	public void removeAll(final Collection<Entity> entities) {
+	public void remove(final Collection<Entity> entities) {
 		// Tries to remove the entities.
-		getBusinessService().removeAll(entities);
+		getBusinessService().remove(entities);
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#getEntityById(java.lang.Object)
+	 * @see org.dejava.component.javaee.service.GenericService#getById(java.lang.Object)
 	 */
 	@GET
 	@Path(value = "/{identifier}")
 	@Produces(value = { MediaType.APPLICATION_JSON })
 	@Override
-	public Entity getEntityById(@PathParam(value = "identifier") final Key identifier) {
+	public Entity getById(@PathParam(value = "identifier") final Key identifier) {
 		// Tries to return the entity.
-		return getBusinessService().getEntityById(identifier);
+		return getBusinessService().getById(identifier);
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#getEntitiesByAttribute(java.lang.String,
+	 * @see org.dejava.component.javaee.service.GenericService#getByAttribute(java.lang.String,
 	 *      java.lang.Object, java.lang.Integer, java.lang.Integer)
 	 */
 	@Override
-	public Collection<Entity> getEntitiesByAttribute(final String attributeName, final Object attributeValue,
+	public Collection<Entity> getByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getBusinessService().getEntitiesByAttribute(attributeName, attributeValue, firstResult,
+		return getBusinessService().getByAttribute(attributeName, attributeValue, firstResult,
 				maxResults);
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#getEntityByAttribute(java.lang.String,
+	 * @see org.dejava.component.javaee.service.GenericService#getByAttribute(java.lang.String,
 	 *      java.lang.Object)
 	 */
 	@Override
-	public Entity getEntityByAttribute(final String attributeName, final Object attributeValue) {
+	public Entity getByAttribute(final String attributeName, final Object attributeValue) {
 		// Tries to get the entity.
-		return getBusinessService().getEntityByAttribute(attributeName, attributeValue);
+		return getBusinessService().getByAttribute(attributeName, attributeValue);
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.service.GenericService#getAllEntities(java.lang.Integer,
+	 * @see org.dejava.component.javaee.service.GenericService#getAll(java.lang.Integer,
 	 *      java.lang.Integer)
 	 */
 	@GET
 	@Produces(value = { MediaType.APPLICATION_JSON })
 	@Override
-	public Collection<Entity> getAllEntities(final Integer firstResult, final Integer maxResults) {
+	public Collection<Entity> getAll(final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getBusinessService().getAllEntities(firstResult, maxResults);
+		return getBusinessService().getAll(firstResult, maxResults);
 	}
 
 }

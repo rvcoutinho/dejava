@@ -10,8 +10,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.dejava.component.exception.localized.unchecked.EmptyParameterException;
 import org.dejava.component.javaee.constant.DAOParamKeys;
+import org.dejava.component.validation.method.PreConditions;
 
 /**
  * Implements the default behavior of an JPA entity DAO.
@@ -97,11 +97,8 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	 * @return The merged instance.
 	 */
 	public Entity merge(final Entity entity) {
-		// If the given entity is null.
-		if (entity == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(DAOParamKeys.ENTITY);
-		}
+		// Asserts that the entity is not null.
+		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, entity);
 		// TODO Check if already is persisted?
 		// Merges the given entity with the persistence context.
 		return getEntityManager().merge(entity);
@@ -114,11 +111,8 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	 *            The entity to be persisted.
 	 */
 	public void remove(final Entity entity) {
-		// If the entity is null.
-		if (entity == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(DAOParamKeys.ENTITY);
-		}
+		// Asserts that the entity is not null.
+		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, entity);
 		// Merges the given entity with the persistence context.
 		final Entity mergedEntity = getEntityManager().merge(entity);
 		// Tries to remove the entity.
@@ -132,12 +126,9 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	 *            The identifier of the entity.
 	 * @return An entity by its identifier.
 	 */
-	public Entity getEntityById(final Key identifier) {
-		// If the given identifier is null.
-		if (identifier == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(DAOParamKeys.IDENTIFIER);
-		}
+	public Entity getById(final Key identifier) {
+		// Asserts that the identifier is not null.
+		PreConditions.assertParamNotNull(DAOParamKeys.IDENTIFIER, identifier);
 		// Tries to return the entity.
 		return getEntityManager().find(getEntityClass(), identifier);
 	}
@@ -155,13 +146,10 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	 *            The maximum numbers of results to be considered by the query.
 	 * @return All entities with the given attribute value.
 	 */
-	public Collection<Entity> getEntitiesByAttribute(final String attributeName, final Object attributeValue,
+	public Collection<Entity> getByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults) {
-		// If the given attribute name is null.
-		if (attributeName == null) {
-			// Throws an exception.
-			throw new EmptyParameterException(DAOParamKeys.ATTR_NAME);
-		}
+		// Asserts that the attribute name is not null.
+		PreConditions.assertParamNotNull(DAOParamKeys.ATTR_NAME, attributeName);
 		// Creates a new criteria query.
 		final CriteriaQuery<Entity> criteriaQuery = getCriteriaBuilder().createQuery(getEntityClass());
 		// Creates the root for the query.
@@ -186,7 +174,7 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	 * 
 	 * @return All entities of the kind.
 	 */
-	public Collection<Entity> getAllEntities(final Integer firstResult, final Integer maxResults) {
+	public Collection<Entity> getAll(final Integer firstResult, final Integer maxResults) {
 		// Creates a new criteria query.
 		final CriteriaQuery<Entity> criteriaQuery = getCriteriaBuilder().createQuery(getEntityClass());
 		// Creates the root for the query.

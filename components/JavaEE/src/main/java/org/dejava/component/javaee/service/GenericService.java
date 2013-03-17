@@ -28,7 +28,7 @@ public interface GenericService<Entity, Key> {
 	 *            The entities to be persisted.
 	 * @return The persisted (and updated) entity.
 	 */
-	Collection<Entity> addOrUpdateAll(final Collection<Entity> entities);
+	Collection<Entity> addOrUpdate(final Collection<Entity> entities);
 
 	/**
 	 * Removes a persistent entity.
@@ -44,7 +44,7 @@ public interface GenericService<Entity, Key> {
 	 * @param entities
 	 *            The entities to be removed.
 	 */
-	void removeAll(final Collection<Entity> entities);
+	void remove(final Collection<Entity> entities);
 
 	/**
 	 * Gets an entity by its identifier.
@@ -53,7 +53,7 @@ public interface GenericService<Entity, Key> {
 	 *            The identifier of the entity.
 	 * @return An entity by its identifier.
 	 */
-	Entity getEntityById(final Key identifier);
+	Entity getById(final Key identifier);
 
 	/**
 	 * Gets all entities with the given attribute value.
@@ -68,7 +68,7 @@ public interface GenericService<Entity, Key> {
 	 *            The maximum numbers of results to be considered by the query.
 	 * @return All entities with the given attribute value.
 	 */
-	Collection<Entity> getEntitiesByAttribute(final String attributeName, final Object attributeValue,
+	Collection<Entity> getByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults);
 
 	/**
@@ -80,7 +80,7 @@ public interface GenericService<Entity, Key> {
 	 *            The attribute value.
 	 * @return The entity by its attribute.
 	 */
-	Entity getEntityByAttribute(final String attributeName, final Object attributeValue);
+	Entity getByAttribute(final String attributeName, final Object attributeValue);
 
 	/**
 	 * Gets all entities of the kind.
@@ -92,5 +92,5 @@ public interface GenericService<Entity, Key> {
 	 * 
 	 * @return All entities of the kind.
 	 */
-	Collection<Entity> getAllEntities(final Integer firstResult, final Integer maxResults);
+	Collection<Entity> getAll(final Integer firstResult, final Integer maxResults);
 }

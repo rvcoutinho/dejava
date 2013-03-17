@@ -29,7 +29,7 @@ button, input[type=button], input[type=submit] {
 button .spoon, input[type=button] .spoon, input[type=submit] .spoon {
 	margin-left: 5px;
 	vertical-align: sub;
-	height: 15px;
+	height: 16px;
 }
 
 .right-button {
@@ -115,15 +115,15 @@ a {
 }
 
 .light-gray-texture-bg {
-	background: url("../image/texture-gray-1.png") repeat;
+	background: url('#{resource["soupsocial:gfx/texture-gray-1.png"]}') repeat;
 }
 
 .dark-gray-texture-bg {
-	background: url("../image/texture-gray-2.png") repeat;
+	background: url('#{resource["soupsocial:gfx/texture-gray-2.png"]}') repeat;
 }
 
 .green-texture-bg {
-	background: url("../image/texture-green-1.png") repeat;
+	background: url('#{resource["soupsocial:gfx/texture-green-1.png"]}') repeat;
 }
 
 .white-bg {
@@ -214,6 +214,7 @@ a {
 }
 
 #header nav li {
+	margin-right: -3px;
 	padding: 0px 10px;
 	position: relative;
 	border-left: 1px solid #FFFFFF;
@@ -251,7 +252,7 @@ a {
 #footer nav ul {
 	display: inline-block;
 	vertical-align: top;
-	margin: 0px;
+	margin: 0px 0px 0px -3px;
 	padding: 0px;
 	list-style: none;
 	text-align: center;

@@ -13,7 +13,7 @@
 }
 
 .projects .project .project-range.orange {
-	background: url("../image/orange-flag.png");
+	background: url('#{resource["soupsocial:gfx/orange-flag.png"]}');
 }
 
 .projects .project .project-range * {

@@ -98,6 +98,12 @@
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.component</groupId>
+				<artifactId>validation</artifactId>
+				<version>0.0.1</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.component</groupId>
 				<artifactId>i18n</artifactId>
 				<version>0.0.1</version>
 				<scope>compile</scope>
@@ -117,6 +123,11 @@
 			<dependency>
 				<groupId>org.apache.shiro</groupId>
 				<artifactId>shiro-web</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
 				<version>1.2.1</version>
 			</dependency>
 

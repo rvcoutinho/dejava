@@ -30,4 +30,18 @@ public class UserService extends AbstractGenericService<User, Integer> {
 	public AbstractGenericDAO<User, Integer> getEntityDAO() {
 		return userDAO;
 	}
+
+	/**
+	 * TODO
+	 * 
+	 * @param fbUser
+	 *            TODO
+	 * @return TODO
+	 */
+	public User getByFacebookUser(com.restfb.types.User fbUser) {
+
+		if (getByAttribute("identifier", fbUser.getId()) == null) {
+
+		}
+	}
 }

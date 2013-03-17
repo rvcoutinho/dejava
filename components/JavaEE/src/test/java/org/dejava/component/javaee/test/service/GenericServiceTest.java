@@ -38,8 +38,8 @@ public class GenericServiceTest extends AbstractGenericServiceTest {
 				.addPackages(true, "org.dejava.component.javaee")
 				.addAsLibraries(
 						dependencyResolver.artifacts("org.dejava.component:exception",
-								"org.dejava.component:i18n", "org.dejava.component:reflection")
-								.resolveAsFiles())
+								"org.dejava.component:i18n", "org.dejava.component:reflection",
+								"org.dejava.component:validation").resolveAsFiles())
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml");

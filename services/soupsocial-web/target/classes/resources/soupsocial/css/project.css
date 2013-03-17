@@ -5,7 +5,7 @@
 
 #content  #project {
 	width: 640px;
-	margin-right: 15px;
+	margin-right: 12px;
 	display: inline-block;
 }
 
@@ -26,7 +26,7 @@
 }
 
 #content aside {
-	width: 315px;
+	width: 305px;
 	display: inline-block;
 }
 

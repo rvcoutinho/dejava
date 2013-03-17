@@ -1,5 +1,5 @@
 #home-intro .flexslider {
-
+	
 }
 
 #home-intro .flexslider ul.slides {
@@ -10,7 +10,7 @@
 	overflow: hidden;
 }
 
-#home-intro .flexslider ul.slides  li{
+#home-intro .flexslider ul.slides  li {
 	margin: 0px;
 	padding: 0px;
 	height: 240px;
@@ -33,13 +33,13 @@
 #home-intro .flexslider ul.flex-direction-nav li a.flex-prev {
 	top: -165px;
 	left: -70px;
-	background: url('../image/arrow-left-light-gray.png');
+	background: url('#{resource["soupsocial:gfx/arrow-left-light-gray.png"]}');
 }
 
 #home-intro .flexslider ul.flex-direction-nav li a.flex-next {
 	top: -236px;
 	left: 925px;
-	background: url('../image/arrow-right-light-gray.png');
+	background: url('#{resource["soupsocial:gfx/arrow-right-light-gray.png"]}');
 }
 
 #home-intro .flexslider ul.slides h1 {
@@ -74,6 +74,7 @@
 }
 
 #content {
+	
 }
 
 #content #how-it-works header a {
@@ -84,4 +85,3 @@
 #content #how-it-works #how-it-works-content {
 	display: none;
 }
-

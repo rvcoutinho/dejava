@@ -36,6 +36,11 @@
 			<artifactId>party-web</artifactId>
 			<type>war</type>
 		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>soupsocial-web</artifactId>
+			<type>war</type>
+		</dependency>
 
 		<dependency>
 			<groupId>org.dejava.component</groupId>

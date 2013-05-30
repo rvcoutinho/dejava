@@ -1,6 +1,7 @@
 package org.dejava.component.reflection.test;
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
 import java.util.AbstractCollection;
 import java.util.AbstractList;
 import java.util.ArrayList;
@@ -16,7 +17,9 @@ import org.dejava.component.exception.localized.unchecked.EmptyParameterExceptio
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.reflection.ClassMirror;
 import org.dejava.component.reflection.FieldMirror;
+import org.dejava.component.reflection.test.util.SomeAnnotation;
 import org.dejava.component.reflection.test.util.SomeClass;
+import org.dejava.component.reflection.test.util.SomeOtherAnnotation;
 import org.dejava.component.reflection.test.util.SomeSuperClass;
 import org.dejava.component.test.annotation.ParametricTest;
 import org.dejava.component.test.runner.JUnitParametricRunner;
@@ -210,6 +213,60 @@ public class ClassMirrorTest {
 	}
 
 	/**
+	 * Tests the getFields method with a null annotation.
+	 */
+	@Test(expected = EmptyParameterException.class)
+	public void testGetFieldsNullAnnotation() {
+		// Creates a new class mirror for some class.
+		final ClassMirror<SomeClass> someClass = new ClassMirror<>(SomeClass.class);
+		// Tries to get the fields for a null annotation.
+		someClass.getFields(null);
+	}
+
+	/**
+	 * Gets some annotations names and supposed fields that should be annotated.
+	 * 
+	 * @return Some annotations names and supposed fields that should be annotated.
+	 */
+	public static Collection<Entry<Class<? extends Annotation>, String[]>> getAnnotatedFields() {
+		// Creates a new map for annotations and supposed fields that should be annotated.
+		final Map<Class<? extends Annotation>, String[]> annotationsFields = new HashMap<>();
+		// Puts the entries to the list.
+		annotationsFields.put(SomeAnnotation.class, new String[] { "fieldD", "fieldD", "fieldE", "fieldX" });
+		annotationsFields.put(SomeOtherAnnotation.class, new String[] { "fieldF", "fieldY" });
+		annotationsFields.put(Deprecated.class, new String[] {});
+		// Returns the annotations and supposed fields that should be annotated.
+		return annotationsFields.entrySet();
+	}
+
+	/**
+	 * Tests the getFields method with valid annotations.
+	 * 
+	 * @param annotationFields
+	 *            The annotation and the fields that are supposed to be annotated.
+	 */
+	@ParametricTest(paramsValues = { "getAnnotatedFields" })
+	public void testGetFieldsValidAnnotations(
+			final Entry<Class<? extends Annotation>, String[]> annotationFields) {
+		// Creates a new class mirror for some class.
+		final ClassMirror<SomeClass> someClass = new ClassMirror<>(SomeClass.class);
+		// Tries to get the fields for the annotation.
+		final Collection<FieldMirror> retrievedFields = someClass.getFields(annotationFields.getKey());
+		// Creates a list for the expected fields names.
+		final Collection<String> expectedFieldsNames = Arrays.asList(annotationFields.getValue());
+		// Creates a list for the retrieved fields names.
+		final Collection<String> retrievedFieldsNames = new ArrayList<>();
+		// For each retrieved field.
+		for (final FieldMirror curField : retrievedFields) {
+			// Puts the current field name into the appropriate set.
+			retrievedFieldsNames.add(curField.getReflectedField().getName());
+		}
+		// Asserts that the two lists (expected and retrieved) contain the same fields.
+		Assert.assertEquals(expectedFieldsNames.size(), retrievedFieldsNames.size());
+		Assert.assertTrue(expectedFieldsNames.containsAll(retrievedFieldsNames));
+	}
+
+	/**
 	 * Tests the getField method with valid names.
 	 */
 	@Test
@@ -264,8 +321,7 @@ public class ClassMirrorTest {
 	/**
 	 * Invalid fields names.
 	 */
-	private static final String[] INVALID_FIELDS_NAMES = { "fieldD", "fdsjfd", "fhksdajhfk", "fieldc",
-			"methodA" };
+	private static final String[] INVALID_FIELDS_NAMES = { "fdsjfd", "fhksdajhfk", "fieldc", "methodA" };
 
 	/**
 	 * Gets invalid fields names.
@@ -289,9 +345,7 @@ public class ClassMirrorTest {
 		// Tries to get the field for the name.
 		someClass.getField(invalidName);
 	}
-	
+
 	// TODO Tests for getFieldPath()
-	
-	
 
 }

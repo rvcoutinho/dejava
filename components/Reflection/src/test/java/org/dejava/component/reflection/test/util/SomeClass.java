@@ -8,7 +8,8 @@ public class SomeClass extends SomeSuperClass {
 	/**
 	 * Fields names.
 	 */
-	public static final String[] FIELDS_NAMES = { "FIELDS_NAMES", "fieldA", "fieldC" };
+	public static final String[] FIELDS_NAMES = { "FIELDS_NAMES", "fieldA", "fieldC", "fieldD", "fieldE",
+			"fieldF" };
 
 	/**
 	 * Some field.
@@ -19,5 +20,23 @@ public class SomeClass extends SomeSuperClass {
 	 * Some field.
 	 */
 	private Object fieldC;
+
+	/**
+	 * Some field.
+	 */
+	@SomeAnnotation
+	private Object fieldD;
+
+	/**
+	 * Some field.
+	 */
+	@SomeAnnotation
+	private Object fieldE;
+
+	/**
+	 * Some field.
+	 */
+	@SomeOtherAnnotation
+	private Object fieldF;
 
 }

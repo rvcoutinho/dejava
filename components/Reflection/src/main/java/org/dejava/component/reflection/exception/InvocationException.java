@@ -1,13 +1,13 @@
 package org.dejava.component.reflection.exception;
 
-import org.dejava.component.exception.localized.checked.AbstractLocalizedException;
+import org.dejava.component.exception.localized.unchecked.AbstractLocalizedRuntimeException;
 import org.dejava.component.reflection.constant.ErrorKeys;
 import org.dejava.component.reflection.util.MessageTypes;
 
 /**
  * Exception related to exceptions thrown by a target method.
  */
-public class InvocationException extends AbstractLocalizedException {
+public class InvocationException extends AbstractLocalizedRuntimeException {
 
 	/**
 	 * Generated serial.
@@ -27,7 +27,8 @@ public class InvocationException extends AbstractLocalizedException {
 	}
 
 	/**
-	 * @see AbstractLocalizedException#AbstractLocalizedException(Object, String, Object[], Throwable)
+	 * @see AbstractLocalizedRuntimeException#AbstractLocalizedRuntimeException(Object, String, Object[],
+	 *      Throwable)
 	 */
 	public InvocationException(final Object type, final String messageKey, final Object[] parameters,
 			final Throwable cause) {

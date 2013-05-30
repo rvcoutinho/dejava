@@ -191,7 +191,7 @@ public class FieldMirror {
 		if (setter == null) {
 			// Tries to get the setter for the field.
 			try {
-				setter = getDeclaringClass().getMethod(getSetterName(), null);
+				setter = getDeclaringClass().getMethod(getSetterName(), getReflectedField().getType());
 			}
 			// If the setter cannot be found.
 			catch (final Exception exception) {

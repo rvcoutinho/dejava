@@ -138,7 +138,7 @@ public class SimpleMessageHandler implements MessageHandler {
 	 * @return The localized message with the given parameter values added.
 	 */
 	private String addParameters(final String message, final Object[] parametersValues) {
-		// If no parameter values are given.
+		// If no parameters values are given.
 		if ((parametersValues == null) || (parametersValues.length == 0)) {
 			// Returns the raw message.
 			return message;

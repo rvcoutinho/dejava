@@ -2,8 +2,8 @@ package org.dejava.component.jsf.test.controller;
 
 import javax.inject.Inject;
 
-import org.dejava.component.ejb.service.GenericService;
-import org.dejava.component.jsf.test.service.AbstractGenericServiceTest;
+import org.dejava.component.ejb.component.GenericComponent;
+import org.dejava.component.jsf.test.component.AbstractGenericComponentTest;
 import org.dejava.component.jsf.test.util.FakeEntity;
 import org.dejava.component.jsf.test.util.FakeEntityController;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -16,11 +16,12 @@ import org.jboss.shrinkwrap.resolver.api.DependencyResolvers;
 import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
 import org.junit.runner.RunWith;
 
+
 /**
  * Tests for the generic JSF controller.
  */
 @RunWith(Arquillian.class)
-public class GenericControllerTest extends AbstractGenericServiceTest {
+public class GenericControllerTest extends AbstractGenericComponentTest {
 
 	/**
 	 * Defines what should be done during deployment (before tests).
@@ -52,10 +53,10 @@ public class GenericControllerTest extends AbstractGenericServiceTest {
 	private FakeEntityController fakeEntityController;
 
 	/**
-	 * @see org.dejava.component.jsf.test.service.AbstractGenericServiceTest#getService()
+	 * @see org.dejava.component.jsf.test.component.AbstractGenericComponentTest#getComponent()
 	 */
 	@Override
-	protected GenericService<FakeEntity, Integer> getService() {
+	protected GenericComponent<FakeEntity, Integer> getComponent() {
 		return fakeEntityController;
 	}
 

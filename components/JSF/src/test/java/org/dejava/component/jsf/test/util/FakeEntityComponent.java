@@ -3,25 +3,23 @@ package org.dejava.component.jsf.test.util;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
-import org.dejava.component.ejb.service.AbstractGenericService;
 
 /**
- * Fake entity stateless service.
+ * Fake entity stateless component.
  */
-@Stateless
-@EJB
-public class FakeEntityService extends AbstractGenericService<FakeEntity, Integer> {
+@Stateless(name = "Component/Test/FakeEntityComponent")
+public class FakeEntityComponent extends AbstractGenericComponent<FakeEntity, Integer> {
 
 	/**
 	 * The fake entity DAO.
 	 */
 	@Inject
-	@EJB
 	private FakeEntityDAO entityDAO;
 
 	/**
-	 * @see org.dejava.component.ejb.service.AbstractGenericService#getEntityDAO()
+	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityDAO()
 	 */
 	@Override
 	public AbstractGenericDAO<FakeEntity, Integer> getEntityDAO() {

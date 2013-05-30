@@ -11,8 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.dejava.component.ejb.service.AbstractGenericService;
-import org.dejava.component.ejb.service.GenericService;
+import org.dejava.component.ejb.component.AbstractGenericComponent;
+import org.dejava.component.ejb.component.GenericComponent;
 
 /**
  * Implements the default behavior of an JPA entity JSF controller (including JAX-RS pre-configuration).
@@ -22,17 +22,17 @@ import org.dejava.component.ejb.service.GenericService;
  * @param <Key>
  *            Key of the entity.
  */
-public abstract class AbstractGenericController<Entity, Key> implements GenericService<Entity, Key> {
+public abstract class AbstractGenericController<Entity, Key> implements GenericComponent<Entity, Key> {
 
 	/**
-	 * Gets the business service related to the entity.
+	 * Gets the business component related to the entity.
 	 * 
-	 * @return The business service related to the entity.
+	 * @return The business component related to the entity.
 	 */
-	protected abstract AbstractGenericService<Entity, Key> getBusinessService();
+	protected abstract AbstractGenericComponent<Entity, Key> getBusinessComponent();
 
 	/**
-	 * @see org.dejava.component.ejb.service.GenericService#addOrUpdate(java.lang.Object)
+	 * @see org.dejava.component.ejb.component.GenericComponent#addOrUpdate(java.lang.Object)
 	 */
 	@PUT
 	@Consumes(value = { MediaType.APPLICATION_JSON })
@@ -40,11 +40,11 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	@Override
 	public Entity addOrUpdate(final Entity entity) {
 		// Adds the entity.
-		return getBusinessService().addOrUpdate(entity);
+		return getBusinessComponent().addOrUpdate(entity);
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.service.GenericService#addOrUpdate(java.util.Collection)
+	 * @see org.dejava.component.ejb.component.GenericComponent#addOrUpdate(java.util.Collection)
 	 */
 	@PUT
 	@Path(value = "/s")
@@ -53,22 +53,22 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	@Override
 	public Collection<Entity> addOrUpdate(final Collection<Entity> entities) {
 		// Adds the entities.
-		return getBusinessService().addOrUpdate(entities);
+		return getBusinessComponent().addOrUpdate(entities);
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.service.GenericService#remove(java.lang.Object)
+	 * @see org.dejava.component.ejb.component.GenericComponent#remove(java.lang.Object)
 	 */
 	@DELETE
 	@Consumes(value = { MediaType.APPLICATION_JSON })
 	@Override
 	public void remove(final Entity entity) {
 		// Tries to remove the entity.
-		getBusinessService().remove(entity);
+		getBusinessComponent().remove(entity);
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.service.GenericService#remove(java.util.Collection)
+	 * @see org.dejava.component.ejb.component.GenericComponent#remove(java.util.Collection)
 	 */
 	@DELETE
 	@Path(value = "/s")
@@ -76,11 +76,11 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	@Override
 	public void remove(final Collection<Entity> entities) {
 		// Tries to remove the entities.
-		getBusinessService().remove(entities);
+		getBusinessComponent().remove(entities);
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.service.GenericService#getById(java.lang.Object)
+	 * @see org.dejava.component.ejb.component.GenericComponent#getById(java.lang.Object)
 	 */
 	@GET
 	@Path(value = "/{identifier}")
@@ -88,33 +88,33 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	@Override
 	public Entity getById(@PathParam(value = "identifier") final Key identifier) {
 		// Tries to return the entity.
-		return getBusinessService().getById(identifier);
+		return getBusinessComponent().getById(identifier);
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.service.GenericService#getByAttribute(java.lang.String,
+	 * @see org.dejava.component.ejb.component.GenericComponent#getByAttribute(java.lang.String,
 	 *      java.lang.Object, java.lang.Integer, java.lang.Integer)
 	 */
 	@Override
 	public Collection<Entity> getByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getBusinessService().getByAttribute(attributeName, attributeValue, firstResult,
+		return getBusinessComponent().getByAttribute(attributeName, attributeValue, firstResult,
 				maxResults);
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.service.GenericService#getByAttribute(java.lang.String,
+	 * @see org.dejava.component.ejb.component.GenericComponent#getByAttribute(java.lang.String,
 	 *      java.lang.Object)
 	 */
 	@Override
 	public Entity getByAttribute(final String attributeName, final Object attributeValue) {
 		// Tries to get the entity.
-		return getBusinessService().getByAttribute(attributeName, attributeValue);
+		return getBusinessComponent().getByAttribute(attributeName, attributeValue);
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.service.GenericService#getAll(java.lang.Integer,
+	 * @see org.dejava.component.ejb.component.GenericComponent#getAll(java.lang.Integer,
 	 *      java.lang.Integer)
 	 */
 	@GET
@@ -122,7 +122,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericS
 	@Override
 	public Collection<Entity> getAll(final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getBusinessService().getAll(firstResult, maxResults);
+		return getBusinessComponent().getAll(firstResult, maxResults);
 	}
 
 }

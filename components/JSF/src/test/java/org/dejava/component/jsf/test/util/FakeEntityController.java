@@ -3,7 +3,7 @@ package org.dejava.component.jsf.test.util;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 
-import org.dejava.component.ejb.service.AbstractGenericService;
+import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.jsf.controller.AbstractGenericController;
 
 /**
@@ -13,18 +13,18 @@ import org.dejava.component.jsf.controller.AbstractGenericController;
 public class FakeEntityController extends AbstractGenericController<FakeEntity, Integer> {
 
 	/**
-	 * Fake entity EJB service.
+	 * Fake entity EJB component.
 	 */
 	@Inject
 	@EJB
-	private FakeEntityService fakeEntityService;
+	private FakeEntityComponent fakeEntityComponent;
 
 	/**
-	 * @see org.dejava.component.jsf.controller.AbstractGenericController#getBusinessService()
+	 * @see org.dejava.component.jsf.controller.AbstractGenericController#getBusinessComponent()
 	 */
 	@Override
-	protected AbstractGenericService<FakeEntity, Integer> getBusinessService() {
-		return fakeEntityService;
+	protected AbstractGenericComponent<FakeEntity, Integer> getBusinessComponent() {
+		return fakeEntityComponent;
 	}
 
 }

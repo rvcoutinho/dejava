@@ -17,7 +17,6 @@ public class EJBResources {
 	 */
 	@Produces
 	@PersistenceContext(unitName = "TestDS")
-	@EJB
 	private EntityManager entityManager;
 
 	/**

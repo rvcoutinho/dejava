@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.dejava.component.ejb.test.util.FakeEntity;
-
 /**
  * Fake entity.
  */
@@ -99,8 +97,8 @@ public class FakeEntity implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((identifier == null) ? 0 : identifier.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = (prime * result) + ((identifier == null) ? 0 : identifier.hashCode());
+		result = (prime * result) + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -108,24 +106,31 @@ public class FakeEntity implements Serializable {
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(final Object obj) {
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
-		FakeEntity other = (FakeEntity) obj;
+		}
+		final FakeEntity other = (FakeEntity) obj;
 		if (identifier == null) {
-			if (other.identifier != null)
+			if (other.identifier != null) {
 				return false;
-		} else if (!identifier.equals(other.identifier))
+			}
+		} else if (!identifier.equals(other.identifier)) {
 			return false;
+		}
 		if (name == null) {
-			if (other.name != null)
+			if (other.name != null) {
 				return false;
-		} else if (!name.equals(other.name))
+			}
+		} else if (!name.equals(other.name)) {
 			return false;
+		}
 		return true;
 	}
 

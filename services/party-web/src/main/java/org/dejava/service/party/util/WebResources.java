@@ -5,23 +5,14 @@ import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
 
 /**
- * This class uses CDI to alias Java EE resources, such as the persistence context, to CDI beans
- * 
- * <p>
- * Example injection on a managed bean field:
- * </p>
- * 
- * <pre>
- * &#064;Inject
- * private EntityManager em;
- * </pre>
+ * Web resources to be injected CDI.
  */
 public class WebResources {
 
 	/**
-	 * TODO
+	 * Produces the faces context.
 	 * 
-	 * @return TODO
+	 * @return The faces context.
 	 */
 	@Produces
 	@RequestScoped

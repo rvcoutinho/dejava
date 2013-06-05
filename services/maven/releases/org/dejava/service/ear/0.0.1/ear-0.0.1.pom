@@ -38,6 +38,26 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
+			<artifactId>location-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>location-web</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>philanthropy-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>philanthropy-web</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>soupsocial-web</artifactId>
 			<type>war</type>
 		</dependency>
@@ -49,7 +69,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
-			<artifactId>javaee</artifactId>
+			<artifactId>ejb</artifactId>
 			<type>jar</type>
 		</dependency>
 		<dependency>
@@ -76,6 +96,11 @@
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
 			<type>jar</type>
 		</dependency>
 

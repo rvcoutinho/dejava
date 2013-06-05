@@ -17,8 +17,27 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>accesscontrol-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>party-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>location-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>org.dejava.component</groupId>
-			<artifactId>javaee</artifactId>
+			<artifactId>ejb</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
@@ -35,6 +54,11 @@
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>test</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.restfb</groupId>
+			<artifactId>restfb</artifactId>
 		</dependency>
 
 		<dependency>

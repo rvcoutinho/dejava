@@ -4,9 +4,9 @@ import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.ws.rs.Path;
 
-import org.dejava.component.javaee.controller.AbstractGenericController;
-import org.dejava.component.javaee.service.AbstractGenericService;
-import org.dejava.service.accesscontrol.business.UserService;
+import org.dejava.component.ejb.component.AbstractGenericComponent;
+import org.dejava.component.jsf.controller.AbstractGenericController;
+import org.dejava.service.accesscontrol.component.UserComponent;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.util.AccessControl;
 
@@ -22,13 +22,13 @@ public class UserController extends AbstractGenericController<User, Integer> {
 	 */
 	@Inject
 	@AccessControl
-	private UserService userService;
+	private UserComponent userComponent;
 
 	/**
-	 * @see org.dejava.component.javaee.controller.AbstractGenericController#getBusinessService()
+	 * @see org.dejava.component.jsf.controller.AbstractGenericController#getBusinessComponent()
 	 */
 	@Override
-	protected AbstractGenericService<User, Integer> getBusinessService() {
-		return userService;
+	protected AbstractGenericComponent<User, Integer> getBusinessComponent() {
+		return userComponent;
 	}
 }

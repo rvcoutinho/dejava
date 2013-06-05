@@ -8,7 +8,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.dejava.service.accesscontrol.business.UserService;
+import org.dejava.service.accesscontrol.component.UserComponent;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.credentials.Password;
 import org.dejava.service.accesscontrol.model.principal.Email;
@@ -49,23 +49,31 @@ public class EJBRealmTest {
 		// Gets the maven dependency resolver (for the regular libs).
 		final MavenDependencyResolver dependencyResolver = DependencyResolvers.use(
 				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
-		// Gets the maven dependency resolver (for the ejb module).
+		// Gets the maven dependency resolvers (for the ejb modules).
 		final MavenDependencyResolver dependencyResolver2 = DependencyResolvers.use(
 				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
-		// Gets the EJB jar.
-		final JavaArchive ejbJar = dependencyResolver2.artifact("org.dejava.service:accesscontrol-ejb")
+		final MavenDependencyResolver dependencyResolver3 = DependencyResolvers.use(
+				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
+		// Gets the EJB jars.
+		final JavaArchive accessControlEjbJar = dependencyResolver2
+				.artifact("org.dejava.service:accesscontrol-ejb").resolveAs(JavaArchive.class).iterator()
+				.next();
+		final JavaArchive partyEjbJar = dependencyResolver3.artifact("org.dejava.service:party-ejb")
 				.resolveAs(JavaArchive.class).iterator().next();
-		// Removes the persistence.xml from the jar.
-		ejbJar.delete("META-INF/persistence.xml");
+		// Removes the persistence.xml from the jars.
+		accessControlEjbJar.delete("META-INF/persistence.xml");
+		partyEjbJar.delete("META-INF/persistence.xml");
 		// Defines and returns the archive definition.
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
-				.merge(ejbJar, "WEB-INF/classes")
+				.merge(accessControlEjbJar, "WEB-INF/classes")
+				.merge(partyEjbJar, "WEB-INF/classes")
 				.addPackages(true, "org.dejava.service.accesscontrol")
 				.addAsLibraries(
 						dependencyResolver.artifacts("org.dejava.component:security",
-								"org.dejava.component:javaee", "org.apache.shiro:shiro-core",
-								"org.apache.shiro:shiro-web", "com.restfb:restfb").resolveAsFiles())
+								"org.dejava.component:ejb", "org.dejava.component:jsf",
+								"org.apache.shiro:shiro-core", "org.apache.shiro:shiro-web",
+								"org.apache.shiro:shiro-ehcache", "com.restfb:restfb").resolveAsFiles())
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml")
@@ -79,7 +87,7 @@ public class EJBRealmTest {
 	 */
 	@Inject
 	@AccessControl
-	private UserService userService;
+	private UserComponent userComponent;
 
 	/**
 	 * Some users to be used in the tests.
@@ -99,7 +107,7 @@ public class EJBRealmTest {
 		// For each user.
 		for (final User currentUser : SOME_USERS) {
 			// Tries to add the current user via the EJB user service.
-			userService.addOrUpdate(currentUser);
+			userComponent.addOrUpdate(currentUser);
 		}
 	}
 
@@ -109,7 +117,7 @@ public class EJBRealmTest {
 	@After
 	public void removeSomeUsers() {
 		// Tries to remove all users.
-		userService.removeAll(userService.getAllEntities(null, null));
+		userComponent.remove(userComponent.getAll(null, null));
 	}
 
 	/**

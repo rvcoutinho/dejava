@@ -12,10 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 
 import org.dejava.service.accesscontrol.model.User;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Credentials to be used in the authentication/authorization.
@@ -62,7 +60,6 @@ public abstract class Credentials {
 	 * 
 	 * @return The user for this credentials.
 	 */
-	@NotNull
 	@JoinColumn(name = "u5er")
 	@ManyToOne(fetch = FetchType.EAGER)
 	public User getUser() {
@@ -84,7 +81,6 @@ public abstract class Credentials {
 	 * 
 	 * @return The value for the credentials.
 	 */
-	@NotEmpty
 	@Transient
 	public abstract Object getValue();
 }

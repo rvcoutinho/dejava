@@ -18,12 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.dejava.service.accesscontrol.authc.FacebookUserToken;
-import org.dejava.service.accesscontrol.business.UserService;
-import org.dejava.service.accesscontrol.business.principal.EmailService;
-import org.dejava.service.accesscontrol.business.principal.FacebookService;
+import org.dejava.service.accesscontrol.component.UserComponent;
+import org.dejava.service.accesscontrol.component.principal.EmailComponent;
+import org.dejava.service.accesscontrol.component.principal.FacebookComponent;
 import org.dejava.service.accesscontrol.constant.FacebookAppKeys;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.party.component.PersonComponent;
+import org.dejava.service.party.model.Person;
+import org.dejava.service.party.util.Party;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -131,7 +134,7 @@ public class FacebookLoginServlet extends HttpServlet {
 		request.getSession().setAttribute(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_STATE_ATTR), state);
 		// Redirects to the facebook login dialog URL.
 		response.sendRedirect(getOAuthExchangeCodeURL(state, URLEncoder.encode(
-				APP_PROPERTIES.getProperty(FacebookAppKeys.APP_DEFAULT_REDIRECT_URL), "UTF-8")));
+				APP_PROPERTIES.getProperty(FacebookAppKeys.APP_LOGIN_REDIRECT_URL), "UTF-8")));
 	}
 
 	/**
@@ -184,13 +187,13 @@ public class FacebookLoginServlet extends HttpServlet {
 				.equals(request.getParameter(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_STATE_PARAM)))) {
 			// Gets the URL for the access token exchange.
 			final URL oAuthAccessToken = new URL(getOAuthAccessTokenURL(URLEncoder.encode(
-					APP_PROPERTIES.getProperty(FacebookAppKeys.APP_DEFAULT_REDIRECT_URL), "UTF-8"),
+					APP_PROPERTIES.getProperty(FacebookAppKeys.APP_LOGIN_REDIRECT_URL), "UTF-8"),
 					request.getParameter(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_OAUTH_CODE_PARAM))));
 			// Gets the access token information
 			final String accessTokenInfo = new BufferedReader(new InputStreamReader(
 					oAuthAccessToken.openStream())).readLine();
 			// Redirects to the login with the access token information.
-			response.sendRedirect(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_DEFAULT_REDIRECT_URL) + "?"
+			response.sendRedirect(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_LOGIN_REDIRECT_URL) + "?"
 					+ accessTokenInfo);
 		}
 		// Otherwise. TODO
@@ -201,21 +204,45 @@ public class FacebookLoginServlet extends HttpServlet {
 	 */
 	@Inject
 	@AccessControl
-	private FacebookService facebookService;
+	private FacebookComponent facebookComponent;
 
 	/**
 	 * The email principal EJB service.
 	 */
 	@Inject
 	@AccessControl
-	private EmailService emailService;
+	private EmailComponent emailComponent;
 
 	/**
 	 * The user EJB service.
 	 */
 	@Inject
 	@AccessControl
-	private UserService userService;
+	private UserComponent userComponent;
+
+	/**
+	 * The person EJB service.
+	 */
+	@Inject
+	@Party
+	private PersonComponent personComponent;
+
+	/**
+	 * Creates a new user and person for the given facebook user.
+	 * 
+	 * @param fbUser
+	 *            The facebook user.
+	 */
+	private void createNewUserPerson(final com.restfb.types.User fbUser) {
+		// Persists a new user with the facebook user information.
+		final User newUser = userComponent.addOrUpdate(new User(fbUser));
+		// Creates a new person for the facebook user.
+		final Person newPerson = new Person(fbUser);
+		// Sets the user for the person.
+		newPerson.setUser(newUser);
+		// Persists the new person.
+		personComponent.addOrUpdate(newPerson);
+	}
 
 	/**
 	 * Log the facebook user in.
@@ -242,19 +269,21 @@ public class FacebookLoginServlet extends HttpServlet {
 		// If there is no facebook user.
 		if (fbUser == null) {
 			// Redirects to the facebook connect servlet.
-			response.sendRedirect(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_DEFAULT_REDIRECT_URL));
+			response.sendRedirect(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_LOGIN_REDIRECT_URL));
 		}
 		// If there is a logged facebook user.
 		else {
 			// If there is not a facebook principal for the facebook user id.
-			if (userService.getByFacebookUser(fbUser) == null) {
-				// Adds a new user with the facebook user information.
-				userService.addOrUpdate(new User(fbUser));
+			if (userComponent.getByFacebookUser(fbUser) == null) {
+				// Creates a new user and person for the facebook user.
+				createNewUserPerson(fbUser);
 			}
 			// Creates a new facebook authentication token.
 			final FacebookUserToken facebookToken = new FacebookUserToken(fbUser.getId());
 			// Tries to log the user in.
 			SecurityUtils.getSubject().login(facebookToken);
+			// Redirects to the facebook welcome page.
+			response.sendRedirect(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_WELCOME_REDIRECT_URL));
 		}
 	}
 

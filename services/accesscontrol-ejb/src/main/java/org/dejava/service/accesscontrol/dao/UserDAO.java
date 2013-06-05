@@ -6,7 +6,7 @@ import java.util.Collection;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.dejava.component.javaee.dao.AbstractGenericDAO;
+import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.credentials.Credentials;
 import org.dejava.service.accesscontrol.util.AccessControl;
@@ -25,7 +25,7 @@ public class UserDAO extends AbstractGenericDAO<User, Integer> {
 	private EntityManager entityManager;
 
 	/**
-	 * @see org.dejava.component.javaee.dao.AbstractGenericDAO#getEntityManager()
+	 * @see org.dejava.component.ejb.dao.AbstractGenericDAO#getEntityManager()
 	 */
 	@Override
 	protected EntityManager getEntityManager() {
@@ -33,7 +33,7 @@ public class UserDAO extends AbstractGenericDAO<User, Integer> {
 	}
 
 	/**
-	 * @see org.dejava.component.javaee.dao.AbstractGenericDAO#merge(java.lang.Object)
+	 * @see org.dejava.component.ejb.dao.AbstractGenericDAO#merge(java.lang.Object)
 	 */
 	@Override
 	public User merge(final User entity) {

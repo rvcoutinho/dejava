@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:pretty="http://ocpsoft.com/prettyfaces">
 <h:head>
@@ -30,11 +31,15 @@
 					<li><pretty:link mappingId="como-funciona"
 							styleClass="featured-text-1">Como
 							funciona</pretty:link></li>
-					<li><a class="featured-text-1">Conectar</a></li>
+					<li><h:outputLink styleClass="featured-text-1"
+							value="/accesscontrol-web/login/facebook"
+							rendered="#{!(securityUtils.subject.authenticated or securityUtils.subject.remembered)}">Conectar</h:outputLink>
+						<h:outputLink styleClass="featured-text-1"
+							rendered="#{(securityUtils.subject.authenticated or securityUtils.subject.remembered)}">Minha conta</h:outputLink></li>
 					<li><a href="http://www.facebook.com/SoupSocial/"
 						target="_blank"><h:graphicImage library="soupsocial"
 								class="media first" name="gfx/media/facebook.png" /></a> <a
-						href="http://www.twitter.com/Soup_Social/"><h:graphicImage
+						href="http://www.twitter.com/Soup_Social/" target="_blank"><h:graphicImage
 								library="soupsocial" class="media" name="gfx/media/twitter.png" /></a>
 						<a><h:graphicImage library="soupsocial" class="media"
 								name="gfx/media/rss.png" /></a></li>
@@ -100,10 +105,11 @@
 			<ul>
 				<li class="title"><a class="featured-text-1">Mudando o
 						mundo</a></li>
-				<li><a class="small-text">Dar novas ideias</a></li>
-				<li><a class="small-text">Abraçar ideias</a></li>
-				<li><a class="small-text">Criar novos projetos</a></li>
-				<li><a class="small-text">Patrocinar projetos</a></li>
+				<li><a class="small-text">Criar ideias</a></li>
+				<li><a class="small-text">Criar projetos</a></li>
+				<li><a class="small-text">Apoiar ideias</a></li>
+				<li><a class="small-text">Apoiar projetos</a></li>
+				<li><a class="small-text">Acompanhar projetos</a></li>
 			</ul>
 			<ul>
 				<li class="title"><button class="dark-green-bg">

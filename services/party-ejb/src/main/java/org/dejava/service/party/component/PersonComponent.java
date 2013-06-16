@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.party.dao.PersonDAO;
 import org.dejava.service.party.model.Person;
-import org.dejava.service.party.util.Party;
+import org.dejava.service.party.util.PartyCtx;
 
 /**
  * TODO
  */
-@Party
+@PartyCtx
 @Stateless(name = "Component/Party/Person")
 public class PersonComponent extends AbstractGenericComponent<Person, Integer> {
 
@@ -20,7 +20,7 @@ public class PersonComponent extends AbstractGenericComponent<Person, Integer> {
 	 * The person DAO.
 	 */
 	@Inject
-	@Party
+	@PartyCtx
 	private PersonDAO personDAO;
 
 	/**

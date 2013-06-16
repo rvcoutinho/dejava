@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.dao.credentials.CredentialDAO;
 import org.dejava.service.accesscontrol.model.credentials.Credentials;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * EJB service for credential.
  */
-@AccessControl
+@AccessControlCtx
 @Stateless(name = "Component/AccessControl/Credential")
 public class CredentialComponent extends AbstractGenericComponent<Credentials, Integer> {
 
@@ -20,7 +20,7 @@ public class CredentialComponent extends AbstractGenericComponent<Credentials, I
 	 * The credential DAO.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private CredentialDAO credentialDAO;
 
 	/**

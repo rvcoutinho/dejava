@@ -1,10 +1,13 @@
 package org.dejava.service.message.model;
 
-import java.io.Serializable;
+import javax.persistence.MappedSuperclass;
+
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 
 /**
  * Represents a message.
  */
-public interface Message extends Serializable {
+@MappedSuperclass
+public abstract class Message extends AbstractIdentifiedEntity {
 
 }

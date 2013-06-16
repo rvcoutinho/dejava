@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.location.dao.CityDAO;
 import org.dejava.service.location.model.City;
-import org.dejava.service.location.util.Location;
+import org.dejava.service.location.util.LocationCtx;
 
 /**
  * EJB service for city.
  */
-@Location
+@LocationCtx
 @Stateless(name = "Component/Location/City")
 public class CityComponent extends AbstractGenericComponent<City, Integer> {
 
@@ -20,7 +20,7 @@ public class CityComponent extends AbstractGenericComponent<City, Integer> {
 	 * The city DAO.
 	 */
 	@Inject
-	@Location
+	@LocationCtx
 	private CityDAO cityDAO;
 
 	/**

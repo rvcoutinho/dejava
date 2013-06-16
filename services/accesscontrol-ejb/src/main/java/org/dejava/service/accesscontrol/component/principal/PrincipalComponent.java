@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.dao.principal.PrincipalDAO;
 import org.dejava.service.accesscontrol.model.principal.Principal;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * EJB service for principal.
  */
-@AccessControl
+@AccessControlCtx
 @Stateless(name = "Component/AccessControl/Principal")
 public class PrincipalComponent extends AbstractGenericComponent<Principal, Integer> {
 
@@ -20,7 +20,7 @@ public class PrincipalComponent extends AbstractGenericComponent<Principal, Inte
 	 * The principal DAO.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private PrincipalDAO principalDAO;
 
 	/**

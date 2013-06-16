@@ -1,12 +1,10 @@
 package org.dejava.service.location.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 
@@ -16,38 +14,12 @@ import org.dejava.component.i18n.source.annotation.MessageSources;
 @Entity
 @Table(name = "country")
 @MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.location.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
-public class Country implements Serializable {
+public class Country extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = -4538161507269185472L;
-
-	/**
-	 * Id for the party.
-	 */
-	private Integer id;
-
-	/**
-	 * Gets the id for the party.
-	 * 
-	 * @return The id for the party.
-	 */
-	@Id
-	@Column(name = "id")
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * Sets the id for the party.
-	 * 
-	 * @param id
-	 *            New id for the party.
-	 */
-	public void setId(final Integer id) {
-		this.id = id;
-	}
 
 	/**
 	 * Two letter country code.

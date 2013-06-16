@@ -1,7 +1,5 @@
 package org.dejava.service.accesscontrol.model.credentials;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -11,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.dejava.component.ejb.entity.IdentifiedEntity;
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.service.accesscontrol.model.User;
 
 /**
@@ -20,8 +18,7 @@ import org.dejava.service.accesscontrol.model.User;
 @Entity
 @Table(name = "credentials")
 @Inheritance(strategy = InheritanceType.JOINED)
-@Access(AccessType.PROPERTY)
-public abstract class Credentials extends IdentifiedEntity {
+public abstract class Credentials extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.

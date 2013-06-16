@@ -16,7 +16,7 @@ public class Resources {
 	 * Entity manager.
 	 */
 	@Produces
-	@Location
+	@LocationCtx
 	@PersistenceContext(unitName = "LocationPU")
 	private EntityManager entityManager;
 
@@ -28,7 +28,7 @@ public class Resources {
 	 * @return A logger instance.
 	 */
 	@Produces
-	@Location
+	@LocationCtx
 	public Logger produceLog(final InjectionPoint injectionPoint) {
 		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
 	}

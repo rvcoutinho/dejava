@@ -5,19 +5,19 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.message.model.SMSMessage;
-import org.dejava.service.message.util.Message;
+import org.dejava.service.message.util.MessageCtx;
 
 /**
  * DAO for the SMS message.
  */
-@Message
+@MessageCtx
 public class SMSMessageDAO extends AbstractGenericDAO<SMSMessage, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@Message
+	@MessageCtx
 	private EntityManager entityManager;
 
 	/**

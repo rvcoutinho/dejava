@@ -5,30 +5,30 @@ import javax.inject.Inject;
 
 import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
-import org.dejava.service.contact.dao.EmailAddressDAO;
-import org.dejava.service.contact.model.EmailAddress;
+import org.dejava.service.contact.dao.ContactDAO;
+import org.dejava.service.contact.model.Contact;
 import org.dejava.service.contact.util.ContactCtx;
 
 /**
- * EJB component for the phone number.
+ * EJB component for the email address.
  */
 @ContactCtx
-@Stateless(name = "Component/Contact/EmailAddress")
-public class PhoneNumberComponent extends AbstractGenericComponent<EmailAddress, Integer> {
+@Stateless(name = "Component/Contact/Contact")
+public class ContactComponent extends AbstractGenericComponent<Contact, Integer> {
 
 	/**
 	 * The person DAO.
 	 */
 	@Inject
 	@ContactCtx
-	private EmailAddressDAO emailAddressDAO;
+	private ContactDAO emailDAO;
 
 	/**
 	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityDAO()
 	 */
 	@Override
-	public AbstractGenericDAO<EmailAddress, Integer> getEntityDAO() {
-		return emailAddressDAO;
+	public AbstractGenericDAO<Contact, Integer> getEntityDAO() {
+		return emailDAO;
 	}
 
 }

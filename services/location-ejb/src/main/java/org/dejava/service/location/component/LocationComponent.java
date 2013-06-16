@@ -3,15 +3,16 @@ package org.dejava.service.location.component;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.component.ejb.component.AbstractGenericComponent;
+import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.location.dao.LocationDAO;
-import org.dejava.service.location.util.Location;
+import org.dejava.service.location.model.Location;
+import org.dejava.service.location.util.LocationCtx;
 
 /**
  * EJB service for location.
  */
-@Location
+@LocationCtx
 @Stateless(name = "Component/Location/Location")
 public class LocationComponent extends AbstractGenericComponent<Location, Integer> {
 
@@ -19,7 +20,7 @@ public class LocationComponent extends AbstractGenericComponent<Location, Intege
 	 * The location DAO.
 	 */
 	@Inject
-	@Location
+	@LocationCtx
 	private LocationDAO locationDAO;
 
 	/**

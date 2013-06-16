@@ -8,7 +8,7 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.jsf.controller.AbstractGenericController;
 import org.dejava.service.philanthropy.component.IdeaComponent;
 import org.dejava.service.philanthropy.model.Idea;
-import org.dejava.service.philanthropy.util.Philanthropy;
+import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
  * Idea front controller.
@@ -21,7 +21,7 @@ public class IdeaController extends AbstractGenericController<Idea, Integer> {
 	 * The idea EJB service.
 	 */
 	@Inject
-	@Philanthropy
+	@PhilanthropyCtx
 	private IdeaComponent ideaComponent;
 
 	/**

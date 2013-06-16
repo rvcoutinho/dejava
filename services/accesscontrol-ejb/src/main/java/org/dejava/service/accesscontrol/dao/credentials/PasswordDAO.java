@@ -5,19 +5,19 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.model.credentials.Password;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * DAO for password.
  */
-@AccessControl
+@AccessControlCtx
 public class PasswordDAO extends AbstractGenericDAO<Password, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private EntityManager entityManager;
 
 	/**

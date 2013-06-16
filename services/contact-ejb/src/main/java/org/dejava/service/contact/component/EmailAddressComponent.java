@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.contact.dao.EmailAddressDAO;
 import org.dejava.service.contact.model.EmailAddress;
-import org.dejava.service.contact.util.Contact;
+import org.dejava.service.contact.util.ContactCtx;
 
 /**
  * EJB component for the email address.
  */
-@Contact
+@ContactCtx
 @Stateless(name = "Component/Contact/EmailAddress")
 public class EmailAddressComponent extends AbstractGenericComponent<EmailAddress, Integer> {
 
@@ -20,7 +20,7 @@ public class EmailAddressComponent extends AbstractGenericComponent<EmailAddress
 	 * The person DAO.
 	 */
 	@Inject
-	@Contact
+	@ContactCtx
 	private EmailAddressDAO emailAddressDAO;
 
 	/**

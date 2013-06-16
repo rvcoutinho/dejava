@@ -1,10 +1,18 @@
 package org.dejava.service.contact.model;
 
-import java.io.Serializable;
+import javax.persistence.MappedSuperclass;
+
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 
 /**
  * Represents a contact.
  */
-public interface Contact extends Serializable {
+@MappedSuperclass
+public abstract class Contact extends AbstractIdentifiedEntity {
+
+	/**
+	 * Generated serial
+	 */
+	private static final long serialVersionUID = 8317664521891805070L;
 
 }

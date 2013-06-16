@@ -13,6 +13,11 @@ import javax.persistence.Transient;
 public class Email extends Principal {
 
 	/**
+	 * Generated serial.
+	 */
+	private static final long serialVersionUID = 4373856994515306923L;
+
+	/**
 	 * Email of the user.
 	 */
 	private String email;

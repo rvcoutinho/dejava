@@ -1,23 +1,23 @@
-package org.dejava.service.party.dao;
+package org.dejava.service.contact.dao;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
-import org.dejava.service.party.model.Person;
-import org.dejava.service.party.util.PartyCtx;
+import org.dejava.service.contact.model.Contact;
+import org.dejava.service.contact.util.ContactCtx;
 
 /**
- * TODO
+ * DAO for the contact.
  */
-@PartyCtx
-public class PersonDAO extends AbstractGenericDAO<Person, Integer> {
+@ContactCtx
+public class ContactDAO extends AbstractGenericDAO<Contact, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@PartyCtx
+	@ContactCtx
 	private EntityManager entityManager;
 
 	/**

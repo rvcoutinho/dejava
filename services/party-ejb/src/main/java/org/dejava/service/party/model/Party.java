@@ -1,62 +1,36 @@
 package org.dejava.service.party.model;
 
-import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.contact.model.Contact;
 
 /**
+ * 
  * Represents a abstract party.
  */
 @Entity
 @Table(name = "party")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Party implements Serializable {
+public abstract class Party extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = -6745781199872773566L;
-
-	/**
-	 * Id for the party.
-	 */
-	private Integer id;
-
-	/**
-	 * Gets the id for the party.
-	 * 
-	 * @return The id for the party.
-	 */
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * Sets the id for the party.
-	 * 
-	 * @param id
-	 *            New id for the party.
-	 */
-	public void setId(final Integer id) {
-		this.id = id;
-	}
 
 	/**
 	 * Name of the party.
@@ -118,7 +92,7 @@ public abstract class Party implements Serializable {
 		// If the user is given.
 		if (user != null) {
 			// Sets the user id for the party.
-			setUserId(user.getId());
+			setUserId(user.getIdentifier());
 		}
 	}
 
@@ -193,6 +167,37 @@ public abstract class Party implements Serializable {
 	 */
 	public void setContacts(final Set<Contact> contacts) {
 		this.contacts = contacts;
+	}
+
+	/**
+	 * Update the contacts ids with the actual contact ids.
+	 */
+	protected void updateContactsIds() {
+		// If the contacts list is null.
+		if (contacts == null) {
+			// Sets the contacts ids to null.
+			contactsIds = null;
+		}
+		// If the contacts is not null.
+		else {
+			// Creates a new set.
+			contactsIds = new HashSet<>();
+			// For each entity in the entity set.
+			for (final Contact curEntity : contacts) {
+				// Adds the current entity id to the set.
+				contactsIds.add(curEntity.getIdentifier());
+			}
+		}
+	}
+
+	/**
+	 * Update the external entities ids to be persisted.
+	 */
+	@PreUpdate
+	@PrePersist
+	protected void updateAllExtEntitiesIds() {
+		// Update all external entities ids.
+		updateContactsIds();
 	}
 
 }

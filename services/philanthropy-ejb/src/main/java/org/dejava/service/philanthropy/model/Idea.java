@@ -1,19 +1,15 @@
 package org.dejava.service.philanthropy.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
 import org.dejava.service.location.model.Location;
 
@@ -23,39 +19,12 @@ import org.dejava.service.location.model.Location;
 @Entity
 @Table(name = "idea")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Idea implements Serializable {
+public class Idea extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = 1192525905793804431L;
-
-	/**
-	 * Id for the idea.
-	 */
-	private Integer id;
-
-	/**
-	 * Gets the id for the idea.
-	 * 
-	 * @return The id for the idea.
-	 */
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * Sets the id for the idea.
-	 * 
-	 * @param id
-	 *            New id for the idea.
-	 */
-	public void setId(final Integer id) {
-		this.id = id;
-	}
 
 	/**
 	 * Name of the idea.
@@ -153,7 +122,7 @@ public class Idea implements Serializable {
 		// If the location is not null.
 		else {
 			// Returns the id of the location.
-			return getLocation().getId();
+			return getLocation().getIdentifier();
 		}
 	}
 

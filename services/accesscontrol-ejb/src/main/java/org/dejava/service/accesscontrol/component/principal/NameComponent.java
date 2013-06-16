@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.dao.principal.NameDAO;
 import org.dejava.service.accesscontrol.model.principal.Name;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * EJB service for name.
  */
-@AccessControl
+@AccessControlCtx
 @Stateless(name = "Component/AccessControl/Name")
 public class NameComponent extends AbstractGenericComponent<Name, Integer> {
 
@@ -20,7 +20,7 @@ public class NameComponent extends AbstractGenericComponent<Name, Integer> {
 	 * The name DAO.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private NameDAO nameDAO;
 
 	/**

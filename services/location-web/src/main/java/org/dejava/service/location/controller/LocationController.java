@@ -7,7 +7,8 @@ import javax.ws.rs.Path;
 import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.jsf.controller.AbstractGenericController;
 import org.dejava.service.location.component.LocationComponent;
-import org.dejava.service.location.util.Location;
+import org.dejava.service.location.model.Location;
+import org.dejava.service.location.util.LocationCtx;
 
 /**
  * Location front controller.
@@ -20,7 +21,7 @@ public class LocationController extends AbstractGenericController<Location, Inte
 	 * Location EJB service.
 	 */
 	@Inject
-	@Location
+	@LocationCtx
 	private LocationComponent locationComponent;
 
 	/**

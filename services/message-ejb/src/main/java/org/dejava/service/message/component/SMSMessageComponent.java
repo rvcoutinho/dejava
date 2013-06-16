@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.message.dao.EmailMessageDAO;
 import org.dejava.service.message.model.EmailMessage;
-import org.dejava.service.message.util.Message;
+import org.dejava.service.message.util.MessageCtx;
 
 /**
  * EJB component for the SMS message.
  */
-@Message
+@MessageCtx
 @Stateless(name = "Component/Message/EmailMessage")
 public class SMSMessageComponent extends AbstractGenericComponent<EmailMessage, Integer> {
 
@@ -20,7 +20,7 @@ public class SMSMessageComponent extends AbstractGenericComponent<EmailMessage, 
 	 * The DAO for the entity.
 	 */
 	@Inject
-	@Message
+	@MessageCtx
 	private EmailMessageDAO smsMessageDAO;
 
 	/**

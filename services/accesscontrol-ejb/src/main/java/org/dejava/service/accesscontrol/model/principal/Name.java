@@ -13,6 +13,11 @@ import javax.persistence.Transient;
 public class Name extends Principal {
 
 	/**
+	 * Generated serial.
+	 */
+	private static final long serialVersionUID = -5457903376671909886L;
+
+	/**
 	 * Name of the user.
 	 */
 	private String name;

@@ -16,7 +16,7 @@ public class Resources {
 	 * Entity manager.
 	 */
 	@Produces
-	@Message
+	@MessageCtx
 	@PersistenceContext(unitName = "MessagePU")
 	private EntityManager entityManager;
 
@@ -28,7 +28,7 @@ public class Resources {
 	 * @return A logger instance.
 	 */
 	@Produces
-	@Message
+	@MessageCtx
 	public Logger produceLog(final InjectionPoint injectionPoint) {
 		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
 	}

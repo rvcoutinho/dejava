@@ -16,7 +16,7 @@ public class Resources {
 	 * Entity manager.
 	 */
 	@Produces
-	@Philanthropy
+	@PhilanthropyCtx
 	@PersistenceContext(unitName = "PhilanthropyPU")
 	private EntityManager entityManager;
 
@@ -28,7 +28,7 @@ public class Resources {
 	 * @return A logger instance.
 	 */
 	@Produces
-	@Philanthropy
+	@PhilanthropyCtx
 	public Logger produceLog(final InjectionPoint injectionPoint) {
 		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
 	}

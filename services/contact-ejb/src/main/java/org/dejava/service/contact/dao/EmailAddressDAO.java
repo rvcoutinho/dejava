@@ -5,19 +5,19 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.contact.model.EmailAddress;
-import org.dejava.service.contact.util.Contact;
+import org.dejava.service.contact.util.ContactCtx;
 
 /**
  * DAO for the email address.
  */
-@Contact
+@ContactCtx
 public class EmailAddressDAO extends AbstractGenericDAO<EmailAddress, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@Contact
+	@ContactCtx
 	private EntityManager entityManager;
 
 	/**

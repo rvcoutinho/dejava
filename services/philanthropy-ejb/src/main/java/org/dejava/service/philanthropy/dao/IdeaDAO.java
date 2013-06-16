@@ -5,19 +5,19 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.philanthropy.model.Idea;
-import org.dejava.service.philanthropy.util.Philanthropy;
+import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
  * TODO
  */
-@Philanthropy
+@PhilanthropyCtx
 public class IdeaDAO extends AbstractGenericDAO<Idea, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@Philanthropy
+	@PhilanthropyCtx
 	private EntityManager entityManager;
 
 	/**

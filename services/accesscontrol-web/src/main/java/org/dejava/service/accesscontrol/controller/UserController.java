@@ -8,7 +8,7 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.jsf.controller.AbstractGenericController;
 import org.dejava.service.accesscontrol.component.UserComponent;
 import org.dejava.service.accesscontrol.model.User;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * TODO
@@ -21,7 +21,7 @@ public class UserController extends AbstractGenericController<User, Integer> {
 	 * The person EJB service.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private UserComponent userComponent;
 
 	/**

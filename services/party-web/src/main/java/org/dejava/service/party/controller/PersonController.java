@@ -8,7 +8,7 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.jsf.controller.AbstractGenericController;
 import org.dejava.service.party.component.PersonComponent;
 import org.dejava.service.party.model.Person;
-import org.dejava.service.party.util.Party;
+import org.dejava.service.party.util.PartyCtx;
 
 /**
  * TODO
@@ -21,7 +21,7 @@ public class PersonController extends AbstractGenericController<Person, Integer>
 	 * The person EJB service.
 	 */
 	@Inject
-	@Party
+	@PartyCtx
 	private PersonComponent personComponent;
 
 	/**

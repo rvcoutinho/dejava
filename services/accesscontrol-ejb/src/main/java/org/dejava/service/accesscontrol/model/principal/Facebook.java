@@ -6,35 +6,40 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /**
- * Facebook identifier of the user (as principal).
+ * Facebook facebookIdentifier of the user (as principal).
  */
 @Table(name = "facebook")
 @Entity
 public class Facebook extends Principal {
 
 	/**
-	 * Facebook identifier of the user.
+	 * Generated serial.
 	 */
-	private String identifier;
+	private static final long serialVersionUID = -7876818384414658522L;
 
 	/**
-	 * Gets the facebook identifier of the user.
-	 * 
-	 * @return The facebook identifier of the user.
+	 * Facebook facebookIdentifier of the user.
 	 */
-	@Column(name = "identifier")
-	public String getIdentifier() {
-		return identifier;
+	private String facebookIdentifier;
+
+	/**
+	 * Gets the facebook facebookIdentifier of the user.
+	 * 
+	 * @return The facebook facebookIdentifier of the user.
+	 */
+	@Column(name = "facebookIdentifier")
+	public String getFacebookIdentifier() {
+		return facebookIdentifier;
 	}
 
 	/**
-	 * Sets the facebook identifier of the user.
+	 * Sets the facebook facebookIdentifier of the user.
 	 * 
-	 * @param identifier
-	 *            New facebook identifier of the user.
+	 * @param facebookIdentifier
+	 *            New facebook facebookIdentifier of the user.
 	 */
-	public void setIdentifier(final String identifier) {
-		this.identifier = identifier;
+	public void setFacebookIdentifier(final String facebookIdentifier) {
+		this.facebookIdentifier = facebookIdentifier;
 	}
 
 	/**
@@ -43,7 +48,7 @@ public class Facebook extends Principal {
 	@Override
 	@Transient
 	public Object getValue() {
-		return getIdentifier();
+		return getFacebookIdentifier();
 	}
 
 	/**
@@ -56,12 +61,12 @@ public class Facebook extends Principal {
 	/**
 	 * Public constructor.
 	 * 
-	 * @param identifier
-	 *            Facebook identifier of the user.
+	 * @param facebookIdentifier
+	 *            Facebook facebookIdentifier of the user.
 	 */
-	public Facebook(final String identifier) {
+	public Facebook(final String facebookIdentifier) {
 		super();
-		this.identifier = identifier;
+		this.facebookIdentifier = facebookIdentifier;
 	}
 
 }

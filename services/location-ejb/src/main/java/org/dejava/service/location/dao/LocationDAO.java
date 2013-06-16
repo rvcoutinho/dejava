@@ -4,19 +4,20 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
-import org.dejava.service.location.util.Location;
+import org.dejava.service.location.model.Location;
+import org.dejava.service.location.util.LocationCtx;
 
 /**
  * DAO for location.
  */
-@Location
+@LocationCtx
 public class LocationDAO extends AbstractGenericDAO<Location, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@Location
+	@LocationCtx
 	private EntityManager entityManager;
 
 	/**

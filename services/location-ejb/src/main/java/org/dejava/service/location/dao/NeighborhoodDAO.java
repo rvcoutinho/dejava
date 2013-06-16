@@ -5,19 +5,19 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.location.model.Neighborhood;
-import org.dejava.service.location.util.Location;
+import org.dejava.service.location.util.LocationCtx;
 
 /**
  * DAO for neighborhood.
  */
-@Location
+@LocationCtx
 public class NeighborhoodDAO extends AbstractGenericDAO<Neighborhood, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@Location
+	@LocationCtx
 	private EntityManager entityManager;
 
 	/**

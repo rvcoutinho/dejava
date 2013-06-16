@@ -1,20 +1,16 @@
 package org.dejava.service.accesscontrol.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.credentials.Credentials;
@@ -30,39 +26,12 @@ import org.dejava.service.accesscontrol.model.principal.Principal;
 @Entity
 @Table(name = "u5er")
 @MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
-public class User implements Serializable {
+public class User extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = -2762159417756393897L;
-
-	/**
-	 * Id for the user.
-	 */
-	private Integer id;
-
-	/**
-	 * Gets the id for the user.
-	 * 
-	 * @return The id for the user.
-	 */
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * Sets the id for the user.
-	 * 
-	 * @param id
-	 *            New id for the user.
-	 */
-	public void setId(final Integer id) {
-		this.id = id;
-	}
 
 	/**
 	 * Gets the object (first found) from the given collection with the desired type.

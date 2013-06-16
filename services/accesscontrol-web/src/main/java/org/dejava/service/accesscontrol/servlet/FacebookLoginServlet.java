@@ -19,11 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.shiro.SecurityUtils;
 import org.dejava.service.accesscontrol.authc.FacebookUserToken;
 import org.dejava.service.accesscontrol.component.UserComponent;
-import org.dejava.service.accesscontrol.component.principal.EmailComponent;
-import org.dejava.service.accesscontrol.component.principal.FacebookComponent;
 import org.dejava.service.accesscontrol.constant.FacebookAppKeys;
 import org.dejava.service.accesscontrol.model.User;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 import org.dejava.service.party.component.PersonComponent;
 import org.dejava.service.party.model.Person;
 import org.dejava.service.party.util.Party;
@@ -200,35 +198,21 @@ public class FacebookLoginServlet extends HttpServlet {
 	}
 
 	/**
-	 * The facebook principal EJB service.
+	 * The user EJB component.
 	 */
 	@Inject
-	@AccessControl
-	private FacebookComponent facebookComponent;
-
-	/**
-	 * The email principal EJB service.
-	 */
-	@Inject
-	@AccessControl
-	private EmailComponent emailComponent;
-
-	/**
-	 * The user EJB service.
-	 */
-	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private UserComponent userComponent;
 
 	/**
-	 * The person EJB service.
+	 * The person EJB component.
 	 */
 	@Inject
-	@Party
+	@PartyCtx
 	private PersonComponent personComponent;
 
 	/**
-	 * Creates a new user and person for the given facebook user.
+	 * Creates a new user and person for the given facebook user. FIXME
 	 * 
 	 * @param fbUser
 	 *            The facebook user.

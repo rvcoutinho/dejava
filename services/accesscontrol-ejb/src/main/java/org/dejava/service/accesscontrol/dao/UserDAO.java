@@ -9,19 +9,19 @@ import javax.persistence.EntityManager;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.credentials.Credentials;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * DAO for user.
  */
-@AccessControl
+@AccessControlCtx
 public class UserDAO extends AbstractGenericDAO<User, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private EntityManager entityManager;
 
 	/**
@@ -38,7 +38,7 @@ public class UserDAO extends AbstractGenericDAO<User, Integer> {
 	@Override
 	public User merge(final User entity) {
 		// If the user has no id.
-		if (entity.getId() == null) {
+		if (entity.getIdentifier() == null) {
 			// Gets the credentials for the user.
 			final Collection<Credentials> credentials = entity.getCredentials();
 			// Remove the credentials from the user (credentials might use the user id for hash calculations).

@@ -5,19 +5,19 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.contact.model.PhoneNumber;
-import org.dejava.service.contact.util.Contact;
+import org.dejava.service.contact.util.ContactCtx;
 
 /**
  * DAO for the phone number.
  */
-@Contact
+@ContactCtx
 public class PhoneNumberDAO extends AbstractGenericDAO<PhoneNumber, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@Contact
+	@ContactCtx
 	private EntityManager entityManager;
 
 	/**

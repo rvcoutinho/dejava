@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.dao.credentials.PasswordDAO;
 import org.dejava.service.accesscontrol.model.credentials.Password;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * EJB service for password.
  */
-@AccessControl
+@AccessControlCtx
 @Stateless(name = "Component/AccessControl/Password")
 public class PasswordComponent extends AbstractGenericComponent<Password, Integer> {
 
@@ -20,7 +20,7 @@ public class PasswordComponent extends AbstractGenericComponent<Password, Intege
 	 * The password DAO.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private PasswordDAO passwordDAO;
 
 	/**

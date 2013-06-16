@@ -13,7 +13,7 @@ import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.credentials.Password;
 import org.dejava.service.accesscontrol.model.principal.Email;
 import org.dejava.service.accesscontrol.model.principal.Name;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -86,7 +86,7 @@ public class EJBRealmTest {
 	 * User service.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private UserComponent userComponent;
 
 	/**

@@ -18,7 +18,7 @@ import org.dejava.service.accesscontrol.component.principal.NameComponent;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.credentials.Password;
 import org.dejava.service.accesscontrol.model.principal.Principal;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * Authentication and authorization realm via EJB services.
@@ -82,7 +82,7 @@ public class EJBRealm extends AuthenticatingRealm {
 	 * The name EJB service.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private NameComponent nameComponent;
 
 	/**
@@ -136,7 +136,7 @@ public class EJBRealm extends AuthenticatingRealm {
 	 * The email EJB service.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private EmailComponent emailComponent;
 
 	/**
@@ -190,7 +190,7 @@ public class EJBRealm extends AuthenticatingRealm {
 	 * The password EJB service.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private PasswordComponent passwordComponent;
 
 	/**

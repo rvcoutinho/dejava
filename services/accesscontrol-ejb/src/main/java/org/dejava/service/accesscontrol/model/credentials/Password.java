@@ -17,6 +17,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Password extends Credentials implements HashedCredentials {
 
 	/**
+	 * Generated serial.
+	 */
+	private static final long serialVersionUID = -9129686752976388996L;
+
+	/**
 	 * Algorithms to be used in the credential hash.
 	 */
 	private static final transient String[] ALGS_NAMES = { "SHA-256", "SHA-384", "SHA-512" };
@@ -70,7 +75,7 @@ public class Password extends Credentials implements HashedCredentials {
 	@Transient
 	public String getSalt() {
 		// Return the default salt plus the user id (hex).
-		return DEFAULT_SALT + Integer.toHexString(getUser().getId().hashCode());
+		return DEFAULT_SALT + Integer.toHexString(getUser().getIdentifier().hashCode());
 	}
 
 	/**

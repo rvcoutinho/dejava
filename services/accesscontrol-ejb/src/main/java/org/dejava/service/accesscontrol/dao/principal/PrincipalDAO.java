@@ -5,19 +5,19 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.model.principal.Principal;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * DAO for principal.
  */
-@AccessControl
+@AccessControlCtx
 public class PrincipalDAO extends AbstractGenericDAO<Principal, Integer> {
 
 	/**
 	 * Entity manager being used.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private EntityManager entityManager;
 
 	/**

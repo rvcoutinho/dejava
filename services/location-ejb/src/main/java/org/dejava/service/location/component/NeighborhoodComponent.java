@@ -3,16 +3,16 @@ package org.dejava.service.location.component;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.component.ejb.component.AbstractGenericComponent;
+import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.location.dao.NeighborhoodDAO;
 import org.dejava.service.location.model.Neighborhood;
-import org.dejava.service.location.util.Location;
+import org.dejava.service.location.util.LocationCtx;
 
 /**
  * EJB service for neighborhood.
  */
-@Location
+@LocationCtx
 @Stateless(name = "Component/Location/Neighborhood")
 public class NeighborhoodComponent extends AbstractGenericComponent<Neighborhood, Integer> {
 
@@ -20,7 +20,7 @@ public class NeighborhoodComponent extends AbstractGenericComponent<Neighborhood
 	 * The neighborhood DAO.
 	 */
 	@Inject
-	@Location
+	@LocationCtx
 	private NeighborhoodDAO neighborhoodDAO;
 
 	/**

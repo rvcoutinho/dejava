@@ -10,7 +10,7 @@ import org.dejava.service.accesscontrol.component.UserComponent;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.principal.Email;
 import org.dejava.service.accesscontrol.model.principal.Facebook;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -59,7 +59,7 @@ public class UserComponentTest {
 	 * The user EJB service.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private UserComponent userComponent;
 
 	/**

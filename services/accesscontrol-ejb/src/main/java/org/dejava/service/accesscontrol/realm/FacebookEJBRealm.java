@@ -15,7 +15,7 @@ import org.dejava.service.accesscontrol.authc.FacebookUserToken;
 import org.dejava.service.accesscontrol.component.principal.FacebookComponent;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.principal.Facebook;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * Authentication and authorization realm via EJB services.
@@ -79,7 +79,7 @@ public class FacebookEJBRealm extends AuthenticatingRealm {
 	 * The facebook EJB service.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private FacebookComponent facebookComponent;
 
 	/**

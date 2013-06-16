@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.philanthropy.dao.IdeaDAO;
 import org.dejava.service.philanthropy.model.Idea;
-import org.dejava.service.philanthropy.util.Philanthropy;
+import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
  * TODO
  */
-@Philanthropy
+@PhilanthropyCtx
 @Stateless(name = "Component/Philanthropy/Idea")
 public class IdeaComponent extends AbstractGenericComponent<Idea, Integer> {
 
@@ -20,7 +20,7 @@ public class IdeaComponent extends AbstractGenericComponent<Idea, Integer> {
 	 * The person DAO.
 	 */
 	@Inject
-	@Philanthropy
+	@PhilanthropyCtx
 	private IdeaDAO ideaDAO;
 
 	/**

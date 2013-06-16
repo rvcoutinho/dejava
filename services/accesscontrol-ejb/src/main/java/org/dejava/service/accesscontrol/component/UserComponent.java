@@ -10,12 +10,12 @@ import org.dejava.service.accesscontrol.dao.principal.EmailDAO;
 import org.dejava.service.accesscontrol.dao.principal.FacebookDAO;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.principal.Principal;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * EJB service for user.
  */
-@AccessControl
+@AccessControlCtx
 @Stateless(name = "Component/AccessControl/User")
 public class UserComponent extends AbstractGenericComponent<User, Integer> {
 
@@ -23,7 +23,7 @@ public class UserComponent extends AbstractGenericComponent<User, Integer> {
 	 * The user DAO.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private UserDAO userDAO;
 
 	/**
@@ -38,14 +38,14 @@ public class UserComponent extends AbstractGenericComponent<User, Integer> {
 	 * The facebook principal DAO.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private FacebookDAO facebookDAO;
 
 	/**
 	 * The email principal DAO.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private EmailDAO emailDAO;
 
 	/**
@@ -57,7 +57,7 @@ public class UserComponent extends AbstractGenericComponent<User, Integer> {
 	 */
 	public User getByFacebookUser(final com.restfb.types.User fbUser) {
 		// Tries to get the facebook principal by the facebook user id.
-		Principal principal = facebookDAO.getByAttribute("identifier", fbUser.getId());
+		Principal principal = facebookDAO.getByAttribute("facebookIdentifier", fbUser.getId());
 		// If there is no user for the facebook id.
 		if (principal == null) {
 			// Tries to get the email principal by the facebook user email.

@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.dao.principal.FacebookDAO;
 import org.dejava.service.accesscontrol.model.principal.Facebook;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * EJB service for facebook.
  */
-@AccessControl
+@AccessControlCtx
 @Stateless(name = "Component/AccessControl/Facebook")
 public class FacebookComponent extends AbstractGenericComponent<Facebook, Integer> {
 
@@ -20,7 +20,7 @@ public class FacebookComponent extends AbstractGenericComponent<Facebook, Intege
 	 * The facebook DAO.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private FacebookDAO facebookDAO;
 
 	/**

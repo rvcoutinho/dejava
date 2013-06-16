@@ -7,12 +7,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.accesscontrol.dao.principal.EmailDAO;
 import org.dejava.service.accesscontrol.model.principal.Email;
-import org.dejava.service.accesscontrol.util.AccessControl;
+import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * EJB service for email.
  */
-@AccessControl
+@AccessControlCtx
 @Stateless(name = "Component/AccessControl/Email")
 public class EmailComponent extends AbstractGenericComponent<Email, Integer> {
 
@@ -20,7 +20,7 @@ public class EmailComponent extends AbstractGenericComponent<Email, Integer> {
 	 * The email DAO.
 	 */
 	@Inject
-	@AccessControl
+	@AccessControlCtx
 	private EmailDAO emailDAO;
 
 	/**

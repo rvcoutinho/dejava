@@ -1,11 +1,7 @@
 package org.dejava.service.accesscontrol.model.principal;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -13,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.service.accesscontrol.model.User;
 
 /**
@@ -21,34 +18,12 @@ import org.dejava.service.accesscontrol.model.User;
 @Entity
 @Table(name = "principal")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Principal {
+public abstract class Principal extends AbstractIdentifiedEntity {
 
 	/**
-	 * Id for the principal.
+	 * Generated serial.
 	 */
-	private Integer id;
-
-	/**
-	 * Gets the id for the principal.
-	 * 
-	 * @return The id for the principal.
-	 */
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * Sets the id for the principal.
-	 * 
-	 * @param id
-	 *            New id for the principal.
-	 */
-	public void setId(final Integer id) {
-		this.id = id;
-	}
+	private static final long serialVersionUID = -8167482368597973777L;
 
 	/**
 	 * The user for this principal.

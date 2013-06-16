@@ -64,9 +64,11 @@ public class ExternalEntityLoader {
 	 * 
 	 * @param entity
 	 *            The entity to get the external entities (fields) loaded.
+	 * @param ignoreLazyLoading
+	 *            If the lazy loading attribute for the annotation must be ignored.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static void loadAllExternalEntities(final Object entity) {
+	public static void loadAllExternalEntities(final Object entity, final Boolean ignoreLazyLoading) {
 		// Asserts that the entity is not null.
 		PreConditions.assertParamNotNull(ExternalEntityLoaderParamKeys.ENTITY, entity);
 		// Gets the class of the entity.
@@ -78,35 +80,40 @@ public class ExternalEntityLoader {
 			// Gets the external entity annotation for the current field.
 			final ExternalEntity externalEntityInfo = currentField.getReflectedField().getAnnotation(
 					ExternalEntity.class);
-			// Gets the parameters values to retrieve the external entity from the given entity.
-			final Object paramsValues = entityClass.getMethod(externalEntityInfo.idsMethod(), null)
-					.invokeMethod(entity, true, null);
-			// If there is any entity id.
-			if (paramsValues != null) {
-				// If the field is a collection.
-				if (Collection.class.isAssignableFrom(currentField.getReflectedField().getType())) {
-					// Gets the external entities default collection implementation.
-					final Collection externalEntities = (Collection) currentField.getValue(entity, false,
-							true);
-					// For each external entity id.
-					for (final Object curExtEntityParamsValues : (Collection<?>) paramsValues) {
-						// Adds the external entity to collection.
-						externalEntities.add(getExternalEntity(externalEntityInfo.retrieveObj(),
+			// If lazy loading should be ignored or if the external entity should not be lazy loaded.
+			if ((ignoreLazyLoading) || (!externalEntityInfo.lazyLoading())) {
+				// Gets the parameters values to retrieve the external entity from the given entity.
+				final Object paramsValues = entityClass.getMethod(externalEntityInfo.idsMethod(), null)
+						.invokeMethod(entity, true, null);
+				// If there is any entity id.
+				if (paramsValues != null) {
+					// If the field is a collection.
+					if (Collection.class.isAssignableFrom(currentField.getReflectedField().getType())) {
+						// Gets the external entities default collection implementation.
+						final Collection externalEntities = (Collection) currentField.getValue(entity, false,
+								true);
+						// For each external entity id.
+						for (final Object curExtEntityParamsValues : (Collection<?>) paramsValues) {
+							// Adds the external entity to collection.
+							externalEntities.add(getExternalEntity(externalEntityInfo.retrieveObj(),
+									externalEntityInfo.retrieveMethod(),
+									externalEntityInfo.retrieveMethodParamsClasses(),
+									new Object[] { curExtEntityParamsValues }));
+						}
+						// Sets the external entities values.
+						currentField.setValue(entity, externalEntities, externalEntityInfo.fieldAccess(),
+								true);
+					}
+					// If the field is not a collection (or array).
+					else {
+						// Gets the external entity.
+						final Object externalEntity = getExternalEntity(externalEntityInfo.retrieveObj(),
 								externalEntityInfo.retrieveMethod(),
 								externalEntityInfo.retrieveMethodParamsClasses(),
-								new Object[] { curExtEntityParamsValues }));
+								new Object[] { paramsValues });
+						// Sets the external entity value.
+						currentField.setValue(entity, externalEntity, externalEntityInfo.fieldAccess(), true);
 					}
-					// Sets the external entities values.
-					currentField.setValue(entity, externalEntities, externalEntityInfo.fieldAccess(), true);
-				}
-				// If the field is not a collection (or array).
-				else {
-					// Gets the external entity.
-					final Object externalEntity = getExternalEntity(externalEntityInfo.retrieveObj(),
-							externalEntityInfo.retrieveMethod(),
-							externalEntityInfo.retrieveMethodParamsClasses(), new Object[] { paramsValues });
-					// Sets the external entity value.
-					currentField.setValue(entity, externalEntity, externalEntityInfo.fieldAccess(), true);
 				}
 			}
 		}

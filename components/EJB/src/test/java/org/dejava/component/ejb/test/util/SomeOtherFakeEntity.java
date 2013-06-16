@@ -3,6 +3,8 @@ package org.dejava.component.ejb.test.util;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Transient;
+
 import org.dejava.component.ejb.entity.ExternalEntity;
 import org.dejava.component.ejb.entity.IdentifiedEntity;
 
@@ -22,6 +24,15 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 	private Integer extEntityId;
 
 	/**
+	 * Gets the raw external entity identifier.
+	 * 
+	 * @return The raw external entity identifier.
+	 */
+	public Integer getRawExtEntityId() {
+		return extEntityId;
+	}
+
+	/**
 	 * Gets the external entity identifier.
 	 * 
 	 * @return The external entity identifier.
@@ -29,8 +40,8 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 	public Integer getExtEntityId() {
 		// If the external entity is null.
 		if (extEntity == null) {
-			// Returns the persisted id.
-			return extEntityId;
+			// Returns null.
+			return null;
 		}
 		// If the external entity is not null.
 		else {
@@ -52,7 +63,7 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 	/**
 	 * The external entity.
 	 */
-	@ExternalEntity(retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getExtEntityId")
+	@ExternalEntity(retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getRawExtEntityId")
 	private FakeEntity extEntity;
 
 	/**
@@ -71,16 +82,23 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 	 *            New external entity.
 	 */
 	public void setExtEntity(final FakeEntity extEntity) {
-		// Sets the external entity.
 		this.extEntity = extEntity;
-		// Resets the persisted identifier.
-		setExtEntityId(null);
 	}
 
 	/**
 	 * The external entities identifiers.
 	 */
 	private Set<Integer> extEntitiesIds;
+
+	/**
+	 * Gets the raw external entities identifiers.
+	 * 
+	 * @return The raw external entities identifiers.
+	 */
+	@Transient
+	public Set<Integer> getRawExtEntitiesIds() {
+		return extEntitiesIds;
+	}
 
 	/**
 	 * Gets the external entities identifiers.
@@ -91,7 +109,7 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 		// If the external entities is null.
 		if (extEntities == null) {
 			// Returns the persisted ids.
-			return extEntitiesIds;
+			return null;
 		}
 		// If the external entities is not null.
 		else {
@@ -120,7 +138,7 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 	/**
 	 * The external entities.
 	 */
-	@ExternalEntity(retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getExtEntitiesIds")
+	@ExternalEntity(lazyLoading = true, retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getRawExtEntitiesIds")
 	private Set<FakeEntity> extEntities;
 
 	/**

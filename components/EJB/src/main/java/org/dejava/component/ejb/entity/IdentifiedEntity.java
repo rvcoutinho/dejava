@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PostLoad;
 
 /**
  * Some identified entity.
@@ -44,6 +45,15 @@ public class IdentifiedEntity implements Serializable {
 	 */
 	public void setIdentifier(final Integer identifier) {
 		this.identifier = identifier;
+	}
+
+	/**
+	 * Loads all external entities for the entity.
+	 */
+	@PostLoad
+	protected void loadAllExternalEntities() {
+		// Tries to load all external entities for the entity.
+		ExternalEntityLoader.loadAllExternalEntities(this, false);
 	}
 
 }

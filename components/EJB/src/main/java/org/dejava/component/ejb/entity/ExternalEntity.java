@@ -13,6 +13,13 @@ import java.lang.annotation.Target;
 public @interface ExternalEntity {
 
 	/**
+	 * If the external entity should be lazy loaded (only loaded when forced to). Be careful when persisting
+	 * entities that have lazy loaded external entities; external entities should be explicitly loaded before
+	 * persisted again. Default value is false.
+	 */
+	boolean lazyLoading() default false;
+
+	/**
 	 * The name of the annotated entity method that returns the identifiers used by the
 	 * {@link #retrieveMethod()} to retrieve the external entities. The method might return a single
 	 * identifier or a Collection of identifiers. The method must take no parameters.
@@ -30,7 +37,7 @@ public @interface ExternalEntity {
 	 * The parameters classes for the method to used in order to retrieve the external entity. The default
 	 * value is Integer.
 	 */
-	Class[] retrieveMethodParamsClasses() default { Integer.class };
+	Class<?>[] retrieveMethodParamsClasses() default { Integer.class };
 
 	/**
 	 * The JNDI name of the object to be used in order to retrieve the external entity.

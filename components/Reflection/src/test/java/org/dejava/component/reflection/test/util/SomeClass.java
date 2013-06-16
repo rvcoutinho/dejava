@@ -22,6 +22,25 @@ public class SomeClass extends SomeSuperClass {
 	private Object fieldC;
 
 	/**
+	 * Gets the fieldC.
+	 * 
+	 * @return The fieldC.
+	 */
+	public Object getFieldC() {
+		return fieldC;
+	}
+
+	/**
+	 * Sets the fieldC.
+	 * 
+	 * @param fieldC
+	 *            New fieldC.
+	 */
+	public void setFieldC(final Object fieldC) {
+		this.fieldC = fieldC;
+	}
+
+	/**
 	 * Some field.
 	 */
 	@SomeAnnotation

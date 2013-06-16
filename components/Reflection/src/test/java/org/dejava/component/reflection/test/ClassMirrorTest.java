@@ -21,17 +21,12 @@ import org.dejava.component.reflection.test.util.SomeAnnotation;
 import org.dejava.component.reflection.test.util.SomeClass;
 import org.dejava.component.reflection.test.util.SomeOtherAnnotation;
 import org.dejava.component.reflection.test.util.SomeSuperClass;
-import org.dejava.component.test.annotation.ParametricTest;
-import org.dejava.component.test.runner.JUnitParametricRunner;
-import org.dejava.component.test.runner.dataset.impl.StaticMethodTestDataProvider;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 /**
  * Tests for the class mirror.
  */
-@RunWith(JUnitParametricRunner.class)
 public class ClassMirrorTest {
 
 	/**
@@ -52,16 +47,16 @@ public class ClassMirrorTest {
 
 	/**
 	 * Tests the getClass method with valid classes names.
-	 * 
-	 * @param className
-	 *            Class name to me used in the test.
 	 */
-	@ParametricTest(paramsValues = { "getValidClassesNames" })
-	public void testGetClassByClassName(final String className) {
-		// Tries to get the class via ClassMirror.
-		final Class<?> clazz = ClassMirror.getClass(className, null, true);
-		// Assert that the names match.
-		Assert.assertEquals(className, clazz.getName());
+	@Test
+	public void testGetClassByClassName() {
+		// For each valid class name.
+		for (final String curClassName : getValidClassesNames()) {
+			// Tries to get the class via ClassMirror.
+			final Class<?> clazz = ClassMirror.getClass(curClassName, null, true);
+			// Assert that the names match.
+			Assert.assertEquals(curClassName, clazz.getName());
+		}
 	}
 
 	/**
@@ -241,29 +236,28 @@ public class ClassMirrorTest {
 
 	/**
 	 * Tests the getFields method with valid annotations.
-	 * 
-	 * @param annotationFields
-	 *            The annotation and the fields that are supposed to be annotated.
 	 */
-	@ParametricTest(paramsValues = { "getAnnotatedFields" })
-	public void testGetFieldsValidAnnotations(
-			final Entry<Class<? extends Annotation>, String[]> annotationFields) {
-		// Creates a new class mirror for some class.
-		final ClassMirror<SomeClass> someClass = new ClassMirror<>(SomeClass.class);
-		// Tries to get the fields for the annotation.
-		final Collection<FieldMirror> retrievedFields = someClass.getFields(annotationFields.getKey());
-		// Creates a list for the expected fields names.
-		final Collection<String> expectedFieldsNames = Arrays.asList(annotationFields.getValue());
-		// Creates a list for the retrieved fields names.
-		final Collection<String> retrievedFieldsNames = new ArrayList<>();
-		// For each retrieved field.
-		for (final FieldMirror curField : retrievedFields) {
-			// Puts the current field name into the appropriate set.
-			retrievedFieldsNames.add(curField.getReflectedField().getName());
+	@Test
+	public void testGetFieldsValidAnnotations() {
+		// For each annotated fields.
+		for (final Entry<Class<? extends Annotation>, String[]> curAnnotatedField : getAnnotatedFields()) {
+			// Creates a new class mirror for some class.
+			final ClassMirror<SomeClass> someClass = new ClassMirror<>(SomeClass.class);
+			// Tries to get the fields for the annotation.
+			final Collection<FieldMirror> retrievedFields = someClass.getFields(curAnnotatedField.getKey());
+			// Creates a list for the expected fields names.
+			final Collection<String> expectedFieldsNames = Arrays.asList(curAnnotatedField.getValue());
+			// Creates a list for the retrieved fields names.
+			final Collection<String> retrievedFieldsNames = new ArrayList<>();
+			// For each retrieved field.
+			for (final FieldMirror curField : retrievedFields) {
+				// Puts the current field name into the appropriate set.
+				retrievedFieldsNames.add(curField.getReflectedField().getName());
+			}
+			// Asserts that the two lists (expected and retrieved) contain the same fields.
+			Assert.assertEquals(expectedFieldsNames.size(), retrievedFieldsNames.size());
+			Assert.assertTrue(expectedFieldsNames.containsAll(retrievedFieldsNames));
 		}
-		// Asserts that the two lists (expected and retrieved) contain the same fields.
-		Assert.assertEquals(expectedFieldsNames.size(), retrievedFieldsNames.size());
-		Assert.assertTrue(expectedFieldsNames.containsAll(retrievedFieldsNames));
 	}
 
 	/**
@@ -306,16 +300,23 @@ public class ClassMirrorTest {
 
 	/**
 	 * Tests the getField method with empty names.
-	 * 
-	 * @param invalidName
-	 *            The invalid name for the field.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getEmptyStrings" }, expectedExceptionClass = EmptyParameterException.class)
-	public void testGetFieldEmptyName(final String invalidName) {
-		// Creates a new class mirror for some class.
-		final ClassMirror<SomeClass> someClass = new ClassMirror<>(SomeClass.class);
-		// Tries to get the field for the name.
-		someClass.getField(invalidName);
+	@Test
+	public void testGetFieldEmptyName() {
+		// For each invalid name.
+		for (final String curInvName : getEmptyStrings()) {
+			// Creates a new class mirror for some class.
+			final ClassMirror<SomeClass> someClass = new ClassMirror<>(SomeClass.class);
+			// Tries to get the field for the name.
+			try {
+				someClass.getField(curInvName);
+				// If the method does not throw an exception, the test fails.
+				Assert.fail();
+			}
+			// If there is an exception, ignores it.
+			catch (final InvalidParameterException exception) {
+			}
+		}
 	}
 
 	/**
@@ -334,16 +335,23 @@ public class ClassMirrorTest {
 
 	/**
 	 * Tests the getField method with invalid fields names.
-	 * 
-	 * @param invalidName
-	 *            The invalid name for the field.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getInvalidFieldsNames" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testGetFieldInvalidName(final String invalidName) {
-		// Creates a new class mirror for some class.
-		final ClassMirror<SomeClass> someClass = new ClassMirror<>(SomeClass.class);
-		// Tries to get the field for the name.
-		someClass.getField(invalidName);
+	@Test
+	public void testGetFieldInvalidName() {
+		// For each invalid name.
+		for (final String curInvName : getEmptyStrings()) {
+			// Creates a new class mirror for some class.
+			final ClassMirror<SomeClass> someClass = new ClassMirror<>(SomeClass.class);
+			// Tries to get the field for the name.
+			try {
+				someClass.getField(curInvName);
+				// If the method does not throw an exception, the test fails.
+				Assert.fail();
+			}
+			// If there is an exception, ignores it.
+			catch (final InvalidParameterException exception) {
+			}
+		}
 	}
 
 	// TODO Tests for getFieldPath()

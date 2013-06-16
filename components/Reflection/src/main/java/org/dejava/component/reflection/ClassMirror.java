@@ -398,7 +398,7 @@ public class ClassMirror<Reflected> {
 	 *             If the method cannot be found.
 	 */
 	private MethodMirror getMethod(final String methodName, final Integer varyingParamIndex,
-			final Class<?>... paramsClasses) throws InvalidParameterException {
+			final Class<?>[] paramsClasses) throws InvalidParameterException {
 		// Keeps the original value of the parameter that will be changed.
 		final Class<?> initialParamClass = paramsClasses[varyingParamIndex];
 		// Tries to get the method.
@@ -453,7 +453,7 @@ public class ClassMirror<Reflected> {
 	 * @throws InvalidParameterException
 	 *             If the method cannot be found or one of the parameters classes is empty.
 	 */
-	public MethodMirror getMethod(final String methodName, final Class<?>... paramsClasses)
+	public MethodMirror getMethod(final String methodName, final Class<?>[] paramsClasses)
 			throws InvalidParameterException, EmptyParameterException {
 		// Asserts that the method name is not empty.
 		PreConditions.assertParamNotEmpty(ClassParamKeys.METHOD_NAME, methodName);
@@ -497,7 +497,7 @@ public class ClassMirror<Reflected> {
 	 * @throws InvalidParameterException
 	 *             If one of the parameters values is empty.
 	 */
-	private Class<?>[] getParamsClasses(final Object... paramsValues) throws InvalidParameterException {
+	private Class<?>[] getParamsClasses(final Object[] paramsValues) throws InvalidParameterException {
 		// Parameters classes.
 		Class<?>[] paramsClasses = null;
 		// If there are values for the parameters.
@@ -536,7 +536,7 @@ public class ClassMirror<Reflected> {
 	 * @throws InvalidParameterException
 	 *             If the method cannot be found or one of the parameters values is empty.
 	 */
-	public MethodMirror getMethod(final String methodName, final Object... paramsValues)
+	public MethodMirror getMethod(final String methodName, final Object[] paramsValues)
 			throws InvalidParameterException, EmptyParameterException {
 		// Tries to get the method.
 		return getMethod(methodName, getParamsClasses(paramsValues));
@@ -632,7 +632,7 @@ public class ClassMirror<Reflected> {
 	 *             If the constructor cannot be found.
 	 */
 	private ConstructorMirror<Reflected> getConstructor(final Integer varyingParamIndex,
-			final Class<?>... paramsClasses) throws InvalidParameterException {
+			final Class<?>[] paramsClasses) throws InvalidParameterException {
 		// Keeps the original value of the parameter that will be changed.
 		final Class<?> initialParamClass = paramsClasses[varyingParamIndex];
 		// Tries to get the constructor.
@@ -683,7 +683,7 @@ public class ClassMirror<Reflected> {
 	 * @throws InvalidParameterException
 	 *             If the constructor cannot be found or one of the parameters classes is empty.
 	 */
-	public ConstructorMirror<Reflected> getConstructor(final Class<?>... paramsClasses)
+	public ConstructorMirror<Reflected> getConstructor(final Class<?>[] paramsClasses)
 			throws InvalidParameterException {
 		// If there are no parameters for the constructor to be found.
 		if ((paramsClasses == null) || (paramsClasses.length == 0)) {
@@ -727,7 +727,7 @@ public class ClassMirror<Reflected> {
 	 * @throws InvalidParameterException
 	 *             If the constructor cannot be found or one of the parameters values is empty.
 	 */
-	public ConstructorMirror<Reflected> getConstructor(final Object... paramsValues)
+	public ConstructorMirror<Reflected> getConstructor(final Object[] paramsValues)
 			throws InvalidParameterException {
 		// Tries to get the constructor.
 		return getConstructor(getParamsClasses(paramsValues));

@@ -181,10 +181,10 @@ public class MethodMirror {
 	 * 
 	 * @param targetObject
 	 *            The target object from which the method will be invoked.
-	 * @param paramsValues
-	 *            Parameters values to be used during the invocation.
 	 * @param ignoreAccess
 	 *            If the defined access for the method must be ignored.
+	 * @param paramsValues
+	 *            Parameters values to be used during the invocation.
 	 * @return Returns the object returned from the method being invoked.
 	 * @throws EmptyParameterException
 	 *             If the target object is null and the method is not static.
@@ -193,8 +193,8 @@ public class MethodMirror {
 	 * @throws InvocationException
 	 *             If the method throws an exception itself.
 	 */
-	public Object invokeMethod(final Object targetObject, final Object[] paramsValues,
-			final Boolean ignoreAccess) throws EmptyParameterException, InvalidParameterException,
+	public Object invokeMethod(final Object targetObject, final Boolean ignoreAccess,
+			final Object[] paramsValues) throws EmptyParameterException, InvalidParameterException,
 			InvocationException {
 		// If the field is not static and the target object is null.
 		if ((targetObject == null) && (!Modifier.isStatic(getReflectedMethod().getModifiers()))) {
@@ -240,18 +240,18 @@ public class MethodMirror {
 	 * 
 	 * @param jndiPath
 	 *            The JNDI path for the object from which the method will be invoked.
-	 * @param paramsValues
-	 *            Parameters values to be used during the invocation.
 	 * @param ignoreAccess
 	 *            If the defined access for the method must be ignored.
+	 * @param paramsValues
+	 *            Parameters values to be used during the invocation.
 	 * @return Returns the object returned from the method being invoked.
 	 * @throws InvalidParameterException
 	 *             If the parameters for this method are not valid (empty or method could not be accessed).
 	 * @throws InvocationException
 	 *             If the method throws an exception itself.
 	 */
-	public Object invokeMethod(final String jndiPath, final Object[] paramsValues, final Boolean ignoreAccess)
-			throws InvalidParameterException, InvocationException {
+	public Object invokeMethod(final String jndiPath, final Boolean ignoreAccess,
+			final Object[] paramsValues) throws InvalidParameterException, InvocationException {
 		// Asserts that the JNDI path is not empty.
 		PreConditions.assertParamNotEmpty(MethodParamKeys.JNDI_PATH, jndiPath);
 		// Tries to invoke the method.
@@ -259,7 +259,7 @@ public class MethodMirror {
 			// Tries to retrieve the object.
 			final Object object = InitialContext.doLookup(jndiPath);
 			// Invokes the method.
-			return invokeMethod(object, paramsValues, ignoreAccess);
+			return invokeMethod(object, ignoreAccess, paramsValues);
 		}
 		// If the object cannot be found.
 		catch (final NamingException exception) {

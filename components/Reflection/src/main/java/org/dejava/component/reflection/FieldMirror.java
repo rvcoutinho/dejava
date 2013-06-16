@@ -138,18 +138,19 @@ public class FieldMirror {
 		// If the getter is null.
 		if (getter == null) {
 			// Tries to get the getter for the field.
-			try {
-				getter = getDeclaringClass().getMethod(getGetterName(), null);
+			getter = getDeclaringClass().getMethod(getGetterName(), null);
+		}
+		// If the method cannot be found.
+		if (getter == null) {
+			// If field type is boolean.
+			if ((getReflectedField().getType().isAssignableFrom(Boolean.class))
+					|| (getReflectedField().getType().isAssignableFrom(boolean.class))) {
+				// Tries to get the boolean field getter.
+				getter = getDeclaringClass().getMethod(getBooleanGetterName(), null);
 			}
-			// If the method was not found.
-			catch (final Exception exception) {
-				// If field type is boolean.
-				if ((getReflectedField().getType().isAssignableFrom(Boolean.class))
-						|| (getReflectedField().getType().isAssignableFrom(boolean.class))) {
-					// Tries to get the boolean field getter.
-					getter = getDeclaringClass().getMethod(getBooleanGetterName(), null);
-				}
-			}
+		}
+		// If the method cannot be found.
+		if (getter == null) {
 			// If the getter cannot be found, throws an exception.
 			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.GETTER_NOT_FOUND,
 					new Object[] { getReflectedField() }, null);
@@ -191,7 +192,8 @@ public class FieldMirror {
 		if (setter == null) {
 			// Tries to get the setter for the field.
 			try {
-				setter = getDeclaringClass().getMethod(getSetterName(), getReflectedField().getType());
+				setter = getDeclaringClass().getMethod(getSetterName(),
+						new Class[] { getReflectedField().getType() });
 			}
 			// If the setter cannot be found.
 			catch (final Exception exception) {
@@ -275,7 +277,7 @@ public class FieldMirror {
 	private Object getValue(final Object targetObject, final Boolean ignoreAccess)
 			throws EmptyParameterException, InvalidParameterException, InvocationException {
 		// Tries to return the field value.
-		return getGetter().invokeMethod(targetObject, null, ignoreAccess);
+		return getGetter().invokeMethod(targetObject, ignoreAccess, null);
 	}
 
 	/**
@@ -372,7 +374,7 @@ public class FieldMirror {
 	private void setValue(final Object targetObject, final Object newValue, final Boolean ignoreAccess)
 			throws EmptyParameterException, InvalidParameterException, InvocationException {
 		// Tries to set the field value.
-		getSetter().invokeMethod(targetObject, new Object[] { newValue }, ignoreAccess);
+		getSetter().invokeMethod(targetObject, ignoreAccess, new Object[] { newValue });
 	}
 
 	/**

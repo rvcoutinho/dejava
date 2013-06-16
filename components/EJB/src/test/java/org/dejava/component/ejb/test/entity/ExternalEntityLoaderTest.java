@@ -1,7 +1,9 @@
 package org.dejava.component.ejb.test.entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.inject.Inject;
 
@@ -91,14 +93,29 @@ public class ExternalEntityLoaderTest {
 		// Creates a new list of invalid parameters for the method.
 		final ArrayList<Object[]> invalidParams = new ArrayList<>();
 		// Adds some invalid set of parameters.
-		invalidParams.add(new Object[] { null, null, null });
-		invalidParams.add(new Object[] { null, "invalid", null });
-		invalidParams.add(new Object[] { "invalid", "invalid", null });
-		invalidParams.add(new Object[] { "invalid", null, "invalid" });
-		invalidParams.add(new Object[] { null, "invalid", "invalid" });
-		invalidParams.add(new Object[] { "invalid", "invalid", "invalid" });
-		invalidParams.add(new Object[] { "Component/Test/FakeEntityComponent", null, null });
-		invalidParams.add(new Object[] { "Component/Test/FakeEntityComponent", "getById", null });
+		invalidParams.add(new Object[] { null, null, null, null });
+		invalidParams.add(new Object[] { null, "invalid", null, null });
+		invalidParams.add(new Object[] { "invalid", "invalid", null, null });
+		invalidParams.add(new Object[] { "invalid", null, new Class[] { Integer.class }, null });
+		invalidParams.add(new Object[] { "invalid", null, new Class[] { Integer.class },
+				new Object[] { "invalid" } });
+		invalidParams.add(new Object[] { "invalid", null, null, new Object[] { "invalid" } });
+		invalidParams.add(new Object[] { null, "invalid", new Class[] { Integer.class }, null });
+		invalidParams.add(new Object[] { null, "invalid", null, new Object[] { "invalid" } });
+		invalidParams.add(new Object[] { null, null, new Class[] { Integer.class },
+				new Object[] { "invalid" } });
+		invalidParams.add(new Object[] { null, "invalid", new Class[] { Integer.class },
+				new Object[] { "invalid" } });
+		invalidParams.add(new Object[] { "invalid", "invalid", new Class[] { Integer.class },
+				new Object[] { "invalid" } });
+		invalidParams.add(new Object[] { "Component/Test/FakeEntityComponent", null, null, null });
+		invalidParams.add(new Object[] { "Component/Test/FakeEntityComponent", null,
+				new Class[] { Integer.class }, null });
+		invalidParams.add(new Object[] { "Component/Test/FakeEntityComponent", "getById", null, null });
+		invalidParams.add(new Object[] { "Component/Test/FakeEntityComponent", "getById",
+				new Class[] { Integer.class }, null });
+		invalidParams.add(new Object[] { "Component/Test/FakeEntityComponent", "getById", null,
+				new Object[] { 1 } });
 		// Returns the invalid parameters.
 		return invalidParams;
 	}
@@ -113,7 +130,7 @@ public class ExternalEntityLoaderTest {
 			// Tries to get the external entity.
 			try {
 				ExternalEntityLoader.getExternalEntity((String) curParamsSet[0], (String) curParamsSet[1],
-						curParamsSet[2]);
+						(Class[]) curParamsSet[2], (Object[]) curParamsSet[3]);
 				// If no InvalidParameter exception is thrown, fails the test.
 				Assert.fail();
 			}
@@ -137,28 +154,95 @@ public class ExternalEntityLoaderTest {
 		// Persists a new test entity.
 		final FakeEntity testEntity = fakeEntityComponent.addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
 		// Tries to get the entity as if it is an external one.
-		final FakeEntity externalEntity = (FakeEntity) ExternalEntityLoader
-				.getExternalEntity("java:/global/test/Component/Test/FakeEntityComponent", "getById",
-						testEntity.getIdentifier());
+		final FakeEntity externalEntity = (FakeEntity) ExternalEntityLoader.getExternalEntity(
+				"java:/global/test/Component/Test/FakeEntityComponent", "getById",
+				new Class[] { Integer.class }, new Object[] { testEntity.getIdentifier() });
 		// Asserts that the entities are similar.
 		Assert.assertEquals(testEntity, externalEntity);
 	}
 
 	/**
-	 * Tests the loadAllExternalEntities with one external entity and no collection fields (for extenal
-	 * entities).
+	 * Tests the loadAllExternalEntities with no external entities.
 	 */
 	@Test
-	public void testLoadAllExternalEntitiesOneEntityNonCollection() {
-		// Persists a new "external" entity.
+	public void testLoadAllExternalEntitiesNoEntity() {
+		// Creates an empty test entity.
+		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(null, null);
+		// Tries to load all external entities for the test entity (no exceptions should be thrown).
+		ExternalEntityLoader.loadAllExternalEntities(testEntity);
+	}
+
+	/**
+	 * Tests the loadAllExternalEntities with external entity in a regular field.
+	 */
+	@Test
+	public void testLoadAllExternalEntitiesNonCollection() {
+		// Persists a new external entity.
 		final FakeEntity externalEntity = fakeEntityComponent.addOrUpdate(new FakeEntity(ENTITIES_NAMES[0]));
-		// Creates a test entity that refers to the "external" entity identifier.
-		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(externalEntity.getIdentifier());
+		// Creates a test entity that refers to the external entity identifier.
+		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(externalEntity.getIdentifier(), null);
 		// Asserts that the test entity does not refer to the external entity.
-		Assert.assertNull(testEntity.getExternalEntity());
+		Assert.assertNull(testEntity.getExtEntity());
 		// Tries to load all external entities for the test entity.
 		ExternalEntityLoader.loadAllExternalEntities(testEntity);
 		// Asserts that the external entity is the same previously persisted.
-		Assert.assertEquals(externalEntity, testEntity.getExternalEntity());
+		Assert.assertEquals(externalEntity, testEntity.getExtEntity());
 	}
+
+	/**
+	 * Tests the loadAllExternalEntities with external entities in a collection.
+	 */
+	@Test
+	public void testLoadAllExternalEntitiesCollection() {
+		// Persists some new external entities.
+		final Collection<FakeEntity> externalEntities = new HashSet<>(fakeEntityComponent.addOrUpdate(Arrays
+				.asList(new FakeEntity[] { new FakeEntity(ENTITIES_NAMES[0]),
+						new FakeEntity(ENTITIES_NAMES[1]), new FakeEntity(ENTITIES_NAMES[2]),
+						new FakeEntity(ENTITIES_NAMES[3]), new FakeEntity(ENTITIES_NAMES[4]) })));
+		// Creates a new list with the external entities ids.
+		final ArrayList<Integer> extEntitiesIds = new ArrayList<>();
+		// For each external entity.
+		for (final FakeEntity curFakeEntity : externalEntities) {
+			// Adds the id for the current entity to the list.
+			extEntitiesIds.add(curFakeEntity.getIdentifier());
+		}
+		// Creates a test entity that refers to the external entities identifiers.
+		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(null,
+				extEntitiesIds.toArray(new Integer[0]));
+		// Tries to load all external entities for the test entity.
+		ExternalEntityLoader.loadAllExternalEntities(testEntity);
+		// Asserts that the retrieved external entities are the same previously persisted.
+		Assert.assertEquals(externalEntities, testEntity.getExtEntities());
+	}
+
+	/**
+	 * Tests the loadAllExternalEntities with external entities in a collection and in regular field.
+	 */
+	@Test
+	public void testLoadAllExternalEntitiesCollectionNonCollection() {
+		// Persists some new external entities.
+		final Collection<FakeEntity> externalEntities = new HashSet<>(fakeEntityComponent.addOrUpdate(Arrays
+				.asList(new FakeEntity[] { new FakeEntity(ENTITIES_NAMES[0]),
+						new FakeEntity(ENTITIES_NAMES[1]), new FakeEntity(ENTITIES_NAMES[2]),
+						new FakeEntity(ENTITIES_NAMES[3]) })));
+		// Persists a new external entity.
+		final FakeEntity externalEntity = fakeEntityComponent.addOrUpdate(new FakeEntity(ENTITIES_NAMES[4]));
+		// Creates a new list with the external entities ids.
+		final ArrayList<Integer> extEntitiesIds = new ArrayList<>();
+		// For each external entity.
+		for (final FakeEntity curFakeEntity : externalEntities) {
+			// Adds the id for the current entity to the list.
+			extEntitiesIds.add(curFakeEntity.getIdentifier());
+		}
+		// Creates a test entity that refers to the external entities identifiers.
+		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(externalEntity.getIdentifier(),
+				extEntitiesIds.toArray(new Integer[0]));
+		// Tries to load all external entities for the test entity.
+		ExternalEntityLoader.loadAllExternalEntities(testEntity);
+		// Asserts that the retrieved external entities are the same previously persisted.
+		Assert.assertEquals(externalEntities, testEntity.getExtEntities());
+		// Asserts that the external entity is the same previously persisted.
+		Assert.assertEquals(externalEntity, testEntity.getExtEntity());
+	}
+
 }

@@ -15,7 +15,7 @@ public @interface ExternalEntity {
 	/**
 	 * The name of the annotated entity method that returns the identifiers used by the
 	 * {@link #retrieveMethod()} to retrieve the external entities. The method might return a single
-	 * identifier or a array (or Collection) of identifiers. The method must take no parameters.
+	 * identifier or a Collection of identifiers. The method must take no parameters.
 	 */
 	String idsMethod();
 
@@ -25,6 +25,12 @@ public @interface ExternalEntity {
 	 * {@link #idsMethod()}.
 	 */
 	String retrieveMethod() default "getById";
+
+	/**
+	 * The parameters classes for the method to used in order to retrieve the external entity. The default
+	 * value is Integer.
+	 */
+	Class[] retrieveMethodParamsClasses() default { Integer.class };
 
 	/**
 	 * The JNDI name of the object to be used in order to retrieve the external entity.

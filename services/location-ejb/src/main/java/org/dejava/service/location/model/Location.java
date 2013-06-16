@@ -55,6 +55,56 @@ public class Location implements Serializable {
 	}
 
 	/**
+	 * The name of the location.
+	 */
+	private String name;
+
+	/**
+	 * Gets the name of the location.
+	 * 
+	 * @return The name of the location.
+	 */
+	@Column(name = "name")
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Sets the name of the location.
+	 * 
+	 * @param name
+	 *            New name of the location.
+	 */
+	public void setName(final String name) {
+		this.name = name;
+	}
+
+	/**
+	 * The description of the location.
+	 */
+	private String description;
+
+	/**
+	 * Gets the description of the location.
+	 * 
+	 * @return The description of the location.
+	 */
+	@Column(name = "description")
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * Sets the description of the location.
+	 * 
+	 * @param description
+	 *            New description of the location.
+	 */
+	public void setDescription(final String description) {
+		this.description = description;
+	}
+
+	/**
 	 * Country for the location.
 	 */
 	private Country country;

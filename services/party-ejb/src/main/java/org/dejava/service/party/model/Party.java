@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import org.dejava.component.ejb.entity.ExternalEntity;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.contact.model.Contact;
 
@@ -163,13 +165,34 @@ public abstract class Party implements Serializable {
 	 * @param contactsIds
 	 *            New contacts identifications for the party.
 	 */
-	public void setContactsIds(Set<Integer> contactsIds) {
+	public void setContactsIds(final Set<Integer> contactsIds) {
 		this.contactsIds = contactsIds;
 	}
 
 	/**
-	 * Contacts for the party.
+	 * Contacts for the party. TODO
 	 */
+	@ExternalEntity(idsMethod = "getContactsIds", retrieveObj = "")
 	private Set<Contact> contacts;
+
+	/**
+	 * Gets the contacts.
+	 * 
+	 * @return The contacts.
+	 */
+	@Transient
+	public Set<Contact> getContacts() {
+		return contacts;
+	}
+
+	/**
+	 * Sets the contacts.
+	 * 
+	 * @param contacts
+	 *            New contacts.
+	 */
+	public void setContacts(final Set<Contact> contacts) {
+		this.contacts = contacts;
+	}
 
 }

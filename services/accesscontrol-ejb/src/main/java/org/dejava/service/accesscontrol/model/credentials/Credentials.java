@@ -1,11 +1,9 @@
 package org.dejava.service.accesscontrol.model.credentials;
 
-import javax.persistence.Column;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -13,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.dejava.component.ejb.entity.IdentifiedEntity;
 import org.dejava.service.accesscontrol.model.User;
 
 /**
@@ -21,34 +20,13 @@ import org.dejava.service.accesscontrol.model.User;
 @Entity
 @Table(name = "credentials")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Credentials {
+@Access(AccessType.PROPERTY)
+public abstract class Credentials extends IdentifiedEntity {
 
 	/**
-	 * Id for the credentials.
+	 * Generated serial.
 	 */
-	private Integer id;
-
-	/**
-	 * Gets the id for the credentials.
-	 * 
-	 * @return The id for the credentials.
-	 */
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * Sets the id for the credentials.
-	 * 
-	 * @param id
-	 *            New id for the credentials.
-	 */
-	public void setId(final Integer id) {
-		this.id = id;
-	}
+	private static final long serialVersionUID = -6292235989890051360L;
 
 	/**
 	 * The user for this credentials.

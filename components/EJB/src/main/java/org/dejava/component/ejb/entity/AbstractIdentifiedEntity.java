@@ -13,7 +13,7 @@ import javax.persistence.PostLoad;
  * Some identified entity.
  */
 @MappedSuperclass
-public abstract class IdentifiedEntity implements Serializable {
+public abstract class AbstractIdentifiedEntity implements Serializable {
 
 	/**
 	 * Generated serial.

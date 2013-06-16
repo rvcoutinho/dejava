@@ -8,7 +8,7 @@ import javax.persistence.Version;
  * Some versioned entity (for optimistic locking).
  */
 @MappedSuperclass
-public abstract class VersionedEntity extends IdentifiedEntity {
+public abstract class AbstractVersionedEntity extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.

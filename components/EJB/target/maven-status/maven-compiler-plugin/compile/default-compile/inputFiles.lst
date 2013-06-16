@@ -1,10 +1,10 @@
 D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\dao\AbstractGenericDAO.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\entity\ExternalEntity.java
+D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\entity\AbstractIdentifiedEntity.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\component\AbstractGenericComponent.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\entity\ExternalEntityLoader.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\constant\DAOParamKeys.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\constant\ExternalEntityLoaderParamKeys.java
+D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\entity\AbstractVersionedEntity.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\component\GenericComponent.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\constant\ErrorKeys.java
-D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\entity\IdentifiedEntity.java
-D:\usuarios\rvcoutinho\Desktop\dejava\components\EJB\src\main\java\org\dejava\component\ejb\entity\VersionedEntity.java

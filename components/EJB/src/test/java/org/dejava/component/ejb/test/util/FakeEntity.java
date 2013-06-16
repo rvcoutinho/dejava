@@ -4,14 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import org.dejava.component.ejb.entity.IdentifiedEntity;
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 
 /**
  * Fake entity.
  */
 @Entity
 @Table(name = "fake_entity")
-public class FakeEntity extends IdentifiedEntity {
+public class FakeEntity extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.

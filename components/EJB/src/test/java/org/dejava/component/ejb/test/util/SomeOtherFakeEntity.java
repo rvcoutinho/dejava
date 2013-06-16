@@ -3,15 +3,16 @@ package org.dejava.component.ejb.test.util;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Transient;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
+import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
-import org.dejava.component.ejb.entity.IdentifiedEntity;
 
 /**
  * Fake entity.
  */
-public class SomeOtherFakeEntity extends IdentifiedEntity {
+public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.
@@ -24,30 +25,12 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 	private Integer extEntityId;
 
 	/**
-	 * Gets the raw external entity identifier.
-	 * 
-	 * @return The raw external entity identifier.
-	 */
-	public Integer getRawExtEntityId() {
-		return extEntityId;
-	}
-
-	/**
 	 * Gets the external entity identifier.
 	 * 
 	 * @return The external entity identifier.
 	 */
 	public Integer getExtEntityId() {
-		// If the external entity is null.
-		if (extEntity == null) {
-			// Returns null.
-			return null;
-		}
-		// If the external entity is not null.
-		else {
-			// Returns the external entity id.
-			return extEntity.getIdentifier();
-		}
+		return extEntityId;
 	}
 
 	/**
@@ -63,7 +46,7 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 	/**
 	 * The external entity.
 	 */
-	@ExternalEntity(retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getRawExtEntityId")
+	@ExternalEntity(retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getExtEntityId")
 	private FakeEntity extEntity;
 
 	/**
@@ -91,38 +74,12 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 	private Set<Integer> extEntitiesIds;
 
 	/**
-	 * Gets the raw external entities identifiers.
-	 * 
-	 * @return The raw external entities identifiers.
-	 */
-	@Transient
-	public Set<Integer> getRawExtEntitiesIds() {
-		return extEntitiesIds;
-	}
-
-	/**
 	 * Gets the external entities identifiers.
 	 * 
 	 * @return The external entities identifiers.
 	 */
 	public Set<Integer> getExtEntitiesIds() {
-		// If the external entities is null.
-		if (extEntities == null) {
-			// Returns the persisted ids.
-			return null;
-		}
-		// If the external entities is not null.
-		else {
-			// Creates a new set.
-			extEntitiesIds = new HashSet<>();
-			// For each entity in the entity set.
-			for (final FakeEntity curFakeEntity : extEntities) {
-				// Adds the current entity id to the set.
-				extEntitiesIds.add(curFakeEntity.getIdentifier());
-			}
-			// Returns the external entities ids.
-			return extEntitiesIds;
-		}
+		return extEntitiesIds;
 	}
 
 	/**
@@ -138,7 +95,7 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 	/**
 	 * The external entities.
 	 */
-	@ExternalEntity(lazyLoading = true, retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getRawExtEntitiesIds")
+	@ExternalEntity(lazyLoading = true, retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getExtEntitiesIds")
 	private Set<FakeEntity> extEntities;
 
 	/**
@@ -190,6 +147,54 @@ public class SomeOtherFakeEntity extends IdentifiedEntity {
 				this.extEntitiesIds.add(curExtEntityId);
 			}
 		}
+	}
+
+	/**
+	 * Update the external entity id with the actual external entity id.
+	 */
+	protected void updateExtEntityId() {
+		// If the external entity is null.
+		if (extEntity == null) {
+			// Sets the external entity id to null.
+			extEntityId = null;
+		}
+		// If the external entity is not null.
+		else {
+			// Sets the external entity id to the external entity actual identifier.
+			extEntityId = extEntity.getIdentifier();
+		}
+	}
+
+	/**
+	 * Update the external entities ids with the actual external entities ids.
+	 */
+	protected void updateExtEntitiesIds() {
+		// If the external entities is null.
+		if (extEntities == null) {
+			// Sets the external entities ids to null.
+			extEntitiesIds = null;
+		}
+		// If the external entities is not null.
+		else {
+			// Creates a new set.
+			extEntitiesIds = new HashSet<>();
+			// For each entity in the entity set.
+			for (final FakeEntity curFakeEntity : extEntities) {
+				// Adds the current entity id to the set.
+				extEntitiesIds.add(curFakeEntity.getIdentifier());
+			}
+		}
+	}
+
+	/**
+	 * Update the external entities ids to be persisted.
+	 */
+	@PreUpdate
+	@PrePersist
+	protected void updateAllExtEntitiesIds() {
+		// Updates the external entities ids.
+		updateExtEntityId();
+		updateExtEntitiesIds();
 	}
 
 }

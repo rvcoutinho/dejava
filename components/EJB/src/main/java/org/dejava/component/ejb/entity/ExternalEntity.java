@@ -22,9 +22,15 @@ public @interface ExternalEntity {
 	/**
 	 * The name of the annotated entity method that returns the identifiers used by the
 	 * {@link #retrieveMethod()} to retrieve the external entities. The method might return a single
-	 * identifier or a Collection of identifiers. The method must take no parameters.
+	 * identifier or a Collection of identifiers (in this case, the {@link #singleId()} must be false). The
+	 * method must take no parameters.
 	 */
 	String idsMethod();
+
+	/**
+	 * If the {@link #idsMethod()} returns a single identifier or a Collection of identifiers.
+	 */
+	boolean singleId() default true;
 
 	/**
 	 * The name of the method to be used in order to retrieve the external entity. The default value is

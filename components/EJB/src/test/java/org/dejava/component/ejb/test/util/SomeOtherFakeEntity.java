@@ -95,7 +95,7 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 	/**
 	 * The external entities.
 	 */
-	@ExternalEntity(lazyLoading = true, retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getExtEntitiesIds")
+	@ExternalEntity(lazyLoading = true, retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", idsMethod = "getExtEntitiesIds", singleId = false)
 	private Set<FakeEntity> extEntities;
 
 	/**

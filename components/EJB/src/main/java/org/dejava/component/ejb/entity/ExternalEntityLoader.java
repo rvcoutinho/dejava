@@ -87,8 +87,18 @@ public class ExternalEntityLoader {
 						.invokeMethod(entity, true, null);
 				// If there is any entity id.
 				if (paramsValues != null) {
-					// If the field is a collection.
-					if (Collection.class.isAssignableFrom(currentField.getReflectedField().getType())) {
+					// If the there is a single entity to be retrieved (single id).
+					if (externalEntityInfo.singleId()) {
+						// Gets the external entity.
+						final Object externalEntity = getExternalEntity(externalEntityInfo.retrieveObj(),
+								externalEntityInfo.retrieveMethod(),
+								externalEntityInfo.retrieveMethodParamsClasses(),
+								new Object[] { paramsValues });
+						// Sets the external entity value.
+						currentField.setValue(entity, externalEntity, externalEntityInfo.fieldAccess(), true);
+					}
+					// If the field is not a collection (or array).
+					else {
 						// Gets the external entities default collection implementation.
 						final Collection externalEntities = (Collection) currentField.getValue(entity, false,
 								true);
@@ -103,16 +113,6 @@ public class ExternalEntityLoader {
 						// Sets the external entities values.
 						currentField.setValue(entity, externalEntities, externalEntityInfo.fieldAccess(),
 								true);
-					}
-					// If the field is not a collection (or array).
-					else {
-						// Gets the external entity.
-						final Object externalEntity = getExternalEntity(externalEntityInfo.retrieveObj(),
-								externalEntityInfo.retrieveMethod(),
-								externalEntityInfo.retrieveMethodParamsClasses(),
-								new Object[] { paramsValues });
-						// Sets the external entity value.
-						currentField.setValue(entity, externalEntity, externalEntityInfo.fieldAccess(), true);
 					}
 				}
 			}

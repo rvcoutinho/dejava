@@ -20,6 +20,146 @@ import org.dejava.component.validation.method.PreConditions;
 public class ExternalEntityLoader {
 
 	/**
+	 * The default identifier sufix.
+	 */
+	private static final String ID_SUFIX = "Id";
+
+	/**
+	 * The default identifiers sufix.
+	 */
+	private static final String IDS_SUFIX = "Ids";
+
+	/**
+	 * The default identifier getter for entities.
+	 */
+	private static final String ENTITY_ID_GETTER = "getIdentifier";
+
+	/**
+	 * Gets the parameters values for the method used to retrieve the external entities.
+	 * 
+	 * @param entity
+	 *            The entity whose external entities are to be retrieved within.
+	 * @param externalEntityInfo
+	 *            The external entity annotation.
+	 * @param fieldName
+	 *            The entity field whose external entities are to be retrieved within.
+	 * @return The parameters values for the method used to retrieve the external entities.
+	 */
+	private static Object getParamsValues(final Object entity, final ExternalEntity externalEntityInfo,
+			final String fieldName) {
+		// By default, there are no parameters values.
+		Object paramsValues = null;
+		// Gets the class of the entity.
+		final ClassMirror<?> entityClass = new ClassMirror<>(entity.getClass());
+		// Gets the given parameters values retrieve method.
+		final String paramValuesMethod = externalEntityInfo.paramsValuesMethod();
+		// If no method is given.
+		if (paramValuesMethod.isEmpty()) {
+			// If the external entity is mapped directly.
+			if (externalEntityInfo.mappedBy().isEmpty()) {
+				// If the mapping is for a single external entity.
+				if (externalEntityInfo.singleEntity()) {
+					// Gets the parameter values from a method named <annotatedFieldGetter>Id.
+					paramsValues = entityClass.getMethod(FieldMirror.getGetterName(fieldName) + ID_SUFIX,
+							null).invokeMethod(entity, true, null);
+				}
+				// If the mapping is for multiple external entities.
+				else {
+					// Gets the parameter values from a method named <annotatedFieldGetter>Ids.
+					paramsValues = entityClass.getMethod(FieldMirror.getGetterName(fieldName) + IDS_SUFIX,
+							null).invokeMethod(entity, true, null);
+				}
+			}
+			// If the external entity is reverse mapped.
+			else {
+				// If the mapping is for a single external entity.
+				if (externalEntityInfo.singleEntity()) {
+					// The parameters values are the mapped field name and the entity id (and null start and
+					// offset parameters).
+					paramsValues = new Object[] { externalEntityInfo.mappedBy(),
+							entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(entity, true, null),
+							null, null };
+				}
+				// If the mapping is for multiple external entities.
+				else {
+					// The parameters values are the mapped field name and the entity id.
+					paramsValues = new Object[] { externalEntityInfo.mappedBy(),
+							entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(entity, true, null) };
+				}
+			}
+		}
+		// If the method is given.
+		else {
+			// The parameters are retrieved using the given method name.
+			paramsValues = entityClass.getMethod(paramValuesMethod, null).invokeMethod(entity, true, null);
+		}
+		// Returns the parameters values.
+		return paramsValues;
+	}
+
+	/**
+	 * Gets the retrieve method name from an external entity annotation.
+	 * 
+	 * @param externalEntityInfo
+	 *            The external entity annotation.
+	 * @return The retrieve method name from an external entity annotation.
+	 */
+	private static String getRetrieveMethodName(final ExternalEntity externalEntityInfo) {
+		// Gets the given method name.
+		String methodName = externalEntityInfo.retrieveMethod();
+		// If the method name is not given.
+		if (methodName.isEmpty()) {
+			// If the external entity is mapped directly.
+			if (externalEntityInfo.mappedBy().isEmpty()) {
+				// The default method name for the context is used.
+				methodName = ExternalEntity.DIR_RET_METHOD;
+			}
+			// If the external entity is reverse mapped.
+			else {
+				// The default method name for the context is used.
+				methodName = ExternalEntity.REV_RET_METHOD;
+			}
+		}
+		// Returns the method name.
+		return methodName;
+	}
+
+	/**
+	 * Gets the parameters classes for the retrieve method from an external entity annotation.
+	 * 
+	 * @param externalEntityInfo
+	 *            The external entity annotation.
+	 * @return The parameters classes for the retrieve method from an external entity annotation.
+	 */
+	private static Class<?>[] getRetrieveMethodParamsClasses(final ExternalEntity externalEntityInfo) {
+		// Gets the given parameters classes.
+		Class<?>[] paramsClasses = externalEntityInfo.retrieveMethodParamsClasses();
+		// If the parameters classes are not given via the annotation.
+		if (paramsClasses.length == 0) {
+			// If the external entity is mapped directly.
+			if (externalEntityInfo.mappedBy().isEmpty()) {
+				// The default parameters classes for the context are used.
+				paramsClasses = ExternalEntity.DIR_RET_METHOD_PARAMS_CLASSES;
+			}
+			// If the external entity is reverse mapped.
+			else {
+				// If the mapping is for a single entity.
+				if (externalEntityInfo.singleEntity()) {
+					// The default parameters classes for the context are used.
+					paramsClasses = ExternalEntity.REV_SINGLE_RET_METHOD_PARAMS_CLASSES;
+				}
+				// If the mapping is for a multiple entities.
+				else {
+					// The default parameters classes for the context are used.
+					paramsClasses = ExternalEntity.REV_MULTI_RET_METHOD_PARAMS_CLASSES;
+				}
+			}
+		}
+		// Returns the parameters classes.
+		return paramsClasses;
+	}
+
+	/**
 	 * Gets an external entity.
 	 * 
 	 * @param retrieveObjectName
@@ -83,16 +223,16 @@ public class ExternalEntityLoader {
 			// If lazy loading should be ignored or if the external entity should not be lazy loaded.
 			if ((ignoreLazyLoading) || (!externalEntityInfo.lazyLoading())) {
 				// Gets the parameters values to retrieve the external entity from the given entity.
-				final Object paramsValues = entityClass.getMethod(externalEntityInfo.idsMethod(), null)
-						.invokeMethod(entity, true, null);
+				final Object paramsValues = getParamsValues(entity, externalEntityInfo, currentField
+						.getReflectedField().getName());
 				// If there is any entity id.
 				if (paramsValues != null) {
 					// If the there is a single entity to be retrieved (single id).
-					if (externalEntityInfo.singleId()) {
+					if (externalEntityInfo.singleEntity()) {
 						// Gets the external entity.
 						final Object externalEntity = getExternalEntity(externalEntityInfo.retrieveObj(),
-								externalEntityInfo.retrieveMethod(),
-								externalEntityInfo.retrieveMethodParamsClasses(),
+								getRetrieveMethodName(externalEntityInfo),
+								getRetrieveMethodParamsClasses(externalEntityInfo),
 								new Object[] { paramsValues });
 						// Sets the external entity value.
 						currentField.setValue(entity, externalEntity, externalEntityInfo.fieldAccess(), true);
@@ -106,8 +246,8 @@ public class ExternalEntityLoader {
 						for (final Object curExtEntityParamsValues : (Collection<?>) paramsValues) {
 							// Adds the external entity to collection.
 							externalEntities.add(getExternalEntity(externalEntityInfo.retrieveObj(),
-									externalEntityInfo.retrieveMethod(),
-									externalEntityInfo.retrieveMethodParamsClasses(),
+									getRetrieveMethodName(externalEntityInfo),
+									getRetrieveMethodParamsClasses(externalEntityInfo),
 									new Object[] { curExtEntityParamsValues }));
 						}
 						// Sets the external entities values.

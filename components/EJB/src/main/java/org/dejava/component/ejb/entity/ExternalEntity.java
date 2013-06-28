@@ -22,28 +22,66 @@ public @interface ExternalEntity {
 	/**
 	 * The name of the annotated entity method that returns the identifiers used by the
 	 * {@link #retrieveMethod()} to retrieve the external entities. The method might return a single
-	 * identifier or a Collection of identifiers (in this case, the {@link #singleId()} must be false). The
-	 * method must take no parameters.
+	 * identifier or a Collection of identifiers (in this case, the {@link #singleEntity()} must be false).
+	 * The method must take no parameters.
 	 */
-	String idsMethod();
+	String paramsValuesMethod() default "";
 
 	/**
-	 * If the {@link #idsMethod()} returns a single identifier or a Collection of identifiers.
+	 * If the relationship represents a *-to-one relationship.
 	 */
-	boolean singleId() default true;
+	boolean singleEntity() default true;
 
 	/**
-	 * The name of the method to be used in order to retrieve the external entity. The default value is
-	 * "getById". The method signature must be compatible with the parameters returned by the
-	 * {@link #idsMethod()}.
+	 * The external entity field that maps the relationship (reversed mapped relationship). By default, the
+	 * annotated entity maps the relationship.
 	 */
-	String retrieveMethod() default "getById";
+	String mappedBy() default "";
+
+	/**
+	 * The direct retrieve method name (if the external entity is mapped directly).
+	 */
+	public static final String DIR_RET_METHOD = "getById";
+
+	/**
+	 * The reverse retrieve method name (if the external entity maps the relationship).
+	 */
+	public static final String REV_RET_METHOD = "getByAttribute";
+
+	/**
+	 * The name of the method to be used in order to retrieve the external entity. The method signature must
+	 * be compatible with the parameters returned by the {@link #paramsValuesMethod()}. The default values are
+	 * "getById" (if the external entity is mapped directly) or "getByAttribute" (if the external entity maps
+	 * the relationship).
+	 */
+	String retrieveMethod() default "";
+
+	/**
+	 * The direct retrieve method parameters classes (if {@link #mappedBy()} is empty).
+	 */
+	public static final Class<?>[] DIR_RET_METHOD_PARAMS_CLASSES = { Integer.class };
+
+	/**
+	 * The reverse retrieve method parameters classes (if {@link #mappedBy()} is not empty) for a single
+	 * external entity.
+	 */
+	public static final Class<?>[] REV_SINGLE_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class,
+			Integer.class, Integer.class };
+
+	/**
+	 * The reverse retrieve method parameters classes (if {@link #mappedBy()} is not empty) for multiple
+	 * external entities.
+	 */
+	public static final Class<?>[] REV_MULTI_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class };
 
 	/**
 	 * The parameters classes for the method to used in order to retrieve the external entity. The default
-	 * value is Integer.
+	 * values are [Integer.class] (if {@link #mappedBy()} is empty), [String.class, Object.class,
+	 * Integer.class, Integer.class] (if {@link #mappedBy()} is not empty and {@link #singleEntity()} is
+	 * false) or [String.class, Object.class, Integer.class, Integer.class] (if {@link #mappedBy()} is not
+	 * empty and {@link #singleEntity()} is true).
 	 */
-	Class<?>[] retrieveMethodParamsClasses() default { Integer.class };
+	Class<?>[] retrieveMethodParamsClasses() default {};
 
 	/**
 	 * The JNDI name of the object to be used in order to retrieve the external entity.

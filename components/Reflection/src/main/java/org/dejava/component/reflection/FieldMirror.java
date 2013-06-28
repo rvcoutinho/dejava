@@ -98,12 +98,14 @@ public class FieldMirror {
 	/**
 	 * Get the getter name for a field.
 	 * 
+	 * @param fieldName
+	 *            The field name.
+	 * 
 	 * @return The getter name for a field.
 	 */
-	private String getGetterName() {
+	public static String getGetterName(final String fieldName) {
 		// Append the "get" followed by the field name (with upper case first letter).
-		return GETTER_PREFIX + getReflectedField().getName().substring(0, 1).toUpperCase()
-				+ getReflectedField().getName().substring(1);
+		return GETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
 	}
 
 	/**
@@ -114,12 +116,14 @@ public class FieldMirror {
 	/**
 	 * Get the getter name for a boolean field.
 	 * 
+	 * @param fieldName
+	 *            The field name.
+	 * 
 	 * @return The getter name for a boolean field.
 	 */
-	private String getBooleanGetterName() {
+	public static String getBooleanGetterName(final String fieldName) {
 		// Append the "get" followed by the field name (with upper case first letter).
-		return BOOL_GETTER_PREFIX + getReflectedField().getName().substring(0, 1).toUpperCase()
-				+ getReflectedField().getName().substring(1);
+		return BOOL_GETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
 	}
 
 	/**
@@ -138,7 +142,7 @@ public class FieldMirror {
 		// If the getter is null.
 		if (getter == null) {
 			// Tries to get the getter for the field.
-			getter = getDeclaringClass().getMethod(getGetterName(), null);
+			getter = getDeclaringClass().getMethod(getGetterName(getReflectedField().getName()), null);
 		}
 		// If the method cannot be found.
 		if (getter == null) {
@@ -146,7 +150,8 @@ public class FieldMirror {
 			if ((getReflectedField().getType().isAssignableFrom(Boolean.class))
 					|| (getReflectedField().getType().isAssignableFrom(boolean.class))) {
 				// Tries to get the boolean field getter.
-				getter = getDeclaringClass().getMethod(getBooleanGetterName(), null);
+				getter = getDeclaringClass().getMethod(getBooleanGetterName(getReflectedField().getName()),
+						null);
 			}
 		}
 		// If the method cannot be found.
@@ -167,12 +172,14 @@ public class FieldMirror {
 	/**
 	 * Get the setter name for a field.
 	 * 
+	 * @param fieldName
+	 *            The field name.
+	 * 
 	 * @return The setter name for a field.
 	 */
-	private String getSetterName() {
+	public static String getSetterName(String fieldName) {
 		// Append the "set" followed by the field name (with upper case first letter).
-		return SETTER_PREFIX + getReflectedField().getName().substring(0, 1).toUpperCase()
-				+ getReflectedField().getName().substring(1);
+		return SETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
 	}
 
 	/**
@@ -192,7 +199,7 @@ public class FieldMirror {
 		if (setter == null) {
 			// Tries to get the setter for the field.
 			try {
-				setter = getDeclaringClass().getMethod(getSetterName(),
+				setter = getDeclaringClass().getMethod(getSetterName(getReflectedField().getName()),
 						new Class[] { getReflectedField().getType() });
 			}
 			// If the setter cannot be found.

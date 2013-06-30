@@ -1,7 +1,8 @@
 package org.dejava.component.ejb.test.util;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -9,6 +10,9 @@ import javax.persistence.PreUpdate;
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
 
+/**
+ * TODO
+ */
 /**
  * Fake entity.
  */
@@ -22,31 +26,31 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 	/**
 	 * The external entity identifier.
 	 */
-	private Integer extEntityId;
+	private Integer extEntityIdTest;
 
 	/**
 	 * Gets the external entity identifier.
 	 * 
 	 * @return The external entity identifier.
 	 */
-	public Integer getExtEntityId() {
-		return extEntityId;
+	public Integer getExtEntityIdTest() {
+		return extEntityIdTest;
 	}
 
 	/**
 	 * Sets the external entity identifier.
 	 * 
-	 * @param extEntityId
+	 * @param extEntityIdTest
 	 *            New external entity identifier.
 	 */
-	public void setExtEntityId(final Integer extEntityId) {
-		this.extEntityId = extEntityId;
+	public void setExtEntityIdTest(final Integer extEntityIdTest) {
+		this.extEntityIdTest = extEntityIdTest;
 	}
 
 	/**
 	 * The external entity.
 	 */
-	@ExternalEntity(retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", paramsValuesMethod = "getExtEntityId")
+	@ExternalEntity(retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", paramsValuesMethod = "getExtEntityIdTest")
 	private FakeEntity extEntity;
 
 	/**
@@ -71,43 +75,43 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 	/**
 	 * The external entities identifiers.
 	 */
-	private Set<Integer> extEntitiesIds;
+	private List<Integer> extEntitiesIdsTest;
 
 	/**
 	 * Gets the external entities identifiers.
 	 * 
 	 * @return The external entities identifiers.
 	 */
-	public Set<Integer> getExtEntitiesIds() {
-		return extEntitiesIds;
+	public List<Integer> getExtEntitiesIdsTest() {
+		return extEntitiesIdsTest;
 	}
 
 	/**
 	 * Sets the external entities identifiers.
 	 * 
-	 * @param extEntitiesIds
+	 * @param extEntitiesIdsTest
 	 *            New external entities identifiers.
 	 */
-	public void setExtEntitiesIds(final Set<Integer> extEntitiesIds) {
-		this.extEntitiesIds = extEntitiesIds;
+	public void setExtEntitiesIdsTest(final List<Integer> extEntitiesIdsTest) {
+		this.extEntitiesIdsTest = extEntitiesIdsTest;
 	}
 
 	/**
 	 * The external entities.
 	 */
-	@ExternalEntity(lazyLoading = true, retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", paramsValuesMethod = "getExtEntitiesIds", singleEntity = false)
-	private Set<FakeEntity> extEntities;
+	@ExternalEntity(lazyLoading = true, retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", paramsValuesMethod = "getExtEntitiesIdsTest", singleEntity = false)
+	private List<FakeEntity> extEntities;
 
 	/**
 	 * Gets the external entities.
 	 * 
 	 * @return The external entities.
 	 */
-	public Set<FakeEntity> getExtEntities() {
+	public List<FakeEntity> getExtEntities() {
 		// If the set is null.
 		if (extEntities == null) {
 			// Creates a new set.
-			extEntities = new HashSet<>();
+			extEntities = new ArrayList<>();
 		}
 		// Returns the external entities.
 		return extEntities;
@@ -119,11 +123,8 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 	 * @param extEntities
 	 *            New external entities.
 	 */
-	public void setExtEntities(final Set<FakeEntity> extEntities) {
-		// Sets the external entities.
+	public void setExtEntities(final List<FakeEntity> extEntities) {
 		this.extEntities = extEntities;
-		// Resets the persisted identifier.
-		setExtEntitiesIds(null);
 	}
 
 	/**
@@ -178,14 +179,14 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 	/**
 	 * The external entities identifiers.
 	 */
-	private Set<Integer> extEntities2Ids;
+	private List<Integer> extEntities2Ids;
 
 	/**
 	 * Gets the external entities identifiers.
 	 * 
 	 * @return The external entities identifiers.
 	 */
-	public Set<Integer> getExtEntities2Ids() {
+	public List<Integer> getExtEntities2Ids() {
 		return extEntities2Ids;
 	}
 
@@ -195,7 +196,7 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 	 * @param extEntities2Ids
 	 *            New external entities identifiers.
 	 */
-	public void setExtEntities2Ids(final Set<Integer> extEntities2Ids) {
+	public void setExtEntities2Ids(final List<Integer> extEntities2Ids) {
 		this.extEntities2Ids = extEntities2Ids;
 	}
 
@@ -203,18 +204,18 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 	 * The external entities.
 	 */
 	@ExternalEntity(retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", singleEntity = false)
-	private Set<FakeEntity> extEntities2;
+	private List<FakeEntity> extEntities2;
 
 	/**
 	 * Gets the external entities.
 	 * 
 	 * @return The external entities.
 	 */
-	public Set<FakeEntity> getExtEntities2() {
+	public List<FakeEntity> getExtEntities2() {
 		// If the set is null.
 		if (extEntities2 == null) {
 			// Creates a new set.
-			extEntities2 = new HashSet<>();
+			extEntities2 = new ArrayList<>();
 		}
 		// Returns the external entities.
 		return extEntities2;
@@ -226,44 +227,107 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 	 * @param extEntities2
 	 *            New external entities.
 	 */
-	public void setExtEntities2(final Set<FakeEntity> extEntities2) {
-		// Sets the external entities.
+	public void setExtEntities2(final List<FakeEntity> extEntities2) {
 		this.extEntities2 = extEntities2;
-		// Resets the persisted identifier.
-		setExtEntities2Ids(null);
+	}
+
+	/**
+	 * An external entity that actually maps the relationship.
+	 */
+	@ExternalEntity(mappedBy = "someOtherEntityId", retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent")
+	private FakeEntity extMappedEntity;
+
+	/**
+	 * Gets an external entity that actually maps the relationship.
+	 * 
+	 * @return An external entity that actually maps the relationship.
+	 */
+	public FakeEntity getExtMappedEntity() {
+		return extMappedEntity;
+	}
+
+	/**
+	 * Sets an external entity that actually maps the relationship.
+	 * 
+	 * @param extMappedEntity
+	 *            New external entity that actually maps the relationship.
+	 */
+	public void setExtMappedEntity(final FakeEntity extMappedEntity) {
+		this.extMappedEntity = extMappedEntity;
+	}
+
+	/**
+	 * Some external entities that actually map the relationship.
+	 */
+	@ExternalEntity(mappedBy = "someOtherEntityId2", retrieveObj = "java:/global/test/Component/Test/FakeEntityComponent", singleEntity = false)
+	private Collection<FakeEntity> extMappedEntities;
+
+	/**
+	 * Gets some external entities that actually map the relationship.
+	 * 
+	 * @return Some external entities that actually map the relationship.
+	 */
+	public Collection<FakeEntity> getExtMappedEntities() {
+		// If the set is null.
+		if (extMappedEntities == null) {
+			// Creates a new set.
+			extMappedEntities = new ArrayList<>();
+		}
+		// Returns the external entities.
+		return extMappedEntities;
+	}
+
+	/**
+	 * Sets some external entities that actually map the relationship.
+	 * 
+	 * @param extMappedEntities
+	 *            New external entities that actually map the relationship.
+	 */
+	public void setExtMappedEntities(final Collection<FakeEntity> extMappedEntities) {
+		this.extMappedEntities = extMappedEntities;
 	}
 
 	/**
 	 * Default constructor.
 	 * 
-	 * @param extEntityId
+	 * @param identifier
+	 *            Identifier for the entity.
+	 * @param extEntityIdTest
 	 *            The external entity id.
-	 * @param extEntitiesIds
+	 * @param extEntitiesIdsTest
 	 *            The external entities ids.
 	 * @param extEntity2Id
 	 *            The external entity id.
 	 * @param extEntities2Ids
 	 *            The external entities ids.
+	 * @param extMappedEntity
+	 *            An external entity that actually maps the relationship.
+	 * @param extMappedEntities
+	 *            Some external entities that actually map the relationship.
 	 */
-	public SomeOtherFakeEntity(final Integer extEntityId, final Integer[] extEntitiesIds,
-			final Integer extEntity2Id, final Integer[] extEntities2Ids) {
+	public SomeOtherFakeEntity(final Integer identifier, final Integer extEntityIdTest,
+			final Integer[] extEntitiesIdsTest, final Integer extEntity2Id, final Integer[] extEntities2Ids,
+			final FakeEntity extMappedEntity, final Collection<FakeEntity> extMappedEntities) {
 		super();
-		this.extEntityId = extEntityId;
+		setIdentifier(identifier);
+		this.extEntityIdTest = extEntityIdTest;
 		this.extEntity2Id = extEntity2Id;
+		this.extMappedEntity = extMappedEntity;
+		this.extMappedEntities = extMappedEntities;
 		// If there are any external entities.
-		if (extEntitiesIds != null) {
+		if (extEntitiesIdsTest != null) {
 			// Creates a new set for the entities ids.
-			this.extEntitiesIds = new HashSet<>();
+			this.extEntitiesIdsTest = new ArrayList<>();
 			// For each given entity id.
-			for (final Integer curExtEntityId : extEntitiesIds) {
+			for (final Integer curExtEntityId : extEntitiesIdsTest) {
 				// Adds the id to the set.
-				this.extEntitiesIds.add(curExtEntityId);
+				this.extEntitiesIdsTest.add(curExtEntityId);
 			}
 		}
 		// If there are any external entities.
 		if (extEntities2Ids != null) {
 			// Creates a new set for the entities ids.
-			this.extEntities2Ids = new HashSet<>();
+			this.extEntities2Ids = new ArrayList<>();
 			// For each given entity id.
 			for (final Integer curExtEntityId : extEntities2Ids) {
 				// Adds the id to the set.
@@ -279,12 +343,12 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 		// If the external entity is null.
 		if (extEntity == null) {
 			// Sets the external entity id to null.
-			extEntityId = null;
+			extEntityIdTest = null;
 		}
 		// If the external entity is not null.
 		else {
 			// Sets the external entity id to the external entity actual identifier.
-			extEntityId = extEntity.getIdentifier();
+			extEntityIdTest = extEntity.getIdentifier();
 		}
 	}
 
@@ -295,16 +359,16 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 		// If the external entities is null.
 		if (extEntities == null) {
 			// Sets the external entities ids to null.
-			extEntitiesIds = null;
+			extEntitiesIdsTest = null;
 		}
 		// If the external entities is not null.
 		else {
 			// Creates a new set.
-			extEntitiesIds = new HashSet<>();
+			extEntitiesIdsTest = new ArrayList<>();
 			// For each entity in the entity set.
 			for (final FakeEntity curFakeEntity : extEntities) {
 				// Adds the current entity id to the set.
-				extEntitiesIds.add(curFakeEntity.getIdentifier());
+				extEntitiesIdsTest.add(curFakeEntity.getIdentifier());
 			}
 		}
 	}
@@ -337,7 +401,7 @@ public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {
 		// If the external entities is not null.
 		else {
 			// Creates a new set.
-			extEntities2Ids = new HashSet<>();
+			extEntities2Ids = new ArrayList<>();
 			// For each entity in the entity set.
 			for (final FakeEntity curFakeEntity : extEntities2) {
 				// Adds the current entity id to the set.

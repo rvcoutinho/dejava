@@ -44,6 +44,56 @@ public class FakeEntity extends AbstractIdentifiedEntity {
 	}
 
 	/**
+	 * Some other entity id.
+	 */
+	private Integer someOtherEntityId;
+
+	/**
+	 * Gets some other entity id.
+	 * 
+	 * @return Some other entity id.
+	 */
+	@Column(name = "someOtherEntityId")
+	public Integer getSomeOtherEntityId() {
+		return someOtherEntityId;
+	}
+
+	/**
+	 * Sets some other entity id.
+	 * 
+	 * @param someOtherEntityId
+	 *            Some other entity id.
+	 */
+	public void setSomeOtherEntityId(final Integer someOtherEntityId) {
+		this.someOtherEntityId = someOtherEntityId;
+	}
+
+	/**
+	 * Some other entity id.
+	 */
+	private Integer someOtherEntityId2;
+
+	/**
+	 * Gets some other entity id.
+	 * 
+	 * @return Some other entity id.
+	 */
+	@Column(name = "someOtherEntityId2")
+	public Integer getSomeOtherEntityId2() {
+		return someOtherEntityId2;
+	}
+
+	/**
+	 * Sets some other entity id.
+	 * 
+	 * @param someOtherEntityId2
+	 *            Some other entity id.
+	 */
+	public void setSomeOtherEntityId2(final Integer someOtherEntityId2) {
+		this.someOtherEntityId2 = someOtherEntityId2;
+	}
+
+	/**
 	 * Default constructor.
 	 */
 	public FakeEntity() {
@@ -58,6 +108,22 @@ public class FakeEntity extends AbstractIdentifiedEntity {
 	 */
 	public FakeEntity(final String name) {
 		this.name = name;
+	}
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param name
+	 *            Name of the fake entity.
+	 * @param someOtherEntityId
+	 *            Some other entity id.
+	 * @param someOtherEntityId2
+	 *            Some other entity id.
+	 */
+	public FakeEntity(final String name, final Integer someOtherEntityId, final Integer someOtherEntityId2) {
+		this.name = name;
+		this.someOtherEntityId = someOtherEntityId;
+		this.someOtherEntityId2 = someOtherEntityId2;
 	}
 
 	/**

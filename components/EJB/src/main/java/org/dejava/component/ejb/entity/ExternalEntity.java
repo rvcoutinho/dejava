@@ -65,14 +65,14 @@ public @interface ExternalEntity {
 	 * The reverse retrieve method parameters classes (if {@link #mappedBy()} is not empty) for a single
 	 * external entity.
 	 */
-	public static final Class<?>[] REV_SINGLE_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class,
-			Integer.class, Integer.class };
+	public static final Class<?>[] REV_SINGLE_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class };
 
 	/**
 	 * The reverse retrieve method parameters classes (if {@link #mappedBy()} is not empty) for multiple
 	 * external entities.
 	 */
-	public static final Class<?>[] REV_MULTI_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class };
+	public static final Class<?>[] REV_MULTI_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class,
+			Integer.class, Integer.class };
 
 	/**
 	 * The parameters classes for the method to used in order to retrieve the external entity. The default

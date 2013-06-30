@@ -77,14 +77,14 @@ public class ExternalEntityLoader {
 					// The parameters values are the mapped field name and the entity id (and null start and
 					// offset parameters).
 					paramsValues = new Object[] { externalEntityInfo.mappedBy(),
-							entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(entity, true, null),
-							null, null };
+							entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(entity, true, null) };
 				}
 				// If the mapping is for multiple external entities.
 				else {
 					// The parameters values are the mapped field name and the entity id.
 					paramsValues = new Object[] { externalEntityInfo.mappedBy(),
-							entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(entity, true, null) };
+							entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(entity, true, null),
+							null, null };
 				}
 			}
 		}
@@ -223,17 +223,22 @@ public class ExternalEntityLoader {
 			// If lazy loading should be ignored or if the external entity should not be lazy loaded.
 			if ((ignoreLazyLoading) || (!externalEntityInfo.lazyLoading())) {
 				// Gets the parameters values to retrieve the external entity from the given entity.
-				final Object paramsValues = getParamsValues(entity, externalEntityInfo, currentField
+				Object paramsValues = getParamsValues(entity, externalEntityInfo, currentField
 						.getReflectedField().getName());
 				// If there is any entity id.
 				if (paramsValues != null) {
-					// If the there is a single entity to be retrieved (single id).
-					if (externalEntityInfo.singleEntity()) {
+					// If the there is a single entity to be retrieved (single id) or if the external entity
+					// maps the relationship.
+					if ((externalEntityInfo.singleEntity()) || (!externalEntityInfo.mappedBy().isEmpty())) {
+						// If the parameters values are not mapped as an array.
+						if (!(paramsValues instanceof Object[])) {
+							// Put the parameters in a array.
+							paramsValues = new Object[] { paramsValues };
+						}
 						// Gets the external entity.
 						final Object externalEntity = getExternalEntity(externalEntityInfo.retrieveObj(),
 								getRetrieveMethodName(externalEntityInfo),
-								getRetrieveMethodParamsClasses(externalEntityInfo),
-								new Object[] { paramsValues });
+								getRetrieveMethodParamsClasses(externalEntityInfo), (Object[]) paramsValues);
 						// Sets the external entity value.
 						currentField.setValue(entity, externalEntity, externalEntityInfo.fieldAccess(), true);
 					}
@@ -253,6 +258,63 @@ public class ExternalEntityLoader {
 						// Sets the external entities values.
 						currentField.setValue(entity, externalEntities, externalEntityInfo.fieldAccess(),
 								true);
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Update the external entities with the actual mapping information (when relationship is mapped by the
+	 * external entity).
+	 * 
+	 * @param entity
+	 *            To entity to have the external entities mapping updated.
+	 */
+	public static void updateReverseMappedEntities(final Object entity) {
+		// Asserts that the entity is not null.
+		PreConditions.assertParamNotNull(ExternalEntityLoaderParamKeys.ENTITY, entity);
+		// Gets the class of the entity.
+		final ClassMirror<?> entityClass = new ClassMirror<>(entity.getClass());
+		// Gets the fields represented by external entities.
+		final Collection<FieldMirror> extEntitiesFields = entityClass.getFields(ExternalEntity.class);
+		// For each external entity.
+		for (final FieldMirror currentField : extEntitiesFields) {
+			// Gets the external entity annotation for the current field.
+			final ExternalEntity externalEntityInfo = currentField.getReflectedField().getAnnotation(
+					ExternalEntity.class);
+			// If the current external entity maps the relationship.
+			if (!externalEntityInfo.mappedBy().isEmpty()) {
+				// Gets the external entities for the current field.
+				final Object externalEntities = currentField.getValue(entity, false, true);
+				// If the field value is not null.
+				if (externalEntities != null) {
+					// Gets the identifier for the given entity.
+					final Object entityId = entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(
+							entity, true, null);
+					// If the field represents a single external entity.
+					if (externalEntityInfo.singleEntity()) {
+						// Gets the external entity class.
+						final ClassMirror<?> extEntityClass = new ClassMirror<>(externalEntities.getClass());
+						// Gets the field that maps the relationship.
+						final FieldMirror extEntityMappedField = extEntityClass.getField(externalEntityInfo
+								.mappedBy());
+						// Sets the field value with the id for the given entity.
+						extEntityMappedField.setValue(externalEntities, entityId, false, true);
+					}
+					// If the field represents multiple external entities.
+					else {
+						// For each external entity.
+						for (final Object currentExtEntity : (Collection<?>) externalEntities) {
+							// Gets the external entity class.
+							final ClassMirror<?> extEntityClass = new ClassMirror<>(
+									currentExtEntity.getClass());
+							// Gets the field that maps the relationship.
+							final FieldMirror extEntityMappedField = extEntityClass
+									.getField(externalEntityInfo.mappedBy());
+							// Sets the field value with the id for the given entity.
+							extEntityMappedField.setValue(currentExtEntity, entityId, false, true);
+						}
 					}
 				}
 			}

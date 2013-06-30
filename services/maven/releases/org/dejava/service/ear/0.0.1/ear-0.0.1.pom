@@ -48,6 +48,26 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
+			<artifactId>contact-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>contact-web</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>message-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>message-web</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>philanthropy-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>

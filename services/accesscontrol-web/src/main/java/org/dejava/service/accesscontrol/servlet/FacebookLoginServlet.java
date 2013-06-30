@@ -22,9 +22,9 @@ import org.dejava.service.accesscontrol.component.UserComponent;
 import org.dejava.service.accesscontrol.constant.FacebookAppKeys;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
-import org.dejava.service.party.component.PersonComponent;
+import org.dejava.service.party.component.PartyComponent;
 import org.dejava.service.party.model.Person;
-import org.dejava.service.party.util.Party;
+import org.dejava.service.party.util.PartyCtx;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -205,11 +205,11 @@ public class FacebookLoginServlet extends HttpServlet {
 	private UserComponent userComponent;
 
 	/**
-	 * The person EJB component.
+	 * The party EJB component.
 	 */
 	@Inject
 	@PartyCtx
-	private PersonComponent personComponent;
+	private PartyComponent partyComponent;
 
 	/**
 	 * Creates a new user and person for the given facebook user. FIXME
@@ -225,7 +225,7 @@ public class FacebookLoginServlet extends HttpServlet {
 		// Sets the user for the person.
 		newPerson.setUser(newUser);
 		// Persists the new person.
-		personComponent.addOrUpdate(newPerson);
+		partyComponent.addOrUpdate(newPerson);
 	}
 
 	/**

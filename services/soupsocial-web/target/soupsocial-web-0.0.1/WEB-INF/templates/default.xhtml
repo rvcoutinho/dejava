@@ -7,8 +7,11 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 	<h:outputStylesheet library="soupsocial" name="css/stylesheet.css" />
+	<h:outputStylesheet library="soupsocial" name="css/ui.css" />
 	<ui:insert name="head"></ui:insert>
-	<h:outputScript library="soupsocial" name="js/jquery.min.js" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+	<h:outputScript library="soupsocial" name="js/jquery.mask.min.js"></h:outputScript>
 	<h:outputText escape="false">
 		<!--[if lt IE 9]>
 			<script async="async" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -130,6 +133,16 @@
 			</ul>
 		</nav>
 	</footer>
+	<section id="messages" class="hidden-dialog">
+		<h:panelGroup>
+			<h:messages />
+			<h:outputScript rendered="#{!empty facesContext.maximumSeverity}">
+				$(function() {
+					$('#messages').dialog({ modal: true, draggable: false, minWidth: 450 });
+				});
+			</h:outputScript>
+		</h:panelGroup>
+	</section>
 	<div id="fb-root"></div>
 	<script>
 		//<![CDATA[
@@ -156,6 +169,16 @@
 						}, 1000);
 					}
 				});
+			});
+		//]]>
+	</script>
+	<script>
+		//<![CDATA[	
+			$(function() {
+   				$('input.date').mask('00/00/0000');
+   				$('input.phone').mask('(00) 0000-00000');
+   				$('.cpf').mask('000.000.000-00');
+   				$('.cnpj').mask('00.000.000/0000-00');
 			});
 		//]]>
 	</script>

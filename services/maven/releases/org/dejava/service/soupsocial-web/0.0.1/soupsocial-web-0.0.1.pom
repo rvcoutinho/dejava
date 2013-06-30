@@ -26,6 +26,25 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>party-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>contact-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>location-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>jsf</artifactId>
 		</dependency>
@@ -70,9 +89,14 @@
 			<groupId>com.ocpsoft</groupId>
 			<artifactId>prettyfaces-jsf2</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
+			<groupId>org.richfaces.ui</groupId>
+			<artifactId>richfaces-components-ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.core</groupId>
+			<artifactId>richfaces-core-impl</artifactId>
 		</dependency>
 
 	</dependencies>

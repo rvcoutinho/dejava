@@ -1,5 +1,6 @@
 package org.dejava.service.contact.model;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
@@ -14,5 +15,30 @@ public abstract class Contact extends AbstractIdentifiedEntity {
 	 * Generated serial
 	 */
 	private static final long serialVersionUID = 8317664521891805070L;
+
+	/**
+	 * Party id for the contact.
+	 */
+	private Integer partyId;
+
+	/**
+	 * Gets the party id for the contact.
+	 * 
+	 * @return The party id for the contact.
+	 */
+	@Column(name = "party")
+	public Integer getPartyId() {
+		return partyId;
+	}
+
+	/**
+	 * Sets the party id for the contact.
+	 * 
+	 * @param partyId
+	 *            New party id for the contact.
+	 */
+	public void setPartyId(Integer partyId) {
+		this.partyId = partyId;
+	}
 
 }

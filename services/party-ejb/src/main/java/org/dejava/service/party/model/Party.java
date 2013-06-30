@@ -1,15 +1,12 @@
 package org.dejava.service.party.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -17,6 +14,7 @@ import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.contact.model.Contact;
+import org.dejava.service.location.model.Location;
 
 /**
  * 
@@ -58,6 +56,37 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	}
 
 	/**
+	 * Name to be used and displayed regularly.
+	 */
+	private String displayName;
+
+	/**
+	 * Gets the name to be used and displayed regularly.
+	 * 
+	 * @return The name to be used and displayed regularly.
+	 */
+	@Column(name = "display_name")
+	public String getDisplayName() {
+		// If the display name is null.
+		if (displayName == null) {
+			// The display name is the party name.
+			displayName = getName();
+		}
+		// Returns the display name.
+		return displayName;
+	}
+
+	/**
+	 * Sets the name to be used and displayed regularly.
+	 * 
+	 * @param displayName
+	 *            New name to be used and displayed regularly.
+	 */
+	public void setDisplayName(final String displayName) {
+		this.displayName = displayName;
+	}
+
+	/**
 	 * The identifier of the user.
 	 */
 	private Integer userId;
@@ -67,7 +96,7 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The user identifier.
 	 */
-	@Column(name = "user")
+	@Column(name = "u5er")
 	protected Integer getUserId() {
 		return userId;
 	}
@@ -97,6 +126,97 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	}
 
 	/**
+	 * Addresses for the party.
+	 */
+	@ExternalEntity(retrieveObj = "java:/global/ear/location-ejb/Component/Location/Location", mappedBy = "partyId", singleEntity = false)
+	private Collection<Location> addresses;
+
+	/**
+	 * Gets the addresses.
+	 * 
+	 * @return The addresses.
+	 */
+	@Transient
+	public Collection<Location> getAddresses() {
+		// If the address set is null.
+		if (addresses == null) {
+			// Creates a new set.
+			addresses = new ArrayList<>();
+		}
+		// Returns the addresses.
+		return addresses;
+	}
+
+	/**
+	 * Sets the addresses.
+	 * 
+	 * @param addresses
+	 *            New addresses.
+	 */
+	public void setAddresses(final Collection<Location> addresses) {
+		this.addresses = addresses;
+	}
+
+	/**
+	 * Contacts for the party.
+	 */
+	@ExternalEntity(retrieveObj = "java:/global/ear/contact-ejb/Component/Contact/Contact", mappedBy = "partyId", singleEntity = false)
+	private Collection<Contact> contacts;
+
+	/**
+	 * Gets the contacts.
+	 * 
+	 * @return The contacts.
+	 */
+	@Transient
+	public Collection<Contact> getContacts() {
+		// If the contact set is null.
+		if (contacts == null) {
+			// Creates a new set.
+			contacts = new ArrayList<>();
+		}
+		// Returns the contacts.
+		return contacts;
+	}
+
+	/**
+	 * Gets the contacts for the given type.
+	 * 
+	 * @param contactType
+	 *            Any contact type
+	 * @param <ConcreteContact>
+	 *            A concrete contact type.
+	 * @return The contacts for the given type.
+	 */
+	@SuppressWarnings("unchecked")
+	@Transient
+	public <ConcreteContact extends Contact> Collection<ConcreteContact> getContacts(
+			final Class<ConcreteContact> contactType) {
+		// Creates a new set.
+		final Collection<ConcreteContact> contacts = new ArrayList<>();
+		// For each contact.
+		for (final Contact currentContact : getContacts()) {
+			// If the current contact is an instance of the given contact type.
+			if (contactType.isAssignableFrom(currentContact.getClass())) {
+				// Adds the current contact to the list.
+				contacts.add((ConcreteContact) currentContact);
+			}
+		}
+		// Returns the contacts for the types.
+		return contacts;
+	}
+
+	/**
+	 * Sets the contacts.
+	 * 
+	 * @param contacts
+	 *            New contacts.
+	 */
+	public void setContacts(final Collection<Contact> contacts) {
+		this.contacts = contacts;
+	}
+
+	/**
 	 * Default constructor.
 	 */
 	public Party() {
@@ -116,88 +236,6 @@ public abstract class Party extends AbstractIdentifiedEntity {
 		// Sets the basic info for the party.
 		this.name = name;
 		setUser(user);
-	}
-
-	/**
-	 * Contacts identifications for the party.
-	 */
-	private Set<Integer> contactsIds;
-
-	/**
-	 * Gets the contacts identifications for the party.
-	 * 
-	 * @return The contacts identifications for the party.
-	 */
-	@ElementCollection
-	public Set<Integer> getContactsIds() {
-		return contactsIds;
-	}
-
-	/**
-	 * Sets the contacts identifications for the party.
-	 * 
-	 * @param contactsIds
-	 *            New contacts identifications for the party.
-	 */
-	public void setContactsIds(final Set<Integer> contactsIds) {
-		this.contactsIds = contactsIds;
-	}
-
-	/**
-	 * Contacts for the party. TODO
-	 */
-	@ExternalEntity(idsMethod = "getContactsIds", retrieveObj = "")
-	private Set<Contact> contacts;
-
-	/**
-	 * Gets the contacts.
-	 * 
-	 * @return The contacts.
-	 */
-	@Transient
-	public Set<Contact> getContacts() {
-		return contacts;
-	}
-
-	/**
-	 * Sets the contacts.
-	 * 
-	 * @param contacts
-	 *            New contacts.
-	 */
-	public void setContacts(final Set<Contact> contacts) {
-		this.contacts = contacts;
-	}
-
-	/**
-	 * Update the contacts ids with the actual contact ids.
-	 */
-	protected void updateContactsIds() {
-		// If the contacts list is null.
-		if (contacts == null) {
-			// Sets the contacts ids to null.
-			contactsIds = null;
-		}
-		// If the contacts is not null.
-		else {
-			// Creates a new set.
-			contactsIds = new HashSet<>();
-			// For each entity in the entity set.
-			for (final Contact curEntity : contacts) {
-				// Adds the current entity id to the set.
-				contactsIds.add(curEntity.getIdentifier());
-			}
-		}
-	}
-
-	/**
-	 * Update the external entities ids to be persisted.
-	 */
-	@PreUpdate
-	@PrePersist
-	protected void updateAllExtEntitiesIds() {
-		// Update all external entities ids.
-		updateContactsIds();
 	}
 
 }

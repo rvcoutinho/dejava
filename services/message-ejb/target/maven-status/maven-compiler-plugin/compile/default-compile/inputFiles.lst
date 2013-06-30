@@ -1,0 +1,11 @@
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\SMSSenderComponent.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\util\MessageCtx.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\model\EmailMessage.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\EmailSenderComponent.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\util\Resources.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\dao\EmailMessageDAO.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\SMSMessageComponent.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\dao\SMSMessageDAO.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\model\Message.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\model\SMSMessage.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\EmailMessageComponent.java

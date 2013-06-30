@@ -206,9 +206,10 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.primefaces</groupId>
-				<artifactId>primefaces</artifactId>
-				<version>3.4</version>
+				<groupId>org.richfaces</groupId>
+				<artifactId>richfaces-bom</artifactId>
+				<version>4.3.2.Final</version>
+				<type>pom</type>
 			</dependency>
 			<dependency>
 				<groupId>com.ocpsoft</groupId>

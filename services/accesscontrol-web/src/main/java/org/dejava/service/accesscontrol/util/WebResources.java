@@ -7,6 +7,7 @@ import javax.faces.context.FacesContext;
 /**
  * Web resources to be injected CDI.
  */
+@AccessControlCtx
 public class WebResources {
 
 	/**
@@ -16,6 +17,7 @@ public class WebResources {
 	 */
 	@Produces
 	@RequestScoped
+	@AccessControlCtx
 	public FacesContext produceFacesContext() {
 		return FacesContext.getCurrentInstance();
 	}

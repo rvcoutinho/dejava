@@ -6,6 +6,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.dejava.component.validation.method.ArgFormatter;
+
 /**
  * Phone number.
  */
@@ -22,7 +24,7 @@ public class PhoneNumber extends Contact {
 	/**
 	 * The country code for the phone number.
 	 */
-	private Integer countryCode;
+	private String countryCode = "55";
 
 	/**
 	 * Gets the country code for the phone number.
@@ -30,7 +32,7 @@ public class PhoneNumber extends Contact {
 	 * @return The country code for the phone number.
 	 */
 	@Column(name = "contry_code")
-	public Integer getCountryCode() {
+	public String getCountryCode() {
 		return countryCode;
 	}
 
@@ -40,14 +42,14 @@ public class PhoneNumber extends Contact {
 	 * @param countryCode
 	 *            New country code for the phone number.
 	 */
-	public void setCountryCode(final Integer countryCode) {
+	public void setCountryCode(final String countryCode) {
 		this.countryCode = countryCode;
 	}
 
 	/**
 	 * Phone number.
 	 */
-	private Integer number;
+	private String number;
 
 	/**
 	 * Gets the phone number.
@@ -55,7 +57,7 @@ public class PhoneNumber extends Contact {
 	 * @return The phone number.
 	 */
 	@Column(name = "number")
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
@@ -65,8 +67,8 @@ public class PhoneNumber extends Contact {
 	 * @param number
 	 *            New phone number.
 	 */
-	public void setNumber(final Integer number) {
-		this.number = number;
+	public void setNumber(final String number) {
+		// Sets the new field value (making sure that just numbers are recorded).
+		this.number = ArgFormatter.removeInvalidRegex(number, "[^\\d]");
 	}
-
 }

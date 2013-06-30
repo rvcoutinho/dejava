@@ -33,6 +33,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
+			<artifactId>validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
 			<artifactId>reflection</artifactId>
 		</dependency>
 		<dependency>

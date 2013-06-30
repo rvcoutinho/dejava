@@ -37,6 +37,18 @@
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>contact-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>location-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.dejava.component</groupId>
@@ -95,8 +107,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
+			<groupId>org.richfaces.ui</groupId>
+			<artifactId>richfaces-components-ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.core</groupId>
+			<artifactId>richfaces-core-impl</artifactId>
 		</dependency>
 
 		<dependency>

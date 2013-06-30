@@ -1,0 +1,17 @@
+org\dejava\service\location\dao\CountryDAO.class
+org\dejava\service\location\util\LocationCtx.class
+org\dejava\service\location\dao\StateDAO.class
+org\dejava\service\location\component\CityComponent.class
+org\dejava\service\location\dao\NeighborhoodDAO.class
+org\dejava\service\location\model\City.class
+org\dejava\service\location\component\CountryComponent.class
+org\dejava\service\location\model\Neighborhood.class
+org\dejava\service\location\model\State.class
+org\dejava\service\location\util\Resources.class
+org\dejava\service\location\component\StateComponent.class
+org\dejava\service\location\dao\LocationDAO.class
+org\dejava\service\location\model\Location.class
+org\dejava\service\location\dao\CityDAO.class
+org\dejava\service\location\model\Country.class
+org\dejava\service\location\component\NeighborhoodComponent.class
+org\dejava\service\location\component\LocationComponent.class

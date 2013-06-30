@@ -30,6 +30,24 @@
     </web>
   </module>
   <module>
+    <ejb>contact-ejb-0.0.1.jar</ejb>
+  </module>
+  <module>
+    <web>
+      <web-uri>contact-web-0.0.1.war</web-uri>
+      <context-root>/contact-web</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>message-ejb-0.0.1.jar</ejb>
+  </module>
+  <module>
+    <web>
+      <web-uri>message-web-0.0.1.war</web-uri>
+      <context-root>/message-web</context-root>
+    </web>
+  </module>
+  <module>
     <ejb>philanthropy-ejb-0.0.1.jar</ejb>
   </module>
   <module>

@@ -54,20 +54,32 @@ public class EJBRealmTest {
 				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
 		final MavenDependencyResolver dependencyResolver3 = DependencyResolvers.use(
 				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
+		final MavenDependencyResolver dependencyResolver4 = DependencyResolvers.use(
+				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
+		final MavenDependencyResolver dependencyResolver5 = DependencyResolvers.use(
+				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
 		// Gets the EJB jars.
 		final JavaArchive accessControlEjbJar = dependencyResolver2
 				.artifact("org.dejava.service:accesscontrol-ejb").resolveAs(JavaArchive.class).iterator()
 				.next();
 		final JavaArchive partyEjbJar = dependencyResolver3.artifact("org.dejava.service:party-ejb")
 				.resolveAs(JavaArchive.class).iterator().next();
+		final JavaArchive contactEjbJar = dependencyResolver4.artifact("org.dejava.service:contact-ejb")
+				.resolveAs(JavaArchive.class).iterator().next();
+		final JavaArchive locationEjbJar = dependencyResolver5.artifact("org.dejava.service:location-ejb")
+				.resolveAs(JavaArchive.class).iterator().next();
 		// Removes the persistence.xml from the jars.
 		accessControlEjbJar.delete("META-INF/persistence.xml");
 		partyEjbJar.delete("META-INF/persistence.xml");
+		contactEjbJar.delete("META-INF/persistence.xml");
+		locationEjbJar.delete("META-INF/persistence.xml");
 		// Defines and returns the archive definition.
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.merge(accessControlEjbJar, "WEB-INF/classes")
 				.merge(partyEjbJar, "WEB-INF/classes")
+				.merge(contactEjbJar, "WEB-INF/classes")
+				.merge(locationEjbJar, "WEB-INF/classes")
 				.addPackages(true, "org.dejava.service.accesscontrol")
 				.addAsLibraries(
 						dependencyResolver.artifacts("org.dejava.component:security",

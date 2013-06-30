@@ -1,7 +1,5 @@
 package org.dejava.service.philanthropy.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -12,7 +10,7 @@ import org.dejava.service.party.model.Organization;
  */
 @Entity
 @Table(name = "project")
-public class Project extends Idea implements Serializable {
+public class Project extends Idea {
 
 	/**
 	 * Genareted serial.

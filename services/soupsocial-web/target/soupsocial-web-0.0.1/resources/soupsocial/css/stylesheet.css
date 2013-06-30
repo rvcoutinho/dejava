@@ -16,7 +16,7 @@ img {
 input, button {
 	color: #4F5B5A;
 	padding: 5px;
-	border: none;
+	border: 1px solid #1C9BA5;
 	border-radius: 3px;
 }
 
@@ -24,6 +24,7 @@ button, input[type=button], input[type=submit] {
 	padding: 5px 15px;
 	font-weight: bold;
 	text-transform: uppercase;
+	border: none;
 }
 
 button .spoon, input[type=button] .spoon, input[type=submit] .spoon {
@@ -54,6 +55,15 @@ button .spoon, input[type=button] .spoon, input[type=submit] .spoon {
 	border-top-left-radius: 50px;
 	border-top-right-radius: 50px;
 	display: block;
+}
+
+.form-content {
+	line-height: 35px;
+}
+
+.form-content input {
+	float: right;
+	width: 275px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -188,6 +198,10 @@ a {
 
 .shadow-border {
 	box-shadow: 0px 0px 5px 0px #BBBBBB;
+}
+
+.hidden-dialog {
+	display: none;
 }
 
 #header {

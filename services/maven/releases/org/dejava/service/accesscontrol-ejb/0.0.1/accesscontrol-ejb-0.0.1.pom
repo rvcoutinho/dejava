@@ -15,7 +15,7 @@
 	<name>accesscontrol EJB module</name>
 
 	<dependencies>
-
+		
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>ejb</artifactId>

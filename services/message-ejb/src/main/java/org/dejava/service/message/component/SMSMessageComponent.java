@@ -5,29 +5,29 @@ import javax.inject.Inject;
 
 import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
-import org.dejava.service.message.dao.EmailMessageDAO;
-import org.dejava.service.message.model.EmailMessage;
+import org.dejava.service.message.dao.SMSMessageDAO;
+import org.dejava.service.message.model.SMSMessage;
 import org.dejava.service.message.util.MessageCtx;
 
 /**
  * EJB component for the SMS message.
  */
 @MessageCtx
-@Stateless(name = "Component/Message/EmailMessage")
-public class SMSMessageComponent extends AbstractGenericComponent<EmailMessage, Integer> {
+@Stateless(name = "Component/Message/SMSMessage")
+public class SMSMessageComponent extends AbstractGenericComponent<SMSMessage, Integer> {
 
 	/**
 	 * The DAO for the entity.
 	 */
 	@Inject
 	@MessageCtx
-	private EmailMessageDAO smsMessageDAO;
+	private SMSMessageDAO smsMessageDAO;
 
 	/**
 	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityDAO()
 	 */
 	@Override
-	public AbstractGenericDAO<EmailMessage, Integer> getEntityDAO() {
+	public AbstractGenericDAO<SMSMessage, Integer> getEntityDAO() {
 		return smsMessageDAO;
 	}
 

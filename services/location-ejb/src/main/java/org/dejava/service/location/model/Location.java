@@ -49,6 +49,31 @@ public class Location extends AbstractIdentifiedEntity {
 	}
 
 	/**
+	 * Party id for the contact.
+	 */
+	private Integer partyId;
+
+	/**
+	 * Gets the party id for the contact.
+	 * 
+	 * @return The party id for the contact.
+	 */
+	@Column(name = "party")
+	public Integer getPartyId() {
+		return partyId;
+	}
+
+	/**
+	 * Sets the party id for the contact.
+	 * 
+	 * @param partyId
+	 *            New party id for the contact.
+	 */
+	public void setPartyId(final Integer partyId) {
+		this.partyId = partyId;
+	}
+
+	/**
 	 * The description of the location.
 	 */
 	private String description;

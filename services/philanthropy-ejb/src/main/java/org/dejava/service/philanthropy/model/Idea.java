@@ -10,7 +10,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
-import org.dejava.component.ejb.entity.ExternalEntity;
 import org.dejava.service.location.model.Location;
 
 /**
@@ -139,7 +138,6 @@ public class Idea extends AbstractIdentifiedEntity {
 	/**
 	 * The location for the idea.
 	 */
-	@ExternalEntity(retrieveObj = "", idsMethod = "")
 	private Location location;
 
 	/**

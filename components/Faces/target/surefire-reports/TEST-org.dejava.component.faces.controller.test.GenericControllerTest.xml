@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="17.607" errors="0" skipped="0" tests="16" name="org.dejava.component.faces.controller.test.GenericControllerTest">
+<testsuite failures="0" time="18.967" errors="0" skipped="0" tests="16" name="org.dejava.component.faces.controller.test.GenericControllerTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\bin"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf190578849803529539.tmp"/>
+    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf5221144083567033716.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -60,20 +60,20 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.937" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetCollectionByAttributeNullAttributeName"/>
-  <testcase time="0.109" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetEntityByAttributeNullAttributeName"/>
+  <testcase time="0.952" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetCollectionByAttributeNullAttributeName"/>
+  <testcase time="0.125" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetEntityByAttributeNullAttributeName"/>
   <testcase time="0.187" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetEntityByAttributeDuplicateAttribute"/>
-  <testcase time="0.047" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetByIdSuccess"/>
-  <testcase time="0.125" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetByIdNullId"/>
-  <testcase time="0.031" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetAllSuccess"/>
-  <testcase time="0.031" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testAddOrUpdateCollectionSuccess"/>
-  <testcase time="0.031" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testAddOrUpdateCollectionNullEntity"/>
-  <testcase time="0.016" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testRemoveCollectionNullEntity"/>
+  <testcase time="0.031" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testRemoveSuccess"/>
+  <testcase time="0.11" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testRemoveNullEntity"/>
+  <testcase time="0.046" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testAddOrUpdateCollectionSuccess"/>
+  <testcase time="0.016" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testAddOrUpdateCollectionNullEntity"/>
+  <testcase time="0.031" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testRemoveCollectionNullEntity"/>
   <testcase time="0.047" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetCollectionByAttributeSuccess"/>
   <testcase time="0.031" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetEntityByAttributeSuccess"/>
-  <testcase time="0.016" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testRemoveSuccess"/>
-  <testcase time="0.093" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testRemoveNullEntity"/>
   <testcase time="0.031" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testAddOrUpdateSuccess"/>
-  <testcase time="0.11" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testAddOrUpdateNullEntity"/>
-  <testcase time="0.046" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testRemoveCollectionSuccess"/>
+  <testcase time="0.094" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testAddOrUpdateNullEntity"/>
+  <testcase time="0.031" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testRemoveCollectionSuccess"/>
+  <testcase time="0.031" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetByIdSuccess"/>
+  <testcase time="0.11" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetByIdNullId"/>
+  <testcase time="0.062" classname="org.dejava.component.faces.controller.test.GenericControllerTest" name="testGetAllSuccess"/>
 </testsuite>

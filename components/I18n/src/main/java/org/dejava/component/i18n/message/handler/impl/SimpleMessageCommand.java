@@ -21,35 +21,14 @@ public class SimpleMessageCommand implements MessageCommand {
 	private static final long serialVersionUID = 4013415156070982536L;
 
 	/**
-	 * Message handler to render localized messages.
-	 */
-	private MessageHandler messageHandler;
-
-	/**
-	 * Gets the message handler to render localized messages.
-	 * 
-	 * @return The message handler to render localized messages.
-	 */
-	protected MessageHandler getMessageHandler() {
-		// If the message handler is null.
-		if (messageHandler == null) {
-			// Creates a default message handler for the default locale.
-			messageHandler = SimpleMessageHandler.getMessageHandler(Locale.getDefault());
-		}
-		// Returns the message handler.
-		return messageHandler;
-	}
-
-	/**
 	 * Locale for the message.
 	 */
 	private Locale locale;
 
 	/**
-	 * Gets the locale for the message.
-	 * 
-	 * @return The locale for the message.
+	 * @see org.dejava.component.i18n.message.handler.MessageCommand#getLocale()
 	 */
+	@Override
 	public Locale getLocale() {
 		return locale;
 	}
@@ -169,21 +148,21 @@ public class SimpleMessageCommand implements MessageCommand {
 	}
 
 	/**
-	 * @see org.dejava.component.i18n.message.handler.MessageCommand#getMessage()
+	 * @see org.dejava.component.i18n.message.handler.MessageCommand#getMessage(org.dejava.component.i18n.message.handler.MessageHandler)
 	 */
 	@Override
-	public String getMessage() throws MessageNotFoundException {
+	public String getMessage(final MessageHandler messageHandler) throws MessageNotFoundException {
 		// Tries to return the localized message.
-		return getMessageHandler().getMessage(getType(), getLocale(), getMessageKey(), getParameters());
+		return messageHandler.getMessage(getType(), getLocale(), getMessageKey(), getParameters());
 	}
 
 	/**
-	 * @see org.dejava.component.i18n.message.handler.MessageCommand#getUsMessage()
+	 * @see org.dejava.component.i18n.message.handler.MessageCommand#getUsMessage(org.dejava.component.i18n.message.handler.MessageHandler)
 	 */
 	@Override
-	public String getUsMessage() throws MessageNotFoundException {
+	public String getUsMessage(final MessageHandler messageHandler) throws MessageNotFoundException {
 		// Tries to return the localized message.
-		return getMessageHandler().getMessage(getType(), getLocale(), getMessageKey(), getParameters());
+		return messageHandler.getMessage(getType(), getLocale(), getMessageKey(), getParameters());
 	}
 
 }

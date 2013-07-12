@@ -6,21 +6,17 @@ import java.util.Locale;
 
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
+import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
 import org.dejava.component.i18n.test.message.constant.SomeKeys;
 import org.dejava.component.i18n.test.message.util.AnnotatedClass;
 import org.dejava.component.i18n.test.message.util.AnnotatedInterface;
 import org.dejava.component.i18n.test.message.util.AnnotatedSuperClass;
 import org.dejava.component.i18n.test.message.util.TestMessageCommand;
-import org.dejava.component.test.annotation.ParametricTest;
-import org.dejava.component.test.runner.JUnitParametricRunner;
-import org.dejava.component.test.runner.dataset.impl.StaticMethodTestDataProvider;
 import org.junit.Assert;
-import org.junit.runner.RunWith;
 
 /**
  * Tests for the default i18n message handler.
  */
-@RunWith(value = JUnitParametricRunner.class)
 public class SimpleMessageHandlerTest {
 
 	/**
@@ -119,15 +115,15 @@ public class SimpleMessageHandlerTest {
 
 	/**
 	 * Tests the simple message handler with valid parameters.
-	 * 
-	 * @param testMsgCommand
-	 *            The command with the required information to get a message (using the message handler).
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getValidMessageCommands" })
-	public void testGetMessageValidParams(final TestMessageCommand testMsgCommand) {
-		// Assert that the message is the expected one.
-		Assert.assertEquals("The retrieved message is different than the expected.",
-				testMsgCommand.getExpectedMessage(), testMsgCommand.getMessage());
+	public void testGetMessageValidParams() {
+		// For each valid message.
+		for (final TestMessageCommand testMsgCommand : getValidMessageCommands()) {
+			// Assert that the message is the expected one.
+			Assert.assertEquals("The retrieved message is different than the expected.",
+					testMsgCommand.getExpectedMessage(),
+					testMsgCommand.getMessage(SimpleMessageHandler.getMessageHandler(Locale.getDefault())));
+		}
 	}
 
 	/**
@@ -149,14 +145,22 @@ public class SimpleMessageHandlerTest {
 
 	/**
 	 * Tests the simple message handler with invalid parameters.
-	 * 
-	 * @param testMsgCommand
-	 *            The command with the invalid information to get a message (using the message handler).
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getInvalidMessageCommands" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testGetMessageInvalidParams(final TestMessageCommand testMsgCommand) {
-		// Tries to get the message from the command.
-		testMsgCommand.getMessage();
+	public void testGetMessageInvalidParams() {
+		// For each invalid message.
+		for (final TestMessageCommand testMsgCommand : getInvalidMessageCommands()) {
+			// Tries to get the message from the command.
+			try {
+				testMsgCommand.getMessage(SimpleMessageHandler.getMessageHandler(Locale.getDefault()));
+				// If no exception is thrown, fails the test.
+				Assert.fail();
+			}
+			// If an invalid parameter exception is thrown.
+			catch (final InvalidParameterException exception) {
+				// Ignores it.
+			}
+		}
+
 	}
 
 	/**
@@ -180,15 +184,20 @@ public class SimpleMessageHandlerTest {
 
 	/**
 	 * Tests the simple message handler with valid parameters (yet for messages that cannot be found).
-	 * 
-	 * @param testMsgCommand
-	 *            The command with the valid information (for messages that cannot be found) to get a message
-	 *            (using the message handler).
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getMessageCommandsNoMessages" }, expectedExceptionClass = MessageNotFoundException.class)
-	public void testGetMessageNoMessage(final TestMessageCommand testMsgCommand) {
-		// Tries to get the message from the command.
-		testMsgCommand.getMessage();
+	public void testGetMessageNoMessage() {
+		// For each command with no predefined message.
+		for (final TestMessageCommand testMsgCommand : getMessageCommandsNoMessages()) {
+			// Tries to get the message from the command.
+			try {
+				testMsgCommand.getMessage(SimpleMessageHandler.getMessageHandler(Locale.getDefault()));
+				// If no exception is thrown, fails the test.
+				Assert.fail();
+			}
+			// If an invalid parameter exception is thrown.
+			catch (final MessageNotFoundException exception) {
+				// Ignores it.
+			}
+		}
 	}
-
 }

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------------------
 Test set: org.dejava.component.i18n.test.message.SimpleMessageHandlerTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.247 sec
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.067 sec <<< FAILURE! - in org.dejava.component.i18n.test.message.SimpleMessageHandlerTest
+org.dejava.component.i18n.test.message.SimpleMessageHandlerTest  Time elapsed: 0.017 sec  <<< ERROR!
+java.lang.NoSuchMethodError: org.dejava.component.reflection.MethodMirror.invokeMethod(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/Boolean;)Ljava/lang/Object;
+	at org.dejava.component.test.runner.dataset.impl.StaticMethodTestDataProvider.getTestData(StaticMethodTestDataProvider.java:88)
+	at org.dejava.component.test.runner.JUnitParametricRunner.getTestMethodStatements(JUnitParametricRunner.java:270)
+	at org.dejava.component.test.runner.JUnitParametricRunner.runParametricTest(JUnitParametricRunner.java:308)
+	at org.dejava.component.test.runner.JUnitParametricRunner.runChild(JUnitParametricRunner.java:353)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:264)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:153)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:200)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
+

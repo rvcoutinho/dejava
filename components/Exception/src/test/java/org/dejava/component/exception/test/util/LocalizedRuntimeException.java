@@ -1,11 +1,11 @@
 package org.dejava.component.exception.test.util;
 
-import org.dejava.component.exception.localized.checked.AbstractLocalizedException;
+import org.dejava.component.exception.localized.unchecked.AbstractLocalizedRuntimeException;
 
 /**
  * Localized runtime exception.
  */
-public class LocalizedRuntimeException extends AbstractLocalizedException {
+public class LocalizedRuntimeException extends AbstractLocalizedRuntimeException {
 
 	/**
 	 * Generated serial.

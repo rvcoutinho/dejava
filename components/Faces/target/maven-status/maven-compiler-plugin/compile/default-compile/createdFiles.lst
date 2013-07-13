@@ -1,7 +1,5 @@
-org\dejava\component\faces\message\FacesMessageHandler.class
 org\dejava\component\faces\message\FacesMessageHandler$1.class
 org\dejava\component\faces\controller\AbstractGenericController.class
-org\dejava\component\faces\message\constant\ErrorKeys.class
 org\dejava\component\faces\message\constant\ParamKeys.class
 org\dejava\component\faces\message\annotation\MessageType.class
 org\dejava\component\faces\message\annotation\MessageType$Severity.class

@@ -15,7 +15,7 @@ public final class ArgFormatterTest {
 	 */
 	private static final String[][] RM_INVALID_REGEX_DATA = { { null, null, null }, { null, "teste", null },
 			{ "teste", null, "teste" }, { "jhdjs676thsjh", "\\d", "jhdjsthsjh" },
-			{ "jhd-js676-thsjh", "\\w", "--" } };
+			{ "jhdjs676thsjh", "[^\\d]", "676" }, { "jhd-js676-thsjh", "\\w", "--" } };
 
 	/**
 	 * Tests the method removeInvalidRegex.

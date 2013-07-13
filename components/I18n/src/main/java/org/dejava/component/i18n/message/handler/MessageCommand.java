@@ -61,14 +61,13 @@ public interface MessageCommand extends Serializable {
 	String getMessage(MessageHandler messageHandler) throws MessageNotFoundException;
 
 	/**
-	 * Gets a message by evaluating the given information for the en_US locale.
+	 * Adds a message to the application context by evaluating the given information.
 	 * 
-	 * @param messageHandler
-	 *            The message handler to be used.
-	 * @return The evaluated localized message for the en_US locale.
+	 * @param appMessageHandler
+	 *            The application message handler to be used.
 	 * @throws MessageNotFoundException
 	 *             If the message cannot be found.
 	 */
-	String getUsMessage(MessageHandler messageHandler) throws MessageNotFoundException;
+	void addMessage(ApplicationMessageHandler appMessageHandler) throws MessageNotFoundException;
 
 }

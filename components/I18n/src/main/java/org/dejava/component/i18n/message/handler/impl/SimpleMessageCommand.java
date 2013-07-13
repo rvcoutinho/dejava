@@ -5,6 +5,7 @@ import java.util.Locale;
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.constant.ErrorKeys;
 import org.dejava.component.i18n.message.exception.MessageNotFoundException;
+import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
 import org.dejava.component.i18n.message.handler.MessageCommand;
 import org.dejava.component.i18n.message.handler.MessageHandler;
 import org.dejava.component.i18n.message.util.MessageTypes;
@@ -157,12 +158,12 @@ public class SimpleMessageCommand implements MessageCommand {
 	}
 
 	/**
-	 * @see org.dejava.component.i18n.message.handler.MessageCommand#getUsMessage(org.dejava.component.i18n.message.handler.MessageHandler)
+	 * @see org.dejava.component.i18n.message.handler.MessageCommand#addMessage(org.dejava.component.i18n.message.handler.ApplicationMessageHandler)
 	 */
 	@Override
-	public String getUsMessage(final MessageHandler messageHandler) throws MessageNotFoundException {
-		// Tries to return the localized message.
-		return messageHandler.getMessage(getType(), getLocale(), getMessageKey(), getParameters());
+	public void addMessage(final ApplicationMessageHandler appMessageHandler) throws MessageNotFoundException {
+		// Tries to add the localized message.
+		appMessageHandler.addMessage(getType(), getLocale(), getMessageKey(), getParameters());
 	}
 
 }

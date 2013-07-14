@@ -1,6 +1,5 @@
 package org.dejava.component.validation.object;
 
-import java.util.Locale;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -8,6 +7,10 @@ import javax.validation.Payload;
 
 import org.dejava.component.exception.localized.unchecked.AbstractLocalizedRuntimeException;
 import org.dejava.component.i18n.message.annotation.MessageBundle;
+import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
+import org.dejava.component.i18n.message.handler.MessageCommand;
+import org.dejava.component.i18n.message.handler.MessageHandler;
+import org.dejava.component.i18n.message.handler.impl.SimpleMessageCommand;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
 import org.dejava.component.reflection.ClassMirror;
 
@@ -49,7 +52,7 @@ public class ValidationException extends AbstractLocalizedRuntimeException {
 	 * Gets the payload that contains the message bundle information.
 	 * 
 	 * @param violation
-	 *            The violation to get th epayload from.
+	 *            The violation to get the payload from.
 	 * @return The payload that contains the message bundle information.
 	 */
 	private Class<? extends Payload> getBundlePayload(final ConstraintViolation<?> violation) {
@@ -79,16 +82,35 @@ public class ValidationException extends AbstractLocalizedRuntimeException {
 	}
 
 	/**
-	 * Gets the localized message for the given violation.
-	 * 
-	 * @param violation
-	 *            The violation to get the message from.
-	 * @return The localized message for the given violation.
+	 * The message handler to be used.
 	 */
-	private String getViolationMessage(final ConstraintViolation<?> violation) {
-		return SimpleMessageHandler.getMessageHandler(Locale.getDefault()).getMessage(
-				getBundlePayload(violation), getLocale(), violation.getMessageTemplate(),
-				getViolationParameters(violation));
+	private MessageHandler messageHandler;
+
+	/**
+	 * Gets the messageHandler.
+	 * 
+	 * @return The messageHandler.
+	 */
+	@Override
+	public MessageHandler getMessageHandler() {
+		// If the message handler is null.
+		if (messageHandler == null) {
+			// Creates a new simple message handler.
+			messageHandler = SimpleMessageHandler.getDefaultMessageHandler();
+		}
+		// Returns the message handler.
+		return messageHandler;
+	}
+
+	/**
+	 * Sets the messageHandler.
+	 * 
+	 * @param messageHandler
+	 *            New messageHandler.
+	 */
+	@Override
+	public void setMessageHandler(final MessageHandler messageHandler) {
+		this.messageHandler = messageHandler;
 	}
 
 	/**
@@ -98,9 +120,36 @@ public class ValidationException extends AbstractLocalizedRuntimeException {
 	 *            Violations related to the exception.
 	 */
 	public ValidationException(final Set<ConstraintViolation<?>> violations) {
-		super(null, null, null, null);
+		super();
 		// Sets the violations.
 		this.violations = violations;
+	}
+
+	/**
+	 * Gets the message command for the given violation.
+	 * 
+	 * @param violation
+	 *            The violation to get the message from.
+	 * @return The message command for the given violation.
+	 */
+	private MessageCommand getViolationMessage(final ConstraintViolation<?> violation) {
+		return new SimpleMessageCommand(getBundlePayload(violation), getLocale(),
+				violation.getMessageTemplate(), getViolationParameters(violation));
+	}
+
+	/**
+	 * @see org.dejava.component.exception.localized.unchecked.AbstractLocalizedRuntimeException#addLocalizedMessages(org.dejava.component.i18n.message.handler.ApplicationMessageHandler)
+	 */
+	@Override
+	public void addLocalizedMessages(final ApplicationMessageHandler appMessageHandler) {
+		// If there are constraint violations.
+		if (getViolations() != null) {
+			// For each constraint violation.
+			for (final ConstraintViolation<?> currentViolation : getViolations()) {
+				// Adds the message for the current violation.
+				getViolationMessage(currentViolation).addMessage(appMessageHandler);
+			}
+		}
 	}
 
 }

@@ -3,6 +3,7 @@ package org.dejava.component.ejb.component;
 import java.util.Collection;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
+import org.dejava.component.validation.object.ThrowerValidator;
 
 /**
  * Implements the default behavior of an JPA entity EJB component.
@@ -26,6 +27,11 @@ public abstract class AbstractGenericComponent<Entity, Key> implements GenericCo
 	 */
 	@Override
 	public Entity addOrUpdate(final Entity entity) {
+		// If the entity is not null.
+		if (entity != null) {
+			// Validates the current entity.
+			ThrowerValidator.getDefaultThrowerValidator().validate(entity);
+		}
 		// Merges the entity.
 		return getEntityDAO().merge(entity);
 	}
@@ -35,6 +41,14 @@ public abstract class AbstractGenericComponent<Entity, Key> implements GenericCo
 	 */
 	@Override
 	public Collection<Entity> addOrUpdate(final Collection<Entity> entities) {
+		// If there are entities to be added.
+		if (entities != null) {
+			// For each entity.
+			for (final Entity currentEntity : entities) {
+				// Validates the current entity.
+				ThrowerValidator.getDefaultThrowerValidator().validate(currentEntity);
+			}
+		}
 		// Merges the entities.
 		return getEntityDAO().merge(entities);
 	}

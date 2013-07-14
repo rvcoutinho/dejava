@@ -77,12 +77,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>i18n</artifactId>
 			<version>0.0.1</version>
@@ -112,6 +106,20 @@
 			<artifactId>shiro-core</artifactId>
 			<version>1.2.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+
 
 	</dependencies>
 

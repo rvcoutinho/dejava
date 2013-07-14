@@ -129,6 +129,16 @@ public class SimpleMessageHandler implements MessageHandler {
 	}
 
 	/**
+	 * Gets the message handler for the current environment with default locale.
+	 * 
+	 * @return The message handler for the current environment with default locale.
+	 */
+	public static MessageHandler getDefaultMessageHandler() {
+		// Gets the message handler for the default locale.
+		return getMessageHandler(Locale.getDefault());
+	}
+
+	/**
 	 * Adds the parameter values to a given message.
 	 * 
 	 * @param message

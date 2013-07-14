@@ -105,6 +105,13 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 
 	/**
 	 * Basic constructor.
+	 */
+	protected AbstractLocalizedRuntimeException() {
+		super();
+	}
+
+	/**
+	 * Basic constructor.
 	 * 
 	 * @param type
 	 *            The type for the message.
@@ -189,7 +196,7 @@ public abstract class AbstractLocalizedRuntimeException extends RuntimeException
 	 * @see org.dejava.component.exception.localized.LocalizedException#addLocalizedMessages(org.dejava.component.i18n.message.handler.ApplicationMessageHandler)
 	 */
 	@Override
-	public void addLocalizedMessages(final ApplicationMessageHandler messageHandler) {
-		addLocalizedMessages(messageHandler, true);
+	public void addLocalizedMessages(final ApplicationMessageHandler appMessageHandler) {
+		addLocalizedMessages(appMessageHandler, true);
 	}
 }

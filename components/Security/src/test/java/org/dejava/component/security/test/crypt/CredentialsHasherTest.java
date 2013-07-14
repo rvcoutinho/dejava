@@ -9,17 +9,12 @@ import org.dejava.component.exception.localized.unchecked.EmptyParameterExceptio
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.security.crypt.hasher.CredentialsHasher;
 import org.dejava.component.security.test.util.FakeHashedCredentials;
-import org.dejava.component.test.annotation.ParametricTest;
-import org.dejava.component.test.runner.JUnitParametricRunner;
-import org.dejava.component.test.runner.dataset.impl.StaticMethodTestDataProvider;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 /**
  * Tests for the credential hasher.
  */
-@RunWith(value = JUnitParametricRunner.class)
 public class CredentialsHasherTest {
 
 	/**
@@ -42,19 +37,19 @@ public class CredentialsHasherTest {
 
 	/**
 	 * Tests the successful credential hash with a string credential.
-	 * 
-	 * @param credential
-	 *            Credential to be hashed.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeCredentials" })
-	public void testHashStringSuccess(final String credential) {
-		// Gets a new hasher instance.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Calculates the hash twice.
-		final byte[] hash1 = credentialsHasher.hash(credential, String.valueOf(credential.hashCode()));
-		final byte[] hash2 = credentialsHasher.hash(credential, String.valueOf(credential.hashCode()));
-		// Assert that the hashes are equal.
-		Assert.assertArrayEquals(hash1, hash2);
+	@Test
+	public void testHashStringSuccess() {
+		// For each credentials to be hashed.
+		for (final String credentials : getSomeCredentials()) {
+			// Gets a new hasher instance.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Calculates the hash twice.
+			final byte[] hash1 = credentialsHasher.hash(credentials, String.valueOf(credentials.hashCode()));
+			final byte[] hash2 = credentialsHasher.hash(credentials, String.valueOf(credentials.hashCode()));
+			// Assert that the hashes are equal.
+			Assert.assertArrayEquals(hash1, hash2);
+		}
 	}
 
 	/**
@@ -86,21 +81,21 @@ public class CredentialsHasherTest {
 
 	/**
 	 * Tests the successful credential hash with a byte array credential.
-	 * 
-	 * @param credential
-	 *            Credential to be hashed.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeCredentials" })
-	public void testHashBytesSuccess(final String credential) {
-		// Gets a new hasher instance.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Calculates the hash twice.
-		final byte[] hash1 = credentialsHasher.hash(credential.getBytes(),
-				String.valueOf(credential.hashCode()));
-		final byte[] hash2 = credentialsHasher.hash(credential.getBytes(),
-				String.valueOf(credential.hashCode()));
-		// Assert that the hashes are equal.
-		Assert.assertArrayEquals(hash1, hash2);
+	@Test
+	public void testHashBytesSuccess() {
+		// For each credentials to be hashed.
+		for (final String credentials : getSomeCredentials()) {
+			// Gets a new hasher instance.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Calculates the hash twice.
+			final byte[] hash1 = credentialsHasher.hash(credentials.getBytes(),
+					String.valueOf(credentials.hashCode()));
+			final byte[] hash2 = credentialsHasher.hash(credentials.getBytes(),
+					String.valueOf(credentials.hashCode()));
+			// Assert that the hashes are equal.
+			Assert.assertArrayEquals(hash1, hash2);
+		}
 	}
 
 	/**
@@ -192,128 +187,146 @@ public class CredentialsHasherTest {
 
 	/**
 	 * Tests setting valid minimum hash cycles to the credential hasher.
-	 * 
-	 * @param maxCycles
-	 *            A valid number for the maximum hash cycles.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidCycles" })
-	public void testSetMinCyclesValid(final Integer maxCycles) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Sets the minimum cycles to 1.
-		credentialsHasher.setMinCycles(CredentialsHasher.MIN_MIN_CYCLES);
-		// Sets the maximum cycles to the given value.
-		credentialsHasher.setMaxCycles(maxCycles);
-		// For some numbers over the minimum cycles.
-		for (Integer currentValidMinCycles = maxCycles; (currentValidMinCycles >= (maxCycles - CYCLES_TRIES))
-				&& (currentValidMinCycles >= CredentialsHasher.MIN_MIN_CYCLES); currentValidMinCycles--) {
-			// Tries to set the minimum cycles to the current valid minimum.
-			credentialsHasher.setMinCycles(currentValidMinCycles);
+	@Test
+	public void testSetMinCyclesValid() {
+		// For each valid cycles.
+		for (final Integer maxCycles : getSomeValidCycles()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Sets the minimum cycles to 1.
+			credentialsHasher.setMinCycles(CredentialsHasher.MIN_MIN_CYCLES);
+			// Sets the maximum cycles to the given value.
+			credentialsHasher.setMaxCycles(maxCycles);
+			// For some numbers over the minimum cycles.
+			for (Integer currentValidMinCycles = maxCycles; (currentValidMinCycles >= (maxCycles - CYCLES_TRIES))
+					&& (currentValidMinCycles >= CredentialsHasher.MIN_MIN_CYCLES); currentValidMinCycles--) {
+				// Tries to set the minimum cycles to the current valid minimum.
+				credentialsHasher.setMinCycles(currentValidMinCycles);
+			}
 		}
 	}
 
 	/**
 	 * Tests setting valid maximum hash cycles to the credential hasher.
-	 * 
-	 * @param minCycles
-	 *            A valid number for the minimum hash cycles.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidCycles" })
-	public void testSetMaxCyclesValid(final Integer minCycles) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Sets the maximum cycles to 1.
-		credentialsHasher.setMaxCycles(CredentialsHasher.MAX_MAX_CYCLES);
-		// Sets the minimum cycles to the given value.
-		credentialsHasher.setMinCycles(minCycles);
-		// For some numbers over the maximum cycles.
-		for (Integer currentValidMaxCycles = minCycles; (currentValidMaxCycles <= (minCycles + CYCLES_TRIES))
-				&& (currentValidMaxCycles <= CredentialsHasher.MAX_MAX_CYCLES); currentValidMaxCycles++) {
-			// Tries to set the maximum cycles to the current valid maximum.
-			credentialsHasher.setMaxCycles(currentValidMaxCycles);
+	@Test
+	public void testSetMaxCyclesValid() {
+		// For each valid cycles.
+		for (final Integer minCycles : getSomeValidCycles()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Sets the maximum cycles to 1.
+			credentialsHasher.setMaxCycles(CredentialsHasher.MAX_MAX_CYCLES);
+			// Sets the minimum cycles to the given value.
+			credentialsHasher.setMinCycles(minCycles);
+			// For some numbers over the maximum cycles.
+			for (Integer currentValidMaxCycles = minCycles; (currentValidMaxCycles <= (minCycles + CYCLES_TRIES))
+					&& (currentValidMaxCycles <= CredentialsHasher.MAX_MAX_CYCLES); currentValidMaxCycles++) {
+				// Tries to set the maximum cycles to the current valid maximum.
+				credentialsHasher.setMaxCycles(currentValidMaxCycles);
+			}
 		}
 	}
 
 	/**
 	 * Tests setting invalid (always) minimum hash cycles to the credential hasher.
-	 * 
-	 * @param invalidCycle
-	 *            An invalid number for the minimum hash cycles.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeInvalidCycles" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testSetMinCyclesAlwaysInvalid(final Integer invalidCycle) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Tries to set the minimum cycles with an invalid value.
-		credentialsHasher.setMinCycles(invalidCycle);
+	@Test
+	public void testSetMinCyclesAlwaysInvalid() {
+		// For each invalid cycles.
+		for (final Integer invalidCycle : getSomeInvalidCycles()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Tries to set the minimum cycles with an invalid value.
+			try {
+				credentialsHasher.setMinCycles(invalidCycle);
+				// If no exception is thrown, the test fails.
+				Assert.fail();
+			}
+			// If an invalid parameter exception is thrown.
+			catch (final InvalidParameterException exception) {
+				// Nothing happens (as that is expected).
+			}
+		}
 	}
 
 	/**
 	 * Tests setting invalid (always) maximum hash cycles to the credential hasher.
-	 * 
-	 * @param invalidCycle
-	 *            An invalid number for the maximum hash cycles.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeInvalidCycles" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testSetMaxCyclesAlwaysInvalid(final Integer invalidCycle) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Tries to set the maximum cycles with an invalid value.
-		credentialsHasher.setMaxCycles(invalidCycle);
+	@Test
+	public void testSetMaxCyclesAlwaysInvalid() {
+		// For each invalid cycles.
+		for (final Integer invalidCycle : getSomeInvalidCycles()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Tries to set the maximum cycles with an invalid value.
+			try {
+				credentialsHasher.setMaxCycles(invalidCycle);
+				// If no exception is thrown, the test fails.
+				Assert.fail();
+			}
+			// If an invalid parameter exception is thrown.
+			catch (final InvalidParameterException exception) {
+				// Nothing happens (as that is expected).
+			}
+		}
 	}
 
 	/**
 	 * Tests setting invalid (greater than the maximum) minimum hash cycles to the credential hasher.
-	 * 
-	 * @param maxCycles
-	 *            A valid number for the maximum hash cycles.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidCycles" })
-	public void testSetMinCyclesGreater(final Integer maxCycles) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Sets the minimum cycles to 1.
-		credentialsHasher.setMinCycles(CredentialsHasher.MIN_MIN_CYCLES);
-		// Sets the maximum cycles to the given value.
-		credentialsHasher.setMaxCycles(maxCycles);
-		// For some numbers over the maximum cycles.
-		for (Integer currentInvalidMinCycles = maxCycles + 1; currentInvalidMinCycles <= (maxCycles + CYCLES_TRIES); currentInvalidMinCycles++) {
-			// Tries to set the minimum cycles to the current invalid minimum.
-			try {
-				credentialsHasher.setMinCycles(currentInvalidMinCycles);
-				// If no exception was raised, the test fails.
-				Assert.fail("An invalid parameter exception should have been raised.");
-			}
-			// It is expected that an invalid parameter exception is raised.
-			catch (final InvalidParameterException exception) {
+	@Test
+	public void testSetMinCyclesGreater() {
+		// For each valid cycles.
+		for (final Integer maxCycles : getSomeValidCycles()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Sets the minimum cycles to 1.
+			credentialsHasher.setMinCycles(CredentialsHasher.MIN_MIN_CYCLES);
+			// Sets the maximum cycles to the given value.
+			credentialsHasher.setMaxCycles(maxCycles);
+			// For some numbers over the maximum cycles.
+			for (Integer currentInvalidMinCycles = maxCycles + 1; currentInvalidMinCycles <= (maxCycles + CYCLES_TRIES); currentInvalidMinCycles++) {
+				// Tries to set the minimum cycles to the current invalid minimum.
+				try {
+					credentialsHasher.setMinCycles(currentInvalidMinCycles);
+					// If no exception was raised, the test fails.
+					Assert.fail("An invalid parameter exception should have been raised.");
+				}
+				// If an invalid parameter exception is thrown.
+				catch (final InvalidParameterException exception) {
+					// Nothing happens (as that is expected).
+				}
 			}
 		}
 	}
 
 	/**
 	 * Tests setting invalid (lesser than the minimum) maximum hash cycles to the credential hasher.
-	 * 
-	 * @param minCycles
-	 *            A valid number for the minimum hash cycles.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidCycles" })
-	public void testSetMaxCyclesLesser(final Integer minCycles) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Sets the maximum cycles to 10000.
-		credentialsHasher.setMaxCycles(CredentialsHasher.MAX_MAX_CYCLES);
-		// Sets the minimum cycles to the given value.
-		credentialsHasher.setMinCycles(minCycles);
-		// For some numbers over the maximum cycles.
-		for (Integer currentInvalidMaxCycles = minCycles - 1; currentInvalidMaxCycles >= (minCycles - CYCLES_TRIES); currentInvalidMaxCycles--) {
-			// Tries to set the maximum cycles to the current invalid maximum.
-			try {
-				credentialsHasher.setMaxCycles(currentInvalidMaxCycles);
-				// If no exception was raised, the test fails.
-				Assert.fail("An invalid parameter exception should have been raised.");
-			}
-			// It is expected that an invalid parameter exception is raised.
-			catch (final InvalidParameterException exception) {
+	@Test
+	public void testSetMaxCyclesLesser() {
+		// For each valid cycles.
+		for (final Integer minCycles : getSomeValidCycles()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Sets the maximum cycles to 10000.
+			credentialsHasher.setMaxCycles(CredentialsHasher.MAX_MAX_CYCLES);
+			// Sets the minimum cycles to the given value.
+			credentialsHasher.setMinCycles(minCycles);
+			// For some numbers over the maximum cycles.
+			for (Integer currentInvalidMaxCycles = minCycles - 1; currentInvalidMaxCycles >= (minCycles - CYCLES_TRIES); currentInvalidMaxCycles--) {
+				// Tries to set the maximum cycles to the current invalid maximum.
+				try {
+					credentialsHasher.setMaxCycles(currentInvalidMaxCycles);
+					// If no exception was raised, the test fails.
+					Assert.fail("An invalid parameter exception should have been raised.");
+				}
+				// If an invalid parameter exception is thrown.
+				catch (final InvalidParameterException exception) {
+					// Nothing happens (as that is expected).
+				}
 			}
 		}
 	}
@@ -335,16 +348,16 @@ public class CredentialsHasherTest {
 
 	/**
 	 * Tests setting the algorithms to be used in the hash calculation with valid algorithms names.
-	 * 
-	 * @param validAlgName
-	 *            Some valid algorithm name to be used.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidAlgorithmsNames" })
-	public void testSetAlgorithmsValid(final String validAlgName) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Tries to set the current valid algorithm.
-		credentialsHasher.setAlgorithms(new String[] { validAlgName, validAlgName });
+	@Test
+	public void testSetAlgorithmsValid() {
+		// For each valid algorithm name.
+		for (final String validAlgName : getSomeValidAlgorithmsNames()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Tries to set the current valid algorithm.
+			credentialsHasher.setAlgorithms(new String[] { validAlgName, validAlgName });
+		}
 	}
 
 	/**
@@ -364,16 +377,24 @@ public class CredentialsHasherTest {
 
 	/**
 	 * Tests setting the algorithms to be used in the hash calculation with invalid algorithms names.
-	 * 
-	 * @param invalidAlgName
-	 *            Some invalid algorithm name to be used.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeInvalidAlgorithmsNames" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testSetAlgorithmsInvalid(final String invalidAlgName) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Tries to set the current invalid algorithm.
-		credentialsHasher.setAlgorithms(new String[] { invalidAlgName, invalidAlgName });
+	@Test
+	public void testSetAlgorithmsInvalid() {
+		// For each invalid algorithm name.
+		for (final String invalidAlgName : getSomeInvalidAlgorithmsNames()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Tries to set the current invalid algorithm.
+			try {
+				credentialsHasher.setAlgorithms(new String[] { invalidAlgName, invalidAlgName });
+				// If no exception was raised, the test fails.
+				Assert.fail("An invalid parameter exception should have been raised.");
+			}
+			// If an invalid parameter exception is thrown.
+			catch (final InvalidParameterException exception) {
+				// Nothing happens (as that is expected).
+			}
+		}
 	}
 
 	/**
@@ -400,21 +421,6 @@ public class CredentialsHasherTest {
 		}
 		// Returns the parameters.
 		return parameters;
-	}
-
-	/**
-	 * Tests setting the hasher with some valid parameters.
-	 * 
-	 * @param validParameters
-	 *            Some valid parameters to be used in the tests.
-	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidParameters" })
-	public void testSetLongHasherValid(final Object[] validParameters) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Tries to set the the main parameters.
-		credentialsHasher.setCredentialHasher((String[]) validParameters[0], (Integer) validParameters[1],
-				(Integer) validParameters[2]);
 	}
 
 	/**
@@ -466,106 +472,156 @@ public class CredentialsHasherTest {
 	}
 
 	/**
-	 * Tests setting the hasher with some invalid parameters.
-	 * 
-	 * @param invalidParameters
-	 *            Some invalid parameters to be used in the tests.
+	 * Tests setting the hasher with some valid parameters.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeInvalidParameters" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testSetLongHasherInvalid(final Object[] invalidParameters) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Tries to set the the main parameters.
-		credentialsHasher.setCredentialHasher((String[]) invalidParameters[0],
-				(Integer) invalidParameters[1], (Integer) invalidParameters[2]);
+	@Test
+	public void testSetLongHasherValid() {
+		// For each valid parameters.
+		for (final Object[] validParameters : getSomeValidParameters()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Tries to set the the main parameters.
+			credentialsHasher.setCredentialHasher((String[]) validParameters[0],
+					(Integer) validParameters[1], (Integer) validParameters[2]);
+		}
+	}
+
+	/**
+	 * Tests setting the hasher with some invalid parameters.
+	 */
+	@Test
+	public void testSetLongHasherInvalid() {
+		// For each invalid parameters.
+		for (final Object[] invalidParameters : getSomeInvalidParameters()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			try {
+				// Tries to set the the main parameters.
+				credentialsHasher.setCredentialHasher((String[]) invalidParameters[0],
+						(Integer) invalidParameters[1], (Integer) invalidParameters[2]);
+				// If no exception was raised, the test fails.
+				Assert.fail("An invalid parameter exception should have been raised.");
+			}
+			// If an invalid parameter exception is thrown.
+			catch (final InvalidParameterException exception) {
+				// Nothing happens (as that is expected).
+			}
+		}
 	}
 
 	/**
 	 * Tests setting the hasher with some valid parameters.
-	 * 
-	 * @param validParameters
-	 *            Some valid parameters to be used in the tests.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidParameters" })
-	public void testSetCredentialsHasherValid(final Object[] validParameters) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Creates new hashed credentials.
-		final FakeHashedCredentials hashedCredentials = new FakeHashedCredentials(
-				(String[]) validParameters[0], (Integer) validParameters[1], (Integer) validParameters[2],
-				null, null);
-		// Tries to set the the main parameters.
-		credentialsHasher.setCredentialHasher(hashedCredentials);
+	@Test
+	public void testSetCredentialsHasherValid() {
+		// For each valid parameters.
+		for (final Object[] validParameters : getSomeValidParameters()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Creates new hashed credentials.
+			final FakeHashedCredentials hashedCredentials = new FakeHashedCredentials(
+					(String[]) validParameters[0], (Integer) validParameters[1],
+					(Integer) validParameters[2], null, null);
+			// Tries to set the the main parameters.
+			credentialsHasher.setCredentialHasher(hashedCredentials);
+		}
 	}
 
 	/**
 	 * Tests setting the hasher with some invalid parameters.
-	 * 
-	 * @param invalidParameters
-	 *            Some invalid parameters to be used in the tests.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeInvalidParameters" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testSetCredentialsHasherInvalid(final Object[] invalidParameters) {
-		// Creates a new credential hasher.
-		final CredentialsHasher credentialsHasher = new CredentialsHasher();
-		// Creates new hashed credentials.
-		final FakeHashedCredentials hashedCredentials = new FakeHashedCredentials(
-				(String[]) invalidParameters[0], (Integer) invalidParameters[1],
-				(Integer) invalidParameters[2], null, null);
-		// Tries to set the the main parameters.
-		credentialsHasher.setCredentialHasher(hashedCredentials);
+	@Test
+	public void testSetCredentialsHasherInvalid() {
+		// For each invalid parameters.
+		for (final Object[] invalidParameters : getSomeInvalidParameters()) {
+			// Creates a new credential hasher.
+			final CredentialsHasher credentialsHasher = new CredentialsHasher();
+			// Creates new hashed credentials.
+			final FakeHashedCredentials hashedCredentials = new FakeHashedCredentials(
+					(String[]) invalidParameters[0], (Integer) invalidParameters[1],
+					(Integer) invalidParameters[2], null, null);
+			// Tries to set the the main parameters.
+			try {
+				credentialsHasher.setCredentialHasher(hashedCredentials);
+				// If no exception was raised, the test fails.
+				Assert.fail("An invalid parameter exception should have been raised.");
+			}
+			// If an invalid parameter exception is thrown.
+			catch (final InvalidParameterException exception) {
+				// Nothing happens (as that is expected).
+			}
+
+		}
 	}
 
 	/**
 	 * Tests the long constructor with valid parameters.
-	 * 
-	 * @param validParameters
-	 *            Some valid parameters for the constructor.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidParameters" })
-	public void testLongConstructorValid(final Object[] validParameters) {
-		// Tries to create a new credential hasher with valid parameters.
-		new CredentialsHasher((String[]) validParameters[0], (Integer) validParameters[1],
-				(Integer) validParameters[2]);
+	@Test
+	public void testLongConstructorValid() {
+		// For each valid parameters.
+		for (final Object[] validParameters : getSomeValidParameters()) {
+			// Tries to create a new credential hasher with valid parameters.
+			new CredentialsHasher((String[]) validParameters[0], (Integer) validParameters[1],
+					(Integer) validParameters[2]);
+		}
 	}
 
 	/**
 	 * Tests the long constructor with invalid parameters.
-	 * 
-	 * @param invalidParameters
-	 *            Some invalid parameters for the constructor.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeInvalidParameters" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testLongConstructorInvalid(final Object[] invalidParameters) {
-		// Tries to create a new credential hasher with invalid parameters.
-		new CredentialsHasher((String[]) invalidParameters[0], (Integer) invalidParameters[1],
-				(Integer) invalidParameters[2]);
+	@Test
+	public void testLongConstructorInvalid() {
+		// For each invalid parameters.
+		for (final Object[] invalidParameters : getSomeInvalidParameters()) {
+			// Tries to create a new credential hasher with invalid parameters.
+			try {
+				new CredentialsHasher((String[]) invalidParameters[0], (Integer) invalidParameters[1],
+						(Integer) invalidParameters[2]);
+				// If no exception was raised, the test fails.
+				Assert.fail("An invalid parameter exception should have been raised.");
+			}
+			// If an invalid parameter exception is thrown.
+			catch (final InvalidParameterException exception) {
+				// Nothing happens (as that is expected).
+			}
+
+		}
 	}
 
 	/**
 	 * Tests the credential constructor with valid parameters.
-	 * 
-	 * @param validParameters
-	 *            Some valid parameters for the constructor.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeValidParameters" })
-	public void testCredentialConstructorValid(final Object[] validParameters) {
-		// Tries to create a new credential hasher with valid parameters.
-		new CredentialsHasher(new FakeHashedCredentials((String[]) validParameters[0],
-				(Integer) validParameters[1], (Integer) validParameters[2], null, null));
+	@Test
+	public void testCredentialConstructorValid() {
+		// For each valid parameters.
+		for (final Object[] validParameters : getSomeValidParameters()) {
+			// Tries to create a new credential hasher with valid parameters.
+			new CredentialsHasher(new FakeHashedCredentials((String[]) validParameters[0],
+					(Integer) validParameters[1], (Integer) validParameters[2], null, null));
+		}
 	}
 
 	/**
 	 * Tests the credential constructor with invalid parameters.
-	 * 
-	 * @param invalidParameters
-	 *            Some invalid parameters for the constructor.
 	 */
-	@ParametricTest(dataProvider = StaticMethodTestDataProvider.class, paramsValues = { "getSomeInvalidParameters" }, expectedExceptionClass = InvalidParameterException.class)
-	public void testCredentialConstructorInvalid(final Object[] invalidParameters) {
-		// Tries to create a new credential hasher with invalid parameters.
-		new CredentialsHasher(new FakeHashedCredentials((String[]) invalidParameters[0],
-				(Integer) invalidParameters[1], (Integer) invalidParameters[2], null, null));
+	@Test
+	public void testCredentialConstructorInvalid() {
+		// For each invalid parameters.
+		for (final Object[] invalidParameters : getSomeInvalidParameters()) {
+			// Tries to create a new credential hasher with invalid parameters.
+			try {
+				new CredentialsHasher(new FakeHashedCredentials((String[]) invalidParameters[0],
+						(Integer) invalidParameters[1], (Integer) invalidParameters[2], null, null));
+				// If no exception was raised, the test fails.
+				Assert.fail("An invalid parameter exception should have been raised.");
+			}
+			// If an invalid parameter exception is thrown.
+			catch (final InvalidParameterException exception) {
+				// Nothing happens (as that is expected).
+			}
+
+		}
 	}
 
 }

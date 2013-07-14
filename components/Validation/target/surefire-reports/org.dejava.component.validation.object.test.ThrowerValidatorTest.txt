@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.dejava.component.validation.object.test.ThrowerValidatorTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.173 sec - in org.dejava.component.validation.object.test.ThrowerValidatorTest

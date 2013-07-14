@@ -104,6 +104,13 @@ public abstract class AbstractLocalizedException extends Exception implements Lo
 
 	/**
 	 * Basic constructor.
+	 */
+	protected AbstractLocalizedException() {
+		super();
+	}
+
+	/**
+	 * Basic constructor.
 	 * 
 	 * @param type
 	 *            The type for the message.

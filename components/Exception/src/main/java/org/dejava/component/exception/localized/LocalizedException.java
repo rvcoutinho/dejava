@@ -28,8 +28,8 @@ public interface LocalizedException {
 	/**
 	 * Add messages from the given exception to the application.
 	 * 
-	 * @param messageHandler
+	 * @param appMessageHandler
 	 *            The application message handler.
 	 */
-	void addLocalizedMessages(final ApplicationMessageHandler messageHandler);
+	void addLocalizedMessages(final ApplicationMessageHandler appMessageHandler);
 }

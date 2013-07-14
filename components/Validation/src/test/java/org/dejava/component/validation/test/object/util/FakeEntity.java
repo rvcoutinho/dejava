@@ -1,19 +1,22 @@
-package org.dejava.component.validation.object.test.util;
+package org.dejava.component.validation.test.object.util;
 
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.hibernate.validator.constraints.Email;
 
 /**
  * Fake entity.
  */
+@MessageSources(sources = { @MessageSource(sourcePath = "src/test/resources", bundleBaseName = "org.dejava.component.validation.test.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.FieldAnnotationEntryProcessor" }) })
 public class FakeEntity {
 
 	/**
 	 * Email address.
 	 */
-	@Email
+	@Email(payload = MessageTypes.Error.class, message = "fakeentity.email.email")
 	private String email;
 
 	/**
@@ -38,8 +41,8 @@ public class FakeEntity {
 	/**
 	 * Age.
 	 */
-	@DecimalMin(value = "0")
-	@DecimalMax(value = "100")
+	@DecimalMin(payload = MessageTypes.Error.class, message = "fakeentity.age.decimalmin", value = "0")
+	@DecimalMax(payload = MessageTypes.Error.class, message = "fakeentity.age.decimalmax", value = "100")
 	private Integer age;
 
 	/**

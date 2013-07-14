@@ -1,6 +1,7 @@
 package org.dejava.component.validation.object;
 
 import java.util.Set;
+import java.util.TreeMap;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Payload;
@@ -69,16 +70,22 @@ public class ValidationException extends AbstractLocalizedRuntimeException {
 	}
 
 	/**
-	 * TODO
+	 * Gets the parameters for the violation message (constraint attributes).
 	 * 
 	 * @param violation
-	 *            TODO
-	 * @return TODO
+	 *            The violation to get the message parameters from.
+	 * @return The parameters for the violation message (constraint attributes).
 	 */
 	private Object[] getViolationParameters(final ConstraintViolation<?> violation) {
-
-		// FIXME
-		return null;
+		// Gets the attributes for the constraint and make sure they are ordered by name.
+		final TreeMap<String, Object> constraintAttrs = new TreeMap<>(violation.getConstraintDescriptor()
+				.getAttributes());
+		// Exclude the default ones.
+		constraintAttrs.remove("groups");
+		constraintAttrs.remove("message");
+		constraintAttrs.remove("payload");
+		// Gets the attributes ordered by name.
+		return constraintAttrs.values().toArray();
 	}
 
 	/**

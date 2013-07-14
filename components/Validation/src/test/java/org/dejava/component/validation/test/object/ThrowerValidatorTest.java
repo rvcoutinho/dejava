@@ -1,8 +1,8 @@
-package org.dejava.component.validation.object.test;
+package org.dejava.component.validation.test.object;
 
 import org.dejava.component.validation.object.ThrowerValidator;
 import org.dejava.component.validation.object.ValidationException;
-import org.dejava.component.validation.object.test.util.FakeEntity;
+import org.dejava.component.validation.test.object.util.FakeEntity;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -43,7 +43,7 @@ public class ThrowerValidatorTest {
 	 */
 	@Test
 	public void testInvalidState() {
-		// For each valid parameters.
+		// For each invalid parameters.
 		for (final Object[] currentParams : INVALID_ENTITY_PARAMS) {
 			// Creates a new entity to be validated.
 			final FakeEntity fakeEntity = new FakeEntity((String) currentParams[0],

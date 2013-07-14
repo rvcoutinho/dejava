@@ -1,4 +1,4 @@
-package org.dejava.component.validation.method.test;
+package org.dejava.component.validation.test.method;
 
 import org.dejava.component.validation.method.ArgFormatter;
 import org.junit.Assert;

@@ -1,9 +1,13 @@
 package org.dejava.component.ejb.component;
 
 import java.util.Collection;
+import java.util.HashSet;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
-import org.dejava.component.validation.object.ThrowerValidator;
+import org.dejava.component.validation.object.ValidationException;
 
 /**
  * Implements the default behavior of an JPA entity EJB component.
@@ -29,8 +33,9 @@ public abstract class AbstractGenericComponent<Entity, Key> implements GenericCo
 	public Entity addOrUpdate(final Entity entity) {
 		// If the entity is not null.
 		if (entity != null) {
-			// Validates the current entity.
-			ThrowerValidator.getDefaultThrowerValidator().validate(entity);
+			// Validates the current entity (and throws an exception for the found violations).
+			ValidationException.throwViolationExceptions(Validation.buildDefaultValidatorFactory()
+					.getValidator().validate(entity));
 		}
 		// Merges the entity.
 		return getEntityDAO().merge(entity);
@@ -43,11 +48,16 @@ public abstract class AbstractGenericComponent<Entity, Key> implements GenericCo
 	public Collection<Entity> addOrUpdate(final Collection<Entity> entities) {
 		// If there are entities to be added.
 		if (entities != null) {
+			// Creates a new violation set.
+			final HashSet<ConstraintViolation<?>> violations = new HashSet<>();
 			// For each entity.
 			for (final Entity currentEntity : entities) {
-				// Validates the current entity.
-				ThrowerValidator.getDefaultThrowerValidator().validate(currentEntity);
+				// Validates the current entity (and add the violations to the complete set).
+				violations.addAll(Validation.buildDefaultValidatorFactory().getValidator()
+						.validate(currentEntity));
 			}
+			// Throws an exception for the found violations.
+			ValidationException.throwViolationExceptions(violations);
 		}
 		// Merges the entities.
 		return getEntityDAO().merge(entities);

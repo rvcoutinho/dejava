@@ -7,11 +7,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
+
 /**
  * Philanthropy idea plan.
  */
 @Entity
 @Table(name = "idea_plan")
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class IdeaPlan extends Idea implements Serializable {
 
 	/**

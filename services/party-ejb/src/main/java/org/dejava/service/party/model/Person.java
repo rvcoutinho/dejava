@@ -17,7 +17,7 @@ import org.dejava.service.accesscontrol.model.User;
  */
 @Entity
 @Table(name = "person")
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class Person extends Party {
 
 	/**

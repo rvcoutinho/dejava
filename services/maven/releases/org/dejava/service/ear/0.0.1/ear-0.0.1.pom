@@ -20,114 +20,145 @@
 			<groupId>org.dejava.service</groupId>
 			<artifactId>accesscontrol-ejb</artifactId>
 			<type>ejb</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>accesscontrol-web</artifactId>
 			<type>war</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>party-ejb</artifactId>
 			<type>ejb</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>party-web</artifactId>
 			<type>war</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
-			<artifactId>location-ejb</artifactId>
+			<artifactId>place-ejb</artifactId>
 			<type>ejb</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
-			<artifactId>location-web</artifactId>
+			<artifactId>place-web</artifactId>
 			<type>war</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>contact-ejb</artifactId>
 			<type>ejb</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>contact-web</artifactId>
 			<type>war</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>message-ejb</artifactId>
 			<type>ejb</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>message-web</artifactId>
 			<type>war</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>philanthropy-ejb</artifactId>
 			<type>ejb</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>philanthropy-web</artifactId>
 			<type>war</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>soupsocial-web</artifactId>
 			<type>war</type>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>security</artifactId>
-			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>ejb</artifactId>
-			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>exception</artifactId>
-			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>reflection</artifactId>
-			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>i18n</artifactId>
-			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
-			<artifactId>test</artifactId>
-			<type>jar</type>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-core</artifactId>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-ehcache</artifactId>
-			<type>jar</type>
+			<artifactId>validation</artifactId>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.restfb</groupId>
 			<artifactId>restfb</artifactId>
-			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client-appengine</artifactId>
+			<type>pom</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client-servlet</artifactId>
+			<type>pom</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>
@@ -137,7 +168,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ear-plugin</artifactId>
-				<version>2.7</version>
+				<version>2.8</version>
 				<configuration>
 					<version>6</version>
 					<applicationName>ear</applicationName>
@@ -152,34 +183,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-ear-plugin</artifactId>
-										<versionRange>[1.0)</versionRange>
-										<goals>
-											<goal>compile</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 
 </project>

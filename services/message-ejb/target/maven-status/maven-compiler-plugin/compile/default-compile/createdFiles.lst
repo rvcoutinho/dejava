@@ -1,0 +1,11 @@
+org\dejava\service\message\component\SMSMessageComponent.class
+org\dejava\service\message\model\SMSMessage.class
+org\dejava\service\message\component\EmailMessageComponent.class
+org\dejava\service\message\model\EmailMessage.class
+org\dejava\service\message\dao\SMSMessageDAO.class
+org\dejava\service\message\model\Message.class
+org\dejava\service\message\util\Resources.class
+org\dejava\service\message\dao\EmailMessageDAO.class
+org\dejava\service\message\component\EmailSenderComponent.class
+org\dejava\service\message\util\MessageCtx.class
+org\dejava\service\message\component\SMSSenderComponent.class

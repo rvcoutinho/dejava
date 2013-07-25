@@ -20,12 +20,6 @@
 			<id>dejava-services-releases</id>
 			<url>https://github.com/rvcoutinho/dejava/raw/master/services/maven/releases</url>
 		</repository>
-
-		<repository>
-			<id>deluan.repo</id>
-			<name>Deluan's Public Repository</name>
-			<url>http://deluan.googlecode.com/svn/releases</url>
-		</repository>
 	</repositories>
 
 	<distributionManagement>
@@ -47,189 +41,196 @@
 				<artifactId>accesscontrol-ejb</artifactId>
 				<version>0.0.1</version>
 				<type>ejb</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>accesscontrol-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>party-ejb</artifactId>
 				<version>0.0.1</version>
 				<type>ejb</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>party-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
-				<artifactId>location-ejb</artifactId>
+				<artifactId>place-ejb</artifactId>
 				<version>0.0.1</version>
 				<type>ejb</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
-				<artifactId>location-web</artifactId>
+				<artifactId>place-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>contact-ejb</artifactId>
 				<version>0.0.1</version>
 				<type>ejb</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>contact-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>message-ejb</artifactId>
 				<version>0.0.1</version>
 				<type>ejb</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>message-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>philanthropy-ejb</artifactId>
 				<version>0.0.1</version>
 				<type>ejb</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>philanthropy-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.service</groupId>
 				<artifactId>soupsocial-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>org.dejava.component</groupId>
 				<artifactId>ejb</artifactId>
 				<version>0.0.1</version>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.component</groupId>
-				<artifactId>jsf</artifactId>
+				<artifactId>faces</artifactId>
 				<version>0.0.1</version>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.component</groupId>
 				<artifactId>security</artifactId>
 				<version>0.0.1</version>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.component</groupId>
 				<artifactId>exception</artifactId>
 				<version>0.0.1</version>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.component</groupId>
 				<artifactId>reflection</artifactId>
 				<version>0.0.1</version>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.component</groupId>
 				<artifactId>validation</artifactId>
 				<version>0.0.1</version>
-				<scope>compile</scope>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.dejava.component</groupId>
 				<artifactId>i18n</artifactId>
 				<version>0.0.1</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.dejava.component</groupId>
-				<artifactId>test</artifactId>
-				<version>0.0.1</version>
-				<scope>test</scope>
+				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>org.apache.shiro</groupId>
 				<artifactId>shiro-core</artifactId>
 				<version>1.2.1</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.shiro</groupId>
 				<artifactId>shiro-web</artifactId>
 				<version>1.2.1</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.shiro</groupId>
 				<artifactId>shiro-ehcache</artifactId>
 				<version>1.2.1</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>com.restfb</groupId>
 				<artifactId>restfb</artifactId>
 				<version>1.6.11</version>
+				<scope>provided</scope>
 			</dependency>
 
-			<dependency>
-				<groupId>org.richfaces</groupId>
-				<artifactId>richfaces-bom</artifactId>
-				<version>4.3.2.Final</version>
-				<type>pom</type>
-			</dependency>
 			<dependency>
 				<groupId>com.ocpsoft</groupId>
 				<artifactId>prettyfaces-jsf2</artifactId>
 				<version>3.3.3</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.api-client</groupId>
+				<artifactId>google-api-client</artifactId>
+				<version>1.15.0-rc</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.api-client</groupId>
+				<artifactId>google-api-client-appengine</artifactId>
+				<version>1.15.0-rc</version>
+				<type>pom</type>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.api-client</groupId>
+				<artifactId>google-api-client-servlet</artifactId>
+				<version>1.15.0-rc</version>
+				<type>pom</type>
+				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>org.jboss.bom</groupId>
-				<artifactId>jboss-javaee-6.0-with-all</artifactId>
+				<artifactId>jboss-javaee-6.0-with-tools</artifactId>
 				<version>1.0.6.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.shrinkwrap.resolver</groupId>
-				<artifactId>shrinkwrap-resolver-bom</artifactId>
-				<version>2.0.0-beta-5</version>
-				<scope>import</scope>
-				<type>pom</type>
 			</dependency>
 
 			<dependency>

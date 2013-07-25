@@ -1,5 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="ear">
-        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+    <wb-module deploy-name="ear-0.0.1">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="accesscontrol-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/accesscontrol-ejb/accesscontrol-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jboss-ejb-api_3.1_spec-1.0.2.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/ejb/jboss-ejb-api_3.1_spec/1.0.2.Final/jboss-ejb-api_3.1_spec-1.0.2.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jboss-jaxrs-api_1.1_spec-1.0.1.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_1.1_spec/1.0.1.Final/jboss-jaxrs-api_1.1_spec-1.0.1.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cdi-api-1.0-SP4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/enterprise/cdi-api/1.0-SP4/cdi-api-1.0-SP4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jboss-interceptors-api_1.1_spec-1.0.1.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.1_spec/1.0.1.Final/jboss-interceptors-api_1.1_spec-1.0.1.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jboss-jsf-api_2.1_spec-2.0.9.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/faces/jboss-jsf-api_2.1_spec/2.0.9.Final/jboss-jsf-api_2.1_spec-2.0.9.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hibernate-jpa-2.0-api-1.0.1.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="accesscontrol-web-0.0.1.war" deploy-path="/" handle="module:/resource/accesscontrol-web/accesscontrol-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="party-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/party-ejb/party-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="party-web-0.0.1.war" deploy-path="/" handle="module:/resource/party-web/party-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="place-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/place-ejb/place-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="place-web-0.0.1.war" deploy-path="/" handle="module:/resource/place-web/place-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="contact-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/contact-ejb/contact-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="contact-web-0.0.1.war" deploy-path="/" handle="module:/resource/contact-web/contact-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="message-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/message-ejb/message-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="message-web-0.0.1.war" deploy-path="/" handle="module:/resource/message-web/message-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="philanthropy-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/philanthropy-ejb/philanthropy-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="philanthropy-web-0.0.1.war" deploy-path="/" handle="module:/resource/philanthropy-web/philanthropy-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="soupsocial-web-0.0.1.war" deploy-path="/" handle="module:/resource/soupsocial-web/soupsocial-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="security-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/security/0.0.1/security-0.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ejb-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/ejb/0.0.1/ejb-0.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="exception-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/exception/0.0.1/exception-0.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="reflection-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/reflection/0.0.1/reflection-0.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="i18n-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/i18n/0.0.1/i18n-0.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="validation-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/validation/0.0.1/validation-0.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="validation-api-1.0.0.GA.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="restfb-1.6.11.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/restfb/restfb/1.6.11/restfb-1.6.11.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-api-client-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/api-client/google-api-client/1.15.0-rc/google-api-client-1.15.0-rc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-oauth-client-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/oauth-client/google-oauth-client/1.15.0-rc/google-oauth-client-1.15.0-rc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-http-client-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/http-client/google-http-client/1.15.0-rc/google-http-client-1.15.0-rc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpclient-4.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/httpcomponents/httpclient/4.0.1/httpclient-4.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpcore-4.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/httpcomponents/httpcore/4.0.1/httpcore-4.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.1.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-codec-1.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-codec/commons-codec/1.3/commons-codec-1.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="xpp3-1.1.4c.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/xpp3/xpp3/1.1.4c/xpp3-1.1.4c.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jsr305-1.3.9.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-oauth-client-appengine-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/oauth-client/google-oauth-client-appengine/1.15.0-rc/google-oauth-client-appengine-1.15.0-rc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-http-client-jackson-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/http-client/google-http-client-jackson/1.15.0-rc/google-http-client-jackson-1.15.0-rc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jackson-core-asl-1.9.11.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/codehaus/jackson/jackson-core-asl/1.9.11/jackson-core-asl-1.9.11.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-api-client-servlet-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/api-client/google-api-client-servlet/1.15.0-rc/google-api-client-servlet-1.15.0-rc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-http-client-appengine-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/http-client/google-http-client-appengine/1.15.0-rc/google-http-client-appengine-1.15.0-rc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-oauth-client-servlet-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/oauth-client/google-oauth-client-servlet/1.15.0-rc/google-oauth-client-servlet-1.15.0-rc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="servlet-api-2.5.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jdo2-api-2.3-eb.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/jdo/jdo2-api/2.3-eb/jdo2-api-2.3-eb.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="transaction-api-1.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/transaction/transaction-api/1.1/transaction-api-1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="shiro-core-1.2.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-core/1.2.1/shiro-core-1.2.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-api-1.6.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.8.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="shiro-ehcache-1.2.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-ehcache/1.2.1/shiro-ehcache-1.2.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ehcache-core-2.5.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/net/sf/ehcache/ehcache-core/2.5.0/ehcache-core-2.5.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="javax.inject-1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

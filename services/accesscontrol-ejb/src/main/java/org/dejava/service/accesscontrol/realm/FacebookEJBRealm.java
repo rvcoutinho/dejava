@@ -126,7 +126,7 @@ public class FacebookEJBRealm extends AuthenticatingRealm {
 			// The user for the given principal.
 			User user = null;
 			// Tries to get a similar registered user facebook id.
-			final Facebook facebook = getFacebookComponent().getByAttribute("identifier",
+			final Facebook facebook = getFacebookComponent().getByAttribute("facebookIdentifier",
 					facebookToken.getIdentifier());
 			// If there is an user for the given facebook id.
 			if (facebook != null) {

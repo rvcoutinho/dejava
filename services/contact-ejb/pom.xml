@@ -43,11 +43,7 @@
 			<groupId>org.dejava.component</groupId>
 			<artifactId>i18n</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.dejava.component</groupId>
-			<artifactId>test</artifactId>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>com.restfb</groupId>
 			<artifactId>restfb</artifactId>
@@ -93,6 +89,9 @@
 				<version>2.3</version>
 				<configuration>
 					<ejbVersion>3.1</ejbVersion>
+					<annotationProcessors>
+						<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
+					</annotationProcessors>
 				</configuration>
 			</plugin>
 		</plugins>

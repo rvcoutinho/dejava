@@ -10,7 +10,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
-import org.dejava.service.location.model.Location;
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
+import org.dejava.service.place.model.Place;
 
 /**
  * Philanthropy idea.
@@ -18,6 +20,7 @@ import org.dejava.service.location.model.Location;
 @Entity
 @Table(name = "idea")
 @Inheritance(strategy = InheritanceType.JOINED)
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class Idea extends AbstractIdentifiedEntity {
 
 	/**
@@ -102,65 +105,65 @@ public class Idea extends AbstractIdentifiedEntity {
 	}
 
 	/**
-	 * The location id for the idea.
+	 * The place id for the idea.
 	 */
-	private Integer locationId;
+	private Integer placeId;
 
 	/**
-	 * Gets the location id for the idea.
+	 * Gets the place id for the idea.
 	 * 
-	 * @return The location id for the idea.
+	 * @return The place id for the idea.
 	 */
-	@Column(name = "location")
-	protected Integer getLocationId() {
-		// If the location is null.
-		if (location == null) {
+	@Column(name = "place")
+	protected Integer getPlaceId() {
+		// If the place is null.
+		if (place == null) {
 			// Returns the stored id.
-			return locationId;
+			return placeId;
 		}
-		// If the location is not null.
+		// If the place is not null.
 		else {
-			// Returns the id of the location.
-			return getLocation().getIdentifier();
+			// Returns the id of the place.
+			return getPlace().getIdentifier();
 		}
 	}
 
 	/**
-	 * Sets the location id for the idea.
+	 * Sets the place id for the idea.
 	 * 
-	 * @param locationId
-	 *            New location id for the idea.
+	 * @param placeId
+	 *            New place id for the idea.
 	 */
-	protected void setLocationId(final Integer locationId) {
-		this.locationId = locationId;
+	protected void setPlaceId(final Integer placeId) {
+		this.placeId = placeId;
 	}
 
 	/**
-	 * The location for the idea.
+	 * The place for the idea.
 	 */
-	private Location location;
+	private Place place;
 
 	/**
-	 * Gets the location for the idea.
+	 * Gets the place for the idea.
 	 * 
-	 * @return The location for the idea.
+	 * @return The place for the idea.
 	 */
 	@Transient
-	public Location getLocation() {
-		return location;
+	public Place getPlace() {
+		return place;
 	}
 
 	/**
-	 * Sets the location for the idea.
+	 * Sets the place for the idea.
 	 * 
-	 * @param location
-	 *            New location for the idea.
+	 * @param place
+	 *            New place for the idea.
 	 */
-	public void setLocation(final Location location) {
-		// Sets the location.
-		this.location = location;
-		// Resets the location id.
-		setLocationId(null);
+	public void setPlace(final Place place) {
+		// Sets the place.
+		this.place = place;
+		// Resets the place id.
+		setPlaceId(null);
 	}
 
 	/**

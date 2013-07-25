@@ -3,6 +3,7 @@ D:\usuarios\rvcoutinho\Desktop\dejava\services\contact-ejb\src\main\java\org\dej
 D:\usuarios\rvcoutinho\Desktop\dejava\services\contact-ejb\src\main\java\org\dejava\service\contact\dao\EmailAddressDAO.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\contact-ejb\src\main\java\org\dejava\service\contact\model\Contact.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\contact-ejb\src\main\java\org\dejava\service\contact\util\ContactCtx.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\contact-ejb\src\main\java\org\dejava\service\contact\util\MessageTypes.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\contact-ejb\src\main\java\org\dejava\service\contact\component\EmailAddressComponent.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\contact-ejb\src\main\java\org\dejava\service\contact\model\PhoneNumber.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\contact-ejb\src\main\java\org\dejava\service\contact\dao\ContactDAO.java

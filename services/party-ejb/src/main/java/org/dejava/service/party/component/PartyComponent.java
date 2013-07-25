@@ -8,11 +8,11 @@ import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.component.ejb.entity.ExternalEntityLoader;
 import org.dejava.service.contact.component.ContactComponent;
 import org.dejava.service.contact.util.ContactCtx;
-import org.dejava.service.location.component.LocationComponent;
-import org.dejava.service.location.util.LocationCtx;
 import org.dejava.service.party.dao.PartyDAO;
 import org.dejava.service.party.model.Party;
 import org.dejava.service.party.util.PartyCtx;
+import org.dejava.service.place.component.PlaceComponent;
+import org.dejava.service.place.util.PlaceCtx;
 
 /**
  * Party EJB component.
@@ -36,11 +36,11 @@ public class PartyComponent extends AbstractGenericComponent<Party, Integer> {
 	private ContactComponent contactComponent;
 
 	/**
-	 * The location EJB component.
+	 * The place EJB component.
 	 */
 	@Inject
-	@LocationCtx
-	private LocationComponent locationComponent;
+	@PlaceCtx
+	private PlaceComponent placeComponent;
 
 	/**
 	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityDAO()
@@ -66,7 +66,7 @@ public class PartyComponent extends AbstractGenericComponent<Party, Integer> {
 		// Persists the contacts for the entity.
 		persistedEntity.getContacts().addAll(contactComponent.addOrUpdate(entity.getContacts()));
 		// Persists the addresses for the entity.
-		persistedEntity.getAddresses().addAll(locationComponent.addOrUpdate(entity.getAddresses()));
+		persistedEntity.getAddresses().addAll(placeComponent.addOrUpdate(entity.getAddresses()));
 		// Returns the persisted entity.
 		return persistedEntity;
 	}

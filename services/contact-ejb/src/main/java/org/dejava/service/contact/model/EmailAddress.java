@@ -6,12 +6,18 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
+import org.dejava.service.contact.util.MessageTypes;
+import org.hibernate.validator.constraints.Email;
+
 /**
  * Email address.
  */
 @Entity
 @Table(name = "email_address")
 @Inheritance(strategy = InheritanceType.JOINED)
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.contact.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class EmailAddress extends Contact {
 
 	/**
@@ -29,6 +35,7 @@ public class EmailAddress extends Contact {
 	 * 
 	 * @return The address of the email address.
 	 */
+	@Email(payload = MessageTypes.Error.class, message = "emailaddress.address.email")
 	@Column(name = "address")
 	public String getAddress() {
 		return address;

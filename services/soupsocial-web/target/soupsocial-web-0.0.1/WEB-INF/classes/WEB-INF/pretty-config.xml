@@ -1,0 +1,35 @@
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.0
+			http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.0.xsd">
+
+	<url-mapping id="como-funciona">
+		<pattern value="/como-funciona/" />
+		<view-id value="/how.jsf" />
+	</url-mapping>
+	<url-mapping id="index">
+		<pattern value="/" />
+		<view-id value="/index.jsf" />
+	</url-mapping>
+	<url-mapping id="privacidade">
+		<pattern value="/privacidade/" />
+		<view-id value="/privacy.jsf" />
+	</url-mapping>
+	<url-mapping id="projeto">
+		<pattern value="/projeto/" />
+		<view-id value="/project.jsf" />
+	</url-mapping>
+	<url-mapping id="quem-somos">
+		<pattern value="/quem-somos/" />
+		<view-id value="/who.jsf" />
+	</url-mapping>
+	<url-mapping id="soupsocial">
+		<pattern value="/soupsocial/" />
+		<view-id value="/what.jsf" />
+	</url-mapping>
+	<url-mapping id="termos">
+		<pattern value="/termos/" />
+		<view-id value="/terms.jsf" />
+	</url-mapping>
+
+</pretty-config>

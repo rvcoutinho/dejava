@@ -25,7 +25,7 @@ import org.dejava.service.accesscontrol.model.principal.Principal;
  */
 @Entity
 @Table(name = "u5er")
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class User extends AbstractIdentifiedEntity {
 
 	/**

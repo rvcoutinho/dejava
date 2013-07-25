@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.security.authc.credential.HashedCredentials;
 import org.dejava.component.security.crypt.hasher.CredentialsHasher;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -12,8 +14,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * Password of the user (as credential).
  */
-@Table(name = "password")
 @Entity
+@Table(name = "password")
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class Password extends Credentials implements HashedCredentials {
 
 	/**

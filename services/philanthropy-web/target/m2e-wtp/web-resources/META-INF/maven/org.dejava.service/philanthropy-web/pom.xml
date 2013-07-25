@@ -14,15 +14,6 @@
 
 	<name>philanthropy Web module</name>
 
-	<repositories>
-		<repository>
-			<id>prime-repo</id>
-			<name>PrimeFaces Maven Repository</name>
-			<url>http://repository.primefaces.org</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
-
 	<dependencies>
 
 		<dependency>
@@ -39,7 +30,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
-			<artifactId>jsf</artifactId>
+			<artifactId>faces</artifactId>
 		</dependency>
 
 		<dependency>
@@ -78,24 +69,18 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.richfaces.ui</groupId>
-			<artifactId>richfaces-components-ui</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.richfaces.core</groupId>
-			<artifactId>richfaces-core-impl</artifactId>
-		</dependency>
-
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.2</version>
+				<version>2.4</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<annotationProcessors>
+						<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
+					</annotationProcessors>
 				</configuration>
 			</plugin>
 		</plugins>

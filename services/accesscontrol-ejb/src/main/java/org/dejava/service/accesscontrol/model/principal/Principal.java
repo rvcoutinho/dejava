@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.User;
 
 /**
@@ -18,6 +20,7 @@ import org.dejava.service.accesscontrol.model.User;
 @Entity
 @Table(name = "principal")
 @Inheritance(strategy = InheritanceType.JOINED)
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public abstract class Principal extends AbstractIdentifiedEntity {
 
 	/**

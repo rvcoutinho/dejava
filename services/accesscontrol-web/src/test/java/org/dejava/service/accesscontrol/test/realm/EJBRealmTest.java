@@ -66,24 +66,24 @@ public class EJBRealmTest {
 				.resolveAs(JavaArchive.class).iterator().next();
 		final JavaArchive contactEjbJar = dependencyResolver4.artifact("org.dejava.service:contact-ejb")
 				.resolveAs(JavaArchive.class).iterator().next();
-		final JavaArchive locationEjbJar = dependencyResolver5.artifact("org.dejava.service:location-ejb")
+		final JavaArchive placeEjbJar = dependencyResolver5.artifact("org.dejava.service:place-ejb")
 				.resolveAs(JavaArchive.class).iterator().next();
 		// Removes the persistence.xml from the jars.
 		accessControlEjbJar.delete("META-INF/persistence.xml");
 		partyEjbJar.delete("META-INF/persistence.xml");
 		contactEjbJar.delete("META-INF/persistence.xml");
-		locationEjbJar.delete("META-INF/persistence.xml");
+		placeEjbJar.delete("META-INF/persistence.xml");
 		// Defines and returns the archive definition.
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.merge(accessControlEjbJar, "WEB-INF/classes")
 				.merge(partyEjbJar, "WEB-INF/classes")
 				.merge(contactEjbJar, "WEB-INF/classes")
-				.merge(locationEjbJar, "WEB-INF/classes")
+				.merge(placeEjbJar, "WEB-INF/classes")
 				.addPackages(true, "org.dejava.service.accesscontrol")
 				.addAsLibraries(
 						dependencyResolver.artifacts("org.dejava.component:security",
-								"org.dejava.component:ejb", "org.dejava.component:jsf",
+								"org.dejava.component:ejb", "org.dejava.component:faces",
 								"org.apache.shiro:shiro-core", "org.apache.shiro:shiro-web",
 								"org.apache.shiro:shiro-ehcache", "com.restfb:restfb").resolveAsFiles())
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")

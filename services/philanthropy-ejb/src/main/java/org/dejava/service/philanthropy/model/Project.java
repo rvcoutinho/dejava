@@ -3,6 +3,8 @@ package org.dejava.service.philanthropy.model;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.party.model.Organization;
 
 /**
@@ -10,10 +12,11 @@ import org.dejava.service.party.model.Organization;
  */
 @Entity
 @Table(name = "project")
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public class Project extends Idea {
 
 	/**
-	 * Genareted serial.
+	 * Generated serial.
 	 */
 	private static final long serialVersionUID = 4851354607337382534L;
 

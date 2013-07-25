@@ -4,7 +4,6 @@
 	xmlns:pretty="http://ocpsoft.com/prettyfaces"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:rich="http://richfaces.org/rich"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="head">
 		<link rel="canonical" href="http://www.soupsocial.com/como-funciona/" />
@@ -16,8 +15,9 @@
 				<section id="how-all" class="border-bottom">
 					<header class="padding-3">
 						<h1>
-							<pretty:link mappingId="como-funciona">Como funciona</pretty:link> &gt; <a href="#"
-								onclick="$('#how-all-content').slideDown(1000);">Para todos</a>
+							<pretty:link mappingId="como-funciona">Como funciona</pretty:link>
+							&gt; <a href="#" onclick="$('#how-all-content').slideDown(1000);">Para
+								todos</a>
 							<button class="dark-green-bg right-button">
 								conectar
 								<h:graphicImage library="soupsocial" class="spoon"
@@ -63,28 +63,46 @@
 				<section id="how-ngos" class="border-top border-bottom">
 					<header class="padding-3">
 						<h1>
-							<pretty:link mappingId="como-funciona">Como funciona</pretty:link> &gt; <a href="#"
+							<pretty:link mappingId="como-funciona">Como funciona</pretty:link>
+							&gt; <a href="#"
 								onclick="$('#how-ngos-content').slideDown(1000);">Para
 								instituições</a>
-							<button class="dark-green-bg right-button" onclick="$('#ngo-create').dialog({ modal: true, draggable: false, minWidth: 450 })">
+							<button class="dark-green-bg right-button"
+								onclick="$('#ngo-create').dialog({ modal: true, draggable: false, minWidth: 450 });
+									$('#ngo-create .place').geocomplete({details: '#ngo-create-address-detail'});">
 								cadastrar instituição
 								<h:graphicImage library="soupsocial" class="spoon"
 									name="gfx/spoon.png" />
 							</button>
 						</h1>
-						<section id="ngo-create" class="hidden-dialog form-content" title="Cadastre sua Instituição!">
-							<h:form id="ngo-create-form">
+						<section id="ngo-create" class="hidden-dialog form-content"
+							title="Cadastre sua Instituição!">
+							<h:form id="ngo-create-form" prependId="false">
 								<label for="ngo-create-name">Nome da instituição</label>:
-								<h:inputText id="ngo-create-name" value="#{organizationController.newOrganization.name}" /><br/>
+								<h:inputText id="ngo-create-name"
+									value="#{organizationController.newOrganization.name}" />
+								<br />
 								<label for="ngo-create-cnpj">CNPJ</label>:
-								<h:inputText id="ngo-create-cnpj" styleClass="cnpj mask" value="#{organizationController.newOrganization.federalCode}" /><br/>
+								<h:inputText id="ngo-create-cnpj" styleClass="cnpj mask"
+									value="#{organizationController.newOrganization.federalCode}" />
+								<br />
 								<label for="ngo-create-address">Endereço</label>:
-								<h:inputText id="ngo-create-address" value="Endereço" /><br/>
+								<h:inputText id="ngo-create-address" styleClass="place" />
+								<span id="ngo-create-address-detail" class="hidden-dialog"><h:inputHidden
+										value="#{organizationController.addressReference}"
+										id="reference" /></span>
+								<br />
 								<label for="ngo-create-email">E-mail</label>:
-								<h:inputText id="ngo-create-email" value="#{organizationController.newEmailAddress.address}" /><br/>
+								<h:inputText id="ngo-create-email"
+									value="#{organizationController.newEmailAddress.address}" />
+								<br />
 								<label for="ngo-create-email">Telefone</label>:
-								<h:inputText id="ngo-create-phone" styleClass="phone mask" value="#{organizationController.newPhoneNumber.number}" /><br/>
-								<h:commandLink action="#{organizationController.createOrganization}">
+								<h:inputText id="ngo-create-phone" styleClass="phone mask" 
+									value="#{organizationController.newPhoneNumber.number}" />
+								<br />
+								<h:commandLink 
+									action="#{organizationController.createOrganization}">
+									<f:param name="skipValidation" value="true" />
 									<button class="dark-green-bg right-button">
 										cadastrar
 										<h:graphicImage library="soupsocial" class="spoon"
@@ -139,7 +157,8 @@
 				<section id="how-investors" class="border-top border-bottom">
 					<header class="padding-3">
 						<h1>
-							<pretty:link mappingId="como-funciona">Como funciona</pretty:link> &gt; <a href="#"
+							<pretty:link mappingId="como-funciona">Como funciona</pretty:link>
+							&gt; <a href="#"
 								onclick="$('#how-investors-content').slideDown(1000);">Para
 								empresas</a>
 							<button class="dark-green-bg right-button">

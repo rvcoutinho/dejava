@@ -21,12 +21,12 @@
     </web>
   </module>
   <module>
-    <ejb>location-ejb-0.0.1.jar</ejb>
+    <ejb>place-ejb-0.0.1.jar</ejb>
   </module>
   <module>
     <web>
-      <web-uri>location-web-0.0.1.war</web-uri>
-      <context-root>/location-web</context-root>
+      <web-uri>place-web-0.0.1.war</web-uri>
+      <context-root>/place-web</context-root>
     </web>
   </module>
   <module>

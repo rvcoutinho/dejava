@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Path;
 
 import org.dejava.component.ejb.component.AbstractGenericComponent;
-import org.dejava.component.jsf.controller.AbstractGenericController;
+import org.dejava.component.faces.controller.AbstractGenericController;
 import org.dejava.service.party.component.PartyComponent;
 import org.dejava.service.party.model.Party;
 import org.dejava.service.party.util.PartyCtx;
@@ -25,7 +25,7 @@ public class PartyController extends AbstractGenericController<Party, Integer> {
 	private PartyComponent partyComponent;
 
 	/**
-	 * @see org.dejava.component.jsf.controller.AbstractGenericController#getBusinessComponent()
+	 * @see org.dejava.component.faces.controller.AbstractGenericController#getBusinessComponent()
 	 */
 	@Override
 	protected AbstractGenericComponent<Party, Integer> getBusinessComponent() {

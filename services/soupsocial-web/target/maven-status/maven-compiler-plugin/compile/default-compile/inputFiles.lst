@@ -1,4 +1,7 @@
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\util\SoupSocialCtx.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\constant\GooglePlacesAPIKeys.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\OrganizationController.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\place\GooglePlaceResult.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\util\WebResources.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\util\WebSecurityResources.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\place\GooglePlace.java

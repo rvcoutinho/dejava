@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="philanthropy-ejb">
+    <wb-module deploy-name="philanthropy-ejb-0.0.1">
         <wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <property name="java-output-path" value="/philanthropy-ejb/target/classes"/>

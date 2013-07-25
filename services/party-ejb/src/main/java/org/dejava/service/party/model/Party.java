@@ -3,18 +3,25 @@ package org.dejava.service.party.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.contact.model.Contact;
-import org.dejava.service.location.model.Location;
+import org.dejava.service.place.model.Place;
 
 /**
  * 
@@ -23,6 +30,7 @@ import org.dejava.service.location.model.Location;
 @Entity
 @Table(name = "party")
 @Inheritance(strategy = InheritanceType.JOINED)
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public abstract class Party extends AbstractIdentifiedEntity {
 
 	/**
@@ -126,10 +134,37 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	}
 
 	/**
+	 * The addresses identifiers for the party.
+	 */
+	private Collection<Integer> addressesIds;
+
+	/**
+	 * Gets the addresses identifiers for the party.
+	 * 
+	 * @return The addresses identifiers for the party.
+	 */
+	@ElementCollection
+	@CollectionTable(name = "address", joinColumns = @JoinColumn(name = "party"))
+	@Column(name = "address_id")
+	public Collection<Integer> getAddressesIds() {
+		return addressesIds;
+	}
+
+	/**
+	 * Sets the addresses identifiers for the party.
+	 * 
+	 * @param addressesIds
+	 *            New addresses identifiers for the party.
+	 */
+	public void setAddressesIds(final Collection<Integer> addressesIds) {
+		this.addressesIds = addressesIds;
+	}
+
+	/**
 	 * Addresses for the party.
 	 */
-	@ExternalEntity(retrieveObj = "java:/global/ear/location-ejb/Component/Location/Location", mappedBy = "partyId", singleEntity = false)
-	private Collection<Location> addresses;
+	@ExternalEntity(retrieveObj = "java:/global/ear/place-ejb/Component/Place/Place", paramsValuesMethod = "getAddressesIds", singleEntity = false)
+	private Collection<Place> addresses;
 
 	/**
 	 * Gets the addresses.
@@ -137,7 +172,7 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	 * @return The addresses.
 	 */
 	@Transient
-	public Collection<Location> getAddresses() {
+	public Collection<Place> getAddresses() {
 		// If the address set is null.
 		if (addresses == null) {
 			// Creates a new set.
@@ -153,7 +188,7 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	 * @param addresses
 	 *            New addresses.
 	 */
-	public void setAddresses(final Collection<Location> addresses) {
+	public void setAddresses(final Collection<Place> addresses) {
 		this.addresses = addresses;
 	}
 
@@ -238,4 +273,34 @@ public abstract class Party extends AbstractIdentifiedEntity {
 		setUser(user);
 	}
 
+	/**
+	 * Update the addresses ids with the actual addresses ids.
+	 */
+	protected void updateAddressesIds() {
+		// If there are no addresses.
+		if (addresses == null) {
+			// Sets the a ids to null.
+			addressesIds = null;
+		}
+		// If there are addresses.
+		else {
+			// Creates a new list.
+			addressesIds = new ArrayList<>();
+			// For each entity in the entity list.
+			for (final Place curPlace : addresses) {
+				// Adds the current entity id to the set.
+				addressesIds.add(curPlace.getIdentifier());
+			}
+		}
+	}
+
+	/**
+	 * Update the external entities ids to be persisted.
+	 */
+	@PreUpdate
+	@PrePersist
+	protected void updateAllExtEntitiesIds() {
+		// Updates the external entities ids.
+		updateAddressesIds();
+	}
 }

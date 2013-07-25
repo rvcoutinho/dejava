@@ -8,10 +8,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 	<h:outputStylesheet library="soupsocial" name="css/stylesheet.css" />
 	<h:outputStylesheet library="soupsocial" name="css/ui.css" />
-	<ui:insert name="head"></ui:insert>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 	<h:outputScript library="soupsocial" name="js/jquery.mask.min.js"></h:outputScript>
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+	<h:outputScript library="soupsocial" name="js/jquery.geocomplete.min.js"></h:outputScript>
+	<ui:insert name="head"></ui:insert>
 	<h:outputText escape="false">
 		<!--[if lt IE 9]>
 			<script async="async" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

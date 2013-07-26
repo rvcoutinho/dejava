@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -31,6 +36,16 @@ import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
 @SupportedSourceVersion(value = SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes(value = { "org.dejava.component.i18n.source.annotation.MessageSources" })
 public class MessageSourceCreator extends AbstractProcessor {
+
+	/**
+	 * The Unicode charset.
+	 */
+	private static final Charset UNICODE_CHARSET = Charset.forName("UTF-8");
+
+	/**
+	 * The Latin-1 charset.
+	 */
+	private static final Charset LATIN1_CHARSET = Charset.forName("ISO-8859-1");
 
 	/**
 	 * Gets the message source properties file.
@@ -70,11 +85,11 @@ public class MessageSourceCreator extends AbstractProcessor {
 		// Tries to get the current properties file content.
 		try {
 			// Tries to get the properties file.
-			final FileInputStream propsInputStream = new FileInputStream(msgSrcFile);
+			final Reader propsReader = new InputStreamReader(new FileInputStream(msgSrcFile), UNICODE_CHARSET);
 			// Loads the properties object with the file content.
-			msgSrcProps.load(propsInputStream);
+			msgSrcProps.load(propsReader);
 			// Closes the input stream.
-			propsInputStream.close();
+			propsReader.close();
 		}
 		// If no file is found.
 		catch (final IOException exception) {
@@ -114,8 +129,9 @@ public class MessageSourceCreator extends AbstractProcessor {
 		}
 		// Tries to update the properties file content.
 		try {
-			// Creates the output stream for the current properties file.
-			final FileOutputStream propsOutputStream = new FileOutputStream(msgSrcFile);
+			// Creates the writer for the current properties file.
+			final Writer propsOutputStream = new OutputStreamWriter(new FileOutputStream(msgSrcFile),
+					UNICODE_CHARSET);
 			// Store the new data for the properties file.
 			msgSrcProps.store(propsOutputStream, description);
 			// Closes the output stream.

@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
@@ -214,34 +213,37 @@ public class MessageSourceCreator extends AbstractProcessor {
 		for (final Element currentClass : roundEnv.getElementsAnnotatedWith(MessageSources.class)) {
 			// Gets the annotation information for this class.
 			final MessageSources msgSrcs = currentClass.getAnnotation(MessageSources.class);
-			// For each message source.
-			for (final MessageSource currentMsgSrc : msgSrcs.sources()) {
-				// Creates an entry set for the message source.
-				final Set<String> entries = new LinkedHashSet<>();
-				// For each processor defined for the current message source.
-				for (final String currentProcessorClassName : currentMsgSrc.processors()) {
-					// Tries to add the processed entries for the message source.
-					try {
-						// Creates an instance for the current processor.
-						final MessageSourceEntryProcessor currentProcessor = (MessageSourceEntryProcessor) Class
-								.forName(currentProcessorClassName).newInstance();
-						// For each class to be processed.
-						for (final TypeElement currentClassToProcess : getClassesToProcess(
-								(TypeElement) currentClass, currentMsgSrc.processSuperclasses())) {
-							// Adds the entries for the current processor to the entry set.
-							entries.addAll(currentProcessor.processClass((TypeElement) currentClass,
-									currentClassToProcess));
-							// For each defined available locale.
-							for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
-								// Adds the entries to the current properties file.
-								addEntries(currentMsgSrc.sourcePath(), currentMsgSrc.bundleBaseName(),
-										currentLocaleText, entries, currentMsgSrc.description());
+			// If there are message sources.
+			if (msgSrcs != null) {
+				// For each message source.
+				for (final MessageSource currentMsgSrc : msgSrcs.sources()) {
+					// Creates an entry set for the message source.
+					final Set<String> entries = new LinkedHashSet<>();
+					// For each processor defined for the current message source.
+					for (final String currentProcessorClassName : currentMsgSrc.processors()) {
+						// Tries to add the processed entries for the message source.
+						try {
+							// Creates an instance for the current processor.
+							final MessageSourceEntryProcessor currentProcessor = (MessageSourceEntryProcessor) Class
+									.forName(currentProcessorClassName).newInstance();
+							// For each class to be processed.
+							for (final TypeElement currentClassToProcess : getClassesToProcess(
+									(TypeElement) currentClass, currentMsgSrc.processSuperclasses())) {
+								// Adds the entries for the current processor to the entry set.
+								entries.addAll(currentProcessor.processClass((TypeElement) currentClass,
+										currentClassToProcess));
+								// For each defined available locale.
+								for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
+									// Adds the entries to the current properties file.
+									addEntries(currentMsgSrc.sourcePath(), currentMsgSrc.bundleBaseName(),
+											currentLocaleText, entries, currentMsgSrc.description());
+								}
 							}
 						}
-					}
-					// If any exception is raised.
-					catch (final Exception exception) {
-						// Ignores and continues with the left processors and sources.
+						// If any exception is raised.
+						catch (final Exception exception) {
+							// Ignores and continues with the left processors and sources.
+						}
 					}
 				}
 			}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.dejava.component.reflection.test.ClassMirrorTest" time="0.031" tests="10" errors="0" skipped="0" failures="0">
+<testsuite name="org.dejava.component.reflection.test.ClassMirrorTest" time="0.02" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\bin"/>
@@ -25,7 +25,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf5481400223286251762.tmp"/>
+    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf5679420784363633832.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -59,14 +59,14 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="testGetCurrentClassName" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0.015"/>
-  <testcase name="testGetFieldEmptyName" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0"/>
-  <testcase name="testGetCurrentClass" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0"/>
-  <testcase name="testGetFieldValidName" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0"/>
+  <testcase name="testGetCurrentClassName" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0.005"/>
+  <testcase name="testGetFieldEmptyName" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0.005"/>
+  <testcase name="testGetCurrentClass" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0.001"/>
+  <testcase name="testGetFieldValidName" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0.001"/>
   <testcase name="testGetFieldInvalidName" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0"/>
   <testcase name="testGetClassByClassName" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0"/>
-  <testcase name="testGetSuperClasses" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0.016"/>
-  <testcase name="testGetFieldsValidAnnotations" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0"/>
-  <testcase name="testGetFields" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0"/>
+  <testcase name="testGetSuperClasses" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0.001"/>
+  <testcase name="testGetFieldsValidAnnotations" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0.006"/>
+  <testcase name="testGetFields" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0.001"/>
   <testcase name="testGetFieldsNullAnnotation" classname="org.dejava.component.reflection.test.ClassMirrorTest" time="0"/>
 </testsuite>

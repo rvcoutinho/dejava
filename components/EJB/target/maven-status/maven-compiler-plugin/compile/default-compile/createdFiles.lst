@@ -1,0 +1,10 @@
+org\dejava\component\ejb\dao\AbstractGenericDAO.class
+org\dejava\component\ejb\constant\ExternalEntityLoaderParamKeys.class
+org\dejava\component\ejb\constant\ErrorKeys.class
+org\dejava\component\ejb\entity\ExternalEntity.class
+org\dejava\component\ejb\constant\DAOParamKeys.class
+org\dejava\component\ejb\entity\AbstractVersionedEntity.class
+org\dejava\component\ejb\entity\AbstractIdentifiedEntity.class
+org\dejava\component\ejb\component\AbstractGenericComponent.class
+org\dejava\component\ejb\entity\ExternalEntityLoader.class
+org\dejava\component\ejb\component\GenericComponent.class

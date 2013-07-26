@@ -84,7 +84,10 @@
 								<br />
 								<label for="ngo-create-cnpj">CNPJ</label>:
 								<h:inputText id="ngo-create-cnpj" styleClass="cnpj mask"
-									value="#{organizationController.newOrganization.federalCode}" />
+									data-inv-regex="[^\d]"
+									value="#{organizationController.newOrganization.federalCode}">
+									<f:converter converterId="InvRegexConv" />
+								</h:inputText>
 								<br />
 								<label for="ngo-create-address">Endereço</label>:
 								<h:inputText id="ngo-create-address" styleClass="place" />
@@ -96,13 +99,15 @@
 								<h:inputText id="ngo-create-email"
 									value="#{organizationController.newEmailAddress.address}" />
 								<br />
-								<label for="ngo-create-email">Telefone</label>:
-								<h:inputText id="ngo-create-phone" styleClass="phone mask" 
-									value="#{organizationController.newPhoneNumber.number}" />
+								<label for="ngo-create-phone">Telefone</label>:
+								<h:inputText id="ngo-create-phone" styleClass="phone mask"
+									data-inv-regex="[^\d]"
+									value="#{organizationController.newPhoneNumber.number}">
+									<f:converter converterId="InvRegexConv" />
+								</h:inputText>
 								<br />
-								<h:commandLink 
+								<h:commandLink
 									action="#{organizationController.createOrganization}">
-									<f:param name="skipValidation" value="true" />
 									<button class="dark-green-bg right-button">
 										cadastrar
 										<h:graphicImage library="soupsocial" class="spoon"

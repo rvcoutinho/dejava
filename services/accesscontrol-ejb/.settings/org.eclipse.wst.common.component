@@ -2,6 +2,7 @@
     <wb-module deploy-name="accesscontrol-ejb-0.0.1">
         <wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/target/generated-sources/annotations"/>
         <property name="java-output-path" value="/accesscontrol-ejb/target/classes"/>
     </wb-module>
 </project-modules>

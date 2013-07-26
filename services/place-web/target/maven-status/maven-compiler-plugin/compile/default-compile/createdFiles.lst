@@ -1,0 +1,3 @@
+org\dejava\service\place\util\WebResources.class
+org\dejava\service\place\controller\PlaceController.class
+org\dejava\service\place\controller\JaxRsActivator.class

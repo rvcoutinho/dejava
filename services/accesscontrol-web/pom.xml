@@ -39,6 +39,10 @@
 
 		<dependency>
 			<groupId>org.dejava.component</groupId>
+			<artifactId>ejb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.component</groupId>
 			<artifactId>faces</artifactId>
 			<scope>compile</scope>
 		</dependency>
@@ -90,6 +94,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>

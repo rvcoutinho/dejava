@@ -14,6 +14,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
@@ -22,6 +23,7 @@ import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.contact.model.Contact;
 import org.dejava.service.place.model.Place;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 
@@ -41,6 +43,7 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	/**
 	 * Name of the party.
 	 */
+	@NotEmpty
 	private String name;
 
 	/**

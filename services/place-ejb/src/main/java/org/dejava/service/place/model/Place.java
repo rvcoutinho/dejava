@@ -3,6 +3,7 @@ package org.dejava.service.place.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -12,11 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.reflection.ClassMirror;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Some place.
@@ -25,7 +28,7 @@ import org.dejava.component.reflection.ClassMirror;
 @Table(name = "place")
 @Inheritance(strategy = InheritanceType.JOINED)
 @MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.place.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
-public abstract class Place extends AbstractIdentifiedEntity {
+public class Place extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.
@@ -60,6 +63,8 @@ public abstract class Place extends AbstractIdentifiedEntity {
 	/**
 	 * Name of the place.
 	 */
+	@NotNull(message=)
+	@NotEmpty
 	private String name;
 
 	/**
@@ -124,7 +129,8 @@ public abstract class Place extends AbstractIdentifiedEntity {
 	 * @return The types for the place.
 	 */
 	@ElementCollection
-	@Column(name = "types")
+	@CollectionTable(name = "type", joinColumns = @JoinColumn(name = "place"))
+	@Column(name = "type")
 	public Collection<String> getTypes() {
 		// If the collection is null.
 		if (types == null) {
@@ -187,10 +193,13 @@ public abstract class Place extends AbstractIdentifiedEntity {
 	 *            Name of the place.
 	 * @param shortName
 	 *            Short name of the place.
+	 * @param types
+	 *            Types for the place.
 	 * @param parentPlace
 	 *            Parent place for the place.
 	 */
-	public Place(final String reference, final String name, final String shortName, final Place parentPlace) {
+	public Place(final String reference, final String name, final String shortName,
+			final Collection<String> types, final Place parentPlace) {
 		super();
 		this.reference = reference;
 		this.name = name;
@@ -264,9 +273,8 @@ public abstract class Place extends AbstractIdentifiedEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((parentPlace == null) ? 0 : parentPlace.hashCode());
-		result = prime * result + ((types == null) ? 0 : types.hashCode());
+		result = (prime * result) + ((name == null) ? 0 : name.hashCode());
+		result = (prime * result) + ((parentPlace == null) ? 0 : parentPlace.hashCode());
 		return result;
 	}
 
@@ -274,7 +282,7 @@ public abstract class Place extends AbstractIdentifiedEntity {
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj) {
 			return true;
 		}
@@ -284,7 +292,7 @@ public abstract class Place extends AbstractIdentifiedEntity {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Place other = (Place) obj;
+		final Place other = (Place) obj;
 		if (name == null) {
 			if (other.name != null) {
 				return false;
@@ -297,13 +305,6 @@ public abstract class Place extends AbstractIdentifiedEntity {
 				return false;
 			}
 		} else if (!parentPlace.equals(other.parentPlace)) {
-			return false;
-		}
-		if (types == null) {
-			if (other.types != null) {
-				return false;
-			}
-		} else if (!types.equals(other.types)) {
 			return false;
 		}
 		return true;

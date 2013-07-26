@@ -17,7 +17,9 @@ import org.hibernate.validator.constraints.Email;
 @Entity
 @Table(name = "email_address")
 @Inheritance(strategy = InheritanceType.JOINED)
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.contact.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = {
+		@MessageSource(bundleBaseName = "org.dejava.service.contact.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.contact.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.FieldAnnotationEntryProcessor" }) })
 public class EmailAddress extends Contact {
 
 	/**
@@ -28,6 +30,7 @@ public class EmailAddress extends Contact {
 	/**
 	 * Address of the email address.
 	 */
+	@Email(payload = MessageTypes.Error.class, message = "emailaddress.address.email")
 	private String address;
 
 	/**
@@ -35,7 +38,6 @@ public class EmailAddress extends Contact {
 	 * 
 	 * @return The address of the email address.
 	 */
-	@Email(payload = MessageTypes.Error.class, message = "emailaddress.address.email")
 	@Column(name = "address")
 	public String getAddress() {
 		return address;

@@ -9,3 +9,4 @@ org.dejava.component.i18n.source.annotation
 org.dejava.component.i18n.source.model
 org.dejava.component.i18n.source.processor
 org.dejava.component.i18n.source.processor.impl
+org.dejava.component.i18n.source.util

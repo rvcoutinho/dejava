@@ -11,6 +11,7 @@ import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
@@ -29,6 +30,7 @@ import javax.lang.model.type.TypeMirror;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.i18n.source.processor.MessageSourceEntryProcessor;
+import org.dejava.component.i18n.source.util.SortedProperties;
 
 /**
  * Annotation processor that processes and creates the defined message source bundles (and keys).
@@ -79,7 +81,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 	private Properties getPropertiesContent(final String sourcePath, final String bundleBaseName,
 			final String localeText) {
 		// Creates a new properties object.
-		final Properties msgSrcProps = new Properties();
+		final Properties msgSrcProps = new SortedProperties();
 		// Gets the file for the message source.
 		final File msgSrcFile = getMessageSourceFile(sourcePath, bundleBaseName, localeText);
 		// Tries to get the current properties file content.

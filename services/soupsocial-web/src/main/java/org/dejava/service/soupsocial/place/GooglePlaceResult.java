@@ -1,5 +1,7 @@
 package org.dejava.service.soupsocial.place;
 
+import java.util.Arrays;
+
 import org.dejava.service.place.model.Place;
 
 import com.google.api.client.util.Key;
@@ -65,9 +67,34 @@ public class GooglePlaceResult {
 	 * @return The place for the google place.
 	 */
 	public Place getPlace() {
-		// Creates a new
-		// FIXME
-		return null;
+		// If there is a result.
+		if (getResult() != null) {
+			// Creates a new place.
+			final Place place = new Place(getResult().getReference(), getResult().getName(), getResult()
+					.getShortName(), Arrays.asList(getResult().getTypes()), null);
+			// The current child place is the actual place.
+			Place currentChildPlace = place;
+			// If there are parent places.
+			if (getResult().getParentPlaces() != null) {
+				// For each parent google place.
+				for (final GooglePlace currentGooglePlace : getResult().getParentPlaces()) {
+					// Creates a new parent place.
+					final Place currentParentPlace = new Place(currentGooglePlace.getReference(),
+							currentGooglePlace.getName(), currentGooglePlace.getShortName(),
+							Arrays.asList(currentGooglePlace.getTypes()), null);
+					// Adds the current parent place as the parent of the current child place.
+					currentChildPlace.setParentPlace(currentParentPlace);
+					// The current parent place is the next child place.
+					currentChildPlace = currentParentPlace;
+				}
+			}
+			// Returns the new place.
+			return place;
+		}
+		// If there is no result.
+		else {
+			// Returns null.
+			return null;
+		}
 	}
-
 }

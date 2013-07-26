@@ -1,0 +1,1517 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="5" time="7.999" errors="0" skipped="0" tests="5" name="org.dejava.component.faces.test.message.FacesMessageHandlerTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\bin"/>
+    <property name="java.vm.version" value="23.25-b01"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces"/>
+    <property name="java.runtime.version" value="1.7.0_25-b17"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\RVCOUT~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4970891117205691022.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\eclipse;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="D:\usuarios\rvcoutinho"/>
+    <property name="user.timezone" value="America/Sao_Paulo"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="rvcoutinho"/>
+    <property name="java.class.path" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\boot\plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B deploy"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="pt"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="1.7.0_25"/>
+    <property name="java.ext.dirs" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\ext;C:\windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\resources.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\rt.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\jsse.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\jce.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\charsets.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\jfr.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="maven.bootclasspath" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\boot\plexus-classworlds-2.4.jar"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase time="0.69" classname="org.dejava.component.faces.test.message.FacesMessageHandlerTest" name="testAddInfoMessage">
+    <failure message="expected:&lt;1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:472)
+	at org.junit.Assert.assertEquals(Assert.java:456)
+	at org.dejava.component.faces.test.message.FacesMessageHandlerTest$MessageInpection.assertMessageAdded(FacesMessageHandlerTest.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleMethodExecutor.invoke(LifecycleMethodExecutor.java:59)
+	at org.jboss.arquillian.container.test.impl.execution.LocalTestExecuter.execute(LocalTestExecuter.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.test.impl.execution.ContainerTestExecuter.execute(ContainerTestExecuter.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestExecutionVerifier.observeTestExecution(LifecycleTestExecutionVerifier.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createTestContext(TestContextHandler.java:89)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.executeTest(LifecycleTestDriver.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.fireTest(LifecycleTestDriver.java:73)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.lifecycle.LifecycleManagerImpl.fireEvent(LifecycleManagerImpl.java:41)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.executeEvents(WarpPhaseListener.java:68)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.afterPhase(WarpPhaseListener.java:48)
+	at com.sun.faces.lifecycle.Phase.handleAfterPhase(Phase.java:189)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:107)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:139)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:594)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpLifecycle.execute(WarpLifecycle.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpRequestProcessor.processWarpRequest(WarpRequestProcessor.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930)
+	at java.lang.Thread.run(Thread.java:724)
+</failure>
+    <system-out>14:44:00,743 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) JBAS016009: Stopping weld service for deployment 7974a98b-ae3a-4a36-bac7-d8b351432fde.war
+14:44:00,884 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015877: Stopped deployment 7974a98b-ae3a-4a36-bac7-d8b351432fde.war in 151ms
+14:44:00,900 INFO  [org.jboss.as.repository] (management-handler-thread - 2) JBAS014901: Content removed from location C:\servidores\jboss-as-7.1.1.Final\standalone\data\content\3f\e076ddca416fbf807b7e87e10cf9e856e6e896\content
+14:44:00,901 INFO  [org.jboss.as.server] (management-handler-thread - 2) JBAS018558: Undeployed &quot;7974a98b-ae3a-4a36-bac7-d8b351432fde.war&quot;
+14:44:01.407 INFO - Removed POM artifact org.jboss.arquillian.extension:arquillian-warp:pom:1.0.0.Alpha3 from archive, it&apos;s dependencies were fetched.
+14:44:04,094 INFO  [org.jboss.as.repository] (management-handler-thread - 3) JBAS014900: Content added at location C:\servidores\jboss-as-7.1.1.Final\standalone\data\content\c8\e2c83f867191f32e5951df756094df923cf7a9\content
+14:44:04,100 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015876: Starting deployment of &quot;1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8.war&quot;
+14:44:05,792 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;implClass=org.jboss.arquillian.config.descriptor.impl.ArquillianDescriptorImpl&apos; for service type &apos;org.jboss.arquillian.config.descriptor.api.ArquillianDescriptor&apos;
+14:44:05,793 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;importerClass=org.jboss.shrinkwrap.descriptor.spi.node.dom.XmlDomNodeDescriptorImporterImpl&apos; for service type &apos;org.jboss.arquillian.config.descriptor.api.ArquillianDescriptor&apos;
+14:44:05,794 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;defaultName=arquillian.xml&apos; for service type &apos;org.jboss.arquillian.config.descriptor.api.ArquillianDescriptor&apos;
+14:44:05,795 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;implClass=org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.impl.web.WebAppDescriptorImpl&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.web.WebAppDescriptor&apos;
+14:44:05,796 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;importerClass=org.jboss.shrinkwrap.descriptor.spi.node.dom.XmlDomNodeDescriptorImporterImpl&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.web.WebAppDescriptor&apos;
+14:44:05,797 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;defaultName=web.xml&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.web.WebAppDescriptor&apos;
+14:44:05,798 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;implClass=org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.impl.application.ApplicationDescriptorImpl&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.application.ApplicationDescriptor&apos;
+14:44:05,799 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;importerClass=org.jboss.shrinkwrap.descriptor.spi.node.dom.XmlDomNodeDescriptorImporterImpl&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.application.ApplicationDescriptor&apos;
+14:44:05,800 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;defaultName=application.xml&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.application.ApplicationDescriptor&apos;
+14:44:05,802 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;!org.jboss.arquillian.protocol.servlet.runner.ServletRemoteExtension&apos; for service type &apos;org.jboss.arquillian.container.test.spi.RemoteLoadableExtension&apos;
+14:44:05,805 INFO  [org.jboss.as.pojo] (MSC service thread 1-3) JBAS017000: Found legacy bean/pojo namespace: urn:jboss:bean-deployer:2.0 - might be missing some xml features (potential exceptions).
+14:44:05,889 INFO  [org.jboss.weld.deployer] (MSC service thread 1-4) JBAS016002: Processing weld deployment 1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8.war
+14:44:05,904 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) JBAS016005: Starting Services for CDI deployment: 1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8.war
+14:44:05,908 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) JBAS016008: Starting weld service for deployment 1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8.war
+14:44:05,922 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-2) WELD-000119 Not generating any bean definitions from org.dejava.component.faces.test.message.FacesMessageHandlerTest$MessageInpection because of underlying class loading error
+14:44:05,923 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-2) catching: org.jboss.weld.resources.spi.ResourceLoadingException: Error loading class org.dejava.component.faces.test.message.FacesMessageHandlerTest$MessageInpection
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:152) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClass(BeanDeployer.java:86) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClasses(BeanDeployer.java:115) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployment.createBeans(BeanDeployment.java:171) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.WeldBootstrap.deployBeans(WeldBootstrap.java:336) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.as.weld.WeldContainer.start(WeldContainer.java:82) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.as.weld.services.WeldService.start(WeldService.java:76) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1811)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1746)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [rt.jar:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [rt.jar:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: java.lang.NoClassDefFoundError: Lorg/dejava/component/faces/test/message/FacesMessageHandlerTest;
+	at java.lang.Class.getDeclaredFields0(Native Method) [rt.jar:1.7.0_25]
+	at java.lang.Class.privateGetDeclaredFields(Class.java:2387) [rt.jar:1.7.0_25]
+	at java.lang.Class.getDeclaredFields(Class.java:1796) [rt.jar:1.7.0_25]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:102) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.run(SecureReflectionAccess.java:52) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.runAndWrap(SecureReflectionAccess.java:63) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections.getDeclaredFields(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.&lt;init&gt;(WeldClassImpl.java:153) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.of(WeldClassImpl.java:118) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:49) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:40) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingValueReference.compute(ComputingConcurrentHashMap.java:355) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.compute(ComputingConcurrentHashMap.java:184) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.getOrCompute(ComputingConcurrentHashMap.java:153) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap.getOrCompute(ComputingConcurrentHashMap.java:69) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingMapAdapter.get(ComputingConcurrentHashMap.java:393)
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:149) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	... 11 more
+Caused by: java.lang.ClassNotFoundException: org.dejava.component.faces.test.message.FacesMessageHandlerTest from [Module &quot;deployment.1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8.war:main&quot; from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:190)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:468)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassChecked(ConcurrentClassLoader.java:456)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:398)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:120)
+	... 29 more
+
+14:44:05,958 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-2) WELD-000119 Not generating any bean definitions from org.dejava.component.faces.test.message.FacesMessageHandlerTest$ButtonClickAcitivity because of underlying class loading error
+14:44:05,958 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-2) catching: org.jboss.weld.resources.spi.ResourceLoadingException: Error loading class org.dejava.component.faces.test.message.FacesMessageHandlerTest$ButtonClickAcitivity
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:152) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClass(BeanDeployer.java:86) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClasses(BeanDeployer.java:115) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployment.createBeans(BeanDeployment.java:171) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.WeldBootstrap.deployBeans(WeldBootstrap.java:336) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.as.weld.WeldContainer.start(WeldContainer.java:82) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.as.weld.services.WeldService.start(WeldService.java:76) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1811)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1746)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [rt.jar:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [rt.jar:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: java.lang.NoClassDefFoundError: Lorg/dejava/component/faces/test/message/FacesMessageHandlerTest;
+	at java.lang.Class.getDeclaredFields0(Native Method) [rt.jar:1.7.0_25]
+	at java.lang.Class.privateGetDeclaredFields(Class.java:2387) [rt.jar:1.7.0_25]
+	at java.lang.Class.getDeclaredFields(Class.java:1796) [rt.jar:1.7.0_25]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:102) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.run(SecureReflectionAccess.java:52) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.runAndWrap(SecureReflectionAccess.java:63) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections.getDeclaredFields(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.&lt;init&gt;(WeldClassImpl.java:153) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.of(WeldClassImpl.java:118) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:49) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:40) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingValueReference.compute(ComputingConcurrentHashMap.java:355) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.compute(ComputingConcurrentHashMap.java:184) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.getOrCompute(ComputingConcurrentHashMap.java:153) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap.getOrCompute(ComputingConcurrentHashMap.java:69) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingMapAdapter.get(ComputingConcurrentHashMap.java:393)
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:149) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	... 11 more
+Caused by: java.lang.ClassNotFoundException: org.dejava.component.faces.test.message.FacesMessageHandlerTest from [Module &quot;deployment.1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8.war:main&quot; from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:190)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:468)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassChecked(ConcurrentClassLoader.java:456)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:398)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:120)
+	... 29 more
+
+14:44:06,054 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-2) Inicializando Mojarra 2.1.7-jbossorg-1 (20120227-1401) para o contexto &apos;/1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8&apos;
+14:44:06,440 INFO  [org.hibernate.validator.xml.ValidationXmlParser] (MSC service thread 1-2) META-INF/validation.xml found. Parsing XML based configuration.
+14:44:06,452 INFO  [org.hibernate.validator.xml.ValidationXmlParser] (MSC service thread 1-2) Using org.dejava.component.validation.object.MessageInterpolatorImpl as message interpolator.
+14:44:06,721 INFO  [org.jboss.web] (MSC service thread 1-2) JBAS018210: Registering web context: /1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8
+14:44:06,779 INFO  [org.jboss.as.server] (management-handler-thread - 3) JBAS018559: Deployed &quot;1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8.war&quot;
+14:44:06.787 INFO - Property &quot;browserCapabilities&quot; was not specified, using default value of htmlUnit
+14:44:07,370 WARNING [javax.enterprise.resource.webcontainer.jsf.lifecycle] (http--127.0.0.1-8080-3) #{messageController.addInfoMessage()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.: javax.faces.FacesException: #{messageController.addInfoMessage()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: javax.faces.el.EvaluationException: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:102) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	... 38 more
+Caused by: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addInfoMessage(MessageController.java:30) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	... 39 more
+
+14:44:07,402 ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[default-host].[/1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8].[FacesServlet]] (http--127.0.0.1-8080-3) Servlet.service() for servlet FacesServlet threw exception: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addInfoMessage(MessageController.java:30) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+
+</system-out>
+  </testcase>
+  <testcase time="0.285" classname="org.dejava.component.faces.test.message.FacesMessageHandlerTest" name="testAddWarnMessage">
+    <failure message="expected:&lt;1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:472)
+	at org.junit.Assert.assertEquals(Assert.java:456)
+	at org.dejava.component.faces.test.message.FacesMessageHandlerTest$MessageInpection.assertMessageAdded(FacesMessageHandlerTest.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleMethodExecutor.invoke(LifecycleMethodExecutor.java:59)
+	at org.jboss.arquillian.container.test.impl.execution.LocalTestExecuter.execute(LocalTestExecuter.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.test.impl.execution.ContainerTestExecuter.execute(ContainerTestExecuter.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestExecutionVerifier.observeTestExecution(LifecycleTestExecutionVerifier.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createTestContext(TestContextHandler.java:89)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.executeTest(LifecycleTestDriver.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.fireTest(LifecycleTestDriver.java:73)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.lifecycle.LifecycleManagerImpl.fireEvent(LifecycleManagerImpl.java:41)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.executeEvents(WarpPhaseListener.java:68)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.afterPhase(WarpPhaseListener.java:48)
+	at com.sun.faces.lifecycle.Phase.handleAfterPhase(Phase.java:189)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:107)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:139)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:594)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpLifecycle.execute(WarpLifecycle.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpRequestProcessor.processWarpRequest(WarpRequestProcessor.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930)
+	at java.lang.Thread.run(Thread.java:724)
+</failure>
+    <system-out>14:44:07,704 WARNING [javax.enterprise.resource.webcontainer.jsf.lifecycle] (http--127.0.0.1-8080-3) #{messageController.addWarnMessage()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.: javax.faces.FacesException: #{messageController.addWarnMessage()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: javax.faces.el.EvaluationException: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:102) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	... 38 more
+Caused by: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addWarnMessage(MessageController.java:37) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	... 39 more
+
+14:44:07,733 ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[default-host].[/1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8].[FacesServlet]] (http--127.0.0.1-8080-3) Servlet.service() for servlet FacesServlet threw exception: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addWarnMessage(MessageController.java:37) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+
+</system-out>
+  </testcase>
+  <testcase time="0.377" classname="org.dejava.component.faces.test.message.FacesMessageHandlerTest" name="testAddErrorMessage">
+    <failure message="expected:&lt;1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:472)
+	at org.junit.Assert.assertEquals(Assert.java:456)
+	at org.dejava.component.faces.test.message.FacesMessageHandlerTest$MessageInpection.assertMessageAdded(FacesMessageHandlerTest.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleMethodExecutor.invoke(LifecycleMethodExecutor.java:59)
+	at org.jboss.arquillian.container.test.impl.execution.LocalTestExecuter.execute(LocalTestExecuter.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.test.impl.execution.ContainerTestExecuter.execute(ContainerTestExecuter.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestExecutionVerifier.observeTestExecution(LifecycleTestExecutionVerifier.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createTestContext(TestContextHandler.java:89)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:60)
+	at sun.reflect.GeneratedMethodAccessor12.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.executeTest(LifecycleTestDriver.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.fireTest(LifecycleTestDriver.java:73)
+	at sun.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.lifecycle.LifecycleManagerImpl.fireEvent(LifecycleManagerImpl.java:41)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.executeEvents(WarpPhaseListener.java:68)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.afterPhase(WarpPhaseListener.java:48)
+	at com.sun.faces.lifecycle.Phase.handleAfterPhase(Phase.java:189)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:107)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:139)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:594)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpLifecycle.execute(WarpLifecycle.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpRequestProcessor.processWarpRequest(WarpRequestProcessor.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930)
+	at java.lang.Thread.run(Thread.java:724)
+</failure>
+    <system-out>14:44:08,000 WARNING [javax.enterprise.resource.webcontainer.jsf.lifecycle] (http--127.0.0.1-8080-3) #{messageController.addErrorMessage()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.: javax.faces.FacesException: #{messageController.addErrorMessage()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: javax.faces.el.EvaluationException: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:102) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	... 38 more
+Caused by: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem n��o foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addErrorMessage(MessageController.java:44) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	... 39 more
+
+14:44:08,035 ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[default-host].[/1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8].[FacesServlet]] (http--127.0.0.1-8080-3) Servlet.service() for servlet FacesServlet threw exception: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addErrorMessage(MessageController.java:44) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+
+</system-out>
+  </testcase>
+  <testcase time="0.3" classname="org.dejava.component.faces.test.message.FacesMessageHandlerTest" name="testAddFatalMessage">
+    <failure message="expected:&lt;1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:472)
+	at org.junit.Assert.assertEquals(Assert.java:456)
+	at org.dejava.component.faces.test.message.FacesMessageHandlerTest$MessageInpection.assertMessageAdded(FacesMessageHandlerTest.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleMethodExecutor.invoke(LifecycleMethodExecutor.java:59)
+	at org.jboss.arquillian.container.test.impl.execution.LocalTestExecuter.execute(LocalTestExecuter.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.test.impl.execution.ContainerTestExecuter.execute(ContainerTestExecuter.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestExecutionVerifier.observeTestExecution(LifecycleTestExecutionVerifier.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createTestContext(TestContextHandler.java:89)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:75)
+	at sun.reflect.GeneratedMethodAccessor18.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:60)
+	at sun.reflect.GeneratedMethodAccessor12.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.executeTest(LifecycleTestDriver.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.fireTest(LifecycleTestDriver.java:73)
+	at sun.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.lifecycle.LifecycleManagerImpl.fireEvent(LifecycleManagerImpl.java:41)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.executeEvents(WarpPhaseListener.java:68)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.afterPhase(WarpPhaseListener.java:48)
+	at com.sun.faces.lifecycle.Phase.handleAfterPhase(Phase.java:189)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:107)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:139)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:594)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpLifecycle.execute(WarpLifecycle.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpRequestProcessor.processWarpRequest(WarpRequestProcessor.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930)
+	at java.lang.Thread.run(Thread.java:724)
+</failure>
+    <system-out>14:44:08,388 WARNING [javax.enterprise.resource.webcontainer.jsf.lifecycle] (http--127.0.0.1-8080-3) #{messageController.addFatalMessage()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.: javax.faces.FacesException: #{messageController.addFatalMessage()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: javax.faces.el.EvaluationException: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:102) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	... 38 more
+Caused by: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem n��o foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addFatalMessage(MessageController.java:58) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	... 39 more
+
+14:44:08,416 ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[default-host].[/1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8].[FacesServlet]] (http--127.0.0.1-8080-3) Servlet.service() for servlet FacesServlet threw exception: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addFatalMessage(MessageController.java:58) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+
+</system-out>
+  </testcase>
+  <testcase time="0.26" classname="org.dejava.component.faces.test.message.FacesMessageHandlerTest" name="testAddErrorMessageWithoutSeverity">
+    <failure message="expected:&lt;1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:472)
+	at org.junit.Assert.assertEquals(Assert.java:456)
+	at org.dejava.component.faces.test.message.FacesMessageHandlerTest$MessageInpection.assertMessageAdded(FacesMessageHandlerTest.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleMethodExecutor.invoke(LifecycleMethodExecutor.java:59)
+	at org.jboss.arquillian.container.test.impl.execution.LocalTestExecuter.execute(LocalTestExecuter.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.test.impl.execution.ContainerTestExecuter.execute(ContainerTestExecuter.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestExecutionVerifier.observeTestExecution(LifecycleTestExecutionVerifier.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createTestContext(TestContextHandler.java:89)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:75)
+	at sun.reflect.GeneratedMethodAccessor18.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:60)
+	at sun.reflect.GeneratedMethodAccessor12.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.executeTest(LifecycleTestDriver.java:81)
+	at org.jboss.arquillian.warp.impl.server.test.LifecycleTestDriver.fireTest(LifecycleTestDriver.java:73)
+	at sun.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.lifecycle.LifecycleManagerImpl.fireEvent(LifecycleManagerImpl.java:41)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.executeEvents(WarpPhaseListener.java:68)
+	at org.jboss.arquillian.warp.jsf.WarpPhaseListener.afterPhase(WarpPhaseListener.java:48)
+	at com.sun.faces.lifecycle.Phase.handleAfterPhase(Phase.java:189)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:107)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:139)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:594)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpLifecycle.execute(WarpLifecycle.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpRequestProcessor.processWarpRequest(WarpRequestProcessor.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117)
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930)
+	at java.lang.Thread.run(Thread.java:724)
+</failure>
+    <system-out>14:44:08,651 WARNING [javax.enterprise.resource.webcontainer.jsf.lifecycle] (http--127.0.0.1-8080-3) #{messageController.addErrorMessage2()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.: javax.faces.FacesException: #{messageController.addErrorMessage2()}: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: javax.faces.el.EvaluationException: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:102) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	... 38 more
+Caused by: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addErrorMessage2(MessageController.java:51) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	... 39 more
+
+14:44:08,679 ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[default-host].[/1fe96bdc-4d5f-4b99-8dd3-e7b2a77ffdd8].[FacesServlet]] (http--127.0.0.1-8080-3) Servlet.service() for servlet FacesServlet threw exception: org.dejava.component.i18n.message.exception.MessageNotFoundException: A chave da mensagem não foi encontrada.
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:234) [i18n-0.0.1.jar:]
+	at org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler.getMessage(SimpleMessageHandler.java:248) [i18n-0.0.1.jar:]
+	at org.dejava.component.faces.message.FacesMessageHandler.getMessage(FacesMessageHandler.java:46) [classes:]
+	at org.dejava.component.faces.message.FacesMessageHandler.addMessage(FacesMessageHandler.java:102) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.weld.bean.proxy.AbstractBeanInstance.invoke(AbstractBeanInstance.java:44) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bean.proxy.ProxyMethodHandler.invoke(ProxyMethodHandler.java:105) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.proxies.ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.addMessage(ApplicationMessageHandler$MessageHandler$Serializable$-1689355635$Proxy$_$$_WeldClientProxy.java) [weld-core-1.1.5.AS71.Final.jar:]
+	at org.dejava.component.faces.test.message.util.MessageController.addErrorMessage2(MessageController.java:51) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.apache.el.parser.AstValue.invoke(AstValue.java:262) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:278) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:39) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:88) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:794) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1259) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:118) [jsf-impl-2.1.7-jbossorg-2.jar:]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:593) [jboss-jsf-api_2.1_spec-2.0.1.Final.jar:2.0.1.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:329) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.weld.servlet.ConversationPropagationFilter.doFilter(ConversationPropagationFilter.java:62) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.HttpRequestProcessor.processHttpRequest(HttpRequestProcessor.java:73) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) [rt.jar:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) [rt.jar:1.7.0_25]
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135) [arquillian-core.jar:]
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115) [arquillian-core.jar:]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterWarp(WarpFilter.java:144) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilterHttp(WarpFilter.java:117) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.jboss.arquillian.warp.impl.server.execution.WarpFilter.doFilter(WarpFilter.java:90) [arquillian-warp-impl-1.0.0.Alpha3.jar:1.0.0.Alpha3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:280) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:248) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [jbossweb-7.0.13.Final.jar:]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:153) [jboss-as-web-7.1.1.Final.jar:7.1.1.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:368) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:671) [jbossweb-7.0.13.Final.jar:]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:930) [jbossweb-7.0.13.Final.jar:]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+
+</system-out>
+  </testcase>
+</testsuite>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="messages-form" prependId="false">
+		<h:commandLink styleClass="infoMessage" value="Info"
+			action="#{messageController.addInfoMessage()}" />
+		<h:commandLink styleClass="warnMessage" value="Warn"
+			action="#{messageController.addWarnMessage()}" />
+		<h:commandLink styleClass="errorMessage" value="Error"
+			action="#{messageController.addErrorMessage()}" />
+		<h:commandLink styleClass="errorMessage2" value="Error2"
+			action="#{messageController.addErrorMessage2()}" />
+		<h:commandLink styleClass="fatalMessage" value="Fatal"
+			action="#{messageController.addFatalMessage()}" />
+	</h:form>
+</h:body>
+</html>

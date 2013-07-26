@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="8.018" errors="1" skipped="0" tests="1" name="org.dejava.component.faces.converter.test.FacesInvRegexConvTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\bin"/>
+    <property name="java.vm.version" value="23.25-b01"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces"/>
+    <property name="java.runtime.version" value="1.7.0_25-b17"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\RVCOUT~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4623505790331946711.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\eclipse;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="D:\usuarios\rvcoutinho"/>
+    <property name="user.timezone" value="America/Sao_Paulo"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="rvcoutinho"/>
+    <property name="java.class.path" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\boot\plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B deploy"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="pt"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="1.7.0_25"/>
+    <property name="java.ext.dirs" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\ext;C:\windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\resources.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\rt.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\jsse.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\jce.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\charsets.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\jfr.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="maven.bootclasspath" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\boot\plexus-classworlds-2.4.jar"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase time="1.078" classname="org.dejava.component.faces.converter.test.FacesInvRegexConvTest" name="testInvRegexConv">
+    <error message="enriching request failed; caused by:
+java.io.NotSerializableException: org.dejava.component.faces.converter.test.FacesInvRegexConvTest" type="org.jboss.arquillian.warp.exception.ClientWarpExecutionException">org.jboss.arquillian.warp.exception.ClientWarpExecutionException: enriching request failed; caused by:
+java.io.NotSerializableException: org.dejava.component.faces.converter.test.FacesInvRegexConvTest
+	at org.jboss.arquillian.warp.impl.client.execution.DefaultHttpRequestEnrichmentService.enrichRequest(DefaultHttpRequestEnrichmentService.java:133)
+	at org.jboss.arquillian.warp.impl.client.execution.EnrichmentObserver.enrichRequest(EnrichmentObserver.java:80)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.client.execution.EnrichmentObserver.tryEnrichRequest(EnrichmentObserver.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.warp.impl.client.execution.DefaultHttpRequestEnrichmentFilter.filter(DefaultHttpRequestEnrichmentFilter.java:50)
+	at org.jboss.arquillian.warp.impl.client.proxy.DefaultProxyService$2.performInContext(DefaultProxyService.java:99)
+	at org.jboss.arquillian.warp.impl.client.proxy.DefaultProxyService$2.performInContext(DefaultProxyService.java:96)
+	at org.jboss.arquillian.warp.impl.client.context.operation.Contextualizer$2.performInContext(Contextualizer.java:54)
+	at org.jboss.arquillian.warp.impl.client.proxy.DefaultProxyService$3.filter(DefaultProxyService.java:108)
+	at org.littleshoot.proxy.ProxyHttpRequestEncoder.encode(ProxyHttpRequestEncoder.java:75)
+	at org.jboss.netty.handler.codec.oneone.OneToOneEncoder.handleDownstream(OneToOneEncoder.java:61)
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendDownstream(DefaultChannelPipeline.java:590)
+	at org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendDownstream(DefaultChannelPipeline.java:784)
+	at org.jboss.netty.channel.SimpleChannelHandler.writeRequested(SimpleChannelHandler.java:299)
+	at org.jboss.netty.channel.SimpleChannelHandler.handleDownstream(SimpleChannelHandler.java:261)
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendDownstream(DefaultChannelPipeline.java:590)
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendDownstream(DefaultChannelPipeline.java:581)
+	at org.jboss.netty.channel.Channels.write(Channels.java:712)
+	at org.jboss.netty.channel.Channels.write(Channels.java:679)
+	at org.jboss.netty.channel.AbstractChannel.write(AbstractChannel.java:246)
+	at org.littleshoot.proxy.HttpRequestHandler$1OnConnect.onConnect(HttpRequestHandler.java:407)
+	at org.littleshoot.proxy.HttpRequestHandler$1LocalChannelFutureListener.operationComplete(HttpRequestHandler.java:488)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:428)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListeners(DefaultChannelFuture.java:419)
+	at org.jboss.netty.channel.DefaultChannelFuture.setSuccess(DefaultChannelFuture.java:363)
+	at org.jboss.netty.channel.socket.nio.NioWorker$RegisterTask.run(NioWorker.java:184)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.processRegisterTaskQueue(AbstractNioWorker.java:338)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:244)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:35)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:102)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:724)
+Caused by: java.lang.RuntimeException: Could not transform and replicate class class java.util.Arrays$ArrayList:
+Cannot migrate transformed inspection back to original name
+	at org.jboss.arquillian.warp.impl.shared.RequestPayload.writeExternal(RequestPayload.java:113)
+	at java.io.ObjectOutputStream.writeExternalData(ObjectOutputStream.java:1456)
+	at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1427)
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1175)
+	at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:347)
+	at org.jboss.arquillian.warp.impl.utils.SerializationUtils.serializeToBytes(SerializationUtils.java:38)
+	at org.jboss.arquillian.warp.impl.utils.SerializationUtils.serializeToBase64(SerializationUtils.java:59)
+	at org.jboss.arquillian.warp.impl.client.execution.DefaultHttpRequestEnrichmentService.enrichRequest(DefaultHttpRequestEnrichmentService.java:125)
+	... 52 more
+Caused by: java.lang.IllegalStateException: Cannot migrate transformed inspection back to original name
+	at org.jboss.arquillian.warp.impl.client.transformation.MigratedInspection.migrate(MigratedInspection.java:77)
+	at org.jboss.arquillian.warp.impl.client.transformation.MigratedInspection.&lt;init&gt;(MigratedInspection.java:55)
+	at org.jboss.arquillian.warp.impl.shared.RequestPayload.writeExternal(RequestPayload.java:108)
+	... 59 more
+Caused by: java.lang.IllegalStateException: Unable to invoke static method serializeToBytes from class org.jboss.arquillian.warp.impl.utils.SerializationUtils
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator.invokeStatic(SeparateInvocator.java:82)
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator.access$700(SeparateInvocator.java:37)
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator$1.invoke(SeparateInvocator.java:195)
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator$1.invoke(SeparateInvocator.java:190)
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator$InvokeSeparately.run(SeparateInvocator.java:221)
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator.adapt(SeparateInvocator.java:190)
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator.adaptArgs(SeparateInvocator.java:169)
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator.access$200(SeparateInvocator.java:37)
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator$SeparationHandler.invoke(SeparateInvocator.java:95)
+	at com.sun.proxy.$Proxy35.process(Unknown Source)
+	at org.jboss.arquillian.warp.impl.client.transformation.MigratedInspection.migrate(MigratedInspection.java:74)
+	... 61 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.warp.impl.client.separation.SeparateInvocator.invokeStatic(SeparateInvocator.java:80)
+	... 71 more
+Caused by: java.lang.IllegalStateException: java.io.NotSerializableException: org.dejava.component.faces.converter.test.FacesInvRegexConvTest
+	at org.jboss.arquillian.warp.impl.utils.SerializationUtils.serializeToBytes(SerializationUtils.java:41)
+	... 76 more
+Caused by: java.io.NotSerializableException: org.dejava.component.faces.converter.test.FacesInvRegexConvTest
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1181)
+	at java.io.ObjectOutputStream.defaultWriteFields(ObjectOutputStream.java:1541)
+	at java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1506)
+	at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1429)
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1175)
+	at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:347)
+	at java.util.HashMap.writeObject(HashMap.java:1100)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at java.io.ObjectStreamClass.invokeWriteObject(ObjectStreamClass.java:988)
+	at java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1493)
+	at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1429)
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1175)
+	at java.io.ObjectOutputStream.defaultWriteFields(ObjectOutputStream.java:1541)
+	at java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1506)
+	at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1429)
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1175)
+	at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:347)
+	at org.jboss.arquillian.warp.impl.utils.SerializationUtils.serializeToBytes(SerializationUtils.java:38)
+	... 76 more
+</error>
+    <system-out>13:49:50,199 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016009: Stopping weld service for deployment test.war
+13:49:50,201 INFO  [org.jboss.as.jpa] (MSC service thread 1-7) JBAS011403: Stopping Persistence Unit Service &apos;test.war#TestDS&apos;
+13:49:50,202 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-7) HHH000227: Running hbm2ddl schema export
+13:49:50,226 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-7) HHH000230: Schema export complete
+13:49:50,255 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) JBAS010409: Unbound data source [datasource/TestDS]
+13:49:50,350 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) JBAS015877: Stopped deployment test.war in 162ms
+13:49:50,365 INFO  [org.jboss.as.repository] (management-handler-thread - 3) JBAS014901: Content removed from location C:\servidores\jboss-as-7.1.1.Final\standalone\data\content\f1\91367e0f341366905561379bacd104067c6fa6\content
+13:49:50,365 INFO  [org.jboss.as.server] (management-handler-thread - 3) JBAS018558: Undeployed &quot;test.war&quot;
+13:49:50.417 INFO - Property &quot;browserCapabilities&quot; was not specified, using default value of htmlUnit
+13:49:51.802 INFO - Removed POM artifact org.jboss.arquillian.extension:arquillian-warp:pom:1.0.0.Alpha3 from archive, it&apos;s dependencies were fetched.
+13:49:54,036 INFO  [org.jboss.as.repository] (management-handler-thread - 4) JBAS014900: Content added at location C:\servidores\jboss-as-7.1.1.Final\standalone\data\content\b1\16bae81330eac4b9b78ce650479be5a2098f9d\content
+13:49:54,043 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015876: Starting deployment of &quot;test.war&quot;
+13:49:55,775 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;implClass=org.jboss.arquillian.config.descriptor.impl.ArquillianDescriptorImpl&apos; for service type &apos;org.jboss.arquillian.config.descriptor.api.ArquillianDescriptor&apos;
+13:49:55,776 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;importerClass=org.jboss.shrinkwrap.descriptor.spi.node.dom.XmlDomNodeDescriptorImporterImpl&apos; for service type &apos;org.jboss.arquillian.config.descriptor.api.ArquillianDescriptor&apos;
+13:49:55,777 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;defaultName=arquillian.xml&apos; for service type &apos;org.jboss.arquillian.config.descriptor.api.ArquillianDescriptor&apos;
+13:49:55,778 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;implClass=org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.impl.web.WebAppDescriptorImpl&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.web.WebAppDescriptor&apos;
+13:49:55,780 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;importerClass=org.jboss.shrinkwrap.descriptor.spi.node.dom.XmlDomNodeDescriptorImporterImpl&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.web.WebAppDescriptor&apos;
+13:49:55,781 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;defaultName=web.xml&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.web.WebAppDescriptor&apos;
+13:49:55,782 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;implClass=org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.impl.application.ApplicationDescriptorImpl&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.application.ApplicationDescriptor&apos;
+13:49:55,783 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;importerClass=org.jboss.shrinkwrap.descriptor.spi.node.dom.XmlDomNodeDescriptorImporterImpl&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.application.ApplicationDescriptor&apos;
+13:49:55,784 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;defaultName=application.xml&apos; for service type &apos;org.jboss.arquillian.protocol.servlet.arq514hack.descriptors.api.application.ApplicationDescriptor&apos;
+13:49:55,787 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015893: Encountered invalid class name &apos;!org.jboss.arquillian.protocol.servlet.runner.ServletRemoteExtension&apos; for service type &apos;org.jboss.arquillian.container.test.spi.RemoteLoadableExtension&apos;
+13:49:55,792 INFO  [org.jboss.as.pojo] (MSC service thread 1-1) JBAS017000: Found legacy bean/pojo namespace: urn:jboss:bean-deployer:2.0 - might be missing some xml features (potential exceptions).
+13:49:55,802 INFO  [org.jboss.as.jpa] (MSC service thread 1-1) JBAS011401: Read persistence.xml for TestDS
+13:49:55,848 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) JBAS016002: Processing weld deployment test.war
+13:49:55,866 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) JBAS016005: Starting Services for CDI deployment: test.war
+13:49:55,871 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) JBAS010400: Bound data source [datasource/TestDS]
+13:49:55,872 INFO  [org.jboss.as.jpa] (MSC service thread 1-1) JBAS011402: Starting Persistence Unit Service &apos;test.war#TestDS&apos;
+13:49:55,873 INFO  [org.hibernate.ejb.Ejb3Configuration] (MSC service thread 1-1) HHH000204: Processing PersistenceUnitInfo [
+	name: TestDS
+	...]
+13:49:55,897 INFO  [org.hibernate.service.jdbc.connections.internal.ConnectionProviderInitiator] (MSC service thread 1-1) HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+13:49:56,101 INFO  [org.hibernate.dialect.Dialect] (MSC service thread 1-1) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+13:49:56,103 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (MSC service thread 1-1) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+13:49:56,105 INFO  [org.hibernate.engine.transaction.internal.TransactionFactoryInitiator] (MSC service thread 1-1) HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
+13:49:56,106 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (MSC service thread 1-1) HHH000397: Using ASTQueryTranslatorFactory
+13:49:56,110 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) HHH000227: Running hbm2ddl schema export
+13:49:56,165 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) HHH000230: Schema export complete
+13:49:56,166 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) JBAS016008: Starting weld service for deployment test.war
+13:49:56,180 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-3) WELD-000119 Not generating any bean definitions from org.dejava.component.faces.converter.test.FacesInvRegexConvTest$FillFormAndSubmit because of underlying class loading error
+13:49:56,181 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-3) catching: org.jboss.weld.resources.spi.ResourceLoadingException: Error loading class org.dejava.component.faces.converter.test.FacesInvRegexConvTest$FillFormAndSubmit
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:152) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClass(BeanDeployer.java:86) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClasses(BeanDeployer.java:115) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployment.createBeans(BeanDeployment.java:171) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.WeldBootstrap.deployBeans(WeldBootstrap.java:336) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.as.weld.WeldContainer.start(WeldContainer.java:82) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.as.weld.services.WeldService.start(WeldService.java:76) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1811)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1746)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [rt.jar:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [rt.jar:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: java.lang.NoClassDefFoundError: Lorg/dejava/component/faces/converter/test/FacesInvRegexConvTest;
+	at java.lang.Class.getDeclaredFields0(Native Method) [rt.jar:1.7.0_25]
+	at java.lang.Class.privateGetDeclaredFields(Class.java:2387) [rt.jar:1.7.0_25]
+	at java.lang.Class.getDeclaredFields(Class.java:1796) [rt.jar:1.7.0_25]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:102) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.run(SecureReflectionAccess.java:52) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.runAndWrap(SecureReflectionAccess.java:63) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections.getDeclaredFields(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.&lt;init&gt;(WeldClassImpl.java:153) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.of(WeldClassImpl.java:118) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:49) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:40) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingValueReference.compute(ComputingConcurrentHashMap.java:355) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.compute(ComputingConcurrentHashMap.java:184) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.getOrCompute(ComputingConcurrentHashMap.java:153) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap.getOrCompute(ComputingConcurrentHashMap.java:69) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingMapAdapter.get(ComputingConcurrentHashMap.java:393)
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:149) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	... 11 more
+Caused by: java.lang.ClassNotFoundException: org.dejava.component.faces.converter.test.FacesInvRegexConvTest from [Module &quot;deployment.test.war:main&quot; from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:190)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:468)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassChecked(ConcurrentClassLoader.java:456)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:398)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:120)
+	... 29 more
+
+13:49:56,213 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-3) WELD-000119 Not generating any bean definitions from org.dejava.component.faces.converter.test.FacesInvRegexConvTest$FieldValue because of underlying class loading error
+13:49:56,214 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-3) catching: org.jboss.weld.resources.spi.ResourceLoadingException: Error loading class org.dejava.component.faces.converter.test.FacesInvRegexConvTest$FieldValue
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:152) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClass(BeanDeployer.java:86) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClasses(BeanDeployer.java:115) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployment.createBeans(BeanDeployment.java:171) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.WeldBootstrap.deployBeans(WeldBootstrap.java:336) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.as.weld.WeldContainer.start(WeldContainer.java:82) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.as.weld.services.WeldService.start(WeldService.java:76) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1811)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1746)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [rt.jar:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [rt.jar:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: java.lang.NoClassDefFoundError: Lorg/dejava/component/faces/converter/test/FacesInvRegexConvTest;
+	at java.lang.Class.getDeclaredFields0(Native Method) [rt.jar:1.7.0_25]
+	at java.lang.Class.privateGetDeclaredFields(Class.java:2387) [rt.jar:1.7.0_25]
+	at java.lang.Class.getDeclaredFields(Class.java:1796) [rt.jar:1.7.0_25]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:102) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.run(SecureReflectionAccess.java:52) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.runAndWrap(SecureReflectionAccess.java:63) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections.getDeclaredFields(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.&lt;init&gt;(WeldClassImpl.java:153) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.of(WeldClassImpl.java:118) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:49) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:40) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingValueReference.compute(ComputingConcurrentHashMap.java:355) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.compute(ComputingConcurrentHashMap.java:184) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.getOrCompute(ComputingConcurrentHashMap.java:153) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap.getOrCompute(ComputingConcurrentHashMap.java:69) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingMapAdapter.get(ComputingConcurrentHashMap.java:393)
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:149) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	... 11 more
+Caused by: java.lang.ClassNotFoundException: org.dejava.component.faces.converter.test.FacesInvRegexConvTest from [Module &quot;deployment.test.war:main&quot; from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:190)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:468)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassChecked(ConcurrentClassLoader.java:456)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:398)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:120)
+	... 29 more
+
+13:49:56,236 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-3) WELD-000119 Not generating any bean definitions from org.dejava.component.faces.converter.test.FacesInvRegexConvTest$FieldInpection because of underlying class loading error
+13:49:56,237 INFO  [org.jboss.weld.ClassLoading] (MSC service thread 1-3) catching: org.jboss.weld.resources.spi.ResourceLoadingException: Error loading class org.dejava.component.faces.converter.test.FacesInvRegexConvTest$FieldInpection
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:152) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClass(BeanDeployer.java:86) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployer.addClasses(BeanDeployer.java:115) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.BeanDeployment.createBeans(BeanDeployment.java:171) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.bootstrap.WeldBootstrap.deployBeans(WeldBootstrap.java:336) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.as.weld.WeldContainer.start(WeldContainer.java:82) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.as.weld.services.WeldService.start(WeldService.java:76) [jboss-as-weld-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1811)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1746)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [rt.jar:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [rt.jar:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_25]
+Caused by: java.lang.NoClassDefFoundError: Lorg/dejava/component/faces/converter/test/FacesInvRegexConvTest;
+	at java.lang.Class.getDeclaredFields0(Native Method) [rt.jar:1.7.0_25]
+	at java.lang.Class.privateGetDeclaredFields(Class.java:2387) [rt.jar:1.7.0_25]
+	at java.lang.Class.getDeclaredFields(Class.java:1796) [rt.jar:1.7.0_25]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:102) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections$4.work(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.run(SecureReflectionAccess.java:52) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflectionAccess.runAndWrap(SecureReflectionAccess.java:63) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.util.reflection.SecureReflections.getDeclaredFields(SecureReflections.java:99) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.&lt;init&gt;(WeldClassImpl.java:153) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.introspector.jlr.WeldClassImpl.of(WeldClassImpl.java:118) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:49) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at org.jboss.weld.resources.ClassTransformer$TransformTypeToWeldClass.apply(ClassTransformer.java:40) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingValueReference.compute(ComputingConcurrentHashMap.java:355) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.compute(ComputingConcurrentHashMap.java:184) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingSegment.getOrCompute(ComputingConcurrentHashMap.java:153) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap.getOrCompute(ComputingConcurrentHashMap.java:69) [guava-14.0.1.jar:]
+	at com.google.common.collect.ComputingConcurrentHashMap$ComputingMapAdapter.get(ComputingConcurrentHashMap.java:393)
+	at org.jboss.weld.resources.ClassTransformer.loadClass(ClassTransformer.java:149) [weld-core-1.1.5.AS71.Final.jar:2012-02-10 15:31]
+	... 11 more
+Caused by: java.lang.ClassNotFoundException: org.dejava.component.faces.converter.test.FacesInvRegexConvTest from [Module &quot;deployment.test.war:main&quot; from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:190)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:468)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassChecked(ConcurrentClassLoader.java:456)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:398)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:120)
+	... 29 more
+
+13:49:56,369 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-1) Inicializando Mojarra 2.1.7-jbossorg-1 (20120227-1401) para o contexto &apos;/test&apos;
+13:49:56,572 INFO  [org.hibernate.validator.xml.ValidationXmlParser] (MSC service thread 1-1) META-INF/validation.xml found. Parsing XML based configuration.
+13:49:56,584 INFO  [org.hibernate.validator.xml.ValidationXmlParser] (MSC service thread 1-1) Using org.dejava.component.validation.object.MessageInterpolatorImpl as message interpolator.
+13:49:57,106 INFO  [org.jboss.web] (MSC service thread 1-1) JBAS018210: Registering web context: /test
+13:49:57,120 INFO  [org.jboss.as.server] (management-handler-thread - 4) JBAS018559: Deployed &quot;test.war&quot;
+</system-out>
+  </testcase>
+</testsuite>

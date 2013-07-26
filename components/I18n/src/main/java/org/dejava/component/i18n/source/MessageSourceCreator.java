@@ -85,7 +85,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 		// Tries to get the current properties file content.
 		try {
 			// Tries to get the properties file.
-			final Reader propsReader = new InputStreamReader(new FileInputStream(msgSrcFile), UNICODE_CHARSET);
+			final Reader propsReader = new InputStreamReader(new FileInputStream(msgSrcFile), LATIN1_CHARSET);
 			// Loads the properties object with the file content.
 			msgSrcProps.load(propsReader);
 			// Closes the input stream.
@@ -131,7 +131,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 		try {
 			// Creates the writer for the current properties file.
 			final Writer propsOutputStream = new OutputStreamWriter(new FileOutputStream(msgSrcFile),
-					UNICODE_CHARSET);
+					LATIN1_CHARSET);
 			// Store the new data for the properties file.
 			msgSrcProps.store(propsOutputStream, description);
 			// Closes the output stream.

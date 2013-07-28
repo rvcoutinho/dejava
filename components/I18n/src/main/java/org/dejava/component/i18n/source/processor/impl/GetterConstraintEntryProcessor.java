@@ -27,7 +27,7 @@ public class GetterConstraintEntryProcessor implements MessageSourceEntryProcess
 		final Set<String> entries = new LinkedHashSet<>();
 		// For each enclosed elements of the class.
 		for (final Element currentClassElement : currentClass.getEnclosedElements()) {
-			// If the element is a public final field.
+			// If the element is a method.
 			if (currentClassElement.getKind() == ElementKind.METHOD) {
 				// If the name is from a getter.
 				if (MethodMirror.isGetter(currentClassElement.getSimpleName().toString())) {
@@ -35,7 +35,7 @@ public class GetterConstraintEntryProcessor implements MessageSourceEntryProcess
 					for (final AnnotationMirror currentAnnotation : currentClassElement
 							.getAnnotationMirrors()) {
 						// If the annotation is a constraint.
-						if (currentAnnotation.getClass().getAnnotation(Constraint.class) != null) {
+						if (currentAnnotation.getAnnotationType().asElement().getAnnotation(Constraint.class) != null) {
 							// Adds the current field annotation name to the entry set.
 							entries.add(originalClass.getSimpleName().toString()
 									+ '.'

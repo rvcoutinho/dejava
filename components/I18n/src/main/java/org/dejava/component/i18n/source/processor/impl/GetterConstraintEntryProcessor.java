@@ -35,7 +35,7 @@ public class GetterConstraintEntryProcessor implements MessageSourceEntryProcess
 					for (final AnnotationMirror currentAnnotation : currentClassElement
 							.getAnnotationMirrors()) {
 						// If the annotation is a constraint.
-						if (currentClassElement.getAnnotation(Constraint.class) != null) {
+						if (currentAnnotation.getClass().getAnnotation(Constraint.class) != null) {
 							// Adds the current field annotation name to the entry set.
 							entries.add(originalClass.getSimpleName().toString()
 									+ '.'

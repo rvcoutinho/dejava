@@ -58,4 +58,62 @@ public class SomeClass extends SomeSuperClass {
 	@SomeOtherAnnotation
 	private Object fieldF;
 
+	/**
+	 * Some method.
+	 * 
+	 * @return Returns "E".
+	 */
+	public String methodE() {
+		return "E";
+	}
+
+	/**
+	 * Some method.
+	 * 
+	 * @return Returns "F".
+	 */
+	protected static String methodF() {
+		return "F";
+	}
+
+	/**
+	 * Some method.
+	 * 
+	 * @return Returns "G".
+	 */
+	@SuppressWarnings("unused")
+	private final String methodG() {
+		return "G";
+	}
+
+	/**
+	 * Some method.
+	 * 
+	 * @return Returns "H".
+	 */
+	String methodH() {
+		return "H";
+	}
+
+	/**
+	 * Some method.
+	 * 
+	 * @return Returns "I".
+	 */
+	@Override
+	public String methodI() {
+		return "I";
+	}
+
+	/**
+	 * Some method.
+	 * 
+	 * @param append
+	 *            Append the string to the return string.
+	 * @return Returns "J".
+	 */
+	public String methodJ(final String append) {
+		return "J" + append;
+	}
+
 }

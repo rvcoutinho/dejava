@@ -17,6 +17,7 @@ import org.dejava.component.exception.localized.unchecked.EmptyParameterExceptio
 import org.dejava.component.exception.localized.unchecked.InvalidParameterException;
 import org.dejava.component.reflection.ClassMirror;
 import org.dejava.component.reflection.FieldMirror;
+import org.dejava.component.reflection.MethodMirror;
 import org.dejava.component.reflection.test.util.SomeAnnotation;
 import org.dejava.component.reflection.test.util.SomeClass;
 import org.dejava.component.reflection.test.util.SomeOtherAnnotation;
@@ -114,10 +115,10 @@ public class ClassMirrorTest {
 	}
 
 	/**
-	 * Test the getSuperClasses method.
+	 * Test the getSuperClasses method including interfaces.
 	 */
 	@Test
-	public void testGetSuperClasses() {
+	public void testGetSuperClassesInterfaces() {
 		// Creates a new class mirror for the array list class.
 		@SuppressWarnings("rawtypes")
 		final ClassMirror<ArrayList> clazz = new ClassMirror<>(ArrayList.class);
@@ -135,8 +136,28 @@ public class ClassMirrorTest {
 		superClasses.add(new ClassMirror<>(Serializable.class));
 		superClasses.add(new ClassMirror<>(Object.class));
 		// Assert that the super classes are the same.
-		Assert.assertTrue(clazz.getSuperClasses().containsAll(superClasses));
-		Assert.assertTrue(superClasses.containsAll(clazz.getSuperClasses()));
+		Assert.assertTrue(clazz.getSuperClasses(true).containsAll(superClasses));
+		Assert.assertTrue(superClasses.containsAll(clazz.getSuperClasses(true)));
+	}
+
+	/**
+	 * Test the getSuperClasses method not including interfaces.
+	 */
+	@Test
+	public void testGetSuperClassesNoInterfaces() {
+		// Creates a new class mirror for the array list class.
+		@SuppressWarnings("rawtypes")
+		final ClassMirror<ArrayList> clazz = new ClassMirror<>(ArrayList.class);
+		// Creates a new collection with the super classes of the array list class.
+		final Collection<ClassMirror<?>> superClasses = new ArrayList<>();
+		// Adds all its super classes (including itself).
+		superClasses.add(clazz);
+		superClasses.add(new ClassMirror<>(AbstractList.class));
+		superClasses.add(new ClassMirror<>(AbstractCollection.class));
+		superClasses.add(new ClassMirror<>(Object.class));
+		// Assert that the super classes are the same.
+		Assert.assertTrue(clazz.getSuperClasses(false).containsAll(superClasses));
+		Assert.assertTrue(superClasses.containsAll(clazz.getSuperClasses(false)));
 	}
 
 	/**
@@ -355,5 +376,75 @@ public class ClassMirrorTest {
 	}
 
 	// TODO Tests for getFieldPath()
+	// TODO Tests for getPackacgeAsDir()
 
+	/**
+	 * Tests the getAnyMethod with a null name.
+	 */
+	@Test(expected = EmptyParameterException.class)
+	public void testGetAnyMethodNullName() {
+		new ClassMirror<>(Class.class).getAnyMethod(null, null);
+	}
+
+	/**
+	 * Some unavailable methods "names/parameters" for Class.
+	 */
+	private static final Object[][] UNAVAILABLE_METHODS = { { "fdsdf", null }, { "getMethod", null },
+			{ "getField", null }, { "getFields", new Class[] { Integer.class } } };
+
+	/**
+	 * Tests the getAnyMethod method for unavailable methods.
+	 */
+	@Test
+	public void testGetAnyMethodUnavailableMethods() {
+		// For each method that should be unavailable.
+		for (final Object[] currentMethodSignature : UNAVAILABLE_METHODS) {
+			// Tries to get the method with the exact signature.
+			try {
+				new ClassMirror<>(Class.class).getAnyMethod((String) currentMethodSignature[0],
+						(Class<?>[]) currentMethodSignature[1]);
+				// If no exception is raised, fails the test.
+			}
+			// If an invalid parameter exception is raised.
+			catch (final InvalidParameterException exception) {
+				// Continues, as that is expected.
+			}
+		}
+	}
+
+	/**
+	 * Some valid methods "names/parameters/declaring class" for Class.
+	 */
+	private static final Object[][] VALID_METHODS = { { "methodA", null, SomeSuperClass.class },
+			{ "methodB", null, SomeSuperClass.class }, { "methodC", null, SomeSuperClass.class },
+			{ "methodD", null, SomeSuperClass.class }, { "methodE", null, SomeClass.class },
+			{ "methodF", null, SomeClass.class }, { "methodG", null, SomeClass.class },
+			{ "methodH", null, SomeClass.class }, { "methodI", null, SomeClass.class },
+			{ "methodJ", null, SomeSuperClass.class },
+			{ "methodJ", new Class[] { String.class }, SomeClass.class } };
+
+	/**
+	 * Tests the getAnyMethod method for valid arguments.
+	 */
+	@Test
+	public void testGetAnyMethodValidArguments() {
+		// For each method that should be valid.
+		for (final Object[] currentMethodSignature : VALID_METHODS) {
+			// Tries to get the method with the exact signature.
+			final MethodMirror method = new ClassMirror<>(SomeClass.class).getAnyMethod(
+					(String) currentMethodSignature[0], (Class<?>[]) currentMethodSignature[1]);
+			// Asserts that the method has the expected name.
+			Assert.assertEquals(currentMethodSignature[0], method.getReflectedMethod().getName());
+			// If the parameter types are not given (null).
+			if (currentMethodSignature[1] == null) {
+				// Updates them to be an empty array.
+				currentMethodSignature[1] = new Class[] {};
+			}
+			// Asserts that the method has the expected parameters types.
+			Assert.assertArrayEquals((Object[]) currentMethodSignature[1], method.getReflectedMethod()
+					.getParameterTypes());
+			// Asserts that the method has the expected declaring class.
+			Assert.assertEquals(currentMethodSignature[2], method.getReflectedMethod().getDeclaringClass());
+		}
+	}
 }

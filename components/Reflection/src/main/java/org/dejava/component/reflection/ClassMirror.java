@@ -16,8 +16,8 @@ import org.dejava.component.reflection.util.MessageTypes;
 import org.dejava.component.validation.method.PreConditions;
 
 /**
- * Extends the behavior of the Class type. It is part of an extended Java reflection API, that intends to make
- * reflection easier.
+ * Extends the reflection behavior of the Class type. It is part of an extended Java reflection API, that
+ * intends to make reflection easier.
  * 
  * @param <Reflected>
  *            The class to be reflected.
@@ -230,26 +230,32 @@ public class ClassMirror<Reflected> {
 	/**
 	 * Gets all the classes and interfaces inherited by the reflected class (including this one).
 	 * 
+	 * @param includeInterfaces
+	 *            If the interfaces of the class should be included.
 	 * @return All the classes and interfaces inherited by the reflected class (including this one).
 	 */
-	public Set<ClassMirror<?>> getSuperClasses() {
+	public Set<ClassMirror<?>> getSuperClasses(final Boolean includeInterfaces) {
 		// All classes to be returned.
 		final Set<ClassMirror<?>> classes = new LinkedHashSet<ClassMirror<?>>();
 		// Adds the class itself to the list.
 		classes.add(this);
-		// If the class has any interfaces.
-		if (getReflectedClass().getInterfaces() != null) {
-			// For each interface.
-			for (final Class<?> currentInterface : getReflectedClass().getInterfaces()) {
-				// Calls the same method recursively with the current interface (adding the classes to the
-				// list).
-				classes.addAll(new ClassMirror<>(currentInterface).getSuperClasses());
+		// If the interfaces should be included.
+		if (includeInterfaces) {
+			// If the class has any interfaces.
+			if (getReflectedClass().getInterfaces() != null) {
+				// For each interface.
+				for (final Class<?> currentInterface : getReflectedClass().getInterfaces()) {
+					// Calls the same method recursively with the current interface (adding the classes to the
+					// list).
+					classes.addAll(new ClassMirror<>(currentInterface).getSuperClasses(includeInterfaces));
+				}
 			}
 		}
 		// If the class has any superclass.
 		if (getReflectedClass().getSuperclass() != null) {
 			// Calls the same method recursively with its superclass (adding the classes to the list).
-			classes.addAll(new ClassMirror<>(getReflectedClass().getSuperclass()).getSuperClasses());
+			classes.addAll(new ClassMirror<>(getReflectedClass().getSuperclass())
+					.getSuperClasses(includeInterfaces));
 		}
 		// Adds the Object class.
 		classes.add(new ClassMirror<Object>(Object.class));
@@ -384,6 +390,36 @@ public class ClassMirror<Reflected> {
 	}
 
 	/**
+	 * Gets any method (despite of its modifiers) in the current class. The first method found with the
+	 * signature is returned. Super classes are also part of the search.
+	 * 
+	 * @param methodName
+	 *            Name of the method to be found.
+	 * @param paramsClasses
+	 *            The exact parameters classes for the method to be found.
+	 * @return A method from the reflected class for the exact given parameters.
+	 */
+	public MethodMirror getAnyMethod(final String methodName, final Class<?>[] paramsClasses) {
+		// Asserts that the method name is not empty.
+		PreConditions.assertParamNotEmpty(ClassParamKeys.METHOD_NAME, methodName);
+		// For each class or super class.
+		for (final ClassMirror<?> currentClass : getSuperClasses(false)) {
+			// Tries to get the method from the current class.
+			try {
+				return new MethodMirror(currentClass.getReflectedClass().getDeclaredMethod(methodName,
+						paramsClasses));
+			}
+			// If the method cannot be found.
+			catch (final Exception exception) {
+				// Ignores and keeps looking.
+			}
+		}
+		// If no method has been found, throws an exception.
+		throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.METHOD_NOT_FOUND,
+				new Object[] { getReflectedClass(), methodName, paramsClasses }, null);
+	}
+
+	/**
 	 * Gets a method from the reflected class for the given parameters. The search includes the inherited
 	 * classes and interfaces of each parameter class.
 	 * 
@@ -406,12 +442,12 @@ public class ClassMirror<Reflected> {
 			// Gets the current varying class.
 			final ClassMirror<?> currentVaryingClass = new ClassMirror<>(paramsClasses[varyingParamIndex]);
 			// For each class inherited by the current parameter being varied.
-			for (final ClassMirror<?> currentParamClass : currentVaryingClass.getSuperClasses()) {
+			for (final ClassMirror<?> currentParamClass : currentVaryingClass.getSuperClasses(true)) {
 				// Changes the parameter class with the current superclass/interface.
 				paramsClasses[varyingParamIndex] = currentParamClass.getReflectedClass();
 				// Tries to return the method with the exact parameters classes.
 				try {
-					return new MethodMirror(getReflectedClass().getMethod(methodName, paramsClasses));
+					return getAnyMethod(methodName, paramsClasses);
 				}
 				// If it is not possible to get the method.
 				catch (final Exception exception) {
@@ -428,7 +464,7 @@ public class ClassMirror<Reflected> {
 					}
 				}
 			}
-			// If no method was found, throws an exception.
+			// If no method has been found, throws an exception.
 			throw new InvalidParameterException(MessageTypes.Error.class, ErrorKeys.METHOD_NOT_FOUND,
 					new Object[] { getReflectedClass(), methodName, paramsClasses, varyingParamIndex }, null);
 		}
@@ -455,13 +491,13 @@ public class ClassMirror<Reflected> {
 	 */
 	public MethodMirror getMethod(final String methodName, final Class<?>[] paramsClasses)
 			throws InvalidParameterException, EmptyParameterException {
-		// Asserts that the method name is not empty.
+		// Asserts that the method name is not empty. TODO Re-think if it is needed here.
 		PreConditions.assertParamNotEmpty(ClassParamKeys.METHOD_NAME, methodName);
 		// If there are no parameters for the method to be found.
 		if ((paramsClasses == null) || (paramsClasses.length == 0)) {
 			// Tries to get the method normally using the reflection API.
 			try {
-				return new MethodMirror(getReflectedClass().getMethod(methodName));
+				return getAnyMethod(methodName, null);
 			}
 			// If the method cannot be found or accessed.
 			catch (final Exception exception) {
@@ -552,7 +588,7 @@ public class ClassMirror<Reflected> {
 		// Creates the set for the annotations.
 		final Set<AnnotationMirror<?>> annotations = new LinkedHashSet<>();
 		// For each super class of the reflected class.
-		for (final ClassMirror<?> currentClass : getSuperClasses()) {
+		for (final ClassMirror<?> currentClass : getSuperClasses(true)) {
 			// For each annotation in the current class.
 			for (final Annotation currentAnnotation : currentClass.getReflectedClass().getAnnotations()) {
 				// Adds the annotation to the set.
@@ -577,7 +613,7 @@ public class ClassMirror<Reflected> {
 		// Creates the set for the annotations.
 		final Collection<AnnotationMirror<AnyAnnotation>> annotations = new ArrayList<>();
 		// For each super class of the reflected class.
-		for (final ClassMirror<?> currentClass : getSuperClasses()) {
+		for (final ClassMirror<?> currentClass : getSuperClasses(true)) {
 			// Tries to get the annotation for the current class.
 			final AnyAnnotation annotation = currentClass.getReflectedClass().getAnnotation(annotationClass);
 			// If the annotation is found.
@@ -639,7 +675,7 @@ public class ClassMirror<Reflected> {
 		try {
 			// For each class inherited by the current parameter being varied.
 			for (final ClassMirror<?> currentParamClass : new ClassMirror<>(paramsClasses[varyingParamIndex])
-					.getSuperClasses()) {
+					.getSuperClasses(true)) {
 				// Changes the parameter class with the current superclass/interface.
 				paramsClasses[varyingParamIndex] = currentParamClass.getReflectedClass();
 				// Tries to return the constructor with the exact parameters classes.

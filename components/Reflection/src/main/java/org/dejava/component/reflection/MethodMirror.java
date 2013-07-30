@@ -16,7 +16,8 @@ import org.dejava.component.reflection.util.MessageTypes;
 import org.dejava.component.validation.method.PreConditions;
 
 /**
- * TODO
+ * Extends the reflection behavior of the Method type. It is part of an extended Java reflection API, that
+ * intends to make reflection easier.
  */
 public class MethodMirror {
 
@@ -250,8 +251,8 @@ public class MethodMirror {
 	 * @throws InvocationException
 	 *             If the method throws an exception itself.
 	 */
-	public Object invokeMethod(final String jndiPath, final Boolean ignoreAccess,
-			final Object[] paramsValues) throws InvalidParameterException, InvocationException {
+	public Object invokeMethod(final String jndiPath, final Boolean ignoreAccess, final Object[] paramsValues)
+			throws InvalidParameterException, InvocationException {
 		// Asserts that the JNDI path is not empty.
 		PreConditions.assertParamNotEmpty(MethodParamKeys.JNDI_PATH, jndiPath);
 		// Tries to invoke the method.

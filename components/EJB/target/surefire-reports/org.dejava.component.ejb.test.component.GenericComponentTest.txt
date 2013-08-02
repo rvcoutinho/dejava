@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.dejava.component.ejb.test.component.GenericComponentTest
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.811 sec
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 57.488 sec

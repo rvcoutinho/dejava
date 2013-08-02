@@ -35,6 +35,34 @@ public class ExternalEntityLoader {
 	private static final String ENTITY_ID_GETTER = "getIdentifier";
 
 	/**
+	 * The direct retrieve method name (if the external entity is mapped directly).
+	 */
+	public static final String DIR_RET_METHOD = "getById";
+
+	/**
+	 * The reverse retrieve method name (if the external entity maps the relationship).
+	 */
+	public static final String REV_RET_METHOD = "getByAttribute";
+
+	/**
+	 * The direct retrieve method parameters classes (if {@link ExternalEntity#mappedBy()} is empty).
+	 */
+	public static final Class<?>[] DIR_RET_METHOD_PARAMS_CLASSES = { Integer.class };
+
+	/**
+	 * The reverse retrieve method parameters classes (if {@link ExternalEntity#mappedBy()} is not empty) for a single
+	 * external entity.
+	 */
+	public static final Class<?>[] REV_SINGLE_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class };
+
+	/**
+	 * The reverse retrieve method parameters classes (if {@link ExternalEntity#mappedBy()} is not empty) for multiple
+	 * external entities.
+	 */
+	public static final Class<?>[] REV_MULTI_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class,
+			Integer.class, Integer.class };
+
+	/**
 	 * Gets the parameters values for the method used to retrieve the external entities.
 	 * 
 	 * @param entity
@@ -112,12 +140,12 @@ public class ExternalEntityLoader {
 			// If the external entity is mapped directly.
 			if (externalEntityInfo.mappedBy().isEmpty()) {
 				// The default method name for the context is used.
-				methodName = ExternalEntity.DIR_RET_METHOD;
+				methodName = DIR_RET_METHOD;
 			}
 			// If the external entity is reverse mapped.
 			else {
 				// The default method name for the context is used.
-				methodName = ExternalEntity.REV_RET_METHOD;
+				methodName = REV_RET_METHOD;
 			}
 		}
 		// Returns the method name.
@@ -139,19 +167,19 @@ public class ExternalEntityLoader {
 			// If the external entity is mapped directly.
 			if (externalEntityInfo.mappedBy().isEmpty()) {
 				// The default parameters classes for the context are used.
-				paramsClasses = ExternalEntity.DIR_RET_METHOD_PARAMS_CLASSES;
+				paramsClasses = DIR_RET_METHOD_PARAMS_CLASSES;
 			}
 			// If the external entity is reverse mapped.
 			else {
 				// If the mapping is for a single entity.
 				if (externalEntityInfo.singleEntity()) {
 					// The default parameters classes for the context are used.
-					paramsClasses = ExternalEntity.REV_SINGLE_RET_METHOD_PARAMS_CLASSES;
+					paramsClasses = REV_SINGLE_RET_METHOD_PARAMS_CLASSES;
 				}
 				// If the mapping is for a multiple entities.
 				else {
 					// The default parameters classes for the context are used.
-					paramsClasses = ExternalEntity.REV_MULTI_RET_METHOD_PARAMS_CLASSES;
+					paramsClasses = REV_MULTI_RET_METHOD_PARAMS_CLASSES;
 				}
 			}
 		}

@@ -39,47 +39,20 @@ public @interface ExternalEntity {
 	String mappedBy() default "";
 
 	/**
-	 * The direct retrieve method name (if the external entity is mapped directly).
-	 */
-	public static final String DIR_RET_METHOD = "getById";
-
-	/**
-	 * The reverse retrieve method name (if the external entity maps the relationship).
-	 */
-	public static final String REV_RET_METHOD = "getByAttribute";
-
-	/**
 	 * The name of the method to be used in order to retrieve the external entity. The method signature must
 	 * be compatible with the parameters returned by the {@link #paramsValuesMethod()}. The default values are
-	 * "getById" (if the external entity is mapped directly) or "getByAttribute" (if the external entity maps
-	 * the relationship).
+	 * {@link ExternalEntityLoader#DIR_RET_METHOD} (if the external entity is mapped directly) or
+	 * {@link ExternalEntityLoader#REV_RET_METHOD} (if the external entity maps the relationship).
 	 */
 	String retrieveMethod() default "";
 
 	/**
-	 * The direct retrieve method parameters classes (if {@link #mappedBy()} is empty).
-	 */
-	public static final Class<?>[] DIR_RET_METHOD_PARAMS_CLASSES = { Integer.class };
-
-	/**
-	 * The reverse retrieve method parameters classes (if {@link #mappedBy()} is not empty) for a single
-	 * external entity.
-	 */
-	public static final Class<?>[] REV_SINGLE_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class };
-
-	/**
-	 * The reverse retrieve method parameters classes (if {@link #mappedBy()} is not empty) for multiple
-	 * external entities.
-	 */
-	public static final Class<?>[] REV_MULTI_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class,
-			Integer.class, Integer.class };
-
-	/**
 	 * The parameters classes for the method to used in order to retrieve the external entity. The default
-	 * values are [Integer.class] (if {@link #mappedBy()} is empty), [String.class, Object.class,
-	 * Integer.class, Integer.class] (if {@link #mappedBy()} is not empty and {@link #singleEntity()} is
-	 * false) or [String.class, Object.class, Integer.class, Integer.class] (if {@link #mappedBy()} is not
-	 * empty and {@link #singleEntity()} is true).
+	 * values are {@link ExternalEntityLoader#DIR_RET_METHOD_PARAMS_CLASSES} (if {@link #mappedBy()} is
+	 * empty), {@link ExternalEntityLoader#REV_SINGLE_RET_METHOD_PARAMS_CLASSES} (if {@link #mappedBy()} is
+	 * not empty and {@link #singleEntity()} is false) or
+	 * {@link ExternalEntityLoader#REV_MULTI_RET_METHOD_PARAMS_CLASSES} (if {@link #mappedBy()} is not empty
+	 * and {@link #singleEntity()} is true).
 	 */
 	Class<?>[] retrieveMethodParamsClasses() default {};
 

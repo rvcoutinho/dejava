@@ -1,7 +1,5 @@
 package org.dejava.component.faces.test.message.util;
 
-import java.util.Locale;
-
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
@@ -36,8 +34,10 @@ public class WebResources {
 	 */
 	@Faces
 	@Produces
+	@RequestScoped
 	public MessageHandler getMessageHandler() {
-		return SimpleMessageHandler.getMessageHandler(Locale.getDefault());
+		return SimpleMessageHandler.getMessageHandler(getFacesContext().getExternalContext()
+				.getRequestLocale());
 	}
 
 	/**

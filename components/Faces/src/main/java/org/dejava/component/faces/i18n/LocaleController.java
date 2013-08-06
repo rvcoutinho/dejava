@@ -1,5 +1,6 @@
 package org.dejava.component.faces.i18n;
 
+import java.io.Serializable;
 import java.util.Locale;
 
 import javax.faces.bean.SessionScoped;
@@ -11,7 +12,12 @@ import javax.inject.Named;
  */
 @SessionScoped
 @Named(value = "localeController")
-public class LocaleController {
+public class LocaleController implements Serializable {
+
+	/**
+	 * Generated serial.
+	 */
+	private static final long serialVersionUID = 2921686219608561186L;
 
 	/**
 	 * Gets the current instance for the faces context.

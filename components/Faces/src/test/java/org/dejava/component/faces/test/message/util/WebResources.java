@@ -3,7 +3,9 @@ package org.dejava.component.faces.test.message.util;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
+import org.dejava.component.faces.i18n.LocaleController;
 import org.dejava.component.faces.message.FacesMessageHandler;
 import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
 import org.dejava.component.i18n.message.handler.MessageHandler;
@@ -28,16 +30,18 @@ public class WebResources {
 	}
 
 	/**
+	 * The locale controller.
+	 */
+	@Inject
+	private LocaleController localeController;
+
+	/**
 	 * Gets the default implementation for the message handler.
 	 * 
 	 * @return The default implementation for the message handler.
 	 */
-	@Faces
-	@Produces
-	@RequestScoped
 	public MessageHandler getMessageHandler() {
-		return SimpleMessageHandler.getMessageHandler(getFacesContext().getExternalContext()
-				.getRequestLocale());
+		return SimpleMessageHandler.getMessageHandler(localeController.getLocale());
 	}
 
 	/**

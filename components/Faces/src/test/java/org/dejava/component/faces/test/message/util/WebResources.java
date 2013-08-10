@@ -5,8 +5,8 @@ import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import org.dejava.component.faces.i18n.LocaleController;
 import org.dejava.component.faces.message.FacesMessageHandler;
+import org.dejava.component.faces.test.message.controller.LocaleController;
 import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
 import org.dejava.component.i18n.message.handler.MessageHandler;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;

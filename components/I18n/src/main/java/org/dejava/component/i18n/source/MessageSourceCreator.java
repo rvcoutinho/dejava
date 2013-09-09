@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.RoundEnvironment;
@@ -159,8 +160,8 @@ public class MessageSourceCreator extends AbstractProcessor {
 	 * @param description
 	 *            Description of the message properties file.
 	 */
-	private void addEntries(final String sourcePath, final String bundleBaseName, final String localeText,
-			final Set<String> entries, final String description) {
+	private void addEntriesToFile(final String sourcePath, final String bundleBaseName,
+			final String localeText, final Set<String> entries, final String description) {
 		// Get the properties content (if any).
 		final Properties msgSrcProps = getPropertiesContent(sourcePath, bundleBaseName, localeText);
 		// For each entry in the set.
@@ -222,6 +223,43 @@ public class MessageSourceCreator extends AbstractProcessor {
 	}
 
 	/**
+	 * Process the original entries to append the given affix to each entry.
+	 * 
+	 * @param originalEntries
+	 *            The original entry set.
+	 * @param entriesAffix
+	 *            The affix to be used.
+	 * @return The entries in the original set appended with each given affix.
+	 */
+	private Set<String> processEntriesAffix(Set<String> originalEntries, String[] entriesAffix) {
+		// Creates a new entry set.
+		Set<String> finalEntries = new TreeSet<>();
+		// If the set is not null.
+		if (originalEntries != null) {
+			// If the affix array is null or empty.
+			if ((entriesAffix == null) || (entriesAffix.length == 0)) {
+				// The final set is the original set.
+				finalEntries = originalEntries;
+			}
+			// If there is any affix.
+			else {
+				// For each entry in the set.
+				for (String currentEntry : originalEntries) {
+					// Adds the current entry without an affix.
+					finalEntries.add(currentEntry);
+					// For each given affix.
+					for (String currentAffix : entriesAffix) {
+						// Adds the current entry with current affix.
+						finalEntries.add(currentEntry + currentAffix);
+					}
+				}
+			}
+		}
+		// Returns the final set.
+		return finalEntries;
+	}
+
+	/**
 	 * @see javax.annotation.processing.AbstractProcessor#process(java.util.Set,
 	 *      javax.annotation.processing.RoundEnvironment)
 	 */
@@ -247,14 +285,18 @@ public class MessageSourceCreator extends AbstractProcessor {
 							// For each class to be processed.
 							for (final TypeElement currentClassToProcess : getClassesToProcess(
 									(TypeElement) currentClass, currentMsgSrc.processSuperclasses())) {
+								// Gets the processed entries.
+								Set<String> processedEntries = currentProcessor.processClass(
+										(TypeElement) currentClass, currentClassToProcess);
 								// Adds the entries for the current processor to the entry set.
-								entries.addAll(currentProcessor.processClass((TypeElement) currentClass,
-										currentClassToProcess));
+								entries.addAll(processEntriesAffix(processedEntries,
+										currentMsgSrc.entriesAffix()));
 								// For each defined available locale.
 								for (final String currentLocaleText : currentMsgSrc.availableLocales()) {
 									// Adds the entries to the current properties file.
-									addEntries(currentMsgSrc.sourcePath(), currentMsgSrc.bundleBaseName(),
-											currentLocaleText, entries, currentMsgSrc.description());
+									addEntriesToFile(currentMsgSrc.sourcePath(),
+											currentMsgSrc.bundleBaseName(), currentLocaleText, entries,
+											currentMsgSrc.description());
 								}
 							}
 						}

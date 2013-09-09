@@ -41,6 +41,13 @@ public @interface MessageSource {
 	String[] availableLocales() default { "en_US", "pt_BR" };
 
 	/**
+	 * Strings to be appended to each entry added with the processors.
+	 * 
+	 * By default, the entry is added without an affix.
+	 */
+	String[] entriesAffix() default { "" };
+
+	/**
 	 * Full qualified names of the processors classes (that must implement the
 	 * {@link MessageSourceEntryProcessor} interface).
 	 * 

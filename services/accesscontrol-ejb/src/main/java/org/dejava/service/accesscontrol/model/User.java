@@ -25,7 +25,9 @@ import org.dejava.service.accesscontrol.model.principal.Principal;
  */
 @Entity
 @Table(name = "u5er")
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = {
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class User extends AbstractIdentifiedEntity {
 
 	/**
@@ -84,24 +86,6 @@ public class User extends AbstractIdentifiedEntity {
 			principals = new ArrayList<>();
 		}
 		// Returns the collection.
-		return principals;
-	}
-
-	/**
-	 * Gets the raw principals for this user.
-	 * 
-	 * @return The raw principals for this user.
-	 */
-	@Transient
-	public Collection<Object> getRawPrincipals() {
-		// Creates a new array of principals.
-		final ArrayList<Object> principals = new ArrayList<>();
-		// For each principal.
-		for (final Principal currentPrincipal : getPrincipals()) {
-			// Adds the current raw principal to the list.
-			principals.add(currentPrincipal.getValue());
-		}
-		// Returns the principals.
 		return principals;
 	}
 
@@ -287,7 +271,7 @@ public class User extends AbstractIdentifiedEntity {
 	 */
 	public User(final com.restfb.types.User facebookUser) {
 		// Adds the name to the user principals.
-		addPrincipal(new Name(facebookUser.getId()));
+		addPrincipal(new Name(facebookUser.getUsername()));
 		// Adds the email to the user principals.
 		addPrincipal(new Email(facebookUser.getEmail()));
 		// Adds the password to the user credentials.

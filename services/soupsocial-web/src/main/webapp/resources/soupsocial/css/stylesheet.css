@@ -13,24 +13,34 @@ img {
 	border: none;
 }
 
-input, button {
+input,select,textarea,button {
 	color: #4F5B5A;
 	padding: 5px;
 	border: 1px solid #1C9BA5;
 	border-radius: 3px;
+	box-sizing: border-box;
 }
 
-button, input[type=button], input[type=submit] {
+textarea {
+	height: 75px;
+}
+
+button,input[type=button],input[type=submit] {
 	padding: 5px 15px;
 	font-weight: bold;
 	text-transform: uppercase;
 	border: none;
+	cursor: pointer;
 }
 
-button .spoon, input[type=button] .spoon, input[type=submit] .spoon {
+button .spoon,input[type=button] .spoon,input[type=submit] .spoon {
 	margin-left: 5px;
 	vertical-align: sub;
 	height: 16px;
+}
+
+.left-button {
+	float: left;
 }
 
 .right-button {
@@ -43,13 +53,18 @@ button .spoon, input[type=button] .spoon, input[type=submit] .spoon {
 	font-size: 1.2em;
 }
 
-.round-button, .round-button[type=button], .round-button[type=submit] {
+.round-button {
 	margin: 5px;
 	padding: 2px 7px;
 	border-radius: 15px;
 }
 
-.close-button, .close-button[type=button], .close-button[type=submit] {
+.close-button-div {
+	clear: both;
+}
+
+.close-button-div button,.close-button-div input[type=button],.close-button-div input[type=submit]
+	{
 	margin: auto;
 	padding: 0px 5px;
 	border-top-left-radius: 50px;
@@ -61,12 +76,32 @@ button .spoon, input[type=button] .spoon, input[type=submit] .spoon {
 	line-height: 35px;
 }
 
-.form-content input {
+.form-content div {
+	clear: both;
+}
+
+.form-content input,.form-content select,.form-content textarea {
 	float: right;
 	width: 275px;
 }
 
-h1, h2, h3, h4, h5 {
+.form-content textarea {
+	margin-bottom: 5px;
+}
+
+.form-content .buttons {
+	height: 45px;
+	width: inherit;
+}
+
+.form-content .buttons div {
+	position: absolute;
+	bottom: 0px;
+	overflow: auto;
+	width: inherit;
+}
+
+h1,h2,h3,h4,h5 {
 	font-family: inherit;
 	color: inherit;
 	margin: 0px;
@@ -125,15 +160,18 @@ a {
 }
 
 .light-gray-texture-bg {
-	background: url('#{resource["soupsocial:gfx/texture-gray-1.png"]}') repeat;
+	background: url('#{resource["soupsocial:gfx/texture-gray-1.png"]}')
+		repeat;
 }
 
 .dark-gray-texture-bg {
-	background: url('#{resource["soupsocial:gfx/texture-gray-2.png"]}') repeat;
+	background: url('#{resource["soupsocial:gfx/texture-gray-2.png"]}')
+		repeat;
 }
 
 .green-texture-bg {
-	background: url('#{resource["soupsocial:gfx/texture-green-1.png"]}') repeat;
+	background: url('#{resource["soupsocial:gfx/texture-green-1.png"]}')
+		repeat;
 }
 
 .white-bg {
@@ -184,6 +222,10 @@ a {
 	text-decoration: underline;
 }
 
+.featured-text-3 {
+	font-weight: bold;
+}
+
 .gray-border {
 	border: 1px solid #BBBBBB;
 }
@@ -204,7 +246,20 @@ a {
 	display: none;
 }
 
+.flexslider ul.slides {
+	padding: 0px;
+	list-style: none;
+	overflow: hidden;
+}
+
+.flexslider ul.slides li {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
 #header {
+	
 }
 
 #header li {
@@ -228,7 +283,6 @@ a {
 }
 
 #header nav li {
-	margin-right: -3px;
 	padding: 0px 10px;
 	position: relative;
 	border-left: 1px solid #FFFFFF;
@@ -251,8 +305,8 @@ a {
 	margin-right: 0px;
 }
 
-#header nav ul, #header nav li{
-	display: inline-block;
+#header nav ul,#header nav li {
+	float: left;
 }
 
 #footer {

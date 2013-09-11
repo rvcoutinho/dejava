@@ -138,15 +138,8 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.google.api-client</groupId>
-			<artifactId>google-api-client-appengine</artifactId>
-			<type>pom</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.api-client</groupId>
-			<artifactId>google-api-client-servlet</artifactId>
-			<type>pom</type>
+			<groupId>com.google.http-client</groupId>
+			<artifactId>google-http-client-jackson2</artifactId>
 			<scope>compile</scope>
 		</dependency>
 
@@ -173,6 +166,13 @@
 					<version>6</version>
 					<applicationName>ear</applicationName>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<webModule>
+							<groupId>org.dejava.service</groupId>
+							<artifactId>soupsocial-web</artifactId>
+							<contextRoot>/</contextRoot>
+						</webModule>
+					</modules>
 				</configuration>
 			</plugin>
 			<plugin>

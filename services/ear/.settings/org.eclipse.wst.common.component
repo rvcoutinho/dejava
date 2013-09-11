@@ -2,169 +2,10 @@
     <wb-module deploy-name="ear-0.0.1">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="soupsocial-web-0.0.1.war" deploy-path="/" handle="module:/resource/soupsocial-web/soupsocial-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="accesscontrol-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/accesscontrol-ejb/accesscontrol-ejb">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jboss-ejb-api_3.1_spec-1.0.2.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/ejb/jboss-ejb-api_3.1_spec/1.0.2.Final/jboss-ejb-api_3.1_spec-1.0.2.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jboss-jaxrs-api_1.1_spec-1.0.1.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_1.1_spec/1.0.1.Final/jboss-jaxrs-api_1.1_spec-1.0.1.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="cdi-api-1.0-SP4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/enterprise/cdi-api/1.0-SP4/cdi-api-1.0-SP4.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jboss-interceptors-api_1.1_spec-1.0.1.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.1_spec/1.0.1.Final/jboss-interceptors-api_1.1_spec-1.0.1.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jboss-jsf-api_2.1_spec-2.0.9.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/faces/jboss-jsf-api_2.1_spec/2.0.9.Final/jboss-jsf-api_2.1_spec-2.0.9.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="hibernate-jpa-2.0-api-1.0.1.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="validation-api-1.0.0.GA.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-junit-container-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/junit/arquillian-junit-container/1.0.3.Final/arquillian-junit-container-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-junit-core-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/junit/arquillian-junit-core/1.0.3.Final/arquillian-junit-core-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-test-api-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/test/arquillian-test-api/1.0.3.Final/arquillian-test-api-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-test-spi-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/test/arquillian-test-spi/1.0.3.Final/arquillian-test-spi-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-container-test-api-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/container/arquillian-container-test-api/1.0.3.Final/arquillian-container-test-api-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-container-test-spi-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/container/arquillian-container-test-spi/1.0.3.Final/arquillian-container-test-spi-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-core-impl-base-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/core/arquillian-core-impl-base/1.0.3.Final/arquillian-core-impl-base-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-test-impl-base-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/test/arquillian-test-impl-base/1.0.3.Final/arquillian-test-impl-base-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-container-impl-base-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/container/arquillian-container-impl-base/1.0.3.Final/arquillian-container-impl-base-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-config-api-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/config/arquillian-config-api/1.0.3.Final/arquillian-config-api-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-config-impl-base-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/config/arquillian-config-impl-base/1.0.3.Final/arquillian-config-impl-base-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-container-test-impl-base-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/container/arquillian-container-test-impl-base/1.0.3.Final/arquillian-container-test-impl-base-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="shrinkwrap-impl-base-1.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/shrinkwrap/shrinkwrap-impl-base/1.0.1/shrinkwrap-impl-base-1.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="shrinkwrap-spi-1.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/shrinkwrap/shrinkwrap-spi/1.0.1/shrinkwrap-spi-1.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-protocol-servlet-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/protocol/arquillian-protocol-servlet/1.0.3.Final/arquillian-protocol-servlet-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-container-spi-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/container/arquillian-container-spi/1.0.3.Final/arquillian-container-spi-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="shrinkwrap-descriptors-api-base-2.0.0-alpha-3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-api-base/2.0.0-alpha-3/shrinkwrap-descriptors-api-base-2.0.0-alpha-3.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="shrinkwrap-descriptors-spi-2.0.0-alpha-3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-spi/2.0.0-alpha-3/shrinkwrap-descriptors-spi-2.0.0-alpha-3.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="shrinkwrap-resolver-api-1.0.0-beta-7.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-api/1.0.0-beta-7/shrinkwrap-resolver-api-1.0.0-beta-7.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="shrinkwrap-resolver-api-maven-1.0.0-beta-7.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-api-maven/1.0.0-beta-7/shrinkwrap-resolver-api-maven-1.0.0-beta-7.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="shrinkwrap-resolver-impl-maven-1.0.0-beta-7.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-impl-maven/1.0.0-beta-7/shrinkwrap-resolver-impl-maven-1.0.0-beta-7.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="aether-api-1.8.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/sonatype/aether/aether-api/1.8/aether-api-1.8.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="aether-util-1.8.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/sonatype/aether/aether-util/1.8/aether-util-1.8.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="aether-connector-wagon-1.8.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/sonatype/aether/aether-connector-wagon/1.8/aether-connector-wagon-1.8.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="aether-spi-1.8.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/sonatype/aether/aether-spi/1.8/aether-spi-1.8.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="plexus-container-default-1.5.5.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="plexus-classworlds-2.2.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/codehaus/plexus/plexus-classworlds/2.2.2/plexus-classworlds-2.2.2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="xbean-reflect-3.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/xbean/xbean-reflect/3.4/xbean-reflect-3.4.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="log4j-1.2.12.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/log4j/log4j/1.2.12/log4j-1.2.12.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="commons-logging-api-1.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging-api/1.1/commons-logging-api-1.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="google-collections-1.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/collections/google-collections/1.0/google-collections-1.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="maven-aether-provider-3.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/maven-aether-provider/3.0.1/maven-aether-provider-3.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="maven-model-3.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/maven-model/3.0.1/maven-model-3.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="maven-model-builder-3.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/maven-model-builder/3.0.1/maven-model-builder-3.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="maven-repository-metadata-3.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/maven-repository-metadata/3.0.1/maven-repository-metadata-3.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="aether-impl-1.8.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/sonatype/aether/aether-impl/1.8/aether-impl-1.8.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="plexus-component-annotations-1.5.5.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="plexus-utils-2.0.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/codehaus/plexus/plexus-utils/2.0.4/plexus-utils-2.0.4.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="maven-settings-builder-3.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/maven-settings-builder/3.0.1/maven-settings-builder-3.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="plexus-interpolation-1.14.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="maven-settings-3.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/maven-settings/3.0.1/maven-settings-3.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="plexus-sec-dispatcher-1.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="plexus-cipher-1.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="wagon-provider-api-1.0-beta-7.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/wagon/wagon-provider-api/1.0-beta-7/wagon-provider-api-1.0-beta-7.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="wagon-file-1.0-beta-7.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/wagon/wagon-file/1.0-beta-7/wagon-file-1.0-beta-7.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="wagon-http-lightweight-1.0-beta-7.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/wagon/wagon-http-lightweight/1.0-beta-7/wagon-http-lightweight-1.0-beta-7.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="wagon-http-shared-1.0-beta-7.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/maven/wagon/wagon-http-shared/1.0-beta-7/wagon-http-shared-1.0-beta-7.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="accesscontrol-web-0.0.1.war" deploy-path="/" handle="module:/resource/accesscontrol-web/accesscontrol-web">
@@ -191,9 +32,6 @@
         <dependent-module archiveName="message-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/message-ejb/message-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jboss-jms-api_1.1_spec-1.0.1.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/jms/jboss-jms-api_1.1_spec/1.0.1.Final/jboss-jms-api_1.1_spec-1.0.1.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="message-web-0.0.1.war" deploy-path="/" handle="module:/resource/message-web/message-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -201,9 +39,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="philanthropy-web-0.0.1.war" deploy-path="/" handle="module:/resource/philanthropy-web/philanthropy-web">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="soupsocial-web-0.0.1.war" deploy-path="/" handle="module:/resource/soupsocial-web/soupsocial-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="security-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/security/0.0.1/security-0.0.1.jar">
@@ -224,16 +59,25 @@
         <dependent-module archiveName="validation-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/validation/0.0.1/validation-0.0.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="validation-api-1.1.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="restfb-1.6.11.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/restfb/restfb/1.6.11/restfb-1.6.11.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="google-api-client-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/api-client/google-api-client/1.15.0-rc/google-api-client-1.15.0-rc.jar">
+        <dependent-module archiveName="google-api-client-1.16.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/api-client/google-api-client/1.16.0-rc/google-api-client-1.16.0-rc.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="google-oauth-client-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/oauth-client/google-oauth-client/1.15.0-rc/google-oauth-client-1.15.0-rc.jar">
+        <dependent-module archiveName="google-oauth-client-1.16.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/oauth-client/google-oauth-client/1.16.0-rc/google-oauth-client-1.16.0-rc.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="google-http-client-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/http-client/google-http-client/1.15.0-rc/google-http-client-1.15.0-rc.jar">
+        <dependent-module archiveName="jsr305-1.3.9.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-http-client-jackson2-1.16.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/http-client/google-http-client-jackson2/1.16.0-rc/google-http-client-jackson2-1.16.0-rc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="google-http-client-1.16.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/http-client/google-http-client/1.16.0-rc/google-http-client-1.16.0-rc.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="httpclient-4.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/httpcomponents/httpclient/4.0.1/httpclient-4.0.1.jar">
@@ -251,37 +95,10 @@
         <dependent-module archiveName="xpp3-1.1.4c.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/xpp3/xpp3/1.1.4c/xpp3-1.1.4c.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jsr305-1.3.9.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar">
+        <dependent-module archiveName="jackson-core-2.1.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/fasterxml/jackson/core/jackson-core/2.1.3/jackson-core-2.1.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="google-oauth-client-appengine-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/oauth-client/google-oauth-client-appengine/1.15.0-rc/google-oauth-client-appengine-1.15.0-rc.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="google-http-client-jackson-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/http-client/google-http-client-jackson/1.15.0-rc/google-http-client-jackson-1.15.0-rc.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jackson-core-asl-1.9.11.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/codehaus/jackson/jackson-core-asl/1.9.11/jackson-core-asl-1.9.11.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="google-api-client-servlet-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/api-client/google-api-client-servlet/1.15.0-rc/google-api-client-servlet-1.15.0-rc.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="google-http-client-appengine-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/http-client/google-http-client-appengine/1.15.0-rc/google-http-client-appengine-1.15.0-rc.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="google-oauth-client-servlet-1.15.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/oauth-client/google-oauth-client-servlet/1.15.0-rc/google-oauth-client-servlet-1.15.0-rc.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="servlet-api-2.5.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jdo2-api-2.3-eb.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/jdo/jdo2-api/2.3-eb/jdo2-api-2.3-eb.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="transaction-api-1.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/transaction/transaction-api/1.1/transaction-api-1.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="shiro-core-1.2.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-core/1.2.1/shiro-core-1.2.1.jar">
+        <dependent-module archiveName="shiro-core-1.2.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-core/1.2.2/shiro-core-1.2.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="slf4j-api-1.6.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar">
@@ -290,22 +107,10 @@
         <dependent-module archiveName="commons-beanutils-1.8.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="shiro-ehcache-1.2.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-ehcache/1.2.1/shiro-ehcache-1.2.1.jar">
+        <dependent-module archiveName="shiro-ehcache-1.2.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-ehcache/1.2.2/shiro-ehcache-1.2.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="ehcache-core-2.5.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/net/sf/ehcache/ehcache-core/2.5.0/ehcache-core-2.5.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="shrinkwrap-api-1.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/shrinkwrap/shrinkwrap-api/1.0.1/shrinkwrap-api-1.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-core-spi-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/core/arquillian-core-spi/1.0.3.Final/arquillian-core-spi-1.0.3.Final.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="javax.inject-1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquillian-core-api-1.0.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/arquillian/core/arquillian-core-api/1.0.3.Final/arquillian-core-api-1.0.3.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

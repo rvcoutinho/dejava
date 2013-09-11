@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:pretty="http://ocpsoft.com/prettyfaces"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="head">
 		<link rel="canonical" href="http://www.soupsocial.com/soupsocial/" />
@@ -15,7 +14,7 @@
 				<section id="soupsocial-idea" class="border-bottom">
 					<header class="padding-3">
 						<h1>
-							<pretty:link mappingId="como-funciona">O que é</pretty:link>
+							<h:link outcome="pretty:how">O que é</h:link>
 							&gt; <a href="#"
 								onclick="$('#soupsocial-idea-content').slideDown(1000);">Nossa
 								ideia</a>
@@ -54,7 +53,7 @@
 								minutos, pode fazer toda a diferença. Nunca foi tão fácil fazer
 								do mundo um lugar melhor.</p>
 						</div>
-						<div>
+						<div class="close-button-div">
 							<button class="close-button dark-green-bg"
 								onclick="$('#soupsocial-idea-content').slideUp(1000);">
 								<h:graphicImage library="soupsocial" name="gfx/arrow-up.png" />
@@ -66,7 +65,7 @@
 				<section id="soupsocial-vision" class="border-top border-bottom">
 					<header class="padding-3">
 						<h1>
-							<pretty:link mappingId="como-funciona">O que é</pretty:link>
+							<h:link outcome="pretty:how">O que é</h:link>
 							&gt; <a href="#"
 								onclick="$('#soupsocial-vision-content').slideDown(1000);">Missão,
 								visão e objetivos</a>
@@ -74,7 +73,7 @@
 					</header>
 					<div id="soupsocial-vision-content">
 						<div class="padding-3"></div>
-						<div>
+						<div class="close-button-div">
 							<button class="close-button dark-green-bg"
 								onclick="$('#soupsocial-vision-content').slideUp(1000);">
 								<h:graphicImage library="soupsocial" name="gfx/arrow-up.png" />

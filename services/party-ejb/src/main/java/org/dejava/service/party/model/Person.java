@@ -7,23 +7,44 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.User;
+import org.dejava.service.party.util.MessageTypes;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Represents a person.
  */
 @Entity
 @Table(name = "person")
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = {
+		@MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processSuperclasses = true, entriesAffix = {
+				"", ".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.party.properties.error", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class Person extends Party {
 
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = 4453810439350160800L;
+
+	/**
+	 * @see org.dejava.service.party.model.Party#getDisplayName()
+	 */
+	@Override
+	public String getDisplayName() {
+		// If the display name is null.
+		if (super.getDisplayName() == null) {
+			// The display name is the party name.
+			setDisplayName(getCompleteName());
+		}
+		// Returns the display name.
+		return super.getDisplayName();
+	}
 
 	/**
 	 * First name of the person.
@@ -35,6 +56,8 @@ public class Person extends Party {
 	 * 
 	 * @return The first name of the person.
 	 */
+	@NotNull(payload = MessageTypes.Error.class, message = "person.firstname.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = "person.firstname.notempty")
 	@Column(name = "first_name")
 	public String getFirstName() {
 		return firstName;
@@ -85,6 +108,8 @@ public class Person extends Party {
 	 * 
 	 * @return The last name of the person.
 	 */
+	@NotNull(payload = MessageTypes.Error.class, message = "person.lastname.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = "person.lastname.notempty")
 	@Column(name = "last_name")
 	public String getLastName() {
 		return lastName;
@@ -98,6 +123,34 @@ public class Person extends Party {
 	 */
 	public void setLastName(final String lastName) {
 		this.lastName = lastName;
+	}
+
+	/**
+	 * Gets the complete name of the person.
+	 * 
+	 * @return The complete name of the person.
+	 */
+	@Transient
+	public String getCompleteName() {
+		// The complete name.
+		final StringBuffer completeName = new StringBuffer();
+		// If there is a first name.
+		if ((getFirstName() != null) && (!getFirstName().isEmpty())) {
+			// The complete name starts with the first name.
+			completeName.append(getFirstName());
+		}
+		// If there is a middle name.
+		if ((getMiddleName() != null) && (!getMiddleName().isEmpty())) {
+			// Appends the middle name to the complete name.
+			completeName.append(" " + getMiddleName());
+		}
+		// If there is a last name.
+		if ((getLastName() != null) && (!getLastName().isEmpty())) {
+			// The complete name ends with the last name.
+			completeName.append(" " + getLastName());
+		}
+		// Returns the complete name.
+		return completeName.toString();
 	}
 
 	/**
@@ -122,7 +175,7 @@ public class Person extends Party {
 	 * @param gender
 	 *            New gender of the person.
 	 */
-	public void setGender(Gender gender) {
+	public void setGender(final Gender gender) {
 		this.gender = gender;
 	}
 
@@ -176,9 +229,9 @@ public class Person extends Party {
 	 * @param user
 	 *            The user for the person.
 	 */
-	public Person(String name, String firstName, String middleName, String lastName, Gender gender,
-			Date birthDate, User user) {
-		super(name, user);
+	public Person(final String name, final String firstName, final String middleName, final String lastName,
+			final Gender gender, final Date birthDate, final User user) {
+		super(user);
 		// Sets the basic info for the person.
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -193,12 +246,11 @@ public class Person extends Party {
 	 * @param fbUser
 	 *            The facebook user.
 	 */
-	public Person(com.restfb.types.User fbUser) {
+	public Person(final com.restfb.types.User fbUser) {
 		super();
 		// If the facebook user is not null.
 		if (fbUser != null) {
 			// Sets the basic info for the person.
-			setName(fbUser.getName());
 			this.firstName = fbUser.getFirstName();
 			this.middleName = fbUser.getMiddleName();
 			this.lastName = fbUser.getLastName();

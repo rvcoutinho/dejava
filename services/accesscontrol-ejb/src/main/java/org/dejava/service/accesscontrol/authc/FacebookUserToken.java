@@ -1,6 +1,7 @@
 package org.dejava.service.accesscontrol.authc;
 
 import org.apache.shiro.authc.RememberMeAuthenticationToken;
+import org.dejava.service.accesscontrol.model.principal.Facebook;
 
 /**
  * The facebook authentication token.
@@ -15,7 +16,7 @@ public class FacebookUserToken implements RememberMeAuthenticationToken {
 	/**
 	 * If the user identity should be remembered across sessions.
 	 */
-	private Boolean rememberMe;
+	private Boolean rememberMe = true;
 
 	/**
 	 * @see org.apache.shiro.authc.RememberMeAuthenticationToken#isRememberMe()
@@ -38,25 +39,25 @@ public class FacebookUserToken implements RememberMeAuthenticationToken {
 	/**
 	 * Facebook identifier for the user.
 	 */
-	private String identifier;
+	private Facebook facebookIdentifier;
 
 	/**
 	 * Gets the facebook identifier for the user.
 	 * 
 	 * @return The facebook identifier for the user.
 	 */
-	public synchronized String getIdentifier() {
-		return identifier;
+	public synchronized Facebook getFacebookIdentifier() {
+		return facebookIdentifier;
 	}
 
 	/**
 	 * Sets the facebook identifier for the user.
 	 * 
-	 * @param identifier
+	 * @param facebookIdentifier
 	 *            New facebook identifier for the user.
 	 */
-	public synchronized void setIdentifier(final String identifier) {
-		this.identifier = identifier;
+	public synchronized void setFacebookIdentifier(final Facebook facebookIdentifier) {
+		this.facebookIdentifier = facebookIdentifier;
 	}
 
 	/**
@@ -64,7 +65,7 @@ public class FacebookUserToken implements RememberMeAuthenticationToken {
 	 */
 	@Override
 	public Object getPrincipal() {
-		return getIdentifier();
+		return getFacebookIdentifier();
 	}
 
 	/**
@@ -86,12 +87,13 @@ public class FacebookUserToken implements RememberMeAuthenticationToken {
 	/**
 	 * Public constructor.
 	 * 
-	 * @param identifier
+	 * @param facebookIdentifier
+	 * 
 	 *            Facebook identifier for the user.
 	 */
-	public FacebookUserToken(final String identifier) {
+	public FacebookUserToken(final String facebookIdentifier) {
 		super();
-		this.identifier = identifier;
+		this.facebookIdentifier = new Facebook(facebookIdentifier);
 	}
 
 }

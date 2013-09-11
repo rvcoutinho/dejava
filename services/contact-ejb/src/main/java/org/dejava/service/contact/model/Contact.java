@@ -1,14 +1,19 @@
 package org.dejava.service.contact.model;
 
 import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 
 /**
  * Represents a contact.
  */
-@MappedSuperclass
+@Entity
+@Table(name = "contact")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Contact extends AbstractIdentifiedEntity {
 
 	/**
@@ -37,7 +42,7 @@ public abstract class Contact extends AbstractIdentifiedEntity {
 	 * @param partyId
 	 *            New party id for the contact.
 	 */
-	public void setPartyId(Integer partyId) {
+	public void setPartyId(final Integer partyId) {
 		this.partyId = partyId;
 	}
 

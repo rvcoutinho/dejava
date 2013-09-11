@@ -1,5 +1,7 @@
 package org.dejava.service.place.component;
 
+import java.io.IOException;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -29,6 +31,19 @@ public class PlaceComponent extends AbstractGenericComponent<Place, Integer> {
 	@Override
 	public AbstractGenericDAO<Place, Integer> getEntityDAO() {
 		return placeDAO;
+	}
+
+	/**
+	 * Gets the place from the google reference.
+	 * 
+	 * @param placeReference
+	 *            The place reference.
+	 * @return The place from the google reference.
+	 * @throws IOException
+	 *             If the google place URL cannot be processed. FIXME
+	 */
+	public Place getByGoogleReference(final String placeReference) throws IOException {
+		return placeDAO.getByGoogleReference(placeReference);
 	}
 
 }

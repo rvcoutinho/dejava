@@ -115,7 +115,7 @@ public class UserComponentTest {
 		// Sets the facebook user id.
 		fbUserClassMirror.getField("id").setValue(fbUser, FB_USER_ID, true, true);
 		// Sets the facebook user name.
-		fbUserClassMirror.getField("name").setValue(fbUser, FB_USER_NAME, true, true);
+		fbUserClassMirror.getField("username").setValue(fbUser, FB_USER_NAME, true, true);
 		// Sets the facebook user email.
 		fbUserClassMirror.getField("email").setValue(fbUser, FB_USER_EMAIL, true, true);
 		// Returns the facebook user.

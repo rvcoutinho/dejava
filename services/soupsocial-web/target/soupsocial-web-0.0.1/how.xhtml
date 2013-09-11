@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:pretty="http://ocpsoft.com/prettyfaces"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/default.xhtml">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 	<ui:define name="head">
 		<link rel="canonical" href="http://www.soupsocial.com/como-funciona/" />
 		<title>SoupSocial - Mude compartilhando!</title>
@@ -15,7 +15,7 @@
 				<section id="how-all" class="border-bottom">
 					<header class="padding-3">
 						<h1>
-							<pretty:link mappingId="como-funciona">Como funciona</pretty:link>
+							<h:link outcome="pretty:how">Como funciona</h:link>
 							&gt; <a href="#" onclick="$('#how-all-content').slideDown(1000);">Para
 								todos</a>
 							<button class="dark-green-bg right-button">
@@ -51,7 +51,7 @@
 								cria um efeito de audiência que leva as empresas se interessarem
 								e despenderem recursos para causas importantes.</p>
 						</div>
-						<div>
+						<div class="close-button-div">
 							<button class="close-button dark-green-bg"
 								onclick="$('#how-all-content').slideUp(1000);">
 								<h:graphicImage library="soupsocial" name="gfx/arrow-up.png" />
@@ -63,13 +63,13 @@
 				<section id="how-ngos" class="border-top border-bottom">
 					<header class="padding-3">
 						<h1>
-							<pretty:link mappingId="como-funciona">Como funciona</pretty:link>
+							<h:link outcome="pretty:how">Como funciona</h:link>
 							&gt; <a href="#"
 								onclick="$('#how-ngos-content').slideDown(1000);">Para
 								instituições</a>
 							<button class="dark-green-bg right-button"
 								onclick="$('#ngo-create').dialog({ modal: true, draggable: false, minWidth: 450 });
-									$('#ngo-create .place').geocomplete({details: '#ngo-create-address-detail'});">
+									$('#ngo-create .place').geocomplete({details: '#ngo-create .place-detail', detailsAttribute: 'data-geo'});">
 								cadastrar instituição
 								<h:graphicImage library="soupsocial" class="spoon"
 									name="gfx/spoon.png" />
@@ -77,37 +77,42 @@
 						</h1>
 						<section id="ngo-create" class="hidden-dialog form-content"
 							title="Cadastre sua Instituição!">
-							<h:form id="ngo-create-form" prependId="false">
-								<label for="ngo-create-name">Nome da instituição</label>:
-								<h:inputText id="ngo-create-name"
-									value="#{organizationController.newOrganization.name}" />
-								<br />
-								<label for="ngo-create-cnpj">CNPJ</label>:
-								<h:inputText id="ngo-create-cnpj" styleClass="cnpj mask"
-									data-inv-regex="[^\d]"
-									value="#{organizationController.newOrganization.federalCode}">
-									<f:converter converterId="InvRegexConv" />
-								</h:inputText>
-								<br />
-								<label for="ngo-create-address">Endereço</label>:
-								<h:inputText id="ngo-create-address" styleClass="place" />
-								<span id="ngo-create-address-detail" class="hidden-dialog"><h:inputHidden
-										value="#{organizationController.addressReference}"
-										id="reference" /></span>
-								<br />
-								<label for="ngo-create-email">E-mail</label>:
-								<h:inputText id="ngo-create-email"
-									value="#{organizationController.newEmailAddress.address}" />
-								<br />
-								<label for="ngo-create-phone">Telefone</label>:
-								<h:inputText id="ngo-create-phone" styleClass="phone mask"
-									data-inv-regex="[^\d]"
-									value="#{organizationController.newPhoneNumber.number}">
-									<f:converter converterId="InvRegexConv" />
-								</h:inputText>
-								<br />
+							<h:form id="ngo-create-form">
+								<div>
+									<label for="ngo-create-name">Nome da instituição</label>:
+									<h:inputText id="ngo-create-name" />
+								</div>
+								<div>
+									<label for="ngo-create-cnpj">CNPJ</label>:
+									<h:inputText id="ngo-create-cnpj" styleClass="cnpj mask"
+										data-inv-regex="[^\d]"
+										value="#{newOrganizationController.newOrganization.federalCode}">
+										<f:converter converterId="InvRegexConv" />
+									</h:inputText>
+								</div>
+								<div>
+									<label for="ngo-create-address">Endereço</label>:
+									<h:inputText id="ngo-create-address" styleClass="place" />
+									<span class="hidden-dialog place-detail"><h:inputHidden
+											id="ngo-create-address-reference"
+											value="#{newOrganizationController.addressReference}"
+											p:data-geo="reference" /></span>
+								</div>
+								<div>
+									<label for="ngo-create-email">E-mail</label>:
+									<h:inputText id="ngo-create-email"
+										value="#{newOrganizationController.newEmailAddress.address}" />
+								</div>
+								<div>
+									<label for="ngo-create-phone">Telefone</label>:
+									<h:inputText id="ngo-create-phone" styleClass="phone mask"
+										data-inv-regex="[^\d]"
+										value="#{newOrganizationController.newPhoneNumber.number}">
+										<f:converter converterId="InvRegexConv" />
+									</h:inputText>
+								</div>
 								<h:commandLink
-									action="#{organizationController.createOrganization}">
+									action="#{newOrganizationController.createOrganization}">
 									<button class="dark-green-bg right-button">
 										cadastrar
 										<h:graphicImage library="soupsocial" class="spoon"
@@ -150,7 +155,7 @@
 							<p>Para saber como abraçar uma ideia, clique aqui. Para saber
 								como criar um projeto, clique aqui.</p>
 						</div>
-						<div>
+						<div class="close-button-div">
 							<button class="close-button dark-green-bg"
 								onclick="$('#how-ngos-content').slideUp(1000);">
 								<h:graphicImage library="soupsocial" name="gfx/arrow-up.png" />
@@ -162,7 +167,7 @@
 				<section id="how-investors" class="border-top border-bottom">
 					<header class="padding-3">
 						<h1>
-							<pretty:link mappingId="como-funciona">Como funciona</pretty:link>
+							<h:link outcome="pretty:how">Como funciona</h:link>
 							&gt; <a href="#"
 								onclick="$('#how-investors-content').slideDown(1000);">Para
 								empresas</a>
@@ -201,7 +206,7 @@
 								informações para os usuários que apoiaram, viabilizando assim
 								uma verdadeira vivência cibernética de projetos sociais.</p>
 						</div>
-						<div>
+						<div class="close-button-div">
 							<button class="close-button dark-green-bg"
 								onclick="$('#how-investors-content').slideUp(1000);">
 								<h:graphicImage library="soupsocial" name="gfx/arrow-up.png" />

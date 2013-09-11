@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="head">
+		<h:outputStylesheet library="soupsocial" name="css/small-project.css" />
+		<h:outputStylesheet library="soupsocial" name="css/project.css" />
+		<link rel="canonical" href="http://www.soupsocial.com/projeto/" />
+		<title>SoupSocial - Mude compartilhando!</title>
+	</ui:define>
+	<ui:define name="content">
+		<section id="content" class="light-gray-texture-bg">
+			<div class="content-width">
+				<section id="project">
+					<div id="project-summary" class="white-bg shadow-border padding-2">
+						<h1 class="featured-text-1 green-text">#{userController.party.displayName}</h1>
+					</div>
+				</section>
+				<aside>
+					<div id="embrace">
+						Sou uma instituição e quero<br />
+						<button class="dark-green-bg bigger-button">
+							abraçar essa ideia
+							<h:graphicImage library="soupsocial" class="spoon"
+								name="gfx/spoon.png" />
+						</button>
+					</div>
+					<div id="supporters" class="gray-bg shadow-border padding-1">Alguns
+						apoiadores:</div>
+					<div id="related" class="gray-bg shadow-border padding-1">Projetos
+						relacionados:</div>
+				</aside>
+			</div>
+		</section>
+	</ui:define>
+</ui:composition>

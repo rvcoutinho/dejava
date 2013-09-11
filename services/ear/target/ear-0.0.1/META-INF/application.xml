@@ -3,6 +3,12 @@
   <application-name>ear</application-name>
   <display-name>ear</display-name>
   <module>
+    <web>
+      <web-uri>soupsocial-web-0.0.1.war</web-uri>
+      <context-root>/</context-root>
+    </web>
+  </module>
+  <module>
     <ejb>accesscontrol-ejb-0.0.1.jar</ejb>
   </module>
   <module>
@@ -54,12 +60,6 @@
     <web>
       <web-uri>philanthropy-web-0.0.1.war</web-uri>
       <context-root>/philanthropy-web</context-root>
-    </web>
-  </module>
-  <module>
-    <web>
-      <web-uri>soupsocial-web-0.0.1.war</web-uri>
-      <context-root>/soupsocial-web</context-root>
     </web>
   </module>
   <library-directory>lib</library-directory>

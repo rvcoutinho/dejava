@@ -127,7 +127,7 @@ public class FacebookEJBRealm extends AuthenticatingRealm {
 			User user = null;
 			// Tries to get a similar registered user facebook id.
 			final Facebook facebook = getFacebookComponent().getByAttribute("facebookIdentifier",
-					facebookToken.getIdentifier());
+					facebookToken.getFacebookIdentifier().getFacebookIdentifier());
 			// If there is an user for the given facebook id.
 			if (facebook != null) {
 				// Gets the user for the facebook principal.
@@ -136,7 +136,7 @@ public class FacebookEJBRealm extends AuthenticatingRealm {
 			// If there is an user for the given principal.
 			if (user != null) {
 				// Creates a new principal collection.
-				final PrincipalCollection principals = new SimplePrincipalCollection(user.getRawPrincipals(),
+				final PrincipalCollection principals = new SimplePrincipalCollection(user.getPrincipals(),
 						getName());
 				// Creates a new simple authentication.
 				final SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo();

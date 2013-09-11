@@ -19,6 +19,7 @@ import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.reflection.ClassMirror;
+import org.dejava.service.place.util.MessageTypes;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -27,7 +28,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "place")
 @Inheritance(strategy = InheritanceType.JOINED)
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.place.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = {
+		@MessageSource(bundleBaseName = "org.dejava.service.place.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.place.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class Place extends AbstractIdentifiedEntity {
 
 	/**
@@ -63,8 +66,6 @@ public class Place extends AbstractIdentifiedEntity {
 	/**
 	 * Name of the place.
 	 */
-	@NotNull(message=)
-	@NotEmpty
 	private String name;
 
 	/**
@@ -73,6 +74,8 @@ public class Place extends AbstractIdentifiedEntity {
 	 * @return The name of the place.
 	 */
 	@Column(name = "name")
+	@NotNull(payload = MessageTypes.Error.class, message = "place.name.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = "place.name.notempty")
 	public String getName() {
 		return name;
 	}

@@ -14,14 +14,14 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
-import org.dejava.component.i18n.source.annotation.MessageSource;
-import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.contact.model.Contact;
+import org.dejava.service.party.util.MessageTypes;
 import org.dejava.service.place.model.Place;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -32,39 +32,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "party")
 @Inheritance(strategy = InheritanceType.JOINED)
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
 public abstract class Party extends AbstractIdentifiedEntity {
 
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = -6745781199872773566L;
-
-	/**
-	 * Name of the party.
-	 */
-	@NotEmpty
-	private String name;
-
-	/**
-	 * Gets the name of the party.
-	 * 
-	 * @return The name of the party.
-	 */
-	@Column(name = "name")
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Sets the name of the party.
-	 * 
-	 * @param name
-	 *            New name of the party.
-	 */
-	public void setName(final String name) {
-		this.name = name;
-	}
 
 	/**
 	 * Name to be used and displayed regularly.
@@ -78,12 +51,6 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	 */
 	@Column(name = "display_name")
 	public String getDisplayName() {
-		// If the display name is null.
-		if (displayName == null) {
-			// The display name is the party name.
-			displayName = getName();
-		}
-		// Returns the display name.
 		return displayName;
 	}
 
@@ -149,7 +116,7 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	@ElementCollection
 	@CollectionTable(name = "address", joinColumns = @JoinColumn(name = "party"))
 	@Column(name = "address_id")
-	public Collection<Integer> getAddressesIds() {
+	protected Collection<Integer> getAddressesIds() {
 		return addressesIds;
 	}
 
@@ -159,7 +126,7 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	 * @param addressesIds
 	 *            New addresses identifiers for the party.
 	 */
-	public void setAddressesIds(final Collection<Integer> addressesIds) {
+	protected void setAddressesIds(final Collection<Integer> addressesIds) {
 		this.addressesIds = addressesIds;
 	}
 
@@ -175,6 +142,7 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	 * @return The addresses.
 	 */
 	@Transient
+	@Valid
 	public Collection<Place> getAddresses() {
 		// If the address set is null.
 		if (addresses == null) {
@@ -207,6 +175,9 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	 * @return The contacts.
 	 */
 	@Transient
+	@Valid
+	@NotNull(payload = MessageTypes.Error.class, message = "party.contacts.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = "party.contacts.notempty")
 	public Collection<Contact> getContacts() {
 		// If the contact set is null.
 		if (contacts == null) {
@@ -264,15 +235,12 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	/**
 	 * Default constructor.
 	 * 
-	 * @param name
-	 *            Name of the party.
 	 * @param user
 	 *            User for the party.
 	 */
-	public Party(final String name, final User user) {
+	public Party(final User user) {
 		super();
 		// Sets the basic info for the party.
-		this.name = name;
 		setUser(user);
 	}
 
@@ -287,8 +255,8 @@ public abstract class Party extends AbstractIdentifiedEntity {
 		}
 		// If there are addresses.
 		else {
-			// Creates a new list.
-			addressesIds = new ArrayList<>();
+			// Creates a new list. FIXME
+			// addressesIds = new ArrayList<>();
 			// For each entity in the entity list.
 			for (final Place curPlace : addresses) {
 				// Adds the current entity id to the set.

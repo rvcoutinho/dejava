@@ -1,18 +1,26 @@
 package org.dejava.service.party.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.validation.method.ArgFormatter;
+import org.dejava.service.party.util.MessageTypes;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Represents an organization.
  */
 @Entity
 @Table(name = "organization")
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = {
+		@MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processSuperclasses = true, entriesAffix = {
+				"", ".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.party.properties.error", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class Organization extends Party {
 
 	/**
@@ -30,6 +38,10 @@ public class Organization extends Party {
 	 * 
 	 * @return The federal code for the organization.
 	 */
+	@NotNull(payload = MessageTypes.Error.class, message = "organization.federalcode.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = "organization.federalcode.notempty")
+	@Length(payload = MessageTypes.Error.class, message = "organization.federalcode.length", min = 14, max = 14)
+	@Column(name = "federal_code")
 	public String getFederalCode() {
 		return federalCode;
 	}

@@ -85,7 +85,9 @@ public class EJBRealmTest {
 						dependencyResolver.artifacts("org.dejava.component:security",
 								"org.dejava.component:ejb", "org.dejava.component:faces",
 								"org.apache.shiro:shiro-core", "org.apache.shiro:shiro-web",
-								"org.apache.shiro:shiro-ehcache", "com.restfb:restfb").resolveAsFiles())
+								"org.apache.shiro:shiro-ehcache", "com.restfb:restfb",
+								"com.google.api-client:google-api-client",
+								"com.google.http-client:google-http-client-jackson2").resolveAsFiles())
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml")

@@ -10,6 +10,13 @@ import org.dejava.component.i18n.message.annotation.MessageBundle;
 public interface MessageTypes {
 
 	/**
+	 * Model message type.
+	 */
+	@MessageBundle(baseName = "org.dejava.service.philanthropy.properties.model")
+	interface Model extends Payload {
+	}
+
+	/**
 	 * Info message type.
 	 */
 	@MessageBundle(baseName = "org.dejava.service.philanthropy.properties.info")

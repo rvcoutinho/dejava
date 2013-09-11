@@ -245,7 +245,7 @@ public class EJBRealm extends AuthenticatingRealm {
 			// If there is an user for the given principal.
 			if (user != null) {
 				// Creates a new principal collection.
-				final PrincipalCollection principals = new SimplePrincipalCollection(user.getRawPrincipals(),
+				final PrincipalCollection principals = new SimplePrincipalCollection(user.getPrincipals(),
 						getName());
 				// Gets the password for the user.
 				final Password password = getPasswordComponent().getByAttribute("user", user);

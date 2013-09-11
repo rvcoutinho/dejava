@@ -1,33 +1,80 @@
-#content  #project {
+#content #project {
+	overflow: auto;
+	clear: both;
+}
+
+#content #project #project-content {
 	margin-bottom: 10px;
 	vertical-align: top;
-}
-
-#content  #project {
+	float: left;
 	width: 640px;
 	margin-right: 12px;
-	display: inline-block;
 }
 
-#content  #project #project-summary {
+#content #project #project-content #project-summary {
 	margin-bottom: 20px;
 }
 
-#content  #project #project-owner {
+#content #project #project-content #project-share {
+	clear: both;
+	overflow: auto;
 	margin-bottom: 20px;
 }
 
-#content  #project #project-short-desc {
-
+#content #project #project-content #project-share #project-owner {
+	width: 250px;
+	float: left;
 }
 
-#content  #project #project-short-desc .idea-img {
+#content #project #project-content #project-share #project-support {
+	width: 350px;
+	float: left;
+}
+
+#content #project #project-content #project-share #project-support img {
+	margin: 5px;
+	float: left;
+}
+
+#content #project #project-content #project-share #project-support img.heart
+	{
+	height: 40px;
+}
+
+#content #project #project-content #project-share #project-support img.spoons
+	{
+	height: 33px;
+}
+
+#content #project #project-content #project-share #project-support #support
+	{
+	text-align: left;
+	float: left;
+	width: 35%;
+}
+
+#content #project #project-content #project-share #project-support #audience
+	{
+	text-align: left;
+	width: 65%;
+	float: left;
+}
+
+#content #project #project-content #project-desc {
+	
+}
+
+#content #project #project-content #project-desc .project-media {
+	
+}
+
+#content #project #project-content #project-desc .idea-img {
 	width: 600px;
 }
 
 #content aside {
 	width: 305px;
-	display: inline-block;
+	float: left;
 }
 
 #content aside #embrace {
@@ -39,6 +86,5 @@
 }
 
 #content aside #related {
-
+	
 }
-

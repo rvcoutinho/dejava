@@ -4,16 +4,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
+import org.dejava.service.accesscontrol.util.MessageTypes;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Email of the user (as principal).
  */
 @Entity
 @Table(name = "email")
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = {
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class Email extends Principal {
 
 	/**
@@ -32,6 +37,9 @@ public class Email extends Principal {
 	 * @return The email of the user.
 	 */
 	@Column(name = "email")
+	@NotNull(payload = MessageTypes.Error.class, message = "email.email.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = "email.email.notempty")
+	@org.hibernate.validator.constraints.Email(payload = MessageTypes.Error.class, message = "email.email.email")
 	public String getEmail() {
 		return email;
 	}

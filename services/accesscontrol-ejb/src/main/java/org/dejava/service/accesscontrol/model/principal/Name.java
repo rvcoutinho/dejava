@@ -4,16 +4,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
+import org.dejava.service.accesscontrol.util.MessageTypes;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Name of the user (as principal).
  */
 @Entity
 @Table(name = "name")
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = {
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class Name extends Principal {
 
 	/**
@@ -32,6 +37,8 @@ public class Name extends Principal {
 	 * @return The name of the user.
 	 */
 	@Column(name = "name")
+	@NotNull(payload = MessageTypes.Error.class, message = "name.name.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = "name.name.notempty")
 	public String getName() {
 		return name;
 	}

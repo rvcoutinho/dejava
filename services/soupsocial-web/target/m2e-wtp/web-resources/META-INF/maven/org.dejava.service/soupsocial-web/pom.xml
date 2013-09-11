@@ -18,6 +18,11 @@
 
 		<dependency>
 			<groupId>org.dejava.service</groupId>
+			<artifactId>accesscontrol-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>party-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
@@ -29,6 +34,11 @@
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>place-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>philanthropy-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
 
@@ -44,44 +54,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-web</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-ehcache</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.jboss.spec.javax.faces</groupId>
-			<artifactId>jboss-jsf-api_2.1_spec</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.spec.javax.ws.rs</groupId>
-			<artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.ocpsoft</groupId>
-			<artifactId>prettyfaces-jsf2</artifactId>
-			<scope>compile</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.google.api-client</groupId>
-			<artifactId>google-api-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.api-client</groupId>
-			<artifactId>google-api-client-appengine</artifactId>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>com.google.api-client</groupId>
-			<artifactId>google-api-client-servlet</artifactId>
-			<type>pom</type>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
 		</dependency>
 
 	</dependencies>

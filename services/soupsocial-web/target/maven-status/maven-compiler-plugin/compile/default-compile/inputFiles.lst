@@ -1,7 +1,12 @@
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\util\SoupSocialCtx.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\constant\GooglePlacesAPIKeys.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\OrganizationController.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\place\GooglePlaceResult.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\organization\NewOrganizationController.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\DebuggerPL.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\philanthropy\NewPlannedProjectController.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\philanthropy\NewProjectIdeaController.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\philanthropy\IdeasController.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\locale\LocaleController.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\user\UserController.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\util\WebResources.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\philanthropy\ProjectController.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\util\WebSecurityResources.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\place\GooglePlace.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-web\src\main\java\org\dejava\service\soupsocial\controller\philanthropy\AbstractNewProjectController.java

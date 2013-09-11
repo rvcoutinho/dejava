@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.validation.method.ArgFormatter;
 import org.dejava.service.contact.util.MessageTypes;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Phone number.
@@ -19,8 +21,9 @@ import org.hibernate.validator.constraints.Length;
 @Table(name = "phone_number")
 @Inheritance(strategy = InheritanceType.JOINED)
 @MessageSources(sources = {
-		@MessageSource(bundleBaseName = "org.dejava.service.contact.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
-		@MessageSource(bundleBaseName = "org.dejava.service.contact.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.FieldAnnotationEntryProcessor" }) })
+		@MessageSource(bundleBaseName = "org.dejava.service.contact.properties.model", entriesAffix = { "",
+				".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.contact.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class PhoneNumber extends Contact {
 
 	/**
@@ -31,7 +34,6 @@ public class PhoneNumber extends Contact {
 	/**
 	 * The country code for the phone number.
 	 */
-	@Length(min = 1, max = 3, payload = MessageTypes.Error.class, message = "phonenumber.countrycode.length")
 	private String countryCode = "55";
 
 	/**
@@ -40,6 +42,9 @@ public class PhoneNumber extends Contact {
 	 * @return The country code for the phone number.
 	 */
 	@Column(name = "contry_code")
+	@NotNull(payload = MessageTypes.Error.class, message = "phonenumber.countrycode.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = "phonenumber.countrycode.notempty")
+	@Length(min = 1, max = 3, payload = MessageTypes.Error.class, message = "phonenumber.countrycode.length")
 	public String getCountryCode() {
 		return countryCode;
 	}
@@ -58,7 +63,6 @@ public class PhoneNumber extends Contact {
 	/**
 	 * Phone number.
 	 */
-	@Length(min = 10, max = 11, payload = MessageTypes.Error.class, message = "phonenumber.number.length")
 	private String number;
 
 	/**
@@ -67,6 +71,9 @@ public class PhoneNumber extends Contact {
 	 * @return The phone number.
 	 */
 	@Column(name = "number")
+	@NotNull(payload = MessageTypes.Error.class, message = "phonenumber.number.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = "phonenumber.number.notempty")
+	@Length(min = 10, max = 11, payload = MessageTypes.Error.class, message = "phonenumber.number.length")
 	public String getNumber() {
 		return number;
 	}

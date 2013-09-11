@@ -8,11 +8,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.User;
+import org.dejava.service.accesscontrol.util.MessageTypes;
 
 /**
  * Principal (user identity) to be used in the authentication/authorization.
@@ -20,7 +22,9 @@ import org.dejava.service.accesscontrol.model.User;
 @Entity
 @Table(name = "principal")
 @Inheritance(strategy = InheritanceType.JOINED)
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = {
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public abstract class Principal extends AbstractIdentifiedEntity {
 
 	/**
@@ -40,6 +44,7 @@ public abstract class Principal extends AbstractIdentifiedEntity {
 	 */
 	@JoinColumn(name = "u5er")
 	@ManyToOne(fetch = FetchType.EAGER)
+	@NotNull(payload = MessageTypes.Error.class, message = "principal.user.notnull")
 	public User getUser() {
 		return user;
 	}

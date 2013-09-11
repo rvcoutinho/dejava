@@ -1,8 +1,7 @@
 package org.dejava.service.soupsocial.util;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Produces;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import org.apache.shiro.SecurityUtils;
@@ -14,7 +13,8 @@ import org.apache.shiro.subject.Subject;
  * Web security resources to be injected CDI.
  */
 @Singleton
-@ManagedBean(name = "securityUtils")
+@SoupSocialCtx
+@Named(value = "securityUtils")
 public class WebSecurityResources {
 
 	/**
@@ -30,7 +30,7 @@ public class WebSecurityResources {
 	/**
 	 * Loads the security manager.
 	 */
-	@PostConstruct
+	// @PostConstruct
 	public void loadSecurityManager() {
 		// Creates a new security manager for the ini file.
 		securityManager = new IniSecurityManagerFactory(SHIRO_INI_PATH).getInstance();
@@ -44,8 +44,10 @@ public class WebSecurityResources {
 	 * @return The security manager for the web app.
 	 */
 	@Produces
+	@SoupSocialCtx
 	public SecurityManager getSecurityManager() {
-		return securityManager;
+		// return securityManager;
+		return null;
 	}
 
 	/**
@@ -54,7 +56,9 @@ public class WebSecurityResources {
 	 * @return The current subject.
 	 */
 	@Produces
+	@SoupSocialCtx
 	public Subject getSubject() {
-		return SecurityUtils.getSubject();
+		// return SecurityUtils.getSubject();
+		return null;
 	}
 }

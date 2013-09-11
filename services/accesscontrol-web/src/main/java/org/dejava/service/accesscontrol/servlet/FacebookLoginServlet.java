@@ -1,12 +1,12 @@
 package org.dejava.service.accesscontrol.servlet;
 
+import static org.dejava.service.accesscontrol.util.FacebookAppProps.APP_PROPERTIES;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.security.InvalidParameterException;
-import java.util.Properties;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.dejava.service.accesscontrol.authc.FacebookUserToken;
 import org.dejava.service.accesscontrol.component.UserComponent;
 import org.dejava.service.accesscontrol.constant.FacebookAppKeys;
@@ -41,37 +41,11 @@ public class FacebookLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 5882283662574494011L;
 
 	/**
-	 * The path for the application properties file.
+	 * Current subject.
 	 */
-	private static final String APP_PROPERTIES_PATH = "org/dejava/service/accesscontrol/properties/facebook-app_.properties";
-
-	/**
-	 * Gets the application properties object (from file).
-	 * 
-	 * @return The application properties object (from file).
-	 */
-	private static Properties getAppProperties() {
-		// Gets the current thread class loader.
-		final ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
-		// Creates a new properties object.
-		final Properties appProperties = new Properties();
-		// Tries to load the properties content.
-		try {
-			appProperties.load(contextClassLoader.getResourceAsStream(APP_PROPERTIES_PATH));
-		}
-		// If an exception is raised.
-		catch (final Exception exception) {
-			// Throws an exception. TODO
-			throw new InvalidParameterException();
-		}
-		// Returns the new properties object.
-		return appProperties;
-	}
-
-	/**
-	 * The application properties file.
-	 */
-	private static final Properties APP_PROPERTIES = getAppProperties();
+	@Inject
+	@AccessControlCtx
+	private Subject subject;
 
 	/**
 	 * Gets the OAuth exchange code URL.
@@ -80,10 +54,11 @@ public class FacebookLoginServlet extends HttpServlet {
 	 *            State to be used in the facebook state validation.
 	 * @param redirectURL
 	 *            The URL that the page should be redirected after connecting.
-	 * 
 	 * @return The OAuth exchange code URL.
+	 * @exception IOException
+	 *                If an input or output error occurs while the servlet is handling the HTTP request.
 	 */
-	private String getOAuthExchangeCodeURL(final String state, final String redirectURL) {
+	private String getOAuthExchangeCodeURL(final String state, final String redirectURL) throws IOException {
 		// Gets the plain facebook connect URL.
 		final StringBuffer exchangeCodeURL = new StringBuffer(
 				APP_PROPERTIES.getProperty(FacebookAppKeys.APP_LOGIN_DIALOG_URL));
@@ -105,7 +80,7 @@ public class FacebookLoginServlet extends HttpServlet {
 		}
 		// Adds the redirect URI to the URL.
 		exchangeCodeURL.append("&" + APP_PROPERTIES.getProperty(FacebookAppKeys.APP_REDIRECT_URI_PARAM) + "="
-				+ redirectURL);
+				+ URLEncoder.encode(redirectURL, "UTF-8"));
 		// Returns the exchange code URL.
 		return exchangeCodeURL.toString();
 	}
@@ -130,9 +105,11 @@ public class FacebookLoginServlet extends HttpServlet {
 		final String state = Integer.toHexString(new Random().nextInt(100000000));
 		// Sets the state to be used in the facebook state validation.
 		request.getSession().setAttribute(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_STATE_ATTR), state);
+		// Sets the redirect URL to be used in the login.
+		request.getSession().setAttribute(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_REDIRECT_URI_PARAM),
+				request.getHeader("Referer"));
 		// Redirects to the facebook login dialog URL.
-		response.sendRedirect(getOAuthExchangeCodeURL(state, URLEncoder.encode(
-				APP_PROPERTIES.getProperty(FacebookAppKeys.APP_LOGIN_REDIRECT_URL), "UTF-8")));
+		response.sendRedirect(getOAuthExchangeCodeURL(state, request.getRequestURL().toString()));
 	}
 
 	/**
@@ -143,8 +120,11 @@ public class FacebookLoginServlet extends HttpServlet {
 	 * @param oAuthCode
 	 *            The OAuth exchange code to be used.
 	 * @return The OAuth access token URL.
+	 * @exception IOException
+	 *                If an input or output error occurs while the servlet is handling the HTTP request.
 	 */
-	private String getOAuthAccessTokenURL(final String redirectURL, final String oAuthCode) {
+	private String getOAuthAccessTokenURL(final String redirectURL, final String oAuthCode)
+			throws IOException {
 		// Gets the plain facebook connect URL.
 		final StringBuffer accessTokenURL = new StringBuffer(
 				APP_PROPERTIES.getProperty(FacebookAppKeys.APP_TOKEN_EXCHANGE_URL));
@@ -156,7 +136,7 @@ public class FacebookLoginServlet extends HttpServlet {
 				+ APP_PROPERTIES.getProperty(FacebookAppKeys.APP_SECRET));
 		// Adds the redirect URI to the URL.
 		accessTokenURL.append("&" + APP_PROPERTIES.getProperty(FacebookAppKeys.APP_REDIRECT_URI_PARAM) + "="
-				+ redirectURL);
+				+ URLEncoder.encode(redirectURL, "UTF-8").toString());
 		// Adds the OAuth exchange code to the URL.
 		accessTokenURL.append("&" + APP_PROPERTIES.getProperty(FacebookAppKeys.APP_OAUTH_CODE_PARAM) + "="
 				+ oAuthCode);
@@ -184,15 +164,13 @@ public class FacebookLoginServlet extends HttpServlet {
 		if (request.getSession().getAttribute(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_STATE_ATTR))
 				.equals(request.getParameter(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_STATE_PARAM)))) {
 			// Gets the URL for the access token exchange.
-			final URL oAuthAccessToken = new URL(getOAuthAccessTokenURL(URLEncoder.encode(
-					APP_PROPERTIES.getProperty(FacebookAppKeys.APP_LOGIN_REDIRECT_URL), "UTF-8"),
+			final URL oAuthAccessToken = new URL(getOAuthAccessTokenURL(request.getRequestURL().toString(),
 					request.getParameter(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_OAUTH_CODE_PARAM))));
 			// Gets the access token information
 			final String accessTokenInfo = new BufferedReader(new InputStreamReader(
 					oAuthAccessToken.openStream())).readLine();
 			// Redirects to the login with the access token information.
-			response.sendRedirect(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_LOGIN_REDIRECT_URL) + "?"
-					+ accessTokenInfo);
+			response.sendRedirect(request.getRequestURL().toString() + "?" + accessTokenInfo);
 		}
 		// Otherwise. TODO
 	}
@@ -244,16 +222,17 @@ public class FacebookLoginServlet extends HttpServlet {
 	 */
 	private void login(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
+		// Gets the access token.
+		final String accessToken = request.getParameter(APP_PROPERTIES
+				.getProperty(FacebookAppKeys.APP_ACCESS_TOKEN_PARAM));
 		// Gets the facebook client with the given access token.
-		final FacebookClient fbClient = new DefaultFacebookClient(
-				request.getParameter(FacebookLoginServlet.APP_PROPERTIES
-						.getProperty(FacebookAppKeys.APP_ACCESS_TOKEN_PARAM)));
+		final FacebookClient fbClient = new DefaultFacebookClient(accessToken);
 		// Gets the current facebook user.
 		final com.restfb.types.User fbUser = fbClient.fetchObject("me", com.restfb.types.User.class);
 		// If there is no facebook user.
 		if (fbUser == null) {
 			// Redirects to the facebook connect servlet.
-			response.sendRedirect(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_LOGIN_REDIRECT_URL));
+			response.sendRedirect(request.getRequestURL().toString());
 		}
 		// If there is a logged facebook user.
 		else {
@@ -265,9 +244,13 @@ public class FacebookLoginServlet extends HttpServlet {
 			// Creates a new facebook authentication token.
 			final FacebookUserToken facebookToken = new FacebookUserToken(fbUser.getId());
 			// Tries to log the user in.
-			SecurityUtils.getSubject().login(facebookToken);
-			// Redirects to the facebook welcome page.
-			response.sendRedirect(APP_PROPERTIES.getProperty(FacebookAppKeys.APP_WELCOME_REDIRECT_URL));
+			subject.login(facebookToken);
+			// Sets the access token to the subject session (so it can be accessed by other applications).
+			subject.getSession().setAttribute(
+					APP_PROPERTIES.getProperty(FacebookAppKeys.APP_ACCESS_TOKEN_PARAM), accessToken);
+			// Redirects to the facebook original request URL.
+			response.sendRedirect((String) request.getSession().getAttribute(
+					APP_PROPERTIES.getProperty(FacebookAppKeys.APP_REDIRECT_URI_PARAM)));
 		}
 	}
 

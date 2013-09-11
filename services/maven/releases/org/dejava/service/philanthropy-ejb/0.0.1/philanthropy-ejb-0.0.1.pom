@@ -20,19 +20,16 @@
 			<groupId>org.dejava.service</groupId>
 			<artifactId>accesscontrol-ejb</artifactId>
 			<type>ejb</type>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>place-ejb</artifactId>
 			<type>ejb</type>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>party-ejb</artifactId>
 			<type>ejb</type>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -43,18 +40,6 @@
 			<groupId>org.dejava.component</groupId>
 			<artifactId>exception</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.dejava.component</groupId>
-			<artifactId>reflection</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.component</groupId>
-			<artifactId>i18n</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.component</groupId>
-			<artifactId>test</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>com.restfb</groupId>
@@ -62,33 +47,17 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jboss.spec.javax.ejb</groupId>
-			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
-			<scope>provided</scope>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<scope>provided</scope>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-container</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.protocol</groupId>
-			<artifactId>arquillian-protocol-servlet</artifactId>
 			<scope>test</scope>
 		</dependency>
 
@@ -100,7 +69,7 @@
 				<artifactId>maven-ejb-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
-					<ejbVersion>3.1</ejbVersion>
+					<ejbVersion>3.2</ejbVersion>
 					<annotationProcessors>
 						<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
 					</annotationProcessors>
@@ -108,44 +77,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>default</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-surefire-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>arq-jbossas-managed</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.jboss.as</groupId>
-					<artifactId>jboss-as-arquillian-container-managed</artifactId>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-
-		<profile>
-			<id>arq-jbossas-remote</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.jboss.as</groupId>
-					<artifactId>jboss-as-arquillian-container-remote</artifactId>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-
-	</profiles>
 
 </project>

@@ -1,5 +1,4 @@
-org\dejava\service\accesscontrol\controller\JaxRsActivator.class
 org\dejava\service\accesscontrol\util\WebResources.class
+org\dejava\service\accesscontrol\util\WebSecurityResources.class
 org\dejava\service\accesscontrol\servlet\FacebookLoginServlet.class
-org\dejava\service\accesscontrol\constant\FacebookAppKeys.class
 org\dejava\service\accesscontrol\controller\UserController.class

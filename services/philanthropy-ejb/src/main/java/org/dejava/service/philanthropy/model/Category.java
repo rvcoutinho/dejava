@@ -1,8 +1,12 @@
 package org.dejava.service.philanthropy.model;
 
+import org.dejava.component.i18n.source.annotation.MessageSource;
+import org.dejava.component.i18n.source.annotation.MessageSources;
+
 /**
- * Category of the philantropy idea.
+ * Category of the philanthropy idea.
  */
+@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.EnumTypesEntryProcessor" }) })
 public enum Category {
 
 	/**
@@ -16,9 +20,9 @@ public enum Category {
 	CITIZENSHIP,
 
 	/**
-	 * Culture category.
+	 * Art category.
 	 */
-	CULTURE,
+	ART,
 
 	/**
 	 * Education category.

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema
+	xsi:schemaPlace="http://www.jboss.org/ironjacamar/schema
 		http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
-	<xa-datasource jndi-name="java:/datasource/MessageDS"
-		enabled="true" use-java-context="true" use-ccm="true" pool-name="MessageDS">
+	<xa-datasource jndi-name="java:/datasource/AccessControlDS"
+		enabled="true" use-java-context="true" use-ccm="true" pool-name="AccessControlDS">
 		<xa-datasource-property name="ServerName">localhost
 		</xa-datasource-property>
 		<xa-datasource-property name="PortNumber">5432
 		</xa-datasource-property>
-		<xa-datasource-property name="DatabaseName">message
+		<xa-datasource-property name="DatabaseName">accesscontrol
 		</xa-datasource-property>
 		<driver>org.postgresql</driver>
 		<xa-pool>
@@ -18,8 +18,8 @@
 			<prefill>true</prefill>
 		</xa-pool>
 		<security>
-			<user-name>message</user-name>
-			<password>Dej4v4_message</password>
+			<user-name>accesscontrol</user-name>
+			<password>Dej4v4_4cc35</password>
 		</security>
 	</xa-datasource>
 	<xa-datasource jndi-name="java:/datasource/ContactDS"
@@ -38,11 +38,11 @@
 		</xa-pool>
 		<security>
 			<user-name>contact</user-name>
-			<password>Dej4v4_contact</password>
+			<password>Dej4v4_c0nt4</password>
 		</security>
 	</xa-datasource>
-	<xa-datasource jndi-name="java:/datasource/LocationDS"
-		enabled="true" use-java-context="true" use-ccm="true" pool-name="LocationDS">
+	<xa-datasource jndi-name="java:/datasource/PlaceDS"
+		enabled="true" use-java-context="true" use-ccm="true" pool-name="PlaceDS">
 		<xa-datasource-property name="ServerName">localhost
 		</xa-datasource-property>
 		<xa-datasource-property name="PortNumber">5432
@@ -57,7 +57,26 @@
 		</xa-pool>
 		<security>
 			<user-name>location</user-name>
-			<password>Dej4v4_location</password>
+			<password>Dej4v4_l0c4t</password>
+		</security>
+	</xa-datasource>
+	<xa-datasource jndi-name="java:/datasource/MessageDS"
+		enabled="true" use-java-context="true" use-ccm="true" pool-name="MessageDS">
+		<xa-datasource-property name="ServerName">localhost
+		</xa-datasource-property>
+		<xa-datasource-property name="PortNumber">5432
+		</xa-datasource-property>
+		<xa-datasource-property name="DatabaseName">message
+		</xa-datasource-property>
+		<driver>org.postgresql</driver>
+		<xa-pool>
+			<min-pool-size>10</min-pool-size>
+			<max-pool-size>100</max-pool-size>
+			<prefill>true</prefill>
+		</xa-pool>
+		<security>
+			<user-name>message</user-name>
+			<password>Dej4v4_m3554</password>
 		</security>
 	</xa-datasource>
 	<xa-datasource jndi-name="java:/datasource/PartyDS"
@@ -76,28 +95,10 @@
 		</xa-pool>
 		<security>
 			<user-name>party</user-name>
-			<password>Dej4v4_party</password>
+			<password>Dej4v4_p4rty</password>
 		</security>
 	</xa-datasource>
-	<xa-datasource jndi-name="java:/datasource/AccessControlDS"
-		enabled="true" use-java-context="true" use-ccm="true" pool-name="AccessControlDS">
-		<xa-datasource-property name="ServerName">localhost
-		</xa-datasource-property>
-		<xa-datasource-property name="PortNumber">5432
-		</xa-datasource-property>
-		<xa-datasource-property name="DatabaseName">accesscontrol
-		</xa-datasource-property>
-		<driver>org.postgresql</driver>
-		<xa-pool>
-			<min-pool-size>10</min-pool-size>
-			<max-pool-size>100</max-pool-size>
-			<prefill>true</prefill>
-		</xa-pool>
-		<security>
-			<user-name>accesscontrol</user-name>
-			<password>Dej4v4_accesscontrol</password>
-		</security>
-	</xa-datasource>
+	
 	<xa-datasource jndi-name="java:/datasource/PhilanthropyDS"
 		enabled="true" use-java-context="true" use-ccm="true" pool-name="PhilanthropyDS">
 		<xa-datasource-property name="ServerName">localhost
@@ -114,7 +115,7 @@
 		</xa-pool>
 		<security>
 			<user-name>philanthropy</user-name>
-			<password>Dej4v4_philanthropy</password>
+			<password>Dej4v4_phi14</password>
 		</security>
 	</xa-datasource>
 	<drivers>

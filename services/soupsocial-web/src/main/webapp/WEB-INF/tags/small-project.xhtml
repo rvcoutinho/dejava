@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<ui:composition>
+	<article
+		class="project padding-1 light-gray-texture-bg#{varStatus.even ? ' even' : ' odd'}#{varStatus.index mod 3 == 1 ? ' middle' : ''}">
+		<h:link outcome="pretty:project">
+			<f:param name="projectId" value="#{project.identifier}" />
+			<h:graphicImage library="soupsocial" class="project-img" />
+		</h:link>
+		<h:link outcome="pretty:project" styleClass="gray-text">
+			<f:param name="projectId" value="#{project.identifier}" />
+			<h2 class="project-title featured-text-1">#{project.name}</h2>
+		</h:link>
+		<div class="project-short-desc padding-3">#{project.shortDescription}</div>
+		<div class="project-party">
+			<div class="project-owner left small-text border-bottom">Idealizador:</div>
+			<div class="project-owner small-text border-bottom">Instituição:</div>
+			<div class="project-owner left small-text border-top padding-4">
+				<a><h:graphicImage library="soupsocial"
+						class="project-owner-img" />
+					<div>Rômulo Coutinho</div></a>
+			</div>
+			<div class="project-owner small-text border-top padding-4">
+				<a><h:graphicImage library="soupsocial"
+						class="project-owner-img" />
+					<div>Rômulo Coutinho</div></a>
+			</div>
+		</div>
+		<div class="project-support padding-1">
+			<h:form>
+				<div class="support">
+					<h:commandLink styleClass="orange-text"
+						action="#{projectController.supportProject}">
+						<f:param name="projectId" value="#{project.identifier}" />
+						<h:graphicImage library="soupsocial" name="gfx/heart-orange.png"
+							styleClass="heart" />
+						<span class="featured-text-3">#{project.shares}</span>
+						<br />
+						<span class="gray-text small-text">apoiadores</span>
+					</h:commandLink>
+				</div>
+				<div class="audience orange-text">
+					<h:graphicImage library="soupsocial" name="gfx/spoons-green.png"
+						styleClass="spoons" />
+					<span class="featured-text-3">#{project.shares}</span><br /> <span
+						class="gray-text small-text">impactos em potencial</span>
+				</div>
+			</h:form>
+		</div>
+		<div class="project-category">
+			<h:graphicImage library="soupsocial" name="gfx/#{project.category}.png" />
+		</div>
+	</article>
+</ui:composition>
+</html>

@@ -1,9 +1,9 @@
-<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.0"
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.0
-			http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.0.xsd">
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
 
-	<url-mapping id="como-funciona">
+	<url-mapping id="how">
 		<pattern value="/como-funciona/" />
 		<view-id value="/how.jsf" />
 	</url-mapping>
@@ -11,15 +11,31 @@
 		<pattern value="/" />
 		<view-id value="/index.jsf" />
 	</url-mapping>
-	<url-mapping id="privacidade">
+	<url-mapping id="privacy">
 		<pattern value="/privacidade/" />
 		<view-id value="/privacy.jsf" />
 	</url-mapping>
-	<url-mapping id="projeto">
-		<pattern value="/projeto/" />
+	<url-mapping id="project">
+		<pattern value="/projeto/#{projectId : projectController.projectId}/" />
 		<view-id value="/project.jsf" />
 	</url-mapping>
-	<url-mapping id="quem-somos">
+	<url-mapping id="ideas">
+		<pattern value="/ideias/" />
+		<view-id value="/ideas.jsf" />
+	</url-mapping>
+	<url-mapping id="projects">
+		<pattern value="/projetos/" />
+		<view-id value="/projects.jsf" />
+	</url-mapping>
+	<url-mapping id="me">
+		<pattern value="/u/" />
+		<view-id value="/user.jsf" />
+	</url-mapping>
+	<url-mapping id="user">
+		<pattern value="/u/#{username : userController.username}/" />
+		<view-id value="/user.jsf" />
+	</url-mapping>
+	<url-mapping id="who">
 		<pattern value="/quem-somos/" />
 		<view-id value="/who.jsf" />
 	</url-mapping>
@@ -27,7 +43,7 @@
 		<pattern value="/soupsocial/" />
 		<view-id value="/what.jsf" />
 	</url-mapping>
-	<url-mapping id="termos">
+	<url-mapping id="terms">
 		<pattern value="/termos/" />
 		<view-id value="/terms.jsf" />
 	</url-mapping>

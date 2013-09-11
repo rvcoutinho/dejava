@@ -1,33 +1,17 @@
 .projects .project {
-	width: 260px;
+	margin-bottom: 27px;
+	width: 282px;
+	float: left;
 }
 
-.projects .project .project-range {
-	position: absolute;
-	margin-top: -5px;
-	margin-left: 210px;
-	height: 85px;
-	width: 42px;
-	text-align: center;
-	padding: 5px;
-}
-
-.projects .project .project-range.orange {
-	background: url('#{resource["soupsocial:gfx/orange-flag.png"]}');
-}
-
-.projects .project .project-range * {
-	z-index: 2;
-}
-
-.projects .project .project-range .flag {
-	z-index: 1;
-	position: absolute;
+.projects .project.middle {
+	margin-left: 27px;
+	margin-right: 27px;
 }
 
 .projects .project .project-img {
-	height: 190px;
-	width: 250px;
+	height: 153px;
+	width: 272px;
 	border: 4px solid #FFFFFF;
 }
 
@@ -35,25 +19,29 @@
 	
 }
 
-.projects .project .project-desc {
-
+.projects .project .project-short-desc {
+	
 }
 
-.projects .project .project-owner {
-	display: inline-block;
-	width: 125px;
+.projects .project .project-party {
+	overflow: auto;
 }
 
-.projects .project .project-owner.left {
+.projects .project .project-party .project-owner {
+	width: 136px;
+	float: left;
+}
+
+.projects .project .project-party .project-owner.left {
 	margin-right: 10px;
 }
 
-.projects .project .project-owner a {
+.projects .project .project-party .project-owner a {
 	color: #4F5B5A;
 	font-weight: bold;
 }
 
-.projects .project .project-owner a div {
+.projects .project .project-party .project-owner a div {
 	margin-left: 5px;
 	display: inline-block;
 	vertical-align: middle;
@@ -61,12 +49,47 @@
 	overflow: hidden;
 }
 
-.projects .project .project-owner-img {
+.projects .project .project-party .project-owner-img {
 	vertical-align: middle;
 	width: 50px;
 	height: 50px;
 }
 
 .projects .project .project-support {
-	text-align: center;
+	margin: 10px -10px -10px -10px;
+	clear: both;
+	overflow: auto;
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.projects .project .project-support img {
+	margin: 5px;
+	float: left;
+}
+
+.projects .project .project-support img.heart {
+	height: 28px;
+}
+
+.projects .project .project-support img.spoons {
+	height: 23px;
+}
+
+.projects .project .project-support .support {
+	text-align: left;
+	float: left;
+	width: 35%;
+}
+
+.projects .project .project-support .audience {
+	text-align: left;
+	width: 65%;
+	float: left;
+}
+
+.projects .project .project-category {
+	position: absolute;
+	margin-top: -375px;
+	margin-left: 255px;
+	z-index: 10;
 }

@@ -9,6 +9,8 @@ import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.security.authc.credential.HashedCredentials;
 import org.dejava.component.security.crypt.hasher.CredentialsHasher;
+import org.dejava.service.accesscontrol.util.MessageTypes;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -16,7 +18,9 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Table(name = "password")
-@MessageSources(sources = { @MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }) })
+@MessageSources(sources = {
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class Password extends Credentials implements HashedCredentials {
 
 	/**
@@ -92,6 +96,7 @@ public class Password extends Credentials implements HashedCredentials {
 	 * @return The raw password for the user.
 	 */
 	@Transient
+	@Length(payload = MessageTypes.Error.class, message = "password.rawpassword.length", min = 8, max = 10)
 	public String getRawPassword() {
 		return rawPassword;
 	}
@@ -116,7 +121,7 @@ public class Password extends Credentials implements HashedCredentials {
 	 * 
 	 * @return The password (salted and hashed) for the user.
 	 */
-	@NotEmpty
+	@NotEmpty(payload = MessageTypes.Error.class, message = "password.hashedpassword.notempty")
 	@Column(name = "password")
 	public byte[] getHashedPassword() {
 		// If there is a raw password.

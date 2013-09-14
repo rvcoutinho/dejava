@@ -13,6 +13,7 @@ import org.dejava.component.i18n.test.message.util.AnnotatedInterface;
 import org.dejava.component.i18n.test.message.util.AnnotatedSuperClass;
 import org.dejava.component.i18n.test.message.util.TestMessageCommand;
 import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Tests for the default i18n message handler.
@@ -116,6 +117,7 @@ public class SimpleMessageHandlerTest {
 	/**
 	 * Tests the simple message handler with valid parameters.
 	 */
+	@Test
 	public void testGetMessageValidParams() {
 		// For each valid message.
 		for (final TestMessageCommand testMsgCommand : getValidMessageCommands()) {
@@ -146,6 +148,7 @@ public class SimpleMessageHandlerTest {
 	/**
 	 * Tests the simple message handler with invalid parameters.
 	 */
+	@Test
 	public void testGetMessageInvalidParams() {
 		// For each invalid message.
 		for (final TestMessageCommand testMsgCommand : getInvalidMessageCommands()) {
@@ -183,14 +186,16 @@ public class SimpleMessageHandlerTest {
 	}
 
 	/**
-	 * Tests the simple message handler with valid parameters (yet for messages that cannot be found).
+	 * Tests the simple message handler with valid parameters (yet for messages that cannot be found), and
+	 * with message not found exceptions expected.
 	 */
-	public void testGetMessageNoMessage() {
+	@Test
+	public void testGetMessageNoMessageException() {
 		// For each command with no predefined message.
 		for (final TestMessageCommand testMsgCommand : getMessageCommandsNoMessages()) {
 			// Tries to get the message from the command.
 			try {
-				testMsgCommand.getMessage(SimpleMessageHandler.getMessageHandler(Locale.getDefault()));
+				testMsgCommand.getMessage(SimpleMessageHandler.getMessageHandler(Locale.getDefault(), true));
 				// If no exception is thrown, fails the test.
 				Assert.fail();
 			}
@@ -198,6 +203,22 @@ public class SimpleMessageHandlerTest {
 			catch (final MessageNotFoundException exception) {
 				// Ignores it.
 			}
+		}
+	}
+
+	/**
+	 * Tests the simple message handler with valid parameters (yet for messages that cannot be found), and
+	 * with no message not found exceptions expected.
+	 */
+	@Test
+	public void testGetMessageNoMessageNoException() {
+		// For each command with no predefined message.
+		for (final TestMessageCommand testMsgCommand : getMessageCommandsNoMessages()) {
+			// Tries to get the message from the command.
+			String message = testMsgCommand.getMessage(SimpleMessageHandler.getMessageHandler(Locale
+					.getDefault()));
+			// Asserts that the message is equals to the given key.
+			Assert.assertEquals(testMsgCommand.getMessageKey(), message);
 		}
 	}
 }

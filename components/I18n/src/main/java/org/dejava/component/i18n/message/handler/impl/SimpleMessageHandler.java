@@ -36,36 +36,29 @@ public class SimpleMessageHandler implements MessageHandler {
 	private static final long serialVersionUID = -6806683128717270649L;
 
 	/**
-	 * Localized message handlers stored by locale.
+	 * If the message handler should raise an exception when the message is not found. If false, the message
+	 * key is returned when the message cannot be found.
 	 */
-	private static Map<Locale, MessageHandler> messageHandlers;
+	private Boolean throwsException = false;
 
 	/**
-	 * Gets the localized message handlers stored by locale.
+	 * Gets if the message handler should raise an exception when the message is not found.
 	 * 
-	 * @return The localized message handlers stored by locale.
+	 * @return If the message handler should raise an exception when the message is not found.
 	 */
-	public static Map<Locale, MessageHandler> getMessageHandlers() {
-		// Grants that the map will just me created once.
-		synchronized (SimpleMessageHandler.class) {
-			// If the map is null.
-			if (messageHandlers == null) {
-				// Creates a new map.
-				messageHandlers = new HashMap<Locale, MessageHandler>();
-			}
-		}
-		// Returns the map.
-		return messageHandlers;
+	public Boolean getThrowsException() {
+		return throwsException;
 	}
 
 	/**
-	 * Sets the localized message handlers stored by locale.
+	 * Sets if the message handler should raise an exception when the message is not found.
 	 * 
-	 * @param messageHandlers
-	 *            New localized message handlers stored by locale.
+	 * @param throwsException
+	 *            If the message handler should raise an exception when the message is not found. If false,
+	 *            the message key is returned when the message cannot be found.
 	 */
-	public static void setMessageHandlers(final Map<Locale, MessageHandler> messageHandlers) {
-		SimpleMessageHandler.messageHandlers = messageHandlers;
+	public void setThrowsException(Boolean throwsException) {
+		this.throwsException = throwsException;
 	}
 
 	/**
@@ -90,21 +83,35 @@ public class SimpleMessageHandler implements MessageHandler {
 
 	/**
 	 * Protected constructor for the default internationalization message handler.
-	 */
-	protected SimpleMessageHandler() {
-		super();
-	}
-
-	/**
-	 * Protected constructor for the default internationalization message handler.
 	 * 
 	 * @param locale
 	 *            Locale for the new instance.
+	 * @param throwsException
+	 *            If the message handler should raise an exception when the message is not found. If false,
+	 *            the message key is returned when the message cannot be found.
 	 */
-	protected SimpleMessageHandler(final Locale locale) {
+	protected SimpleMessageHandler(final Locale locale, Boolean throwsException) {
 		super();
-		// Sets the locale.
+		// Sets the basic parameters.
 		this.locale = locale;
+		this.throwsException = throwsException;
+	}
+
+	/**
+	 * Gets the message handler for the current environment.
+	 * 
+	 * @param locale
+	 *            Locale for the message handler to use.
+	 * @param throwsException
+	 *            If the message handler should raise an exception when the message is not found. If false,
+	 *            the message key is returned when the message cannot be found.
+	 * @return The message handler for the current environment.
+	 */
+	public static MessageHandler getMessageHandler(final Locale locale, Boolean throwsException) {
+		// Creates a new instance of the default i18n message handler.
+		MessageHandler messageHandler = new SimpleMessageHandler(locale, throwsException);
+		// Returns the message handler.
+		return messageHandler;
 	}
 
 	/**
@@ -115,17 +122,7 @@ public class SimpleMessageHandler implements MessageHandler {
 	 * @return The message handler for the current environment.
 	 */
 	public static MessageHandler getMessageHandler(final Locale locale) {
-		// Tries to get the default message handler for the locale in the map.
-		MessageHandler messageHandler = getMessageHandlers().get(locale);
-		// If the message handler is not yet.
-		if (messageHandler == null) {
-			// Creates a new instance of the default i18n message handler.
-			messageHandler = new SimpleMessageHandler(locale);
-			// Puts it in the map.
-			getMessageHandlers().put(locale, messageHandler);
-		}
-		// Returns the message handler.
-		return messageHandler;
+		return getMessageHandler(locale, false);
 	}
 
 	/**
@@ -230,8 +227,16 @@ public class SimpleMessageHandler implements MessageHandler {
 				// Keeps trying with the next annotation.
 			}
 		}
-		// If no localized message is found, throws an exception.
-		throw new MessageNotFoundException(new Object[] { type, locale, key, parametersValues }, null);
+		// If no localized message is found, and an exceptions is expected.
+		if (getThrowsException()) {
+			// Throws an exception.
+			throw new MessageNotFoundException(new Object[] { type, locale, key, parametersValues }, null);
+		}
+		// If no localized message is found, and no exceptions is expected.
+		else {
+			// Returns the key itself.
+			return key;
+		}
 	}
 
 	/**

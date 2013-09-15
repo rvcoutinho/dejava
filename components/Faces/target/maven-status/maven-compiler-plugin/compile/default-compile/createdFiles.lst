@@ -1,9 +1,11 @@
 org\dejava\component\faces\message\FacesMessageHandler$1.class
-org\dejava\component\faces\i18n\AbstractLocaleController.class
+org\dejava\component\faces\exception\ExceptionHandlerFactoryImpl.class
 org\dejava\component\faces\converter\InvalidRegexConverter.class
 org\dejava\component\faces\message\annotation\MessageType$Severity.class
 org\dejava\component\faces\message\FacesMessageHandler.class
+org\dejava\component\faces\i18n\LocaleController.class
 org\dejava\component\faces\controller\AbstractGenericController.class
 org\dejava\component\faces\message\constant\ErrorKeys.class
+org\dejava\component\faces\exception\ExceptionHandlerImpl.class
 org\dejava\component\faces\message\constant\ParamKeys.class
 org\dejava\component\faces\message\annotation\MessageType.class

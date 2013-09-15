@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema
+	xsi:schemaPlace="http://www.jboss.org/ironjacamar/schema
 		http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
-	<datasource jndi-name="java:/datasource/TestDS" jta="true"
+	<xa-datasource jndi-name="java:/datasource/TestDS"
 		enabled="true" use-java-context="true" use-ccm="true" pool-name="TestDS">
-		<connection-url>jdbc:postgresql://localhost:5432/test</connection-url>
+		<xa-datasource-property name="ServerName">localhost
+		</xa-datasource-property>
+		<xa-datasource-property name="PortNumber">5432
+		</xa-datasource-property>
+		<xa-datasource-property name="DatabaseName">test
+		</xa-datasource-property>
 		<driver>org.postgresql</driver>
-		<pool>
+		<xa-pool>
 			<min-pool-size>10</min-pool-size>
 			<max-pool-size>100</max-pool-size>
 			<prefill>true</prefill>
-		</pool>
+		</xa-pool>
 		<security>
 			<user-name>test</user-name>
 			<password>Dej4v4_test</password>
 		</security>
-	</datasource>
+	</xa-datasource>
 </datasources>

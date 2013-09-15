@@ -40,7 +40,7 @@ public class WebResources {
 	 * 
 	 * @return The default implementation for the message handler.
 	 */
-	public MessageHandler getMessageHandler() {
+	private MessageHandler getMessageHandler() {
 		return SimpleMessageHandler.getMessageHandler(localeController.getLocale());
 	}
 

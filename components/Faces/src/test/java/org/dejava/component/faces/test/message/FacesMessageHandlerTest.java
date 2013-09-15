@@ -20,8 +20,7 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.jboss.shrinkwrap.resolver.api.DependencyResolvers;
-import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
+import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,9 +54,6 @@ public class FacesMessageHandlerTest {
 	 */
 	@Deployment
 	public static Archive<?> createTestArchive() {
-		// Gets the maven dependency resolver.
-		final MavenDependencyResolver dependencyResolver = DependencyResolvers.use(
-				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
 		// Defines and returns the archive definition.
 		return ShrinkWrap
 				.create(WebArchive.class)
@@ -78,12 +74,14 @@ public class FacesMessageHandlerTest {
 								"src/test/resources/org/dejava/component/faces/message/test/properties/fatal_pt_BR.properties"),
 						"org/dejava/component/faces/message/test/properties/fatal_pt_BR.properties")
 				.addAsLibraries(
-						dependencyResolver.artifacts("org.jboss.arquillian.extension:arquillian-warp-jsf",
-								"org.dejava.component:ejb", "org.dejava.component:validation",
-								"org.dejava.component:exception", "org.dejava.component:i18n",
-								"org.dejava.component:reflection").resolveAsFiles())
+						Maven.resolver()
+								.loadPomFromFile("pom.xml")
+								.resolve("org.jboss.arquillian.extension:arquillian-warp-jsf",
+										"org.dejava.component:ejb", "org.dejava.component:validation",
+										"org.dejava.component:exception", "org.dejava.component:i18n",
+										"org.dejava.component:reflection").withTransitivity().asFile())
 				.addPackages(true, "org.dejava.component.faces.message")
-				.addPackages(true, "org.dejava.component.faces.test.message.util")
+				.addPackages(true, "org.dejava.component.faces.test.message")
 				.addAsWebResource(new File("src/test/resources/WEB-INF/message.xhtml"))
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
 	}

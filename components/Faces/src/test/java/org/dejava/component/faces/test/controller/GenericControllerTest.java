@@ -13,8 +13,7 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.jboss.shrinkwrap.resolver.api.DependencyResolvers;
-import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
+import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.runner.RunWith;
 
 /**
@@ -30,19 +29,19 @@ public class GenericControllerTest extends AbstractGenericComponentTest {
 	 */
 	@Deployment
 	public static Archive<?> createTestArchive() {
-		// Gets the maven dependency resolver.
-		final MavenDependencyResolver dependencyResolver = DependencyResolvers.use(
-				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
 		// Defines and returns the archive definition.
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addAsLibraries(
-						dependencyResolver.artifacts("org.dejava.component:ejb",
-								"org.dejava.component:validation", "org.dejava.component:exception",
-								"org.dejava.component:i18n", "org.dejava.component:reflection")
-								.resolveAsFiles()).addPackages(true, "org.dejava.component.faces.test.controller")
-				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
+						Maven.resolver()
+								.loadPomFromFile("pom.xml")
+								.resolve("org.dejava.component:ejb", "org.dejava.component:validation",
+										"org.dejava.component:exception", "org.dejava.component:i18n",
+										"org.dejava.component:reflection").withTransitivity().asFile())
+				.addPackages(true, "org.dejava.component.faces.controller")
+				.addPackages(true, "org.dejava.component.faces.test.controller")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml");
 	}
 

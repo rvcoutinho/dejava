@@ -3,21 +3,24 @@ package org.dejava.component.faces.i18n;
 import java.io.Serializable;
 import java.util.Locale;
 
-import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 /**
  * Controller that handles the application locale for a session.
  */
-@SessionScoped
-@Named(value = "localeController")
-public class LocaleController implements Serializable {
+public abstract class AbstractLocaleController implements Serializable {
 
 	/**
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = 2921686219608561186L;
+
+	/**
+	 * Gets the current instance for the faces context.
+	 * 
+	 * @return The current instance for the faces context.
+	 */
+	protected abstract FacesContext getFacesContext();
 
 	/**
 	 * The locale to be used in the JSF application.

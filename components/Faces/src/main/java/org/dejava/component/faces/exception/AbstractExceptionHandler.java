@@ -6,25 +6,20 @@ import javax.ejb.EJBException;
 import javax.faces.FacesException;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerWrapper;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
-import javax.inject.Inject;
 
 import org.dejava.component.exception.localized.LocalizedException;
-import org.dejava.component.faces.i18n.LocaleController;
-import org.dejava.component.faces.message.FacesMessageHandler;
 import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
-import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
 
 /**
  * A customized exception handler for the applications.
  */
-public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
+public abstract class AbstractExceptionHandler extends ExceptionHandlerWrapper {
 
 	/**
 	 * The wrapped exception handler.
 	 */
-	private ExceptionHandler wrappedHandler;
+	private final ExceptionHandler wrappedHandler;
 
 	/**
 	 * Default constructor.
@@ -32,7 +27,7 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	 * @param wrappedHandler
 	 *            The original handler to be injected.
 	 */
-	public ExceptionHandlerImpl(final ExceptionHandler wrappedHandler) {
+	public AbstractExceptionHandler(final ExceptionHandler wrappedHandler) {
 		this.wrappedHandler = wrappedHandler;
 	}
 
@@ -45,23 +40,11 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	}
 
 	/**
-	 * Locale controller.
-	 */
-	@Inject
-	private LocaleController localeController;
-
-	/**
 	 * Gets the application message handler.
 	 * 
-	 * @param facesContext
-	 *            The faces context.
 	 * @return The application message handler.
 	 */
-	private ApplicationMessageHandler getAppMessageHandler(FacesContext facesContext) {
-		// Returns a new application message handler.
-		return new FacesMessageHandler(SimpleMessageHandler.getMessageHandler(localeController.getLocale()),
-				facesContext);
-	}
+	protected abstract ApplicationMessageHandler getAppMessageHandler();
 
 	/**
 	 * @see javax.faces.context.ExceptionHandlerWrapper#handle()
@@ -69,7 +52,7 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	@Override
 	public void handle() throws FacesException {
 		// Gets the iterator for the exception queue events.
-		Iterator<ExceptionQueuedEvent> exceptionEventIterator = getUnhandledExceptionQueuedEvents()
+		final Iterator<ExceptionQueuedEvent> exceptionEventIterator = getUnhandledExceptionQueuedEvents()
 				.iterator();
 		// For each unhandled exception.
 		for (ExceptionQueuedEvent currentExceptionEvent = exceptionEventIterator.next(); exceptionEventIterator
@@ -85,9 +68,7 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 			// If the exception is a localize one.
 			if (currentException instanceof LocalizedException) {
 				// Adds the error messages to the application.
-				((LocalizedException) currentException)
-						.addLocalizedMessages(getAppMessageHandler(currentExceptionEvent.getContext()
-								.getContext()));
+				((LocalizedException) currentException).addLocalizedMessages(getAppMessageHandler());
 				// Removes the event from the queue.
 				exceptionEventIterator.remove();
 			}

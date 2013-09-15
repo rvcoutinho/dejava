@@ -54,26 +54,24 @@ public abstract class AbstractExceptionHandler extends ExceptionHandlerWrapper {
 		// Gets the iterator for the exception queue events.
 		final Iterator<ExceptionQueuedEvent> exceptionEventIterator = getUnhandledExceptionQueuedEvents()
 				.iterator();
-		// If there are unhandled exceptions.
-		if (exceptionEventIterator.hasNext()) {
-			// For each unhandled exception.
-			for (ExceptionQueuedEvent currentExceptionEvent = exceptionEventIterator.next(); exceptionEventIterator
-					.hasNext(); currentExceptionEvent = exceptionEventIterator.next()) {
-				// Gets the current exception.
-				Throwable currentException = currentExceptionEvent.getContext().getException();
-				// While the exception is a wrapper (EJB or Faces exception).
-				while (((currentException instanceof FacesException) || (currentException instanceof EJBException))
-						&& (currentException.getCause() != null)) {
-					// Unwraps the exception.
-					currentException = currentException.getCause();
-				}
-				// If the exception is a localize one.
-				if (currentException instanceof LocalizedException) {
-					// Adds the error messages to the application.
-					((LocalizedException) currentException).addLocalizedMessages(getAppMessageHandler());
-					// Removes the event from the queue.
-					exceptionEventIterator.remove();
-				}
+		// For each unhandled exception.
+		while (exceptionEventIterator.hasNext()) {
+			// Gets the current exception event.
+			ExceptionQueuedEvent currentExceptionEvent = exceptionEventIterator.next();
+			// Gets the current exception.
+			Throwable currentException = currentExceptionEvent.getContext().getException();
+			// While the exception is a wrapper (EJB or Faces exception).
+			while (((currentException instanceof FacesException) || (currentException instanceof EJBException))
+					&& (currentException.getCause() != null)) {
+				// Unwraps the exception.
+				currentException = currentException.getCause();
+			}
+			// If the exception is a localize one.
+			if (currentException instanceof LocalizedException) {
+				// Adds the error messages to the application.
+				((LocalizedException) currentException).addLocalizedMessages(getAppMessageHandler());
+				// Removes the event from the queue.
+				exceptionEventIterator.remove();
 			}
 		}
 	}

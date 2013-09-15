@@ -6,6 +6,7 @@ import javax.ejb.EJBException;
 import javax.faces.FacesException;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerWrapper;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
 
 import org.dejava.component.exception.localized.LocalizedException;
@@ -42,9 +43,11 @@ public abstract class AbstractExceptionHandler extends ExceptionHandlerWrapper {
 	/**
 	 * Gets the application message handler.
 	 * 
+	 * @param facesContext
+	 *            The faces context for the request.
 	 * @return The application message handler.
 	 */
-	protected abstract ApplicationMessageHandler getAppMessageHandler();
+	protected abstract ApplicationMessageHandler getAppMessageHandler(FacesContext facesContext);
 
 	/**
 	 * @see javax.faces.context.ExceptionHandlerWrapper#handle()
@@ -69,7 +72,9 @@ public abstract class AbstractExceptionHandler extends ExceptionHandlerWrapper {
 			// If the exception is a localize one.
 			if (currentException instanceof LocalizedException) {
 				// Adds the error messages to the application.
-				((LocalizedException) currentException).addLocalizedMessages(getAppMessageHandler());
+				((LocalizedException) currentException)
+						.addLocalizedMessages(getAppMessageHandler(currentExceptionEvent.getContext()
+								.getContext()));
 				// Removes the event from the queue.
 				exceptionEventIterator.remove();
 			}

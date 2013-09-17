@@ -2,7 +2,8 @@ D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\
 D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\message\constant\ParamKeys.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\message\FacesMessageHandler.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\converter\InvalidRegexConverter.java
+D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\exception\ExceptionHandlerImpl.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\i18n\AbstractLocaleController.java
-D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\message\annotation\MessageType.java
-D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\exception\AbstractExceptionHandler.java
+D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\exception\AbstractExceptionHandlerFactory.java
 D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\controller\AbstractGenericController.java
+D:\usuarios\rvcoutinho\Desktop\dejava\components\Faces\src\main\java\org\dejava\component\faces\message\annotation\MessageType.java

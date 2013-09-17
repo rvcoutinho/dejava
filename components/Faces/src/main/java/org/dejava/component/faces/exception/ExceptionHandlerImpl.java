@@ -6,12 +6,12 @@ import java.util.Iterator;
 import javax.ejb.EJBException;
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
-import javax.enterprise.inject.spi.CDI;
 import javax.faces.FacesException;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerWrapper;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
+import javax.servlet.ServletContext;
 
 import org.dejava.component.exception.localized.LocalizedException;
 import org.dejava.component.faces.i18n.AbstractLocaleController;
@@ -74,7 +74,8 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	 */
 	protected ApplicationMessageHandler getAppMessageHandler(FacesContext facesContext) {
 		// Gets the bean manager.
-		BeanManager beanManager = CDI.current().getBeanManager();
+		BeanManager beanManager = (BeanManager) ((ServletContext) facesContext.getExternalContext()
+				.getContext()).getAttribute(BeanManager.class.getName());
 		// Gets the locale controller bean.
 		@SuppressWarnings("unchecked")
 		Bean<AbstractLocaleController> localeControllerBean = (Bean<AbstractLocaleController>) beanManager

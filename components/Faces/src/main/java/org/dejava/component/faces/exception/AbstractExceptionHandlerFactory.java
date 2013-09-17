@@ -1,5 +1,6 @@
 package org.dejava.component.faces.exception;
 
+import javax.enterprise.inject.spi.BeanManager;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerFactory;
 
@@ -27,11 +28,21 @@ public abstract class AbstractExceptionHandlerFactory extends ExceptionHandlerFa
 	}
 
 	/**
+	 * Gets the bean manager attribute name in the Servlet context.
+	 * 
+	 * @return The bean manager attribute name in the Servlet context.
+	 */
+	public String getBeanManagerAttrName() {
+		return BeanManager.class.getName();
+	}
+
+	/**
 	 * @see javax.faces.context.ExceptionHandlerFactory#getExceptionHandler()
 	 */
 	@Override
 	public ExceptionHandler getExceptionHandler() {
 		// Returns a new exception handler.
-		return new ExceptionHandlerImpl(wrappedFactory.getExceptionHandler(), getClass().getAnnotations());
+		return new ExceptionHandlerImpl(wrappedFactory.getExceptionHandler(), getClass().getAnnotations(),
+				getBeanManagerAttrName());
 	}
 }

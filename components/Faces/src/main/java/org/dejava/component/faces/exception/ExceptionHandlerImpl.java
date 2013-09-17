@@ -52,26 +52,34 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	}
 
 	/**
-	 * Default constructor.
-	 * 
-	 * @param wrappedHandler
-	 *            The original handler to be injected.
-	 * @param localeControllerClassifiers
-	 *            The classifiers to be used in order to get the locale controller.
+	 * The bean manager attribute name in the Servlet context.
 	 */
-	public ExceptionHandlerImpl(final ExceptionHandler wrappedHandler,
-			Annotation[] localeControllerClassifiers) {
-		this.wrappedHandler = wrappedHandler;
-		this.localeControllerClassifiers = localeControllerClassifiers;
-	}
+	private String beanManagerAttrName;
 
 	/**
 	 * Gets the bean manager attribute name in the Servlet context.
 	 * 
 	 * @return The bean manager attribute name in the Servlet context.
 	 */
-	protected String getBeanManagerAttrName() {
-		return BeanManager.class.getName();
+	public String getBeanManagerAttrName() {
+		return beanManagerAttrName;
+	}
+
+	/**
+	 * Default constructor.
+	 * 
+	 * @param wrappedHandler
+	 *            The original handler to be injected.
+	 * @param localeControllerClassifiers
+	 *            The classifiers to be used in order to get the locale controller.
+	 * @param beanManagerAttrName
+	 *            The bean manager attribute name in the Servlet context.
+	 */
+	public ExceptionHandlerImpl(final ExceptionHandler wrappedHandler,
+			Annotation[] localeControllerClassifiers, String beanManagerAttrName) {
+		this.wrappedHandler = wrappedHandler;
+		this.localeControllerClassifiers = localeControllerClassifiers;
+		this.beanManagerAttrName = beanManagerAttrName;
 	}
 
 	/**

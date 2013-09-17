@@ -66,6 +66,15 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	}
 
 	/**
+	 * Gets the bean manager attribute name in the Servlet context.
+	 * 
+	 * @return The bean manager attribute name in the Servlet context.
+	 */
+	protected String getBeanManagerAttrName() {
+		return BeanManager.class.getName();
+	}
+
+	/**
 	 * Gets the application message handler.
 	 * 
 	 * @param facesContext
@@ -75,7 +84,7 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	protected ApplicationMessageHandler getAppMessageHandler(FacesContext facesContext) {
 		// Gets the bean manager.
 		BeanManager beanManager = (BeanManager) ((ServletContext) facesContext.getExternalContext()
-				.getContext()).getAttribute(BeanManager.class.getName());
+				.getContext()).getAttribute(getBeanManagerAttrName());
 		// Gets the locale controller bean.
 		@SuppressWarnings("unchecked")
 		Bean<AbstractLocaleController> localeControllerBean = (Bean<AbstractLocaleController>) beanManager

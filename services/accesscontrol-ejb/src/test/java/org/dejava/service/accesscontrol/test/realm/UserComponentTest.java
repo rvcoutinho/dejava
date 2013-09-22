@@ -44,7 +44,7 @@ public class UserComponentTest {
 		// Defines and returns the archive definition.
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
-				.addPackages(true, "org.dejava.service.accesscontrol")
+				.addPackages(true, "org.dejava.properties")
 				.addAsLibraries(
 						dependencyResolver.artifacts("org.dejava.component:security",
 								"org.dejava.component:ejb", "org.dejava.component:exception",

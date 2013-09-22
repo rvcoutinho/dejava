@@ -4,11 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
+		<groupId>org.dejava</groupId>
 		<artifactId>pom</artifactId>
-		<groupId>org.dejava.service</groupId>
 		<version>0.0.1</version>
 	</parent>
 
+	<groupId>com.soupsocial.web</groupId>
 	<artifactId>soupsocial-web</artifactId>
 	<packaging>war</packaging>
 
@@ -60,6 +61,17 @@
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-servlet</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-config-prettyfaces</artifactId>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>

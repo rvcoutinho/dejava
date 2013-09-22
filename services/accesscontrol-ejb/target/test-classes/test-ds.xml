@@ -14,7 +14,7 @@
 		</pool>
 		<security>
 			<user-name>test</user-name>
-			<password>Dej4v4_test</password>
+			<password>R</password>
 		</security>
 	</datasource>
 </datasources>

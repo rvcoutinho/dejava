@@ -62,6 +62,17 @@
 			<artifactId>javaee-api</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-servlet</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-config-prettyfaces</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>

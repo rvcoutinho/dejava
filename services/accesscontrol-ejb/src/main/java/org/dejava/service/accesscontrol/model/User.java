@@ -26,8 +26,8 @@ import org.dejava.service.accesscontrol.model.principal.Principal;
 @Entity
 @Table(name = "u5er")
 @MessageSources(sources = {
-		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
-		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
+		@MessageSource(bundleBaseName = "org.dejava.properties.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.properties.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class User extends AbstractIdentifiedEntity {
 
 	/**

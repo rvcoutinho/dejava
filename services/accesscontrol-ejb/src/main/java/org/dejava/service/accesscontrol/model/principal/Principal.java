@@ -23,8 +23,8 @@ import org.dejava.service.accesscontrol.util.MessageTypes;
 @Table(name = "principal")
 @Inheritance(strategy = InheritanceType.JOINED)
 @MessageSources(sources = {
-		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
-		@MessageSource(bundleBaseName = "org.dejava.service.accesscontrol.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
+		@MessageSource(bundleBaseName = "org.dejava.properties.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(bundleBaseName = "org.dejava.properties.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public abstract class Principal extends AbstractIdentifiedEntity {
 
 	/**

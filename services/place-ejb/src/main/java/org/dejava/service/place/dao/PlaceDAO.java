@@ -1,6 +1,6 @@
 package org.dejava.service.place.dao;
 
-import static org.dejava.service.place.util.GooglePlacesProps.PLACE_PROPERTIES;
+import static org.dejava.properties.util.GooglePlacesAPIProps.API_PROPERTIES;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
 import org.dejava.component.ejb.constant.DAOParamKeys;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.component.validation.method.PreConditions;
-import org.dejava.service.place.constant.GooglePlacesAPIKeys;
+import org.dejava.properties.constant.GooglePlacesAPIKeys;
 import org.dejava.service.place.model.Place;
 import org.dejava.service.place.model.google.GooglePlaceResult;
 import org.dejava.service.place.util.PlaceCtx;
@@ -100,9 +100,9 @@ public class PlaceDAO extends AbstractGenericDAO<Place, Integer> {
 	public String getPlaceSearchURL(final String addressReference) throws UnsupportedEncodingException {
 		// Gets the initial URL.
 		final StringBuffer url = new StringBuffer(
-				PLACE_PROPERTIES.getProperty(GooglePlacesAPIKeys.PLACE_DETAILS_URL));
+				API_PROPERTIES.getProperty(GooglePlacesAPIKeys.PLACE_DETAILS_URL));
 		// Appends the key to URL.
-		url.append("key=" + PLACE_PROPERTIES.getProperty(GooglePlacesAPIKeys.API_KEY));
+		url.append("key=" + API_PROPERTIES.getProperty(GooglePlacesAPIKeys.API_KEY));
 		// Appends the place reference.
 		url.append("&reference=" + addressReference);
 		// Appends the sensor value.

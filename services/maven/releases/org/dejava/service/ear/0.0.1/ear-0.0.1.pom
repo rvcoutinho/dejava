@@ -153,6 +153,11 @@
 			<artifactId>shiro-ehcache</artifactId>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<scope>compile</scope>
+		</dependency>
 
 	</dependencies>
 

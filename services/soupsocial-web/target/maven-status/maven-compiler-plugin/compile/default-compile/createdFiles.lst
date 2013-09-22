@@ -2,11 +2,10 @@ org\dejava\service\soupsocial\controller\philanthropy\AbstractNewProjectControll
 org\dejava\service\soupsocial\controller\philanthropy\NewProjectIdeaController.class
 org\dejava\service\soupsocial\util\SoupSocialCtx.class
 org\dejava\service\soupsocial\controller\philanthropy\NewPlannedProjectController.class
-org\dejava\service\soupsocial\util\WebSecurityResources.class
 org\dejava\service\soupsocial\controller\organization\NewOrganizationController.class
+org\dejava\service\soupsocial\exception\ExceptionHandlerFactoryImpl.class
 org\dejava\service\soupsocial\controller\locale\LocaleController.class
 org\dejava\service\soupsocial\util\WebResources.class
 org\dejava\service\soupsocial\controller\philanthropy\IdeasController.class
-org\dejava\service\soupsocial\DebuggerPL.class
 org\dejava\service\soupsocial\controller\philanthropy\ProjectController.class
 org\dejava\service\soupsocial\controller\user\UserController.class

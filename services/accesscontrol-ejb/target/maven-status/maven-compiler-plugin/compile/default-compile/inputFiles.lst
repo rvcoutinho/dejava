@@ -1,5 +1,5 @@
+D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\util\SecurityResources.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\component\crendentials\CredentialComponent.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\util\FacebookAppProps.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\component\principal\PrincipalComponent.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\model\User.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\model\credentials\Password.java
@@ -11,10 +11,11 @@ D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\o
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\component\principal\NameComponent.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\component\crendentials\PasswordComponent.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\component\UserComponent.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\interceptor\SecurityInterceptor.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\dao\principal\PrincipalDAO.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\authc\FacebookUserToken.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\cache\SharedCacheManagerFactory.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\constant\FacebookAppKeys.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\interceptor\Secured.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\model\credentials\Credentials.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\realm\FacebookEJBRealm.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\component\principal\FacebookComponent.java

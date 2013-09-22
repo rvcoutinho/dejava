@@ -12,28 +12,28 @@ public interface MessageTypes {
 	/**
 	 * Info message type.
 	 */
-	@MessageBundle(baseName = "org.dejava.service.accesscontrol.properties.info")
+	@MessageBundle(baseName = "org.dejava.properties.properties.info")
 	interface Info extends Payload {
 	}
 
 	/**
 	 * Warn message type.
 	 */
-	@MessageBundle(baseName = "org.dejava.service.accesscontrol.properties.warn")
+	@MessageBundle(baseName = "org.dejava.properties.properties.warn")
 	interface Warn extends Payload {
 	}
 
 	/**
 	 * Error message type.
 	 */
-	@MessageBundle(baseName = "org.dejava.service.accesscontrol.properties.error")
+	@MessageBundle(baseName = "org.dejava.properties.properties.error")
 	interface Error extends Payload {
 	}
 
 	/**
 	 * Fatal message type.
 	 */
-	@MessageBundle(baseName = "org.dejava.service.accesscontrol.properties.fatal")
+	@MessageBundle(baseName = "org.dejava.properties.properties.fatal")
 	interface Fatal extends Payload {
 	}
 

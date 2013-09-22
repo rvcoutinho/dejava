@@ -9,6 +9,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.dejava.service.accesscontrol.interceptor.Secured;
 import org.dejava.service.contact.model.EmailAddress;
 import org.dejava.service.contact.model.PhoneNumber;
 import org.dejava.service.party.component.PartyComponent;
@@ -159,6 +161,8 @@ public class NewOrganizationController implements Serializable {
 	 * @throws IOException
 	 *             If the google place URL cannot be processed. FIXME
 	 */
+	@Secured
+	@RequiresAuthentication
 	public void createOrganization() throws IOException {
 		// Updates the party address.
 		updateAddressDetails();

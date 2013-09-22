@@ -37,7 +37,7 @@ public class UserController implements Serializable {
 	 * Application subject.
 	 */
 	@Inject
-	@SoupSocialCtx
+	@AccessControlCtx
 	private transient Subject subject;
 
 	/**

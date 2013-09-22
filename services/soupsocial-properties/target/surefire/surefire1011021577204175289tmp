@@ -1,0 +1,26 @@
+#surefire
+#Sun Sep 22 18:40:47 BRT 2013
+testClassesDirectory=D\:\\usuarios\\rvcoutinho\\Desktop\\dejava\\services\\soupsocial-properties\\target\\test-classes
+classPathUrl.4=D\:\\usuarios\\rvcoutinho\\.m2\\repository\\org\\dejava\\component\\validation\\0.0.1\\validation-0.0.1.jar
+forkMode=once
+classPathUrl.3=D\:\\usuarios\\rvcoutinho\\.m2\\repository\\org\\dejava\\component\\exception\\0.0.1\\exception-0.0.1.jar
+classPathUrl.2=D\:\\usuarios\\rvcoutinho\\.m2\\repository\\org\\dejava\\component\\i18n\\0.0.1\\i18n-0.0.1.jar
+useManifestOnlyJar=true
+classPathUrl.1=D\:\\usuarios\\rvcoutinho\\Desktop\\dejava\\services\\soupsocial-properties\\target\\classes
+reportsDirectory=D\:\\usuarios\\rvcoutinho\\Desktop\\dejava\\services\\soupsocial-properties\\target\\surefire-reports
+classPathUrl.0=D\:\\usuarios\\rvcoutinho\\Desktop\\dejava\\services\\soupsocial-properties\\target\\test-classes
+providerConfiguration=org.apache.maven.surefire.junit.JUnit3Provider
+testSuiteDefinitionTestSourceDirectory=D\:\\usuarios\\rvcoutinho\\Desktop\\dejava\\services\\soupsocial-properties\\src\\test\\java
+surefireClassPathUrl.1=D\:\\usuarios\\rvcoutinho\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-api\\2.10\\surefire-api-2.10.jar
+surefireClassPathUrl.0=D\:\\usuarios\\rvcoutinho\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-junit3\\2.10\\surefire-junit3-2.10.jar
+runOrder=filesystem
+useSystemClassLoader=true
+excludes0=**/*$*
+isTrimStackTrace=true
+enableAssertions=true
+includes2=**/*TestCase.java
+failIfNoTests=false
+includes1=**/*Test.java
+includes0=**/Test*.java
+childDelegation=false
+classPathUrl.5=D\:\\usuarios\\rvcoutinho\\.m2\\repository\\org\\dejava\\component\\reflection\\0.0.1\\reflection-0.0.1.jar

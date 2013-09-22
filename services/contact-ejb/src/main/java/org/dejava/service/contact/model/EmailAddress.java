@@ -58,4 +58,23 @@ public class EmailAddress extends Contact {
 		this.address = address;
 	}
 
+	/**
+	 * Default constructor.
+	 */
+	public EmailAddress() {
+		super();
+	}
+
+	/**
+	 * Default constructor.
+	 * 
+	 * @param emailAddress
+	 *            The email address.
+	 */
+	public EmailAddress(String emailAddress) {
+		super();
+		// Sets the email address.
+		this.address = emailAddress;
+	}
+
 }

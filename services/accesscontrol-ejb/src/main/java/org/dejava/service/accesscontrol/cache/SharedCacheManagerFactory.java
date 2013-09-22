@@ -5,7 +5,7 @@ import net.sf.ehcache.CacheManager;
 import org.apache.shiro.util.Factory;
 
 /**
- * TODO
+ * Shared cache manager factory.
  */
 public class SharedCacheManagerFactory implements Factory<CacheManager> {
 

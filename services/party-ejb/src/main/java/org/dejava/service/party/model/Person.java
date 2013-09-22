@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.User;
+import org.dejava.service.contact.model.EmailAddress;
 import org.dejava.service.party.util.MessageTypes;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -255,6 +256,8 @@ public class Person extends Party {
 			this.middleName = fbUser.getMiddleName();
 			this.lastName = fbUser.getLastName();
 			this.birthDate = fbUser.getBirthdayAsDate();
+			// Adds the email address as a contact.
+			getContacts().add(new EmailAddress(fbUser.getEmail()));
 			// If the gender is not null.
 			if (fbUser.getGender() != null) {
 				// Sets the gender.

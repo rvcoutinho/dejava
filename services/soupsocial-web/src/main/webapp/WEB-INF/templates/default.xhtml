@@ -44,9 +44,8 @@
 						<li><h:outputLink styleClass="featured-text-1"
 								value="/accesscontrol-web/login/facebook"
 								rendered="#{!(securityUtils.subject.authenticated or securityUtils.subject.remembered)}">Conectar</h:outputLink>
-							<h:link outcome="pretty:me" styleClass="featured-text-1"
-								rendered="#{(securityUtils.subject.authenticated or securityUtils.subject.remembered)}">
-							Minha conta</h:link></li>
+							<h:link outcome="pretty:me" styleClass="featured-text-1 ui-icon-home"
+								rendered="#{(securityUtils.subject.authenticated or securityUtils.subject.remembered)}"></h:link></li>
 						<li><a href="http://www.facebook.com/SoupSocial/"
 							target="_blank"><h:graphicImage library="soupsocial"
 									class="media first" name="gfx/media/facebook.png" /></a> <a

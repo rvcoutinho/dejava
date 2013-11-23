@@ -18,8 +18,7 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.jboss.shrinkwrap.resolver.api.DependencyResolvers;
-import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
+import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -39,18 +38,16 @@ public class ExternalEntityLoaderTest {
 	 */
 	@Deployment
 	public static Archive<?> createTestArchive() {
-		// Gets the maven dependency resolver.
-		final MavenDependencyResolver dependencyResolver = DependencyResolvers.use(
-				MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
 		// Defines and returns the archive definition.
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addPackages(true, "org.dejava.component.ejb")
 				.addAsLibraries(
-						dependencyResolver.artifacts("org.dejava.component:exception",
-								"org.dejava.component:i18n", "org.dejava.component:exception",
-								"org.dejava.component:reflection", "org.dejava.component:validation")
-								.resolveAsFiles())
+						Maven.resolver()
+								.loadPomFromFile("pom.xml")
+								.resolve("org.dejava.component:exception", "org.dejava.component:i18n",
+										"org.dejava.component:exception", "org.dejava.component:reflection",
+										"org.dejava.component:validation").withoutTransitivity().asFile())
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml");

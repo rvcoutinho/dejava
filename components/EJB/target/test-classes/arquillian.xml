@@ -18,7 +18,7 @@
 		<!-- If you want to use the JBOSS_HOME environment variable, just delete 
 			the jbossHome property -->
 		<configuration>
-			<property name="jbossHome">C:/servidores/jboss-as-7.1.1.Final</property>
+			<property name="jbossHome">C:/servidores/wildfly-8.0.0.Alpha4</property>
 			<!-- <property name="javaVmArguments">-Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y 
 				-Xmx512m -XX:MaxPermSize=128m</property> -->
 		</configuration>

@@ -1,0 +1,6 @@
+org\dejava\component\validation\test\object\ViolationMessageCommandTest.class
+org\dejava\component\validation\test\object\util\MessageTypes.class
+org\dejava\component\validation\test\object\util\MessageTypes$Error.class
+org\dejava\component\validation\test\object\util\FakeApplicationMessageHandler.class
+org\dejava\component\validation\test\object\util\FakeEntity.class
+org\dejava\component\validation\test\method\ArgFormatterTest.class

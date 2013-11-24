@@ -133,7 +133,7 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	/**
 	 * Addresses for the party.
 	 */
-	@ExternalEntity(retrieveObj = "java:/global/ear/place-ejb/Component/Place/Place", paramsValuesMethod = "getAddressesIds", singleEntity = false)
+	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Place/Place", paramsValuesMethod = "getAddressesIds", singleEntity = false)
 	private Collection<Place> addresses;
 
 	/**
@@ -166,7 +166,7 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	/**
 	 * Contacts for the party.
 	 */
-	@ExternalEntity(retrieveObj = "java:/global/ear/contact-ejb/Component/Contact/Contact", mappedBy = "partyId", singleEntity = false)
+	@ExternalEntity(retrieveObj = "java:app/contact-ejb/Component/Contact/Contact", mappedBy = "partyId", singleEntity = false)
 	private Collection<Contact> contacts;
 
 	/**

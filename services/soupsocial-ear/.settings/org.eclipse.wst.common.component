@@ -2,46 +2,46 @@
     <wb-module deploy-name="ear-0.0.1">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
-        <dependent-module archiveName="soupsocial-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/soupsocial-web/0.0.1/soupsocial-web-0.0.1.war">
+        <dependent-module archiveName="soupsocial-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/soupsocial/web/soupsocial-web/0.0.1/soupsocial-web-0.0.1.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="properties-0.0.1.jar" deploy-path="/lib" handle="module:/resource/properties/properties">
+        <dependent-module archiveName="accesscontrol-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/accesscontrol-ejb/accesscontrol-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="accesscontrol-ejb-0.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/accesscontrol-ejb/0.0.1/accesscontrol-ejb-0.0.1.jar">
+        <dependent-module archiveName="accesscontrol-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/web/accesscontrol-web/0.0.1/accesscontrol-web-0.0.1.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="accesscontrol-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/accesscontrol-web/0.0.1/accesscontrol-web-0.0.1.war">
+        <dependent-module archiveName="party-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/party-ejb/party-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="party-ejb-0.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/party-ejb/0.0.1/party-ejb-0.0.1.jar">
+        <dependent-module archiveName="party-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/web/party-web/0.0.1/party-web-0.0.1.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="party-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/party-web/0.0.1/party-web-0.0.1.war">
+        <dependent-module archiveName="place-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/place-ejb/place-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="place-ejb-0.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/place-ejb/0.0.1/place-ejb-0.0.1.jar">
+        <dependent-module archiveName="place-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/web/place-web/0.0.1/place-web-0.0.1.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="place-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/place-web/0.0.1/place-web-0.0.1.war">
+        <dependent-module archiveName="contact-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/contact-ejb/contact-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="contact-ejb-0.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/contact-ejb/0.0.1/contact-ejb-0.0.1.jar">
+        <dependent-module archiveName="contact-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/web/contact-web/0.0.1/contact-web-0.0.1.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="contact-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/contact-web/0.0.1/contact-web-0.0.1.war">
+        <dependent-module archiveName="message-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/message-ejb/message-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="message-ejb-0.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/message-ejb/0.0.1/message-ejb-0.0.1.jar">
+        <dependent-module archiveName="message-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/web/message-web/0.0.1/message-web-0.0.1.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="message-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/message-web/0.0.1/message-web-0.0.1.war">
+        <dependent-module archiveName="philanthropy-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/philanthropy-ejb/philanthropy-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="philanthropy-ejb-0.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/philanthropy-ejb/0.0.1/philanthropy-ejb-0.0.1.jar">
+        <dependent-module archiveName="philanthropy-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/web/philanthropy-web/0.0.1/philanthropy-web-0.0.1.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="philanthropy-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/philanthropy-web/0.0.1/philanthropy-web-0.0.1.war">
+        <dependent-module archiveName="soupsocial-web-0.0.1.war" deploy-path="/" handle="module:/resource/soupsocial-web/soupsocial-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="security-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/security/0.0.1/security-0.0.1.jar">

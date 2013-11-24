@@ -7,6 +7,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.dejava.component.ejb.entity.ExternalEntity;
+import org.dejava.service.party.model.Party;
+
 /**
  * Application notification.
  */
@@ -21,34 +24,87 @@ public class AppNotification extends Message {
 	private static final long serialVersionUID = -2431557934384868984L;
 
 	/**
+	 * The message sender.
+	 */
+	private String sender;
+
+	/**
 	 * @see org.dejava.service.message.model.Message#getSender()
 	 */
-	@Transient
 	@Override
+	@Column(name = "sender")
 	public String getSender() {
-		return null;
+		return sender;
 	}
 
 	/**
-	 * The notification recipient.
+	 * Sets the message sender.
+	 * 
+	 * @param sender
+	 *            New message sender.
 	 */
-	private String recipient;
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
+
+	/**
+	 * The message recipient identifier.
+	 */
+	private Integer recipientId;
+
+	/**
+	 * Returns the message recipient identifier.
+	 * 
+	 * @return The message recipient identifier.
+	 */
+	@Column(name = "recipient")
+	public Integer getRecipientId() {
+		return recipientId;
+	}
+
+	/**
+	 * Sets the message recipient identifier.
+	 * 
+	 * @param recipientId
+	 *            New message recipient identifier.
+	 */
+	public void setRecipientId(Integer recipientId) {
+		this.recipientId = recipientId;
+	}
+
+	/**
+	 * The message recipient.
+	 */
+	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Party/Party")
+	private Party recipient;
 
 	/**
 	 * @see org.dejava.service.message.model.Message#getRecipient()
 	 */
 	@Override
-	public Object getRecipient() {
+	@Transient
+	public Party getRecipient() {
 		return recipient;
 	}
 
 	/**
-	 * Sets the notification recipient.
+	 * Sets the message recipient.
 	 * 
 	 * @param recipient
-	 *            New notification recipient.
+	 *            New message recipient.
 	 */
-	public void setRecipient(String recipient) {
+	public void setRecipient(Party recipient) {
+		// If the recipient is null.
+		if (recipient == null) {
+			// Sets the recipient id to null.
+			setRecipientId(null);
+		}
+		// If the recipient is not null.
+		else {
+			// Sets the new recipient id.
+			setRecipientId(recipient.getIdentifier());
+		}
+		// Updates the recipient.
 		this.recipient = recipient;
 	}
 

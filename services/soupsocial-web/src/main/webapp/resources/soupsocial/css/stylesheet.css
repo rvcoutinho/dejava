@@ -39,6 +39,10 @@ button .spoon,input[type=button] .spoon,input[type=submit] .spoon {
 	height: 16px;
 }
 
+.pre-input-text {
+	float: right;
+}
+
 .left-button {
 	float: left;
 }
@@ -83,6 +87,10 @@ button .spoon,input[type=button] .spoon,input[type=submit] .spoon {
 .form-content input,.form-content select,.form-content textarea {
 	float: right;
 	width: 275px;
+}
+
+.form-content input.youtube {
+	width: 85px;	
 }
 
 .form-content textarea {
@@ -282,9 +290,12 @@ a {
 	list-style: none;
 }
 
+#header nav ul,#header nav li {
+	float: left;
+}
+
 #header nav li {
 	padding: 0px 10px;
-	position: relative;
 	border-left: 1px solid #FFFFFF;
 	border-right: 1px solid #BBBBBB;
 }
@@ -297,16 +308,30 @@ a {
 	border-right: none;
 }
 
+#header nav li a {
+	float: left;
+	border: none;
+}
+
+#header nav li .notification-info {
+	text-indent: 0px;
+	overflow: visible;
+}
+
+#header nav li .notification-info span {
+	position: relative;
+	top: 13px;
+	left: 5px;
+	font-size: 9px;
+	padding: 1px;
+}
+
 #header nav li .media {
 	margin-right: 5px;
 }
 
 #header nav li .media.first {
 	margin-right: 0px;
-}
-
-#header nav ul,#header nav li {
-	float: left;
 }
 
 #footer {

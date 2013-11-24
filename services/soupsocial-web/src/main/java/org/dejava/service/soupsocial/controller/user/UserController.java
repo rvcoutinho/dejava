@@ -7,6 +7,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.dejava.service.accesscontrol.component.principal.NameComponent;
 import org.dejava.service.accesscontrol.model.User;
@@ -34,11 +35,13 @@ public class UserController implements Serializable {
 	private static final long serialVersionUID = 7108460866687912714L;
 
 	/**
-	 * Application subject.
+	 * Gets the application subject.
+	 * 
+	 * @return The application subject.
 	 */
-	@Inject
-	@AccessControlCtx
-	private transient Subject subject;
+	public Subject getSubject() {
+		return SecurityUtils.getSubject();
+	}
 
 	/**
 	 * The user name being searched.
@@ -54,9 +57,9 @@ public class UserController implements Serializable {
 		// If the user name is not given.
 		if ((username == null) || (username.isEmpty())) {
 			// If the user is known. FIXME
-			if ((subject.isAuthenticated()) || (subject.isRemembered())) {
+			if ((getSubject().isAuthenticated()) || (getSubject().isRemembered())) {
 				// Gets the name principals for the current user. FIXME
-				final Collection<Name> usernames = subject.getPrincipals().byType(Name.class);
+				final Collection<Name> usernames = getSubject().getPrincipals().byType(Name.class);
 				// If there is a user name.
 				if (!usernames.isEmpty()) {
 					// The user name is the principals name.

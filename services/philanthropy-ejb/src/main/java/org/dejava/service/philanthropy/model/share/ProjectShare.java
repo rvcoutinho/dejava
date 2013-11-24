@@ -15,10 +15,10 @@ import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.philanthropy.model.party.Supporter;
-import org.dejava.service.philanthropy.model.project.Project;
+import org.dejava.service.philanthropy.model.project.AbstractProject;
 
 /**
- * An project share action.
+ * An abstractProject share action.
  */
 @Entity
 @Table(name = "idea_share")
@@ -34,40 +34,40 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	private static final long serialVersionUID = 1046831114572773930L;
 
 	/**
-	 * The project that has been shared.
+	 * The abstractProject that has been shared.
 	 */
-	private Project project;
+	private AbstractProject abstractProject;
 
 	/**
-	 * Gets the project that has been shared.
+	 * Gets the abstractProject that has been shared.
 	 * 
-	 * @return The project that has been shared.
+	 * @return The abstractProject that has been shared.
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "project")
-	public Project getProject() {
-		return project;
+	@JoinColumn(name = "abstractProject")
+	public AbstractProject getProject() {
+		return abstractProject;
 	}
 
 	/**
-	 * Sets the project that has been shared.
+	 * Sets the abstractProject that has been shared.
 	 * 
-	 * @param project
-	 *            New project that has been shared.
+	 * @param abstractProject
+	 *            New abstractProject that has been shared.
 	 */
-	public void setProject(final Project project) {
-		this.project = project;
+	public void setProject(final AbstractProject abstractProject) {
+		this.abstractProject = abstractProject;
 	}
 
 	/**
-	 * The supporter who has shared the project.
+	 * The supporter who has shared the abstractProject.
 	 */
 	private Supporter supporter;
 
 	/**
-	 * Gets the supporter who has shared the project.
+	 * Gets the supporter who has shared the abstractProject.
 	 * 
-	 * @return The supporter who has shared the project.
+	 * @return The supporter who has shared the abstractProject.
 	 */
 	@ManyToOne
 	@JoinColumn(name = "supporter")
@@ -76,24 +76,24 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	}
 
 	/**
-	 * Sets the supporter who has shared the project.
+	 * Sets the supporter who has shared the abstractProject.
 	 * 
 	 * @param supporter
-	 *            New supporter who has shared the project.
+	 *            New supporter who has shared the abstractProject.
 	 */
 	public void setSupporter(final Supporter supporter) {
 		this.supporter = supporter;
 	}
 
 	/**
-	 * The date when the project was shared.
+	 * The date when the abstractProject was shared.
 	 */
 	private Date date;
 
 	/**
-	 * Gets the date when the project was shared.
+	 * Gets the date when the abstractProject was shared.
 	 * 
-	 * @return The date when the project was shared.
+	 * @return The date when the abstractProject was shared.
 	 */
 	@Column(name = "date")
 	public Date getDate() {
@@ -107,10 +107,10 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	}
 
 	/**
-	 * Sets the date when the project was shared.
+	 * Sets the date when the abstractProject was shared.
 	 * 
 	 * @param date
-	 *            New date when the project was shared.
+	 *            New date when the abstractProject was shared.
 	 */
 	public void setDate(final Date date) {
 		this.date = date;
@@ -126,15 +126,15 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	/**
 	 * Default constructor.
 	 * 
-	 * @param project
-	 *            The project that has been shared.
+	 * @param abstractProject
+	 *            The abstractProject that has been shared.
 	 * @param supporter
-	 *            The supporter who has shared the project.
+	 *            The supporter who has shared the abstractProject.
 	 */
-	public ProjectShare(final Project project, final Supporter supporter) {
+	public ProjectShare(final AbstractProject abstractProject, final Supporter supporter) {
 		super();
 		this.supporter = supporter;
-		this.project = project;
+		this.abstractProject = abstractProject;
 	}
 
 }

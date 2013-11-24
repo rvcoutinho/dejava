@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.philanthropy.model.party.PhilanthropyParty;
-import org.dejava.service.philanthropy.model.project.Project;
+import org.dejava.service.philanthropy.model.project.AbstractProject;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**

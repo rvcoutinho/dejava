@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.dejava.properties.constant.FacebookAPIKeys;
 import org.dejava.service.accesscontrol.authc.FacebookUserToken;
@@ -41,11 +42,13 @@ public class FacebookLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 5882283662574494011L;
 
 	/**
-	 * Current subject.
+	 * Gets the application subject.
+	 * 
+	 * @return The application subject.
 	 */
-	@Inject
-	@AccessControlCtx
-	private Subject subject;
+	private Subject getSubject() {
+		return SecurityUtils.getSubject();
+	}
 
 	/**
 	 * Gets the OAuth exchange code URL.
@@ -59,7 +62,7 @@ public class FacebookLoginServlet extends HttpServlet {
 	 *                If an input or output error occurs while the servlet is handling the HTTP request.
 	 */
 	private String getOAuthExchangeCodeURL(final String state, final String redirectURL) throws IOException {
-		// Gets the plain facebook connect URL.
+		// Gets the plain Facebook connect URL.
 		final StringBuffer exchangeCodeURL = new StringBuffer(
 				API_PROPERTIES.getProperty(FacebookAPIKeys.APP_LOGIN_DIALOG_URL));
 		// Adds the application id to the URL.
@@ -244,9 +247,9 @@ public class FacebookLoginServlet extends HttpServlet {
 			// Creates a new facebook authentication token.
 			final FacebookUserToken facebookToken = new FacebookUserToken(fbUser.getId());
 			// Tries to log the user in.
-			subject.login(facebookToken);
+			getSubject().login(facebookToken);
 			// Sets the access token to the subject session (so it can be accessed by other applications).
-			subject.getSession().setAttribute(
+			getSubject().getSession().setAttribute(
 					API_PROPERTIES.getProperty(FacebookAPIKeys.APP_ACCESS_TOKEN_PARAM), accessToken);
 			// Redirects to the facebook original request URL.
 			response.sendRedirect((String) request.getSession().getAttribute(

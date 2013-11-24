@@ -12,6 +12,6 @@ D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dej
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\util\MessageTypes.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\AppNotificationSender.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\dao\EmailMessageDAO.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\MessageSender.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\dao\MessageDAO.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\EmailMessageSender.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\AppMessageSender.java

@@ -2,8 +2,10 @@ package org.dejava.service.message.component;
 
 import static org.dejava.properties.util.MailConfigProps.MAIL_CONFIG_PROPERTIES;
 
+import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
+import javax.jms.JMSDestinationDefinition;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -15,17 +17,23 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.dejava.service.message.model.EmailMessage;
+import org.dejava.service.message.util.MessageCtx;
 
 /**
  * MDB for the email sender.
  */
-@MessageDriven(mappedName = "/Queue/Message/Send")
+@MessageCtx
+@JMSDestinationDefinition(name = "java:module/jms/Queue/EmailMessage/Send", interfaceName = "javax.jms.Queue", destinationName = "EmailMessageSendQueue")
+@MessageDriven(activationConfig = {
+		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:module/jms/Queue/EmailMessage/Send"),
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"), })
 public class EmailMessageSender implements MessageListener {
 
 	/**
 	 * The message EJB component.
 	 */
 	@Inject
+	@MessageCtx
 	private EmailMessageComponent messageComponent;
 
 	/**

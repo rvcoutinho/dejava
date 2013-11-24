@@ -27,7 +27,7 @@
 	</context-param>
 
 	<context-param>
-		<param-name>facelets.LIBRARIES</param-name>
+		<param-name>facelets.FACELETS_LIBRARIES</param-name>
 		<param-value>/WEB-INF/soupsocial.taglib.xml</param-value>
 	</context-param>
 

@@ -9,12 +9,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.philanthropy.dao.share.ProjectShareDAO;
 import org.dejava.service.philanthropy.model.party.Supporter;
-import org.dejava.service.philanthropy.model.project.Project;
+import org.dejava.service.philanthropy.model.project.AbstractProject;
 import org.dejava.service.philanthropy.model.share.ProjectShare;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
- * Project share EJB component.
+ * AbstractProject share EJB component.
  */
 @PhilanthropyCtx
 @Stateless(name = "Component/Philanthropy/ProjectShare")
@@ -38,20 +38,20 @@ public class ProjectShareComponent extends AbstractGenericComponent<ProjectShare
 	/**
 	 * Shares a project.
 	 * 
-	 * @param project
+	 * @param abstractProject
 	 *            The project to be shared.
 	 * @param supporter
 	 *            The supporter sharing the project.
 	 * @return Returns the updated number of shares for the project.
 	 */
-	public Long share(final Project project, final Supporter supporter) {
+	public Long share(final AbstractProject abstractProject, final Supporter supporter) {
 		// TODO Validate.
 		// Creates a new project share.
-		final ProjectShare projectShare = new ProjectShare(project, supporter);
+		final ProjectShare projectShare = new ProjectShare(abstractProject, supporter);
 		// Persists the share.
 		addOrUpdate(projectShare);
 		// Returns the updated number of shares.
-		return countProjectShares(project.getIdentifier());
+		return countProjectShares(abstractProject.getIdentifier());
 	}
 
 	/**

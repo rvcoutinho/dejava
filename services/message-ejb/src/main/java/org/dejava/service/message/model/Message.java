@@ -1,8 +1,11 @@
 package org.dejava.service.message.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 
@@ -22,6 +25,7 @@ public abstract class Message extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The message sender.
 	 */
+	@Transient
 	public abstract Object getSender();
 
 	/**
@@ -29,6 +33,7 @@ public abstract class Message extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The message recipient.
 	 */
+	@Transient
 	public abstract Object getRecipient();
 
 	/**
@@ -36,6 +41,38 @@ public abstract class Message extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The content of the message.
 	 */
+	@Transient
 	public abstract Serializable getContent();
+
+	/**
+	 * Date of the message.
+	 */
+	private Date date;
+
+	/**
+	 * Gets the date of the message.
+	 * 
+	 * @return The date of the message.
+	 */
+	@Column(name = "date")
+	public Date getDate() {
+		// If the date is null.
+		if (date == null) {
+			// The date is now.
+			date = new Date();
+		}
+		// Returns the date.
+		return date;
+	}
+
+	/**
+	 * Sets the date of the message.
+	 * 
+	 * @param date
+	 *            New date of the message.
+	 */
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 }

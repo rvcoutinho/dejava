@@ -19,13 +19,13 @@
 		<pattern value="/projeto/#{projectId : projectController.projectId}/" />
 		<view-id value="/project.jsf" />
 	</url-mapping>
-	<url-mapping id="ideas">
+	<url-mapping id="projectIdeas">
 		<pattern value="/ideias/" />
-		<view-id value="/ideas.jsf" />
+		<view-id value="/projectIdeas.jsf" />
 	</url-mapping>
-	<url-mapping id="projects">
+	<url-mapping id="projectPlans">
 		<pattern value="/projetos/" />
-		<view-id value="/projects.jsf" />
+		<view-id value="/projectPlans.jsf" />
 	</url-mapping>
 	<url-mapping id="me">
 		<pattern value="/u/" />

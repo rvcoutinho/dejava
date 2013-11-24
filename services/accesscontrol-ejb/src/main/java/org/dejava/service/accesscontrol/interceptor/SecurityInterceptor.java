@@ -5,11 +5,11 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
 
-import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -18,7 +18,6 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.authz.annotation.RequiresUser;
 import org.apache.shiro.subject.Subject;
-import org.dejava.service.accesscontrol.util.AccessControlCtx;
 
 /**
  * The security enforcer interceptor.
@@ -33,11 +32,13 @@ public class SecurityInterceptor implements Serializable {
 	private static final long serialVersionUID = 3000099623439084773L;
 
 	/**
-	 * The current subject.
+	 * Gets the application subject.
+	 * 
+	 * @return The application subject.
 	 */
-	@Inject
-	@AccessControlCtx
-	private Subject subject;
+	private Subject getSubject() {
+		return SecurityUtils.getSubject();
+	}
 
 	/**
 	 * Enforces that the user is authenticated.
@@ -52,7 +53,7 @@ public class SecurityInterceptor implements Serializable {
 		if ((contextMethod.getAnnotation(RequiresAuthentication.class) != null)
 				|| (contextClass.getAnnotation(RequiresAuthentication.class) != null)) {
 			// If the user is not authenticated.
-			if (!subject.isAuthenticated()) {
+			if (!getSubject().isAuthenticated()) {
 				// Throws an authorization exception. FIXME
 				throw new AuthorizationException();
 			}
@@ -61,7 +62,7 @@ public class SecurityInterceptor implements Serializable {
 		if ((contextMethod.getAnnotation(RequiresUser.class) != null)
 				|| (contextClass.getAnnotation(RequiresUser.class) != null)) {
 			// If the user is not authenticated and not remembered.
-			if ((!subject.isAuthenticated()) && (!subject.isRemembered())) {
+			if ((!getSubject().isAuthenticated()) && (!getSubject().isRemembered())) {
 				// Throws an authorization exception. FIXME
 				throw new AuthorizationException();
 			}
@@ -70,7 +71,7 @@ public class SecurityInterceptor implements Serializable {
 		if ((contextMethod.getAnnotation(RequiresGuest.class) != null)
 				|| (contextClass.getAnnotation(RequiresGuest.class) != null)) {
 			// If the user is authenticated or remembered.
-			if ((subject.isAuthenticated()) || (subject.isRemembered())) {
+			if ((getSubject().isAuthenticated()) || (getSubject().isRemembered())) {
 				// Throws an authorization exception. FIXME
 				throw new AuthorizationException();
 			}
@@ -90,7 +91,7 @@ public class SecurityInterceptor implements Serializable {
 		// For each role.
 		for (final String currentRole : roles) {
 			// If the subject has the current role.
-			if (subject.hasRole(currentRole)) {
+			if (getSubject().hasRole(currentRole)) {
 				// Sets the the user is authorized.
 				authorized = true;
 			}
@@ -110,7 +111,7 @@ public class SecurityInterceptor implements Serializable {
 	 */
 	private void enforceAllRoles(final Collection<String> roles) {
 		// If the subject does not have all of the given roles.
-		if (!subject.hasAllRoles(roles)) {
+		if (!getSubject().hasAllRoles(roles)) {
 			// Throws an authorization exception. FIXME
 			throw new AuthorizationException();
 		}
@@ -169,7 +170,7 @@ public class SecurityInterceptor implements Serializable {
 		// For each permission.
 		for (final String currentPermission : permissions) {
 			// If the subject has the current permission.
-			if (subject.isPermitted(currentPermission)) {
+			if (getSubject().isPermitted(currentPermission)) {
 				// Sets the the user is authorized.
 				authorized = true;
 			}
@@ -189,7 +190,7 @@ public class SecurityInterceptor implements Serializable {
 	 */
 	private void enforceAllPermissions(final Collection<String> permissions) {
 		// If the subject does not have all of the given permissions.
-		if (!subject.isPermittedAll(permissions.toArray(new String[0]))) {
+		if (!getSubject().isPermittedAll(permissions.toArray(new String[0]))) {
 			// Throws an authorization exception. FIXME
 			throw new AuthorizationException();
 		}

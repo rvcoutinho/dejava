@@ -11,7 +11,7 @@ import javax.servlet.http.Part;
 
 import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
 import org.dejava.service.philanthropy.model.Category;
-import org.dejava.service.philanthropy.model.project.Project;
+import org.dejava.service.philanthropy.model.project.AbstractProject;
 import org.dejava.service.philanthropy.util.MessageTypes;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
@@ -37,7 +37,7 @@ public abstract class AbstractNewProjectController implements Serializable {
 	 * 
 	 * @return The new project.
 	 */
-	public abstract Project getNewProject();
+	public abstract AbstractProject getNewProject();
 
 	/**
 	 * The address reference.

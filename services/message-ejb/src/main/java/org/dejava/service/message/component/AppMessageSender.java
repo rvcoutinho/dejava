@@ -1,23 +1,31 @@
 package org.dejava.service.message.component;
 
+import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
+import javax.jms.JMSDestinationDefinition;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
 import org.dejava.service.message.model.AppMessage;
+import org.dejava.service.message.util.MessageCtx;
 
 /**
  * MDB for the application message sender.
  */
-@MessageDriven(mappedName = "/Queue/Message/App/Send")
+@MessageCtx
+@JMSDestinationDefinition(name = "java:module/jms/Queue/AppMessage/Send", interfaceName = "javax.jms.Queue", destinationName = "AppMessageSendQueue")
+@MessageDriven(activationConfig = {
+		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:module/jms/Queue/AppMessage/Send"),
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"), })
 public class AppMessageSender implements MessageListener {
 
 	/**
 	 * The application message EJB component.
 	 */
 	@Inject
+	@MessageCtx
 	private AppMessageComponent messageComponent;
 
 	/**

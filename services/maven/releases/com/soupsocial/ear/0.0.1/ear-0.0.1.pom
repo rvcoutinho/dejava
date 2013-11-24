@@ -4,12 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.dejava</groupId>
+		<groupId>com.soupsocial</groupId>
 		<artifactId>pom</artifactId>
 		<version>0.0.1</version>
 	</parent>
 
-	<groupId>com.soupsocial</groupId>
 	<artifactId>ear</artifactId>
 	<packaging>ear</packaging>
 
@@ -18,18 +17,13 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>org.dejava</groupId>
-			<artifactId>properties</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>accesscontrol-ejb</artifactId>
 			<type>ejb</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.service</groupId>
+			<groupId>org.dejava.web</groupId>
 			<artifactId>accesscontrol-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -41,7 +35,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.service</groupId>
+			<groupId>org.dejava.web</groupId>
 			<artifactId>party-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -53,7 +47,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.service</groupId>
+			<groupId>org.dejava.web</groupId>
 			<artifactId>place-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -65,7 +59,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.service</groupId>
+			<groupId>org.dejava.web</groupId>
 			<artifactId>contact-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -77,7 +71,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.service</groupId>
+			<groupId>org.dejava.web</groupId>
 			<artifactId>message-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -89,16 +83,17 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.service</groupId>
+			<groupId>org.dejava.web</groupId>
 			<artifactId>philanthropy-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.service</groupId>
+			<groupId>com.soupsocial.web</groupId>
 			<artifactId>soupsocial-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
+			<version>0.0.1</version>
 		</dependency>
 
 		<dependency>
@@ -179,7 +174,7 @@
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
 					<modules>
 						<webModule>
-							<groupId>org.dejava.service</groupId>
+							<groupId>com.soupsocial.web</groupId>
 							<artifactId>soupsocial-web</artifactId>
 							<contextRoot>/</contextRoot>
 						</webModule>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -7,9 +8,8 @@
 <h:head>
 </h:head>
 <h:body>
-	<h:form enctype="multipart/form-data">
+	<h:form id="testForm" enctype="multipart/form-data">
 		<h:inputFile id="file" value="#{test.part}" />
-		<h:message for="file" />
 		<h:commandButton value="Upload" action="#{test.test}" />
 	</h:form>
 </h:body>

@@ -38,13 +38,19 @@
 
 			<dependency>
 				<groupId>org.dejava.service</groupId>
+				<artifactId>properties</artifactId>
+				<version>0.0.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.service</groupId>
 				<artifactId>accesscontrol-ejb</artifactId>
 				<version>0.0.1</version>
 				<type>ejb</type>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.service</groupId>
+				<groupId>org.dejava.web</groupId>
 				<artifactId>accesscontrol-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -58,7 +64,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.service</groupId>
+				<groupId>org.dejava.web</groupId>
 				<artifactId>party-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -72,7 +78,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.service</groupId>
+				<groupId>org.dejava.web</groupId>
 				<artifactId>place-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -86,7 +92,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.service</groupId>
+				<groupId>org.dejava.web</groupId>
 				<artifactId>contact-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -100,7 +106,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.service</groupId>
+				<groupId>org.dejava.web</groupId>
 				<artifactId>message-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -114,69 +120,21 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.service</groupId>
+				<groupId>org.dejava.web</groupId>
 				<artifactId>philanthropy-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
 				<scope>provided</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.dejava.service</groupId>
-				<artifactId>soupsocial-web</artifactId>
-				<version>0.0.1</version>
-				<type>war</type>
-				<scope>provided</scope>
-			</dependency>
 
 			<dependency>
 				<groupId>org.dejava.component</groupId>
-				<artifactId>ejb</artifactId>
+				<artifactId>pom</artifactId>
 				<version>0.0.1</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.dejava.component</groupId>
-				<artifactId>faces</artifactId>
-				<version>0.0.1</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.dejava.component</groupId>
-				<artifactId>security</artifactId>
-				<version>0.0.1</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.dejava.component</groupId>
-				<artifactId>exception</artifactId>
-				<version>0.0.1</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.dejava.component</groupId>
-				<artifactId>reflection</artifactId>
-				<version>0.0.1</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.dejava.component</groupId>
-				<artifactId>validation</artifactId>
-				<version>0.0.1</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.dejava.component</groupId>
-				<artifactId>i18n</artifactId>
-				<version>0.0.1</version>
-				<scope>provided</scope>
+				<scope>import</scope>
+				<type>pom</type>
 			</dependency>
 
-			<dependency>
-				<groupId>org.apache.shiro</groupId>
-				<artifactId>shiro-core</artifactId>
-				<version>1.2.2</version>
-				<scope>provided</scope>
-			</dependency>
 			<dependency>
 				<groupId>org.apache.shiro</groupId>
 				<artifactId>shiro-web</artifactId>
@@ -200,13 +158,13 @@
 			<dependency>
 				<groupId>org.ocpsoft.rewrite</groupId>
 				<artifactId>rewrite-servlet</artifactId>
-				<version>2.0.5.Final</version>
+				<version>2.0.8.Final</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.ocpsoft.rewrite</groupId>
 				<artifactId>rewrite-config-prettyfaces</artifactId>
-				<version>2.0.5.Final</version>
+				<version>2.0.8.Final</version>
 				<scope>provided</scope>
 			</dependency>
 
@@ -224,26 +182,10 @@
 			</dependency>
 
 			<dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-api</artifactId>
-				<version>7.0</version>
-				<scope>provided</scope>
-			</dependency>
-
-			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
 				<version>5.0.1.Final</version>
 				<scope>provided</scope>
-			</dependency>
-
-
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.11</version>
-				<type>jar</type>
-				<scope>test</scope>
 			</dependency>
 
 		</dependencies>
@@ -291,9 +233,29 @@
 					</executions>
 				</plugin>
 				<plugin>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>2.3</version>
+					<configuration>
+						<ejbVersion>3.2</ejbVersion>
+						<annotationProcessors>
+							<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
+						</annotationProcessors>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+						<annotationProcessors>
+							<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
+						</annotationProcessors>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>org.jboss.as.plugins</groupId>
 					<artifactId>jboss-as-maven-plugin</artifactId>
-					<version>7.4.Final</version>
+					<version>7.5.Final</version>
 					<inherited>true</inherited>
 				</plugin>
 			</plugins>
@@ -302,17 +264,37 @@
 
 	<profiles>
 		<profile>
-			<id>default</id>
+			<id>surfire</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<build>
 				<plugins>
 					<plugin>
 						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.15</version>
 					</plugin>
 				</plugins>
 			</build>
 		</profile>
 
-	</profiles>
+		<profile>
+			<id>arquillian-wildfly-managed</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-arquillian-container-embedded</artifactId>
+					<version>8.0.0.Alpha4</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.arquillian.protocol</groupId>
+					<artifactId>arquillian-protocol-servlet</artifactId>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
 
+	</profiles>
 
 </project>

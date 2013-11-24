@@ -57,7 +57,7 @@
 						<div id="project-idea" class="padding-2">
 							<div class="project-media flexslider">
 								<ul class="slides">
-									<li><iframe type="text/html" width="580" height="326"
+									<li><iframe width="580" height="326"
 											src="http://www.youtube.com/embed/#{projectController.project.video}?autoplay=1&amp;origin=http://www.soupsocial.com" /></li>
 								</ul>
 							</div>
@@ -152,7 +152,7 @@
 					<div id="projects-content" class="projects">
 						<div class="padding-3">
 							<ui:repeat varStatus="currentProjectStatus" var="currentProject"
-								value="#{ideasController.ideas}">
+								value="#{projectsController.projectIdeas}">
 								<soupsocial:small-project project="#{currentProject}"
 									varStatus="#{currentProjectStatus}" />
 							</ui:repeat>

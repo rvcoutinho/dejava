@@ -25,12 +25,12 @@ public class FacebookEJBRealm extends AuthenticatingRealm {
 	/**
 	 * The global JNDI path (start).
 	 */
-	private static final String GLOBAL_PRE_PATH = "java:/global/";
+	private static final String GLOBAL_PRE_PATH = "java:app/";
 
 	/**
 	 * The application/module JNDI path.
 	 */
-	private String appModulePath = "ear/accesscontrol-ejb";
+	private String appModulePath = "accesscontrol-ejb";
 
 	/**
 	 * Gets the application/module JNDI path.

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.soupsocial</groupId>
+	<artifactId>pom</artifactId>
+	<version>0.0.1</version>
+
+	<packaging>pom</packaging>
+
+	<name>POM</name>
+
+	<repositories>
+		<repository>
+			<id>dejava-components-releases</id>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
+		</repository>
+		<repository>
+			<id>dejava-services-releases</id>
+			<url>https://github.com/rvcoutinho/dejava/raw/master/services/maven/releases</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>dejava-services-releases-local</id>
+			<url>file:../maven/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>dejava-services-snapshots-local</id>
+			<url>file:../maven/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>org.dejava.service</groupId>
+				<artifactId>pom</artifactId>
+				<version>0.0.1</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+			<dependency>
+				<groupId>com.soupsocial</groupId>
+				<artifactId>properties</artifactId>
+				<version>0.0.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.soupsocial</groupId>
+				<artifactId>soupsocial-web</artifactId>
+				<version>0.0.1</version>
+				<scope>provided</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+						<annotationProcessors>
+							<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
+						</annotationProcessors>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.2.1</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>2.3</version>
+					<configuration>
+						<ejbVersion>3.2</ejbVersion>
+						<annotationProcessors>
+							<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
+						</annotationProcessors>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+						<annotationProcessors>
+							<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
+						</annotationProcessors>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jboss.as.plugins</groupId>
+					<artifactId>jboss-as-maven-plugin</artifactId>
+					<version>7.5.Final</version>
+					<inherited>true</inherited>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>surfire</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.15</version>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>arquillian-wildfly-managed</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-arquillian-container-embedded</artifactId>
+					<version>8.0.0.Alpha4</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.arquillian.protocol</groupId>
+					<artifactId>arquillian-protocol-servlet</artifactId>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+
+	</profiles>
+
+</project>

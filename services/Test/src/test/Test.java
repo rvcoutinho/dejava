@@ -2,7 +2,6 @@ package test;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
 import javax.servlet.http.Part;
@@ -10,7 +9,6 @@ import javax.servlet.http.Part;
 /**
  * Test
  */
-@ManagedBean
 @RequestScoped
 @Named("test")
 public class Test implements Serializable {
@@ -48,6 +46,6 @@ public class Test implements Serializable {
 	 * TODO
 	 */
 	public void test() {
-		getClass();
+		System.out.println(getClass());
 	}
 }

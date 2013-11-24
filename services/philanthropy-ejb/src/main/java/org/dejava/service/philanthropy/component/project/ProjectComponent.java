@@ -9,16 +9,18 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.philanthropy.dao.project.ProjectDAO;
 import org.dejava.service.philanthropy.dao.project.ProjectIdeaDAO;
-import org.dejava.service.philanthropy.model.project.Project;
+import org.dejava.service.philanthropy.dao.project.ProjectPlanDAO;
+import org.dejava.service.philanthropy.model.project.AbstractProject;
 import org.dejava.service.philanthropy.model.project.ProjectIdea;
+import org.dejava.service.philanthropy.model.project.ProjectPlan;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
- * Project EJB component.
+ * AbstractProject EJB component.
  */
 @PhilanthropyCtx
-@Stateless(name = "Component/Philanthropy/Project")
-public class ProjectComponent extends AbstractGenericComponent<Project, Integer> {
+@Stateless(name = "Component/Philanthropy/AbstractProject")
+public class ProjectComponent extends AbstractGenericComponent<AbstractProject, Integer> {
 
 	/**
 	 * The project DAO.
@@ -31,7 +33,7 @@ public class ProjectComponent extends AbstractGenericComponent<Project, Integer>
 	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityDAO()
 	 */
 	@Override
-	public AbstractGenericDAO<Project, Integer> getEntityDAO() {
+	public AbstractGenericDAO<AbstractProject, Integer> getEntityDAO() {
 		return projectDAO;
 	}
 
@@ -54,6 +56,27 @@ public class ProjectComponent extends AbstractGenericComponent<Project, Integer>
 	 */
 	public Collection<ProjectIdea> getAllProjectIdeas(final Integer firstResult, final Integer maxResults) {
 		return projectIdeaDAO.getAll(firstResult, maxResults);
+	}
+
+	/**
+	 * The project plan DAO.
+	 */
+	@Inject
+	@PhilanthropyCtx
+	private ProjectPlanDAO projectPlanDAO;
+
+	/**
+	 * Gets all project plans.
+	 * 
+	 * @param firstResult
+	 *            The first result that should be considered by the query.
+	 * @param maxResults
+	 *            The maximum numbers of results to be considered by the query.
+	 * 
+	 * @return All entities of the kind.
+	 */
+	public Collection<ProjectPlan> getAllProjectPlans(final Integer firstResult, final Integer maxResults) {
+		return projectPlanDAO.getAll(firstResult, maxResults);
 	}
 
 }

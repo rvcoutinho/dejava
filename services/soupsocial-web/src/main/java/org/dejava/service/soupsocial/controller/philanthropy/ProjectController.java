@@ -10,14 +10,14 @@ import javax.inject.Named;
 import org.dejava.service.philanthropy.component.project.ProjectComponent;
 import org.dejava.service.philanthropy.component.share.ProjectShareComponent;
 import org.dejava.service.philanthropy.model.party.Supporter;
-import org.dejava.service.philanthropy.model.project.PlannedProject;
-import org.dejava.service.philanthropy.model.project.Project;
+import org.dejava.service.philanthropy.model.project.AbstractProject;
+import org.dejava.service.philanthropy.model.project.ProjectPlan;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.soupsocial.controller.user.UserController;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
 /**
- * The controller for getting a project.
+ * The controller for getting a abstractProject.
  */
 @ConversationScoped
 @SoupSocialCtx
@@ -37,65 +37,65 @@ public class ProjectController implements Serializable {
 	protected FacesContext context;
 
 	/**
-	 * Project EJB component.
+	 * AbstractProject EJB component.
 	 */
 	@Inject
 	@PhilanthropyCtx
 	private ProjectComponent projectComponent;
 
 	/**
-	 * Project id.
+	 * AbstractProject id.
 	 */
 	private Integer projectId;
 
 	/**
-	 * Gets the project id.
+	 * Gets the abstractProject id.
 	 * 
-	 * @return The project id.
+	 * @return The abstractProject id.
 	 */
 	public Integer getProjectId() {
-		// If the project id is null.
+		// If the abstractProject id is null.
 		if (projectId == null) {
-			// The project id is retrieved from the request parameters.
+			// The abstractProject id is retrieved from the request parameters.
 			projectId = Integer.parseInt(context.getExternalContext().getRequestParameterMap()
 					.get("projectId"));
 		}
-		// Returns the project id.
+		// Returns the abstractProject id.
 		return projectId;
 	}
 
 	/**
-	 * Sets the project id.
+	 * Sets the abstractProject id.
 	 * 
 	 * @param projectId
-	 *            New project id.
+	 *            New abstractProject id.
 	 */
 	public void setProjectId(final Integer projectId) {
 		this.projectId = projectId;
 	}
 
 	/**
-	 * The project.
+	 * The abstractProject.
 	 */
-	private Project project;
+	private AbstractProject abstractProject;
 
 	/**
-	 * Gets the project.
+	 * Gets the abstractProject.
 	 * 
-	 * @return The project.
+	 * @return The abstractProject.
 	 */
-	public Project getProject() {
-		// If the project is null.
-		if (project == null) {
-			// Gets the project by its id.
-			project = projectComponent.getById(getProjectId());
+	public AbstractProject getProject() {
+		// If the abstractProject is null.
+		if (abstractProject == null) {
+			// Gets the abstractProject by its id.
+			abstractProject = projectComponent.getById(getProjectId());
 		}
-		// Returns the project.
-		return project;
+		// Returns the abstractProject.
+		return abstractProject;
 	}
 
 	/**
-	 * The project share EJB component.
+	 * The abstractProject share EJB component.
 	 */
 	@Inject
 	@PhilanthropyCtx
@@ -109,28 +109,28 @@ public class ProjectController implements Serializable {
 	private UserController userController;
 
 	/**
-	 * Supports the project.
+	 * Supports the abstractProject.
 	 */
 	public void supportProject() {
-		// Shares the project.
+		// Shares the abstractProject.
 		final Long shares = projectShareComponent.share(getProject(),
 				(Supporter) userController.getPhilanthropyParty());
-		// Updates the project shares.
+		// Updates the abstractProject shares.
 		getProject().setShares(shares);
 	}
 
 	/**
-	 * Gets the active tab for the project.
+	 * Gets the active tab for the abstractProject.
 	 * 
-	 * @return The active tab for the project.
+	 * @return The active tab for the abstractProject.
 	 */
 	public String getActiveTab() {
-		// If the project is a planned project.
-		if (getProject() instanceof PlannedProject) {
+		// If the abstractProject is a planned abstractProject.
+		if (getProject() instanceof ProjectPlan) {
 			// Returns "1" (the second tab).
 			return "1";
 		}
-		// Otherwise (project idea).
+		// Otherwise (abstractProject idea).
 		else {
 			// Returns "0" (the first tab).
 			return "0";
@@ -138,15 +138,15 @@ public class ProjectController implements Serializable {
 	}
 
 	/**
-	 * Gets the disabled tabs for the project.
+	 * Gets the disabled tabs for the abstractProject.
 	 * 
-	 * @return The disabled tabs for the project.
+	 * @return The disabled tabs for the abstractProject.
 	 */
 	public String getDisabledTabs() {
-		// If the project is a planned project.
-		if (getProject() instanceof PlannedProject) {
+		// If the abstractProject is a planned abstractProject.
+		if (getProject() instanceof ProjectPlan) {
 			// If there is a original idea.
-			if (((PlannedProject) getProject()).getOriginalIdea() != null) {
+			if (((ProjectPlan) getProject()).getOriginalIdea() != null) {
 				// Returns "2" (the third tab).
 				return "2";
 			}
@@ -156,7 +156,7 @@ public class ProjectController implements Serializable {
 				return "0, 2";
 			}
 		}
-		// Otherwise (project idea).
+		// Otherwise (abstractProject idea).
 		else {
 			// Returns "1, 2" (the second and third tabs).
 			return "1, 2";

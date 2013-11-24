@@ -8,7 +8,7 @@ import org.dejava.service.philanthropy.model.project.ProjectIdea;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
- * Project idea DAO.
+ * AbstractProject idea DAO.
  */
 @PhilanthropyCtx
 public class ProjectIdeaDAO extends AbstractGenericDAO<ProjectIdea, Integer> {

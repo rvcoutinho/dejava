@@ -17,7 +17,7 @@ import org.dejava.service.philanthropy.model.party.Supporter;
 @MessageSources(sources = {
 		@MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
 		@MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.error", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
-public class ProjectIdea extends Project {
+public class ProjectIdea extends AbstractProject {
 
 	/**
 	 * Generated serial.

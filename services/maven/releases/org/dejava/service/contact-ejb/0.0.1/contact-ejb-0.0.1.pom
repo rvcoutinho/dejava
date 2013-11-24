@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>pom</artifactId>
 		<groupId>org.dejava.service</groupId>
+		<artifactId>pom</artifactId>
 		<version>0.0.1</version>
 	</parent>
 
@@ -63,13 +63,6 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-ejb-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<ejbVersion>3.2</ejbVersion>
-					<annotationProcessors>
-						<annotationProcessor>org.dejava.component.i18n.source.MessageSourceCreator</annotationProcessor>
-					</annotationProcessors>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

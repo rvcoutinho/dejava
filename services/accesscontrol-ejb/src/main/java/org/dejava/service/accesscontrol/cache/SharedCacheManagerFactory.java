@@ -14,7 +14,7 @@ public class SharedCacheManagerFactory implements Factory<CacheManager> {
 	 */
 	@Override
 	public CacheManager getInstance() {
-		return CacheManager.create();
+		return CacheManager.create(Thread.currentThread().getContextClassLoader()
+				.getResource("META-INF/ehcache.xml"));
 	}
-
 }

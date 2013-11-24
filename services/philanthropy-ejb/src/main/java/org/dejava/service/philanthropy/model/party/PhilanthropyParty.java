@@ -48,7 +48,7 @@ public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 	/**
 	 * The (original) party.
 	 */
-	@ExternalEntity(retrieveObj = "java:/global/ear/place-ejb/Component/Party/Party")
+	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Party/Party")
 	private Party party;
 
 	/**
@@ -69,7 +69,17 @@ public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 	 *            New (original) party.
 	 */
 	public void setParty(final Party party) {
+		// If the party is null.
+		if (party == null) {
+			// Sets the party id to null.
+			setPartyId(null);
+		}
+		// If the party is not null.
+		else {
+			// Sets the new party id.
+			setPartyId(party.getIdentifier());
+		}
+		// Updates the party.
 		this.party = party;
 	}
-
 }

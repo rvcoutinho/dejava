@@ -1,23 +1,31 @@
 package org.dejava.service.message.component;
 
+import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
+import javax.jms.JMSDestinationDefinition;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
 import org.dejava.service.message.model.AppNotification;
+import org.dejava.service.message.util.MessageCtx;
 
 /**
  * MDB for the application notification sender.
  */
-@MessageDriven(mappedName = "/Queue/Notification/App/Send")
+@MessageCtx
+@JMSDestinationDefinition(name = "java:module/jms/Queue/AppNotification/Send", interfaceName = "javax.jms.Queue", destinationName = "AppNotificationSendQueue")
+@MessageDriven(activationConfig = {
+		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:module/jms/Queue/AppNotification/Send"),
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"), })
 public class AppNotificationSender implements MessageListener {
 
 	/**
 	 * The application notification EJB component.
 	 */
 	@Inject
+	@MessageCtx
 	private AppNotificationComponent messageComponent;
 
 	/**

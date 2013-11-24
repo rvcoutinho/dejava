@@ -5,9 +5,13 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
 import javax.jms.Queue;
+import javax.validation.Validation;
 
 import org.dejava.component.ejb.component.AbstractGenericComponent;
+import org.dejava.component.ejb.constant.DAOParamKeys;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
+import org.dejava.component.validation.method.PreConditions;
+import org.dejava.component.validation.object.ValidationException;
 import org.dejava.service.message.dao.AppNotificationDAO;
 import org.dejava.service.message.model.AppNotification;
 import org.dejava.service.message.model.Message;
@@ -18,13 +22,12 @@ import org.dejava.service.message.util.MessageCtx;
  */
 @MessageCtx
 @Stateless(name = "Component/Message/AppNotification")
-public class AppNotificationComponent extends AbstractGenericComponent<AppNotification, Integer> implements
-		MessageSender {
+public class AppNotificationComponent extends AbstractGenericComponent<AppNotification, Integer> {
 
 	/**
 	 * The message send queue.
 	 */
-	@Resource(lookup = "/Queue/Notification/App/Send")
+	@Resource(lookup = "java:module/jms/Queue/AppNotification/Send")
 	private Queue sendQueue;
 
 	/**
@@ -49,12 +52,19 @@ public class AppNotificationComponent extends AbstractGenericComponent<AppNotifi
 	}
 
 	/**
-	 * @see org.dejava.service.message.component.MessageSender#sendMessage(org.dejava.service.message.model.Message)
+	 * Sends a notification.
+	 * 
+	 * @param notification
+	 *            Notification to be sent.
 	 */
-	@Override
-	public void sendMessage(Message message) {
-		// Sends the message to the queue.
-		jmsContext.createProducer().send(sendQueue, message);
+	public void sendMessage(Message notification) {
+		// Asserts that the message is not null.
+		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, notification);
+		// Validates the current message (and throws an exception for the found violations).
+		ValidationException.throwViolationExceptions(Validation.buildDefaultValidatorFactory().getValidator()
+				.validate(notification));
+		// Sends the notification to the queue.
+		jmsContext.createProducer().send(sendQueue, notification);
 	}
 
 }

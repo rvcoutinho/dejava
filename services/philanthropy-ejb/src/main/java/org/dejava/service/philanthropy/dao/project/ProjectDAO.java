@@ -4,14 +4,14 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
-import org.dejava.service.philanthropy.model.project.Project;
+import org.dejava.service.philanthropy.model.project.AbstractProject;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
- * Project DAO.
+ * AbstractProject DAO.
  */
 @PhilanthropyCtx
-public class ProjectDAO extends AbstractGenericDAO<Project, Integer> {
+public class ProjectDAO extends AbstractGenericDAO<AbstractProject, Integer> {
 
 	/**
 	 * Entity manager being used.

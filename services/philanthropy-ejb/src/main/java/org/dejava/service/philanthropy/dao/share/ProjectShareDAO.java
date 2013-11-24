@@ -9,7 +9,7 @@ import org.dejava.service.philanthropy.model.share.ProjectShare;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
- * Project share DAO.
+ * AbstractProject share DAO.
  */
 @PhilanthropyCtx
 public class ProjectShareDAO extends AbstractGenericDAO<ProjectShare, Integer> {

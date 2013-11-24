@@ -90,13 +90,14 @@
 		</dependency>
 		<dependency>
 			<groupId>com.soupsocial</groupId>
-			<artifactId>properties</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.soupsocial</groupId>
 			<artifactId>soupsocial-web</artifactId>
 			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.soupsocial</groupId>
+			<artifactId>properties</artifactId>
 			<scope>compile</scope>
 		</dependency>
 

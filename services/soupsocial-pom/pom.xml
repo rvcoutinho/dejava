@@ -53,7 +53,8 @@
 			<dependency>
 				<groupId>com.soupsocial</groupId>
 				<artifactId>soupsocial-web</artifactId>
-				<version>0.0.10.0.1</version>
+				<version>0.0.1</version>
+				<type>war</type>
 				<scope>provided</scope>
 			</dependency>
 

@@ -89,11 +89,16 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.soupsocial.web</groupId>
+			<groupId>com.soupsocial</groupId>
 			<artifactId>soupsocial-web</artifactId>
 			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.soupsocial</groupId>
+			<artifactId>properties</artifactId>
 			<scope>compile</scope>
-			<version>0.0.1</version>
 		</dependency>
 
 		<dependency>
@@ -174,7 +179,7 @@
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
 					<modules>
 						<webModule>
-							<groupId>com.soupsocial.web</groupId>
+							<groupId>com.soupsocial</groupId>
 							<artifactId>soupsocial-web</artifactId>
 							<contextRoot>/</contextRoot>
 						</webModule>

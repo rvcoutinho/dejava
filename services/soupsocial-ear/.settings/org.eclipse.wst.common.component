@@ -2,7 +2,7 @@
     <wb-module deploy-name="ear-0.0.1">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
-        <dependent-module archiveName="soupsocial-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/soupsocial/web/soupsocial-web/0.0.1/soupsocial-web-0.0.1.war">
+        <dependent-module archiveName="soupsocial-web-0.0.1.war" deploy-path="/" handle="module:/resource/soupsocial-web/soupsocial-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="accesscontrol-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/accesscontrol-ejb/accesscontrol-ejb">
@@ -41,7 +41,7 @@
         <dependent-module archiveName="philanthropy-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/web/philanthropy-web/0.0.1/philanthropy-web-0.0.1.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="soupsocial-web-0.0.1.war" deploy-path="/" handle="module:/resource/soupsocial-web/soupsocial-web">
+        <dependent-module archiveName="properties-0.0.1.jar" deploy-path="/lib" handle="module:/resource/soupsocial-properties/soupsocial-properties">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="security-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/security/0.0.1/security-0.0.1.jar">

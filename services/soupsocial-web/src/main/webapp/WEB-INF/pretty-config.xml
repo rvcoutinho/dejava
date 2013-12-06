@@ -21,11 +21,11 @@
 	</url-mapping>
 	<url-mapping id="projectIdeas">
 		<pattern value="/ideias/" />
-		<view-id value="/projectIdeas.jsf" />
+		<view-id value="/project-deas.jsf" />
 	</url-mapping>
 	<url-mapping id="projectPlans">
 		<pattern value="/projetos/" />
-		<view-id value="/projectPlans.jsf" />
+		<view-id value="/project-plans.jsf" />
 	</url-mapping>
 	<url-mapping id="me">
 		<pattern value="/u/" />

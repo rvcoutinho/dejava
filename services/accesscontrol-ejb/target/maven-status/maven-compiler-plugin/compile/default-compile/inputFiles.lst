@@ -1,4 +1,5 @@
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\component\crendentials\CredentialComponent.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\constant\ErrorKeys.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\component\principal\PrincipalComponent.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\model\User.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\model\credentials\Password.java
@@ -22,6 +23,7 @@ D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\o
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\model\principal\Facebook.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\dao\credentials\CredentialDAO.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\realm\EJBRealm.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\exception\AuthorizationException.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\util\MessageTypes.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\dao\principal\NameDAO.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\accesscontrol-ejb\src\main\java\org\dejava\service\accesscontrol\util\Resources.java

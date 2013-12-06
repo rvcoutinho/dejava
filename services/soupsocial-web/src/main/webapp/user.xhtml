@@ -6,31 +6,73 @@
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="head">
 		<h:outputStylesheet library="soupsocial" name="css/small-project.css" />
-		<h:outputStylesheet library="soupsocial" name="css/project.css" />
+		<h:outputStylesheet library="soupsocial" name="css/user.css" />
 		<link rel="canonical" href="http://www.soupsocial.com/projeto/" />
 		<title>SoupSocial - Mude compartilhando!</title>
 	</ui:define>
 	<ui:define name="content">
-		<section id="content" class="light-gray-texture-bg">
+		<section id="content" class="dark-gray-texture-bg padding-3">
 			<div class="content-width">
-				<section id="project">
-					<div id="project-summary" class="white-bg shadow-border padding-2">
-						<h1 class="featured-text-1 green-text">#{userController.party.displayName}</h1>
+				<section id="main-content">
+					<div id="user-projects">
+						<ul>
+							<li><a href="#suggested-projects" class="green-text">Projetos
+									sugeridos</a></li>
+							<li><a href="#your-projects" class="green-text">Seus
+									projetos</a></li>
+							<li><a href="#supported-projects" class="green-text">Projetos
+									apoiados</a></li>
+						</ul>
+						<div id="suggested-projects" class="padding-2">Projetos
+							sugeridos</div>
+						<div id="your-projects" class="padding-2">Seus projetos</div>
+						<div id="supported-projects" class="padding-2">Projetos
+							apoiados</div>
 					</div>
+					<script>
+						$(function() {
+						  $("#user-projects").tabs();
+						});
+					</script>
 				</section>
 				<aside>
-					<div id="embrace">
-						Sou uma instituição e quero<br />
-						<button class="dark-green-bg bigger-button">
-							abraçar essa ideia
-							<h:graphicImage library="soupsocial" class="spoon"
-								name="gfx/spoon.png" />
-						</button>
-					</div>
-					<div id="supporters" class="gray-bg shadow-border padding-1">Alguns
-						apoiadores:</div>
-					<div id="related" class="gray-bg shadow-border padding-1">Projetos
-						relacionados:</div>
+					<section id="user-completeness">
+						<header class="light-green-bg padding-1 featured-text-1">
+							Perfil completo<i class="fa fa-cog gray-text right-button" />
+						</header>
+					</section>
+					<section id="user-info" class="white-bg">
+						<header class="orange-bg padding-1 featured-text-1">
+							Perfil Social<i class="fa fa-user gray-text right-button" />
+						</header>
+						<section id="user-info-content">
+							<div class="padding-1">
+								<img
+									src="https://graph.facebook.com/me/picture?access_token=#{userController.subject.session.getAttribute('access_token')}" />
+								<p class="featured-text-3 big-text">#{userController.party.displayName}</p>
+								<p>Seu status</p>
+							</div>
+							<div class="padding-1">
+								<div></div>
+								<div></div>
+							</div>
+							<div class="padding-1 gray-bg">
+								<header class="featured-text-1">Compartilhe seu perfil</header>
+								<div class="padding-3">
+									<a href="#"><i class="fa fa-facebook-square fa-2x" /></a><a
+										href="#"><i class="fa fa-twitter-square fa-2x" /></a><a
+										href="#"><i class="fa fa-google-plus-square fa-2x" /></a><a
+										href="#"><i class="fa fa-linkedin-square fa-2x" /></a>
+								</div>
+							</div>
+							<div class="padding-1">
+								<header class="featured-text-1">Pessoas com a mesmas
+									causas</header>
+								<div></div>
+								<button class="orange-bg">Convide seus amigos</button>
+							</div>
+						</section>
+					</section>
 				</aside>
 			</div>
 		</section>

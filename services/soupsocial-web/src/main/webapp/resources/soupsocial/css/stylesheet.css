@@ -17,7 +17,7 @@ input,select,textarea,button {
 	color: #4F5B5A;
 	padding: 5px;
 	border: 1px solid #1C9BA5;
-	border-radius: 3px;
+	border-radius: 5px;
 	box-sizing: border-box;
 }
 
@@ -33,10 +33,14 @@ button,input[type=button],input[type=submit] {
 	cursor: pointer;
 }
 
-button .spoon,input[type=button] .spoon,input[type=submit] .spoon {
+button>.spoon,input[type=button]>.spoon,input[type=submit]>.spoon {
 	margin-left: 5px;
 	vertical-align: sub;
 	height: 16px;
+}
+
+ul {
+	padding: 0px;
 }
 
 .pre-input-text {
@@ -67,7 +71,7 @@ button .spoon,input[type=button] .spoon,input[type=submit] .spoon {
 	clear: both;
 }
 
-.close-button-div button,.close-button-div input[type=button],.close-button-div input[type=submit]
+.close-button-div>button,.close-button-div>input[type=button],.close-button-div>input[type=submit]
 	{
 	margin: auto;
 	padding: 0px 5px;
@@ -90,7 +94,7 @@ button .spoon,input[type=button] .spoon,input[type=submit] .spoon {
 }
 
 .form-content input.youtube {
-	width: 85px;	
+	width: 85px;
 }
 
 .form-content textarea {
@@ -102,7 +106,7 @@ button .spoon,input[type=button] .spoon,input[type=submit] .spoon {
 	width: inherit;
 }
 
-.form-content .buttons div {
+.form-content .buttons>div {
 	position: absolute;
 	bottom: 0px;
 	overflow: auto;
@@ -197,6 +201,7 @@ a {
 
 .light-green-bg {
 	background-color: #44BFC6;
+	color: #FFFFFF;
 }
 
 .dark-green-bg {
@@ -247,20 +252,69 @@ a {
 }
 
 .shadow-border {
-	box-shadow: 0px 0px 5px 0px #BBBBBB;
+	box-shadow: 0px 0px 10px 0px #BBBBBB;
+}
+
+.fa {
+	padding: 0px 3px;
 }
 
 .hidden-dialog {
 	display: none;
 }
 
-.flexslider ul.slides {
+.sub-menu {
+	display: inline;
+}
+
+.sub-menu .fa-caret-down {
+	height: 30px;
+	border-radius: 0px 10px 10px 0px;
+}
+
+.sub-menu>ul {
+	display: none;
+	padding: 5px;
+	border: 1px solid #44BFC6;
+	border-radius: 10px;
+	z-index: 10;
+	width: 225px;
+	box-shadow: 0px 0px 10px 0px #BBBBBB;
+	text-align: right;
+}
+
+.sub-menu>ul>li {
+	list-style: none;
+	display: block;
+	padding: 5px;
+}
+
+.sub-menu>ul>li.last-sub-item {
+	border-bottom: 1px dashed #BBBBBB;
+}
+
+.user-menu {
+	margin: 0px 5px;
+	width: 75px;
+}
+
+.user-menu>div {
+	border: 2px solid #FFFFFF;
+	border-radius: 10px;
+}
+
+.user-menu>div>a>img {
+	vertical-align: middle;
+	border-radius: 10px 0px 0px 10px;
+}
+
+.flexslider>ul.slides {
 	padding: 0px;
 	list-style: none;
 	overflow: hidden;
 }
 
-.flexslider ul.slides li {
+.flexslider>ul.slides>li {
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
@@ -270,12 +324,7 @@ a {
 	
 }
 
-#header li {
-	vertical-align: middle;
-	height: 16px;
-}
-
-#header #logo {
+#header>#logo {
 	height: 32px;
 }
 
@@ -284,41 +333,43 @@ a {
 	float: right;
 }
 
-#header nav ul {
+#header nav>ul {
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
 }
 
-#header nav ul,#header nav li {
+#header nav>ul,#header nav>ul>li {
 	float: left;
 }
 
-#header nav li {
+#header nav>ul>li {
+	vertical-align: middle;
+	height: 16px;
 	padding: 0px 10px;
 	border-left: 1px solid #FFFFFF;
 	border-right: 1px solid #BBBBBB;
 }
 
-#header nav li.first {
+#header nav>ul>li.first {
 	border-left: none;
 }
 
-#header nav li.last {
+#header nav>ul>li.last {
 	border-right: none;
 }
 
-#header nav li a {
+#header nav>ul>li>a {
 	float: left;
 	border: none;
 }
 
-#header nav li .notification-info {
+#header nav>ul>li>.notification-info {
 	text-indent: 0px;
 	overflow: visible;
 }
 
-#header nav li .notification-info span {
+#header nav>ul>li>.notification-info span {
 	position: relative;
 	top: 13px;
 	left: 5px;
@@ -326,23 +377,47 @@ a {
 	padding: 1px;
 }
 
-#header nav li .media {
+#header nav>ul>li>.media {
 	margin-right: 5px;
 }
 
-#header nav li .media.first {
+#header nav>ul>li>a>.media.first {
 	margin-right: 0px;
+}
+
+#header nav>ul>li>.user-menu {
+	float: left;
+	position: relative;
+	top: -18px;
+}
+
+#content {
+	overflow: auto;
+	clear: both;
+}
+
+#content>div>#main-content {
+	margin-bottom: 10px;
+	vertical-align: top;
+	float: left;
+	width: 640px;
+	margin-right: 12px;
+}
+
+#content>div>aside {
+	width: 305px;
+	float: left;
 }
 
 #footer {
 	
 }
 
-#footer nav {
+#footer>nav {
 	text-align: center;
 }
 
-#footer nav ul {
+#footer>nav>ul {
 	display: inline-block;
 	vertical-align: top;
 	margin: 0px 0px 0px -3px;
@@ -351,15 +426,15 @@ a {
 	text-align: center;
 }
 
-#footer nav ul li {
+#footer>nav>ul>li {
 	padding: 5px 15px;
 }
 
-#footer nav ul li a {
+#footer>nav>ul>li a {
 	color: #4F5B5A;
 }
 
-#footer nav ul li.title {
+#footer>nav>ul>li.title {
 	border-left: 1px solid #FFFFFF;
 	border-right: 1px solid #BBBBBB;
 	font-size: 1em;
@@ -367,18 +442,18 @@ a {
 	overflow: visible;
 }
 
-#footer nav ul li.title.first {
+#footer>nav>ul>li.title.first {
 	border-left: none;
 }
 
-#footer nav ul li.title.last {
+#footer>nav>ul>li.title.last {
 	border-right: none;
 }
 
-#footer nav ul li.title button {
+#footer>nav>ul>li.title button {
 	margin-top: -10px;
 }
 
-#footer nav ul li.title a {
+#footer>nav>ul>li.title a {
 	color: #1C9BA5;
 }

@@ -12,9 +12,9 @@
 		<title>SoupSocial - Mude compartilhando!</title>
 	</ui:define>
 	<ui:define name="content">
-		<section id="content" class="light-gray-texture-bg">
-			<div id="project" class="content-width">
-				<section id="project-content">
+		<section id="content" class="dark-gray-texture-bg padding-3">
+			<div class="content-width">
+				<section id="main-content">
 					<div id="project-summary" class="white-bg shadow-border padding-2">
 						<h1 class="featured-text-1 green-text">#{projectController.project.name}</h1>
 						<div class="gray-bg gray-border padding-1">
@@ -86,7 +86,7 @@
 							</div>
 						</div>
 						<div id="project-plan" class="padding-2">
-							<h:graphicImage library="soupsocial" class="idea-img" />
+							<h:graphicImage library="soupsocial" class="project-img" />
 							<div class="border-bottom padding-3">
 								<h3>Beneficiados</h3>
 								<p>#{projectController.project.targetAudience}</p>
@@ -165,11 +165,6 @@
 							</button>
 						</div>
 					</div>
-				</section>
-				<section class="padding-3 border-top">
-					<div class="fb-like"
-						data-href="http://www.facebook.com/SoupSocial/" data-send="false"
-						data-width="940" data-show-faces="true"></div>
 				</section>
 			</div>
 		</section>

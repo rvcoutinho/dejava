@@ -1,0 +1,4 @@
+org.dejava.service.party.component
+org.dejava.service.party.dao
+org.dejava.service.party.model
+org.dejava.service.party.util

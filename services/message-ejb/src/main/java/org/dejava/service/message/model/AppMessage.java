@@ -18,7 +18,7 @@ import org.dejava.service.party.model.Party;
 @Entity
 @Table(name = "app_message")
 @Inheritance(strategy = InheritanceType.JOINED)
-@NamedQueries(value = { @NamedQuery(name = "getAppMessagesByParty", query = "SELECT message FROM AppMessage message WHERE message.sender.id = :partyId OR message.recipient.id = :partyId ORDER BY message.date DESC") })
+@NamedQueries(value = { @NamedQuery(name = "getAppMessagesByParty", query = "SELECT message FROM AppMessage message WHERE message.senderId = :partyId OR message.recipientId = :partyId ORDER BY message.date DESC") })
 public class AppMessage extends Message {
 
 	/**

@@ -84,16 +84,19 @@
 			<div class="content-width">
 				<section id="how-it-works" class="border-bottom">
 					<header class="padding-3">
-						<a class="featured-text-2"
+						<a class="featured-text-2" id="how-it-works-more"
 							onclick="$('#how-it-works-content').slideDown(1000);"> <span
 							class="round-button dark-green-bg">?</span> Ainda não entendeu?
 							Nós explicamos melhor!
 						</a>
-						<button class="dark-green-bg right-button">
-							conectar
-							<h:graphicImage library="soupsocial" class="spoon"
-								name="gfx/spoon.png" />
-						</button>
+						<h:outputLink value="/accesscontrol-web/login/facebook" id="how-it-works-connect"
+							rendered="#{!(userController.subject.authenticated or userController.subject.remembered)}">
+							<button class="dark-green-bg">
+								conectar
+								<h:graphicImage library="soupsocial" class="spoon"
+									name="gfx/spoon.png" />
+							</button>
+						</h:outputLink>
 					</header>
 					<div id="how-it-works-content">
 						<div class="padding-3">
@@ -134,11 +137,6 @@
 							</button>
 						</div>
 					</div>
-				</section>
-				<section class="padding-3 border-top">
-					<div class="fb-like"
-						data-href="http://www.facebook.com/SoupSocial/" data-send="false"
-						data-width="940" data-show-faces="true"></div>
 				</section>
 			</div>
 		</section>

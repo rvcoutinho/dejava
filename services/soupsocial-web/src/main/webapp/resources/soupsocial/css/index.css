@@ -8,6 +8,7 @@
 }
 
 #home-intro .flexslider ul.slides li {
+	
 }
 
 #home-intro .flexslider ul.slides li div {
@@ -26,14 +27,14 @@
 
 #home-intro .flexslider ul.flex-direction-nav li a.flex-prev {
 	top: -165px;
-	left: -70px;
+	left: -30px;
 	background:
 		url('#{resource["soupsocial:gfx/arrow-left-light-gray.png"]}');
 }
 
 #home-intro .flexslider ul.flex-direction-nav li a.flex-next {
 	top: -236px;
-	left: 925px;
+	left: 965px;
 	background:
 		url('#{resource["soupsocial:gfx/arrow-right-light-gray.png"]}');
 }
@@ -69,13 +70,13 @@
 	position: absolute;
 }
 
-#content {
-	
-}
-
-#content #how-it-works header a {
+#content #how-it-works header #how-it-works-more {
 	padding: 5px 0px;
 	display: inline-block;
+}
+
+#content #how-it-works header #how-it-works-connect {
+	float: right;
 }
 
 #content #how-it-works #how-it-works-content {

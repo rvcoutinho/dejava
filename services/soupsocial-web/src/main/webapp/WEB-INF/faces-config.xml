@@ -5,7 +5,14 @@
 	version="2.2">
 
 	<factory>
-		<exception-handler-factory>org.dejava.service.soupsocial.exception.ExceptionHandlerFactoryImpl</exception-handler-factory>
+		<exception-handler-factory>org.dejava.service.soupsocial.exception.ExceptionHandlerFactoryImpl
+		</exception-handler-factory>
 	</factory>
+
+	<application>
+		<locale-config>
+			<supported-locale>pt_BR</supported-locale>
+		</locale-config>
+	</application>
 
 </faces-config>

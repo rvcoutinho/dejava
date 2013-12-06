@@ -9,8 +9,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<h:outputStylesheet library="soupsocial" name="css/stylesheet.css" />
 		<h:outputStylesheet library="soupsocial" name="css/ui.css" />
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+		<link
+			href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+			rel="stylesheet" />
+		<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="//code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 		<h:outputScript library="soupsocial" name="js/jquery.mask.min.js" />
 		<h:outputScript library="soupsocial"
 			name="js/jquery-flexslider.min.js" />
@@ -24,6 +27,8 @@
 				<script async="async" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 			<![endif]-->
 		</h:outputText>
+		<h:outputStylesheet library="soupsocial"
+			name="css/jqueryui-fontawesome.css" />
 	</h:head>
 	<h:body>
 		<header id="header" class="min-width light-gray-texture-bg padding-2">
@@ -42,12 +47,10 @@
 								styleClass="featured-text-1">Projetos</h:link></li>
 						<li><h:link outcome="pretty:how" styleClass="featured-text-1">Acontecendo</h:link></li>
 						<li><a href="http://www.facebook.com/SoupSocial/"
-							target="_blank"><h:graphicImage library="soupsocial"
-									class="media first" name="gfx/media/facebook.png" /></a> <a
-							href="http://www.twitter.com/Soup_Social/" target="_blank"><h:graphicImage
-									library="soupsocial" class="media" name="gfx/media/twitter.png" /></a>
-							<a><h:graphicImage library="soupsocial" class="media"
-									name="gfx/media/rss.png" /></a></li>
+							target="_blank"><i class="fa fa-facebook media" /></a><a
+							href="http://www.twitter.com/Soup_Social/" target="_blank"><i
+								class="fa fa-twitter media" /></a><a href="#"><i
+								class="fa fa-rss media" /></a></li>
 						<li><div class="fb-like"
 								data-href="http://www.soupsocial.com/" data-send="false"
 								data-layout="button_count" data-width="100"
@@ -55,24 +58,52 @@
 						<li class="last"><h:outputLink styleClass="featured-text-1"
 								value="/accesscontrol-web/login/facebook"
 								rendered="#{!(userController.subject.authenticated or userController.subject.remembered)}">Conectar</h:outputLink>
-							<h:link styleClass="featured-text-1 ui-state-default"
+							<h:panelGroup
 								rendered="#{(userController.subject.authenticated or userController.subject.remembered)}">
-								<span class="ui-icon ui-icon-flag notification-info"><span
-									class="orange-bg">10</span></span>
-							</h:link> <!-- <h:link styleClass="featured-text-1 ui-state-default"
-								rendered="#{(userController.subject.authenticated or userController.subject.remembered)}">
+								<h:link styleClass="featured-text-1 ui-state-default">
+									<span class="ui-icon ui-icon-flag notification-info"><span
+										class="orange-bg">10</span></span>
+								</h:link>
+								<!-- <h:link styleClass="featured-text-1 ui-state-default">
 								<span class="ui-icon ui-icon-mail-closed notification-info"><span
-									class="orange-bg">10</span></span> </h:link> --> <h:link
-								outcome="pretty:me"
-								styleClass="featured-text-1 ui-state-default"
-								rendered="#{(userController.subject.authenticated or userController.subject.remembered)}">
-								<span class="ui-icon ui-icon-home"></span>
-							</h:link></li>
+									class="orange-bg">10</span></span> </h:link> -->
+								<div class="sub-menu user-menu">
+									<div class="light-green-bg">
+										<h:link outcome="pretty:me" styleClass="featured-text-1">
+											<img
+												src="https://graph.facebook.com/me/picture?access_token=#{userController.subject.session.getAttribute('access_token')}" />
+										</h:link>
+										<a href="#" class="open"><i
+											class="fa fa-caret-down light-green-bg" /></a>
+									</div>
+									<ul class="white-bg">
+										<li><h:link outcome="pretty:me">Meu perfil</h:link></li>
+										<li class="last-sub-item"><h:link outcome="pretty:me">Completar minhas informações</h:link></li>
+										<li><h:link outcome="pretty:me">Projetos e ideias com o seu perfil</h:link></li>
+										<li><h:link outcome="pretty:me">Meus projetos e ideias</h:link></li>
+										<li class="last-sub-item"><h:link outcome="pretty:me">Projetos e ideias apoiados</h:link></li>
+										<li><h:link outcome="pretty:me">Minhas organizações</h:link></li>
+										<li class="last-sub-item"><h:link outcome="pretty:me">Minhas empresas</h:link></li>
+										<li><h:form>
+												<h:commandLink action="#{userController.logout()}">Sair</h:commandLink>
+											</h:form></li>
+									</ul>
+								</div>
+							</h:panelGroup></li>
 					</ul>
 				</nav>
 			</div>
 		</header>
 		<ui:insert name="content"></ui:insert>
+		<section class="min-width dark-gray-texture-bg">
+			<div class="content-width">
+				<section class="padding-3 border-top">
+					<div class="fb-like"
+						data-href="http://www.facebook.com/SoupSocial/" data-send="false"
+						data-width="940" data-show-faces="true"></div>
+				</section>
+			</div>
+		</section>
 		<footer id="footer" class="min-width padding-2">
 			<nav class="content-width">
 				<ul>
@@ -134,11 +165,31 @@
 					<li><a class="small-text">Acompanhar projetos</a></li>
 				</ul>
 				<ul>
-					<li class="title"><button class="dark-green-bg">
-							conectar
-							<h:graphicImage library="soupsocial" class="spoon"
-								name="gfx/spoon.png" />
-						</button></li>
+					<h:panelGroup
+						rendered="#{!(userController.subject.authenticated or userController.subject.remembered)}">
+						<li class="title"><a class="featured-text-1"
+							href="/accesscontrol-web/login/facebook">
+								<button class="dark-green-bg">
+									conectar
+									<h:graphicImage library="soupsocial" class="spoon"
+										name="gfx/spoon.png" />
+								</button>
+						</a></li>
+					</h:panelGroup>
+					<h:panelGroup
+						rendered="#{(userController.subject.authenticated or userController.subject.remembered)}">
+						<li class="title"><h:link outcome="pretty:me" styleClass="featured-text-1">Meu perfil</h:link></li>
+						<li><h:link outcome="pretty:me" styleClass="small-text">Completar informações</h:link></li>
+						<li><h:link outcome="pretty:me" styleClass="small-text">Projetos e ideias sugeridos</h:link></li>
+						<li><h:link outcome="pretty:me" styleClass="small-text">Meus projetos e ideias</h:link></li>
+						<li><h:link outcome="pretty:me" styleClass="small-text">Projetos e ideias apoiados</h:link></li>
+						<li><h:link outcome="pretty:me" styleClass="small-text">Minhas organizações</h:link></li>
+						<li><h:link outcome="pretty:me" styleClass="small-text">Minhas empresas</h:link></li>
+						<li><h:form>
+								<h:commandLink action="#{userController.logout()}"
+									styleClass="small-text">Sair</h:commandLink>
+							</h:form></li>
+					</h:panelGroup>
 				</ul>
 				<ul>
 					<li class="title last"><div class="fb-like"
@@ -506,10 +557,6 @@
 				js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=164844580330852";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
-		//]]>
-		</script>
-		<script>
-		//<![CDATA[	
 			$(document).ready(function() {	
 				$('a.scroll').click(function(event) {
 					// If the path is not "/".
@@ -523,20 +570,12 @@
 					}
 				});
 			});
-		//]]>
-		</script>
-		<script>
-		//<![CDATA[	
 			$(function() {
    				$('input.date').mask('00/00/0000', {placeholder: " "});
    				$('input.phone').mask('(00) 0000-00000', {placeholder: " "});
    				$('input.cpf').mask('000.000.000-00', {placeholder: " "});
    				$('input.cnpj').mask('00.000.000/0000-00', {placeholder: " "});
 			});
-		//]]>
-		</script>
-		<script>
-		//<![CDATA[	
 			function createIdea() {
 				$('#idea-create').dialog({ modal: true, draggable: false, minWidth: 500 });
 				$('#idea-create .place').geocomplete({details: '#idea-create .place-detail', detailsAttribute: 'data-geo'});
@@ -579,6 +618,17 @@
 					}
 				});
 			};
+			$(".sub-menu .open").click(function() {
+				var submenu = $(this).parent().next().show().position({
+					my: "right+6 top+22",
+					at: "right bottom",
+					of: this
+				});
+				$(document).one( "click", function() {
+					submenu.hide();
+				});
+				return false;
+			})
 		//]]>
 		</script>
 	</h:body>

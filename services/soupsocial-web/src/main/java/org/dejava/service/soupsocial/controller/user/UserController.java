@@ -159,4 +159,16 @@ public class UserController implements Serializable {
 		return philanthropyParty;
 	}
 
+	/**
+	 * Logs the current user out.
+	 * 
+	 * @return Returns the index page.
+	 */
+	public String logout() {
+		// Logs the user out.
+		getSubject().logout();
+		// Returns the the index page.
+		return "pretty:index";
+	}
+
 }

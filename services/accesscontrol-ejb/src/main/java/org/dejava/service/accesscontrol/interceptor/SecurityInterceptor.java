@@ -10,7 +10,6 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresGuest;
@@ -18,6 +17,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.authz.annotation.RequiresUser;
 import org.apache.shiro.subject.Subject;
+import org.dejava.service.accesscontrol.constant.ErrorKeys;
+import org.dejava.service.accesscontrol.exception.AuthorizationException;
 
 /**
  * The security enforcer interceptor.
@@ -47,15 +48,18 @@ public class SecurityInterceptor implements Serializable {
 	 *            The class in the invocation context.
 	 * @param contextMethod
 	 *            The method in the invocation context.
+	 * @throws AuthorizationException
+	 *             If there is no authorization.
 	 */
-	private void enforceAuthentication(final Class<?> contextClass, final Method contextMethod) {
+	private void enforceAuthentication(final Class<?> contextClass, final Method contextMethod)
+			throws AuthorizationException {
 		// If the method (or the class) requires authentication.
 		if ((contextMethod.getAnnotation(RequiresAuthentication.class) != null)
 				|| (contextClass.getAnnotation(RequiresAuthentication.class) != null)) {
 			// If the user is not authenticated.
 			if (!getSubject().isAuthenticated()) {
-				// Throws an authorization exception. FIXME
-				throw new AuthorizationException();
+				// Throws an authorization exception.
+				throw new AuthorizationException(ErrorKeys.NOT_AUTHENTICATED);
 			}
 		}
 		// If the method (or the class) requires an user.
@@ -63,8 +67,8 @@ public class SecurityInterceptor implements Serializable {
 				|| (contextClass.getAnnotation(RequiresUser.class) != null)) {
 			// If the user is not authenticated and not remembered.
 			if ((!getSubject().isAuthenticated()) && (!getSubject().isRemembered())) {
-				// Throws an authorization exception. FIXME
-				throw new AuthorizationException();
+				// Throws an authorization exception.
+				throw new AuthorizationException(ErrorKeys.NOT_REMEMBERED);
 			}
 		}
 		// If the method (or the class) requires a guest.
@@ -72,8 +76,8 @@ public class SecurityInterceptor implements Serializable {
 				|| (contextClass.getAnnotation(RequiresGuest.class) != null)) {
 			// If the user is authenticated or remembered.
 			if ((getSubject().isAuthenticated()) || (getSubject().isRemembered())) {
-				// Throws an authorization exception. FIXME
-				throw new AuthorizationException();
+				// Throws an authorization exception.
+				throw new AuthorizationException(ErrorKeys.NOT_GUEST);
 			}
 		}
 
@@ -84,8 +88,10 @@ public class SecurityInterceptor implements Serializable {
 	 * 
 	 * @param roles
 	 *            The expected roles.
+	 * @throws AuthorizationException
+	 *             If there is no authorization.
 	 */
-	private void enforceOneRole(final Collection<String> roles) {
+	private void enforceOneRole(final Collection<String> roles) throws AuthorizationException {
 		// The user is not authorized by default.
 		Boolean authorized = false;
 		// For each role.
@@ -98,8 +104,8 @@ public class SecurityInterceptor implements Serializable {
 		}
 		// If the subject has none of the given roles.
 		if (!authorized) {
-			// Throws an authorization exception. FIXME
-			throw new AuthorizationException();
+			// Throws an authorization exception.
+			throw new AuthorizationException(ErrorKeys.NOT_AUTHORIZED);
 		}
 	}
 
@@ -108,12 +114,14 @@ public class SecurityInterceptor implements Serializable {
 	 * 
 	 * @param roles
 	 *            The expected roles.
+	 * @throws AuthorizationException
+	 *             If there is no authorization.
 	 */
-	private void enforceAllRoles(final Collection<String> roles) {
+	private void enforceAllRoles(final Collection<String> roles) throws AuthorizationException {
 		// If the subject does not have all of the given roles.
 		if (!getSubject().hasAllRoles(roles)) {
-			// Throws an authorization exception. FIXME
-			throw new AuthorizationException();
+			// Throws an authorization exception.
+			throw new AuthorizationException(ErrorKeys.NOT_AUTHORIZED);
 		}
 	}
 
@@ -124,8 +132,11 @@ public class SecurityInterceptor implements Serializable {
 	 *            The class in the invocation context.
 	 * @param contextMethod
 	 *            The method in the invocation context.
+	 * @throws AuthorizationException
+	 *             If there is no authorization.
 	 */
-	private void enforceRoleAuthorization(final Class<?> contextClass, final Method contextMethod) {
+	private void enforceRoleAuthorization(final Class<?> contextClass, final Method contextMethod)
+			throws AuthorizationException {
 		// Tries to get the roles expected for the method.
 		final RequiresRoles rolesRequiredMethod = contextMethod.getAnnotation(RequiresRoles.class);
 		// Tries to get the roles expected for the method.
@@ -163,8 +174,10 @@ public class SecurityInterceptor implements Serializable {
 	 * 
 	 * @param permissions
 	 *            The expected permissions.
+	 * @throws AuthorizationException
+	 *             If there is no authorization.
 	 */
-	private void enforceOnePermission(final Collection<String> permissions) {
+	private void enforceOnePermission(final Collection<String> permissions) throws AuthorizationException {
 		// The user is not authorized by default.
 		Boolean authorized = false;
 		// For each permission.
@@ -177,8 +190,8 @@ public class SecurityInterceptor implements Serializable {
 		}
 		// If has none of the given permissions.
 		if (!authorized) {
-			// Throws an authorization exception. FIXME
-			throw new AuthorizationException();
+			// Throws an authorization exception.
+			throw new AuthorizationException(ErrorKeys.NOT_AUTHORIZED);
 		}
 	}
 
@@ -187,12 +200,14 @@ public class SecurityInterceptor implements Serializable {
 	 * 
 	 * @param permissions
 	 *            The expected permissions.
+	 * @throws AuthorizationException
+	 *             If there is no authorization.
 	 */
-	private void enforceAllPermissions(final Collection<String> permissions) {
+	private void enforceAllPermissions(final Collection<String> permissions) throws AuthorizationException {
 		// If the subject does not have all of the given permissions.
 		if (!getSubject().isPermittedAll(permissions.toArray(new String[0]))) {
-			// Throws an authorization exception. FIXME
-			throw new AuthorizationException();
+			// Throws an authorization exception.
+			throw new AuthorizationException(ErrorKeys.NOT_AUTHORIZED);
 		}
 	}
 
@@ -203,8 +218,11 @@ public class SecurityInterceptor implements Serializable {
 	 *            The class in the invocation context.
 	 * @param contextMethod
 	 *            The method in the invocation context.
+	 * @throws AuthorizationException
+	 *             If there is no authorization.
 	 */
-	private void enforcePermissionAuthorization(final Class<?> contextClass, final Method contextMethod) {
+	private void enforcePermissionAuthorization(final Class<?> contextClass, final Method contextMethod)
+			throws AuthorizationException {
 		// Tries to get the permissions expected for the method.
 		final RequiresPermissions permissionsRequiredMethod = contextMethod
 				.getAnnotation(RequiresPermissions.class);
@@ -246,8 +264,11 @@ public class SecurityInterceptor implements Serializable {
 	 *            The class in the invocation context.
 	 * @param contextMethod
 	 *            The method in the invocation context.
+	 * @throws AuthorizationException
+	 *             If there is no authorization.
 	 */
-	private void enforceAuthorization(final Class<?> contextClass, final Method contextMethod) {
+	private void enforceAuthorization(final Class<?> contextClass, final Method contextMethod)
+			throws AuthorizationException {
 		// Enforces that the user is authorized by a role (if needed).
 		enforceRoleAuthorization(contextClass, contextMethod);
 		// Enforces that the user is authorized by a permission (if needed).

@@ -97,6 +97,7 @@
 
 		<dependency>
 			<groupId>com.soupsocial</groupId>
+			<!-- <groupId>org.dejava.service</groupId> -->
 			<artifactId>properties</artifactId>
 			<scope>compile</scope>
 		</dependency>

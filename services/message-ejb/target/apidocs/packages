@@ -1,0 +1,4 @@
+org.dejava.service.message.component
+org.dejava.service.message.dao
+org.dejava.service.message.model
+org.dejava.service.message.util

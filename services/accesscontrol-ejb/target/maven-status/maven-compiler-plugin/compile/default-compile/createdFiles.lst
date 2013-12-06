@@ -2,6 +2,7 @@ org\dejava\service\accesscontrol\util\MessageTypes$Info.class
 org\dejava\service\accesscontrol\realm\EJBRealm.class
 org\dejava\service\accesscontrol\interceptor\SecurityInterceptor.class
 org\dejava\service\accesscontrol\model\User.class
+org\dejava\service\accesscontrol\constant\ErrorKeys.class
 org\dejava\service\accesscontrol\util\AccessControlCtx.class
 org\dejava\service\accesscontrol\model\credentials\Credentials.class
 org\dejava\service\accesscontrol\util\MessageTypes$Error.class
@@ -27,6 +28,7 @@ org\dejava\service\accesscontrol\realm\FacebookEJBRealm.class
 org\dejava\service\accesscontrol\component\UserComponent.class
 org\dejava\service\accesscontrol\component\principal\EmailComponent.class
 org\dejava\service\accesscontrol\util\Resources.class
+org\dejava\service\accesscontrol\exception\AuthorizationException.class
 org\dejava\service\accesscontrol\model\principal\Email.class
 org\dejava\service\accesscontrol\component\principal\FacebookComponent.class
 org\dejava\service\accesscontrol\dao\principal\FacebookDAO.class

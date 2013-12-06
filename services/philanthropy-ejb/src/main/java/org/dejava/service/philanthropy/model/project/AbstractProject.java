@@ -29,9 +29,10 @@ import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
-import org.dejava.service.party.util.MessageTypes;
+import org.dejava.component.validation.constant.MessageTemplateWildCards;
 import org.dejava.service.philanthropy.component.share.ProjectShareComponent;
 import org.dejava.service.philanthropy.model.Category;
+import org.dejava.service.philanthropy.util.MessageTypes;
 import org.dejava.service.place.model.Place;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -59,9 +60,12 @@ public abstract class AbstractProject extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The name of the idea.
 	 */
-	@NotNull(payload = MessageTypes.Error.class, message = "project.name.notnull")
-	@NotEmpty(payload = MessageTypes.Error.class, message = "project.name.notempty")
-	@Length(payload = MessageTypes.Error.class, message = "project.name.length", min = 7, max = 25)
+	@NotNull(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".name.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".name.notempty")
+	@Length(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".name.length", min = 7, max = 25)
 	@Column(name = "name")
 	public String getName() {
 		return name;
@@ -87,9 +91,12 @@ public abstract class AbstractProject extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The short description of the idea.
 	 */
-	@NotNull(payload = MessageTypes.Error.class, message = "project.shortdescription.notnull")
-	@NotEmpty(payload = MessageTypes.Error.class, message = "project.shortdescription.notempty")
-	@Length(payload = MessageTypes.Error.class, message = "project.shortdescription.length", min = 30, max = 130)
+	@NotNull(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".shortdescription.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".shortdescription.notempty")
+	@Length(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".shortdescription.length", min = 30, max = 130)
 	@Column(name = "short_description")
 	public String getShortDescription() {
 		return shortDescription;
@@ -115,7 +122,8 @@ public abstract class AbstractProject extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The category of the idea.
 	 */
-	@NotNull(payload = MessageTypes.Error.class, message = "project.category.notnull")
+	@NotNull(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".category.notnull")
 	@Column(name = "category")
 	@Enumerated(value = EnumType.ORDINAL)
 	public Category getCategory() {
@@ -142,9 +150,12 @@ public abstract class AbstractProject extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The description of the idea.
 	 */
-	@NotNull(payload = MessageTypes.Error.class, message = "project.description.notnull")
-	@NotEmpty(payload = MessageTypes.Error.class, message = "project.description.notempty")
-	@Length(payload = MessageTypes.Error.class, message = "project.description.length", min = 100, max = 1000)
+	@NotNull(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".description.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".description.notempty")
+	@Length(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".description.length", min = 100, max = 1000)
 	@Column(name = "description")
 	public String getDescription() {
 		return description;

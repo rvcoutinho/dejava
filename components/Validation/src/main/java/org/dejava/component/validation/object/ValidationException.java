@@ -3,6 +3,7 @@ package org.dejava.component.validation.object;
 import java.util.Collections;
 import java.util.Set;
 
+import javax.ejb.ApplicationException;
 import javax.validation.ConstraintViolation;
 
 import org.dejava.component.exception.localized.unchecked.AbstractLocalizedRuntimeException;
@@ -13,6 +14,7 @@ import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
 /**
  * Exception related to constraint violations on a validation.
  */
+@ApplicationException(rollback = true)
 public class ValidationException extends AbstractLocalizedRuntimeException {
 
 	/**

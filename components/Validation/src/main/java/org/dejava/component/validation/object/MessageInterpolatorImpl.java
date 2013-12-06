@@ -6,6 +6,7 @@ import javax.validation.MessageInterpolator;
 
 import org.dejava.component.i18n.message.handler.MessageHandler;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
+import org.hibernate.validator.messageinterpolation.HibernateMessageInterpolatorContext;
 
 /**
  * The message interpolator implementation with i18n.
@@ -41,8 +42,8 @@ public class MessageInterpolatorImpl implements MessageInterpolator {
 	 */
 	@Override
 	public String interpolate(final String messageTemplate, final Context context, final Locale locale) {
-		return new ViolationMessageCommand(context.getConstraintDescriptor(), locale, messageTemplate)
-				.getMessage(getMessageHandler());
+		return new ViolationMessageCommand(((HibernateMessageInterpolatorContext) context).getRootBeanType(),
+				context.getConstraintDescriptor(), locale, messageTemplate).getMessage(getMessageHandler());
 	}
 
 }

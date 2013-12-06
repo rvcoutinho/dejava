@@ -1,5 +1,1 @@
-org\dejava\component\validation\object\ViolationMessageCommand.class
-org\dejava\component\validation\method\PreConditions.class
-org\dejava\component\validation\object\ValidationException.class
 org\dejava\component\validation\method\ArgFormatter.class
-org\dejava\component\validation\object\MessageInterpolatorImpl.class

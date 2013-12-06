@@ -1,5 +1,2 @@
-org\dejava\component\security\test\authc\HashedCredentialsMatcherTest.class
-org\dejava\component\security\test\util\FakeHashedCredentials.class
 org\dejava\component\security\test\util\FakeAuthenticationToken.class
 org\dejava\component\security\test\util\FakeAuthenticationInfo.class
-org\dejava\component\security\test\crypt\CredentialsHasherTest.class

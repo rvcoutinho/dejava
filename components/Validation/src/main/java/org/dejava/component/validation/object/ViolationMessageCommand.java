@@ -9,6 +9,7 @@ import javax.validation.metadata.ConstraintDescriptor;
 import org.dejava.component.i18n.message.annotation.MessageBundle;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageCommand;
 import org.dejava.component.reflection.ClassMirror;
+import org.dejava.component.validation.constant.MessageTemplateWildCards;
 
 /**
  * Violation message command.
@@ -42,6 +43,23 @@ public class ViolationMessageCommand extends SimpleMessageCommand {
 	}
 
 	/**
+	 * Gets the final message template for the violation message.
+	 * 
+	 * @param rootBeanClass
+	 *            The root bean class for the violation.
+	 * @param rawMessageTemplate
+	 *            The raw message template.
+	 * @return The final message template for the violation message.
+	 */
+	private static String getMessageTemplate(Class<?> rootBeanClass, final String rawMessageTemplate) {
+		// Replaces the actual class wild card with the class name in the raw message template.
+		String finalMessageTemplate = rawMessageTemplate.replace(MessageTemplateWildCards.ACTUAL_CLASS,
+				rootBeanClass.getSimpleName().toLowerCase());
+		// Returns the final message.
+		return finalMessageTemplate;
+	}
+
+	/**
 	 * Gets the parameters for the violation message (constraint attributes).
 	 * 
 	 * @param constraintDescriptor
@@ -62,16 +80,19 @@ public class ViolationMessageCommand extends SimpleMessageCommand {
 	/**
 	 * Gets the message command for the given violation.
 	 * 
+	 * @param rootBeanClass
+	 *            The root bean class for the violation.
 	 * @param constraintDescriptor
-	 *            The constraint descriptor for the message.
+	 *            The constraint descriptor to get the message parameters from.
 	 * @param locale
 	 *            The locale for the message.
 	 * @param messageTemplate
 	 *            The message template to be used.
 	 */
-	public ViolationMessageCommand(final ConstraintDescriptor<?> constraintDescriptor, final Locale locale,
+	public ViolationMessageCommand(Class<?> rootBeanClass,
+			final ConstraintDescriptor<?> constraintDescriptor, final Locale locale,
 			final String messageTemplate) {
-		super(getBundlePayload(constraintDescriptor), locale, messageTemplate,
-				getViolationParameters(constraintDescriptor));
+		super(getBundlePayload(constraintDescriptor), locale, getMessageTemplate(rootBeanClass,
+				messageTemplate), getViolationParameters(constraintDescriptor));
 	}
 }

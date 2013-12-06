@@ -5,6 +5,7 @@ import javax.validation.constraints.DecimalMin;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
+import org.dejava.component.validation.constant.MessageTemplateWildCards;
 import org.hibernate.validator.constraints.Email;
 
 /**
@@ -42,7 +43,8 @@ public class FakeEntity {
 	 * Age.
 	 */
 	@DecimalMin(payload = MessageTypes.Error.class, message = "fakeentity.age.decimalmin", value = "0")
-	@DecimalMax(payload = MessageTypes.Error.class, message = "fakeentity.age.decimalmax", value = "100")
+	@DecimalMax(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".age.decimalmax", value = "100")
 	private Integer age;
 
 	/**

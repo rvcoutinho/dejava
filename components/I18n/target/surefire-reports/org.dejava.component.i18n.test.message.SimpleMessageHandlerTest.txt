@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.dejava.component.i18n.test.message.SimpleMessageHandlerTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.074 sec - in org.dejava.component.i18n.test.message.SimpleMessageHandlerTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.07 sec - in org.dejava.component.i18n.test.message.SimpleMessageHandlerTest

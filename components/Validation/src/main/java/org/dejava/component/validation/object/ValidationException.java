@@ -98,7 +98,8 @@ public class ValidationException extends AbstractLocalizedRuntimeException {
 			// For each constraint violation.
 			for (final ConstraintViolation<?> currentViolation : getViolations()) {
 				// Adds the message for the current violation.
-				new ViolationMessageCommand(currentViolation.getConstraintDescriptor(), getLocale(),
+				new ViolationMessageCommand(currentViolation.getRootBeanClass(),
+						currentViolation.getConstraintDescriptor(), getLocale(),
 						currentViolation.getMessageTemplate()).addMessage(appMessageHandler);
 			}
 		}

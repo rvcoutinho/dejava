@@ -195,8 +195,16 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 		final CriteriaQuery<Entity> criteriaQuery = getCriteriaBuilder().createQuery(getEntityClass());
 		// Creates the root for the query.
 		final Root<Entity> criteriaRoot = criteriaQuery.from(getEntityClass());
-		// Sets the condition for the given attribute value.
-		criteriaQuery.where(getCriteriaBuilder().equal(criteriaRoot.get(attributeName), attributeValue));
+		// If the attribute value is null.
+		if (attributeValue == null) {
+			// Sets the is null condition for the given attribute value.
+			criteriaQuery.where(getCriteriaBuilder().isTrue(criteriaRoot.get(attributeName).isNull()));
+		}
+		// If the attribute value is not null.
+		else {
+			// Sets the condition for the given attribute value.
+			criteriaQuery.where(getCriteriaBuilder().equal(criteriaRoot.get(attributeName), attributeValue));
+		}
 		// Gets the JPA query.
 		final TypedQuery<Entity> query = getEntityManager().createQuery(criteriaQuery);
 		// Limits the query results.

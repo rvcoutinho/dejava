@@ -8,25 +8,26 @@
 	<ui:define name="head">
 		<h:outputStylesheet library="soupsocial" name="css/small-project.css" />
 		<h:outputStylesheet library="soupsocial" name="css/index.css" />
-		<link rel="canonical" href="http://www.soupsocial.com/" />
+		<link rel="canonical" href="http://www.soupsocial.com/projetos" />
 		<title>SoupSocial - Mude compartilhando!</title>
 	</ui:define>
 	<ui:define name="content">
 		<section id="content" class="min-width dark-gray-texture-bg">
 			<div class="content-width">
 				<section id="projects" class="border-bottom">
-					<header class="padding-3">
+					<header class="padding-4">
 						<h1>
 							<h:link outcome="pretty:index">Início</h:link>
 							&gt; <a href="#"
 								onclick="$('#projects-content').slideDown(1000);">Ideias</a>
 						</h1>
 					</header>
-					<div id="projects-content" class="projects">
-						<div class="padding-3">
+					<div id="projects-content">
+						<div class="projects three-projects padding-4">
 							<ui:repeat varStatus="currentProjectStatus" var="currentProject"
 								value="#{projectsController.projectPlans}">
-									<soupsocial:small-project project="#{currentProject}" varStatus="#{currentProjectStatus}" />
+								<soupsocial:small-project project="#{currentProject}"
+									varStatus="#{currentProjectStatus}" />
 							</ui:repeat>
 						</div>
 						<div class="close-button-div">
@@ -37,11 +38,6 @@
 							</button>
 						</div>
 					</div>
-				</section>
-				<section class="padding-3 border-top">
-					<div class="fb-like"
-						data-href="http://www.facebook.com/SoupSocial/" data-send="false"
-						data-width="940" data-show-faces="true"></div>
 				</section>
 			</div>
 		</section>

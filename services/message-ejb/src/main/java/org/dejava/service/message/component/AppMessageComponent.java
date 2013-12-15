@@ -14,7 +14,6 @@ import org.dejava.component.validation.method.PreConditions;
 import org.dejava.component.validation.object.ValidationException;
 import org.dejava.service.message.dao.AppMessageDAO;
 import org.dejava.service.message.model.AppMessage;
-import org.dejava.service.message.model.Message;
 import org.dejava.service.message.util.MessageCtx;
 
 /**
@@ -57,7 +56,7 @@ public class AppMessageComponent extends AbstractGenericComponent<AppMessage, In
 	 * @param message
 	 *            Message to be sent.
 	 */
-	public void sendMessage(Message message) {
+	public void sendMessage(AppMessage message) {
 		// Asserts that the message is not null.
 		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, message);
 		// Validates the current message (and throws an exception for the found violations).

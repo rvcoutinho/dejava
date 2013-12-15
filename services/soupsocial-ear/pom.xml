@@ -23,7 +23,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.web</groupId>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>accesscontrol-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -35,7 +35,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.web</groupId>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>party-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -47,7 +47,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.web</groupId>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>place-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -59,7 +59,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.web</groupId>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>contact-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -71,7 +71,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.web</groupId>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>message-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -83,7 +83,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.dejava.web</groupId>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>philanthropy-web</artifactId>
 			<type>war</type>
 			<scope>compile</scope>
@@ -96,8 +96,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.soupsocial</groupId>
-			<!-- <groupId>org.dejava.service</groupId> -->
+			<groupId>org.dejava.service</groupId>
+			<!-- <groupId>com.soupsocial</groupId> -->
 			<artifactId>properties</artifactId>
 			<scope>compile</scope>
 		</dependency>

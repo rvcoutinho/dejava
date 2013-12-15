@@ -5,31 +5,34 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 <ui:composition>
 	<article
-		class="project padding-1 light-gray-texture-bg#{varStatus.even ? ' even' : ' odd'}#{varStatus.index mod 3 == 1 ? ' middle' : ''}">
+		class="project padding-1 ui-corner-all light-gray-texture-bg#{not empty project.idea ? ' idea' : ''}#{not empty project.plan ? ' plan' : ''}#{not empty project.sponsor ? ' on-going' : ''}#{varStatus.even ? ' even' : ' odd'}#{varStatus.index mod 3 == 1 ? ' middle' : ''}">
 		<h:link outcome="pretty:project">
 			<f:param name="projectId" value="#{project.identifier}" />
 			<h:graphicImage library="soupsocial" class="project-img" />
 		</h:link>
-		<h:link outcome="pretty:project" styleClass="gray-text">
+		<h:link outcome="pretty:project" styleClass="dark-gray-text">
 			<f:param name="projectId" value="#{project.identifier}" />
-			<h2 class="project-title featured-text-1">#{project.name}</h2>
+			<h3 class="project-title featured-text-1">#{project.name}</h3>
 		</h:link>
-		<div class="project-short-desc padding-3">#{project.shortDescription}</div>
+		<div class="project-short-desc padding-4">#{project.shortDesc}</div>
 		<div class="project-party">
-			<div class="project-owner left small-text border-bottom">Idealizador:</div>
-			<div class="project-owner small-text border-bottom">Instituição:</div>
-			<div class="project-owner left small-text border-top padding-4">
+			<div class="idea small-text border-bottom">Idealizadores:</div>
+			<div class="plan small-text border-bottom">Instituição:</div>
+			<div class="on-going small-text border-bottom">Patrocinadores:</div>
+			<div class="idea small-text border-top padding-6">
 				<a><h:graphicImage library="soupsocial"
-						class="project-owner-img" />
-					<div>Rômulo Coutinho</div></a>
+						class="project-owner-img" /> </a>
 			</div>
-			<div class="project-owner small-text border-top padding-4">
+			<div class="plan small-text border-top padding-6">
 				<a><h:graphicImage library="soupsocial"
-						class="project-owner-img" />
-					<div>Rômulo Coutinho</div></a>
+						class="project-owner-img" /></a>
+			</div>
+			<div class="on-going small-text border-top padding-6">
+				<a><h:graphicImage library="soupsocial"
+						class="project-owner-img" /></a>
 			</div>
 		</div>
-		<div class="project-support padding-1">
+		<div class="project-support padding-1 ui-corner-bottom">
 			<h:form>
 				<div class="support">
 					<h:commandLink styleClass="orange-text"
@@ -39,19 +42,20 @@
 							styleClass="heart" />
 						<span class="featured-text-3">#{project.shares}</span>
 						<br />
-						<span class="gray-text small-text">apoiadores</span>
+						<span class="dark-gray-text small-text">apoiadores</span>
 					</h:commandLink>
 				</div>
 				<div class="audience orange-text">
 					<h:graphicImage library="soupsocial" name="gfx/spoons-green.png"
 						styleClass="spoons" />
 					<span class="featured-text-3">#{project.shares}</span><br /> <span
-						class="gray-text small-text">impactos em potencial</span>
+						class="dark-gray-text small-text">impactos em potencial</span>
 				</div>
 			</h:form>
 		</div>
 		<div class="project-category">
-			<h:graphicImage library="soupsocial" name="gfx/#{project.category}.png" />
+			<h:graphicImage library="soupsocial"
+				name="gfx/#{project.category}.png" />
 		</div>
 	</article>
 </ui:composition>

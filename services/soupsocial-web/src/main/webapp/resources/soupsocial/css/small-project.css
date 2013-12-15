@@ -1,95 +1,123 @@
-.projects .project {
+.projects>.project {
 	margin-bottom: 27px;
 	width: 282px;
 	float: left;
 }
 
-.projects .project.middle {
+.projects.two-projects>.project.odd {
+	margin-left: 25px;
+}
+
+.projects.three-projects>.project.middle {
 	margin-left: 27px;
 	margin-right: 27px;
 }
 
-.projects .project .project-img {
+.projects>.project .project-img {
 	height: 153px;
 	width: 272px;
 	border: 4px solid #FFFFFF;
 }
 
-.projects .project .project-title {
+.projects>.project .project-title {
 	
 }
 
-.projects .project .project-short-desc {
-	
+.projects>.project>.project-short-desc {
+	height: 45px;
 }
 
-.projects .project .project-party {
+.projects>.project>.project-party {
 	overflow: auto;
 }
 
-.projects .project .project-party .project-owner {
-	width: 136px;
+.projects>.project>.project-party>div {
 	float: left;
-}
-
-.projects .project .project-party .project-owner.left {
-	margin-right: 10px;
-}
-
-.projects .project .project-party .project-owner a {
-	color: #4F5B5A;
-	font-weight: bold;
-}
-
-.projects .project .project-party .project-owner a div {
-	margin-left: 5px;
-	display: inline-block;
-	vertical-align: middle;
-	width: 65px;
+	width: 0px;
 	overflow: hidden;
 }
 
-.projects .project .project-party .project-owner-img {
+.projects>.project.idea>.project-party>div.idea {
+	width: 282px;
+}
+
+.projects>.project.plan>.project-party>div.plan {
+	width: 282px;
+}
+
+.projects>.project.on-going>.project-party>div.on-going {
+	width: 282px;
+}
+
+.projects>.project.idea.plan>.project-party>div.idea {
+	
+}
+
+.projects>.project.idea.plan>.project-party>div.plan {
+	
+}
+
+.projects>.project.plan.on-going>.project-party>div.plan {
+	
+}
+
+.projects>.project.plan.on-going>.project-party>div.on-going {
+	
+}
+
+.projects>.project.idea.plan.on-going>.project-party>div.idea {
+	
+}
+
+.projects>.project.idea.plan.on-going>.project-party>div.plan {
+	
+}
+
+.projects>.project.idea.plan.on-going>.project-party>div.on-going {
+	
+}
+
+.projects>.project>.project-party img {
 	vertical-align: middle;
 	width: 50px;
 	height: 50px;
 }
 
-.projects .project .project-support {
+.projects>.project>.project-support {
 	margin: 10px -10px -10px -10px;
 	clear: both;
 	overflow: auto;
 	background: rgba(255, 255, 255, 0.7);
 }
 
-.projects .project .project-support img {
+.projects>.project>.project-support img {
 	margin: 5px;
 	float: left;
 }
 
-.projects .project .project-support img.heart {
+.projects>.project>.project-support img.heart {
 	height: 28px;
 }
 
-.projects .project .project-support img.spoons {
+.projects>.project>.project-support img.spoons {
 	height: 23px;
 }
 
-.projects .project .project-support .support {
+.projects>.project>.project-support .support {
 	text-align: left;
 	float: left;
 	width: 35%;
 }
 
-.projects .project .project-support .audience {
+.projects>.project>.project-support .audience {
 	text-align: left;
 	width: 65%;
 	float: left;
 }
 
-.projects .project .project-category {
+.projects>.project .project-category {
 	position: absolute;
-	margin-top: -375px;
+	margin-top: -400px;
 	margin-left: 255px;
 	z-index: 10;
 }

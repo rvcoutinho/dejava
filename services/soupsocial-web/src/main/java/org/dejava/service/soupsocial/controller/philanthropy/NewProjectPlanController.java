@@ -9,8 +9,10 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.dejava.service.philanthropy.component.project.ProjectComponent;
-import org.dejava.service.philanthropy.model.project.ProjectPlan;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.dejava.service.accesscontrol.interceptor.Secured;
+import org.dejava.service.philanthropy.component.project.PhilanthropyProjectComponent;
+import org.dejava.service.philanthropy.model.project.plan.ProjectPlan;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.place.component.PlaceComponent;
 import org.dejava.service.place.util.PlaceCtx;
@@ -42,24 +44,26 @@ public class NewProjectPlanController extends AbstractNewProjectController imple
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private ProjectComponent projectComponent;
+	private PhilanthropyProjectComponent philanthropyProjectComponent;
 
 	/**
-	 * A new idea.
+	 * The new project plan.
 	 */
-	private ProjectPlan newProject;
+	private ProjectPlan newProjectPlan;
 
 	/**
-	 * @see org.dejava.service.soupsocial.controller.philanthropy.AbstractNewProjectController#getNewProject()
+	 * Gets the new project plan.
+	 * 
+	 * @return The new project plan.
 	 */
-	public ProjectPlan getNewProject() {
+	public ProjectPlan getNewProjectPlan() {
 		// If the idea is null.
-		if (newProject == null) {
-			// Creates a new idea.
-			newProject = new ProjectPlan();
+		if (newProjectPlan == null) {
+			// Creates a new plan.
+			newProjectPlan = new ProjectPlan();
 		}
-		// Returns the idea.
-		return newProject;
+		// Returns the plan.
+		return newProjectPlan;
 	}
 
 	/**
@@ -79,13 +83,17 @@ public class NewProjectPlanController extends AbstractNewProjectController imple
 	/**
 	 * @see org.dejava.service.soupsocial.controller.philanthropy.AbstractNewProjectController#createProject()
 	 */
+	@Secured
+	@RequiresAuthentication
 	public void createProject() throws IOException {
-		// Updates the idea target area.
-		getNewProject().setTargetArea(placeComponent.getByGoogleReference(getAddressReference()));
-		// Updates the goals of the project.
-		updateGoals();
-		// Creates the idea.
-		projectComponent.addOrUpdate(getNewProject());
+		// Sets the plan for the new project.
+		getNewProject().setPlan(getNewProjectPlan());
+		// Updates the plan target area.
+		getNewProjectPlan().setTargetArea(placeComponent.getByGoogleReference(getAddressReference()));
+		// Updates the plan goals.
+		getNewProjectPlan().setGoals(getGoals());
+		// Creates the project.
+		philanthropyProjectComponent.addOrUpdate(getNewProject());
 		// Adds a success message to the context. FIXME
 		facesContext.addMessage(null, new FacesMessage("Mensagem de teste", "Detalhe da mensagem de teste"));
 	}

@@ -9,12 +9,12 @@ import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.philanthropy.dao.share.ProjectShareDAO;
 import org.dejava.service.philanthropy.model.party.Supporter;
-import org.dejava.service.philanthropy.model.project.AbstractProject;
+import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 import org.dejava.service.philanthropy.model.share.ProjectShare;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
- * AbstractProject share EJB component.
+ * PhilanthropyProject share EJB component.
  */
 @PhilanthropyCtx
 @Stateless(name = "Component/Philanthropy/ProjectShare")
@@ -38,20 +38,20 @@ public class ProjectShareComponent extends AbstractGenericComponent<ProjectShare
 	/**
 	 * Shares a project.
 	 * 
-	 * @param abstractProject
+	 * @param philanthropyProject
 	 *            The project to be shared.
 	 * @param supporter
 	 *            The supporter sharing the project.
 	 * @return Returns the updated number of shares for the project.
 	 */
-	public Long share(final AbstractProject abstractProject, final Supporter supporter) {
+	public Long share(final PhilanthropyProject philanthropyProject, final Supporter supporter) {
 		// TODO Validate.
 		// Creates a new project share.
-		final ProjectShare projectShare = new ProjectShare(abstractProject, supporter);
+		final ProjectShare projectShare = new ProjectShare(philanthropyProject, supporter);
 		// Persists the share.
 		addOrUpdate(projectShare);
 		// Returns the updated number of shares.
-		return countProjectShares(abstractProject.getIdentifier());
+		return countSharesByProject(philanthropyProject.getIdentifier());
 	}
 
 	/**
@@ -62,7 +62,19 @@ public class ProjectShareComponent extends AbstractGenericComponent<ProjectShare
 	 * @return The number of shares for a project.
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Long countProjectShares(final Integer projectId) {
-		return projectShareDAO.countProjectShares(projectId);
+	public Long countSharesByProject(final Integer projectId) {
+		return projectShareDAO.countSharesByProject(projectId);
+	}
+
+	/**
+	 * Counts the number of shares for a supporter.
+	 * 
+	 * @param supporterId
+	 *            The supporter id.
+	 * @return The number of shares for a supporter.
+	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public Long countSharesBySupporter(final Integer supporterId) {
+		return projectShareDAO.countSharesBySupporter(supporterId);
 	}
 }

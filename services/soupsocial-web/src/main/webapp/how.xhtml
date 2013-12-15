@@ -6,14 +6,14 @@
 	template="/WEB-INF/templates/default.xhtml"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 	<ui:define name="head">
-		<link rel="canonical" href="http://www.soupsocial.com/como-funciona/" />
+		<link rel="canonical" href="http://www.soupsocial.com/como-funciona" />
 		<title>SoupSocial - Mude compartilhando!</title>
 	</ui:define>
 	<ui:define name="content">
 		<section id="content" class="min-width dark-gray-texture-bg">
 			<div class="content-width">
 				<section id="how-all" class="border-bottom">
-					<header class="padding-3">
+					<header class="padding-4">
 						<h1>
 							<h:link outcome="pretty:how">Como funciona</h:link>
 							&gt; <a href="#" onclick="$('#how-all-content').slideDown(1000);">Para
@@ -26,7 +26,7 @@
 						</h1>
 					</header>
 					<div id="how-all-content">
-						<div class="padding-3">
+						<div class="padding-4">
 							<p>É natural que vejamos o mundo e a sociedade com suas
 								imperfeições, o que não é normal é aceitar esta realidade sem
 								nada fazer. Sabemos que a celeridade do mundo moderno, e o
@@ -61,7 +61,7 @@
 					</div>
 				</section>
 				<section id="how-ngos" class="border-top border-bottom">
-					<header class="padding-3">
+					<header class="padding-4">
 						<h1>
 							<h:link outcome="pretty:how">Como funciona</h:link>
 							&gt; <a href="#"
@@ -75,55 +75,9 @@
 									name="gfx/spoon.png" />
 							</button>
 						</h1>
-						<section id="ngo-create" class="hidden-dialog form-content"
-							title="Cadastre sua Instituição!">
-							<h:form id="ngo-create-form">
-								<div>
-									<label for="ngo-create-name">Nome da instituição</label>:
-									<h:inputText id="ngo-create-name" />
-								</div>
-								<div>
-									<label for="ngo-create-cnpj">CNPJ</label>:
-									<h:inputText id="ngo-create-cnpj" styleClass="cnpj mask"
-										data-inv-regex="[^\d]"
-										value="#{newOrganizationController.newOrganization.federalCode}">
-										<f:converter converterId="InvRegexConv" />
-									</h:inputText>
-								</div>
-								<div>
-									<label for="ngo-create-address">Endereço</label>:
-									<h:inputText id="ngo-create-address" styleClass="place" />
-									<span class="hidden-dialog place-detail"><h:inputHidden
-											id="ngo-create-address-reference"
-											value="#{newOrganizationController.addressReference}"
-											p:data-geo="reference" /></span>
-								</div>
-								<div>
-									<label for="ngo-create-email">E-mail</label>:
-									<h:inputText id="ngo-create-email"
-										value="#{newOrganizationController.newEmailAddress.address}" />
-								</div>
-								<div>
-									<label for="ngo-create-phone">Telefone</label>:
-									<h:inputText id="ngo-create-phone" styleClass="phone mask"
-										data-inv-regex="[^\d]"
-										value="#{newOrganizationController.newPhoneNumber.number}">
-										<f:converter converterId="InvRegexConv" />
-									</h:inputText>
-								</div>
-								<h:commandLink
-									action="#{newOrganizationController.createOrganization}">
-									<button class="dark-green-bg right-button">
-										cadastrar
-										<h:graphicImage library="soupsocial" class="spoon"
-											name="gfx/spoon.png" />
-									</button>
-								</h:commandLink>
-							</h:form>
-						</section>
 					</header>
 					<div id="how-ngos-content">
-						<div class="padding-3">
+						<div class="padding-4">
 							<p>Instituições de interesse público sem fins lucrativos
 								nascem com objetivos específicos, quais sejam viabilizar missões
 								estabelecidas. As missões e objetivos das instituições são
@@ -165,7 +119,7 @@
 					</div>
 				</section>
 				<section id="how-investors" class="border-top border-bottom">
-					<header class="padding-3">
+					<header class="padding-4">
 						<h1>
 							<h:link outcome="pretty:how">Como funciona</h:link>
 							&gt; <a href="#"
@@ -179,7 +133,7 @@
 						</h1>
 					</header>
 					<div id="how-investors-content">
-						<div class="padding-3">
+						<div class="padding-4">
 							<p>Qualquer empresa pode apoiar um projeto cadastrado no
 								site. Para tanto, a empresa interessada deve buscar na aba XXXX,
 								as informações da instituição e entrar em contato com seu

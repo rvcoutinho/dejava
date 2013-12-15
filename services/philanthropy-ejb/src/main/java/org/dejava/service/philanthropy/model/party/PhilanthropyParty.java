@@ -1,7 +1,10 @@
 package org.dejava.service.philanthropy.model.party;
 
 import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 
@@ -12,7 +15,9 @@ import org.dejava.service.party.model.Party;
 /**
  * Philanthropy party super class.
  */
-@MappedSuperclass
+@Entity
+@Table(name = "philanthropy_party")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 
 	/**
@@ -48,7 +53,7 @@ public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 	/**
 	 * The (original) party.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Party/Party")
+	@ExternalEntity(retrieveObj = "java:app/party-ejb/Component/Party/Party")
 	private Party party;
 
 	/**
@@ -82,4 +87,24 @@ public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 		// Updates the party.
 		this.party = party;
 	}
+
+	/**
+	 * Default constructor.
+	 */
+	public PhilanthropyParty() {
+		super();
+	}
+
+	/**
+	 * Default constructor.
+	 * 
+	 * @param party
+	 *            The original party.
+	 */
+	public PhilanthropyParty(Party party) {
+		super();
+		// Sets the party id.
+		setParty(party);
+	}
+
 }

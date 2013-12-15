@@ -8,23 +8,27 @@
 	<ui:define name="head">
 		<h:outputStylesheet library="soupsocial" name="css/small-project.css" />
 		<h:outputStylesheet library="soupsocial" name="css/project.css" />
-		<link rel="canonical" href="http://www.soupsocial.com/projeto/" />
+		<link rel="canonical"
+			href="http://www.soupsocial.com/projeto/#{projectController.project.identifier}" />
 		<title>SoupSocial - Mude compartilhando!</title>
 	</ui:define>
 	<ui:define name="content">
-		<section id="content" class="dark-gray-texture-bg padding-3">
-			<div class="content-width">
-				<section id="main-content">
-					<div id="project-summary" class="white-bg shadow-border padding-2">
+		<section id="content" class="min-width dark-gray-texture-bg">
+			<div class="content-width border-bottom">
+				<section id="main-content" class="padding-4">
+					<div id="project-summary"
+						class="ui-corner-all white-bg shadow-border padding-2">
 						<h1 class="featured-text-1 green-text">#{projectController.project.name}</h1>
-						<div class="gray-bg gray-border padding-1">
-							<h2>#{projectController.project.shortDescription}</h2>
+						<div
+							class="ui-corner-all light-gray-bg dark-gray-border padding-1">
+							<h2>#{projectController.project.shortDesc}</h2>
 						</div>
-						<div class="big-text padding-3">Apoie
+						<div class="big-text padding-4">Apoie
 							"#{projectController.project.name}" e mude o mundo
 							compartilhando!</div>
 					</div>
-					<div id="project-share" class="white-bg shadow-border padding-2">
+					<div id="project-share"
+						class="ui-corner-all white-bg shadow-border padding-2">
 						<div id="project-owner"></div>
 						<div id="project-support">
 							<h:form>
@@ -36,75 +40,100 @@
 											name="gfx/heart-orange.png" styleClass="heart" />
 										<span class="featured-text-3 big-text">#{projectController.project.shares}</span>
 										<br />
-										<span class="gray-text">apoiadores</span>
+										<span class="dark-gray-text">apoiadores</span>
 									</h:commandLink>
 								</div>
 								<div id="audience" class="orange-text">
 									<h:graphicImage library="soupsocial"
 										name="gfx/spoons-green.png" styleClass="spoons" />
 									<span class="featured-text-3 big-text">#{projectController.project.shares}</span><br />
-									<span class="gray-text">impactos em potencial</span>
+									<span class="dark-gray-text">impactos em potencial</span>
 								</div>
 							</h:form>
 						</div>
 					</div>
-					<div id="project-desc" class="gray-bg shadow-border">
+					<div id="project-desc">
 						<ul>
 							<li><a href="#project-idea" class="green-text">Ideia</a></li>
 							<li><a href="#project-plan" class="green-text">Projeto</a></li>
 							<li><a href="#project-ongoing" class="green-text">Acontecendo</a></li>
 						</ul>
-						<div id="project-idea" class="padding-2">
+						<div id="project-idea" class="padding-4">
+							<h2>#{projectController.project.idea.name}</h2>
 							<div class="project-media flexslider">
 								<ul class="slides">
-									<li><iframe width="580" height="326"
-											src="http://www.youtube.com/embed/#{projectController.project.video}?autoplay=1&amp;origin=http://www.soupsocial.com" /></li>
+									<li><iframe width="640" height="360"
+											src="http://www.youtube.com/embed/#{projectController.project.idea.videoURL}?autoplay=1&amp;origin=http://www.soupsocial.com" /></li>
 								</ul>
 							</div>
-							<div class="border-bottom padding-3">
-								<h3>Beneficiados</h3>
-								<p>#{projectController.project.targetAudience}</p>
-								<h3>Raio de ação</h3>
-								<p>#{projectController.project.targetArea}</p>
+							<div class="border-bottom padding-4">
 								<h3>Porque tive essa ideia</h3>
-								<p>#{projectController.project.motivation}</p>
+								<p>#{projectController.project.idea.motivation}</p>
+								<h3>Beneficiados</h3>
+								<p>#{projectController.project.idea.targetAudience}</p>
+								<h3>Raio de ação</h3>
+								<p>#{projectController.project.idea.targetArea}</p>
 								<h3>Objetivos</h3>
 								<ul>
 									<ui:repeat var="currentGoal"
-										value="#{projectController.project.goals}">
+										value="#{projectController.project.idea.goals}">
 										<li>#{currentGoal}</li>
 									</ui:repeat>
 								</ul>
+								<h3>Investimento</h3>
+								<p>#{projectController.project.idea.investment}</p>
+								<h3>Tempo de duração</h3>
+								<p>#{projectController.project.idea.time}</p>
 								<h3>Como funcionaria</h3>
-								<p>#{projectController.project.description}</p>
+								<p>#{projectController.project.idea.desc}</p>
 								<h3>Tags</h3>
 								<p>#{projectController.project.allTags}</p>
 							</div>
-							<div class="border-top padding-3 small-text">
+							<div class="border-top padding-4 small-text">
 								Se essa ideia não está de acordo com as diretrizes do
 								SoupSocial, <a href="#" class="green-text">denuncie aqui.</a>
 							</div>
 						</div>
 						<div id="project-plan" class="padding-2">
-							<h:graphicImage library="soupsocial" class="project-img" />
-							<div class="border-bottom padding-3">
-								<h3>Beneficiados</h3>
-								<p>#{projectController.project.targetAudience}</p>
-								<h3>Raio de ação</h3>
-								<p>#{projectController.project.targetArea}</p>
+							<h2>#{projectController.project.plan.name}</h2>
+							<div class="project-media flexslider">
+								<ul class="slides">
+									<li><iframe width="580" height="326"
+											src="http://www.youtube.com/embed/#{projectController.project.plan.videoURL}?autoplay=1&amp;origin=http://www.soupsocial.com" /></li>
+								</ul>
 							</div>
-							<div class="border-top padding-3 small-text">
+							<div class="border-bottom padding-4">
+								<h3>Porque tive essa ideia</h3>
+								<p>#{projectController.project.plan.motivation}</p>
+								<h3>Beneficiados</h3>
+								<p>#{projectController.project.plan.targetAudience}</p>
+								<h3>Raio de ação</h3>
+								<p>#{projectController.project.plan.targetArea}</p>
+								<h3>Objetivos</h3>
+								<ul>
+									<ui:repeat var="currentGoal"
+										value="#{projectController.project.idea.goals}">
+										<li>#{currentGoal}</li>
+									</ui:repeat>
+								</ul>
+								<h3>Investimento</h3>
+								<p>#{projectController.project.plan.investment}</p>
+								<h3>Tempo de duração</h3>
+								<p>#{projectController.project.plan.time}</p>
+								<h3>Como funcionaria</h3>
+								<p>#{projectController.project.plan.desc}</p>
+								<h3>Tags</h3>
+								<p>#{projectController.project.allTags}</p>
+							</div>
+							<div class="border-top padding-4 small-text">
 								Se essa ideia não está de acordo com as diretrizes do
 								SoupSocial, <a href="#" class="green-text">denuncie aqui.</a>
 							</div>
 						</div>
 						<div id="project-ongoing" class="padding-2">
 							<h:graphicImage library="soupsocial" class="idea-img" />
-							<div class="border-bottom padding-3">
-								<h3>Beneficiados</h3>
-								<p>#{projectController.project.targetAudience}</p>
-							</div>
-							<div class="border-top padding-3 small-text">
+							<div class="border-bottom padding-4"></div>
+							<div class="border-top padding-4 small-text">
 								Se essa ideia não está de acordo com as diretrizes do
 								SoupSocial, <a href="#" class="green-text">denuncie aqui.</a>
 							</div>
@@ -118,8 +147,8 @@
 							$('.project-media .flexslider').flexslider({animation: "slide",slideshow: false, controlNav: false, directionNav: false,});
 						});
 					</script>
-					<div class="fb-comments white-bg"
-						data-href="http://www.soupsocial.com/project/#{projectController.project.identifier}"
+					<div class="fb-comments"
+						data-href="http://www.soupsocial.com/projeto/#{projectController.project.identifier}"
 						data-width="640" data-num-posts="2" data-colorscheme="light"></div>
 				</section>
 				<aside>
@@ -131,42 +160,51 @@
 								name="gfx/spoon.png" />
 						</button>
 					</div>
-					<div id="supporters" class="gray-bg shadow-border padding-1">Alguns
-						apoiadores:</div>
-					<div id="related" class="gray-bg shadow-border padding-1">Projetos
-						relacionados:</div>
+					<section id="supporters"
+						class="ui-corner-all white-bg shadow-border">
+						<header
+							class="light-green-bg padding-1 featured-text-1 ui-corner-top">
+							Alguns apoiadores</header>
+						<section class="padding-1">X</section>
+					</section>
+					<section id="related" class="ui-corner-all white-bg shadow-border">
+						<header
+							class="light-green-bg padding-1 featured-text-1 ui-corner-top">
+							Projetos relacionados</header>
+						<section class="padding-1">X</section>
+					</section>
 				</aside>
 			</div>
-		</section>
-		<section class="min-width dark-gray-texture-bg">
-			<div class="content-width">
-				<section id="projects">
-					<header class="padding-3">
-						<h1>
-							<h:link outcome="pretty:index">Início</h:link>
-							&gt; <a href="#"
-								onclick="$('#projects-content').slideDown(1000);">Ideias e
-								projetos</a>
-						</h1>
-					</header>
-					<div id="projects-content" class="projects">
-						<div class="padding-3">
-							<ui:repeat varStatus="currentProjectStatus" var="currentProject"
-								value="#{projectsController.projectIdeas}">
-								<soupsocial:small-project project="#{currentProject}"
-									varStatus="#{currentProjectStatus}" />
-							</ui:repeat>
+			<section class="min-width dark-gray-texture-bg">
+				<div class="content-width border-top border-bottom">
+					<section id="projects">
+						<header class="padding-4">
+							<h1>
+								<h:link outcome="pretty:index">Início</h:link>
+								&gt; <a href="#"
+									onclick="$('#projects-content').slideDown(1000);">Ideias e
+									projetos</a>
+							</h1>
+						</header>
+						<div id="projects-content">
+							<div class="padding-4 projects three-projects">
+								<ui:repeat varStatus="currentProjectStatus" var="currentProject"
+									value="#{projectsController.projectIdeas}">
+									<soupsocial:small-project project="#{currentProject}"
+										varStatus="#{currentProjectStatus}" />
+								</ui:repeat>
+							</div>
+							<div class="close-button-div">
+								<button class="close-button dark-green-bg"
+									onclick="$('#projects-content').slideUp(1000);">
+									<h:graphicImage library="soupsocial" name="gfx/arrow-up.png" />
+									<br />fechar
+								</button>
+							</div>
 						</div>
-						<div class="close-button-div">
-							<button class="close-button dark-green-bg"
-								onclick="$('#projects-content').slideUp(1000);">
-								<h:graphicImage library="soupsocial" name="gfx/arrow-up.png" />
-								<br />fechar
-							</button>
-						</div>
-					</div>
-				</section>
-			</div>
+					</section>
+				</div>
+			</section>
 		</section>
 	</ui:define>
 </ui:composition>

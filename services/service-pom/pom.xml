@@ -50,7 +50,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.web</groupId>
+				<groupId>org.dejava.service</groupId>
 				<artifactId>accesscontrol-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -64,7 +64,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.web</groupId>
+				<groupId>org.dejava.service</groupId>
 				<artifactId>party-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -78,7 +78,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.web</groupId>
+				<groupId>org.dejava.service</groupId>
 				<artifactId>place-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -92,7 +92,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.web</groupId>
+				<groupId>org.dejava.service</groupId>
 				<artifactId>contact-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -106,7 +106,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.web</groupId>
+				<groupId>org.dejava.service</groupId>
 				<artifactId>message-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>
@@ -120,7 +120,7 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.dejava.web</groupId>
+				<groupId>org.dejava.service</groupId>
 				<artifactId>philanthropy-web</artifactId>
 				<version>0.0.1</version>
 				<type>war</type>

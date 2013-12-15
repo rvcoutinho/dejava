@@ -21,7 +21,7 @@
 							<header>
 								<h1 class="green-text featured-text-1">
 									<span class="biggest-text">Mude</span> <span
-										class="bigger-text gray-text">compartilhando</span>
+										class="bigger-text dark-gray-text">compartilhando</span>
 								</h1>
 							</header>
 							<div>
@@ -49,7 +49,7 @@
 							<header>
 								<h1 class="green-text featured-text-1">
 									<span class="biggest-text">Mude</span> <span
-										class="bigger-text gray-text">compartilhando</span>
+										class="bigger-text dark-gray-text">compartilhando</span>
 								</h1>
 							</header>
 							<div>
@@ -83,13 +83,14 @@
 		<section id="content" class="min-width dark-gray-texture-bg">
 			<div class="content-width">
 				<section id="how-it-works" class="border-bottom">
-					<header class="padding-3">
+					<header class="padding-4">
 						<a class="featured-text-2" id="how-it-works-more"
 							onclick="$('#how-it-works-content').slideDown(1000);"> <span
 							class="round-button dark-green-bg">?</span> Ainda não entendeu?
 							Nós explicamos melhor!
 						</a>
-						<h:outputLink value="/accesscontrol-web/login/facebook" id="how-it-works-connect"
+						<h:outputLink value="/accesscontrol-web/login/facebook"
+							id="how-it-works-connect"
 							rendered="#{!(userController.subject.authenticated or userController.subject.remembered)}">
 							<button class="dark-green-bg">
 								conectar
@@ -99,7 +100,7 @@
 						</h:outputLink>
 					</header>
 					<div id="how-it-works-content">
-						<div class="padding-3">
+						<div class="padding-4">
 							<div></div>
 							<div></div>
 						</div>
@@ -113,7 +114,7 @@
 					</div>
 				</section>
 				<section id="projects" class="border-top border-bottom">
-					<header class="padding-3">
+					<header class="padding-4">
 						<h1>
 							<h:link outcome="pretty:index">Início</h:link>
 							&gt; <a href="#"
@@ -121,8 +122,8 @@
 								projetos</a>
 						</h1>
 					</header>
-					<div id="projects-content" class="projects">
-						<div class="padding-3">
+					<div id="projects-content">
+						<div class="padding-4 projects three-projects">
 							<ui:repeat varStatus="currentProjectStatus" var="currentProject"
 								value="#{projectsController.projectIdeas}">
 								<soupsocial:small-project project="#{currentProject}"

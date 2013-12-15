@@ -2,10 +2,14 @@ org.dejava.service.philanthropy.component.party
 org.dejava.service.philanthropy.component.project
 org.dejava.service.philanthropy.component.share
 org.dejava.service.philanthropy.dao.party
+org.dejava.service.philanthropy.dao.project.author
 org.dejava.service.philanthropy.dao.project
+org.dejava.service.philanthropy.dao.project.plan
 org.dejava.service.philanthropy.dao.share
 org.dejava.service.philanthropy.model
 org.dejava.service.philanthropy.model.party
+org.dejava.service.philanthropy.model.project.author
 org.dejava.service.philanthropy.model.project
+org.dejava.service.philanthropy.model.project.plan
 org.dejava.service.philanthropy.model.share
 org.dejava.service.philanthropy.util

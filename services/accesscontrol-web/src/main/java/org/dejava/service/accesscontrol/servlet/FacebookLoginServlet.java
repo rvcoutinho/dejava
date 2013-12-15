@@ -23,6 +23,9 @@ import org.dejava.service.accesscontrol.authc.FacebookUserToken;
 import org.dejava.service.accesscontrol.component.UserComponent;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
+import org.dejava.service.message.component.AppNotificationComponent;
+import org.dejava.service.message.model.AppNotification;
+import org.dejava.service.message.util.MessageCtx;
 import org.dejava.service.party.component.PartyComponent;
 import org.dejava.service.party.model.Person;
 import org.dejava.service.party.util.PartyCtx;
@@ -193,6 +196,13 @@ public class FacebookLoginServlet extends HttpServlet {
 	private PartyComponent partyComponent;
 
 	/**
+	 * Application notification component.
+	 */
+	@Inject
+	@MessageCtx
+	private AppNotificationComponent appNotificationComponent;
+
+	/**
 	 * Creates a new user and person for the given facebook user. FIXME
 	 * 
 	 * @param fbUser
@@ -202,11 +212,15 @@ public class FacebookLoginServlet extends HttpServlet {
 		// Persists a new user with the facebook user information.
 		final User newUser = userComponent.addOrUpdate(new User(fbUser));
 		// Creates a new person for the facebook user.
-		final Person newPerson = new Person(fbUser);
+		Person newPerson = new Person(fbUser);
 		// Sets the user for the person.
 		newPerson.setUser(newUser);
 		// Persists the new person.
-		partyComponent.addOrUpdate(newPerson);
+		newPerson = (Person) partyComponent.addOrUpdate(newPerson);
+		// Notifies the user with a welcome message. FIXME
+		appNotificationComponent.sendMessage(new AppNotification("SoupSocial", newPerson.getIdentifier(),
+				"Welcome, " + newPerson.getDisplayName() + "."));
+
 	}
 
 	/**

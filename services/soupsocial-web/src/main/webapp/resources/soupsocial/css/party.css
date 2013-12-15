@@ -1,0 +1,37 @@
+#content #main-content>#party-projects {
+	padding: 0px;
+}
+
+#content aside>#party-completeness {
+	margin-bottom: 15px;
+}
+
+#content aside>#party-info>#party-info-content>#party-presentation {
+	height: 50px;
+}
+
+#content aside>#party-info>#party-info-content>#party-presentation>img {
+	float: left;
+	margin-right: 10px;
+}
+
+#content aside>#party-info>#party-info-content>#party-presentation>p {
+	margin: 0px;
+	padding: 0px;
+}
+
+#content aside>#party-info>#party-info-content>#party-numbers {
+	overflow: auto;
+	border-top: 1px solid #E6E6E6;
+	border-bottom: 1px solid #E6E6E6;
+}
+
+#content aside>#party-info>#party-info-content>#party-numbers>div {
+	float: left;
+	width: 132px;
+	border-right: 1px solid #E6E6E6;
+}
+
+#content aside>#party-info>#party-info-content>#party-numbers>div.last {
+	border-right: none;
+}

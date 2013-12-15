@@ -144,16 +144,8 @@ public class UserController implements Serializable {
 	public PhilanthropyParty getPhilanthropyParty() {
 		// If the party has not been retrieved yet.
 		if (philanthropyParty == null) {
-			// Tries to get the party with the user name.
-			try {
-				// Tries to get the party.
-				this.philanthropyParty = philanthropyPartyComponent.getByAttribute("partyId", getParty()
-						.getIdentifier());
-			}
-			// If the party cannot be retrieved.
-			catch (final Exception exception) {
-				// TODO Throws an exception.
-			}
+			// Tries to get the party.
+			philanthropyParty = philanthropyPartyComponent.getPhilanthropyPartyByParty(getParty());
 		}
 		// Returns the party.
 		return philanthropyParty;

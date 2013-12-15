@@ -9,7 +9,7 @@ import org.dejava.service.philanthropy.model.share.ProjectShare;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
- * AbstractProject share DAO.
+ * PhilanthropyProject share DAO.
  */
 @PhilanthropyCtx
 public class ProjectShareDAO extends AbstractGenericDAO<ProjectShare, Integer> {
@@ -36,14 +36,31 @@ public class ProjectShareDAO extends AbstractGenericDAO<ProjectShare, Integer> {
 	 *            The project id.
 	 * @return The number of shares for a project.
 	 */
-	public Long countProjectShares(final Integer projectId) {
+	public Long countSharesByProject(final Integer projectId) {
 		// Gets the named query for the count.
-		final TypedQuery<Long> countProjectShares = getEntityManager().createNamedQuery("countProjectShares",
+		final TypedQuery<Long> countSharesByProject = getEntityManager().createNamedQuery("countSharesByProject",
 				Long.class);
 		// Sets the project id to the named query.
-		countProjectShares.setParameter("projectId", projectId);
+		countSharesByProject.setParameter("projectId", projectId);
 		// Returns the result for the count.
-		return countProjectShares.getSingleResult();
+		return countSharesByProject.getSingleResult();
+	}
+
+	/**
+	 * Counts the number of shares for a supporter.
+	 * 
+	 * @param supporterId
+	 *            The supporter id.
+	 * @return The number of shares for a supporter.
+	 */
+	public Long countSharesBySupporter(final Integer supporterId) {
+		// Gets the named query for the count.
+		final TypedQuery<Long> countSharesBySupporter = getEntityManager().createNamedQuery(
+				"countSharesBySupporter", Long.class);
+		// Sets the supporter id to the named query.
+		countSharesBySupporter.setParameter("supporterId", supporterId);
+		// Returns the result for the count.
+		return countSharesBySupporter.getSingleResult();
 	}
 
 }

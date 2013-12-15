@@ -9,9 +9,11 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.dejava.service.philanthropy.component.project.ProjectComponent;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.dejava.service.accesscontrol.interceptor.Secured;
+import org.dejava.service.philanthropy.component.project.PhilanthropyProjectComponent;
 import org.dejava.service.philanthropy.model.party.Supporter;
-import org.dejava.service.philanthropy.model.project.ProjectIdea;
+import org.dejava.service.philanthropy.model.project.plan.ProjectIdea;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.place.component.PlaceComponent;
 import org.dejava.service.place.util.PlaceCtx;
@@ -43,24 +45,26 @@ public class NewProjectIdeaController extends AbstractNewProjectController imple
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private ProjectComponent projectComponent;
+	private PhilanthropyProjectComponent philanthropyProjectComponent;
 
 	/**
-	 * A new idea.
+	 * The new project idea.
 	 */
-	private ProjectIdea newProject;
+	private ProjectIdea newProjectIdea;
 
 	/**
-	 * @see org.dejava.service.soupsocial.controller.philanthropy.AbstractNewProjectController#getNewProject()
+	 * Gets the new project idea.
+	 * 
+	 * @return New project idea.
 	 */
-	public ProjectIdea getNewProject() {
+	public ProjectIdea getNewProjectIdea() {
 		// If the idea is null.
-		if (newProject == null) {
+		if (newProjectIdea == null) {
 			// Creates a new idea.
-			newProject = new ProjectIdea();
+			newProjectIdea = new ProjectIdea();
 		}
 		// Returns the idea.
-		return newProject;
+		return newProjectIdea;
 	}
 
 	/**
@@ -80,18 +84,19 @@ public class NewProjectIdeaController extends AbstractNewProjectController imple
 	/**
 	 * @see org.dejava.service.soupsocial.controller.philanthropy.AbstractNewProjectController#createProject()
 	 */
+	@Secured
+	@RequiresAuthentication
 	public void createProject() throws IOException {
+		// Sets the idea for the new project.
+		getNewProject().setIdea(getNewProjectIdea());
 		// Updates the idea target area.
-		getNewProject().setTargetArea(placeComponent.getByGoogleReference(getAddressReference()));
-		// If there is a known user. FIXME
-		if (userController.getUsername() != null) {
-			// Sets the current user to the new idea.
-			getNewProject().setAuthor((Supporter) userController.getPhilanthropyParty());
-		}
-		// Updates the goals of the project.
-		updateGoals();
-		// Creates the idea.
-		projectComponent.addOrUpdate(getNewProject());
+		getNewProjectIdea().setTargetArea(placeComponent.getByGoogleReference(getAddressReference()));
+		// Sets the current user as the author of the new idea.
+		getNewProjectIdea().getAuthors().add((Supporter) userController.getPhilanthropyParty());
+		// Updates the idea goals.
+		getNewProjectIdea().setGoals(getGoals());
+		// Creates the project.
+		philanthropyProjectComponent.addOrUpdate(getNewProject());
 		// Adds a success message to the context. FIXME
 		facesContext.addMessage(null, new FacesMessage("Mensagem de teste", "Detalhe da mensagem de teste"));
 	}

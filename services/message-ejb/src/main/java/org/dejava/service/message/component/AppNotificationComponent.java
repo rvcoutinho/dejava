@@ -14,7 +14,6 @@ import org.dejava.component.validation.method.PreConditions;
 import org.dejava.component.validation.object.ValidationException;
 import org.dejava.service.message.dao.AppNotificationDAO;
 import org.dejava.service.message.model.AppNotification;
-import org.dejava.service.message.model.Message;
 import org.dejava.service.message.util.MessageCtx;
 
 /**
@@ -57,7 +56,7 @@ public class AppNotificationComponent extends AbstractGenericComponent<AppNotifi
 	 * @param notification
 	 *            Notification to be sent.
 	 */
-	public void sendMessage(Message notification) {
+	public void sendMessage(AppNotification notification) {
 		// Asserts that the message is not null.
 		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, notification);
 		// Validates the current message (and throws an exception for the found violations).

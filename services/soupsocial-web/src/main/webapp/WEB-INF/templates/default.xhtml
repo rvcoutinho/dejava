@@ -8,7 +8,6 @@
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<h:outputStylesheet library="soupsocial" name="css/stylesheet.css" />
-		<h:outputStylesheet library="soupsocial" name="css/ui.css" />
 		<link
 			href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 			rel="stylesheet" />
@@ -60,23 +59,36 @@
 								rendered="#{!(userController.subject.authenticated or userController.subject.remembered)}">Conectar</h:outputLink>
 							<h:panelGroup
 								rendered="#{(userController.subject.authenticated or userController.subject.remembered)}">
-								<h:link styleClass="featured-text-1 ui-state-default">
-									<span class="ui-icon ui-icon-flag notification-info"><span
-										class="orange-bg">10</span></span>
-								</h:link>
+								<div class="sub-menu ui-corner-all">
+									<a href="#" class="featured-text-1 open light-gray-text"><i
+										class="fa fa-bell fa-2x"><span class="orange-bg"
+											style="display: none;">10</span></i></a>
+									<ul class="white-bg ui-corner-all">
+										<ui:repeat varStatus="currentNotificationStatus"
+											var="currentNotification"
+											value="#{appNotificationsController.notifications}">
+											<li class="last-sub-item"><h:link
+													outcome="pretty:notifications" styleClass="gray-text">#{currentNotification.content} <time>
+														<h:outputText value="#{currentNotification.date}">
+															<f:convertDateTime locale="pt_BR" />
+														</h:outputText>
+													</time>
+												</h:link></li>
+										</ui:repeat>
+										<li><h:link outcome="pretty:notifications">Todas as notificações</h:link></li>
+									</ul>
+								</div>
 								<!-- <h:link styleClass="featured-text-1 ui-state-default">
 								<span class="ui-icon ui-icon-mail-closed notification-info"><span
 									class="orange-bg">10</span></span> </h:link> -->
-								<div class="sub-menu user-menu">
-									<div class="light-green-bg">
-										<h:link outcome="pretty:me" styleClass="featured-text-1">
-											<img
-												src="https://graph.facebook.com/me/picture?access_token=#{userController.subject.session.getAttribute('access_token')}" />
-										</h:link>
-										<a href="#" class="open"><i
-											class="fa fa-caret-down light-green-bg" /></a>
-									</div>
-									<ul class="white-bg">
+								<div class="sub-menu user-menu light-green-bg ui-corner-all">
+									<h:link outcome="pretty:me" styleClass="featured-text-1">
+										<img class="ui-corner-left"
+											src="https://graph.facebook.com/me/picture?access_token=#{userController.subject.session.getAttribute('access_token')}" />
+									</h:link>
+									<a href="#" class="open"><i
+										class="fa fa-caret-down light-green-bg ui-corner-right" /></a>
+									<ul class="white-bg ui-corner-all">
 										<li><h:link outcome="pretty:me">Meu perfil</h:link></li>
 										<li class="last-sub-item"><h:link outcome="pretty:me">Completar minhas informações</h:link></li>
 										<li><h:link outcome="pretty:me">Projetos e ideias com o seu perfil</h:link></li>
@@ -97,7 +109,7 @@
 		<ui:insert name="content"></ui:insert>
 		<section class="min-width dark-gray-texture-bg">
 			<div class="content-width">
-				<section class="padding-3 border-top">
+				<section class="padding-4 border-top">
 					<div class="fb-like"
 						data-href="http://www.facebook.com/SoupSocial/" data-send="false"
 						data-width="940" data-show-faces="true"></div>
@@ -156,13 +168,16 @@
 				<ul>
 					<li class="title"><a class="featured-text-1">Mudando o
 							mundo</a></li>
-					<li><a class="small-text" href="#" onclick="createIdea();">Criar
-							ideias</a></li>
+					<li><a class="small-text" href="#" onclick="createIdea();">Dar
+							uma ideia</a></li>
 					<li><a class="small-text" href="#" onclick="createProject();">Criar
-							projetos</a></li>
-					<li><a class="small-text">Apoiar ideias</a></li>
-					<li><a class="small-text">Apoiar projetos</a></li>
-					<li><a class="small-text">Acompanhar projetos</a></li>
+							um projeto</a></li>
+					<li><h:link outcome="pretty:projectIdeas"
+							styleClass="small-text">Apoiar ideias
+					</h:link></li>
+					<li><h:link outcome="pretty:projectPlans"
+							styleClass="small-text">Apoiar projetos
+					</h:link></li>
 				</ul>
 				<ul>
 					<h:panelGroup
@@ -178,7 +193,8 @@
 					</h:panelGroup>
 					<h:panelGroup
 						rendered="#{(userController.subject.authenticated or userController.subject.remembered)}">
-						<li class="title"><h:link outcome="pretty:me" styleClass="featured-text-1">Meu perfil</h:link></li>
+						<li class="title"><h:link outcome="pretty:me"
+								styleClass="featured-text-1">Meu perfil</h:link></li>
 						<li><h:link outcome="pretty:me" styleClass="small-text">Completar informações</h:link></li>
 						<li><h:link outcome="pretty:me" styleClass="small-text">Projetos e ideias sugeridos</h:link></li>
 						<li><h:link outcome="pretty:me" styleClass="small-text">Meus projetos e ideias</h:link></li>
@@ -203,340 +219,8 @@
 				</ul>
 			</nav>
 		</footer>
-		<section id="idea-create" class="hidden-dialog form-content"
-			title="Dê sua ideia por um mundo melhor!">
-			<h:form id="idea-create-form">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<div>
-								<h:outputLabel for="idea-create-name">Título</h:outputLabel>
-								:
-								<h:inputText id="idea-create-name"
-									value="#{newProjectIdeaController.newProject.name}" />
-							</div>
-							<div>
-								<h:outputLabel for="idea-create-short-desc">Resumo</h:outputLabel>
-								:
-								<h:inputText id="idea-create-short-desc"
-									value="#{newProjectIdeaController.newProject.shortDescription}" />
-							</div>
-							<div>
-								<h:outputLabel for="idea-create-category">Category</h:outputLabel>
-								:
-								<h:selectOneMenu id="idea-create-category"
-									value="#{newProjectIdeaController.newProject.category}">
-									<f:selectItems value="#{newProjectIdeaController.categories}" />
-								</h:selectOneMenu>
-							</div>
-							<div>
-								<h:outputLabel>Foto</h:outputLabel>
-								:
-								<!-- <h:inputFile id="idea-create-display-image"
-									value="#{newProjectIdeaController.displayImage}" /> -->
-							</div>
-							<div>
-								<h:outputLabel for="idea-create-video">Vídeo</h:outputLabel>
-								:
-								<h:inputText id="idea-create-video" class="youtube"
-									value="#{newProjectIdeaController.newProject.video}" />
-								<span class="pre-input-text small-text">http://www.youtube.com/watch?v=
-								</span>
-							</div>
-							<div>
-								<h:outputLabel for="idea-create-target-audience">Beneficiados</h:outputLabel>
-								:
-								<h:inputText id="idea-create-target-audience"
-									value="#{newProjectIdeaController.newProject.targetAudience}" />
-							</div>
-							<div>
-								<h:outputLabel for="idea-create-address">Raio de ação</h:outputLabel>
-								:
-								<h:inputText id="idea-create-address" styleClass="place" />
-								<span class="hidden-dialog place-detail"><h:inputHidden
-										id="idea-create-address-reference"
-										value="#{newProjectIdeaController.addressReference}"
-										p:data-geo="reference" /></span>
-							</div>
-							<div class="buttons">
-								<div>
-									<button class="dark-green-bg right-button next">
-										continuar
-										<h:graphicImage library="soupsocial" class="spoon"
-											name="gfx/spoon.png" />
-									</button>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div>
-								<h:outputLabel for="idea-create-motivation">Porque tive essa ideia</h:outputLabel>
-								:
-								<h:inputTextarea id="idea-create-motivation"
-									value="#{newProjectIdeaController.newProject.motivation}" />
-							</div>
-							<div>
-								<h:outputLabel>Objetivos</h:outputLabel>
-								:
-								<h:inputText id="idea-create-goals-1"
-									value="#{newProjectIdeaController.goal1}" />
-								<h:inputText id="idea-create-goals-2"
-									value="#{newProjectIdeaController.goal2}" />
-								<h:inputText id="idea-create-goals-3"
-									value="#{newProjectIdeaController.goal3}" />
-							</div>
-							<div>
-								<h:outputLabel for="idea-create-desc">Como funcionaria</h:outputLabel>
-								:
-								<h:inputTextarea id="idea-create-desc"
-									value="#{newProjectIdeaController.newProject.description}" />
-							</div>
-							<div class="buttons">
-								<div>
-									<button class="dark-green-bg left-button previous">
-										voltar
-										<h:graphicImage library="soupsocial" class="spoon"
-											name="gfx/spoon.png" />
-									</button>
-									<button class="dark-green-bg right-button next">
-										continuar
-										<h:graphicImage library="soupsocial" class="spoon"
-											name="gfx/spoon.png" />
-									</button>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div>
-								<h:outputLabel for="idea-create-investment">Investimento estimado</h:outputLabel>
-								:
-								<h:selectOneMenu id="idea-create-investment"
-									value="#{newProjectIdeaController.newProject.investment}">
-									<f:selectItem itemValue="5000" itemLabel="R$ 5.000" />
-									<f:selectItem itemValue="25000" itemLabel="R$ 25.000" />
-									<f:selectItem itemValue="100000" itemLabel="R$ 100.000" />
-									<f:selectItem itemValue="250000" itemLabel="R$ 250.000" />
-									<f:selectItem itemValue="1000000" itemLabel="R$ 1.000.000" />
-									<f:selectItem itemValue="10000000" itemLabel="R$ 10.000.000" />
-								</h:selectOneMenu>
-							</div>
-							<div>
-								<h:outputLabel for="idea-create-time">Tempo estimado</h:outputLabel>
-								:
-								<h:selectOneMenu id="idea-create-time"
-									value="#{newProjectIdeaController.newProject.time}">
-									<f:selectItem itemValue="1" itemLabel="1 dia" />
-									<f:selectItem itemValue="7" itemLabel="1 semana" />
-									<f:selectItem itemValue="30" itemLabel="1 mês" />
-									<f:selectItem itemValue="90" itemLabel="3 meses" />
-									<f:selectItem itemValue="180" itemLabel="6 meses" />
-									<f:selectItem itemValue="360" itemLabel="1 ano" />
-									<f:selectItem itemValue="720" itemLabel="2 anos" />
-									<f:selectItem itemValue="1800" itemLabel="5 anos" />
-								</h:selectOneMenu>
-							</div>
-							<div>
-								<h:outputLabel>Instituições indicadas</h:outputLabel>
-								:
-								<h:inputText id="idea-create-ngos-1" />
-								<h:inputText id="idea-create-ngos-2" />
-								<h:inputText id="idea-create-ngos-3" />
-							</div>
-							<div>
-								<h:outputLabel for="idea-create-tags">Tags</h:outputLabel>
-								:
-								<h:inputTextarea id="idea-create-tags"
-									value="#{newProjectIdeaController.newProject.allTags}" />
-							</div>
-							<div class="buttons">
-								<div>
-									<button class="dark-green-bg left-button previous">
-										voltar
-										<h:graphicImage library="soupsocial" class="spoon"
-											name="gfx/spoon.png" />
-									</button>
-									<h:commandLink
-										action="#{newProjectIdeaController.createProject()}">
-										<button class="dark-green-bg right-button">
-											cadastrar
-											<h:graphicImage library="soupsocial" class="spoon"
-												name="gfx/spoon.png" />
-										</button>
-									</h:commandLink>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</h:form>
-		</section>
-		<section id="project-create" class="hidden-dialog form-content"
-			title="Dê sua ideia por um mundo melhor!">
-			<h:form id="project-create-form">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<div>
-								<h:outputLabel for="project-create-name">Título</h:outputLabel>
-								:
-								<h:inputText id="project-create-name"
-									value="#{newProjectPlanController.newProject.name}" />
-							</div>
-							<div>
-								<h:outputLabel for="project-create-short-desc">Resumo</h:outputLabel>
-								:
-								<h:inputText id="project-create-short-desc"
-									value="#{newProjectPlanController.newProject.shortDescription}" />
-							</div>
-							<div>
-								<h:outputLabel for="project-create-category">Category</h:outputLabel>
-								:
-								<h:selectOneMenu id="project-create-category"
-									value="#{newProjectPlanController.newProject.category}">
-									<f:selectItems value="#{newProjectPlanController.categories}" />
-								</h:selectOneMenu>
-							</div>
-							<div>
-								<h:outputLabel>Foto</h:outputLabel>
-								:
-								<!-- <h:inputFile id="project-create-display-image"
-									value="#{newProjectPlanController.displayImage}" /> -->
-							</div>
-							<div>
-								<h:outputLabel for="project-create-video">Vídeo</h:outputLabel>
-								:
-								<h:inputText id="project-create-video" class="youtube"
-									value="#{newProjectPlanController.newProject.video}" />
-								<span class="pre-input-text small-text">http://www.youtube.com/watch?v=
-								</span>
-							</div>
-							<div>
-								<h:outputLabel for="project-create-target-audience">Beneficiados</h:outputLabel>
-								:
-								<h:inputText id="project-create-target-audience"
-									value="#{newProjectPlanController.newProject.targetAudience}" />
-							</div>
-							<div>
-								<h:outputLabel for="project-create-address">Raio de ação</h:outputLabel>
-								:
-								<h:inputText id="project-create-address" styleClass="place" />
-								<span class="hidden-dialog place-detail"><h:inputHidden
-										id="project-create-address-reference"
-										value="#{newProjectPlanController.addressReference}"
-										p:data-geo="reference" /></span>
-							</div>
-							<div class="buttons">
-								<div>
-									<button class="dark-green-bg right-button next">
-										continuar
-										<h:graphicImage library="soupsocial" class="spoon"
-											name="gfx/spoon.png" />
-									</button>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div>
-								<h:outputLabel for="project-create-motivation">Porque tive essa ideia</h:outputLabel>
-								:
-								<h:inputTextarea id="project-create-motivation"
-									value="#{newProjectPlanController.newProject.motivation}" />
-							</div>
-							<div>
-								<h:outputLabel>Objetivos</h:outputLabel>
-								:
-								<h:inputText id="project-create-goals-1"
-									value="#{newProjectPlanController.goal1}" />
-								<h:inputText id="project-create-goals-2"
-									value="#{newProjectPlanController.goal2}" />
-								<h:inputText id="project-create-goals-3"
-									value="#{newProjectPlanController.goal3}" />
-							</div>
-							<div>
-								<h:outputLabel for="project-create-desc">Como funcionaria</h:outputLabel>
-								:
-								<h:inputTextarea id="project-create-desc"
-									value="#{newProjectPlanController.newProject.description}" />
-							</div>
-							<div class="buttons">
-								<div>
-									<button class="dark-green-bg left-button previous">
-										voltar
-										<h:graphicImage library="soupsocial" class="spoon"
-											name="gfx/spoon.png" />
-									</button>
-									<button class="dark-green-bg right-button next">
-										continuar
-										<h:graphicImage library="soupsocial" class="spoon"
-											name="gfx/spoon.png" />
-									</button>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div>
-								<h:outputLabel for="project-create-investment">Investimento estimado</h:outputLabel>
-								:
-								<h:selectOneMenu id="project-create-investment"
-									value="#{newProjectPlanController.newProject.investment}">
-									<f:selectItem itemValue="5000" itemLabel="R$ 5.000" />
-									<f:selectItem itemValue="25000" itemLabel="R$ 25.000" />
-									<f:selectItem itemValue="100000" itemLabel="R$ 100.000" />
-									<f:selectItem itemValue="250000" itemLabel="R$ 250.000" />
-									<f:selectItem itemValue="1000000" itemLabel="R$ 1.000.000" />
-									<f:selectItem itemValue="10000000" itemLabel="R$ 10.000.000" />
-								</h:selectOneMenu>
-							</div>
-							<div>
-								<h:outputLabel for="project-create-time">Tempo estimado</h:outputLabel>
-								:
-								<h:selectOneMenu id="project-create-time"
-									value="#{newProjectPlanController.newProject.time}">
-									<f:selectItem itemValue="1" itemLabel="1 dia" />
-									<f:selectItem itemValue="7" itemLabel="1 semana" />
-									<f:selectItem itemValue="30" itemLabel="1 mês" />
-									<f:selectItem itemValue="90" itemLabel="3 meses" />
-									<f:selectItem itemValue="180" itemLabel="6 meses" />
-									<f:selectItem itemValue="360" itemLabel="1 ano" />
-									<f:selectItem itemValue="720" itemLabel="2 anos" />
-									<f:selectItem itemValue="1800" itemLabel="5 anos" />
-								</h:selectOneMenu>
-							</div>
-							<div>
-								<h:outputLabel>Instituições indicadas</h:outputLabel>
-								:
-								<h:inputText id="project-create-ngos-1" />
-								<h:inputText id="project-create-ngos-2" />
-								<h:inputText id="project-create-ngos-3" />
-							</div>
-							<div>
-								<h:outputLabel for="project-create-tags">Tags</h:outputLabel>
-								:
-								<h:inputTextarea id="project-create-tags"
-									value="#{newProjectPlanController.newProject.allTags}" />
-							</div>
-							<div class="buttons">
-								<div>
-									<button class="dark-green-bg left-button previous">
-										voltar
-										<h:graphicImage library="soupsocial" class="spoon"
-											name="gfx/spoon.png" />
-									</button>
-									<h:commandLink
-										action="#{newProjectPlanController.createProject}">
-										<button class="dark-green-bg right-button">
-											cadastrar
-											<h:graphicImage library="soupsocial" class="spoon"
-												name="gfx/spoon.png" />
-										</button>
-									</h:commandLink>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</h:form>
-		</section>
+		<ui:include src="/WEB-INF/include/new-idea.xhtml" />
+		<ui:include src="/WEB-INF/include/new-project.xhtml" />
 		<section id="messages" class="hidden-dialog">
 			<h:panelGroup>
 				<h:messages />
@@ -619,8 +303,8 @@
 				});
 			};
 			$(".sub-menu .open").click(function() {
-				var submenu = $(this).parent().next().show().position({
-					my: "right+6 top+22",
+				var submenu = $(this).next().show().position({
+					my: "right top+4",
 					at: "right bottom",
 					of: this
 				});
@@ -628,7 +312,12 @@
 					submenu.hide();
 				});
 				return false;
-			})
+			});
+			$(".submit-button").click(function (event) {
+				var standardOnClick = $(this).attr("onclick");
+				setTimeout(function(){$(this).attr("onclick", "")}, 50);
+				setTimeout(function(){$(this).attr("onclick", standardOnClick)}, 5000);
+			});
 		//]]>
 		</script>
 	</h:body>

@@ -11,7 +11,7 @@ import javax.servlet.http.Part;
 
 import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
 import org.dejava.service.philanthropy.model.Category;
-import org.dejava.service.philanthropy.model.project.AbstractProject;
+import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 import org.dejava.service.philanthropy.util.MessageTypes;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
@@ -33,11 +33,24 @@ public abstract class AbstractNewProjectController implements Serializable {
 	private ApplicationMessageHandler messageHandler;
 
 	/**
+	 * The new project.
+	 */
+	private PhilanthropyProject newProject;
+
+	/**
 	 * Gets the new project.
 	 * 
-	 * @return The new project.
+	 * @return New project.
 	 */
-	public abstract AbstractProject getNewProject();
+	public PhilanthropyProject getNewProject() {
+		// If the idea is null.
+		if (newProject == null) {
+			// Creates a new project.
+			newProject = new PhilanthropyProject();
+		}
+		// Returns the project.
+		return newProject;
+	}
 
 	/**
 	 * The address reference.
@@ -160,9 +173,11 @@ public abstract class AbstractNewProjectController implements Serializable {
 	}
 
 	/**
-	 * Update the goals for the project.
+	 * Gets the goals for the project.
+	 * 
+	 * @return The goals for the project.
 	 */
-	protected void updateGoals() {
+	protected List<String> getGoals() {
 		// Creates a new list for the goals.
 		final List<String> goals = new ArrayList<>();
 		// If the goal (1) is given.
@@ -180,8 +195,8 @@ public abstract class AbstractNewProjectController implements Serializable {
 			// Adds the goal to the goals list.
 			goals.add(getGoal3().trim());
 		}
-		// Sets the goals to the project.
-		getNewProject().setGoals(goals);
+		// Returns the goals.
+		return goals;
 	}
 
 	/**

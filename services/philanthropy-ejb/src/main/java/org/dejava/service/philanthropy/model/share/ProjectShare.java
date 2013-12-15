@@ -15,14 +15,16 @@ import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.philanthropy.model.party.Supporter;
-import org.dejava.service.philanthropy.model.project.AbstractProject;
+import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 
 /**
- * An abstractProject share action.
+ * A project share action.
  */
 @Entity
-@Table(name = "idea_share")
-@NamedQueries(value = { @NamedQuery(name = "countProjectShares", query = "SELECT count(share) FROM ProjectShare share WHERE share.project.identifier = :projectId") })
+@Table(name = "project_share")
+@NamedQueries(value = {
+		@NamedQuery(name = "countSharesByProject", query = "SELECT count(share) FROM ProjectShare share WHERE share.project.identifier = :projectId"),
+		@NamedQuery(name = "countSharesBySupporter", query = "SELECT count(share) FROM ProjectShare share WHERE share.supporter.identifier = :supporterId") })
 @MessageSources(sources = {
 		@MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
 		@MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
@@ -34,40 +36,40 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	private static final long serialVersionUID = 1046831114572773930L;
 
 	/**
-	 * The abstractProject that has been shared.
+	 * The project that has been shared.
 	 */
-	private AbstractProject abstractProject;
+	private PhilanthropyProject project;
 
 	/**
-	 * Gets the abstractProject that has been shared.
+	 * Gets the project that has been shared.
 	 * 
-	 * @return The abstractProject that has been shared.
+	 * @return The project that has been shared.
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "abstractProject")
-	public AbstractProject getProject() {
-		return abstractProject;
+	@JoinColumn(name = "project")
+	public PhilanthropyProject getProject() {
+		return project;
 	}
 
 	/**
-	 * Sets the abstractProject that has been shared.
+	 * Sets the project that has been shared.
 	 * 
-	 * @param abstractProject
-	 *            New abstractProject that has been shared.
+	 * @param project
+	 *            New project that has been shared.
 	 */
-	public void setProject(final AbstractProject abstractProject) {
-		this.abstractProject = abstractProject;
+	public void setProject(final PhilanthropyProject project) {
+		this.project = project;
 	}
 
 	/**
-	 * The supporter who has shared the abstractProject.
+	 * The supporter who has shared the project.
 	 */
 	private Supporter supporter;
 
 	/**
-	 * Gets the supporter who has shared the abstractProject.
+	 * Gets the supporter who has shared the project.
 	 * 
-	 * @return The supporter who has shared the abstractProject.
+	 * @return The supporter who has shared the project.
 	 */
 	@ManyToOne
 	@JoinColumn(name = "supporter")
@@ -76,24 +78,24 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	}
 
 	/**
-	 * Sets the supporter who has shared the abstractProject.
+	 * Sets the supporter who has shared the project.
 	 * 
 	 * @param supporter
-	 *            New supporter who has shared the abstractProject.
+	 *            New supporter who has shared the project.
 	 */
 	public void setSupporter(final Supporter supporter) {
 		this.supporter = supporter;
 	}
 
 	/**
-	 * The date when the abstractProject was shared.
+	 * The date when the project was shared.
 	 */
 	private Date date;
 
 	/**
-	 * Gets the date when the abstractProject was shared.
+	 * Gets the date when the project was shared.
 	 * 
-	 * @return The date when the abstractProject was shared.
+	 * @return The date when the project was shared.
 	 */
 	@Column(name = "date")
 	public Date getDate() {
@@ -107,10 +109,10 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	}
 
 	/**
-	 * Sets the date when the abstractProject was shared.
+	 * Sets the date when the project was shared.
 	 * 
 	 * @param date
-	 *            New date when the abstractProject was shared.
+	 *            New date when the project was shared.
 	 */
 	public void setDate(final Date date) {
 		this.date = date;
@@ -126,15 +128,15 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	/**
 	 * Default constructor.
 	 * 
-	 * @param abstractProject
-	 *            The abstractProject that has been shared.
+	 * @param project
+	 *            The project that has been shared.
 	 * @param supporter
-	 *            The supporter who has shared the abstractProject.
+	 *            The supporter who has shared the project.
 	 */
-	public ProjectShare(final AbstractProject abstractProject, final Supporter supporter) {
+	public ProjectShare(final PhilanthropyProject project, final Supporter supporter) {
 		super();
 		this.supporter = supporter;
-		this.abstractProject = abstractProject;
+		this.project = project;
 	}
 
 }

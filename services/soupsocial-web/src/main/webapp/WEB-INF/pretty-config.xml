@@ -4,7 +4,7 @@
                       http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
 
 	<url-mapping id="how">
-		<pattern value="/como-funciona/" />
+		<pattern value="/como-funciona" />
 		<view-id value="/how.jsf" />
 	</url-mapping>
 	<url-mapping id="index">
@@ -12,39 +12,43 @@
 		<view-id value="/index.jsf" />
 	</url-mapping>
 	<url-mapping id="privacy">
-		<pattern value="/privacidade/" />
+		<pattern value="/privacidade" />
 		<view-id value="/privacy.jsf" />
 	</url-mapping>
 	<url-mapping id="project">
-		<pattern value="/projeto/#{projectId : projectController.projectId}/" />
+		<pattern value="/projeto/#{projectId : projectController.projectId}" />
 		<view-id value="/project.jsf" />
 	</url-mapping>
 	<url-mapping id="projectIdeas">
-		<pattern value="/ideias/" />
-		<view-id value="/project-deas.jsf" />
+		<pattern value="/ideias" />
+		<view-id value="/project-ideas.jsf" />
 	</url-mapping>
 	<url-mapping id="projectPlans">
-		<pattern value="/projetos/" />
+		<pattern value="/projetos" />
 		<view-id value="/project-plans.jsf" />
 	</url-mapping>
 	<url-mapping id="me">
-		<pattern value="/u/" />
+		<pattern value="/u" />
 		<view-id value="/user.jsf" />
 	</url-mapping>
+	<url-mapping id="notifications">
+		<pattern value="/u/notificacoes" />
+		<view-id value="/notifications.jsf" />
+	</url-mapping>
 	<url-mapping id="user">
-		<pattern value="/u/#{username : userController.username}/" />
+		<pattern value="/u/#{username : userController.username}" />
 		<view-id value="/user.jsf" />
 	</url-mapping>
 	<url-mapping id="who">
-		<pattern value="/quem-somos/" />
+		<pattern value="/quem-somos" />
 		<view-id value="/who.jsf" />
 	</url-mapping>
 	<url-mapping id="soupsocial">
-		<pattern value="/soupsocial/" />
+		<pattern value="/soupsocial" />
 		<view-id value="/what.jsf" />
 	</url-mapping>
 	<url-mapping id="terms">
-		<pattern value="/termos/" />
+		<pattern value="/termos" />
 		<view-id value="/terms.jsf" />
 	</url-mapping>
 

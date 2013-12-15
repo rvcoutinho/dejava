@@ -131,4 +131,28 @@ public class AppNotification extends Message {
 		this.content = content;
 	}
 
+	/**
+	 * Default constructor.
+	 */
+	public AppNotification() {
+		super();
+	}
+
+	/**
+	 * Default constructor.
+	 * 
+	 * @param sender
+	 *            The notification sender.
+	 * @param recipientId
+	 *            The notification recipient (party) identifier.
+	 * @param content
+	 *            The content of the notification.
+	 */
+	public AppNotification(String sender, Integer recipientId, String content) {
+		super();
+		this.sender = sender;
+		this.recipientId = recipientId;
+		this.content = content;
+	}
+
 }

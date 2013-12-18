@@ -27,7 +27,7 @@ public class EmailMessageComponent extends AbstractGenericComponent<EmailMessage
 	/**
 	 * The message send queue.
 	 */
-	@Resource(lookup = "java:module/jms/Queue/EmailMessage/Send")
+	@Resource(mappedName = "java:/jms/Queue/EmailMessage/Send")
 	private Queue sendQueue;
 
 	/**

@@ -4,10 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.dejava.component.ejb.entity.ExternalEntity;
+import org.dejava.component.i18n.message.handler.MessageCommand;
 import org.dejava.service.party.model.Party;
 
 /**
@@ -24,27 +26,12 @@ public class AppNotification extends Message {
 	private static final long serialVersionUID = -2431557934384868984L;
 
 	/**
-	 * The message sender.
-	 */
-	private String sender;
-
-	/**
 	 * @see org.dejava.service.message.model.Message#getSender()
 	 */
 	@Override
-	@Column(name = "sender")
-	public String getSender() {
-		return sender;
-	}
-
-	/**
-	 * Sets the message sender.
-	 * 
-	 * @param sender
-	 *            New message sender.
-	 */
-	public void setSender(String sender) {
-		this.sender = sender;
+	@Transient
+	public Object getSender() {
+		return null;
 	}
 
 	/**
@@ -58,7 +45,7 @@ public class AppNotification extends Message {
 	 * @return The message recipient identifier.
 	 */
 	@Column(name = "recipient")
-	public Integer getRecipientId() {
+	protected Integer getRecipientId() {
 		return recipientId;
 	}
 
@@ -68,14 +55,14 @@ public class AppNotification extends Message {
 	 * @param recipientId
 	 *            New message recipient identifier.
 	 */
-	public void setRecipientId(Integer recipientId) {
+	protected void setRecipientId(Integer recipientId) {
 		this.recipientId = recipientId;
 	}
 
 	/**
 	 * The message recipient.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Party/Party")
+	@ExternalEntity(retrieveObj = "java:app/party-ejb/Component/Party/Party")
 	private Party recipient;
 
 	/**
@@ -109,15 +96,68 @@ public class AppNotification extends Message {
 	}
 
 	/**
+	 * The URL that the notification is about.
+	 */
+	private MessageCommand eventURL;
+
+	/**
+	 * Gets the URL that the notification is about.
+	 * 
+	 * @return The URL that the notification is about.
+	 */
+	@Lob
+	@Column(name = "event_url")
+	public MessageCommand getEventURL() {
+		return eventURL;
+	}
+
+	/**
+	 * Sets the URL that the notification is about.
+	 * 
+	 * @param eventURL
+	 *            New URL that the notification is about.
+	 */
+	public void setEventURL(MessageCommand eventURL) {
+		this.eventURL = eventURL;
+	}
+
+	/**
+	 * The image URL for the notification.
+	 */
+	private MessageCommand imageURL;
+
+	/**
+	 * Gets the image URL for the notification.
+	 * 
+	 * @return The image URL for the notification.
+	 */
+	@Lob
+	@Column(name = "image_url")
+	public MessageCommand getImageURL() {
+		return imageURL;
+	}
+
+	/**
+	 * Sets the image URL for the notification.
+	 * 
+	 * @param imageURL
+	 *            New image URL for the notification.
+	 */
+	public void setImageURL(MessageCommand imageURL) {
+		this.imageURL = imageURL;
+	}
+
+	/**
 	 * The content of the notification.
 	 */
-	private String content;
+	private MessageCommand content;
 
 	/**
 	 * @see org.dejava.service.message.model.Message#getContent()
 	 */
+	@Lob
 	@Column(name = "content")
-	public String getContent() {
+	public MessageCommand getContent() {
 		return content;
 	}
 
@@ -127,7 +167,7 @@ public class AppNotification extends Message {
 	 * @param content
 	 *            New content of the notification.
 	 */
-	public void setContent(String content) {
+	public void setContent(MessageCommand content) {
 		this.content = content;
 	}
 
@@ -141,17 +181,21 @@ public class AppNotification extends Message {
 	/**
 	 * Default constructor.
 	 * 
-	 * @param sender
-	 *            The notification sender.
-	 * @param recipientId
-	 *            The notification recipient (party) identifier.
+	 * @param recipient
+	 *            The notification recipient (party).
+	 * @param eventURL
+	 *            The URL that the notification is about.
+	 * @param imageURL
+	 *            The image URL for the notification.
 	 * @param content
 	 *            The content of the notification.
 	 */
-	public AppNotification(String sender, Integer recipientId, String content) {
+	public AppNotification(Party recipient, MessageCommand eventURL, MessageCommand imageURL,
+			MessageCommand content) {
 		super();
-		this.sender = sender;
-		this.recipientId = recipientId;
+		setRecipient(recipient);
+		this.eventURL = eventURL;
+		this.imageURL = imageURL;
 		this.content = content;
 	}
 

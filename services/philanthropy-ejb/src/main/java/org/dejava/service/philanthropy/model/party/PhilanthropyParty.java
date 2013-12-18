@@ -36,7 +36,7 @@ public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 	 * @return The (original) party id.
 	 */
 	@Column(name = "party")
-	public Integer getPartyId() {
+	protected Integer getPartyId() {
 		return partyId;
 	}
 
@@ -46,7 +46,7 @@ public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 	 * @param partyId
 	 *            New (original) party id.
 	 */
-	public void setPartyId(final Integer partyId) {
+	protected void setPartyId(final Integer partyId) {
 		this.partyId = partyId;
 	}
 

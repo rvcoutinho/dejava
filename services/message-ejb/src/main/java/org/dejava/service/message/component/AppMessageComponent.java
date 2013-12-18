@@ -26,7 +26,7 @@ public class AppMessageComponent extends AbstractGenericComponent<AppMessage, In
 	/**
 	 * The message send queue.
 	 */
-	@Resource(lookup = "java:module/jms/Queue/AppMessage/Send")
+	@Resource(mappedName = "java:/jms/Queue/AppMessage/Send")
 	private Queue sendQueue;
 
 	/**

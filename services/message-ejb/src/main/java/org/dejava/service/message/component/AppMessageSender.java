@@ -15,10 +15,11 @@ import org.dejava.service.message.util.MessageCtx;
  * MDB for the application message sender.
  */
 @MessageCtx
-@JMSDestinationDefinition(name = "java:module/jms/Queue/AppMessage/Send", interfaceName = "javax.jms.Queue", destinationName = "AppMessageSendQueue")
-@MessageDriven(activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:module/jms/Queue/AppMessage/Send"),
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"), })
+@MessageDriven(name = "Queue/AppMessage/Send", activationConfig = {
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "jms/Queue/AppMessage/Send"),
+		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+@JMSDestinationDefinition(name = "java:/jms/Queue/AppMessage/Send", interfaceName = "javax.jms.Queue", destinationName = "AppMessageSendQueue")
 public class AppMessageSender implements MessageListener {
 
 	/**

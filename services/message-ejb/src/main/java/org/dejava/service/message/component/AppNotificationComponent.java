@@ -26,7 +26,7 @@ public class AppNotificationComponent extends AbstractGenericComponent<AppNotifi
 	/**
 	 * The message send queue.
 	 */
-	@Resource(lookup = "java:module/jms/Queue/AppNotification/Send")
+	@Resource(mappedName = "java:/jms/Queue/AppNotification/Send")
 	private Queue sendQueue;
 
 	/**
@@ -62,8 +62,7 @@ public class AppNotificationComponent extends AbstractGenericComponent<AppNotifi
 		// Validates the current message (and throws an exception for the found violations).
 		ValidationException.throwViolationExceptions(Validation.buildDefaultValidatorFactory().getValidator()
 				.validate(notification));
-		// Sends the notification to the queue.
+		// Sends the notification to the queue. FIXME
 		jmsContext.createProducer().send(sendQueue, notification);
 	}
-
 }

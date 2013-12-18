@@ -26,8 +26,8 @@ import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 		@NamedQuery(name = "countSharesByProject", query = "SELECT count(share) FROM ProjectShare share WHERE share.project.identifier = :projectId"),
 		@NamedQuery(name = "countSharesBySupporter", query = "SELECT count(share) FROM ProjectShare share WHERE share.supporter.identifier = :supporterId") })
 @MessageSources(sources = {
-		@MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
-		@MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class ProjectShare extends AbstractIdentifiedEntity {
 
 	/**

@@ -23,10 +23,11 @@ import org.dejava.service.message.util.MessageCtx;
  * MDB for the email sender.
  */
 @MessageCtx
-@JMSDestinationDefinition(name = "java:module/jms/Queue/EmailMessage/Send", interfaceName = "javax.jms.Queue", destinationName = "EmailMessageSendQueue")
-@MessageDriven(activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:module/jms/Queue/EmailMessage/Send"),
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"), })
+@MessageDriven(name = "Queue/EmailMessage/Send", activationConfig = {
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "jms/Queue/EmailMessage/Send"),
+		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+@JMSDestinationDefinition(name = "java:/jms/Queue/EmailMessage/Send", interfaceName = "javax.jms.Queue", destinationName = "EmailMessageSendQueue")
 public class EmailMessageSender implements MessageListener {
 
 	/**

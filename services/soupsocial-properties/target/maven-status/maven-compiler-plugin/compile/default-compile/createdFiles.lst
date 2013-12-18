@@ -1,7 +1,0 @@
-org\dejava\properties\util\AbstractProps.class
-org\dejava\properties\constant\MailConfigKeys.class
-org\dejava\properties\constant\FacebookAPIKeys.class
-org\dejava\properties\util\MailConfigProps.class
-org\dejava\properties\util\GooglePlacesAPIProps.class
-org\dejava\properties\util\FacebookAPIProps.class
-org\dejava\properties\constant\GooglePlacesAPIKeys.class

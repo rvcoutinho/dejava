@@ -29,7 +29,6 @@ public class AppMessage extends Message {
 	/**
 	 * The message sender identifier.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Party/Party")
 	private Integer senderId;
 
 	/**
@@ -38,7 +37,7 @@ public class AppMessage extends Message {
 	 * @return The message sender identifier.
 	 */
 	@Column(name = "sender")
-	public Integer getSenderId() {
+	protected Integer getSenderId() {
 		return senderId;
 	}
 
@@ -48,14 +47,14 @@ public class AppMessage extends Message {
 	 * @param senderId
 	 *            New message sender identifier.
 	 */
-	public void setSenderId(Integer senderId) {
+	protected void setSenderId(Integer senderId) {
 		this.senderId = senderId;
 	}
 
 	/**
 	 * The message sender.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Party/Party")
+	@ExternalEntity(retrieveObj = "java:app/party-ejb/Component/Party/Party")
 	private Party sender;
 
 	/**
@@ -99,7 +98,7 @@ public class AppMessage extends Message {
 	 * @return The message recipient identifier.
 	 */
 	@Column(name = "recipient")
-	public Integer getRecipientId() {
+	protected Integer getRecipientId() {
 		return recipientId;
 	}
 
@@ -109,14 +108,14 @@ public class AppMessage extends Message {
 	 * @param recipientId
 	 *            New message recipient identifier.
 	 */
-	public void setRecipientId(Integer recipientId) {
+	protected void setRecipientId(Integer recipientId) {
 		this.recipientId = recipientId;
 	}
 
 	/**
 	 * The message recipient.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Party/Party")
+	@ExternalEntity(retrieveObj = "java:app/party-ejb/Component/Party/Party")
 	private Party recipient;
 
 	/**

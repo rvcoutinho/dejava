@@ -218,8 +218,8 @@ public class FacebookLoginServlet extends HttpServlet {
 		// Persists the new person.
 		newPerson = (Person) partyComponent.addOrUpdate(newPerson);
 		// Notifies the user with a welcome message. FIXME
-		appNotificationComponent.sendMessage(new AppNotification("SoupSocial", newPerson.getIdentifier(),
-				"Welcome, " + newPerson.getDisplayName() + "."));
+		appNotificationComponent.sendMessage(new AppNotification("SoupSocial", newPerson, "Welcome, "
+				+ newPerson.getDisplayName() + "."));
 
 	}
 

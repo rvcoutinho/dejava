@@ -15,10 +15,11 @@ import org.dejava.service.message.util.MessageCtx;
  * MDB for the application notification sender.
  */
 @MessageCtx
-@JMSDestinationDefinition(name = "java:module/jms/Queue/AppNotification/Send", interfaceName = "javax.jms.Queue", destinationName = "AppNotificationSendQueue")
-@MessageDriven(activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:module/jms/Queue/AppNotification/Send"),
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"), })
+@MessageDriven(name = "Queue/AppNotification/Send", activationConfig = {
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "jms/Queue/AppNotification/Send"),
+		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+@JMSDestinationDefinition(name = "java:/jms/Queue/AppNotification/Send", interfaceName = "javax.jms.Queue", destinationName = "AppNotificationSendQueue")
 public class AppNotificationSender implements MessageListener {
 
 	/**
@@ -37,7 +38,7 @@ public class AppNotificationSender implements MessageListener {
 		try {
 			// Gets the original notification.
 			AppNotification appNotification = message.getBody(AppNotification.class);
-			// Persists the message.
+			// // Persists the message.
 			messageComponent.addOrUpdate(appNotification);
 		}
 		// If the JMS message cannot be processed.

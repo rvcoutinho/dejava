@@ -20,9 +20,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "email_address")
 @Inheritance(strategy = InheritanceType.JOINED)
 @MessageSources(sources = {
-		@MessageSource(bundleBaseName = "org.dejava.service.contact.properties.model", entriesAffix = { "",
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.contact.properties.model", entriesAffix = { "",
 				".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
-		@MessageSource(bundleBaseName = "org.dejava.service.contact.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.contact.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class EmailAddress extends Contact {
 
 	/**

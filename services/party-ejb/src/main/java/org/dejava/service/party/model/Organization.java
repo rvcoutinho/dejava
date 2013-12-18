@@ -18,9 +18,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "organization")
 @MessageSources(sources = {
-		@MessageSource(bundleBaseName = "org.dejava.service.party.properties.model", processSuperclasses = true, entriesAffix = {
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.party.properties.model", processSuperclasses = true, entriesAffix = {
 				"", ".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
-		@MessageSource(bundleBaseName = "org.dejava.service.party.properties.error", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.party.properties.error", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class Organization extends Party {
 
 	/**

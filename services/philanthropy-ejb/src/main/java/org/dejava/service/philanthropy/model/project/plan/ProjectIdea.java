@@ -25,8 +25,8 @@ import org.dejava.service.philanthropy.model.project.author.ProjectAuthor;
 @Table(name = "project_idea")
 @NamedQueries(value = { @NamedQuery(name = "countIdeasBySupporter", query = "SELECT count(author) FROM ProjectAuthor author WHERE author.supporter.identifier = :supporterId") })
 @MessageSources(sources = {
-		@MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
-		@MessageSource(bundleBaseName = "org.dejava.service.philanthropy.properties.error", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.error", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class ProjectIdea extends AbstractProjectPlan {
 
 	/**

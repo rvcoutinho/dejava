@@ -2,12 +2,14 @@ org\dejava\service\accesscontrol\constant\InfoKeys.class
 org\dejava\service\accesscontrol\model\User.class
 org\dejava\service\accesscontrol\constant\ErrorKeys.class
 org\dejava\service\accesscontrol\model\credentials\Credentials.class
+org\dejava\service\accesscontrol\model\.svn\entries
 org\dejava\service\accesscontrol\util\MessageTypes$Error.class
 org\dejava\service\accesscontrol\dao\credentials\CredentialDAO.class
 org\dejava\service\accesscontrol\util\MessageTypes$URL.class
 org\dejava\service\accesscontrol\util\MessageTypes$Fatal.class
 org\dejava\service\accesscontrol\dao\credentials\PasswordDAO.class
 org\dejava\service\accesscontrol\dao\principal\NameDAO.class
+org\dejava\service\accesscontrol\model\.svn\text-base\EPPessoa.java.svn-base
 org\dejava\service\accesscontrol\model\permission\UserPermission.class
 org\dejava\service\accesscontrol\util\MessageTypes$Warn.class
 org\dejava\service\accesscontrol\model\principal\Facebook.class
@@ -37,6 +39,7 @@ org\dejava\service\accesscontrol\authc\FacebookUserToken.class
 org\dejava\service\accesscontrol\dao\UserDAO.class
 org\dejava\service\accesscontrol\util\MessageTypes.class
 org\dejava\service\accesscontrol\interceptor\Secured.class
+org\dejava\service\accesscontrol\model\.svn\all-wcprops
 org\dejava\service\accesscontrol\realm\FacebookEJBRealm.class
 org\dejava\service\accesscontrol\util\Resources.class
 org\dejava\service\accesscontrol\component\principal\FacebookComponent.class

@@ -12,7 +12,6 @@ import javax.validation.constraints.NotNull;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
-import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.contact.model.EmailAddress;
 import org.dejava.service.party.util.MessageTypes;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -227,12 +226,9 @@ public class Person extends Party {
 	 *            The gender of the person.
 	 * @param birthDate
 	 *            The birth date of the person.
-	 * @param user
-	 *            The user for the person.
 	 */
 	public Person(final String name, final String firstName, final String middleName, final String lastName,
-			final Gender gender, final Date birthDate, final User user) {
-		super(user);
+			final Gender gender, final Date birthDate) {
 		// Sets the basic info for the person.
 		this.firstName = firstName;
 		this.middleName = middleName;

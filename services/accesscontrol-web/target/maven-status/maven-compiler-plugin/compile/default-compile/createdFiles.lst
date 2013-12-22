@@ -1,3 +1,4 @@
 org\dejava\service\accesscontrol\util\WebResources.class
 org\dejava\service\accesscontrol\servlet\FacebookLoginServlet.class
 org\dejava\service\accesscontrol\controller\UserController.class
+org\dejava\service\accesscontrol\controller\NewUserController.class

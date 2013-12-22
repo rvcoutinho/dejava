@@ -11,6 +11,7 @@ org.dejava.service.accesscontrol.exception
 org.dejava.service.accesscontrol.interceptor
 org.dejava.service.accesscontrol.model
 org.dejava.service.accesscontrol.model.credentials
+org.dejava.service.accesscontrol.model.permission
 org.dejava.service.accesscontrol.model.principal
 org.dejava.service.accesscontrol.realm
 org.dejava.service.accesscontrol.util

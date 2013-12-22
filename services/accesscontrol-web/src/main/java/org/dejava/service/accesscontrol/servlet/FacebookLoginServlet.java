@@ -21,14 +21,8 @@ import org.apache.shiro.subject.Subject;
 import org.dejava.properties.constant.FacebookAPIKeys;
 import org.dejava.service.accesscontrol.authc.FacebookUserToken;
 import org.dejava.service.accesscontrol.component.UserComponent;
-import org.dejava.service.accesscontrol.model.User;
+import org.dejava.service.accesscontrol.controller.NewUserController;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
-import org.dejava.service.message.component.AppNotificationComponent;
-import org.dejava.service.message.model.AppNotification;
-import org.dejava.service.message.util.MessageCtx;
-import org.dejava.service.party.component.PartyComponent;
-import org.dejava.service.party.model.Person;
-import org.dejava.service.party.util.PartyCtx;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -189,39 +183,11 @@ public class FacebookLoginServlet extends HttpServlet {
 	private UserComponent userComponent;
 
 	/**
-	 * The party EJB component.
+	 * The user controller.
 	 */
 	@Inject
-	@PartyCtx
-	private PartyComponent partyComponent;
-
-	/**
-	 * Application notification component.
-	 */
-	@Inject
-	@MessageCtx
-	private AppNotificationComponent appNotificationComponent;
-
-	/**
-	 * Creates a new user and person for the given facebook user. FIXME
-	 * 
-	 * @param fbUser
-	 *            The facebook user.
-	 */
-	private void createNewUserPerson(final com.restfb.types.User fbUser) {
-		// Persists a new user with the facebook user information.
-		final User newUser = userComponent.addOrUpdate(new User(fbUser));
-		// Creates a new person for the facebook user.
-		Person newPerson = new Person(fbUser);
-		// Sets the user for the person.
-		newPerson.setUser(newUser);
-		// Persists the new person.
-		newPerson = (Person) partyComponent.addOrUpdate(newPerson);
-		// Notifies the user with a welcome message. FIXME
-		appNotificationComponent.sendMessage(new AppNotification("SoupSocial", newPerson, "Welcome, "
-				+ newPerson.getDisplayName() + "."));
-
-	}
+	@AccessControlCtx
+	private NewUserController newUserController;
 
 	/**
 	 * Log the facebook user in.
@@ -255,8 +221,17 @@ public class FacebookLoginServlet extends HttpServlet {
 		else {
 			// If there is not a facebook principal for the facebook user id.
 			if (userComponent.getByFacebookUser(fbUser) == null) {
-				// Creates a new user and person for the facebook user.
-				createNewUserPerson(fbUser);
+				// Creates a new user with facebook information.
+				newUserController.getNewUser(fbUser);
+				// If the facebook email is not present.
+				if ((fbUser.getEmail() == null) || (fbUser.getEmail().isEmpty())) {
+					// Redirects to the email form page. TODO
+				}
+				// If the facebook email is present.
+				else {
+					// Creates a new user.
+					newUserController.createNewUser();
+				}
 			}
 			// Creates a new facebook authentication token.
 			final FacebookUserToken facebookToken = new FacebookUserToken(fbUser.getId());

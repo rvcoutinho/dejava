@@ -17,7 +17,7 @@
 					var="currentNotification"
 					value="#{appNotificationsController.notifications}">
 					<li><h:link outcome="pretty:notifications"
-							styleClass="gray-text">#{currentNotification.content} <time>
+							styleClass="gray-text">#{currentNotification.content.getMessage(appNotificationsController.facesMessageHandler)} <time>
 								<h:outputText value="#{currentNotification.date}">
 									<f:convertDateTime locale="pt_BR" />
 								</h:outputText>

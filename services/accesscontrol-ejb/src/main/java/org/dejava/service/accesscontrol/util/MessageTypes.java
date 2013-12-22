@@ -10,6 +10,13 @@ import org.dejava.component.i18n.message.annotation.MessageBundle;
 public interface MessageTypes {
 
 	/**
+	 * URL message type.
+	 */
+	@MessageBundle(baseName = "org.dejava.service.accesscontrol.properties.url")
+	interface URL extends Payload {
+	}
+
+	/**
 	 * Info message type.
 	 */
 	@MessageBundle(baseName = "org.dejava.service.accesscontrol.properties.info")

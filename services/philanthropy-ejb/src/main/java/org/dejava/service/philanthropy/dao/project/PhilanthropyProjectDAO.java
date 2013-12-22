@@ -6,13 +6,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import org.dejava.component.ejb.constant.DAOParamKeys;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
-import org.dejava.component.validation.method.PreConditions;
 import org.dejava.service.philanthropy.dao.project.author.ProjectAuthorDAO;
-import org.dejava.service.philanthropy.model.party.Supporter;
 import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
-import org.dejava.service.philanthropy.model.project.author.ProjectAuthor;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
 /**
@@ -91,26 +87,4 @@ public class PhilanthropyProjectDAO extends AbstractGenericDAO<PhilanthropyProje
 	@PhilanthropyCtx
 	private ProjectAuthorDAO projectAuthorDAO;
 
-	/**
-	 * @see org.dejava.component.ejb.dao.AbstractGenericDAO#merge(java.lang.Object)
-	 */
-	@Override
-	public PhilanthropyProject merge(PhilanthropyProject entity) {
-		// Asserts that the entity is not null.
-		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, entity);
-		// If there is an idea for the project.
-		if (entity.getIdea() != null) {
-			// Removes the previous project authors.
-			projectAuthorDAO.remove(entity.getIdea().getProjectAuthors());
-			// Resets the previous project authors.
-			entity.getIdea().setProjectAuthors(null);
-			// And for the current authors.
-			for (Supporter currentAuthor : entity.getIdea().getAuthors()) {
-				// Adds a new project author.
-				entity.getIdea().getProjectAuthors().add(new ProjectAuthor(entity, currentAuthor));
-			}
-		}
-		// Finally, persists the project (and authors).
-		return super.merge(entity);
-	}
 }

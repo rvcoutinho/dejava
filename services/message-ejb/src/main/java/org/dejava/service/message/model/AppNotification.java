@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -55,7 +54,7 @@ public class AppNotification extends Message {
 	 * @param recipientId
 	 *            New message recipient identifier.
 	 */
-	protected void setRecipientId(Integer recipientId) {
+	protected void setRecipientId(final Integer recipientId) {
 		this.recipientId = recipientId;
 	}
 
@@ -80,7 +79,7 @@ public class AppNotification extends Message {
 	 * @param recipient
 	 *            New message recipient.
 	 */
-	public void setRecipient(Party recipient) {
+	public void setRecipient(final Party recipient) {
 		// If the recipient is null.
 		if (recipient == null) {
 			// Sets the recipient id to null.
@@ -105,7 +104,6 @@ public class AppNotification extends Message {
 	 * 
 	 * @return The URL that the notification is about.
 	 */
-	@Lob
 	@Column(name = "event_url")
 	public MessageCommand getEventURL() {
 		return eventURL;
@@ -117,7 +115,7 @@ public class AppNotification extends Message {
 	 * @param eventURL
 	 *            New URL that the notification is about.
 	 */
-	public void setEventURL(MessageCommand eventURL) {
+	public void setEventURL(final MessageCommand eventURL) {
 		this.eventURL = eventURL;
 	}
 
@@ -131,7 +129,6 @@ public class AppNotification extends Message {
 	 * 
 	 * @return The image URL for the notification.
 	 */
-	@Lob
 	@Column(name = "image_url")
 	public MessageCommand getImageURL() {
 		return imageURL;
@@ -143,7 +140,7 @@ public class AppNotification extends Message {
 	 * @param imageURL
 	 *            New image URL for the notification.
 	 */
-	public void setImageURL(MessageCommand imageURL) {
+	public void setImageURL(final MessageCommand imageURL) {
 		this.imageURL = imageURL;
 	}
 
@@ -155,7 +152,7 @@ public class AppNotification extends Message {
 	/**
 	 * @see org.dejava.service.message.model.Message#getContent()
 	 */
-	@Lob
+	@Override
 	@Column(name = "content")
 	public MessageCommand getContent() {
 		return content;
@@ -167,7 +164,7 @@ public class AppNotification extends Message {
 	 * @param content
 	 *            New content of the notification.
 	 */
-	public void setContent(MessageCommand content) {
+	public void setContent(final MessageCommand content) {
 		this.content = content;
 	}
 
@@ -190,8 +187,8 @@ public class AppNotification extends Message {
 	 * @param content
 	 *            The content of the notification.
 	 */
-	public AppNotification(Party recipient, MessageCommand eventURL, MessageCommand imageURL,
-			MessageCommand content) {
+	public AppNotification(final Party recipient, final MessageCommand eventURL,
+			final MessageCommand imageURL, final MessageCommand content) {
 		super();
 		setRecipient(recipient);
 		this.eventURL = eventURL;

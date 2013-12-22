@@ -31,6 +31,7 @@ import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.validation.constant.MessageTemplateWildCards;
+import org.dejava.component.validation.method.ArgFormatter;
 import org.dejava.service.philanthropy.component.share.ProjectShareComponent;
 import org.dejava.service.philanthropy.model.Category;
 import org.dejava.service.philanthropy.model.party.Sponsor;
@@ -134,7 +135,7 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The project initial idea.
 	 */
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "idea")
 	public ProjectIdea getIdea() {
 		return idea;
@@ -146,7 +147,7 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	 * @param idea
 	 *            New project initial idea.
 	 */
-	public void setIdea(ProjectIdea idea) {
+	public void setIdea(final ProjectIdea idea) {
 		this.idea = idea;
 	}
 
@@ -160,7 +161,7 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The project initial plan.
 	 */
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "plan")
 	public ProjectPlan getPlan() {
 		return plan;
@@ -172,7 +173,7 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	 * @param plan
 	 *            New project initial plan.
 	 */
-	public void setPlan(ProjectPlan plan) {
+	public void setPlan(final ProjectPlan plan) {
 		this.plan = plan;
 	}
 
@@ -198,7 +199,7 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	 * @param sponsor
 	 *            New sponsor of the project.
 	 */
-	public void setSponsor(Sponsor sponsor) {
+	public void setSponsor(final Sponsor sponsor) {
 		this.sponsor = sponsor;
 	}
 
@@ -266,35 +267,14 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	}
 
 	/**
-	 * Sets the tags for the project (in a single string, and split by ",").
+	 * Sets the tags for the project.
 	 * 
 	 * @param tags
 	 *            New tags for the project (in a single string, and split by ",").
 	 */
 	public void setAllTags(final String tags) {
-		// If the given tags are not null.
-		if (tags != null) {
-			// The final tags to be set.
-			final Set<String> finalTags = new HashSet<>();
-			// If there are tags.
-			if (tags != null) {
-				// For each tag.
-				for (String currentTag : tags.split(",")) {
-					// If the tag exists.
-					if (currentTag != null) {
-						// At first, trim the tag.
-						currentTag = currentTag.trim();
-						// If the tag is not empty.
-						if (!currentTag.isEmpty()) {
-							// Adds the current tag to the final tags to be set.
-							finalTags.add(currentTag);
-						}
-					}
-				}
-			}
-			// Sets the new tags.
-			setTags(finalTags);
-		}
+		// Sets the new tags.
+		setTags(new HashSet<>(ArgFormatter.split(tags)));
 	}
 
 	/**

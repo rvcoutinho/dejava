@@ -1,21 +1,19 @@
 package org.dejava.service.soupsocial.controller.user;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.apache.shiro.subject.Subject;
 import org.dejava.service.accesscontrol.component.principal.NameComponent;
 import org.dejava.service.accesscontrol.model.User;
-import org.dejava.service.accesscontrol.model.principal.Name;
+import org.dejava.service.accesscontrol.model.principal.Principal;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
-import org.dejava.service.party.component.PartyComponent;
 import org.dejava.service.party.model.Party;
-import org.dejava.service.party.util.PartyCtx;
 import org.dejava.service.philanthropy.component.party.PhilanthropyPartyComponent;
 import org.dejava.service.philanthropy.model.party.PhilanthropyParty;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
@@ -44,6 +42,17 @@ public class UserController implements Serializable {
 	}
 
 	/**
+	 * Gets the current user.
+	 * 
+	 * @return The current user.
+	 */
+	@RequiresUser
+	public User getCurrentUser() {
+		// Returns the user from a subject principal.
+		return ((Principal) getSubject().getPrincipals().getPrimaryPrincipal()).getUser();
+	}
+
+	/**
 	 * The user name being searched.
 	 */
 	private String username;
@@ -53,20 +62,7 @@ public class UserController implements Serializable {
 	 * 
 	 * @return The user name being searched.
 	 */
-	public String getUsername() {
-		// If the user name is not given.
-		if ((username == null) || (username.isEmpty())) {
-			// If the user is known. FIXME
-			if ((getSubject().isAuthenticated()) || (getSubject().isRemembered())) {
-				// Gets the name principals for the current user. FIXME
-				final Collection<Name> usernames = getSubject().getPrincipals().byType(Name.class);
-				// If there is a user name.
-				if (!usernames.isEmpty()) {
-					// The user name is the principals name.
-					username = usernames.iterator().next().getName();
-				}
-			}
-		}
+	private String getUsername() {
 		// Returns the user name.
 		return username;
 	}
@@ -89,16 +85,23 @@ public class UserController implements Serializable {
 	private NameComponent nameComponent;
 
 	/**
-	 * The party EJB component.
+	 * Gets the user for the given user name.
+	 * 
+	 * @return The user for the given user name.
 	 */
-	@Inject
-	@PartyCtx
-	private PartyComponent partyComponent;
-
-	/**
-	 * The party with the user name.
-	 */
-	private Party party;
+	@RequiresUser
+	public User getUser() {
+		// If there is no user name given.
+		if ((getUsername() == null) || (getUsername().isEmpty())) {
+			// Returns the current user.
+			return getCurrentUser();
+		}
+		// If an user name is given.
+		else {
+			// Returns the user for the given user name.
+			return nameComponent.getByAttribute("name", getUsername()).getUser();
+		}
+	}
 
 	/**
 	 * Gets the party with the user name.
@@ -106,22 +109,8 @@ public class UserController implements Serializable {
 	 * @return The party with the user name.
 	 */
 	public Party getParty() {
-		// If the party has not been retrieved yet.
-		if (party == null) {
-			// Tries to get the party with the user name.
-			try {
-				// Tries to find the user by the user name.
-				final User user = nameComponent.getByAttribute("name", getUsername()).getUser();
-				// Tries to get the party for the user.
-				this.party = partyComponent.getByAttribute("userId", user.getIdentifier());
-			}
-			// If the party cannot be retrieved.
-			catch (final Exception exception) {
-				// TODO Throws an exception.
-			}
-		}
 		// Returns the party.
-		return party;
+		return getUser().getParty();
 	}
 
 	/**

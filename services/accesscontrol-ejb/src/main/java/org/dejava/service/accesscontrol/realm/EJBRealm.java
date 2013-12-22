@@ -1,5 +1,8 @@
 package org.dejava.service.accesscontrol.realm;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.inject.Inject;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -7,9 +10,11 @@ import javax.naming.NamingException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.SimpleAccount;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.realm.AuthenticatingRealm;
+import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.Permission;
+import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.dejava.service.accesscontrol.component.crendentials.PasswordComponent;
@@ -23,12 +28,12 @@ import org.dejava.service.accesscontrol.util.AccessControlCtx;
 /**
  * Authentication and authorization realm via EJB services.
  */
-public class EJBRealm extends AuthenticatingRealm {
+public class EJBRealm extends AuthorizingRealm {
 
 	/**
-	 * The global JNDI path (start).
+	 * The application JNDI path (start).
 	 */
-	private static final String GLOBAL_PRE_PATH = "java:/global/";
+	private static final String APP_PRE_PATH = "java:app/";
 
 	/**
 	 * The application/module JNDI path.
@@ -95,7 +100,7 @@ public class EJBRealm extends AuthenticatingRealm {
 		if (nameComponent == null) {
 			// Tries to get the object via JNDI.
 			try {
-				nameComponent = InitialContext.doLookup(GLOBAL_PRE_PATH + getAppModulePath() + "/"
+				nameComponent = InitialContext.doLookup(APP_PRE_PATH + getAppModulePath() + "/"
 						+ getRelNameComponentPath());
 			}
 			// If the path is not found.
@@ -149,7 +154,7 @@ public class EJBRealm extends AuthenticatingRealm {
 		if (emailComponent == null) {
 			// Tries to get the object via JNDI.
 			try {
-				emailComponent = InitialContext.doLookup(GLOBAL_PRE_PATH + getAppModulePath() + "/"
+				emailComponent = InitialContext.doLookup(APP_PRE_PATH + getAppModulePath() + "/"
 						+ getRelEmailComponentPath());
 			}
 			// If the path is not found.
@@ -203,7 +208,7 @@ public class EJBRealm extends AuthenticatingRealm {
 		if (passwordComponent == null) {
 			// Tries to get the object via JNDI.
 			try {
-				passwordComponent = InitialContext.doLookup(GLOBAL_PRE_PATH + getAppModulePath() + "/"
+				passwordComponent = InitialContext.doLookup(APP_PRE_PATH + getAppModulePath() + "/"
 						+ getRelPasswordComponentPath());
 			}
 			// If the path is not found.
@@ -214,6 +219,28 @@ public class EJBRealm extends AuthenticatingRealm {
 		}
 		// Returns the service.
 		return passwordComponent;
+	}
+
+	/**
+	 * Resolves some text permissions to actual permissions.
+	 * 
+	 * @param permissions
+	 *            Text permissions.
+	 * @return The resolved permissions.
+	 */
+	private Set<Permission> resolvePermissions(final Set<String> permissions) {
+		// Creates a new set of permissions.
+		final Set<Permission> resolvedPermissions = new HashSet<>();
+		// If there are any given permissions.
+		if (permissions != null) {
+			// For each given permission.
+			for (final String currentPermission : permissions) {
+				// Resolves the current permission and adds it to the list.
+				resolvedPermissions.add(getPermissionResolver().resolvePermission(currentPermission));
+			}
+		}
+		// Returns the resolved permissions.
+		return resolvedPermissions;
 	}
 
 	/**
@@ -249,9 +276,9 @@ public class EJBRealm extends AuthenticatingRealm {
 						getName());
 				// Gets the password for the user.
 				final Password password = getPasswordComponent().getByAttribute("user", user);
-				// Creates a new simple authentication (with the user principals and credentials).
-				final SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principals,
-						password);
+				// Creates a new simple account with the user info.
+				final AuthenticationInfo authenticationInfo = new SimpleAccount(principals, password,
+						getName(), user.getRoles(), resolvePermissions(user.getAllPermissions()));
 				// Returns the authentication information.
 				return authenticationInfo;
 			}
@@ -261,4 +288,15 @@ public class EJBRealm extends AuthenticatingRealm {
 
 	}
 
+	/**
+	 * @see org.apache.shiro.realm.AuthorizingRealm#doGetAuthorizationInfo(org.apache.shiro.subject.PrincipalCollection)
+	 */
+	@Override
+	protected AuthorizationInfo doGetAuthorizationInfo(final PrincipalCollection principals) {
+		// Gets the user from the principals.
+		final User user = ((Principal) principals.getPrimaryPrincipal()).getUser();
+		// Returns a new simple account with the user info.
+		return new SimpleAccount(principals, null, getName(), user.getRoles(),
+				resolvePermissions(user.getAllPermissions()));
+	}
 }

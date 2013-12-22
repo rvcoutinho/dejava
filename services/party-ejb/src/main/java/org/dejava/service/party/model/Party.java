@@ -19,7 +19,6 @@ import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
-import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.contact.model.Contact;
 import org.dejava.service.party.util.MessageTypes;
 import org.dejava.service.place.model.Place;
@@ -62,45 +61,6 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	 */
 	public void setDisplayName(final String displayName) {
 		this.displayName = displayName;
-	}
-
-	/**
-	 * The identifier of the user.
-	 */
-	private Integer userId;
-
-	/**
-	 * Gets the user identifier.
-	 * 
-	 * @return The user identifier.
-	 */
-	@Column(name = "u5er")
-	protected Integer getUserId() {
-		return userId;
-	}
-
-	/**
-	 * Sets the user identifier.
-	 * 
-	 * @param userId
-	 *            New user identifier.
-	 */
-	protected void setUserId(final Integer userId) {
-		this.userId = userId;
-	}
-
-	/**
-	 * Sets the user.
-	 * 
-	 * @param user
-	 *            New user.
-	 */
-	public final void setUser(final User user) {
-		// If the user is given.
-		if (user != null) {
-			// Sets the user id for the party.
-			setUserId(user.getIdentifier());
-		}
 	}
 
 	/**
@@ -230,18 +190,6 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	 */
 	public Party() {
 		super();
-	}
-
-	/**
-	 * Default constructor.
-	 * 
-	 * @param user
-	 *            User for the party.
-	 */
-	public Party(final User user) {
-		super();
-		// Sets the basic info for the party.
-		setUser(user);
 	}
 
 	/**

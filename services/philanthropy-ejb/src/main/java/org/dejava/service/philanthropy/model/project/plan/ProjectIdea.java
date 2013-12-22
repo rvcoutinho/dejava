@@ -44,7 +44,7 @@ public class ProjectIdea extends AbstractProjectPlan {
 	 * 
 	 * @return The authors (relationship) of the project idea.
 	 */
-	@OneToMany(mappedBy = "project", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "project", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	public Collection<ProjectAuthor> getProjectAuthors() {
 		// If there are no authors.
 		if (projectAuthors == null) {

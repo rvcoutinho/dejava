@@ -1,7 +1,6 @@
 package org.dejava.service.accesscontrol.model.principal;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -43,7 +42,7 @@ public abstract class Principal extends AbstractIdentifiedEntity {
 	 * @return The user for this principal.
 	 */
 	@JoinColumn(name = "u5er")
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne()
 	@NotNull(payload = MessageTypes.Error.class, message = "principal.user.notnull")
 	public User getUser() {
 		return user;

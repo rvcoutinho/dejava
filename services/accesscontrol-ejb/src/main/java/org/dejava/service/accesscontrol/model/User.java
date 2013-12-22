@@ -2,23 +2,35 @@ package org.dejava.service.accesscontrol.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
+import org.dejava.component.ejb.entity.ExternalEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
+import org.dejava.component.validation.method.ArgFormatter;
 import org.dejava.service.accesscontrol.model.credentials.Credentials;
 import org.dejava.service.accesscontrol.model.credentials.Password;
+import org.dejava.service.accesscontrol.model.permission.Permission;
+import org.dejava.service.accesscontrol.model.permission.Role;
+import org.dejava.service.accesscontrol.model.permission.UserPermission;
+import org.dejava.service.accesscontrol.model.permission.UserRole;
 import org.dejava.service.accesscontrol.model.principal.Email;
 import org.dejava.service.accesscontrol.model.principal.Facebook;
 import org.dejava.service.accesscontrol.model.principal.Name;
 import org.dejava.service.accesscontrol.model.principal.Principal;
+import org.dejava.service.party.model.Party;
+import org.dejava.service.party.model.Person;
 
 /**
  * Represents a system user.
@@ -78,7 +90,7 @@ public class User extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The principals for this user.
 	 */
-	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, orphanRemoval = true)
 	public Collection<Principal> getPrincipals() {
 		// If the collection is null.
 		if (principals == null) {
@@ -163,7 +175,7 @@ public class User extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The credentials for this user.
 	 */
-	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	public Collection<Credentials> getCredentials() {
 		// If the collection is null.
 		if (credentials == null) {
@@ -238,6 +250,251 @@ public class User extends AbstractIdentifiedEntity {
 	}
 
 	/**
+	 * User roles.
+	 */
+	private Set<UserRole> userRoles;
+
+	/**
+	 * Gets the user roles.
+	 * 
+	 * @return The user roles.
+	 */
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, orphanRemoval = true)
+	private Set<UserRole> getUserRoles() {
+		// If the set is null.
+		if (userRoles == null) {
+			// Creates a new set for the set.
+			userRoles = new HashSet<>();
+		}
+		// Returns the set.
+		return userRoles;
+	}
+
+	/**
+	 * Sets the userRoles.
+	 * 
+	 * @param userRoles
+	 *            New userRoles.
+	 */
+	private void setUserRoles(final Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
+
+	/**
+	 * Gets the user roles.
+	 * 
+	 * @return The user roles.
+	 */
+	@Transient
+	public Set<String> getRoles() {
+		// Creates a new empty set.
+		final Set<String> roles = new HashSet<>();
+		// For each user role.
+		for (final UserRole currentRole : getUserRoles()) {
+			// Adds the current role name to the set.
+			roles.add(currentRole.getRole().getName());
+		}
+		// Returns the set.
+		return roles;
+	}
+
+	/**
+	 * Sets the user roles.
+	 * 
+	 * @param roles
+	 *            New user roles.
+	 */
+	public void setRoles(final Set<String> roles) {
+		// If there are roles.
+		if (roles != null) {
+			// Creates a new user role set.
+			final Set<UserRole> userRoles = new HashSet<>();
+			// For each role.
+			for (final String currentRole : roles) {
+				// Adds a new user role for the current name to the set.
+				userRoles.add(new UserRole(this, new Role(currentRole)));
+			}
+			// Sets the new user roles.
+			setUserRoles(userRoles);
+		}
+	}
+
+	/**
+	 * Sets the user roles.
+	 * 
+	 * @param roles
+	 *            New user roles (in a single string, and split by ",").
+	 */
+	public void setRoles(final String roles) {
+		// Sets the new roles.
+		setRoles(new HashSet<>(ArgFormatter.split(roles)));
+	}
+
+	/**
+	 * User permissions.
+	 */
+	private Set<UserPermission> userPermissions;
+
+	/**
+	 * Gets the user permissions.
+	 * 
+	 * @return The user permissions.
+	 */
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, orphanRemoval = true)
+	private Set<UserPermission> getUserPermissions() {
+		// If the set is null.
+		if (userPermissions == null) {
+			// Creates a new set for the set.
+			userPermissions = new HashSet<>();
+		}
+		// Returns the set.
+		return userPermissions;
+	}
+
+	/**
+	 * Sets the userPermissions.
+	 * 
+	 * @param userPermissions
+	 *            New userPermissions.
+	 */
+	private void setUserPermissions(final Set<UserPermission> userPermissions) {
+		this.userPermissions = userPermissions;
+	}
+
+	/**
+	 * Gets the user permissions.
+	 * 
+	 * @return The user permissions.
+	 */
+	@Transient
+	public Set<String> getPermissions() {
+		// Creates a new permission set.
+		final Set<String> permissions = new HashSet<>();
+		// For each user permission.
+		for (final UserPermission currentPermission : getUserPermissions()) {
+			// Adds the current permission name to the set.
+			permissions.add(currentPermission.getPermission().getName());
+		}
+		// Returns the set.
+		return permissions;
+	}
+
+	/**
+	 * Sets the user permissions.
+	 * 
+	 * @param permissions
+	 *            New user permissions.
+	 */
+	public void setPermissions(final Set<String> permissions) {
+		// If there are permissions.
+		if (permissions != null) {
+			// Creates a new user permission set.
+			final Set<UserPermission> userPermissions = new HashSet<>();
+			// For each permission.
+			for (final String currentPermission : permissions) {
+				// Adds a new user permission for the current name to the set.
+				userPermissions.add(new UserPermission(this, new Permission(currentPermission)));
+			}
+			// Sets the new user permissions.
+			setUserPermissions(userPermissions);
+		}
+	}
+
+	/**
+	 * Sets the user permissions.
+	 * 
+	 * @param permissions
+	 *            New user permissions (in a single string, and split by ",").
+	 */
+	public void setPermissions(final String permissions) {
+		// Sets the new permissions.
+		setPermissions(new HashSet<>(ArgFormatter.split(permissions)));
+	}
+
+	/**
+	 * Gets the user and its roles permissions.
+	 * 
+	 * @return The user and its roles permissions.
+	 */
+	@Transient
+	public Set<String> getAllPermissions() {
+		// Creates a new permission set.
+		final Set<String> permissions = new HashSet<>();
+		// Adds the user permissions to the set.
+		permissions.addAll(getPermissions());
+		// for each user role.
+		for (final UserRole currentRole : getUserRoles()) {
+			// Adds the current role permissions to the set.
+			permissions.addAll(currentRole.getRole().getPermissions());
+		}
+		// Returns the permissions.
+		return permissions;
+	}
+
+	/**
+	 * The user party id.
+	 */
+	private Integer partyId;
+
+	/**
+	 * Gets the user party id.
+	 * 
+	 * @return The user party id.
+	 */
+	@Column(name = "party")
+	protected Integer getPartyId() {
+		return partyId;
+	}
+
+	/**
+	 * Sets the user party id.
+	 * 
+	 * @param partyId
+	 *            New user party id.
+	 */
+	protected void setPartyId(final Integer partyId) {
+		this.partyId = partyId;
+	}
+
+	/**
+	 * The user party.
+	 */
+	@ExternalEntity(retrieveObj = "java:app/party-ejb/Component/Party/Party")
+	private Party party;
+
+	/**
+	 * Gets the user party.
+	 * 
+	 * @return The user party.
+	 */
+	@Valid
+	@Transient
+	public Party getParty() {
+		return party;
+	}
+
+	/**
+	 * Sets the user party.
+	 * 
+	 * @param party
+	 *            New user party.
+	 */
+	public void setParty(final Party party) {
+		// If the party is null.
+		if (party == null) {
+			// Sets the party id to null.
+			setPartyId(null);
+		}
+		// If the party is not null.
+		else {
+			// Sets the new party id.
+			setPartyId(party.getIdentifier());
+		}
+		// Updates the party.
+		this.party = party;
+	}
+
+	/**
 	 * Default constructor.
 	 */
 	public User() {
@@ -276,5 +533,25 @@ public class User extends AbstractIdentifiedEntity {
 		addPrincipal(new Email(facebookUser.getEmail()));
 		// Adds the password to the user credentials.
 		addPrincipal(new Facebook(facebookUser.getId()));
+		// Creates a new party with the facebook user.
+		setParty(new Person(facebookUser));
 	}
+
+	/**
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		// If there is no party for the user.
+		if (getParty() == null) {
+			// Returns the user name.
+			return getPrincipal(Name.class).getName();
+		}
+		// If there is a party for the user.
+		else {
+			// Returns the party display name.
+			return getParty().getDisplayName();
+		}
+	}
+
 }

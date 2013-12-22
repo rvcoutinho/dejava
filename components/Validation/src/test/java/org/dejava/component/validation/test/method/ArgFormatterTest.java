@@ -1,5 +1,8 @@
 package org.dejava.component.validation.test.method;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.dejava.component.validation.method.ArgFormatter;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,4 +33,28 @@ public final class ArgFormatterTest {
 		}
 	}
 
+	/**
+	 * Test data for the split test. The array positions are: [0] - originalArgument, [1] - token, [2] -
+	 * expected return (as array).
+	 */
+	private static final Object[][] SPLIT_DATA = { { null, new String[] {} },
+			{ "teste", new String[] { "teste" } }, { "teste ", new String[] { "teste" } },
+			{ "teste,    teste", new String[] { "teste", "teste" } },
+			{ "teste,  safg,gsdgfsd,sg", new String[] { "teste", "safg", "gsdgfsd", "sg" } } };
+
+	/**
+	 * Tests the method split.
+	 */
+	@Test
+	public void testSplit() {
+		// For each test data.
+		for (final Object[] currentTestData : SPLIT_DATA) {
+			// Splits current string.
+			final Collection<String> finalList = ArgFormatter.split((String) currentTestData[0]);
+			// Asserts that the final list contains all expected items.
+			Assert.assertTrue(finalList.containsAll(Arrays.asList((String[]) currentTestData[1])));
+			// Asserts that the expected items contain all the final list items.
+			Assert.assertTrue(Arrays.asList((String[]) currentTestData[1]).containsAll(finalList));
+		}
+	}
 }

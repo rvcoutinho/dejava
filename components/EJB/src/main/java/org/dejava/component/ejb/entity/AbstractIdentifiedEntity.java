@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PostLoad;
+import javax.persistence.PostPersist;
+import javax.persistence.PostUpdate;
 
 /**
  * Some identified entity.
@@ -51,6 +53,8 @@ public abstract class AbstractIdentifiedEntity implements Serializable {
 	 * Loads all external entities for the entity.
 	 */
 	@PostLoad
+	@PostPersist
+	@PostUpdate
 	protected void loadAllExternalEntities() {
 		// Tries to load all external entities for the entity.
 		ExternalEntityLoader.loadAllExternalEntities(this, false);

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.component.ejb.entity.ExternalEntityLoader;
 import org.dejava.service.contact.component.ContactComponent;
+import org.dejava.service.contact.util.ContactCtx;
 import org.dejava.service.party.model.Party;
 import org.dejava.service.party.util.PartyCtx;
 import org.dejava.service.place.component.PlaceComponent;
@@ -28,7 +29,7 @@ public class PartyDAO extends AbstractGenericDAO<Party, Integer> {
 	 * Contact EJB component.
 	 */
 	@Inject
-	@PlaceCtx
+	@ContactCtx
 	private ContactComponent contactComponent;
 
 	/**

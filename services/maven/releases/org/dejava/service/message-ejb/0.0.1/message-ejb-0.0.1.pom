@@ -18,19 +18,12 @@
 
 		<dependency>
 			<groupId>org.dejava.service</groupId>
-			<artifactId>properties</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
-			<artifactId>accesscontrol-ejb</artifactId>
-			<type>ejb</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
 			<artifactId>party-ejb</artifactId>
 			<type>ejb</type>
-			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>properties</artifactId>
 		</dependency>
 
 		<dependency>

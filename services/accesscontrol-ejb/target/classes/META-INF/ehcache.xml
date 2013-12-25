@@ -1,5 +1,14 @@
-<ehcache>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
+	updateCheck="false" monitoring="autodetect" dynamicConfig="true">
+	<defaultCache maxElementsInMemory="10000" overflowToDisk="true"
+		eternal="true" timeToLiveSeconds="0" timeToIdleSeconds="0"
+		diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
 	<cache name="dejavaShiro-activeSessionCache" maxElementsInMemory="10000"
+		overflowToDisk="true" eternal="true" timeToLiveSeconds="0"
+		timeToIdleSeconds="0" diskPersistent="true"
+		diskExpiryThreadIntervalSeconds="600" />
+	<cache name="ejbRealm.authorizationCache" maxElementsInMemory="10000"
 		overflowToDisk="true" eternal="true" timeToLiveSeconds="0"
 		timeToIdleSeconds="0" diskPersistent="true"
 		diskExpiryThreadIntervalSeconds="600" />

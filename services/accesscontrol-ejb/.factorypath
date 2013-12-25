@@ -1,9 +1,4 @@
 <factorypath>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/dejava/service/party-ejb/0.0.1/party-ejb-0.0.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/dejava/service/place-ejb/0.0.1/place-ejb-0.0.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/dejava/service/contact-ejb/0.0.1/contact-ejb-0.0.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/dejava/service/message-ejb/0.0.1/message-ejb-0.0.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/dejava/service/properties/0.0.1/properties-0.0.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/dejava/component/ejb/0.0.1/ejb-0.0.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/dejava/component/security/0.0.1/security-0.0.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/dejava/component/exception/0.0.1/exception-0.0.1.jar" enabled="true" runInBatchMode="false"/>

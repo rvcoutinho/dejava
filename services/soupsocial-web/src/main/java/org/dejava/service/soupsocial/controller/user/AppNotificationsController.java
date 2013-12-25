@@ -49,7 +49,7 @@ public class AppNotificationsController {
 		// If the user is logged in.
 		else {
 			// Returns the current user notifications.
-			return appNotificationComponent.getByAttribute("recipientId", userController.getParty()
+			return appNotificationComponent.getByAttribute("recipient", userController.getParty()
 					.getIdentifier(), null, null);
 		}
 	}

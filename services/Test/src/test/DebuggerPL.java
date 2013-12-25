@@ -10,6 +10,11 @@ import javax.faces.event.PhaseListener;
 public class DebuggerPL implements PhaseListener {
 
 	/**
+	 * TODO
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * @see javax.faces.event.PhaseListener#afterPhase(javax.faces.event.PhaseEvent)
 	 */
 	@Override

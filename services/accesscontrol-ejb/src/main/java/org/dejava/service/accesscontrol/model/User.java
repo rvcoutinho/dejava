@@ -12,7 +12,6 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.Valid;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
@@ -161,6 +160,27 @@ public class User extends AbstractIdentifiedEntity {
 			principal.setUser(this);
 			// Adds the principal to the user.
 			getPrincipals().add(principal);
+		}
+	}
+
+	/**
+	 * Gets the user name.
+	 * 
+	 * @return The user name.
+	 */
+	@Transient
+	public String getName() {
+		// Gets the user name (principal).
+		Name name = getPrincipal(Name.class);
+		// If there is no user name.
+		if (name == null) {
+			// Returns null.
+			return null;
+		}
+		// If there is a user name.
+		else {
+			// Returns the user name.
+			return name.getName();
 		}
 	}
 
@@ -467,7 +487,6 @@ public class User extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The user party.
 	 */
-	@Valid
 	@Transient
 	public Party getParty() {
 		return party;
@@ -545,7 +564,7 @@ public class User extends AbstractIdentifiedEntity {
 		// If there is no party for the user.
 		if (getParty() == null) {
 			// Returns the user name.
-			return getPrincipal(Name.class).getName();
+			return getName();
 		}
 		// If there is a party for the user.
 		else {

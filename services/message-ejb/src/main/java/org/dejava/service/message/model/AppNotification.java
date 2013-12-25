@@ -7,9 +7,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.dejava.component.ejb.entity.ExternalEntity;
 import org.dejava.component.i18n.message.handler.MessageCommand;
-import org.dejava.service.party.model.Party;
 
 /**
  * Application notification.
@@ -34,63 +32,27 @@ public class AppNotification extends Message {
 	}
 
 	/**
-	 * The message recipient identifier.
+	 * The notification recipient (identifier).
 	 */
-	private Integer recipientId;
+	private Integer recipient;
 
 	/**
-	 * Returns the message recipient identifier.
+	 * Returns the notification recipient (identifier).
 	 * 
-	 * @return The message recipient identifier.
+	 * @return The notification recipient (identifier).
 	 */
 	@Column(name = "recipient")
-	protected Integer getRecipientId() {
-		return recipientId;
-	}
-
-	/**
-	 * Sets the message recipient identifier.
-	 * 
-	 * @param recipientId
-	 *            New message recipient identifier.
-	 */
-	protected void setRecipientId(final Integer recipientId) {
-		this.recipientId = recipientId;
-	}
-
-	/**
-	 * The message recipient.
-	 */
-	@ExternalEntity(retrieveObj = "java:app/party-ejb/Component/Party/Party")
-	private Party recipient;
-
-	/**
-	 * @see org.dejava.service.message.model.Message#getRecipient()
-	 */
-	@Override
-	@Transient
-	public Party getRecipient() {
+	public Integer getRecipient() {
 		return recipient;
 	}
 
 	/**
-	 * Sets the message recipient.
+	 * Sets the notification recipient (identifier).
 	 * 
 	 * @param recipient
-	 *            New message recipient.
+	 *            New notification recipient (identifier).
 	 */
-	public void setRecipient(final Party recipient) {
-		// If the recipient is null.
-		if (recipient == null) {
-			// Sets the recipient id to null.
-			setRecipientId(null);
-		}
-		// If the recipient is not null.
-		else {
-			// Sets the new recipient id.
-			setRecipientId(recipient.getIdentifier());
-		}
-		// Updates the recipient.
+	protected void setRecipient(final Integer recipient) {
 		this.recipient = recipient;
 	}
 
@@ -179,7 +141,7 @@ public class AppNotification extends Message {
 	 * Default constructor.
 	 * 
 	 * @param recipient
-	 *            The notification recipient (party).
+	 *            The notification recipient (identifier).
 	 * @param eventURL
 	 *            The URL that the notification is about.
 	 * @param imageURL
@@ -187,10 +149,10 @@ public class AppNotification extends Message {
 	 * @param content
 	 *            The content of the notification.
 	 */
-	public AppNotification(final Party recipient, final MessageCommand eventURL,
+	public AppNotification(final Integer recipient, final MessageCommand eventURL,
 			final MessageCommand imageURL, final MessageCommand content) {
 		super();
-		setRecipient(recipient);
+		this.recipient = recipient;
 		this.eventURL = eventURL;
 		this.imageURL = imageURL;
 		this.content = content;

@@ -118,9 +118,4 @@
 			<password>Dej4v4_phi14</password>
 		</security>
 	</xa-datasource>
-	<drivers>
-		<driver name="postgresql" module="org.postgresql">
-			<xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-		</driver>
-	</drivers>
 </datasources>

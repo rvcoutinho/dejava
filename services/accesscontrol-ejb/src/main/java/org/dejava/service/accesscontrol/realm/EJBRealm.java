@@ -10,10 +10,11 @@ import javax.naming.NamingException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAccount;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
@@ -38,7 +39,7 @@ public class EJBRealm extends AuthorizingRealm {
 	/**
 	 * The application/module JNDI path.
 	 */
-	private String appModulePath = "ear/accesscontrol-ejb";
+	private String appModulePath = "accesscontrol-ejb";
 
 	/**
 	 * Gets the application/module JNDI path.
@@ -276,9 +277,9 @@ public class EJBRealm extends AuthorizingRealm {
 						getName());
 				// Gets the password for the user.
 				final Password password = getPasswordComponent().getByAttribute("user", user);
-				// Creates a new simple account with the user info.
-				final AuthenticationInfo authenticationInfo = new SimpleAccount(principals, password,
-						getName(), user.getRoles(), resolvePermissions(user.getAllPermissions()));
+				// Creates a new authentication info.
+				final AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principals,
+						password, getName());
 				// Returns the authentication information.
 				return authenticationInfo;
 			}
@@ -295,8 +296,11 @@ public class EJBRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(final PrincipalCollection principals) {
 		// Gets the user from the principals.
 		final User user = ((Principal) principals.getPrimaryPrincipal()).getUser();
-		// Returns a new simple account with the user info.
-		return new SimpleAccount(principals, null, getName(), user.getRoles(),
-				resolvePermissions(user.getAllPermissions()));
+		// Creates a new authorization info.
+		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo(user.getRoles());
+		// Sets the permissions for the user.
+		authorizationInfo.setObjectPermissions(resolvePermissions(user.getAllPermissions()));
+		// Returns a the authorization info.
+		return authorizationInfo;
 	}
 }

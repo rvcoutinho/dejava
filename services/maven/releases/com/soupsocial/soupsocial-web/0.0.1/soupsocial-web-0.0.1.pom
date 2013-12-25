@@ -23,6 +23,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
+			<artifactId>accesscontrol-web</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>party-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>

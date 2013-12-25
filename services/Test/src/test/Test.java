@@ -2,14 +2,14 @@ package test;
 
 import java.io.Serializable;
 
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 import javax.servlet.http.Part;
 
 /**
  * Test
  */
-@RequestScoped
+@ConversationScoped
 @Named("test")
 public class Test implements Serializable {
 

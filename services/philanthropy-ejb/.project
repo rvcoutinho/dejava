@@ -3,6 +3,11 @@
 	<name>philanthropy-ejb</name>
 	<comment></comment>
 	<projects>
+		<project>accesscontrol-ejb</project>
+		<project>contact-ejb</project>
+		<project>message-ejb</project>
+		<project>party-ejb</project>
+		<project>place-ejb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

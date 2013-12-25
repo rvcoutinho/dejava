@@ -23,16 +23,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
-			<artifactId>place-ejb</artifactId>
-			<type>ejb</type>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
-			<artifactId>contact-ejb</artifactId>
-			<type>ejb</type>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
 			<artifactId>message-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>

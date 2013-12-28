@@ -17,18 +17,22 @@ public interface GenericComponent<Entity, Key> {
 	 * 
 	 * @param entity
 	 *            The entity to be persisted.
+	 * @param context
+	 *            The context from within the entity should be validated.
 	 * @return The persisted (and updated) entity.
 	 */
-	Entity addOrUpdate(final Entity entity);
+	Entity addOrUpdate(final Entity entity, Object... context);
 
 	/**
 	 * Adds or update all the persistent entities.
 	 * 
 	 * @param entities
 	 *            The entities to be persisted.
+	 * @param context
+	 *            The context from within the entity should be validated.
 	 * @return The persisted (and updated) entity.
 	 */
-	Collection<Entity> addOrUpdate(final Collection<Entity> entities);
+	Collection<Entity> addOrUpdate(final Collection<Entity> entities, Object... context);
 
 	/**
 	 * Removes a persistent entity.
@@ -54,33 +58,6 @@ public interface GenericComponent<Entity, Key> {
 	 * @return An entity by its identifier.
 	 */
 	Entity getById(final Key identifier);
-
-	/**
-	 * Gets all entities with the given attribute value.
-	 * 
-	 * @param attributeName
-	 *            The attribute name.
-	 * @param attributeValue
-	 *            The attribute value.
-	 * @param firstResult
-	 *            The first result that should be considered by the query.
-	 * @param maxResults
-	 *            The maximum numbers of results to be considered by the query.
-	 * @return All entities with the given attribute value.
-	 */
-	Collection<Entity> getByAttribute(final String attributeName, final Object attributeValue,
-			final Integer firstResult, final Integer maxResults);
-
-	/**
-	 * Gets an entity by its attribute.
-	 * 
-	 * @param attributeName
-	 *            The attribute name.
-	 * @param attributeValue
-	 *            The attribute value.
-	 * @return The entity by its attribute.
-	 */
-	Entity getByAttribute(final String attributeName, final Object attributeValue);
 
 	/**
 	 * Gets all entities of the kind.

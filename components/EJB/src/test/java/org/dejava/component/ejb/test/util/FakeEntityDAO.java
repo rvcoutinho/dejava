@@ -8,6 +8,7 @@ import org.dejava.component.ejb.dao.AbstractGenericDAO;
 /**
  * Fake entity DAO.
  */
+@EJB
 public class FakeEntityDAO extends AbstractGenericDAO<FakeEntity, Integer> {
 
 	/**

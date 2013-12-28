@@ -12,17 +12,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.dejava.component.ejb.component.AbstractGenericComponent;
-import org.dejava.component.ejb.component.GenericComponent;
 
 /**
- * Implements the default behavior of an JPA entity JSF controller (including JAX-RS pre-configuration).
+ * Implements the default behavior of an entity JSF controller (including JAX-RS pre-configuration).
  * 
  * @param <Entity>
  *            Any entity.
  * @param <Key>
  *            Key of the entity.
  */
-public abstract class AbstractGenericController<Entity, Key> implements GenericComponent<Entity, Key> {
+public abstract class AbstractGenericController<Entity, Key> implements GenericController<Entity, Key> {
 
 	/**
 	 * Gets the business component related to the entity.
@@ -32,7 +31,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericC
 	protected abstract AbstractGenericComponent<Entity, Key> getBusinessComponent();
 
 	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#addOrUpdate(java.lang.Object)
+	 * @see org.dejava.component.faces.controller.GenericController#addOrUpdate(java.lang.Object)
 	 */
 	@PUT
 	@Consumes(value = { MediaType.APPLICATION_JSON })
@@ -44,7 +43,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericC
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#addOrUpdate(java.util.Collection)
+	 * @see org.dejava.component.faces.controller.GenericController#addOrUpdate(java.util.Collection)
 	 */
 	@PUT
 	@Path(value = "/s")
@@ -57,7 +56,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericC
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#remove(java.lang.Object)
+	 * @see org.dejava.component.faces.controller.GenericController#remove(java.lang.Object)
 	 */
 	@DELETE
 	@Consumes(value = { MediaType.APPLICATION_JSON })
@@ -68,7 +67,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericC
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#remove(java.util.Collection)
+	 * @see org.dejava.component.faces.controller.GenericController#remove(java.util.Collection)
 	 */
 	@DELETE
 	@Path(value = "/s")
@@ -80,7 +79,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericC
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#getById(java.lang.Object)
+	 * @see org.dejava.component.faces.controller.GenericController#getById(java.lang.Object)
 	 */
 	@GET
 	@Path(value = "/{identifier}")
@@ -92,29 +91,7 @@ public abstract class AbstractGenericController<Entity, Key> implements GenericC
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#getByAttribute(java.lang.String,
-	 *      java.lang.Object, java.lang.Integer, java.lang.Integer)
-	 */
-	@Override
-	public Collection<Entity> getByAttribute(final String attributeName, final Object attributeValue,
-			final Integer firstResult, final Integer maxResults) {
-		// Tries to get the entities.
-		return getBusinessComponent().getByAttribute(attributeName, attributeValue, firstResult,
-				maxResults);
-	}
-
-	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#getByAttribute(java.lang.String,
-	 *      java.lang.Object)
-	 */
-	@Override
-	public Entity getByAttribute(final String attributeName, final Object attributeValue) {
-		// Tries to get the entity.
-		return getBusinessComponent().getByAttribute(attributeName, attributeValue);
-	}
-
-	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#getAll(java.lang.Integer,
+	 * @see org.dejava.component.faces.controller.GenericController#getAll(java.lang.Integer,
 	 *      java.lang.Integer)
 	 */
 	@GET

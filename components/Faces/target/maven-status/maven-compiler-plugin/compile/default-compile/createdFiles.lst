@@ -7,5 +7,6 @@ org\dejava\component\faces\controller\AbstractGenericController.class
 org\dejava\component\faces\message\constant\ErrorKeys.class
 org\dejava\component\faces\exception\AbstractExceptionHandlerFactory.class
 org\dejava\component\faces\exception\ExceptionHandlerImpl.class
+org\dejava\component\faces\controller\GenericController.class
 org\dejava\component\faces\message\constant\ParamKeys.class
 org\dejava\component\faces\message\annotation\MessageType.class

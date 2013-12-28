@@ -2,8 +2,8 @@ package org.dejava.component.faces.test.controller;
 
 import javax.inject.Inject;
 
-import org.dejava.component.ejb.component.GenericComponent;
-import org.dejava.component.faces.test.controller.component.AbstractGenericComponentTest;
+import org.dejava.component.faces.controller.GenericController;
+import org.dejava.component.faces.test.controller.component.AbstractGenericControllerTest;
 import org.dejava.component.faces.test.controller.util.Faces;
 import org.dejava.component.faces.test.controller.util.FakeEntity;
 import org.dejava.component.faces.test.controller.util.FakeEntityController;
@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
  * Tests for the generic JSF controller.
  */
 @RunWith(Arquillian.class)
-public class GenericControllerTest extends AbstractGenericComponentTest {
+public class GenericControllerTest extends AbstractGenericControllerTest {
 
 	/**
 	 * Defines what should be done during deployment (before tests).
@@ -53,10 +53,10 @@ public class GenericControllerTest extends AbstractGenericComponentTest {
 	private FakeEntityController fakeEntityController;
 
 	/**
-	 * @see org.dejava.component.faces.test.controller.component.AbstractGenericComponentTest#getComponent()
+	 * @see org.dejava.component.faces.test.controller.component.AbstractGenericControllerTest#getController()
 	 */
 	@Override
-	protected GenericComponent<FakeEntity, Integer> getComponent() {
+	protected GenericController<FakeEntity, Integer> getController() {
 		return fakeEntityController;
 	}
 

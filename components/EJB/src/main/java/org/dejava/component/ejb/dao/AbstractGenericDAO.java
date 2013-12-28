@@ -23,7 +23,7 @@ import org.dejava.component.validation.method.PreConditions;
  * @param <Key>
  *            Key of the entity.
  */
-public abstract class AbstractGenericDAO<Entity, Key> {
+public abstract class AbstractGenericDAO<Entity, Key> implements GenericDAO<Entity, Key> {
 
 	/**
 	 * The class of the generic entity.
@@ -92,12 +92,9 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	}
 
 	/**
-	 * Merges the entity with the persistence context (so its state is persisted).
-	 * 
-	 * @param entity
-	 *            The entity to be merged.
-	 * @return The merged instance.
+	 * @see org.dejava.component.ejb.dao.GenericDAO#merge(java.lang.Object)
 	 */
+	@Override
 	public Entity merge(final Entity entity) {
 		// Asserts that the entity is not null.
 		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, entity);
@@ -107,12 +104,9 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	}
 
 	/**
-	 * Merges the entities with the persistence context (so its state is persisted).
-	 * 
-	 * @param entities
-	 *            The entities to be merged.
-	 * @return The merged instances.
+	 * @see org.dejava.component.ejb.dao.GenericDAO#merge(java.util.Collection)
 	 */
+	@Override
 	public Collection<Entity> merge(final Collection<Entity> entities) {
 		// Creates a new list of entities.
 		final Collection<Entity> mergedEntities = new ArrayList<>();
@@ -129,11 +123,9 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	}
 
 	/**
-	 * Removes a persistent entity.
-	 * 
-	 * @param entity
-	 *            The entity to be persisted.
+	 * @see org.dejava.component.ejb.dao.GenericDAO#remove(java.lang.Object)
 	 */
+	@Override
 	public void remove(final Entity entity) {
 		// Asserts that the entity is not null.
 		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, entity);
@@ -144,11 +136,9 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	}
 
 	/**
-	 * Removes a persistent entities.
-	 * 
-	 * @param entities
-	 *            The entities to be persisted.
+	 * @see org.dejava.component.ejb.dao.GenericDAO#remove(java.util.Collection)
 	 */
+	@Override
 	public void remove(final Collection<Entity> entities) {
 		// If the given collection is not empty.
 		if (entities != null) {
@@ -161,12 +151,9 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	}
 
 	/**
-	 * Gets an entity by its identifier.
-	 * 
-	 * @param identifier
-	 *            The identifier of the entity.
-	 * @return An entity by its identifier.
+	 * @see org.dejava.component.ejb.dao.GenericDAO#getById(java.lang.Object)
 	 */
+	@Override
 	public Entity getById(final Key identifier) {
 		// Asserts that the identifier is not null.
 		PreConditions.assertParamNotNull(DAOParamKeys.IDENTIFIER, identifier);
@@ -175,18 +162,9 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	}
 
 	/**
-	 * Gets all entities with the given attribute value.
-	 * 
-	 * @param attributeName
-	 *            The attribute name.
-	 * @param attributeValue
-	 *            The attribute value.
-	 * @param firstResult
-	 *            The first result that should be considered by the query.
-	 * @param maxResults
-	 *            The maximum numbers of results to be considered by the query.
-	 * @return All entities with the given attribute value.
+	 * @see org.dejava.component.ejb.dao.GenericDAO#getByAttribute(java.lang.String, java.lang.Object, java.lang.Integer, java.lang.Integer)
 	 */
+	@Override
 	public Collection<Entity> getByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults) {
 		// Asserts that the attribute name is not null.
@@ -214,14 +192,9 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	}
 
 	/**
-	 * Gets the entity with the given attribute value.
-	 * 
-	 * @param attributeName
-	 *            The attribute name.
-	 * @param attributeValue
-	 *            The attribute value.
-	 * @return The entity with the given attribute value.
+	 * @see org.dejava.component.ejb.dao.GenericDAO#getByAttribute(java.lang.String, java.lang.Object)
 	 */
+	@Override
 	public Entity getByAttribute(final String attributeName, final Object attributeValue) {
 		// Tries to get the entities.
 		final Collection<Entity> entities = getByAttribute(attributeName, attributeValue, null, null);
@@ -245,15 +218,9 @@ public abstract class AbstractGenericDAO<Entity, Key> {
 	}
 
 	/**
-	 * Gets all entities of the kind.
-	 * 
-	 * @param firstResult
-	 *            The first result that should be considered by the query.
-	 * @param maxResults
-	 *            The maximum numbers of results to be considered by the query.
-	 * 
-	 * @return All entities of the kind.
+	 * @see org.dejava.component.ejb.dao.GenericDAO#getAll(java.lang.Integer, java.lang.Integer)
 	 */
+	@Override
 	public Collection<Entity> getAll(final Integer firstResult, final Integer maxResults) {
 		// Creates a new criteria query.
 		final CriteriaQuery<Entity> criteriaQuery = getCriteriaBuilder().createQuery(getEntityClass());

@@ -1,0 +1,6 @@
+org\dejava\component\reflection\test\util\SomeOtherAnnotation.class
+org\dejava\component\reflection\test\util\SomeClass.class
+org\dejava\component\reflection\test\ClassMirrorTest.class
+org\dejava\component\reflection\test\util\SomeAnnotation.class
+org\dejava\component\reflection\test\util\SomeSuperClass.class
+org\dejava\component\reflection\test\FieldMirrorTest.class

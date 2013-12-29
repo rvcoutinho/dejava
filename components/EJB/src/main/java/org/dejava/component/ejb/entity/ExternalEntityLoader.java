@@ -40,9 +40,14 @@ public class ExternalEntityLoader {
 	public static final String DIR_RET_METHOD = "getById";
 
 	/**
+	 * The "mapped by" wildcard.
+	 */
+	public static final String MAPPED_BY_WILDCARD = "#{mappedBy}";
+
+	/**
 	 * The reverse retrieve method name (if the external entity maps the relationship).
 	 */
-	public static final String REV_RET_METHOD = "getByAttribute";
+	public static final String REV_RET_METHOD = "getBy" + MAPPED_BY_WILDCARD;
 
 	/**
 	 * The direct retrieve method parameters classes (if {@link ExternalEntity#mappedBy()} is empty).
@@ -50,17 +55,17 @@ public class ExternalEntityLoader {
 	public static final Class<?>[] DIR_RET_METHOD_PARAMS_CLASSES = { Integer.class };
 
 	/**
-	 * The reverse retrieve method parameters classes (if {@link ExternalEntity#mappedBy()} is not empty) for a single
-	 * external entity.
+	 * The reverse retrieve method parameters classes (if {@link ExternalEntity#mappedBy()} is not empty) for
+	 * a single external entity.
 	 */
-	public static final Class<?>[] REV_SINGLE_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class };
+	public static final Class<?>[] REV_SINGLE_RET_METHOD_PARAMS_CLASSES = { Integer.class };
 
 	/**
-	 * The reverse retrieve method parameters classes (if {@link ExternalEntity#mappedBy()} is not empty) for multiple
-	 * external entities.
+	 * The reverse retrieve method parameters classes (if {@link ExternalEntity#mappedBy()} is not empty) for
+	 * multiple external entities.
 	 */
-	public static final Class<?>[] REV_MULTI_RET_METHOD_PARAMS_CLASSES = { String.class, Object.class,
-			Integer.class, Integer.class };
+	public static final Class<?>[] REV_MULTI_RET_METHOD_PARAMS_CLASSES = { Integer.class, Integer.class,
+			Integer.class };
 
 	/**
 	 * Gets the parameters values for the method used to retrieve the external entities.
@@ -104,13 +109,13 @@ public class ExternalEntityLoader {
 				if (externalEntityInfo.singleEntity()) {
 					// The parameters values are the mapped field name and the entity id (and null start and
 					// offset parameters).
-					paramsValues = new Object[] { externalEntityInfo.mappedBy(),
-							entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(entity, true, null) };
+					paramsValues = new Object[] { entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(
+							entity, true, null) };
 				}
 				// If the mapping is for multiple external entities.
 				else {
 					// The parameters values are the mapped field name and the entity id.
-					paramsValues = new Object[] { externalEntityInfo.mappedBy(),
+					paramsValues = new Object[] {
 							entityClass.getMethod(ENTITY_ID_GETTER, null).invokeMethod(entity, true, null),
 							null, null };
 				}
@@ -145,7 +150,9 @@ public class ExternalEntityLoader {
 			// If the external entity is reverse mapped.
 			else {
 				// The default method name for the context is used.
-				methodName = REV_RET_METHOD;
+				methodName = REV_RET_METHOD.replace(MAPPED_BY_WILDCARD, externalEntityInfo.mappedBy()
+						.substring(0, 1).toUpperCase()
+						+ externalEntityInfo.mappedBy().substring(1));
 			}
 		}
 		// Returns the method name.

@@ -4,18 +4,19 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
-	<section id="ngo-create" class="hidden-dialog form-content"
-		title="Cadastre sua Instituição!">
+	<section id="ngo-create" class="hidden-dialog form-content padding-6"
+		title="Cadastre sua instituição!">
 		<h:form id="ngo-create-form">
 			<div>
 				<label for="ngo-create-name">Nome da instituição</label>:
-				<h:inputText id="ngo-create-name" />
+				<h:inputText id="ngo-create-name"
+					value="#{newNonProfitOrgController.newParty.party.displayName}" />
 			</div>
 			<div>
 				<label for="ngo-create-cnpj">CNPJ</label>:
 				<h:inputText id="ngo-create-cnpj" styleClass="cnpj mask"
 					p:data-inv-regex="[^\d]"
-					value="#{newOrganizationController.newOrganization.federalCode}">
+					value="#{newNonProfitOrgController.newParty.party.federalCode}">
 					<f:converter converterId="InvRegexConv" />
 				</h:inputText>
 			</div>
@@ -24,24 +25,24 @@
 				<h:inputText id="ngo-create-address" styleClass="place" />
 				<span class="hidden-dialog place-detail"><h:inputHidden
 						id="ngo-create-address-reference"
-						value="#{newOrganizationController.addressReference}"
+						value="#{newNonProfitOrgController.addressReference}"
 						p:data-geo="reference" /></span>
 			</div>
 			<div>
 				<label for="ngo-create-email">E-mail</label>:
 				<h:inputText id="ngo-create-email"
-					value="#{newOrganizationController.newEmailAddress.address}" />
+					value="#{newNonProfitOrgController.newEmailAddress.address}" />
 			</div>
 			<div>
 				<label for="ngo-create-phone">Telefone</label>:
 				<h:inputText id="ngo-create-phone" styleClass="phone mask"
 					p:data-inv-regex="[^\d]"
-					value="#{newOrganizationController.newPhoneNumber.number}">
+					value="#{newNonProfitOrgController.newPhoneNumber.number}">
 					<f:converter converterId="InvRegexConv" />
 				</h:inputText>
 			</div>
-			<h:commandLink
-				action="#{newOrganizationController.createOrganization}">
+			<h:commandLink action="#{newNonProfitOrgController.createParty()}"
+				styleClass="submit-button">
 				<button class="dark-green-bg right-button">
 					cadastrar
 					<h:graphicImage library="soupsocial" class="spoon"

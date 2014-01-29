@@ -11,7 +11,9 @@ import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerWrapper;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
+import javax.persistence.PersistenceException;
 import javax.servlet.ServletContext;
+import javax.transaction.RollbackException;
 
 import org.dejava.component.exception.localized.LocalizedException;
 import org.dejava.component.faces.i18n.AbstractLocaleController;
@@ -120,14 +122,13 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 			ExceptionQueuedEvent currentExceptionEvent = exceptionEventIterator.next();
 			// Gets the current exception.
 			Throwable currentException = currentExceptionEvent.getContext().getException();
-			// While the exception is a wrapper (EJB or Faces exception).
-			while (((currentException instanceof FacesException) || (currentException instanceof EJBException))
-					&& (currentException.getCause() != null)) {
+			// While the exception is not a Localized exception.
+			while ((!(currentException instanceof LocalizedException)) && (currentException != null)) {
 				// Unwraps the exception.
 				currentException = currentException.getCause();
 			}
-			// If the exception is a localize one.
-			if (currentException instanceof LocalizedException) {
+			// If the exception is a localized one.
+			if ((currentException instanceof LocalizedException) && (currentException != null)) {
 				// Adds the error messages to the application.
 				((LocalizedException) currentException)
 						.addLocalizedMessages(getAppMessageHandler(currentExceptionEvent.getContext()

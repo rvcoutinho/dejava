@@ -34,7 +34,7 @@ public class ClassMirror<Reflected> {
 	 * 
 	 * @return The class being reflected.
 	 */
-	public Class<? extends Reflected> getReflectedClass() {
+	public final Class<? extends Reflected> getReflectedClass() {
 		return reflectedClass;
 	}
 

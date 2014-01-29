@@ -29,8 +29,8 @@ public abstract class AbstractGenericEntityBusinessRuleSet<Entity> implements
 	 */
 	private Set<ConstraintViolation<Entity>> validateNoExceptions(final Entity entity,
 			final Object... context) {
-		// If the entity is not null.
-		if (entity != null) {
+		// If the entity is null.
+		if (entity == null) {
 			// Returns an empty set of violations. FIXME Think about.
 			return new HashSet<>();
 		}

@@ -1,7 +1,9 @@
 package org.dejava.component.ejb.businessrule;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -36,9 +38,19 @@ public abstract class AbstractGenericEntityBusinessRuleSet<Entity> implements
 		}
 		// If the entity is not null.
 		else {
+			// List for the validation context items.
+			final List<Class<?>> validationContext = new ArrayList<>();
+			// For each context item.
+			for (final Object currentCtxItem : context) {
+				// If the object item is a class.
+				if ((currentCtxItem != null) && (currentCtxItem instanceof Class<?>)) {
+					// Adds the item to the validation context list.
+					validationContext.add((Class<?>) currentCtxItem);
+				}
+			}
 			// Validates the current entity (and returns the found violations).
 			return Validation.buildDefaultValidatorFactory().getValidator()
-					.validate(entity, (Class<?>[]) context);
+					.validate(entity, validationContext.toArray(new Class<?>[0]));
 		}
 	}
 

@@ -45,16 +45,16 @@ public class ViolationMessageCommand extends SimpleMessageCommand {
 	/**
 	 * Gets the final message template for the violation message.
 	 * 
-	 * @param rootBeanClass
-	 *            The root bean class for the violation.
+	 * @param leafBeanClass
+	 *            The leaf bean class for the violation.
 	 * @param rawMessageTemplate
 	 *            The raw message template.
 	 * @return The final message template for the violation message.
 	 */
-	private static String getMessageTemplate(Class<?> rootBeanClass, final String rawMessageTemplate) {
+	private static String getMessageTemplate(Class<?> leafBeanClass, final String rawMessageTemplate) {
 		// Replaces the actual class wild card with the class name in the raw message template.
 		String finalMessageTemplate = rawMessageTemplate.replace(MessageTemplateWildCards.ACTUAL_CLASS,
-				rootBeanClass.getSimpleName().toLowerCase());
+				leafBeanClass.getSimpleName().toLowerCase());
 		// Returns the final message.
 		return finalMessageTemplate;
 	}
@@ -80,8 +80,8 @@ public class ViolationMessageCommand extends SimpleMessageCommand {
 	/**
 	 * Gets the message command for the given violation.
 	 * 
-	 * @param rootBeanClass
-	 *            The root bean class for the violation.
+	 * @param leafBeanClass
+	 *            The leaf bean class for the violation.
 	 * @param constraintDescriptor
 	 *            The constraint descriptor to get the message parameters from.
 	 * @param locale
@@ -89,10 +89,10 @@ public class ViolationMessageCommand extends SimpleMessageCommand {
 	 * @param messageTemplate
 	 *            The message template to be used.
 	 */
-	public ViolationMessageCommand(Class<?> rootBeanClass,
+	public ViolationMessageCommand(Class<?> leafBeanClass,
 			final ConstraintDescriptor<?> constraintDescriptor, final Locale locale,
 			final String messageTemplate) {
-		super(getBundlePayload(constraintDescriptor), locale, getMessageTemplate(rootBeanClass,
+		super(getBundlePayload(constraintDescriptor), locale, getMessageTemplate(leafBeanClass,
 				messageTemplate), getViolationParameters(constraintDescriptor));
 	}
 }

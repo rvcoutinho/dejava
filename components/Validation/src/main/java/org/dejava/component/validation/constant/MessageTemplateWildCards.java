@@ -13,7 +13,7 @@ public class MessageTemplateWildCards {
 	public static final String ACTUAL_CLASS = "#{class.actual}";
 
 	/**
-	 * The declaring class wild card.
+	 * The declaring class wild card. FIXME Not working yet.
 	 */
 	public static final String DECLARING_CLASS = "#{class.declaring}";
 

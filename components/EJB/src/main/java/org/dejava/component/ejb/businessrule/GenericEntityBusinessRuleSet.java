@@ -15,19 +15,19 @@ public interface GenericEntityBusinessRuleSet<Entity> {
 	 * 
 	 * @param entity
 	 *            Entity to be validated.
-	 * @param context
-	 *            Context from within the entity should be validated.
+	 * @param groups
+	 *            Groups that should be considered in the validation.
 	 */
-	public void validate(Entity entity, Object... context);
+	public void validate(Entity entity, Class<?>... groups);
 
 	/**
 	 * Validates a collection of entities in a given context.
 	 * 
 	 * @param entities
 	 *            Entities to be validated.
-	 * @param context
-	 *            Context from within the entity should be validated.
+	 * @param groups
+	 *            Groups that should be considered in the validation.
 	 */
-	public void validate(Collection<Entity> entities, Object... context);
+	public void validate(Collection<Entity> entities, Class<?>... groups);
 
 }

@@ -1,9 +1,7 @@
 package org.dejava.component.ejb.businessrule;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -25,12 +23,12 @@ public abstract class AbstractGenericEntityBusinessRuleSet<Entity> implements
 	 * 
 	 * @param entity
 	 *            Entity to be validated.
-	 * @param context
-	 *            Context from within the entity should be validated.
+	 * @param groups
+	 *            Groups that should be considered in the validation.
 	 * @return The violations for the entity in the context.
 	 */
 	private Set<ConstraintViolation<Entity>> validateNoExceptions(final Entity entity,
-			final Object... context) {
+			final Class<?>... groups) {
 		// If the entity is null.
 		if (entity == null) {
 			// Returns an empty set of violations. FIXME Think about.
@@ -38,38 +36,27 @@ public abstract class AbstractGenericEntityBusinessRuleSet<Entity> implements
 		}
 		// If the entity is not null.
 		else {
-			// List for the validation context items.
-			final List<Class<?>> validationContext = new ArrayList<>();
-			// For each context item.
-			for (final Object currentCtxItem : context) {
-				// If the object item is a class.
-				if ((currentCtxItem != null) && (currentCtxItem instanceof Class<?>)) {
-					// Adds the item to the validation context list.
-					validationContext.add((Class<?>) currentCtxItem);
-				}
-			}
 			// Validates the current entity (and returns the found violations).
-			return Validation.buildDefaultValidatorFactory().getValidator()
-					.validate(entity, validationContext.toArray(new Class<?>[0]));
+			return Validation.buildDefaultValidatorFactory().getValidator().validate(entity, groups);
 		}
 	}
 
 	/**
 	 * @see org.dejava.component.ejb.businessrule.GenericEntityBusinessRuleSet#validate(java.lang.Object,
-	 *      java.lang.Object[])
+	 *      java.lang.Class[])
 	 */
 	@Override
-	public void validate(final Entity entity, final Object... context) {
+	public void validate(final Entity entity, final Class<?>... groups) {
 		// Validates the current entity (and throws an exception for the found violations).
-		ValidationException.throwViolationExceptions(validateNoExceptions(entity, context));
+		ValidationException.throwViolationExceptions(validateNoExceptions(entity, groups));
 	}
 
 	/**
 	 * @see org.dejava.component.ejb.businessrule.GenericEntityBusinessRuleSet#validate(java.util.Collection,
-	 *      java.lang.Object[])
+	 *      java.lang.Class[])
 	 */
 	@Override
-	public void validate(final Collection<Entity> entities, final Object... context) {
+	public void validate(final Collection<Entity> entities, final Class<?>... groups) {
 		// If there are entities to be added.
 		if (entities != null) {
 			// Creates a new violation set.
@@ -77,7 +64,7 @@ public abstract class AbstractGenericEntityBusinessRuleSet<Entity> implements
 			// For each entity.
 			for (final Entity currentEntity : entities) {
 				// Validates the current entity (and add the violations to the complete set).
-				validateNoExceptions(currentEntity, context);
+				validateNoExceptions(currentEntity, groups);
 			}
 			// Throws an exception for the found violations.
 			ValidationException.throwViolationExceptions(violations);

@@ -207,7 +207,7 @@ public class ExternalEntityLoaderTest {
 			extEntitiesIds.add(curFakeEntity.getIdentifier());
 		}
 		// Creates a test entity that refers to the external entities identifiers.
-		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(null, null,
+		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(SOME_ENTITY_IDS[1], null,
 				extEntitiesIds.toArray(new Integer[0]), null, null, null, null);
 		// Tries to load all external entities for the test entity.
 		ExternalEntityLoader.loadAllExternalEntities(testEntity, true);
@@ -236,7 +236,7 @@ public class ExternalEntityLoaderTest {
 			extEntitiesIds.add(curFakeEntity.getIdentifier());
 		}
 		// Creates a test entity that refers to the external entities identifiers.
-		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(null, externalEntity.getIdentifier(),
+		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(SOME_ENTITY_IDS[1], externalEntity.getIdentifier(),
 				extEntitiesIds.toArray(new Integer[0]), null, null, null, null);
 		// Tries to load all external entities for the test entity.
 		ExternalEntityLoader.loadAllExternalEntities(testEntity, true);
@@ -266,7 +266,7 @@ public class ExternalEntityLoaderTest {
 			extEntitiesIds.add(curFakeEntity.getIdentifier());
 		}
 		// Creates a test entity that refers to the external entities identifiers.
-		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(null, externalEntity.getIdentifier(),
+		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(SOME_ENTITY_IDS[1], externalEntity.getIdentifier(),
 				extEntitiesIds.toArray(new Integer[0]), null, null, null, null);
 		// Tries to load all external entities for the test entity.
 		ExternalEntityLoader.loadAllExternalEntities(testEntity, false);
@@ -315,7 +315,7 @@ public class ExternalEntityLoaderTest {
 			extEntities2Ids.add(curFakeEntity.getIdentifier());
 		}
 		// Creates a test entity that refers to the external entities identifiers.
-		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(null, null, null, null,
+		final SomeOtherFakeEntity testEntity = new SomeOtherFakeEntity(SOME_ENTITY_IDS[1], null, null, null,
 				extEntities2Ids.toArray(new Integer[0]), null, null);
 		// Tries to load all external entities for the test entity.
 		ExternalEntityLoader.loadAllExternalEntities(testEntity, true);

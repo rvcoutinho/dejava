@@ -3,7 +3,7 @@ package org.dejava.component.ejb.component;
 import java.util.Collection;
 
 /**
- * Defines the expected interface of a entity component.
+ * Defines the expected interface of a generic CRUD entity component.
  * 
  * @param <Entity>
  *            Any entity.
@@ -17,22 +17,18 @@ public interface GenericComponent<Entity, Key> {
 	 * 
 	 * @param entity
 	 *            The entity to be persisted.
-	 * @param context
-	 *            The context from within the entity should be validated.
 	 * @return The persisted (and updated) entity.
 	 */
-	Entity addOrUpdate(final Entity entity, Object... context);
+	Entity addOrUpdate(final Entity entity);
 
 	/**
 	 * Adds or update all the persistent entities.
 	 * 
 	 * @param entities
 	 *            The entities to be persisted.
-	 * @param context
-	 *            The context from within the entity should be validated.
 	 * @return The persisted (and updated) entity.
 	 */
-	Collection<Entity> addOrUpdate(final Collection<Entity> entities, Object... context);
+	Collection<Entity> addOrUpdate(final Collection<Entity> entities);
 
 	/**
 	 * Removes a persistent entity.

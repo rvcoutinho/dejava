@@ -211,6 +211,7 @@ public class MethodMirror {
 		}
 		// If an exception is thrown by the method itself.
 		catch (final InvocationTargetException exception) {
+			exception.printStackTrace();
 			// Throws an exception using the exception thrown as its cause.
 			throw new InvocationException(new Object[] { targetObject, paramsValues, ignoreAccess },
 					exception);

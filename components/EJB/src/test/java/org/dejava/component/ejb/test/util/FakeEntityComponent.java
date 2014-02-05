@@ -78,4 +78,33 @@ public class FakeEntityComponent extends AbstractGenericComponent<FakeEntity, In
 		return getEntityDAO().getByAttribute(attributeName, attributeValue);
 	}
 
+	/**
+	 * Gets all entities with the given attribute value.
+	 * 
+	 * @param attributeValue
+	 *            The attribute value.
+	 * @param firstResult
+	 *            The first result that should be considered by the query.
+	 * @param maxResults
+	 *            The maximum numbers of results to be considered by the query.
+	 * @return All entities with the given attribute value.
+	 */
+	public Collection<FakeEntity> getBySomeOtherEntityId2(final Integer attributeValue,
+			final Integer firstResult, final Integer maxResults) {
+		// Tries to get the entities.
+		return getEntityDAO().getByAttribute("someOtherEntityId2", attributeValue, firstResult, maxResults);
+	}
+
+	/**
+	 * Gets the entity with the given attribute value.
+	 * 
+	 * @param attributeValue
+	 *            The attribute value.
+	 * @return The entity with the given attribute value.
+	 */
+	public FakeEntity getBySomeOtherEntityId(final Integer attributeValue) {
+		// Tries to get the entities.
+		return getEntityDAO().getByAttribute("someOtherEntityId", attributeValue);
+	}
+
 }

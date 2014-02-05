@@ -80,6 +80,7 @@ public class FacesMessageHandlerTest {
 										"org.dejava.component:ejb", "org.dejava.component:validation",
 										"org.dejava.component:exception", "org.dejava.component:i18n",
 										"org.dejava.component:reflection").withTransitivity().asFile())
+				.addPackages(true, "org.dejava.component.faces.i18n")
 				.addPackages(true, "org.dejava.component.faces.message")
 				.addPackages(true, "org.dejava.component.faces.test.message")
 				.addAsWebResource(new File("src/test/resources/WEB-INF/message.xhtml"))

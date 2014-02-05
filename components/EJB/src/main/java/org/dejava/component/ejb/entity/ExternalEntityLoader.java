@@ -20,14 +20,14 @@ import org.dejava.component.validation.method.PreConditions;
 public class ExternalEntityLoader {
 
 	/**
-	 * The default identifier sufix.
+	 * The default identifier suffix.
 	 */
-	private static final String ID_SUFIX = "Id";
+	private static final String ID_SUFFIX = "Id";
 
 	/**
-	 * The default identifiers sufix.
+	 * The default identifiers suffix.
 	 */
-	private static final String IDS_SUFIX = "Ids";
+	private static final String IDS_SUFFIX = "Ids";
 
 	/**
 	 * The default identifier getter for entities.
@@ -93,13 +93,13 @@ public class ExternalEntityLoader {
 				// If the mapping is for a single external entity.
 				if (externalEntityInfo.singleEntity()) {
 					// Gets the parameter values from a method named <annotatedFieldGetter>Id.
-					paramsValues = entityClass.getMethod(FieldMirror.getGetterName(fieldName) + ID_SUFIX,
+					paramsValues = entityClass.getMethod(FieldMirror.getGetterName(fieldName) + ID_SUFFIX,
 							null).invokeMethod(entity, true, null);
 				}
 				// If the mapping is for multiple external entities.
 				else {
 					// Gets the parameter values from a method named <annotatedFieldGetter>Ids.
-					paramsValues = entityClass.getMethod(FieldMirror.getGetterName(fieldName) + IDS_SUFIX,
+					paramsValues = entityClass.getMethod(FieldMirror.getGetterName(fieldName) + IDS_SUFFIX,
 							null).invokeMethod(entity, true, null);
 				}
 			}

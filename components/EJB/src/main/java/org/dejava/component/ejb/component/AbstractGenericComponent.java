@@ -6,7 +6,7 @@ import org.dejava.component.ejb.businessrule.GenericEntityBusinessRuleSet;
 import org.dejava.component.ejb.dao.GenericDAO;
 
 /**
- * Implements the default behavior of an JPA entity EJB component.
+ * Implements the default behavior of a CRUD entity EJB component.
  * 
  * @param <Entity>
  *            Any entity.
@@ -30,23 +30,23 @@ public abstract class AbstractGenericComponent<Entity, Key> implements GenericCo
 	public abstract GenericEntityBusinessRuleSet<Entity> getEntityBusinessRuleSet();
 
 	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#addOrUpdate(java.lang.Object, java.lang.Object[])
+	 * @see org.dejava.component.ejb.component.GenericComponent#addOrUpdate(java.lang.Object)
 	 */
 	@Override
-	public Entity addOrUpdate(final Entity entity, final Object... context) {
+	public Entity addOrUpdate(final Entity entity) {
 		// Validates the new entity.
-		getEntityBusinessRuleSet().validate(entity, context);
+		getEntityBusinessRuleSet().validate(entity);
 		// Merges the entity.
 		return getEntityDAO().merge(entity);
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.component.GenericComponent#addOrUpdate(java.util.Collection, java.lang.Object[])
+	 * @see org.dejava.component.ejb.component.GenericComponent#addOrUpdate(java.util.Collection)
 	 */
 	@Override
-	public Collection<Entity> addOrUpdate(final Collection<Entity> entities, final Object... context) {
+	public Collection<Entity> addOrUpdate(final Collection<Entity> entities) {
 		// Validates the new entity.
-		getEntityBusinessRuleSet().validate(entities, context);
+		getEntityBusinessRuleSet().validate(entities);
 		// Merges the entities.
 		return getEntityDAO().merge(entities);
 	}

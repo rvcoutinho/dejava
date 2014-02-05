@@ -162,7 +162,8 @@ public abstract class AbstractGenericDAO<Entity, Key> implements GenericDAO<Enti
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.dao.GenericDAO#getByAttribute(java.lang.String, java.lang.Object, java.lang.Integer, java.lang.Integer)
+	 * @see org.dejava.component.ejb.dao.GenericDAO#getByAttribute(java.lang.String, java.lang.Object,
+	 *      java.lang.Integer, java.lang.Integer)
 	 */
 	@Override
 	public Collection<Entity> getByAttribute(final String attributeName, final Object attributeValue,

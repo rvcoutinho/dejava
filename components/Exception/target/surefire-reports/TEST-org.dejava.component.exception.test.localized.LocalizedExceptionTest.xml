@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.dejava.component.exception.test.localized.LocalizedExceptionTest" time="0.036" tests="5" errors="0" skipped="0" failures="0">
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="0.098" errors="0" skipped="0" tests="5" name="org.dejava.component.exception.test.localized.LocalizedExceptionTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\bin"/>
@@ -21,13 +21,14 @@
     <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\endorsed"/>
     <property name="os.arch" value="x86"/>
     <property name="java.io.tmpdir" value="C:\Users\RVCOUT~1\AppData\Local\Temp\"/>
-    <property name="line.separator" value="&#10;"/>
+    <property name="line.separator" value="
+"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf7756599978140467306.tmp"/>
+    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf6558803487523409445.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\eclipse;;."/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="51.0"/>
     <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
@@ -60,9 +61,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="testGetLocalizedMessage" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" time="0.028"/>
-  <testcase name="testAddLocalizedMessageRecursive" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" time="0"/>
-  <testcase name="testAddLocalizedMessageRecursiveNonLocalized" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" time="0.004"/>
-  <testcase name="testAddLocalizedMessage" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" time="0.001"/>
-  <testcase name="testGetMessage" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" time="0.003"/>
+  <testcase time="0.023" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" name="testGetLocalizedMessage"/>
+  <testcase time="0" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" name="testAddLocalizedMessageRecursive"/>
+  <testcase time="0.002" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" name="testAddLocalizedMessageRecursiveNonLocalized"/>
+  <testcase time="0" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" name="testAddLocalizedMessage"/>
+  <testcase time="0.003" classname="org.dejava.component.exception.test.localized.LocalizedExceptionTest" name="testGetMessage"/>
 </testsuite>

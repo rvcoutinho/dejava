@@ -1,5 +1,7 @@
 package org.dejava.component.faces.converter;
 
+import java.io.Serializable;
+
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -11,7 +13,12 @@ import org.dejava.component.validation.method.ArgFormatter;
  * Invalid regular expression converter (removes the occurrences of the invalid expression from the string).
  */
 @FacesConverter(value = "InvRegexConv")
-public class InvalidRegexConverter implements Converter {
+public class InvalidRegexConverter implements Converter, Serializable {
+
+	/**
+	 * Generated serial.
+	 */
+	private static final long serialVersionUID = 4356068886856635682L;
 
 	/**
 	 * The invalid regular expression attribute name.

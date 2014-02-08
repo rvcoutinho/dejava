@@ -9,12 +9,15 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresUser;
 import org.apache.shiro.subject.Subject;
-import org.dejava.service.accesscontrol.component.principal.NameComponent;
+import org.dejava.service.accesscontrol.component.UserAuthenticationComponent;
+import org.dejava.service.accesscontrol.interceptor.Secured;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.principal.Principal;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
+import org.dejava.service.party.component.PartyComponent;
 import org.dejava.service.party.model.Party;
-import org.dejava.service.philanthropy.component.party.PhilanthropyPartyComponent;
+import org.dejava.service.party.util.PartyCtx;
+import org.dejava.service.philanthropy.component.PhilanthropyPartyComponent;
 import org.dejava.service.philanthropy.model.party.PhilanthropyParty;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
@@ -22,8 +25,8 @@ import org.dejava.service.soupsocial.util.SoupSocialCtx;
 /**
  * User controller.
  */
-@ConversationScoped
 @SoupSocialCtx
+@ConversationScoped
 @Named("userController")
 public class UserController implements Serializable {
 
@@ -46,6 +49,7 @@ public class UserController implements Serializable {
 	 * 
 	 * @return The current user.
 	 */
+	@Secured
 	@RequiresUser
 	public User getCurrentUser() {
 		// Returns the user from a subject principal.
@@ -78,11 +82,11 @@ public class UserController implements Serializable {
 	}
 
 	/**
-	 * The user name EJB component.
+	 * The user authentication EJB component.
 	 */
 	@Inject
 	@AccessControlCtx
-	private NameComponent nameComponent;
+	private UserAuthenticationComponent userAuthenticationComponent;
 
 	/**
 	 * Gets the user for the given user name.
@@ -99,9 +103,16 @@ public class UserController implements Serializable {
 		// If an user name is given.
 		else {
 			// Returns the user for the given user name.
-			return nameComponent.getByAttribute("name", getUsername()).getUser();
+			return userAuthenticationComponent.getUserByName(getUsername());
 		}
 	}
+
+	/**
+	 * Party component.
+	 */
+	@Inject
+	@PartyCtx
+	private PartyComponent partyComponent;
 
 	/**
 	 * Gets the party with the user name.
@@ -110,11 +121,11 @@ public class UserController implements Serializable {
 	 */
 	public Party getParty() {
 		// Returns the party.
-		return getUser().getParty();
+		return partyComponent.getPartyByUser(getUser().getIdentifier());
 	}
 
 	/**
-	 * The philanthropy party EJB component.
+	 * Philanthropy party component.
 	 */
 	@Inject
 	@PhilanthropyCtx
@@ -134,7 +145,7 @@ public class UserController implements Serializable {
 		// If the party has not been retrieved yet.
 		if (philanthropyParty == null) {
 			// Tries to get the party.
-			philanthropyParty = philanthropyPartyComponent.getPhilanthropyPartyByParty(getParty());
+			philanthropyParty = philanthropyPartyComponent.getOrAddSupporterByParty(getParty());
 		}
 		// Returns the party.
 		return philanthropyParty;

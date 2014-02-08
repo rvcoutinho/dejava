@@ -406,7 +406,7 @@ a {
 	border: 1px solid #E6E6E6;
 }
 
-.dark-gray-border,.sub-menu,.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default,.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active
+.dark-gray-border,.sub-menu.square-box,.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default,.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active
 	{
 	border: 1px solid #BBBBBB;
 }
@@ -776,8 +776,8 @@ a {
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	opacity: .3;
-	filter: Alpha(Opacity = 30);
+	opacity: .75;
+	filter: Alpha(Opacity = 75);
 }
 
 /* Resize */
@@ -1019,13 +1019,18 @@ a {
 }
 
 .sub-menu {
+	float: left;
+	height: 30px;
+}
+
+.sub-menu.square-box {
 	display: inline;
 	margin: 0px 5px;
 	height: 40px;
 	width: 40px;
 }
 
-.sub-menu>a {
+.sub-menu.square-box>a {
 	float: left;
 	display: block;
 	padding: 7px 0px;
@@ -1033,10 +1038,20 @@ a {
 	width: 40px;
 }
 
+.sub-menu.square-box>a>i>.event-count {
+	position: relative;
+	top: -40px;
+	padding: 2px;
+	float: right;
+}
+
 .sub-menu>ul {
 	display: none;
 	z-index: 10;
-	width: 225px;
+	width: 250px;
+}
+
+.sub-menu.right>ul {
 	text-align: right;
 }
 
@@ -1126,7 +1141,6 @@ a {
 }
 
 #header>div>nav>ul>li>.sub-menu {
-	float: left;
 	position: relative;
 	top: -14px;
 }

@@ -1,13 +1,16 @@
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\model\AppNotification.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\businessrule\AppNotificationBusinessRuleSet.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\util\Resources.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\businessrule\AppMessageBusinessRuleSet.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\businessrule\EmailMessageBusinessRuleSet.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\model\AppMessage.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\AppNotificationComponent.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\dao\AppMessageDAO.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\model\Message.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\EmailMessageComponent.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\AppMessageComponent.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\util\MessageCtx.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\dao\AppNotificationDAO.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\util\MessageCtx.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\model\EmailMessage.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\util\MessageTypes.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\message-ejb\src\main\java\org\dejava\service\message\component\AppNotificationSender.java

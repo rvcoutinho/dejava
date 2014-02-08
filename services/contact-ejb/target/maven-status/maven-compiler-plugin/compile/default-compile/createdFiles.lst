@@ -1,14 +1,14 @@
 org\dejava\service\contact\util\Resources.class
 org\dejava\service\contact\util\MessageTypes$Info.class
-org\dejava\service\contact\component\EmailAddressComponent.class
+org\dejava\service\contact\interfac\Contactable.class
 org\dejava\service\contact\util\MessageTypes.class
 org\dejava\service\contact\util\MessageTypes$Fatal.class
-org\dejava\service\contact\component\PhoneNumberComponent.class
 org\dejava\service\contact\util\MessageTypes$Error.class
 org\dejava\service\contact\dao\PhoneNumberDAO.class
 org\dejava\service\contact\dao\ContactDAO.class
 org\dejava\service\contact\util\MessageTypes$Warn.class
 org\dejava\service\contact\component\ContactComponent.class
+org\dejava\service\contact\businessrule\ContactBusinessRuleSet.class
 org\dejava\service\contact\model\Contact.class
 org\dejava\service\contact\model\PhoneNumber.class
 org\dejava\service\contact\util\ContactCtx.class

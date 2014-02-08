@@ -23,11 +23,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
-			<artifactId>accesscontrol-web</artifactId>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
 			<artifactId>party-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
@@ -52,6 +47,16 @@
 			<type>ejb</type>
 		</dependency>
 
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>accesscontrol-web</artifactId>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.dejava.component</groupId>
+			<artifactId>ejb</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.dejava.component</groupId>
 			<artifactId>faces</artifactId>

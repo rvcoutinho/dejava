@@ -18,11 +18,6 @@
 
 		<dependency>
 			<groupId>org.dejava.service</groupId>
-			<artifactId>party-ejb</artifactId>
-			<type>ejb</type>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
 			<artifactId>properties</artifactId>
 		</dependency>
 

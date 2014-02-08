@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
-import org.dejava.service.philanthropy.model.party.NGO;
+import org.dejava.service.philanthropy.model.party.NonProfitOrg;
 
 /**
  * Philanthropy planned project.
@@ -27,7 +27,7 @@ public class ProjectPlan extends ProjectIdea {
 	/**
 	 * The organization for the project.
 	 */
-	private NGO organization;
+	private NonProfitOrg organization;
 
 	/**
 	 * Gets the organization for the project.
@@ -36,7 +36,7 @@ public class ProjectPlan extends ProjectIdea {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "organization")
-	public NGO getOrganization() {
+	public NonProfitOrg getOrganization() {
 		return organization;
 	}
 
@@ -46,7 +46,7 @@ public class ProjectPlan extends ProjectIdea {
 	 * @param organization
 	 *            New organization for the project.
 	 */
-	public void setOrganization(final NGO organization) {
+	public void setOrganization(final NonProfitOrg organization) {
 		this.organization = organization;
 	}
 

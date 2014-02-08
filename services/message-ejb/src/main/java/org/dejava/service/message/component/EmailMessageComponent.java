@@ -7,11 +7,13 @@ import javax.jms.JMSContext;
 import javax.jms.Queue;
 import javax.validation.Validation;
 
+import org.dejava.component.ejb.businessrule.GenericEntityBusinessRuleSet;
 import org.dejava.component.ejb.component.AbstractGenericComponent;
 import org.dejava.component.ejb.constant.DAOParamKeys;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.component.validation.method.PreConditions;
 import org.dejava.component.validation.object.ValidationException;
+import org.dejava.service.message.businessrule.EmailMessageBusinessRuleSet;
 import org.dejava.service.message.dao.EmailMessageDAO;
 import org.dejava.service.message.model.EmailMessage;
 import org.dejava.service.message.model.Message;
@@ -52,12 +54,27 @@ public class EmailMessageComponent extends AbstractGenericComponent<EmailMessage
 	}
 
 	/**
+	 * The email message business rule set.
+	 */
+	@Inject
+	@MessageCtx
+	private EmailMessageBusinessRuleSet emailMessageBusinessRuleSet;
+
+	/**
+	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityBusinessRuleSet()
+	 */
+	@Override
+	public GenericEntityBusinessRuleSet<EmailMessage> getEntityBusinessRuleSet() {
+		return emailMessageBusinessRuleSet;
+	}
+
+	/**
 	 * Sends a message.
 	 * 
 	 * @param message
 	 *            Message to be sent.
 	 */
-	public void sendMessage(Message message) {
+	public void sendMessage(final Message message) {
 		// Asserts that the message is not null.
 		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, message);
 		// Validates the current message (and throws an exception for the found violations).

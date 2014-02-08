@@ -32,10 +32,20 @@ public class Supporter extends PhilanthropyParty {
 	/**
 	 * Default constructor.
 	 * 
+	 * @param identifier
+	 *            The party identifier.
+	 */
+	public Supporter(final Integer identifier) {
+		super(identifier);
+	}
+
+	/**
+	 * Default constructor.
+	 * 
 	 * @param party
 	 *            The original party.
 	 */
-	public Supporter(Party party) {
+	public Supporter(final Party party) {
 		super(party);
 	}
 

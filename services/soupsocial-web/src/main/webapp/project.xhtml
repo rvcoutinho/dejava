@@ -148,17 +148,45 @@
 						});
 					</script>
 					<div class="fb-comments"
-						data-href="http://www.soupsocial.com/projeto/#{projectController.project.identifier}"
+						data-href="http://www.soupsocial.com:8080/projeto/#{projectController.project.identifier}"
 						data-width="640" data-num-posts="2" data-colorscheme="light"></div>
 				</section>
-				<aside>
+				<aside class="padding-4">
 					<div id="embrace">
-						Sou uma instituição e quero<br />
-						<button class="dark-green-bg bigger-button">
-							abraçar essa ideia
-							<h:graphicImage library="soupsocial" class="spoon"
-								name="gfx/spoon.png" />
-						</button>
+						Sou uma instituição e quero abraçar essa ideia<br />
+						<h:outputLink value="/accesscontrol-web/login/facebook"
+							rendered="#{!(userController.subject.authenticated or userController.subject.remembered)}">
+							<button class="dark-green-bg">
+								conectar
+								<h:graphicImage library="soupsocial" class="spoon"
+									name="gfx/spoon.png" />
+							</button>
+						</h:outputLink>
+						<h:panelGroup
+							rendered="#{(userController.subject.authenticated or userController.subject.remembered) and (empty userOrganizationsController.nonProfitOrgs)}">
+							<button class="dark-green-bg" onclick="showModal('ngo-create');">
+								cadastrar instituição
+								<h:graphicImage library="soupsocial" class="spoon"
+									name="gfx/spoon.png" />
+							</button>
+						</h:panelGroup>
+						<h:form
+							rendered="#{not empty userOrganizationsController.nonProfitOrgs}">
+							<div class="sub-menu left">
+								<button class="open dark-green-bg">
+									abraçar ideia
+									<h:graphicImage library="soupsocial" class="spoon"
+										name="gfx/spoon.png" />
+								</button>
+								<ul class="white-bg ui-corner-all">
+									<ui:repeat var="currentOrg"
+										value="#{userOrganizationsController.nonProfitOrgs}">
+										<li class="last-sub-item"><h:commandLink
+												action="#{projectController.proposePlan(currentOrg)}">#{currentOrg.party}</h:commandLink></li>
+									</ui:repeat>
+								</ul>
+							</div>
+						</h:form>
 					</div>
 					<section id="supporters"
 						class="ui-corner-all white-bg shadow-border">

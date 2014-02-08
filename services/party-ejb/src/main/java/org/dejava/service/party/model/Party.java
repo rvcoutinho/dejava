@@ -19,8 +19,10 @@ import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
+import org.dejava.service.contact.interfac.Contactable;
 import org.dejava.service.contact.model.Contact;
 import org.dejava.service.party.util.MessageTypes;
+import org.dejava.service.place.interfac.Addressable;
 import org.dejava.service.place.model.Place;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -31,7 +33,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "party")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Party extends AbstractIdentifiedEntity {
+public abstract class Party extends AbstractIdentifiedEntity implements Contactable, Addressable {
 
 	/**
 	 * Generated serial.
@@ -97,10 +99,9 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	private Collection<Place> addresses;
 
 	/**
-	 * Gets the addresses.
-	 * 
-	 * @return The addresses.
+	 * @see org.dejava.service.place.interfac.Addressable#getAddresses()
 	 */
+	@Override
 	@Transient
 	@Valid
 	public Collection<Place> getAddresses() {
@@ -114,11 +115,9 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	}
 
 	/**
-	 * Sets the addresses.
-	 * 
-	 * @param addresses
-	 *            New addresses.
+	 * @see org.dejava.service.place.interfac.Addressable#setAddresses(java.util.Collection)
 	 */
+	@Override
 	public void setAddresses(final Collection<Place> addresses) {
 		this.addresses = addresses;
 	}
@@ -130,10 +129,9 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	private Collection<Contact> contacts;
 
 	/**
-	 * Gets the contacts.
-	 * 
-	 * @return The contacts.
+	 * @see org.dejava.service.contact.interfac.Contactable#getContacts()
 	 */
+	@Override
 	@Transient
 	@Valid
 	@NotNull(payload = MessageTypes.Error.class, message = "party.contacts.notnull")
@@ -149,14 +147,9 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	}
 
 	/**
-	 * Gets the contacts for the given type.
-	 * 
-	 * @param contactType
-	 *            Any contact type
-	 * @param <ConcreteContact>
-	 *            A concrete contact type.
-	 * @return The contacts for the given type.
+	 * @see org.dejava.service.contact.interfac.Contactable#getContacts(java.lang.Class)
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	@Transient
 	public <ConcreteContact extends Contact> Collection<ConcreteContact> getContacts(
@@ -176,13 +169,36 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	}
 
 	/**
-	 * Sets the contacts.
-	 * 
-	 * @param contacts
-	 *            New contacts.
+	 * @see org.dejava.service.contact.interfac.Contactable#setContacts(java.util.Collection)
 	 */
+	@Override
 	public void setContacts(final Collection<Contact> contacts) {
 		this.contacts = contacts;
+	}
+
+	/**
+	 * The user (identifier).
+	 */
+	private Integer user;
+
+	/**
+	 * Gets the user (identifier).
+	 * 
+	 * @return The user (identifier).
+	 */
+	@Column(name = "u5er")
+	public Integer getUser() {
+		return user;
+	}
+
+	/**
+	 * Sets the user (identifier).
+	 * 
+	 * @param user
+	 *            New user (identifier).
+	 */
+	public void setUser(final Integer user) {
+		this.user = user;
 	}
 
 	/**
@@ -221,5 +237,13 @@ public abstract class Party extends AbstractIdentifiedEntity {
 	protected void updateAllExtEntitiesIds() {
 		// Updates the external entities ids.
 		updateAddressesIds();
+	}
+
+	/**
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return getDisplayName();
 	}
 }

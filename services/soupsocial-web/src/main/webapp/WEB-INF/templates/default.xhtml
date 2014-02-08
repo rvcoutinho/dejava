@@ -59,14 +59,15 @@
 								rendered="#{!(userController.subject.authenticated or userController.subject.remembered)}">Conectar</h:outputLink>
 							<h:panelGroup
 								rendered="#{(userController.subject.authenticated or userController.subject.remembered)}">
-								<div class="sub-menu ui-corner-all">
+								<div class="sub-menu right square-box ui-corner-all">
 									<a href="#" class="featured-text-1 open light-gray-text"><i
-										class="fa fa-bell fa-2x"><span class="orange-bg"
-											style="display: none;">10</span></i></a>
+										class="fa fa-bell fa-2x"><h:panelGroup
+												rendered="#{appNotificationsController.countUnread() gt 0}">
+												<span class="event-count orange-bg smaller-text">#{appNotificationsController.countUnread()}</span>
+											</h:panelGroup></i></a>
 									<ul class="white-bg ui-corner-all">
-										<ui:repeat varStatus="currentNotificationStatus"
-											var="currentNotification"
-											value="#{appNotificationsController.notifications}">
+										<ui:repeat var="currentOrg"
+											value="#{userOrganizationsController.nonProfitOrgs}">
 											<li class="last-sub-item"><h:link
 													outcome="pretty:notifications" styleClass="gray-text">#{currentNotification.content.getMessage(appNotificationsController.facesMessageHandler)} <time>
 														<h:outputText value="#{currentNotification.date}">
@@ -81,7 +82,8 @@
 								<!-- <h:link styleClass="featured-text-1 ui-state-default">
 								<span class="ui-icon ui-icon-mail-closed notification-info"><span
 									class="orange-bg">10</span></span> </h:link> -->
-								<div class="sub-menu user-menu light-green-bg ui-corner-all">
+								<div
+									class="sub-menu right square-box user-menu light-green-bg ui-corner-all">
 									<h:link outcome="pretty:me" styleClass="featured-text-1">
 										<img class="ui-corner-left"
 											src="https://graph.facebook.com/me/picture?access_token=#{userController.subject.session.getAttribute('access_token')}" />
@@ -94,8 +96,20 @@
 										<li><h:link outcome="pretty:me">Projetos e ideias com o seu perfil</h:link></li>
 										<li><h:link outcome="pretty:me">Meus projetos e ideias</h:link></li>
 										<li class="last-sub-item"><h:link outcome="pretty:me">Projetos e ideias apoiados</h:link></li>
-										<li><h:link outcome="pretty:me">Minhas organizações</h:link></li>
-										<li class="last-sub-item"><h:link outcome="pretty:me">Minhas empresas</h:link></li>
+										<li><h:link outcome="pretty:me"
+												rendered="#{not empty userOrganizationsController.nonProfitOrgs}">Minhas organizações</h:link>
+											<h:panelGroup
+												rendered="#{empty userOrganizationsController.nonProfitOrgs}">
+												<a href="#" onclick="showModal('ngo-create');">Cadastrar
+													organização</a>
+											</h:panelGroup></li>
+										<li class="last-sub-item"><h:link outcome="pretty:me"
+												rendered="#{not empty userOrganizationsController.sponsors}">Minhas empresas patrocinadoras</h:link>
+											<h:panelGroup
+												rendered="#{empty userOrganizationsController.sponsors}">
+												<a href="#" onclick="showModal('sponsor-create');">Cadastrar
+													patrocinador</a>
+											</h:panelGroup></li>
 										<li><h:form>
 												<h:commandLink action="#{userController.logout()}">Sair</h:commandLink>
 											</h:form></li>
@@ -168,10 +182,10 @@
 				<ul>
 					<li class="title"><a class="featured-text-1">Mudando o
 							mundo</a></li>
-					<li><a class="small-text" href="#" onclick="createIdea();">Dar
-							uma ideia</a></li>
-					<li><a class="small-text" href="#" onclick="createProject();">Criar
-							um projeto</a></li>
+					<li><a class="small-text" href="#"
+						onclick="showModal('idea-create');">Dar uma ideia</a></li>
+					<li><a class="small-text" href="#"
+						onclick="showModal('project-create');">Criar um projeto</a></li>
 					<li><h:link outcome="pretty:projectIdeas"
 							styleClass="small-text">Apoiar ideias
 					</h:link></li>
@@ -221,6 +235,8 @@
 		</footer>
 		<ui:include src="/WEB-INF/include/new-idea.xhtml" />
 		<ui:include src="/WEB-INF/include/new-project.xhtml" />
+		<ui:include src="/WEB-INF/include/new-ngo.xhtml" />
+		<ui:include src="/WEB-INF/include/new-sponsor.xhtml" />
 		<section id="messages" class="hidden-dialog">
 			<h:panelGroup>
 				<h:messages />
@@ -234,6 +250,23 @@
 		<div id="fb-root"></div>
 		<script>
 		//<![CDATA[
+			// Gets the url parameters.
+			function getURLParams() {
+				// Creates a new array for the URL parameters.
+				var urlParams = {};
+				// Populates the array with the parameters.
+				var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+					function(m,key,value) {
+					urlParams[key] = value;
+					});
+				// Return the URL parameters.
+				return urlParams;
+			}
+			// Gets the URL parameters.
+			var urlParams = getURLParams();
+			$(function() {
+				$('.flexslider.banner').flexslider({animation: "slide"});
+			});
 			(function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0];
 				if (d.getElementById(id)) return;
@@ -255,54 +288,51 @@
 				});
 			});
 			$(function() {
-   				$('input.date').mask('00/00/0000', {placeholder: " "});
-   				$('input.phone').mask('(00) 0000-00000', {placeholder: " "});
-   				$('input.cpf').mask('000.000.000-00', {placeholder: " "});
-   				$('input.cnpj').mask('00.000.000/0000-00', {placeholder: " "});
+   				$('input.date').mask('00/00/0000');
+   				$('input.phone').mask('(00) 0000-00009');
+   				$('input.cpf').mask('000.000.000-00');
+   				$('input.cnpj').mask('00.000.000/0000-00');
 			});
-			function createIdea() {
-				$('#idea-create').dialog({ modal: true, draggable: false, minWidth: 500 });
-				$('#idea-create .place').geocomplete({details: '#idea-create .place-detail', detailsAttribute: 'data-geo'});
-				$('#idea-create .flexslider').flexslider({
-					animation: 'slide',
-					animationLoop: false, 
-					slideshow: false, 
-					controlNav: false, 
-					directionNav: false,
-					start: function(slider) {
-					    $('#idea-create .slides li .previous').click(function(event){
-					        event.preventDefault();
-					        slider.flexAnimate(slider.getTarget('previous'));
-					    });
-					    $('#idea-create .slides li .next').click(function(event){
-					        event.preventDefault();
-					        slider.flexAnimate(slider.getTarget('next'));
-					    });
-					}
+			function showModal(modalId) {
+				$('#' + modalId).dialog({ modal: true, draggable: false, minWidth: 500 });
+				$('#' + modalId + ' .place').geocomplete({details: '#' + modalId + ' .place-detail', detailsAttribute: 'data-geo'});
+				$(function() {
+					$('#' + modalId + ' .flexslider.clean').flexslider({
+						animation: 'slide',
+						animationLoop: false, 
+						slideshow: false, 
+						controlNav: false, 
+						directionNav: false,
+						start: function(slider) {
+						    $('#' + modalId + ' .flexslider.clean .slides li .previous').click(function(event){
+						        event.preventDefault();
+						        slider.flexAnimate(slider.getTarget('previous'));
+						    });
+						    $('#' + modalId + ' .flexslider.clean .slides li .next').click(function(event){
+						        event.preventDefault();
+						        slider.flexAnimate(slider.getTarget('next'));
+						    });
+						}
+					})
 				});
 			};
-			function createProject() {
-				$('#project-create').dialog({ modal: true, draggable: false, minWidth: 500 });
-				$('#project-create .place').geocomplete({details: '#project-create .place-detail', detailsAttribute: 'data-geo'});
-				$('#project-create .flexslider').flexslider({
-					animation: 'slide',
-					animationLoop: false, 
-					slideshow: false, 
-					controlNav: false, 
-					directionNav: false,
-					start: function(slider) {
-					    $('#project-create .slides li .previous').click(function(event){
-					        event.preventDefault();
-					        slider.flexAnimate(slider.getTarget('previous'));
-					    });
-					    $('#project-create .slides li .next').click(function(event){
-					        event.preventDefault();
-					        slider.flexAnimate(slider.getTarget('next'));
-					    });
-					}
+			$(function autoShowModal() {
+				if ('m' in urlParams) {
+					showModal(urlParams['m']);
+				}
+			});
+			$(".sub-menu.left .open").click(function() {
+				var submenu = $(this).next().show().position({
+					my: "left top+4",
+					at: "left bottom",
+					of: this
 				});
-			};
-			$(".sub-menu .open").click(function() {
+				$(document).one( "click", function() {
+					submenu.hide();
+				});
+				return false;
+			});
+			$(".sub-menu.right .open").click(function() {
 				var submenu = $(this).next().show().position({
 					my: "right top+4",
 					at: "right bottom",

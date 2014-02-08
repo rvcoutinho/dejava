@@ -6,7 +6,7 @@ import org.dejava.component.i18n.source.annotation.MessageSources;
 /**
  * Defines the mail configuration keys (should exist in the properties file).
  */
-@MessageSources(sources = { @MessageSource(sourcePath = "../service-properties/src/main/resources", availableLocales = { "" }, description = "Mail configuration properties", bundleBaseName = "org.dejava.properties.mail-config", processors = "org.dejava.component.i18n.source.processor.impl.ConstantValuesEntryProcessor") })
+@MessageSources(sources = { @MessageSource(availableLocales = { "" }, description = "Mail configuration properties", bundleBaseName = "org.dejava.properties.mail-config", processors = "org.dejava.component.i18n.source.processor.impl.ConstantValuesEntryProcessor") })
 public class MailConfigKeys {
 
 	/**

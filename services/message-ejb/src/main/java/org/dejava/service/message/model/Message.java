@@ -45,6 +45,31 @@ public abstract class Message extends AbstractIdentifiedEntity {
 	public abstract Serializable getContent();
 
 	/**
+	 * Date when the message has been read.
+	 */
+	private Date read;
+
+	/**
+	 * Gets the date when the message has been read.
+	 * 
+	 * @return The date when the message has been read.
+	 */
+	@Column(name = "read")
+	public Date getRead() {
+		return read;
+	}
+
+	/**
+	 * Sets the date when the message has been read.
+	 * 
+	 * @param read
+	 *            The date when the message has been read.
+	 */
+	public void setRead(Date read) {
+		this.read = read;
+	}
+
+	/**
 	 * Date of the message.
 	 */
 	private Date date;

@@ -28,4 +28,17 @@ public class PhilanthropyPartyDAO extends AbstractGenericDAO<PhilanthropyParty, 
 		return entityManager;
 	}
 
+	/**
+	 * @see org.dejava.component.ejb.dao.AbstractGenericDAO#merge(java.lang.Object)
+	 */
+	@Override
+	public PhilanthropyParty merge(final PhilanthropyParty entity) {
+		// Merges the party.
+		final PhilanthropyParty newParty = super.merge(entity);
+		// Asserts that the original party is set.
+		newParty.setParty(entity.getParty());
+		// Returns the merged party.
+		return newParty;
+	}
+
 }

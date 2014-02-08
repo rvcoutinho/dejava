@@ -25,6 +25,21 @@
 			<artifactId>accesscontrol-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>party-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>contact-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>place-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
 
 		<dependency>
 			<groupId>org.dejava.component</groupId>

@@ -20,9 +20,10 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.dejava.properties.constant.FacebookAPIKeys;
 import org.dejava.service.accesscontrol.authc.FacebookUserToken;
-import org.dejava.service.accesscontrol.component.UserComponent;
-import org.dejava.service.accesscontrol.controller.NewUserController;
+import org.dejava.service.accesscontrol.component.UserAuthenticationComponent;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
+import org.dejava.service.party.component.PartyTaskComponent;
+import org.dejava.service.party.util.PartyCtx;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -176,18 +177,18 @@ public class FacebookLoginServlet extends HttpServlet {
 	}
 
 	/**
-	 * The user EJB component.
+	 * The user authentication EJB component.
 	 */
 	@Inject
 	@AccessControlCtx
-	private UserComponent userComponent;
+	private UserAuthenticationComponent userAuthenticationComponent;
 
 	/**
-	 * The user controller.
+	 * The party EJB component.
 	 */
 	@Inject
-	@AccessControlCtx
-	private NewUserController newUserController;
+	@PartyCtx
+	private PartyTaskComponent partyComponent;
 
 	/**
 	 * Log the facebook user in.
@@ -219,19 +220,10 @@ public class FacebookLoginServlet extends HttpServlet {
 		}
 		// If there is a logged facebook user.
 		else {
-			// If there is not a facebook principal for the facebook user id.
-			if (userComponent.getByFacebookUser(fbUser) == null) {
+			// If the user does not exist yet.
+			if (userAuthenticationComponent.getUserByFacebookUserIdOrEmail(fbUser.getId(), fbUser.getEmail()) == null) {
 				// Creates a new user with facebook information.
-				newUserController.getNewUser(fbUser);
-				// If the facebook email is not present.
-				if ((fbUser.getEmail() == null) || (fbUser.getEmail().isEmpty())) {
-					// Redirects to the email form page. TODO
-				}
-				// If the facebook email is present.
-				else {
-					// Creates a new user.
-					newUserController.createNewUser();
-				}
+				partyComponent.createPersonAndUser(fbUser);
 			}
 			// Creates a new facebook authentication token.
 			final FacebookUserToken facebookToken = new FacebookUserToken(fbUser.getId());

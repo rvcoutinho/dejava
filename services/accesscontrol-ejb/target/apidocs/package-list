@@ -1,11 +1,11 @@
 org.dejava.service.accesscontrol.authc
+org.dejava.service.accesscontrol.businessrule
 org.dejava.service.accesscontrol.cache
 org.dejava.service.accesscontrol.component
-org.dejava.service.accesscontrol.component.crendentials
-org.dejava.service.accesscontrol.component.principal
 org.dejava.service.accesscontrol.constant
 org.dejava.service.accesscontrol.dao
 org.dejava.service.accesscontrol.dao.credentials
+org.dejava.service.accesscontrol.dao.permission
 org.dejava.service.accesscontrol.dao.principal
 org.dejava.service.accesscontrol.exception
 org.dejava.service.accesscontrol.interceptor

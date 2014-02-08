@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -15,6 +17,7 @@ import org.dejava.component.i18n.message.handler.MessageCommand;
 @Entity
 @Table(name = "app_notification")
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQueries(value = { @NamedQuery(name = "countUnreadAppNotificationsByRecipient", query = "SELECT count(notification) FROM AppNotification notification WHERE notification.recipient = :recipient AND notification.read IS NULL") })
 public class AppNotification extends Message {
 
 	/**

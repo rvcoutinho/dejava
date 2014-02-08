@@ -68,8 +68,7 @@
 								onclick="$('#how-ngos-content').slideDown(1000);">Para
 								instituições</a>
 							<button class="dark-green-bg right-button"
-								onclick="$('#ngo-create').dialog({ modal: true, draggable: false, minWidth: 450 });
-									$('#ngo-create .place').geocomplete({details: '#ngo-create .place-detail', detailsAttribute: 'data-geo'});">
+								onclick="showModal('ngo-create');">
 								cadastrar instituição
 								<h:graphicImage library="soupsocial" class="spoon"
 									name="gfx/spoon.png" />
@@ -125,7 +124,7 @@
 							&gt; <a href="#"
 								onclick="$('#how-investors-content').slideDown(1000);">Para
 								empresas</a>
-							<button class="dark-green-bg right-button">
+							<button class="dark-green-bg right-button" onclick="showModal('sponsor-create');">
 								cadastrar patrocinador
 								<h:graphicImage library="soupsocial" class="spoon"
 									name="gfx/spoon.png" />

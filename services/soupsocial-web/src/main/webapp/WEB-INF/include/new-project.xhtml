@@ -7,7 +7,7 @@
 	<section id="project-create" class="hidden-dialog form-content"
 		title="Dê sua ideia por um mundo melhor!">
 		<h:form id="project-create-form">
-			<div class="flexslider">
+			<div class="flexslider clean">
 				<ul class="slides">
 					<li>
 						<div>
@@ -58,6 +58,11 @@
 									id="project-create-address-reference"
 									value="#{newProjectPlanController.addressReference}"
 									p:data-geo="reference" /></span>
+							<script>
+								$(function() {
+									$('#project-create .place').geocomplete({details: '#project-create .place-detail', detailsAttribute: 'data-geo'});
+								});
+							</script>
 						</div>
 						<div class="buttons">
 							<div>
@@ -137,11 +142,13 @@
 							</h:selectOneMenu>
 						</div>
 						<div>
-							<h:outputLabel>Instituições indicadas</h:outputLabel>
+							<h:outputLabel>Instituição</h:outputLabel>
 							:
-							<h:inputText id="project-create-ngos-1" />
-							<h:inputText id="project-create-ngos-2" />
-							<h:inputText id="project-create-ngos-3" />
+							<h:selectOneMenu id="project-create-organization"
+								value="#{newProjectPlanController.newProjectPlan.organization}">
+								<f:selectItems
+									value="#{userOrganizationsController.nonProfitOrgs}" />
+							</h:selectOneMenu>
 						</div>
 						<div>
 							<h:outputLabel for="project-create-tags">Tags</h:outputLabel>

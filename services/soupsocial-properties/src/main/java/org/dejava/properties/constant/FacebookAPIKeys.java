@@ -6,7 +6,7 @@ import org.dejava.component.i18n.source.annotation.MessageSources;
 /**
  * Defines the facebook app keys (should exist in the properties file).
  */
-@MessageSources(sources = { @MessageSource(sourcePath = "../service-properties/src/main/resources", availableLocales = { "" }, description = "Facebook app properties", bundleBaseName = "org.dejava.properties.facebook-api", processors = "org.dejava.component.i18n.source.processor.impl.ConstantValuesEntryProcessor") })
+@MessageSources(sources = { @MessageSource(availableLocales = { "" }, description = "Facebook app properties", bundleBaseName = "org.dejava.properties.facebook-api", processors = "org.dejava.component.i18n.source.processor.impl.ConstantValuesEntryProcessor") })
 public class FacebookAPIKeys {
 
 	/**

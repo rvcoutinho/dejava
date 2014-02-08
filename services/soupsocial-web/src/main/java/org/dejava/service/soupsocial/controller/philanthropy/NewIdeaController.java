@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.dejava.service.accesscontrol.interceptor.Secured;
-import org.dejava.service.philanthropy.component.project.PhilanthropyProjectComponent;
+import org.dejava.service.philanthropy.component.PhilanthropyProjectComponent;
 import org.dejava.service.philanthropy.model.party.Supporter;
 import org.dejava.service.philanthropy.model.project.plan.ProjectIdea;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
@@ -26,7 +26,7 @@ import org.dejava.service.soupsocial.util.SoupSocialCtx;
 @ConversationScoped
 @SoupSocialCtx
 @Named("newProjectIdeaController")
-public class NewProjectIdeaController extends AbstractNewProjectController implements Serializable {
+public class NewIdeaController extends AbstractNewProjectController implements Serializable {
 
 	/**
 	 * Generated serial.
@@ -45,7 +45,7 @@ public class NewProjectIdeaController extends AbstractNewProjectController imple
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyProjectComponent philanthropyProjectComponent;
+	private PhilanthropyProjectComponent projectComponent;
 
 	/**
 	 * The new project idea.
@@ -96,7 +96,7 @@ public class NewProjectIdeaController extends AbstractNewProjectController imple
 		// Updates the idea goals.
 		getNewProjectIdea().setGoals(getGoals());
 		// Creates the project.
-		philanthropyProjectComponent.addOrUpdate(getNewProject());
+		projectComponent.createIdea(getNewProject());
 		// Adds a success message to the context. FIXME
 		facesContext.addMessage(null, new FacesMessage("Mensagem de teste", "Detalhe da mensagem de teste"));
 	}

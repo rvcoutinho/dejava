@@ -7,7 +7,7 @@
 	<section id="idea-create" class="hidden-dialog form-content"
 		title="Dê sua ideia por um mundo melhor!">
 		<h:form id="idea-create-form">
-			<div class="flexslider">
+			<div class="flexslider clean">
 				<ul class="slides">
 					<li>
 						<div>
@@ -33,8 +33,8 @@
 						<div>
 							<h:outputLabel>Foto</h:outputLabel>
 							:
-							<!-- <h:inputFile id="idea-create-display-image"
-									value="#{newProjectIdeaController.displayImage}" /> -->
+							<!--  <h:inputFile id="idea-create-display-image"
+								value="#{newProjectIdeaController.displayImage}" /> -->
 						</div>
 						<div>
 							<h:outputLabel for="idea-create-video">Vídeo</h:outputLabel>
@@ -58,6 +58,11 @@
 									id="idea-create-address-reference"
 									value="#{newProjectIdeaController.addressReference}"
 									p:data-geo="reference" /></span>
+							<script>
+								$(function() {
+									$('#idea-create .place').geocomplete({details: '#idea-create .place-detail', detailsAttribute: 'data-geo'});
+								});
+							</script>
 						</div>
 						<div class="buttons">
 							<div>

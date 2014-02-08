@@ -18,12 +18,27 @@
 
 		<dependency>
 			<groupId>org.dejava.service</groupId>
+			<artifactId>accesscontrol-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>message-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
 			<artifactId>party-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.dejava.service</groupId>
 			<artifactId>place-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>contact-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
 
@@ -36,6 +51,10 @@
 			<artifactId>exception</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.restfb</groupId>
 			<artifactId>restfb</artifactId>

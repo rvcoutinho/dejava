@@ -25,14 +25,16 @@ import javax.persistence.PostPersist;
 import javax.persistence.PostUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.component.validation.constant.MessageTemplateWildCards;
 import org.dejava.component.validation.method.ArgFormatter;
-import org.dejava.service.philanthropy.component.share.ProjectShareComponent;
+import org.dejava.service.philanthropy.component.PhilanthropyProjectComponent;
 import org.dejava.service.philanthropy.model.Category;
 import org.dejava.service.philanthropy.model.party.Sponsor;
 import org.dejava.service.philanthropy.model.project.plan.ProjectIdea;
@@ -47,8 +49,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "project")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries(value = {
-		@NamedQuery(name = "getAllCreatedBySupporter", query = "SELECT author.project FROM ProjectAuthor author WHERE author.supporter.identifier = :supporterId"),
-		@NamedQuery(name = "getAllSharedBySupporter", query = "SELECT share.project FROM ProjectShare share WHERE share.supporter.identifier = :supporterId") })
+		@NamedQuery(name = "countCreatedBySupporter", query = "SELECT count(author) FROM ProjectAuthor author WHERE author.supporter.identifier = :supporterId"),
+		@NamedQuery(name = "getCreatedBySupporter", query = "SELECT author.project FROM ProjectAuthor author WHERE author.supporter.identifier = :supporterId"),
+		@NamedQuery(name = "getSharedBySupporter", query = "SELECT share.project FROM ProjectShare share WHERE share.supporter.identifier = :supporterId") })
 @MessageSources(sources = {
 		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
 		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.error", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
@@ -135,6 +138,11 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The project initial idea.
 	 */
+	@Valid
+	@Null(groups = ProjectPlan.class, payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".idea.null")
+	@NotNull(groups = ProjectIdea.class, payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".idea.notnull")
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "idea")
 	public ProjectIdea getIdea() {
@@ -161,6 +169,11 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The project initial plan.
 	 */
+	@Valid
+	@Null(groups = ProjectIdea.class, payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".plan.null")
+	@NotNull(groups = ProjectPlan.class, payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".plan.notnull")
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "plan")
 	public ProjectPlan getPlan() {
@@ -303,6 +316,25 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	}
 
 	/**
+	 * Default constructor.
+	 */
+	public PhilanthropyProject() {
+		super();
+	}
+
+	/**
+	 * Default constructor.
+	 * 
+	 * @param identifier
+	 *            The project identifier.
+	 */
+	public PhilanthropyProject(final Integer identifier) {
+		super();
+		// Sets the project identifier.
+		setIdentifier(identifier);
+	}
+
+	/**
 	 * Counts and updates the number of project shares.
 	 * 
 	 * @throws NamingException
@@ -313,11 +345,11 @@ public class PhilanthropyProject extends AbstractIdentifiedEntity {
 	@PostPersist
 	@Transient
 	private void countSharesByProject() throws NamingException {
-		// Gets the project share component.
-		final ProjectShareComponent projectShareComponent = InitialContext
-				.doLookup("java:app/philanthropy-ejb/Component/Philanthropy/ProjectShare");
+		// Gets the project component.
+		final PhilanthropyProjectComponent projectComponent = InitialContext
+				.doLookup("java:app/philanthropy-ejb/Component/Philanthropy/PhilanthropyProject");
 		// Sets the shares for the project.
-		setShares(projectShareComponent.countSharesByProject(getIdentifier()));
+		setShares(projectComponent.countProjectSharesByProject(getIdentifier()));
 	}
 
 }

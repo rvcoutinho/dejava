@@ -17,8 +17,8 @@ import org.dejava.service.soupsocial.util.SoupSocialCtx;
 /**
  * Application notifications controller.
  */
-@RequestScoped
 @SoupSocialCtx
+@RequestScoped
 @Named("appNotificationsController")
 public class AppNotificationsController {
 
@@ -43,14 +43,31 @@ public class AppNotificationsController {
 	 */
 	public Collection<AppNotification> getNotifications() {
 		// If the user is not logged in.
-		if (userController.getParty() == null) {
+		if ((!userController.getSubject().isAuthenticated()) && (!userController.getSubject().isRemembered())) {
 			return null;
 		}
 		// If the user is logged in.
 		else {
 			// Returns the current user notifications.
-			return appNotificationComponent.getByAttribute("recipient", userController.getParty()
-					.getIdentifier(), null, null);
+			return appNotificationComponent.getByRecipient(userController.getParty().getIdentifier(), null,
+					null);
+		}
+	}
+
+	/**
+	 * Counts the unread notifications for the current user.
+	 * 
+	 * @return The unread notifications for the current user.
+	 */
+	public Long countUnread() {
+		// If the user is not logged in.
+		if ((!userController.getSubject().isAuthenticated()) && (!userController.getSubject().isRemembered())) {
+			return new Long(0);
+		}
+		// If the user is logged in.
+		else {
+			// Returns the current user unread notifications count.
+			return appNotificationComponent.countUnreadByParty(userController.getParty().getIdentifier());
 		}
 	}
 

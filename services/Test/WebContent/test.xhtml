@@ -6,9 +6,9 @@
 	<h:head>
 	</h:head>
 	<h:body>
-		<h:form id="testForm">
-			<h:inputFile id="file" value="#{test.part}" />
-			<h:commandButton value="Upload" action="#{test.test}" />
+		<h:form enctype="multipart/form-data">
+			<h:inputFile value="#{test.part}" />
+			<h:commandButton value="Upload" action="#{test.test()}" />
 		</h:form>
 	</h:body>
 </f:view>

@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
-import org.dejava.service.philanthropy.dao.project.author.ProjectAuthorDAO;
 import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 
@@ -33,6 +32,23 @@ public class PhilanthropyProjectDAO extends AbstractGenericDAO<PhilanthropyProje
 	}
 
 	/**
+	 * Counts the number of ideas for a supporter.
+	 * 
+	 * @param supporterId
+	 *            The supporter id.
+	 * @return The number of ideas for a supporter.
+	 */
+	public Long countCreatedBySupporter(final Integer supporterId) {
+		// Gets the named query for the count.
+		final TypedQuery<Long> countCreatedBySupporter = getEntityManager().createNamedQuery(
+				"countCreatedBySupporter", Long.class);
+		// Sets the supporter id to the named query.
+		countCreatedBySupporter.setParameter("supporterId", supporterId);
+		// Returns the result for the count.
+		return countCreatedBySupporter.getSingleResult();
+	}
+
+	/**
 	 * Gets the projects created by a supporter.
 	 * 
 	 * @param supporterId
@@ -43,17 +59,17 @@ public class PhilanthropyProjectDAO extends AbstractGenericDAO<PhilanthropyProje
 	 *            The maximum numbers of results to be considered by the query.
 	 * @return The projects created by a supporter.
 	 */
-	public Collection<PhilanthropyProject> getAllCreatedBySupporter(final Integer supporterId,
+	public Collection<PhilanthropyProject> getCreatedBySupporter(final Integer supporterId,
 			final Integer firstResult, final Integer maxResults) {
 		// Gets the named query for the method.
-		final TypedQuery<PhilanthropyProject> getAllCreatedBySupporter = getEntityManager().createNamedQuery(
-				"getAllCreatedBySupporter", PhilanthropyProject.class);
+		final TypedQuery<PhilanthropyProject> getCreatedBySupporter = getEntityManager().createNamedQuery(
+				"getCreatedBySupporter", PhilanthropyProject.class);
 		// Sets the supporter id to the named query.
-		getAllCreatedBySupporter.setParameter("supporterId", supporterId);
+		getCreatedBySupporter.setParameter("supporterId", supporterId);
 		// Limits the query results.
-		limitResultList(getAllCreatedBySupporter, firstResult, maxResults);
+		limitResultList(getCreatedBySupporter, firstResult, maxResults);
 		// Returns the result for the query.
-		return getAllCreatedBySupporter.getResultList();
+		return getCreatedBySupporter.getResultList();
 	}
 
 	/**
@@ -67,24 +83,17 @@ public class PhilanthropyProjectDAO extends AbstractGenericDAO<PhilanthropyProje
 	 *            The maximum numbers of results to be considered by the query.
 	 * @return The projects shared by a supporter.
 	 */
-	public Collection<PhilanthropyProject> getAllSharedBySupporter(final Integer supporterId,
+	public Collection<PhilanthropyProject> getSharedBySupporter(final Integer supporterId,
 			final Integer firstResult, final Integer maxResults) {
 		// Gets the named query for the method.
-		final TypedQuery<PhilanthropyProject> getAllSharedBySupporter = getEntityManager().createNamedQuery(
-				"getAllSharedBySupporter", PhilanthropyProject.class);
+		final TypedQuery<PhilanthropyProject> getSharedBySupporter = getEntityManager().createNamedQuery(
+				"getSharedBySupporter", PhilanthropyProject.class);
 		// Sets the supporter id to the named query.
-		getAllSharedBySupporter.setParameter("supporterId", supporterId);
+		getSharedBySupporter.setParameter("supporterId", supporterId);
 		// Limits the query results.
-		limitResultList(getAllSharedBySupporter, firstResult, maxResults);
+		limitResultList(getSharedBySupporter, firstResult, maxResults);
 		// Returns the result for the query.
-		return getAllSharedBySupporter.getResultList();
+		return getSharedBySupporter.getResultList();
 	}
-
-	/**
-	 * The project author DAO.
-	 */
-	@Inject
-	@PhilanthropyCtx
-	private ProjectAuthorDAO projectAuthorDAO;
 
 }

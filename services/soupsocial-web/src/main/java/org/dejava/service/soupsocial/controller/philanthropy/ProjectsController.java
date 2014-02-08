@@ -7,8 +7,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.dejava.service.philanthropy.component.project.PhilanthropyProjectComponent;
-import org.dejava.service.philanthropy.component.share.ProjectShareComponent;
+import org.dejava.service.philanthropy.component.PhilanthropyProjectComponent;
 import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.soupsocial.controller.user.UserController;
@@ -32,12 +31,12 @@ public class ProjectsController implements Serializable {
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyProjectComponent philanthropyProjectComponent;
+	private PhilanthropyProjectComponent projectComponent;
 
 	/**
 	 * Ideas for the given filter.
 	 */
-	private Collection<PhilanthropyProject> projectIdeas;
+	private Collection<PhilanthropyProject> ideas;
 
 	/**
 	 * Gets the project ideas for the given filter.
@@ -45,23 +44,23 @@ public class ProjectsController implements Serializable {
 	 * @return The project ideas for the given filter.
 	 */
 	public Collection<PhilanthropyProject> getProjectIdeas() {
-		// If there are no projectIdeas.
-		if (projectIdeas == null) {
-			// Gets the project ideas for the filter.
-			projectIdeas = philanthropyProjectComponent.getAllProjectIdeas(null, null);
+		// If there are no ideas.
+		if (ideas == null) {
+			// Gets the ideas for the filter.
+			ideas = projectComponent.getIdeas(null, null);
 		}
-		// Returns the projectIdeas.
-		return projectIdeas;
+		// Returns the ideas.
+		return ideas;
 	}
 
 	/**
 	 * Sets the project ideas for the given filter.
 	 * 
-	 * @param projectIdeas
+	 * @param ideas
 	 *            New project ideas for the given filter.
 	 */
-	public void setProjectIdeas(final Collection<PhilanthropyProject> projectIdeas) {
-		this.projectIdeas = projectIdeas;
+	public void setProjectIdeas(final Collection<PhilanthropyProject> ideas) {
+		this.ideas = ideas;
 	}
 
 	/**
@@ -78,7 +77,7 @@ public class ProjectsController implements Serializable {
 		// If there are no projectPlans.
 		if (projectPlans == null) {
 			// Gets the project ideas for the filter.
-			projectPlans = philanthropyProjectComponent.getAllProjectPlans(null, null);
+			projectPlans = projectComponent.getPlannedProjects(null, null);
 		}
 		// Returns the projectPlans.
 		return projectPlans;
@@ -107,7 +106,7 @@ public class ProjectsController implements Serializable {
 	 * @return The projects created by a supporter.
 	 */
 	public Collection<PhilanthropyProject> getProjectsCreatedBySupporter() {
-		return philanthropyProjectComponent.getAllCreatedBySupporter(userController.getPhilanthropyParty()
+		return projectComponent.getProjectsCreatedBySupporter(userController.getPhilanthropyParty()
 				.getIdentifier(), null, null);
 	}
 
@@ -116,17 +115,10 @@ public class ProjectsController implements Serializable {
 	 * 
 	 * @return The number of ideas for a supporter.
 	 */
-	public Long countIdeasBySupporter() {
-		return philanthropyProjectComponent.countIdeasBySupporter(userController.getPhilanthropyParty()
+	public Long countCreatedBySupporter() {
+		return projectComponent.countProjectsCreatedBySupporter(userController.getPhilanthropyParty()
 				.getIdentifier());
 	}
-
-	/**
-	 * The project share component.
-	 */
-	@Inject
-	@PhilanthropyCtx
-	private ProjectShareComponent projectShareComponent;
 
 	/**
 	 * Gets the projects shared by a supporter.
@@ -134,7 +126,7 @@ public class ProjectsController implements Serializable {
 	 * @return The projects shared by a supporter.
 	 */
 	public Collection<PhilanthropyProject> getProjectsSharedBySupporter() {
-		return philanthropyProjectComponent.getAllSharedBySupporter(userController.getPhilanthropyParty()
+		return projectComponent.getProjectsSharedBySupporter(userController.getPhilanthropyParty()
 				.getIdentifier(), null, null);
 	}
 
@@ -144,7 +136,7 @@ public class ProjectsController implements Serializable {
 	 * @return The number of shares for a supporter.
 	 */
 	public Long countSharesBySupporter() {
-		return projectShareComponent.countSharesBySupporter(userController.getPhilanthropyParty()
+		return projectComponent.countProjectSharesBySupporter(userController.getPhilanthropyParty()
 				.getIdentifier());
 	}
 

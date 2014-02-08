@@ -7,9 +7,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.dejava.service.philanthropy.component.project.PhilanthropyProjectComponent;
-import org.dejava.service.philanthropy.component.share.ProjectShareComponent;
-import org.dejava.service.philanthropy.model.party.Supporter;
+import org.dejava.service.philanthropy.component.PhilanthropyProjectComponent;
+import org.dejava.service.philanthropy.model.party.NonProfitOrg;
 import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.soupsocial.controller.user.UserController;
@@ -87,18 +86,11 @@ public class ProjectController implements Serializable {
 		// If the project is null.
 		if (project == null) {
 			// Gets the project by its id.
-			project = projectComponent.getById(getProjectId());
+			project = projectComponent.getProject(getProjectId());
 		}
 		// Returns the project.
 		return project;
 	}
-
-	/**
-	 * The project share EJB component.
-	 */
-	@Inject
-	@PhilanthropyCtx
-	private ProjectShareComponent projectShareComponent;
 
 	/**
 	 * The subject.
@@ -112,8 +104,8 @@ public class ProjectController implements Serializable {
 	 */
 	public void supportProject() {
 		// Shares the project.
-		final Long shares = projectShareComponent.share(getProject(),
-				(Supporter) userController.getPhilanthropyParty());
+		final Long shares = projectComponent.shareProject(getProject().getIdentifier(), userController
+				.getPhilanthropyParty().getIdentifier());
 		// Updates the project shares.
 		getProject().setShares(shares);
 	}
@@ -160,5 +152,16 @@ public class ProjectController implements Serializable {
 			// Returns "1, 2" (the second and third tabs).
 			return "1, 2";
 		}
+	}
+
+	/**
+	 * Proposes a new plan for a project idea.
+	 * 
+	 * @param proposer
+	 *            The proposer.
+	 */
+	public void proposePlan(final NonProfitOrg proposer) {
+		// Adds a new project plan proposal.
+		projectComponent.proposeProjectPlan(getProject().getIdentifier(), proposer.getIdentifier());
 	}
 }

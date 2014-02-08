@@ -2,15 +2,15 @@ package test;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.ConversationScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.servlet.http.Part;
 
 /**
  * Test
  */
-@ConversationScoped
-@Named("test")
+@SessionScoped
+@ManagedBean(name = "test")
 public class Test implements Serializable {
 
 	/**

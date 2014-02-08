@@ -243,7 +243,7 @@ public abstract class AbstractProjectPlan extends AbstractIdentifiedEntity {
 	 * @param goals
 	 *            New goals for the project.
 	 */
-	public void setGoals(List<String> goals) {
+	public void setGoals(final List<String> goals) {
 		this.goals = goals;
 	}
 

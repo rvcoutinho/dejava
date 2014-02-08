@@ -6,12 +6,12 @@ import java.util.Collection;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import org.dejava.component.ejb.constant.DAOParamKeys;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
+import org.dejava.component.validation.method.PreConditions;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.credentials.Credentials;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
-import org.dejava.service.party.component.PartyComponent;
-import org.dejava.service.party.util.PartyCtx;
 
 /**
  * DAO for user.
@@ -35,22 +35,12 @@ public class UserDAO extends AbstractGenericDAO<User, Integer> {
 	}
 
 	/**
-	 * Party component.
-	 */
-	@Inject
-	@PartyCtx
-	private PartyComponent partyComponent;
-
-	/**
 	 * @see org.dejava.component.ejb.dao.AbstractGenericDAO#merge(java.lang.Object)
 	 */
 	@Override
 	public User merge(final User entity) {
-		// If the entity has a party.
-		if (entity.getParty() != null) {
-			// Adds or updates the party for the user.
-			entity.setParty(partyComponent.addOrUpdate(entity.getParty()));
-		}
+		// Asserts that the entity is not null.
+		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, entity);
 		// If the user has no id.
 		if (entity.getIdentifier() == null) {
 			// Gets the credentials for the user.
@@ -59,8 +49,6 @@ public class UserDAO extends AbstractGenericDAO<User, Integer> {
 			entity.setCredentials(null);
 			// Merges the user.
 			User mergedUser = super.merge(entity);
-			// Re-adds the party to the merged user.
-			mergedUser.setParty(entity.getParty());
 			// Re-adds the credentials to the merged user.
 			mergedUser.setCredentials(new ArrayList<>(credentials), true);
 			// Re-sets the credentials for the given user (to prevent problems with old references).

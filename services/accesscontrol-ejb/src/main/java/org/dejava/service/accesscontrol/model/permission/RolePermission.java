@@ -4,10 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
+import org.dejava.service.accesscontrol.util.MessageTypes;
 
 /**
  * A system role permission.
@@ -27,6 +29,7 @@ public class RolePermission extends AbstractIdentifiedEntity {
 	/**
 	 * The role.
 	 */
+	@NotNull(payload = MessageTypes.Error.class, message = "rolepermission.role.notnull")
 	private Role role;
 
 	/**
@@ -53,6 +56,7 @@ public class RolePermission extends AbstractIdentifiedEntity {
 	/**
 	 * The permission for the role.
 	 */
+	@NotNull(payload = MessageTypes.Error.class, message = "rolepermission.permission.notnull")
 	private Permission permission;
 
 	/**

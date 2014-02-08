@@ -1,5 +1,7 @@
 package org.dejava.service.philanthropy.model.party;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -10,7 +12,11 @@ import javax.validation.Valid;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
+import org.dejava.service.contact.interfac.Contactable;
+import org.dejava.service.contact.model.Contact;
 import org.dejava.service.party.model.Party;
+import org.dejava.service.place.interfac.Addressable;
+import org.dejava.service.place.model.Place;
 
 /**
  * Philanthropy party super class.
@@ -18,7 +24,7 @@ import org.dejava.service.party.model.Party;
 @Entity
 @Table(name = "philanthropy_party")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
+public abstract class PhilanthropyParty extends AbstractIdentifiedEntity implements Contactable, Addressable {
 
 	/**
 	 * Generated serial.
@@ -53,7 +59,7 @@ public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 	/**
 	 * The (original) party.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/party-ejb/Component/Party/Party")
+	@ExternalEntity(retrieveObj = "java:app/party-ejb/Component/Party/Party", retrieveMethod = "getPartyById")
 	private Party party;
 
 	/**
@@ -89,10 +95,101 @@ public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 	}
 
 	/**
+	 * @see org.dejava.service.place.interfac.Addressable#getAddresses()
+	 */
+	@Override
+	@Transient
+	public Collection<Place> getAddresses() {
+		// If there is a party.
+		if (getParty() != null) {
+			// Returns the original party addresses.
+			return getParty().getAddresses();
+		}
+		// If there is no party.
+		else {
+			// Returns null.
+			return null;
+		}
+	}
+
+	/**
+	 * @see org.dejava.service.place.interfac.Addressable#setAddresses(java.util.Collection)
+	 */
+	@Override
+	public void setAddresses(final Collection<Place> addresses) {
+		// If there is a party.
+		if (getParty() != null) {
+			// Sets the original party addresses.
+			getParty().setAddresses(addresses);
+		}
+	}
+
+	/**
+	 * @see org.dejava.service.contact.interfac.Contactable#getContacts()
+	 */
+	@Override
+	@Transient
+	public Collection<Contact> getContacts() {
+		// If there is a party.
+		if (getParty() != null) {
+			// Returns the original party contacts.
+			return getParty().getContacts();
+		}
+		// If there is no party.
+		else {
+			// Returns null.
+			return null;
+		}
+	}
+
+	/**
+	 * @see org.dejava.service.contact.interfac.Contactable#getContacts(java.lang.Class)
+	 */
+	@Override
+	@Transient
+	public <ConcreteContact extends Contact> Collection<ConcreteContact> getContacts(
+			final Class<ConcreteContact> contactType) {
+		// If there is a party.
+		if (getParty() != null) {
+			// Returns the original party contacts.
+			return getParty().getContacts(contactType);
+		}
+		// If there is no party.
+		else {
+			// Returns null.
+			return null;
+		}
+	}
+
+	/**
+	 * @see org.dejava.service.contact.interfac.Contactable#setContacts(java.util.Collection)
+	 */
+	@Override
+	public void setContacts(final Collection<Contact> contacts) {
+		// If there is a party.
+		if (getParty() != null) {
+			// Sets the original party contacts.
+			getParty().setContacts(contacts);
+		}
+	}
+
+	/**
 	 * Default constructor.
 	 */
-	public PhilanthropyParty() {
+	protected PhilanthropyParty() {
 		super();
+	}
+
+	/**
+	 * Default constructor.
+	 * 
+	 * @param identifier
+	 *            The party identifier.
+	 */
+	public PhilanthropyParty(final Integer identifier) {
+		super();
+		// Sets the party identifier.
+		setIdentifier(identifier);
 	}
 
 	/**
@@ -101,10 +198,18 @@ public abstract class PhilanthropyParty extends AbstractIdentifiedEntity {
 	 * @param party
 	 *            The original party.
 	 */
-	public PhilanthropyParty(Party party) {
+	public PhilanthropyParty(final Party party) {
 		super();
 		// Sets the party id.
 		setParty(party);
+	}
+
+	/**
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return getParty().toString();
 	}
 
 }

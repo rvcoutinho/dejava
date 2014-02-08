@@ -1,7 +1,6 @@
 package org.dejava.service.accesscontrol.authc;
 
 import org.apache.shiro.authc.RememberMeAuthenticationToken;
-import org.dejava.service.accesscontrol.model.principal.Facebook;
 
 /**
  * The facebook authentication token.
@@ -39,14 +38,14 @@ public class FacebookUserToken implements RememberMeAuthenticationToken {
 	/**
 	 * Facebook identifier for the user.
 	 */
-	private Facebook facebookIdentifier;
+	private String facebookIdentifier;
 
 	/**
 	 * Gets the facebook identifier for the user.
 	 * 
 	 * @return The facebook identifier for the user.
 	 */
-	public synchronized Facebook getFacebookIdentifier() {
+	public synchronized String getFacebookIdentifier() {
 		return facebookIdentifier;
 	}
 
@@ -56,7 +55,7 @@ public class FacebookUserToken implements RememberMeAuthenticationToken {
 	 * @param facebookIdentifier
 	 *            New facebook identifier for the user.
 	 */
-	public synchronized void setFacebookIdentifier(final Facebook facebookIdentifier) {
+	public synchronized void setFacebookIdentifier(final String facebookIdentifier) {
 		this.facebookIdentifier = facebookIdentifier;
 	}
 
@@ -93,7 +92,7 @@ public class FacebookUserToken implements RememberMeAuthenticationToken {
 	 */
 	public FacebookUserToken(final String facebookIdentifier) {
 		super();
-		this.facebookIdentifier = new Facebook(facebookIdentifier);
+		this.facebookIdentifier = facebookIdentifier;
 	}
 
 }

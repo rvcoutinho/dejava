@@ -14,7 +14,7 @@
 	<ui:define name="content">
 		<section id="home-intro"
 			class="min-width light-gray-texture-bg padding-2">
-			<div class="content-width flexslider">
+			<div class="content-width flexslider banner">
 				<ul class="slides">
 					<li>
 						<div class="video-text">
@@ -27,7 +27,7 @@
 							<div>
 								<h3>Com uma boa ideia e o apoio dos amigos, você pode mudar
 									o mundo!</h3>
-								<button class="orange-bg bigger-button" onclick="createIdea();">
+								<button class="orange-bg bigger-button" onclick="showModal('idea-create');">
 									Dar uma ideia
 									<h:graphicImage library="soupsocial" class="spoon"
 										name="gfx/spoon.png" />
@@ -75,11 +75,6 @@
 				</ul>
 			</div>
 		</section>
-		<script type="text/javascript">
-			$(function() {
-				$('#home-intro .flexslider').flexslider({animation: "slide"});
-			});
-		</script>
 		<section id="content" class="min-width dark-gray-texture-bg">
 			<div class="content-width">
 				<section id="how-it-works" class="border-bottom">

@@ -240,25 +240,29 @@ public class Person extends Party {
 	/**
 	 * Facebook user constructor.
 	 * 
-	 * @param fbUser
+	 * @param facebookUser
 	 *            The facebook user.
 	 */
-	public Person(final com.restfb.types.User fbUser) {
+	public Person(final com.restfb.types.User facebookUser) {
 		super();
 		// If the facebook user is not null.
-		if (fbUser != null) {
+		if (facebookUser != null) {
 			// Sets the basic info for the person.
-			this.firstName = fbUser.getFirstName();
-			this.middleName = fbUser.getMiddleName();
-			this.lastName = fbUser.getLastName();
-			this.birthDate = fbUser.getBirthdayAsDate();
-			// Adds the email address as a contact.
-			getContacts().add(new EmailAddress(fbUser.getEmail()));
-			// If the gender is not null.
-			if (fbUser.getGender() != null) {
+			this.firstName = facebookUser.getFirstName();
+			this.middleName = facebookUser.getMiddleName();
+			this.lastName = facebookUser.getLastName();
+			this.birthDate = facebookUser.getBirthdayAsDate();
+			// If there is a given email.
+			if ((facebookUser.getEmail() != null) && (!facebookUser.getEmail().isEmpty())) {
+				// Adds the email address as a contact.
+				getContacts().add(new EmailAddress(facebookUser.getEmail()));
+			}
+			// If there is a given gender.
+			if ((facebookUser.getGender() != null) && (!facebookUser.getGender().isEmpty())) {
 				// Sets the gender.
-				this.gender = Gender.valueOf(fbUser.getGender().toUpperCase());
+				this.gender = Gender.valueOf(facebookUser.getGender().toUpperCase());
 			}
 		}
 	}
+
 }

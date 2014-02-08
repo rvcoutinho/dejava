@@ -6,7 +6,7 @@ import org.dejava.component.i18n.source.annotation.MessageSources;
 /**
  * Defines the google places API keys (should exist in the properties file).
  */
-@MessageSources(sources = { @MessageSource(sourcePath = "../service-properties/src/main/resources", availableLocales = { "" }, description = "Google Place API properties", bundleBaseName = "org.dejava.properties.google-places-api", processors = "org.dejava.component.i18n.source.processor.impl.ConstantValuesEntryProcessor") })
+@MessageSources(sources = { @MessageSource(availableLocales = { "" }, description = "Google Place API properties", bundleBaseName = "org.dejava.properties.google-places-api", processors = "org.dejava.component.i18n.source.processor.impl.ConstantValuesEntryProcessor") })
 public class GooglePlacesAPIKeys {
 
 	/**

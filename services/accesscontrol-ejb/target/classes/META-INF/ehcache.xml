@@ -8,8 +8,8 @@
 		overflowToDisk="true" eternal="true" timeToLiveSeconds="0"
 		timeToIdleSeconds="0" diskPersistent="true"
 		diskExpiryThreadIntervalSeconds="600" />
-	<cache name="ejbRealm.authorizationCache" maxElementsInMemory="10000"
-		overflowToDisk="true" eternal="true" timeToLiveSeconds="0"
-		timeToIdleSeconds="0" diskPersistent="true"
+	<cache name="dejavaShiro-ejbRealm.authorizationCache"
+		maxElementsInMemory="10000" overflowToDisk="true" eternal="true"
+		timeToLiveSeconds="0" timeToIdleSeconds="0" diskPersistent="true"
 		diskExpiryThreadIntervalSeconds="600" />
 </ehcache>

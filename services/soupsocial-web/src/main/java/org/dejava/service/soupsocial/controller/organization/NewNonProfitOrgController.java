@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.dejava.service.party.model.Organization;
-import org.dejava.service.philanthropy.component.party.PhilanthropyPartyComponent;
+import org.dejava.service.philanthropy.component.PhilanthropyPartyTaskComponent;
 import org.dejava.service.philanthropy.model.party.NonProfitOrg;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
@@ -19,7 +19,7 @@ import org.dejava.service.soupsocial.util.SoupSocialCtx;
 @ConversationScoped
 @SoupSocialCtx
 @Named("newNonProfitOrgController")
-public class NewNonProfitOrgController extends AbstractNewPhilanthropyPartyController implements Serializable {
+public class NewNonProfitOrgController extends AbstractPhilanthropyPartyController implements Serializable {
 
 	/**
 	 * Generated serial.
@@ -32,10 +32,10 @@ public class NewNonProfitOrgController extends AbstractNewPhilanthropyPartyContr
 	private NonProfitOrg newParty;
 
 	/**
-	 * @see org.dejava.service.soupsocial.controller.organization.AbstractNewPhilanthropyPartyController#getNewParty()
+	 * @see org.dejava.service.soupsocial.controller.organization.AbstractPhilanthropyPartyController#getParty()
 	 */
 	@Override
-	public NonProfitOrg getNewParty() {
+	public NonProfitOrg getParty() {
 		// If there no new party yet.
 		if (newParty == null) {
 			// Creates a new Sponsor.
@@ -50,17 +50,18 @@ public class NewNonProfitOrgController extends AbstractNewPhilanthropyPartyContr
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyPartyComponent partyComponent;
+	private PhilanthropyPartyTaskComponent partyComponent;
 
 	/**
-	 * @see org.dejava.service.soupsocial.controller.organization.AbstractNewPhilanthropyPartyController#createParty()
+	 * Creates a new non profit organization.
+	 * 
+	 * @throws IOException
+	 *             TODO
 	 */
-	@Override
-	public void createParty() throws IOException {
+	public void createNonProfitOrg() throws IOException {
 		// Updates the party address.
 		updateAddressDetails();
 		// Creates the new party.
-		partyComponent.addOrUpdate(getNewParty());
-
+		partyComponent.createPhilanthropyParty(getParty());
 	}
 }

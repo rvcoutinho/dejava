@@ -10,13 +10,13 @@
 			<div>
 				<label for="ngo-create-name">Nome da instituição</label>:
 				<h:inputText id="ngo-create-name"
-					value="#{newNonProfitOrgController.newParty.party.displayName}" />
+					value="#{newNonProfitOrgController.party.party.displayName}" />
 			</div>
 			<div>
 				<label for="ngo-create-cnpj">CNPJ</label>:
 				<h:inputText id="ngo-create-cnpj" styleClass="cnpj mask"
 					p:data-inv-regex="[^\d]"
-					value="#{newNonProfitOrgController.newParty.party.federalCode}">
+					value="#{newNonProfitOrgController.party.party.federalCode}">
 					<f:converter converterId="InvRegexConv" />
 				</h:inputText>
 			</div>
@@ -41,7 +41,7 @@
 					<f:converter converterId="InvRegexConv" />
 				</h:inputText>
 			</div>
-			<h:commandLink action="#{newNonProfitOrgController.createParty()}"
+			<h:commandLink action="#{newNonProfitOrgController.createNonProfitOrg()}"
 				styleClass="submit-button">
 				<button class="dark-green-bg right-button">
 					cadastrar

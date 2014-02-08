@@ -128,15 +128,15 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	/**
 	 * Default constructor.
 	 * 
-	 * @param project
-	 *            The project that has been shared.
-	 * @param supporter
-	 *            The supporter who has shared the project.
+	 * @param projectId
+	 *            The identifier of the project that been shared.
+	 * @param supporterId
+	 *            The identifier of the supporter who has shared the project.
 	 */
-	public ProjectShare(final PhilanthropyProject project, final Supporter supporter) {
+	public ProjectShare(final Integer projectId, final Integer supporterId) {
 		super();
-		this.supporter = supporter;
-		this.project = project;
+		this.project = new PhilanthropyProject(projectId);
+		this.supporter = new Supporter(supporterId);
 	}
 
 }

@@ -6,8 +6,6 @@ import javax.persistence.EntityManager;
 import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.party.model.Organization;
 import org.dejava.service.party.util.PartyCtx;
-import org.dejava.service.place.component.PlaceComponent;
-import org.dejava.service.place.util.PlaceCtx;
 
 /**
  * Organization DAO.
@@ -21,13 +19,6 @@ public class OrganizationDAO extends AbstractGenericDAO<Organization, Integer> {
 	@Inject
 	@PartyCtx
 	private EntityManager entityManager;
-
-	/**
-	 * Place EJB component.
-	 */
-	@Inject
-	@PlaceCtx
-	private PlaceComponent placeComponent;
 
 	/**
 	 * @see org.dejava.component.ejb.dao.AbstractGenericDAO#getEntityManager()

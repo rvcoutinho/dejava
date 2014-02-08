@@ -4,11 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.accesscontrol.model.User;
+import org.dejava.service.accesscontrol.util.MessageTypes;
 
 /**
  * A system user role.
@@ -28,6 +30,7 @@ public class UserRole extends AbstractIdentifiedEntity {
 	/**
 	 * The user.
 	 */
+	@NotNull(payload = MessageTypes.Error.class, message = "userrole.user.notnull")
 	private User user;
 
 	/**
@@ -54,6 +57,7 @@ public class UserRole extends AbstractIdentifiedEntity {
 	/**
 	 * The role for the user.
 	 */
+	@NotNull(payload = MessageTypes.Error.class, message = "userrole.role.notnull")
 	private Role role;
 
 	/**
@@ -92,10 +96,24 @@ public class UserRole extends AbstractIdentifiedEntity {
 	 * @param role
 	 *            The user role.
 	 */
-	public UserRole(User user, Role role) {
+	public UserRole(final User user, final Role role) {
 		super();
 		this.user = user;
 		this.role = role;
+	}
+
+	/**
+	 * Default constructor.
+	 * 
+	 * @param userId
+	 *            The user identifier.
+	 * @param roleName
+	 *            The user role name.
+	 */
+	public UserRole(final Integer userId, final String roleName) {
+		super();
+		this.user = new User(userId);
+		this.role = new Role(roleName);
 	}
 
 }

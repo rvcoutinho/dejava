@@ -1,11 +1,14 @@
 org\dejava\service\party\util\MessageTypes$Error.class
 org\dejava\service\party\util\PartyCtx.class
+org\dejava\service\party\component\PartyTaskComponent.class
+org\dejava\service\party\businessrule\PartyBusinessRuleSet.class
 org\dejava\service\party\model\Person.class
 org\dejava\service\party\component\PartyComponent.class
 org\dejava\service\party\dao\PersonDAO.class
 org\dejava\service\party\util\MessageTypes.class
 org\dejava\service\party\util\Resources.class
 org\dejava\service\party\util\MessageTypes$Info.class
+org\dejava\service\party\constant\Permissions.class
 org\dejava\service\party\util\MessageTypes$Warn.class
 org\dejava\service\party\util\MessageTypes$Fatal.class
 org\dejava\service\party\model\Party.class

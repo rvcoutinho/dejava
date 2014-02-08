@@ -1,4 +1,6 @@
+org.dejava.service.contact.businessrule
 org.dejava.service.contact.component
 org.dejava.service.contact.dao
+org.dejava.service.contact.interfac
 org.dejava.service.contact.model
 org.dejava.service.contact.util

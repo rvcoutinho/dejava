@@ -23,6 +23,7 @@ import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 @Entity
 @Table(name = "project_share")
 @NamedQueries(value = {
+		@NamedQuery(name = "countShareByProjectAndSupporter", query = "SELECT count(share) FROM ProjectShare share WHERE share.project.identifier = :projectId AND share.supporter.identifier = :supporterId"),
 		@NamedQuery(name = "countSharesByProject", query = "SELECT count(share) FROM ProjectShare share WHERE share.project.identifier = :projectId"),
 		@NamedQuery(name = "countSharesBySupporter", query = "SELECT count(share) FROM ProjectShare share WHERE share.supporter.identifier = :supporterId") })
 @MessageSources(sources = {

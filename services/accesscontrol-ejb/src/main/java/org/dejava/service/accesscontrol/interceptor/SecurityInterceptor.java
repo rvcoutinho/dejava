@@ -19,6 +19,7 @@ import org.apache.shiro.authz.annotation.RequiresUser;
 import org.apache.shiro.subject.Subject;
 import org.dejava.service.accesscontrol.constant.ErrorKeys;
 import org.dejava.service.accesscontrol.exception.AuthorizationException;
+import org.dejava.service.accesscontrol.exception.SecurityException;
 
 /**
  * The security enforcer interceptor.
@@ -286,11 +287,26 @@ public class SecurityInterceptor implements Serializable {
 	 */
 	@AroundInvoke
 	public Object enforceAuth(final InvocationContext invocationContext) throws Exception {
-		// Enforces that the user is authenticated (if needed).
-		enforceAuthentication(invocationContext.getTarget().getClass(), invocationContext.getMethod());
-		// Enforces that the user is authorized (if needed).
-		enforceAuthorization(invocationContext.getTarget().getClass(), invocationContext.getMethod());
-		// Proceeds with the method invocation (if no authorization exception is thrown).
-		return invocationContext.proceed();
+		try {
+			// Enforces that the user is authenticated (if needed).
+			enforceAuthentication(invocationContext.getTarget().getClass(), invocationContext.getMethod());
+			// Enforces that the user is authorized (if needed).
+			enforceAuthorization(invocationContext.getTarget().getClass(), invocationContext.getMethod());
+			// Proceeds with the method invocation (if no authorization exception is thrown).
+			return invocationContext.proceed();
+		}
+		// If a security exception is raised.
+		catch (final SecurityException exception) {
+			// If the security exceptions should be suppressed.
+			if (invocationContext.getMethod().getAnnotation(SuppressSecurityExceptions.class) != null) {
+				// Returns null (exceptions suppressed).
+				return null;
+			}
+			// If the security exceptions should be suppressed.
+			else {
+				// Throws the original exception.
+				throw exception;
+			}
+		}
 	}
 }

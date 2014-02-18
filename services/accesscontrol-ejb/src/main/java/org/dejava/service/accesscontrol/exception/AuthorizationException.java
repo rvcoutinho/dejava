@@ -1,12 +1,11 @@
 package org.dejava.service.accesscontrol.exception;
 
-import org.dejava.component.ejb.exception.BusinessRuleException;
 import org.dejava.service.accesscontrol.util.MessageTypes;
 
 /**
  * Authorization related exception.
  */
-public class AuthorizationException extends BusinessRuleException {
+public class AuthorizationException extends SecurityException {
 
 	/**
 	 * Basic constructor.

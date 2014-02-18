@@ -1,5 +1,5 @@
 #home-intro .flexslider {
-	
+	overflow: hidden;
 }
 
 #home-intro .flexslider ul.slides {

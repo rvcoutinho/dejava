@@ -1,5 +1,6 @@
 org\dejava\service\party\util\MessageTypes$Error.class
 org\dejava\service\party\util\PartyCtx.class
+org\dejava\service\party\util\MessageTypes$Model.class
 org\dejava\service\party\component\PartyTaskComponent.class
 org\dejava\service\party\businessrule\PartyBusinessRuleSet.class
 org\dejava\service\party\model\Person.class

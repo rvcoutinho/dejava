@@ -3,6 +3,7 @@ org.dejava.service.philanthropy.businessrule.project
 org.dejava.service.philanthropy.businessrule.proposal
 org.dejava.service.philanthropy.businessrule.share
 org.dejava.service.philanthropy.component
+org.dejava.service.philanthropy.constant
 org.dejava.service.philanthropy.dao.party
 org.dejava.service.philanthropy.dao.project
 org.dejava.service.philanthropy.dao.project.author

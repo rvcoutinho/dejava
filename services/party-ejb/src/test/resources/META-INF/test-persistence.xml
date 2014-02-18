@@ -9,7 +9,7 @@
 			Production applications should use a managed datasource. -->
 		<!-- The datasource is deployed as WEB-INF/test-ds.xml, you can find it 
 			in the source at src/test/resources/test-ds.xml -->
-		<jta-data-source>java:/datasource/TestDS</jta-data-source>
+		<jta-data-source>java:/datasource/TestDS</jta-data-source><validation-mode>NONE</validation-mode>
 		<properties>
 			<!-- Properties for Hibernate -->
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />

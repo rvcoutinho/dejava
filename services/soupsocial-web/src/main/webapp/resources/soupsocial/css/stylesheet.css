@@ -14,6 +14,10 @@ img {
 
 /* Input */
 
+form {
+	display: inline;
+}
+
 /* Corner radius */
 input,select,textarea,button,.ui-corner-all,.ui-corner-top,.ui-corner-left,.ui-corner-tl,.ui-widget-shadow
 	{
@@ -862,7 +866,7 @@ a {
 
 /* Dialog */
 .ui-dialog {
-	position: absolute;
+	position: fixed !important;
 	top: 0px;
 	left: 0px;
 	outline: 0px;
@@ -872,23 +876,24 @@ a {
 	position: relative;
 }
 
+.ui-dialog .ui-dialog-titlebar>.ui-button {
+	width: 21px;
+	padding: 1px;
+	height: 20px;
+	margin-top: -5px;
+	margin-left: 5px;
+	float: right;
+}
+
 .ui-dialog .ui-dialog-title {
 	float: left;
 	white-space: nowrap;
-	width: 90%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
 .ui-dialog .ui-dialog-titlebar-close {
-	position: absolute;
-	right: .3em;
-	width: 21px;
-	top: 20%;
-	margin: -10px 0px 0px 0pxx;
-	padding: 1px;
-	height: 20px;
-	margin: -10px 0px 0px 0pxx;
+	
 }
 
 .ui-dialog .ui-dialog-content {
@@ -1036,6 +1041,8 @@ a {
 	padding: 7px 0px;
 	text-align: center;
 	width: 40px;
+	max-height: 26px;
+	overflow: visible;
 }
 
 .sub-menu.square-box>a>i>.event-count {
@@ -1074,8 +1081,7 @@ a {
 .flexslider ul.slides {
 	padding: 0px;
 	list-style: none;
-	overflow-x: hidden;
-	overflow-y: auto;
+	overflow: hidden;
 }
 
 .flexslider ul.slides>li {
@@ -1186,6 +1192,7 @@ a {
 }
 
 #footer>nav {
+	height: 300px;
 	text-align: center;
 }
 

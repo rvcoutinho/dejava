@@ -7,6 +7,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.dejava.service.accesscontrol.interceptor.Secured;
 import org.dejava.service.philanthropy.component.PhilanthropyProjectComponent;
 import org.dejava.service.philanthropy.model.party.NonProfitOrg;
 import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
@@ -102,10 +104,12 @@ public class ProjectController implements Serializable {
 	/**
 	 * Supports the project.
 	 */
+	@Secured
+	@RequiresAuthentication
 	public void supportProject() {
 		// Shares the project.
-		final Long shares = projectComponent.shareProject(getProject().getIdentifier(), userController
-				.getPhilanthropyParty().getIdentifier());
+		final Long shares = projectComponent.shareProjectAndCount(getProject().getIdentifier(),
+				userController.getPhilanthropyParty().getIdentifier());
 		// Updates the project shares.
 		getProject().setShares(shares);
 	}

@@ -35,3 +35,4 @@ org\dejava\service\philanthropy\model\party\NonProfitOrg.class
 org\dejava\service\philanthropy\util\MessageTypes$Error.class
 org\dejava\service\philanthropy\component\PhilanthropyPartyTaskComponent.class
 org\dejava\service\philanthropy\model\party\PhilanthropyParty.class
+org\dejava\service\philanthropy\constant\InfoKeys.class

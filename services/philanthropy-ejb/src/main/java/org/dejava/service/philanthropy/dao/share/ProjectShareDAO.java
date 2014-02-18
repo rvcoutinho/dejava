@@ -38,8 +38,8 @@ public class ProjectShareDAO extends AbstractGenericDAO<ProjectShare, Integer> {
 	 */
 	public Long countSharesByProject(final Integer projectId) {
 		// Gets the named query for the count.
-		final TypedQuery<Long> countSharesByProject = getEntityManager().createNamedQuery("countSharesByProject",
-				Long.class);
+		final TypedQuery<Long> countSharesByProject = getEntityManager().createNamedQuery(
+				"countSharesByProject", Long.class);
 		// Sets the project id to the named query.
 		countSharesByProject.setParameter("projectId", projectId);
 		// Returns the result for the count.
@@ -61,6 +61,27 @@ public class ProjectShareDAO extends AbstractGenericDAO<ProjectShare, Integer> {
 		countSharesBySupporter.setParameter("supporterId", supporterId);
 		// Returns the result for the count.
 		return countSharesBySupporter.getSingleResult();
+	}
+
+	/**
+	 * Counts the number of shares for a project and a supporter.
+	 * 
+	 * @param projectId
+	 *            The project id.
+	 * @param supporterId
+	 *            The supporter id.
+	 * @return The number of shares for a project and a supporter.
+	 */
+	public Long countSharesByProjectAndSupporter(final Integer projectId, final Integer supporterId) {
+		// Gets the named query for the count.
+		final TypedQuery<Long> getShareByProjectAndSupporter = getEntityManager().createNamedQuery(
+				"countShareByProjectAndSupporter", Long.class);
+		// Sets the project id to the named query.
+		getShareByProjectAndSupporter.setParameter("projectId", projectId);
+		// Sets the supporter id to the named query.
+		getShareByProjectAndSupporter.setParameter("supporterId", supporterId);
+		// Returns the result for the count.
+		return getShareByProjectAndSupporter.getSingleResult();
 	}
 
 }

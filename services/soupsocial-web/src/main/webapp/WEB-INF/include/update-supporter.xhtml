@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	<section id="update-supporter"
+		class="hidden-dialog form-content padding-6"
+		title="Mantenha suas informações atualizadas">
+		<button id="create-idea-info-button"
+			class="ui-titlebar-button ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"
+			title="Teste">
+			<i class="fa fa-question"></i>
+		</button>
+		<h:form id="update-supporter-form">
+			<div>
+				<label for="update-supporter-display-name">Gostaria de ser
+					chamado</label>:
+				<h:inputText id="update-supporter-display-name"
+					value="#{updateUserSupporterController.party.party.displayName}" />
+			</div>
+			<div>
+				<label for="update-supporter-first-name">Primeiro nome</label>:
+				<h:inputText id="update-supporter-first-name"
+					value="#{updateUserSupporterController.party.party.firstName}" />
+			</div>
+			<div>
+				<label for="update-supporter-middle-name">Nome do meio</label>:
+				<h:inputText id="update-supporter-middle-name"
+					value="#{updateUserSupporterController.party.party.middleName}" />
+			</div>
+			<div>
+				<label for="update-supporter-last-name">Último nome</label>:
+				<h:inputText id="update-supporter-last-name"
+					value="#{updateUserSupporterController.party.party.lastName}" />
+			</div>
+			<div>
+				<h:outputLabel for="update-supporter-gender">Sexo</h:outputLabel>
+				:
+				<h:selectOneMenu id="update-supporter-gender"
+					value="#{updateUserSupporterController.party.party.gender}">
+					<f:selectItems
+						value="#{updateUserSupporterController.genderOptions}" />
+				</h:selectOneMenu>
+			</div>
+			<div>
+				<label for="update-supporter-address">Local</label>:
+				<h:inputText id="update-supporter-address" styleClass="place" />
+				<span class="hidden-dialog place-detail"><h:inputHidden
+						id="update-supporter-address-reference"
+						value="#{updateUserSupporterController.addressReference}"
+						p:data-geo="reference" /></span>
+			</div>
+			<div>
+				<label for="update-supporter-email">E-mail</label>:
+				<h:inputText id="update-supporter-email"
+					value="#{updateUserSupporterController.emailAddress.address}" />
+			</div>
+			<div>
+				<label for="update-supporter-phone">Telefone</label>:
+				<h:inputText id="update-supporter-phone" styleClass="phone mask"
+					p:data-inv-regex="[^\d]"
+					value="#{updateUserSupporterController.phoneNumber.number}">
+					<f:converter converterId="InvRegexConv" />
+				</h:inputText>
+			</div>
+			<h:commandLink
+				action="#{updateUserSupporterController.updateSupporter()}"
+				styleClass="submit-button">
+				<button class="dark-green-bg right-button">
+					atualizar
+					<h:graphicImage library="soupsocial" class="spoon"
+						name="gfx/spoon.png" />
+				</button>
+			</h:commandLink>
+		</h:form>
+	</section>
+</ui:composition>

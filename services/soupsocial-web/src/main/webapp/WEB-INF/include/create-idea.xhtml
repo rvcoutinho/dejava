@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	<section id="create-idea" class="hidden-dialog form-content"
+		title="Dê sua ideia por um mundo melhor!">
+		<button id="create-idea-info-button"
+			class="ui-titlebar-button ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"
+			title="Teste">
+			<i class="fa fa-question"></i>
+		</button>
+		<h:form id="create-idea-form">
+			<!-- enctype="multipart/form-data" -->
+			<div class="flexslider clean">
+				<ul class="slides">
+					<li>
+						<div>
+							<h:outputLabel for="create-idea-name">Título</h:outputLabel>
+							:
+							<h:inputText id="create-idea-name"
+								value="#{newProjectIdeaController.newProjectIdea.name}" />
+						</div>
+						<div>
+							<h:outputLabel for="create-idea-short-desc">Resumo</h:outputLabel>
+							:
+							<h:inputText id="create-idea-short-desc"
+								value="#{newProjectIdeaController.newProjectIdea.shortDesc}" />
+						</div>
+						<div>
+							<h:outputLabel for="create-idea-category">Categoria</h:outputLabel>
+							:
+							<h:selectOneMenu id="create-idea-category"
+								value="#{newProjectIdeaController.newProject.category}">
+								<f:selectItems
+									value="#{newProjectIdeaController.categoryOptions}" />
+							</h:selectOneMenu>
+						</div>
+						<div>
+							<h:outputLabel>Foto</h:outputLabel>
+							:
+							<!-- <h:inputFile id="create-idea-display-image"
+								value="#{newProjectIdeaController.displayImage}" /> -->
+						</div>
+						<div>
+							<h:outputLabel for="create-idea-video">Vídeo</h:outputLabel>
+							:
+							<h:inputText id="create-idea-video" class="youtube"
+								value="#{newProjectIdeaController.newProjectIdea.videoURL}" />
+							<span class="pre-input-text small-text">http://www.youtube.com/watch?v=
+							</span>
+						</div>
+						<div>
+							<h:outputLabel for="create-idea-target-audience">Beneficiados</h:outputLabel>
+							:
+							<h:inputText id="create-idea-target-audience"
+								value="#{newProjectIdeaController.newProjectIdea.targetAudience}" />
+						</div>
+						<div>
+							<h:outputLabel for="create-idea-address">Raio de ação</h:outputLabel>
+							:
+							<h:inputText id="create-idea-address" styleClass="place" />
+							<span class="hidden-dialog place-detail"><h:inputHidden
+									id="create-idea-address-reference"
+									value="#{newProjectIdeaController.addressReference}"
+									p:data-geo="reference" /></span>
+							<script>
+								$(function() {
+									$('#create-idea .place').geocomplete({details: '#create-idea .place-detail', detailsAttribute: 'data-geo'});
+								});
+							</script>
+						</div>
+						<div class="buttons">
+							<div>
+								<button class="dark-green-bg right-button next">
+									continuar
+									<h:graphicImage library="soupsocial" class="spoon"
+										name="gfx/spoon.png" />
+								</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div>
+							<h:outputLabel for="create-idea-motivation">Porque tive essa ideia</h:outputLabel>
+							:
+							<h:inputTextarea id="create-idea-motivation"
+								value="#{newProjectIdeaController.newProjectIdea.motivation}" />
+						</div>
+						<div>
+							<h:outputLabel>Objetivos</h:outputLabel>
+							:
+							<h:inputText id="create-idea-goals-1"
+								value="#{newProjectIdeaController.goal1}" />
+							<h:inputText id="create-idea-goals-2"
+								value="#{newProjectIdeaController.goal2}" />
+							<h:inputText id="create-idea-goals-3"
+								value="#{newProjectIdeaController.goal3}" />
+						</div>
+						<div>
+							<h:outputLabel for="create-idea-desc">Como funcionaria</h:outputLabel>
+							:
+							<h:inputTextarea id="create-idea-desc"
+								value="#{newProjectIdeaController.newProjectIdea.desc}" />
+						</div>
+						<div class="buttons">
+							<div>
+								<button class="dark-green-bg left-button previous">
+									voltar
+									<h:graphicImage library="soupsocial" class="spoon"
+										name="gfx/spoon.png" />
+								</button>
+								<button class="dark-green-bg right-button next">
+									continuar
+									<h:graphicImage library="soupsocial" class="spoon"
+										name="gfx/spoon.png" />
+								</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div>
+							<h:outputLabel for="create-idea-investment">Investimento estimado</h:outputLabel>
+							:
+							<h:selectOneMenu id="create-idea-investment"
+								value="#{newProjectIdeaController.newProjectIdea.investment}">
+								<f:selectItem itemValue="5000" itemLabel="R$ 5.000" />
+								<f:selectItem itemValue="25000" itemLabel="R$ 25.000" />
+								<f:selectItem itemValue="100000" itemLabel="R$ 100.000" />
+								<f:selectItem itemValue="250000" itemLabel="R$ 250.000" />
+								<f:selectItem itemValue="1000000" itemLabel="R$ 1.000.000" />
+								<f:selectItem itemValue="10000000" itemLabel="R$ 10.000.000" />
+							</h:selectOneMenu>
+						</div>
+						<div>
+							<h:outputLabel for="create-idea-time">Tempo estimado</h:outputLabel>
+							:
+							<h:selectOneMenu id="create-idea-time"
+								value="#{newProjectIdeaController.newProjectIdea.time}">
+								<f:selectItem itemValue="1" itemLabel="1 dia" />
+								<f:selectItem itemValue="7" itemLabel="1 semana" />
+								<f:selectItem itemValue="30" itemLabel="1 mês" />
+								<f:selectItem itemValue="90" itemLabel="3 meses" />
+								<f:selectItem itemValue="180" itemLabel="6 meses" />
+								<f:selectItem itemValue="360" itemLabel="1 ano" />
+								<f:selectItem itemValue="720" itemLabel="2 anos" />
+								<f:selectItem itemValue="1800" itemLabel="5 anos" />
+							</h:selectOneMenu>
+						</div>
+						<div>
+							<h:outputLabel>Instituições indicadas</h:outputLabel>
+							:
+							<h:inputText id="create-idea-ngos-1" />
+							<h:inputText id="create-idea-ngos-2" />
+							<h:inputText id="create-idea-ngos-3" />
+						</div>
+						<div>
+							<h:outputLabel for="create-idea-tags">Tags</h:outputLabel>
+							:
+							<h:inputTextarea id="create-idea-tags"
+								value="#{newProjectIdeaController.newProject.allTags}" />
+						</div>
+						<div class="buttons">
+							<div>
+								<button class="dark-green-bg left-button previous">
+									voltar
+									<h:graphicImage library="soupsocial" class="spoon"
+										name="gfx/spoon.png" />
+								</button>
+								<h:commandLink action="#{newProjectIdeaController.createIdea()}"
+									styleClass="submit-button">
+									<f:ajax execute="@form"
+										render="messages-container projects-container" />
+									<button class="dark-green-bg right-button">
+										cadastrar
+										<h:graphicImage library="soupsocial" class="spoon"
+											name="gfx/spoon.png" />
+									</button>
+								</h:commandLink>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</h:form>
+	</section>
+</ui:composition>

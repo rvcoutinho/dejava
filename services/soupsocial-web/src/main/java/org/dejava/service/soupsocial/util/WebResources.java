@@ -9,7 +9,7 @@ import org.dejava.component.faces.message.FacesMessageHandler;
 import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
 import org.dejava.component.i18n.message.handler.MessageHandler;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
-import org.dejava.service.soupsocial.controller.locale.LocaleController;
+import org.dejava.service.soupsocial.controller.LocaleController;
 
 /**
  * Web resources to be injected CDI.

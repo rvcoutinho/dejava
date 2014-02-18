@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresUser;
 import org.apache.shiro.subject.Subject;
 import org.dejava.service.accesscontrol.component.UserAuthenticationComponent;
@@ -34,6 +35,15 @@ public class UserController implements Serializable {
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = 7108460866687912714L;
+
+	/**
+	 * TODO
+	 */
+	@Secured
+	@RequiresAuthentication
+	public void checkAuthenticated() {
+
+	}
 
 	/**
 	 * Gets the application subject.

@@ -5,10 +5,14 @@ import java.text.NumberFormat;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+
+import org.dejava.component.faces.i18n.AbstractLocaleController;
 
 /**
  * Rounded number converter.
  */
+@FacesConverter(value = "RoundedNumConv")
 public class RoundedNumberConverter implements Converter {
 
 	/**
@@ -22,7 +26,7 @@ public class RoundedNumberConverter implements Converter {
 	 */
 	@Override
 	public Object getAsObject(final FacesContext context, final UIComponent component, final String value) {
-		// TODO
+		// TODO Convert back?
 		return null;
 	}
 
@@ -31,7 +35,7 @@ public class RoundedNumberConverter implements Converter {
 	 *      javax.faces.component.UIComponent, java.lang.Object)
 	 */
 	@Override
-	public String getAsString(final FacesContext context, final UIComponent component, final Object value) {
+	public String getAsString(final FacesContext facesContext, final UIComponent component, final Object value) {
 		// If the value is not null.
 		if (value != null) {
 			// Converts the object to a number.
@@ -39,14 +43,15 @@ public class RoundedNumberConverter implements Converter {
 			// The current scale is 0.
 			Integer currentScale = 0;
 			// While the current number is greater than 1000 (or scale symbols size is reached).
-			while ((number.doubleValue() > 1000) && (currentScale + 1 < NUMBER_SCALE_SYMBOLS.length)) {
+			while ((number.doubleValue() > 1000) && ((currentScale + 1) < NUMBER_SCALE_SYMBOLS.length)) {
 				// Divide the number by 1000.
 				number = number.doubleValue() / 1000;
 				// Increment the scale.
 				currentScale++;
 			}
-			// Creates a new clear decimal format. FIXME locale
-			final NumberFormat roundedFormat = NumberFormat.getNumberInstance();
+			// Creates a new clear decimal format.
+			final NumberFormat roundedFormat = NumberFormat.getNumberInstance(AbstractLocaleController
+					.getLocaleController(facesContext).getLocale());
 			// Sets the maximum fraction digits to 1.
 			roundedFormat.setMaximumFractionDigits(1);
 			// Returns the rounded number.

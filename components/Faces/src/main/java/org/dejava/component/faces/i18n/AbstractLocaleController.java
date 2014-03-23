@@ -5,6 +5,10 @@ import java.util.Locale;
 
 import javax.faces.context.FacesContext;
 
+import org.dejava.component.faces.message.FacesMessageHandler;
+import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
+import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
+
 /**
  * Controller that handles the application locale for a session.
  */
@@ -14,6 +18,11 @@ public abstract class AbstractLocaleController implements Serializable {
 	 * Generated serial.
 	 */
 	private static final long serialVersionUID = 2921686219608561186L;
+
+	/**
+	 * The locale controller session attribute name.
+	 */
+	public static final String LOCALE_CONTROLLER_SESSION_ATTR = "localeController";
 
 	/**
 	 * Gets the current instance for the faces context.
@@ -36,7 +45,7 @@ public abstract class AbstractLocaleController implements Serializable {
 		// If the locale is null.
 		if (locale == null) {
 			// Gets the request locale.
-			locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+			locale = getFacesContext().getViewRoot().getLocale();
 		}
 		// Returns the locale.
 		return locale;
@@ -50,6 +59,17 @@ public abstract class AbstractLocaleController implements Serializable {
 	 */
 	public void setLocale(final Locale locale) {
 		this.locale = locale;
+	}
+
+	/**
+	 * Gets the default implementation for the application message handler.
+	 * 
+	 * @param facesContext
+	 *            The faces context to be used for the message handler.
+	 * @return The default implementation for the application message handler.
+	 */
+	public ApplicationMessageHandler getAppMessageHandler(final FacesContext facesContext) {
+		return new FacesMessageHandler(SimpleMessageHandler.getMessageHandler(getLocale()), facesContext);
 	}
 
 }

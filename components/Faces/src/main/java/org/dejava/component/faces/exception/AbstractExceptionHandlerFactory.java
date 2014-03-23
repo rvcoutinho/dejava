@@ -59,7 +59,7 @@ public abstract class AbstractExceptionHandlerFactory extends ExceptionHandlerFa
 	@Override
 	public ExceptionHandler getExceptionHandler() {
 		// Returns a new exception handler.
-		return new ExceptionHandlerImpl(wrappedFactory.getExceptionHandler(), getClass().getAnnotations(),
-				getBeanManagerAttrName(), genericExceptionErrorType, genericExceptionKey);
+		return new ExceptionHandlerImpl(wrappedFactory.getExceptionHandler(), genericExceptionErrorType,
+				genericExceptionKey);
 	}
 }

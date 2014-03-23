@@ -4,7 +4,6 @@ import java.lang.annotation.Annotation;
 import java.util.Iterator;
 
 import javax.faces.FacesException;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerWrapper;
 import javax.faces.event.ExceptionQueuedEvent;
@@ -124,12 +123,6 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	}
 
 	/**
-	 * TODO
-	 */
-	@ManagedProperty(value = "#{" + AbstractLocaleController.LOCALE_CONTROLLER_SESSION_ATTR + "}")
-	private AbstractLocaleController localeController;
-
-	/**
 	 * @see javax.faces.context.ExceptionHandlerWrapper#handle()
 	 */
 	@Override
@@ -151,7 +144,8 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 			// If the exception is a localized one.
 			if ((currentException instanceof LocalizedException) && (currentException != null)) {
 				// Adds the error messages to the application.
-				((LocalizedException) currentException).addLocalizedMessages(localeController
+				((LocalizedException) currentException).addLocalizedMessages(AbstractLocaleController
+						.getLocaleController((currentExceptionEvent.getContext().getContext()))
 						.getAppMessageHandler(currentExceptionEvent.getContext().getContext()));
 				// Removes the event from the queue.
 				exceptionEventIterator.remove();
@@ -159,7 +153,9 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 			// If it is not a localized exception.
 			else {
 				// Adds a new generic error message.
-				localeController.getAppMessageHandler(currentExceptionEvent.getContext().getContext())
+				AbstractLocaleController
+						.getLocaleController((currentExceptionEvent.getContext().getContext()))
+						.getAppMessageHandler(currentExceptionEvent.getContext().getContext())
 						.addMessage(getGenericExceptionErrorType(), null, getGenericExceptionKey(), null);
 			}
 		}

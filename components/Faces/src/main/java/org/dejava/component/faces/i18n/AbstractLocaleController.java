@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Locale;
 
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
 import org.dejava.component.faces.message.FacesMessageHandler;
 import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
@@ -81,8 +80,8 @@ public abstract class AbstractLocaleController implements Serializable {
 	 * @return The locale controller for the faces context.
 	 */
 	public static AbstractLocaleController getLocaleController(final FacesContext facesContext) {
-		// Gets the locale controller for the HTTP session associated with the faces context.
-		return (AbstractLocaleController)  facesContext.getExternalContext()
-				.getSessionMap().get(LOCALE_CONTROLLER_SESSION_ATTR);
+		// Gets the locale controller using an EL expression.
+		return facesContext.getApplication().evaluateExpressionGet(facesContext,
+				"#{" + LOCALE_CONTROLLER_SESSION_ATTR + "}", AbstractLocaleController.class);
 	}
 }

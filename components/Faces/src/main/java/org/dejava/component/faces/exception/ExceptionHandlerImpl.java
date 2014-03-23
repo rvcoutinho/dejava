@@ -1,6 +1,5 @@
 package org.dejava.component.faces.exception;
 
-import java.lang.annotation.Annotation;
 import java.util.Iterator;
 
 import javax.faces.FacesException;
@@ -27,34 +26,6 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	@Override
 	public ExceptionHandler getWrapped() {
 		return wrappedHandler;
-	}
-
-	/**
-	 * The classifiers to be used in order to get the locale controller.
-	 */
-	private Annotation[] localeControllerClassifiers;
-
-	/**
-	 * Gets the classifiers to be used in order to get the locale controller.
-	 * 
-	 * @return The classifiers to be used in order to get the locale controller.
-	 */
-	public Annotation[] getLocaleControllerClassifiers() {
-		return localeControllerClassifiers;
-	}
-
-	/**
-	 * The bean manager attribute name in the Servlet context.
-	 */
-	private String beanManagerAttrName;
-
-	/**
-	 * Gets the bean manager attribute name in the Servlet context.
-	 * 
-	 * @return The bean manager attribute name in the Servlet context.
-	 */
-	public String getBeanManagerAttrName() {
-		return beanManagerAttrName;
 	}
 
 	/**

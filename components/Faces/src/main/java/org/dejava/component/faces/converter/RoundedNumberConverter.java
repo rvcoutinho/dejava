@@ -12,7 +12,7 @@ import org.dejava.component.faces.i18n.AbstractLocaleController;
 /**
  * Rounded number converter.
  */
-@FacesConverter(value = "RoundedNumConv")
+@FacesConverter(value = "roundedNumConv")
 public class RoundedNumberConverter implements Converter {
 
 	/**

@@ -12,7 +12,7 @@ import org.dejava.component.validation.method.ArgFormatter;
 /**
  * Invalid regular expression converter (removes the occurrences of the invalid expression from the string).
  */
-@FacesConverter(value = "InvRegexConv")
+@FacesConverter(value = "invRegexConv")
 public class InvalidRegexConverter implements Converter, Serializable {
 
 	/**

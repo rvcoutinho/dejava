@@ -82,7 +82,7 @@ public abstract class AbstractLocaleController implements Serializable {
 	 */
 	public static AbstractLocaleController getLocaleController(final FacesContext facesContext) {
 		// Gets the locale controller for the HTTP session associated with the faces context.
-		return (AbstractLocaleController) ((HttpServletRequest) facesContext.getExternalContext()
-				.getRequest()).getAttribute(LOCALE_CONTROLLER_SESSION_ATTR);
+		return (AbstractLocaleController)  facesContext.getExternalContext()
+				.getSessionMap().get(LOCALE_CONTROLLER_SESSION_ATTR);
 	}
 }

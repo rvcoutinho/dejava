@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.dejava.component.faces.test.controller.GenericControllerTest
--------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.167 sec

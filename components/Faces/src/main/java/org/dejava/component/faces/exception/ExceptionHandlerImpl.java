@@ -3,7 +3,6 @@ package org.dejava.component.faces.exception;
 import java.lang.annotation.Annotation;
 import java.util.Iterator;
 
-import javax.ejb.EJBException;
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.faces.FacesException;
@@ -11,9 +10,7 @@ import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerWrapper;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
-import javax.persistence.PersistenceException;
 import javax.servlet.ServletContext;
-import javax.transaction.RollbackException;
 
 import org.dejava.component.exception.localized.LocalizedException;
 import org.dejava.component.faces.i18n.AbstractLocaleController;
@@ -42,7 +39,7 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	/**
 	 * The classifiers to be used in order to get the locale controller.
 	 */
-	private Annotation[] localeControllerClassifiers;
+	private final Annotation[] localeControllerClassifiers;
 
 	/**
 	 * Gets the classifiers to be used in order to get the locale controller.
@@ -56,7 +53,7 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	/**
 	 * The bean manager attribute name in the Servlet context.
 	 */
-	private String beanManagerAttrName;
+	private final String beanManagerAttrName;
 
 	/**
 	 * Gets the bean manager attribute name in the Servlet context.
@@ -68,6 +65,54 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	}
 
 	/**
+	 * Generic exception error type.
+	 */
+	private Class<?> genericExceptionErrorType;
+
+	/**
+	 * Gets the generic exception error type.
+	 * 
+	 * @return The generic exception error type.
+	 */
+	public Class<?> getGenericExceptionErrorType() {
+		return genericExceptionErrorType;
+	}
+
+	/**
+	 * Sets the generic exception error type.
+	 * 
+	 * @param genericExceptionErrorType
+	 *            New generic exception error type.
+	 */
+	public void setGenericExceptionErrorType(final Class<?> genericExceptionErrorType) {
+		this.genericExceptionErrorType = genericExceptionErrorType;
+	}
+
+	/**
+	 * Generic exception error key.
+	 */
+	private String genericExceptionKey;
+
+	/**
+	 * Gets the generic exception error key.
+	 * 
+	 * @return The generic exception error key.
+	 */
+	public String getGenericExceptionKey() {
+		return genericExceptionKey;
+	}
+
+	/**
+	 * Sets the generic exception error key.
+	 * 
+	 * @param genericExceptionKey
+	 *            New generic exception error key.
+	 */
+	public void setGenericExceptionKey(final String genericExceptionKey) {
+		this.genericExceptionKey = genericExceptionKey;
+	}
+
+	/**
 	 * Default constructor.
 	 * 
 	 * @param wrappedHandler
@@ -76,12 +121,19 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	 *            The classifiers to be used in order to get the locale controller.
 	 * @param beanManagerAttrName
 	 *            The bean manager attribute name in the Servlet context.
+	 * @param genericExceptionErrorType
+	 *            The generic exception error type.
+	 * @param genericExceptionKey
+	 *            The generic exception error key.
 	 */
 	public ExceptionHandlerImpl(final ExceptionHandler wrappedHandler,
-			Annotation[] localeControllerClassifiers, String beanManagerAttrName) {
+			final Annotation[] localeControllerClassifiers, final String beanManagerAttrName,
+			final Class<?> genericExceptionErrorType, final String genericExceptionKey) {
 		this.wrappedHandler = wrappedHandler;
 		this.localeControllerClassifiers = localeControllerClassifiers;
 		this.beanManagerAttrName = beanManagerAttrName;
+		this.genericExceptionErrorType = genericExceptionErrorType;
+		this.genericExceptionKey = genericExceptionKey;
 	}
 
 	/**
@@ -91,18 +143,18 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 	 *            The faces context for the request.
 	 * @return The application message handler.
 	 */
-	protected ApplicationMessageHandler getAppMessageHandler(FacesContext facesContext) {
+	protected ApplicationMessageHandler getAppMessageHandler(final FacesContext facesContext) {
 		// Gets the bean manager.
-		BeanManager beanManager = (BeanManager) ((ServletContext) facesContext.getExternalContext()
+		final BeanManager beanManager = (BeanManager) ((ServletContext) facesContext.getExternalContext()
 				.getContext()).getAttribute(getBeanManagerAttrName());
 		// Gets the locale controller bean.
 		@SuppressWarnings("unchecked")
-		Bean<AbstractLocaleController> localeControllerBean = (Bean<AbstractLocaleController>) beanManager
+		final Bean<AbstractLocaleController> localeControllerBean = (Bean<AbstractLocaleController>) beanManager
 				.getBeans(AbstractLocaleController.class, getLocaleControllerClassifiers()).iterator().next();
 		// Gets the locale controller.
-		AbstractLocaleController localeController = (AbstractLocaleController) beanManager.getReference(
-				localeControllerBean, AbstractLocaleController.class,
-				beanManager.createCreationalContext(localeControllerBean));
+		final AbstractLocaleController localeController = (AbstractLocaleController) beanManager
+				.getReference(localeControllerBean, AbstractLocaleController.class,
+						beanManager.createCreationalContext(localeControllerBean));
 		// Returns a new faces message handler.
 		return new FacesMessageHandler(SimpleMessageHandler.getMessageHandler(localeController.getLocale()),
 				facesContext);
@@ -119,7 +171,7 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 		// For each unhandled exception.
 		while (exceptionEventIterator.hasNext()) {
 			// Gets the current exception event.
-			ExceptionQueuedEvent currentExceptionEvent = exceptionEventIterator.next();
+			final ExceptionQueuedEvent currentExceptionEvent = exceptionEventIterator.next();
 			// Gets the current exception.
 			Throwable currentException = currentExceptionEvent.getContext().getException();
 			// While the exception is not a Localized exception.
@@ -135,6 +187,12 @@ public class ExceptionHandlerImpl extends ExceptionHandlerWrapper {
 								.getContext()));
 				// Removes the event from the queue.
 				exceptionEventIterator.remove();
+			}
+			// If it is not a localized exception.
+			else {
+				// Adds a new generic error message.
+				getAppMessageHandler(currentExceptionEvent.getContext().getContext()).addMessage(
+						getGenericExceptionErrorType(), null, getGenericExceptionKey(), null);
 			}
 		}
 	}

@@ -18,13 +18,30 @@ public abstract class AbstractExceptionHandlerFactory extends ExceptionHandlerFa
 	private final ExceptionHandlerFactory wrappedFactory;
 
 	/**
+	 * The generic exception error type.
+	 */
+	private final Class<?> genericExceptionErrorType;
+
+	/**
+	 * The generic exception error key.
+	 */
+	private final String genericExceptionKey;
+
+	/**
 	 * Default constructor.
 	 * 
 	 * @param wrappedFactory
 	 *            The original factory to be injected.
+	 * @param genericExceptionErrorType
+	 *            The generic exception error type.
+	 * @param genericExceptionKey
+	 *            The generic exception error key.
 	 */
-	public AbstractExceptionHandlerFactory(final ExceptionHandlerFactory wrappedFactory) {
+	public AbstractExceptionHandlerFactory(final ExceptionHandlerFactory wrappedFactory,
+			final Class<?> genericExceptionErrorType, final String genericExceptionKey) {
 		this.wrappedFactory = wrappedFactory;
+		this.genericExceptionErrorType = genericExceptionErrorType;
+		this.genericExceptionKey = genericExceptionKey;
 	}
 
 	/**
@@ -43,6 +60,6 @@ public abstract class AbstractExceptionHandlerFactory extends ExceptionHandlerFa
 	public ExceptionHandler getExceptionHandler() {
 		// Returns a new exception handler.
 		return new ExceptionHandlerImpl(wrappedFactory.getExceptionHandler(), getClass().getAnnotations(),
-				getBeanManagerAttrName());
+				getBeanManagerAttrName(), genericExceptionErrorType, genericExceptionKey);
 	}
 }

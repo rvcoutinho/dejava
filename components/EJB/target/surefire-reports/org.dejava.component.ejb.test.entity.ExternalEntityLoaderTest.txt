@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.dejava.component.ejb.test.entity.ExternalEntityLoaderTest
 -------------------------------------------------------------------------------
-Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.754 sec
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.743 sec

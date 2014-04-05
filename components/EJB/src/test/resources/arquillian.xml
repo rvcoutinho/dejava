@@ -18,7 +18,7 @@
 		<!-- If you want to use the JBOSS_HOME environment variable, just delete 
 			the jbossHome property -->
 		<configuration>
-			<property name="jbossHome">C:/servidores/wildfly-8.0.0.CR1</property>
+			<property name="jbossHome">C:/servidores/wildfly-8.0.0.Final</property>
 			<property name="serverConfig">standalone-full.xml</property>
 			<property name="javaVmArguments">-Djava.util.logging.manager=org.jboss.logmanager.LogManager</property>
 		</configuration>

@@ -1,10 +1,9 @@
-org\dejava\component\ejb\test\util\EJBResources.class
-org\dejava\component\ejb\test\util\FakeEntity.class
-org\dejava\component\ejb\test\component\AbstractGenericComponentDAOTest.class
-org\dejava\component\ejb\test\util\EJB.class
 org\dejava\component\ejb\test\util\FakeEntityDAO.class
+org\dejava\component\ejb\test\entity\ExternalEntityLoaderTest.class
+org\dejava\component\ejb\test\component\GenericComponentDAOTest.class
 org\dejava\component\ejb\test\util\FakeEntityBusinessRuleSet.class
 org\dejava\component\ejb\test\util\FakeEntityComponent.class
-org\dejava\component\ejb\test\entity\ExternalEntityLoaderTest.class
 org\dejava\component\ejb\test\util\SomeOtherFakeEntity.class
-org\dejava\component\ejb\test\component\GenericComponentDAOTest.class
+org\dejava\component\ejb\test\util\FakeEntity.class
+org\dejava\component\ejb\test\util\EJB.class
+org\dejava\component\ejb\test\util\EJBResources.class

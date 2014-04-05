@@ -11,9 +11,6 @@ import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
 
 /**
- * TODO
- */
-/**
  * Fake entity.
  */
 public class SomeOtherFakeEntity extends AbstractIdentifiedEntity {

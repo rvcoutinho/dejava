@@ -5,44 +5,101 @@ import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.dejava.component.ejb.businessrule.GenericEntityBusinessRuleSet;
-import org.dejava.component.ejb.component.AbstractGenericComponent;
-import org.dejava.component.ejb.dao.GenericDAO;
-
 /**
- * Fake entity stateless component.
+ * Fake fakeEntity stateless component.
  */
 @Stateless(name = "Component/Test/FakeEntityComponent")
-public class FakeEntityComponent extends AbstractGenericComponent<FakeEntity, Integer> {
+public class FakeEntityComponent {
 
 	/**
-	 * The fake entity DAO.
+	 * The fake fakeEntity DAO.
 	 */
 	@EJB
 	@Inject
-	private FakeEntityDAO entityDAO;
+	private FakeEntityDAO fakeEntityDAO;
 
 	/**
-	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityDAO()
-	 */
-	@Override
-	public GenericDAO<FakeEntity, Integer> getEntityDAO() {
-		return entityDAO;
-	}
-
-	/**
-	 * The fake entity rule set.
+	 * The fake fakeEntity rule set.
 	 */
 	@EJB
 	@Inject
 	private FakeEntityBusinessRuleSet fakeEntityBusinessRuleSet;
 
 	/**
-	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityBusinessRuleSet()
+	 * Adds or update the persistent entity.
+	 * 
+	 * @param fakeEntity
+	 *            The entity to be persisted.
+	 * @return The persisted (and updated) entity.
 	 */
-	@Override
-	public GenericEntityBusinessRuleSet<FakeEntity> getEntityBusinessRuleSet() {
-		return fakeEntityBusinessRuleSet;
+	public FakeEntity addOrUpdate(final FakeEntity fakeEntity) {
+		// Validates the new fakeEntity.
+		fakeEntityBusinessRuleSet.validate(fakeEntity);
+		// Merges the fakeEntity.
+		return fakeEntityDAO.merge(fakeEntity);
+	}
+
+	/**
+	 * Adds or update all the persistent entities.
+	 * 
+	 * @param entities
+	 *            The entities to be persisted.
+	 * @return The persisted (and updated) entity.
+	 */
+	public Collection<FakeEntity> addOrUpdate(final Collection<FakeEntity> entities) {
+		// Validates the new fakeEntity.
+		fakeEntityBusinessRuleSet.validate(entities);
+		// Merges the entities.
+		return fakeEntityDAO.merge(entities);
+	}
+
+	/**
+	 * Removes a persistent entity.
+	 * 
+	 * @param fakeEntity
+	 *            The entity to be removed.
+	 */
+	public void remove(final FakeEntity fakeEntity) {
+		// Tries to remove the fakeEntity.
+		fakeEntityDAO.remove(fakeEntity);
+	}
+
+	/**
+	 * Removes persistent entities.
+	 * 
+	 * @param entities
+	 *            The entities to be removed.
+	 */
+	public void remove(final Collection<FakeEntity> entities) {
+		// Tries to remove the entities.
+		fakeEntityDAO.remove(entities);
+	}
+
+	/**
+	 * Gets an entity by its identifier.
+	 * 
+	 * @param identifier
+	 *            The identifier of the entity.
+	 * @return An entity by its identifier.
+	 */
+	public FakeEntity getById(final Integer identifier) {
+		// Tries to return the fakeEntity.
+		return fakeEntityDAO.getById(identifier);
+	}
+
+	/**
+	 * Gets all entities of the kind.
+	 * 
+	 * @param firstResult
+	 *            The first result that should be considered by the query.
+	 * @param maxResults
+	 *            The maximum numbers of results to be considered by the query.
+	 * 
+	 * @return All entities of the kind.
+	 */
+	public Collection<FakeEntity> getAll(final Integer firstResult, final Integer maxResults) {
+		// Tries to get the entities.
+		return fakeEntityDAO.getAll(firstResult, maxResults);
 	}
 
 	/**
@@ -61,21 +118,21 @@ public class FakeEntityComponent extends AbstractGenericComponent<FakeEntity, In
 	public Collection<FakeEntity> getByAttribute(final String attributeName, final Object attributeValue,
 			final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getEntityDAO().getByAttribute(attributeName, attributeValue, firstResult, maxResults);
+		return fakeEntityDAO.getByAttribute(attributeName, attributeValue, firstResult, maxResults);
 	}
 
 	/**
-	 * Gets an entity by its attribute.
+	 * Gets an fakeEntity by its attribute.
 	 * 
 	 * @param attributeName
 	 *            The attribute name.
 	 * @param attributeValue
 	 *            The attribute value.
-	 * @return The entity by its attribute.
+	 * @return The fakeEntity by its attribute.
 	 */
 	public FakeEntity getByAttribute(final String attributeName, final Object attributeValue) {
-		// Tries to get the entity.
-		return getEntityDAO().getByAttribute(attributeName, attributeValue);
+		// Tries to get the fakeEntity.
+		return fakeEntityDAO.getByAttribute(attributeName, attributeValue);
 	}
 
 	/**
@@ -92,19 +149,20 @@ public class FakeEntityComponent extends AbstractGenericComponent<FakeEntity, In
 	public Collection<FakeEntity> getBySomeOtherEntityId2(final Integer attributeValue,
 			final Integer firstResult, final Integer maxResults) {
 		// Tries to get the entities.
-		return getEntityDAO().getByAttribute("someOtherEntityId2", attributeValue, firstResult, maxResults);
+		return fakeEntityDAO
+				.getByAttribute("someOtherEntityId2", attributeValue, firstResult, maxResults);
 	}
 
 	/**
-	 * Gets the entity with the given attribute value.
+	 * Gets the fakeEntity with the given attribute value.
 	 * 
 	 * @param attributeValue
 	 *            The attribute value.
-	 * @return The entity with the given attribute value.
+	 * @return The fakeEntity with the given attribute value.
 	 */
 	public FakeEntity getBySomeOtherEntityId(final Integer attributeValue) {
 		// Tries to get the entities.
-		return getEntityDAO().getByAttribute("someOtherEntityId", attributeValue);
+		return fakeEntityDAO.getByAttribute("someOtherEntityId", attributeValue);
 	}
 
 }

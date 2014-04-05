@@ -61,9 +61,9 @@ public class PartyDAO extends AbstractGenericDAO<Party, Integer> {
 		// Updates the mapping for the external entities.
 		ExternalEntityLoader.updateReverseMappedEntities(persistedEntity);
 		// Persists the contacts for the entity.
-		persistedEntity.getContacts().addAll(contactComponent.addOrUpdate(entity.getContacts()));
+		persistedEntity.getContacts().addAll(contactComponent.createContacts(entity.getContacts()));
 		// Persists the addresses for the entity.
-		persistedEntity.getAddresses().addAll(placeComponent.addOrUpdate(entity.getAddresses()));
+		persistedEntity.getAddresses().addAll(placeComponent.createPlaces(entity.getAddresses()));
 		// Returns the persisted entity.
 		return persistedEntity;
 	}

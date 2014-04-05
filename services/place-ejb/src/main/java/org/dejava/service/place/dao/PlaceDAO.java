@@ -120,7 +120,7 @@ public class PlaceDAO extends AbstractGenericDAO<Place, Integer> {
 	 * @throws IOException
 	 *             If the google place URL cannot be processed. FIXME
 	 */
-	public Place getByGoogleReference(final String placeReference) throws IOException {
+	public Place getContactByGoogleReference(final String placeReference) throws IOException {
 		// Gets the URL google place detail.
 		final URL placeURL = new URL(getPlaceSearchURL(placeReference));
 		// Parses the result into a google place result.

@@ -95,7 +95,7 @@ public abstract class Party extends AbstractIdentifiedEntity implements Contacta
 	/**
 	 * Addresses for the party.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Place/Place", paramsValuesMethod = "getAddressesIds", singleEntity = false)
+	@ExternalEntity(retrieveObj = "java:app/place-ejb/Component/Place/Place", retrieveMethod = "getPlaceById", paramsValuesMethod = "getAddressesIds", singleEntity = false)
 	private Collection<Place> addresses;
 
 	/**
@@ -125,7 +125,7 @@ public abstract class Party extends AbstractIdentifiedEntity implements Contacta
 	/**
 	 * Contacts for the party.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/contact-ejb/Component/Contact/Contact", mappedBy = "partyId", singleEntity = false)
+	@ExternalEntity(retrieveObj = "java:app/contact-ejb/Component/Contact/Contact", retrieveMethod = "getContactById", mappedBy = "partyId", singleEntity = false)
 	private Collection<Contact> contacts;
 
 	/**

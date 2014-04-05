@@ -15,7 +15,7 @@ import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.permission.UserPermission;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
 import org.dejava.service.accesscontrol.util.MessageTypes;
-import org.dejava.service.message.component.AppNotificationComponent;
+import org.dejava.service.message.component.MessageComponent;
 import org.dejava.service.message.model.AppNotification;
 import org.dejava.service.message.util.MessageCtx;
 import org.dejava.service.party.constant.Permissions;
@@ -55,7 +55,7 @@ public class PartyTaskComponent {
 	 */
 	@Inject
 	@MessageCtx
-	private AppNotificationComponent appNotificationComponent;
+	private MessageComponent messageComponent;
 
 	/**
 	 * Adds the administrator permissions for a party.
@@ -121,7 +121,7 @@ public class PartyTaskComponent {
 		// Adds the new person.
 		person = (Person) partyComponent.createParty(person);
 		// Notifies the user with a welcome message.
-		appNotificationComponent.sendMessage(new AppNotification(person.getIdentifier(),
+		messageComponent.sendAppNotification(new AppNotification(person.getIdentifier(),
 				new SimpleMessageCommand(MessageTypes.URL.class, null, URLKeys.NEW_USER, null),
 				new SimpleMessageCommand(MessageTypes.URL.class, null, URLKeys.NEW_USER_IMAGE, null),
 				new SimpleMessageCommand(MessageTypes.Info.class, null, InfoKeys.NEW_USER,

@@ -23,11 +23,11 @@ import org.dejava.service.message.util.MessageCtx;
 public class AppMessageSender implements MessageListener {
 
 	/**
-	 * The application message EJB component.
+	 * The message EJB component.
 	 */
 	@Inject
 	@MessageCtx
-	private AppMessageComponent messageComponent;
+	private MessageComponent messageComponent;
 
 	/**
 	 * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
@@ -39,7 +39,7 @@ public class AppMessageSender implements MessageListener {
 			// Gets the original message.
 			AppMessage appMessage = message.getBody(AppMessage.class);
 			// Persists the message.
-			messageComponent.addOrUpdate(appMessage);
+			messageComponent.createMessage(appMessage);
 		}
 		// If the JMS message cannot be processed.
 		catch (JMSException exception) {

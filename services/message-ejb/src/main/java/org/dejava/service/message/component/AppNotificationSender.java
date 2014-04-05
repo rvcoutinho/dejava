@@ -27,7 +27,7 @@ public class AppNotificationSender implements MessageListener {
 	 */
 	@Inject
 	@MessageCtx
-	private AppNotificationComponent messageComponent;
+	private MessageComponent messageComponent;
 
 	/**
 	 * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
@@ -39,7 +39,7 @@ public class AppNotificationSender implements MessageListener {
 			// Gets the original notification.
 			AppNotification appNotification = message.getBody(AppNotification.class);
 			// // Persists the message.
-			messageComponent.addOrUpdate(appNotification);
+			messageComponent.createMessage(appNotification);
 		}
 		// If the JMS message cannot be processed.
 		catch (JMSException exception) {

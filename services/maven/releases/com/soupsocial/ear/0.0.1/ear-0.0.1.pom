@@ -36,20 +36,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
-			<artifactId>party-web</artifactId>
-			<type>war</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
 			<artifactId>place-ejb</artifactId>
 			<type>ejb</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
-			<artifactId>place-web</artifactId>
-			<type>war</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -60,20 +48,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
-			<artifactId>contact-web</artifactId>
-			<type>war</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
 			<artifactId>message-ejb</artifactId>
 			<type>ejb</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.dejava.service</groupId>
-			<artifactId>message-web</artifactId>
-			<type>war</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -84,8 +60,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.dejava.service</groupId>
-			<artifactId>philanthropy-web</artifactId>
-			<type>war</type>
+			<artifactId>photo-ejb</artifactId>
+			<type>ejb</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

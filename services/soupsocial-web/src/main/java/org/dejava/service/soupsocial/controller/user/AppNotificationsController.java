@@ -12,7 +12,7 @@ import org.dejava.component.faces.message.FacesMessageHandler;
 import org.dejava.component.i18n.message.handler.impl.SimpleMessageHandler;
 import org.dejava.service.accesscontrol.interceptor.Secured;
 import org.dejava.service.accesscontrol.interceptor.SuppressSecurityExceptions;
-import org.dejava.service.message.component.AppNotificationComponent;
+import org.dejava.service.message.component.MessageComponent;
 import org.dejava.service.message.model.AppNotification;
 import org.dejava.service.message.util.MessageCtx;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
@@ -37,7 +37,7 @@ public class AppNotificationsController {
 	 */
 	@Inject
 	@MessageCtx
-	private AppNotificationComponent appNotificationComponent;
+	private MessageComponent messageComponent;
 
 	/**
 	 * Gets the current user notifications.
@@ -48,7 +48,8 @@ public class AppNotificationsController {
 	@RequiresAuthentication
 	@SuppressSecurityExceptions
 	public Collection<AppNotification> getNotifications() {
-		return appNotificationComponent.getByRecipient(userController.getParty().getIdentifier(), null, null);
+		return messageComponent.getAppNotificationsByRecipient(userController.getParty().getIdentifier(),
+				null, null);
 	}
 
 	/**
@@ -61,7 +62,8 @@ public class AppNotificationsController {
 	@SuppressSecurityExceptions
 	public Long countUnread() {
 		// Returns the current user unread notifications count.
-		return appNotificationComponent.countUnreadByParty(userController.getParty().getIdentifier());
+		return messageComponent.countUnreadAppNotificationsByRecipient(userController.getParty()
+				.getIdentifier());
 	}
 
 	/**

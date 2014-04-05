@@ -5,20 +5,17 @@ import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.dejava.component.ejb.businessrule.GenericEntityBusinessRuleSet;
-import org.dejava.component.ejb.component.AbstractGenericComponent;
-import org.dejava.component.ejb.dao.AbstractGenericDAO;
 import org.dejava.service.contact.businessrule.ContactBusinessRuleSet;
 import org.dejava.service.contact.dao.ContactDAO;
 import org.dejava.service.contact.model.Contact;
 import org.dejava.service.contact.util.ContactCtx;
 
 /**
- * EJB component for the email address.
+ * EJB component for contact.
  */
 @ContactCtx
 @Stateless(name = "Component/Contact/Contact")
-public class ContactComponent extends AbstractGenericComponent<Contact, Integer> {
+public class ContactComponent {
 
 	/**
 	 * The contact DAO.
@@ -28,14 +25,6 @@ public class ContactComponent extends AbstractGenericComponent<Contact, Integer>
 	private ContactDAO contactDAO;
 
 	/**
-	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityDAO()
-	 */
-	@Override
-	public AbstractGenericDAO<Contact, Integer> getEntityDAO() {
-		return contactDAO;
-	}
-
-	/**
 	 * The application message business rule set.
 	 */
 	@Inject
@@ -43,11 +32,31 @@ public class ContactComponent extends AbstractGenericComponent<Contact, Integer>
 	private ContactBusinessRuleSet contactBusinessRuleSet;
 
 	/**
-	 * @see org.dejava.component.ejb.component.AbstractGenericComponent#getEntityBusinessRuleSet()
+	 * Creates a new contact.
+	 * 
+	 * @param contact
+	 *            The new contact.
+	 * @return The created contact.
 	 */
-	@Override
-	public GenericEntityBusinessRuleSet<Contact> getEntityBusinessRuleSet() {
-		return contactBusinessRuleSet;
+	public Contact createContact(final Contact contact) {
+		// Validates the contact to be added.
+		contactBusinessRuleSet.validate(contact);
+		// Adds the new contact.
+		return contactDAO.merge(contact);
+	}
+
+	/**
+	 * Creates new contacts.
+	 * 
+	 * @param contacts
+	 *            The new contacts.
+	 * @return The created contacts.
+	 */
+	public Collection<Contact> createContacts(final Collection<Contact> contacts) {
+		// Validates the contacts to be added.
+		contactBusinessRuleSet.validate(contacts);
+		// Adds the new contacts.
+		return contactDAO.merge(contacts);
 	}
 
 	/**
@@ -61,9 +70,20 @@ public class ContactComponent extends AbstractGenericComponent<Contact, Integer>
 	 *            The maximum numbers of results to be considered by the query.
 	 * @return The contact by the party identifier.
 	 */
-	public Collection<Contact> getByPartyId(final Integer partyId, final Integer firstResult,
+	public Collection<Contact> getContactByPartyId(final Integer partyId, final Integer firstResult,
 			final Integer maxResults) {
-		return getEntityDAO().getByAttribute("partyId", partyId, firstResult, maxResults);
+		return contactDAO.getByAttribute("partyId", partyId, firstResult, maxResults);
+	}
+
+	/**
+	 * Gets a contact by its identifier.
+	 * 
+	 * @param identifier
+	 *            The identifier of the for contact.
+	 * @return A person by its identifier.
+	 */
+	public Contact getContactById(final Integer identifier) {
+		return contactDAO.getById(identifier);
 	}
 
 }

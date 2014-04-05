@@ -157,7 +157,7 @@ public abstract class AbstractProjectPlan extends AbstractIdentifiedEntity {
 	/**
 	 * The target area for the project.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/targetArea-ejb/Component/Place/Place", paramsValuesMethod = "getTargetAreaId")
+	@ExternalEntity(retrieveObj = "java:app/targetArea-ejb/Component/Place/Place", retrieveMethod = "getPlaceById", paramsValuesMethod = "getTargetAreaId")
 	private Place targetArea;
 
 	/**

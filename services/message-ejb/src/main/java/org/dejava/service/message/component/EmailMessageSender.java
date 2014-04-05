@@ -35,7 +35,7 @@ public class EmailMessageSender implements MessageListener {
 	 */
 	@Inject
 	@MessageCtx
-	private EmailMessageComponent messageComponent;
+	private MessageComponent messageComponent;
 
 	/**
 	 * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
@@ -45,11 +45,11 @@ public class EmailMessageSender implements MessageListener {
 		// Tries to send the email message.
 		try {
 			// Gets the original message.
-			EmailMessage originalMessage = message.getBody(EmailMessage.class);
+			final EmailMessage originalMessage = message.getBody(EmailMessage.class);
 			// Gets the mail session instance.
-			Session mailSession = Session.getInstance(MAIL_CONFIG_PROPERTIES);
+			final Session mailSession = Session.getInstance(MAIL_CONFIG_PROPERTIES);
 			// Creates a default MimeMessage object.
-			MimeMessage mailMessage = new MimeMessage(mailSession);
+			final MimeMessage mailMessage = new MimeMessage(mailSession);
 			// Sets the "From" field of the header.
 			mailMessage.setFrom(new InternetAddress(originalMessage.getSender()));
 			// Sets the "To" field of the header.
@@ -62,14 +62,14 @@ public class EmailMessageSender implements MessageListener {
 			// Sends the message
 			Transport.send(mailMessage);
 			// Adds the sent message.
-			messageComponent.addOrUpdate(originalMessage);
+			messageComponent.createMessage(originalMessage);
 		}
 		// If the JMS message cannot be processed.
-		catch (JMSException exception) {
+		catch (final JMSException exception) {
 			// TODO Auto-generated catch block
-		} catch (AddressException exception) {
+		} catch (final AddressException exception) {
 			// TODO Auto-generated catch block
-		} catch (MessagingException exception) {
+		} catch (final MessagingException exception) {
 			// TODO Auto-generated catch block
 		}
 	}

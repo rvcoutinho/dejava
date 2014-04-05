@@ -17,7 +17,7 @@
         <dependent-module archiveName="place-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/place-ejb/place-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="contact-ejb-0.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/contact-ejb/0.0.1/contact-ejb-0.0.1.jar">
+        <dependent-module archiveName="contact-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/contact-ejb/contact-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="message-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/message-ejb/message-ejb">
@@ -50,7 +50,7 @@
         <dependent-module archiveName="validation-0.0.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/dejava/component/validation/0.0.1/validation-0.0.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="restfb-1.6.11.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/restfb/restfb/1.6.11/restfb-1.6.11.jar">
+        <dependent-module archiveName="restfb-1.6.14.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/restfb/restfb/1.6.14/restfb-1.6.14.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="google-api-client-1.16.0-rc.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/api-client/google-api-client/1.16.0-rc/google-api-client-1.16.0-rc.jar">

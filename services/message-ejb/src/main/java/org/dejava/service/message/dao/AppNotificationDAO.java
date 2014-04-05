@@ -34,7 +34,7 @@ public class AppNotificationDAO extends AbstractGenericDAO<AppNotification, Inte
 	 * 
 	 * @param recipient
 	 *            The recipient for the notification.
-	 * @return The unread notifications by the recipient.
+	 * @return The unread notifications count by the recipient.
 	 */
 	public Long countUnreadByRecipient(final Integer recipient) {
 		// Gets the named query for the recipient application notifications.

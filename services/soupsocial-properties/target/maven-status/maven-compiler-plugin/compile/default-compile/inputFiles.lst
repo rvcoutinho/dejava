@@ -1,9 +1,9 @@
-D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\util\MailConfigProps.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\util\AbstractProps.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\util\AppConfigProps.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\constant\AppConfigKeys.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\constant\MailConfigKeys.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\util\FacebookAPIProps.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\constant\FacebookAPIKeys.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\constant\GooglePlacesAPIKeys.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\util\AppConfigProps.java
 D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\util\GooglePlacesAPIProps.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\constant\MailConfigKeys.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\util\AbstractProps.java
-D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\util\FacebookAPIProps.java
+D:\usuarios\rvcoutinho\Desktop\dejava\services\soupsocial-properties\src\main\java\org\dejava\properties\util\MailConfigProps.java

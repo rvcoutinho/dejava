@@ -97,7 +97,7 @@ public class CreateIdeaController extends AbstractCreateProjectController implem
 		// Sets the idea for the new project.
 		getNewProject().setIdea(getNewProjectIdea());
 		// Updates the idea target area.
-		getNewProjectIdea().setTargetArea(placeComponent.getByGoogleReference(getAddressReference()));
+		getNewProjectIdea().setTargetArea(placeComponent.getContactByGoogleReference(getAddressReference()));
 		// Sets the current user as the author of the new idea.
 		getNewProjectIdea().getAuthors().add(
 				new ProjectAuthor(getNewProject(), (Supporter) userController.getPhilanthropyParty()));

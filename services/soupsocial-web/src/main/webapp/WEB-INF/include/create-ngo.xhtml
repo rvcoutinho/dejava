@@ -22,7 +22,7 @@
 				<h:inputText id="create-ngo-cnpj" styleClass="cnpj mask"
 					p:data-inv-regex="[^\d]"
 					value="#{newNonProfitOrgController.party.party.federalCode}">
-					<f:converter converterId="InvRegexConv" />
+					<f:converter converterId="invRegexConv" />
 				</h:inputText>
 			</div>
 			<div>
@@ -43,7 +43,7 @@
 				<h:inputText id="create-ngo-phone" styleClass="phone mask"
 					p:data-inv-regex="[^\d]"
 					value="#{newNonProfitOrgController.phoneNumber.number}">
-					<f:converter converterId="InvRegexConv" />
+					<f:converter converterId="invRegexConv" />
 				</h:inputText>
 			</div>
 			<h:commandLink

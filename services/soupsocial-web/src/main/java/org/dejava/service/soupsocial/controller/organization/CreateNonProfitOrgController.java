@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.dejava.service.party.model.Organization;
-import org.dejava.service.philanthropy.component.PhilanthropyPartyTaskComponent;
+import org.dejava.service.philanthropy.component.PartyTaskComponent;
 import org.dejava.service.philanthropy.model.party.NonProfitOrg;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
@@ -19,8 +19,7 @@ import org.dejava.service.soupsocial.util.SoupSocialCtx;
 @ConversationScoped
 @SoupSocialCtx
 @Named("newNonProfitOrgController")
-public class CreateNonProfitOrgController extends AbstractCreatePhilanthropyPartyController implements
-		Serializable {
+public class CreateNonProfitOrgController extends AbstractCreatePartyController implements Serializable {
 
 	/**
 	 * Generated serial.
@@ -33,7 +32,7 @@ public class CreateNonProfitOrgController extends AbstractCreatePhilanthropyPart
 	private NonProfitOrg newParty;
 
 	/**
-	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePhilanthropyPartyController#getParty()
+	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePartyController#getParty()
 	 */
 	@Override
 	public NonProfitOrg getParty() {
@@ -51,7 +50,7 @@ public class CreateNonProfitOrgController extends AbstractCreatePhilanthropyPart
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyPartyTaskComponent partyComponent;
+	private PartyTaskComponent partyComponent;
 
 	/**
 	 * Creates a new non profit organization.
@@ -63,6 +62,6 @@ public class CreateNonProfitOrgController extends AbstractCreatePhilanthropyPart
 		// Updates the party address.
 		updateAddressDetails();
 		// Creates the new party.
-		partyComponent.createPhilanthropyParty(getParty());
+		partyComponent.createParty(getParty());
 	}
 }

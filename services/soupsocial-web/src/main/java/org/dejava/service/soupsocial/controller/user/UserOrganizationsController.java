@@ -7,7 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.dejava.service.philanthropy.component.PhilanthropyPartyTaskComponent;
+import org.dejava.service.philanthropy.component.PartyTaskComponent;
 import org.dejava.service.philanthropy.model.party.NonProfitOrg;
 import org.dejava.service.philanthropy.model.party.Sponsor;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
@@ -33,7 +33,7 @@ public class UserOrganizationsController {
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyPartyTaskComponent partyComponent;
+	private PartyTaskComponent partyComponent;
 
 	/**
 	 * Non-profit organizations administered by the user.

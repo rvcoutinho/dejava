@@ -17,7 +17,7 @@ import org.dejava.service.soupsocial.util.SoupSocialCtx;
  */
 @SessionScoped
 @SoupSocialCtx
-@Named(value = "localeController")
+@Named(value = AbstractLocaleController.LOCALE_CONTROLLER_SESSION_ATTR)
 public class LocaleController extends AbstractLocaleController {
 
 	/**
@@ -59,6 +59,7 @@ public class LocaleController extends AbstractLocaleController {
 	 * 
 	 * @return The session locale.
 	 */
+	@Override
 	public Locale getLocale() {
 		// Gets the session locale.
 		Locale sessionLocale = (Locale) getSessionInfo().getAttribute(SESSION_LOCALE_ATTR_NAME);

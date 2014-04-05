@@ -4,7 +4,7 @@
 
 body {
 	margin: 0px;
-	font-size: .8em;
+	font-size: .9em;
 	text-align: justify;
 }
 
@@ -83,7 +83,7 @@ ul {
 .bigger-button {
 	height: 35px;
 	width: 175px;
-	font-size: 1.2em;
+	font-size: 1em;
 }
 
 .round-button {
@@ -115,11 +115,11 @@ ul {
 
 .form-content input,.form-content select,.form-content textarea {
 	float: right;
-	width: 275px;
+	width: 350px;
 }
 
 .form-content input.youtube {
-	width: 85px;
+	width: 175px;
 }
 
 .form-content textarea {
@@ -221,6 +221,10 @@ input.ui-button {
 	margin-left: -8px;
 }
 
+.fa-2x {
+	font-size: 1.8em;
+}
+
 .ui-button-text-icon-primary .ui-button-icon-primary,.ui-button-text-icons .ui-button-icon-primary,.ui-button-icons-only .ui-button-icon-primary
 	{
 	left: .5em;
@@ -256,7 +260,7 @@ h1,h2,h3,h4,h5 {
 }
 
 h1 {
-	font-size: 2em;
+	font-size: 1.8em;
 }
 
 /* Link */
@@ -306,19 +310,19 @@ a {
 }
 
 .small-text,.ui-slider .ui-slider-range {
-	font-size: .85em;
+	font-size: .75em;
 }
 
 .big-text {
-	font-size: 1.4em;
+	font-size: 1.3em;
 }
 
 .bigger-text {
-	font-size: 2em;
+	font-size: 1.8em;
 }
 
 .biggest-text {
-	font-size: 3em;
+	font-size: 2.7em;
 }
 
 .featured-text-1,.ui-widget-header {
@@ -1216,7 +1220,6 @@ a {
 #footer>nav>ul>li.title {
 	border-left: 1px solid #FFFFFF;
 	border-right: 1px solid #BBBBBB;
-	font-size: 1em;
 	height: 15px;
 	overflow: visible;
 }

@@ -52,7 +52,7 @@ public abstract class AbstractProjectPlan extends AbstractIdentifiedEntity {
 	@NotEmpty(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
 			+ ".name.notempty")
 	@Length(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
-			+ ".name.length", min = 7, max = 35)
+			+ ".name.length", min = 12, max = 60)
 	public String getName() {
 		return name;
 	}
@@ -83,7 +83,7 @@ public abstract class AbstractProjectPlan extends AbstractIdentifiedEntity {
 	@NotEmpty(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
 			+ ".shortdesc.notempty")
 	@Length(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
-			+ ".shortdesc.length", min = 30, max = 130)
+			+ ".shortdesc.length", min = 65, max = 165)
 	public String getShortDesc() {
 		return shortDesc;
 	}
@@ -96,6 +96,37 @@ public abstract class AbstractProjectPlan extends AbstractIdentifiedEntity {
 	 */
 	public void setShortDesc(final String shortDesc) {
 		this.shortDesc = shortDesc;
+	}
+
+	/**
+	 * The description of the idea.
+	 */
+	private String desc;
+
+	/**
+	 * Gets the description of the idea.
+	 * 
+	 * @return The description of the idea.
+	 */
+	@Column(name = "description", columnDefinition = "TEXT")
+	@NotNull(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".desc.notnull")
+	@NotEmpty(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".desc.notempty")
+	@Length(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
+			+ ".desc.length", min = 65, max = 1650)
+	public String getDesc() {
+		return desc;
+	}
+
+	/**
+	 * Sets the description of the idea.
+	 * 
+	 * @param desc
+	 *            New description of the idea.
+	 */
+	public void setDesc(final String desc) {
+		this.desc = desc;
 	}
 
 	/**
@@ -190,13 +221,13 @@ public abstract class AbstractProjectPlan extends AbstractIdentifiedEntity {
 	 * 
 	 * @return The motivation for the project.
 	 */
-	@Column(name = "motivation")
+	@Column(name = "motivation", columnDefinition = "TEXT")
 	@NotNull(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
 			+ ".motivation.notnull")
 	@NotEmpty(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
 			+ ".motivation.notempty")
 	@Length(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
-			+ ".motivation.length", min = 100, max = 500)
+			+ ".motivation.length", min = 50, max = 500)
 	public String getMotivation() {
 		return motivation;
 	}
@@ -245,37 +276,6 @@ public abstract class AbstractProjectPlan extends AbstractIdentifiedEntity {
 	 */
 	public void setGoals(final List<String> goals) {
 		this.goals = goals;
-	}
-
-	/**
-	 * The description of the idea.
-	 */
-	private String desc;
-
-	/**
-	 * Gets the description of the idea.
-	 * 
-	 * @return The description of the idea.
-	 */
-	@Column(name = "description")
-	@NotNull(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
-			+ ".desc.notnull")
-	@NotEmpty(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
-			+ ".desc.notempty")
-	@Length(payload = MessageTypes.Error.class, message = MessageTemplateWildCards.ACTUAL_CLASS
-			+ ".desc.length", min = 100, max = 1000)
-	public String getDesc() {
-		return desc;
-	}
-
-	/**
-	 * Sets the description of the idea.
-	 * 
-	 * @param desc
-	 *            New description of the idea.
-	 */
-	public void setDesc(final String desc) {
-		this.desc = desc;
 	}
 
 	/**

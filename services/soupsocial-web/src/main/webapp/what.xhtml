@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="head">
+		<link rel="canonical" href="http://www.soupsocial.com/soupsocial" />
+		<title>SoupSocial - Mude compartilhando!</title>
+	</ui:define>
+	<ui:define name="content">
+		<section id="content" class="min-width dark-gray-texture-bg">
+			<div class="content-width">
+				<section id="soupsocial-idea" class="border-bottom">
+					<header class="padding-4">
+						<h1>
+							<h:link outcome="pretty:how">O que é</h:link>
+							&gt; <a href="#"
+								onclick="$('#soupsocial-idea-content').slideDown(1000);">Nossa
+								ideia</a>
+						</h1>
+					</header>
+					<div id="soupsocial-idea-content">
+						<div class="padding-4">
+							<p>O mundo está longe de ser um lugar perfeito. Muito pelo
+								contrário, desigualdades e problemas são uma constante. Este
+								sentimento permeia a todos e traz uma grande questão: O que eu
+								posso fazer para melhorar?</p>
+							<p>Indivíduos sozinhos possuem pouca força para mudar a
+								situação. No entanto, as pequenas forças unidas podem gerar
+								grandes transformações. É como sempre foi dito: A união faz a
+								força. Por sorte, vivemos em uma época em que a internet permite
+								facilmente convergir as vontades de muitas pessoas, ainda que
+								separadas por quilômetros de distância.</p>
+							<p>Observa-se ainda, que, atualmente, muitas vezes é a
+								vontade dos usuários que dita o comportamento do mercado. Se um
+								vídeo de determinado cantor gera muitos views, em pouco tempo
+								ele é contratado por uma grande gravadora. Se um site é muito
+								acessado, em pouco tempo ele arrecada muito dinheiro com
+								publicidade. Por que não converter uma mínima parte do seu tempo
+								na internet demonstrado apoio a uma ideia que pode efetivamente
+								fazer do mundo um lugar melhor? Ou quem sabe até sugerindo sua
+								própria ideia?</p>
+							<p>Milhares de empresas gastam bilhões em
+								publicidade/propagadas para chegar até você, para criar um
+								vínculo e ser notada pelo mercado. Por que não nos juntarmos em
+								uma única voz, demonstrando que queremos que elas banquem
+								projetos que vão melhorar nossa sociedade? Por que não
+								direcionarmos estes orçamentos bilionários em algo que possa
+								efetivamente fazer a diferença?</p>
+							<p>A resposta é o soupsocial. Agora se tornou possível mudar
+								compartilhando. Um único clique, e uma audiência de pouco
+								minutos, pode fazer toda a diferença. Nunca foi tão fácil fazer
+								do mundo um lugar melhor.</p>
+						</div>
+						<div class="close-button-div">
+							<button class="close-button dark-green-bg"
+								onclick="$('#soupsocial-idea-content').slideUp(1000);">
+								<h:graphicImage library="soupsocial" name="gfx/arrow-up.png" />
+								<br />fechar
+							</button>
+						</div>
+					</div>
+				</section>
+				<section id="soupsocial-vision" class="border-top border-bottom">
+					<header class="padding-4">
+						<h1>
+							<h:link outcome="pretty:how">O que é</h:link>
+							&gt; <a href="#"
+								onclick="$('#soupsocial-vision-content').slideDown(1000);">Missão,
+								visão e objetivos</a>
+						</h1>
+					</header>
+					<div id="soupsocial-vision-content">
+						<div class="padding-4">
+							<h4>Missão</h4>
+							<p>Utilizar o potencial da internet para alavancar projetos
+								sociais e aumentar a participação e mobilização da sociedade nos
+								mesmos, tendo por consequência a ampliação de investimentos por
+								parte de empresas nos citados projetos.</p>
+							<h4>Visão</h4>
+							<p>A internet como uma plataforma que une pessoas,
+								instituições sem fins lucrativos e empresas em prol de uma
+								melhora das condições de vida da população. A melhora, sob nossa
+								perspectiva, se dá a partir de projetos concretos, que sejam
+								sugeridos e que tenham a participação e a mobilização das
+								pessoas, a gestão das instituições sem fins lucrativos e os
+								recursos das empresas – canalizados principalmente da área de
+								responsabilidade social.</p>
+							<h4>Objetivos</h4>
+							<p>Ser o facilitador da viabilização de projetos sociais,
+								valorizando e simplificando a participação e a mobilização das
+								pessoas, aumentando a visibilidade das instituições sem fins
+								lucrativos e apresentando um banco de projetos com grande
+								visibilidade e apoio popular, unindo a sociedade na construção
+								de um mundo melhor.</p>
+						</div>
+						<div class="close-button-div">
+							<button class="close-button dark-green-bg"
+								onclick="$('#soupsocial-vision-content').slideUp(1000);">
+								<h:graphicImage library="soupsocial" name="gfx/arrow-up.png" />
+								<br />fechar
+							</button>
+						</div>
+					</div>
+				</section>
+			</div>
+		</section>
+	</ui:define>
+</ui:composition>

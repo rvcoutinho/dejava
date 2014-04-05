@@ -61,7 +61,7 @@
 				<h:inputText id="update-supporter-phone" styleClass="phone mask"
 					p:data-inv-regex="[^\d]"
 					value="#{updateUserSupporterController.phoneNumber.number}">
-					<f:converter converterId="InvRegexConv" />
+					<f:converter converterId="invRegexConv" />
 				</h:inputText>
 			</div>
 			<h:commandLink

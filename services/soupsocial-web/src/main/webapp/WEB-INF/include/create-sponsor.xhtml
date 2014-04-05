@@ -23,7 +23,7 @@
 				<h:inputText id="create-sponsor-cnpj" styleClass="cnpj mask"
 					p:data-inv-regex="[^\d]"
 					value="#{newSponsorController.party.party.federalCode}">
-					<f:converter converterId="InvRegexConv" />
+					<f:converter converterId="invRegexConv" />
 				</h:inputText>
 			</div>
 			<div>
@@ -44,7 +44,7 @@
 				<h:inputText id="create-sponsor-phone" styleClass="phone mask"
 					p:data-inv-regex="[^\d]"
 					value="#{newSponsorController.phoneNumber.number}">
-					<f:converter converterId="InvRegexConv" />
+					<f:converter converterId="invRegexConv" />
 				</h:inputText>
 			</div>
 			<h:commandLink action="#{newSponsorController.createSponsor()}"

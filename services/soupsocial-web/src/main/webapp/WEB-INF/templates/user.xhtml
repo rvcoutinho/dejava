@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:soupsocial="http://www.soupsocial.com/facelets"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="head">
+		<h:outputStylesheet library="soupsocial" name="css/small-project.css" />
+		<h:outputStylesheet library="soupsocial" name="css/party.css" />
+		<ui:insert name="user-head"></ui:insert>
+	</ui:define>
+	<ui:define name="content">
+		<section id="content" class="min-width dark-gray-texture-bg padding-4">
+			<div class="content-width">
+				<section id="main-content">
+					<ui:insert name="user-content"></ui:insert>
+				</section>
+				<aside>
+					<section id="party-completeness" class="white-bg ui-corner-all">
+						<header
+							class="light-green-bg padding-1 featured-text-1 ui-corner-all">
+							Perfil completo<i class="fa fa-cog dark-gray-text right-button" />
+						</header>
+					</section>
+					<section id="party-info" class="white-bg ui-corner-all">
+						<header class="orange-bg padding-1 featured-text-1 ui-corner-top">
+							Perfil Social<i class="fa fa-user dark-gray-text right-button" />
+						</header>
+						<section id="party-info-content">
+							<div id="party-presentation" class="padding-1">
+								<img class="ui-corner-all"
+									src="https://graph.facebook.com/me/picture?access_token=#{userController.subject.session.getAttribute('access_token')}" />
+								<p class="featured-text-3 big-text">#{userController.party.displayName}</p>
+								<p>Seu status</p>
+							</div>
+							<div id="party-numbers">
+								<div class="padding-1">
+									<a href="#party-projects" class="dark-gray-text"><span
+										class="featured-text-3">#{projectsController.countProjectsCreatedBySupporter()}</span><br />ideias
+										criadas</a>
+								</div>
+								<div class="padding-1 last">
+									<a href="#supported-projects" class="dark-gray-text"><span
+										class="featured-text-3">#{projectsController.countSharesBySupporter()}</span><br />projetos
+										apoiados</a>
+								</div>
+							</div>
+							<div class="padding-1 light-gray-bg">
+								<header class="featured-text-1">Compartilhe seu perfil</header>
+								<div class="padding-4">
+									<a
+										href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsoupsocial.com%2Fu%2F#{userController.user.name}"
+										target="_blank"><i class="fa fa-facebook-square fa-2x" /></a><a
+										href="https://twitter.com/share?url=http%3A%2F%2Fsoupsocial.com%2Fu%2F#{userController.user.name}"
+										target="_blank"><i class="fa fa-twitter-square fa-2x" /></a><a
+										href="https://plus.google.com/share?url=http%3A%2F%2Fsoupsocial.com%2Fu%2F#{userController.user.name}"
+										target="_blank"><i class="fa fa-google-plus-square fa-2x" /></a><a
+										href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fsoupsocial.com%2Fu%2F#{userController.user.name}&amp;title=SoupSocial.com&amp;summary=SoupSocial.com&amp;source=SoupSocial.com"
+										target="_blank"><i class="fa fa-linkedin-square fa-2x" /></a>
+								</div>
+							</div>
+							<div class="padding-1">
+								<header class="featured-text-1">Pessoas com a mesmas
+									causas</header>
+								<div></div>
+								<button class="orange-bg">Convide seus amigos</button>
+							</div>
+							<div class="padding-1 light-gray-bg ui-corner-bottom">
+								<header class="featured-text-1">Mude o mundo</header>
+								<div></div>
+								<h:form>
+									<h:commandLink class="small-text"
+										action="#{userController.checkAuthenticated()}">
+										<c:if test="#{userController.subject.authenticated}">
+											<f:attribute name="onclick" value="showModal('#create-idea');" />
+										</c:if>
+										<f:ajax render="messages-container" />
+										<button class="dark-green-bg">Dar nova ideia</button>
+									</h:commandLink>
+									<h:commandLink class="small-text"
+										action="#{userController.checkAuthenticated()}">
+										<c:if test="#{userController.subject.authenticated}">
+											<f:attribute name="onclick"
+												value="showModal('#create-project');" />
+										</c:if>
+										<f:ajax render="messages-container" />
+										<button class="dark-green-bg">Criar projeto</button>
+									</h:commandLink>
+								</h:form>
+							</div>
+						</section>
+					</section>
+				</aside>
+			</div>
+		</section>
+	</ui:define>
+</ui:composition>

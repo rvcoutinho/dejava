@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<f:view locale="#{localeController.locale}">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link
+			href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+			rel="stylesheet" />
+		<h:outputStylesheet library="soupsocial"
+			name="css/jqueryui-fontawesome.css" />
+		<h:outputStylesheet library="soupsocial" name="css/stylesheet.css" />
+		<script src="//code.jquery.com/jquery-1.9.1.min.js"
+			type="text/javascript"></script>
+		<script src="//code.jquery.com/ui/1.10.3/jquery-ui.min.js"
+			type="text/javascript"></script>
+		<h:outputScript library="soupsocial" name="js/jquery.mask.min.js" />
+		<h:outputScript library="soupsocial"
+			name="js/jquery-flexslider.min.js" />
+		<script
+			src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"
+			type="text/javascript"></script>
+		<h:outputScript library="soupsocial"
+			name="js/jquery.geocomplete.min.js"></h:outputScript>
+		<ui:insert name="head"></ui:insert>
+		<h:outputText escape="false">
+			<!--[if lt IE 9]>
+				<script async="async" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<![endif]-->
+		</h:outputText>
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-48871758-1', 'soupsocial.com');
+			ga('send', 'pageview');
+		</script>
+	</h:head>
+	<h:body>
+		<header id="header" class="min-width light-gray-texture-bg padding-2">
+			<div class="content-width">
+				<h:link outcome="pretty:index">
+					<h:graphicImage library="soupsocial" id="logo" name="gfx/logo.png" />
+				</h:link>
+				<nav>
+					<ul>
+						<li class="first"><h:link outcome="pretty:how"
+								styleClass="featured-text-1">Como
+							funciona</h:link></li>
+						<li><h:link outcome="pretty:ideas"
+								styleClass="featured-text-1">Ideias</h:link></li>
+						<li><h:link outcome="pretty:plannedProjects"
+								styleClass="featured-text-1">Projetos</h:link></li>
+						<li><h:link outcome="pretty:ongoingProjects"
+								styleClass="featured-text-1">Acontecendo</h:link></li>
+						<li><a href="http://www.facebook.com/SoupSocial/"
+							target="_blank"><i class="fa fa-facebook media" /></a><a
+							href="http://www.twitter.com/Soup_Social/" target="_blank"><i
+								class="fa fa-twitter media" /></a><a href="#"><i
+								class="fa fa-rss media" /></a></li>
+						<li><div class="fb-like"
+								data-href="http://www.soupsocial.com/" data-send="false"
+								data-layout="button_count" data-width="100"
+								data-show-faces="true"></div></li>
+						<li class="last"><h:outputLink styleClass="featured-text-1"
+								value="/accesscontrol-web/login/facebook"
+								rendered="#{!(userController.subject.authenticated or userController.subject.remembered)}">Conectar</h:outputLink>
+							<h:panelGroup
+								rendered="#{(userController.subject.authenticated or userController.subject.remembered)}">
+								<div class="sub-menu right square-box ui-corner-all">
+									<a href="#" class="featured-text-1 open light-gray-text"><i
+										class="fa fa-bell fa-2x"><h:panelGroup
+												rendered="#{appNotificationsController.countUnread() gt 0}">
+												<span class="event-count orange-bg smaller-text">#{appNotificationsController.countUnread()}</span>
+											</h:panelGroup></i></a>
+									<ul class="white-bg ui-corner-all">
+										<ui:repeat var="currentNotification"
+											value="#{appNotificationsController.notifications}">
+											<li class="last-sub-item"><h:link
+													outcome="pretty:notifications" styleClass="gray-text">#{currentNotification.content.getMessage(appNotificationsController.facesMessageHandler)} <time>
+														<h:outputText value="#{currentNotification.date}">
+															<f:convertDateTime locale="pt_BR" />
+														</h:outputText>
+													</time>
+												</h:link></li>
+										</ui:repeat>
+										<li><h:link outcome="pretty:notifications">Todas as notificações</h:link></li>
+									</ul>
+								</div>
+								<div
+									class="sub-menu right square-box user-menu light-green-bg ui-corner-all">
+									<h:link outcome="pretty:me" styleClass="featured-text-1">
+										<img class="ui-corner-left"
+											src="https://graph.facebook.com/me/picture?access_token=#{userController.subject.session.getAttribute('access_token')}"
+											alt="" />
+									</h:link>
+									<a href="#" class="open"><i
+										class="fa fa-caret-down light-green-bg ui-corner-right" /></a>
+									<ul class="white-bg ui-corner-all">
+										<li><h:link outcome="pretty:me">Meu perfil</h:link></li>
+										<li class="last-sub-item"><h:link
+												fragment="update-supporter">Completar minhas
+												informações</h:link></li>
+										<li><h:link outcome="pretty:me"
+												fragment="suggested-projects">Projetos e ideias com o seu perfil</h:link></li>
+										<li><h:link outcome="pretty:me" fragment="party-projects">Meus projetos e ideias</h:link></li>
+										<li class="last-sub-item"><h:link outcome="pretty:me"
+												fragment="supported-projects">Projetos e ideias apoiados</h:link></li>
+										<li><h:link outcome="pretty:me"
+												rendered="#{not empty userOrganizationsController.nonProfitOrgs}">Minhas organizações</h:link>
+											<h:panelGroup
+												rendered="#{empty userOrganizationsController.nonProfitOrgs}">
+												<a href="#" onclick="showModal('#create-ngo');">Cadastrar
+													organização</a>
+											</h:panelGroup></li>
+										<li class="last-sub-item"><h:link outcome="pretty:me"
+												rendered="#{not empty userOrganizationsController.sponsors}">Minhas empresas patrocinadoras</h:link>
+											<h:panelGroup
+												rendered="#{empty userOrganizationsController.sponsors}">
+												<a href="#" onclick="showModal('#create-sponsor');">Cadastrar
+													patrocinador</a>
+											</h:panelGroup></li>
+										<li><h:form>
+												<h:commandLink action="#{userController.logout()}">Sair</h:commandLink>
+											</h:form></li>
+									</ul>
+								</div>
+							</h:panelGroup></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<ui:insert name="content"></ui:insert>
+		<section class="min-width dark-gray-texture-bg">
+			<div class="content-width">
+				<section class="padding-4 border-top">
+					<div class="fb-like"
+						data-href="http://www.facebook.com/SoupSocial/" data-send="false"
+						data-width="940" data-show-faces="true"></div>
+				</section>
+			</div>
+		</section>
+		<footer id="footer" class="min-width padding-2">
+			<nav class="content-width">
+				<ul>
+					<li class="title first"><h:link outcome="pretty:soupsocial"
+							styleClass="featured-text-1">O que é</h:link></li>
+					<li><h:link outcome="pretty:soupsocial"
+							anchor="soupsocial-idea" styleClass="small-text scroll"
+							onclick="$('#soupsocial-idea-content').slideDown(1000);">Nossa
+						ideia</h:link></li>
+					<li><h:link outcome="pretty:soupsocial"
+							anchor="soupsocial-vision" styleClass="small-text scroll"
+							onclick="$('#soupsocial-vision-content').slideDown(1000);">Nossos
+						objetivos</h:link></li>
+					<li><h:link outcome="pretty:privacy" styleClass="small-text">Política de
+						privacidade</h:link></li>
+					<li><h:link outcome="pretty:terms" styleClass="small-text">Termos e
+						condições</h:link></li>
+				</ul>
+				<ul>
+					<li class="title"><h:link outcome="pretty:who"
+							styleClass="featured-text-1">Quem somos</h:link></li>
+					<li><h:link outcome="pretty:who" anchor="who-ideas"
+							styleClass="small-text scroll"
+							onclick="$('#who-ideas-content').slideDown(1000);">Idealizadores</h:link></li>
+					<li><h:link outcome="pretty:who" anchor="who-partners"
+							styleClass="small-text scroll"
+							onclick="$('#who-partners-content').slideDown(1000);">Parceiros</h:link></li>
+					<li><h:link outcome="pretty:who" anchor="who-supporters"
+							styleClass="small-text scroll"
+							onclick="$('#who-supporters-content').slideDown(1000);">Apoiadores</h:link></li>
+				</ul>
+				<ul>
+					<li class="title"><h:link outcome="pretty:how"
+							styleClass="featured-text-1">Como funciona</h:link></li>
+					<li><h:link outcome="pretty:how" anchor="how-all"
+							styleClass="small-text scroll"
+							onclick="$('#how-all-content').slideDown(1000);">Para todos</h:link></li>
+					<li><h:link outcome="pretty:how" anchor="how-ngos"
+							styleClass="small-text scroll"
+							onclick="$('#how-ngos-content').slideDown(1000);">Para
+						instituições sem <br /> fins lucrativos
+				</h:link></li>
+					<li><h:link outcome="pretty:how" anchor="how-investors"
+							styleClass="small-text scroll"
+							onclick="$('#how-investors-content').slideDown(1000);">Para
+						empresas</h:link></li>
+					<li><a href="http://ask.fm/SoupSocial/" target="_blank"
+						class="small-text">FAQ</a></li>
+				</ul>
+				<ul>
+					<li class="title"><a class="featured-text-1">Mudando o
+							mundo</a></li>
+					<li><h:form>
+							<h:commandLink class="small-text"
+								action="#{userController.checkAuthenticated()}">
+								<c:if test="#{userController.subject.authenticated}">
+									<f:attribute name="onclick" value="showModal('#create-idea');" />
+								</c:if>
+								<f:ajax render="messages-container" />Dar uma ideia</h:commandLink>
+						</h:form></li>
+					<li><h:form>
+							<h:commandLink class="small-text"
+								action="#{userController.checkAuthenticated()}">
+								<c:if test="#{userController.subject.authenticated}">
+									<f:attribute name="onclick"
+										value="showModal('#create-project');" />
+								</c:if>
+								<f:ajax render="messages-container" />Criar um projeto</h:commandLink>
+						</h:form></li>
+					<li><h:link outcome="pretty:ideas" styleClass="small-text">Apoiar ideias
+					</h:link></li>
+					<li><h:link outcome="pretty:plannedProjects"
+							styleClass="small-text">Apoiar projetos
+					</h:link></li>
+					<li><h:link outcome="pretty:ongoingProjects"
+							styleClass="small-text">Acompanhar projetos
+					</h:link></li>
+				</ul>
+				<ul>
+					<h:panelGroup
+						rendered="#{!(userController.subject.authenticated or userController.subject.remembered)}">
+						<li class="title"><a class="featured-text-1"
+							href="/accesscontrol-web/login/facebook">
+								<button class="dark-green-bg">
+									conectar
+									<h:graphicImage library="soupsocial" class="spoon"
+										name="gfx/spoon.png" />
+								</button>
+						</a></li>
+					</h:panelGroup>
+					<h:panelGroup
+						rendered="#{(userController.subject.authenticated or userController.subject.remembered)}">
+						<li class="title"><h:link outcome="pretty:me"
+								styleClass="featured-text-1">Meu perfil</h:link></li>
+						<li><h:link outcome="pretty:me" styleClass="small-text">Completar informações</h:link></li>
+						<li><h:link outcome="pretty:me" fragment="suggested-projects"
+								styleClass="small-text">Projetos e ideias sugeridos</h:link></li>
+						<li><h:link outcome="pretty:me" fragment="party-projects"
+								styleClass="small-text">Meus projetos e ideias</h:link></li>
+						<li><h:link outcome="pretty:me" fragment="supported-projects"
+								styleClass="small-text">Projetos e ideias apoiados</h:link></li>
+						<li><h:link outcome="pretty:me" styleClass="small-text">Minhas organizações</h:link></li>
+						<li><h:link outcome="pretty:me" styleClass="small-text">Minhas empresas</h:link></li>
+						<li><h:form>
+								<h:commandLink action="#{userController.logout()}"
+									styleClass="small-text">Sair</h:commandLink>
+							</h:form></li>
+					</h:panelGroup>
+				</ul>
+				<ul>
+					<li class="title last"><div class="fb-like"
+							data-href="http://www.soupsocial.com/" data-send="false"
+							data-layout="button_count" data-width="100"
+							data-show-faces="true"></div></li>
+					<li><span class="small-text">Designed and developed by
+							Soupsocial.<br />©Soupsocial. Soupsocial is a trademark.<br />All
+							rights reserved.
+					</span></li>
+				</ul>
+			</nav>
+		</footer>
+		<ui:include src="/WEB-INF/include/create-idea.xhtml" />
+		<ui:include src="/WEB-INF/include/create-project.xhtml" />
+		<ui:include src="/WEB-INF/include/create-ngo.xhtml" />
+		<ui:include src="/WEB-INF/include/create-sponsor.xhtml" />
+		<ui:include src="/WEB-INF/include/update-supporter.xhtml" />
+		<section id="messages" class="hidden-dialog">
+			<h:panelGroup id="messages-container">
+				<h:messages />
+				<h:outputScript rendered="#{!empty facesContext.maximumSeverity}">
+				$(function() {
+					$('#messages').dialog({ modal: true, draggable: false, minWidth: 450 });
+				});
+			</h:outputScript>
+			</h:panelGroup>
+		</section>
+		<div id="fb-root"></div>
+		<script type="text/javascript">
+		//<![CDATA[
+			// Gets the url parameters.
+			function getURLParams() {
+				// Creates a new array for the URL parameters.
+				var urlParams = {};
+				// Populates the array with the parameters.
+				var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+					function(m,key,value) {
+					urlParams[key] = value;
+					});
+				// Return the URL parameters.
+				return urlParams;
+			}
+			// Gets the URL parameters.
+			var urlParams = getURLParams();
+			$(function() {
+				$('.flexslider.banner').flexslider({animation: "slide"});
+			});
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=164844580330852";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+			$(document).ready(function() {	
+				$('a.scroll').click(function(event) {
+					// If the path is not "/".
+					if ((window.location.pathname != "/") && (window.location.pathname != '') && (event.target.href.indexOf(window.location.pathname) != -1)) {
+						// Prevents the link to have its regular behavior.
+						event.preventDefault();
+						// Scroll the page to the link reference.
+						$('html, body').animate({
+								scrollTop: $(this.hash).offset().top
+						}, 1000);
+					}
+				});
+			});
+			$(function() {
+   				$('input.date').mask('00/00/0000');
+   				$('input.phone').mask('(00) 0000-00009');
+   				$('input.cpf').mask('000.000.000-00');
+   				$('input.cnpj').mask('00.000.000/0000-00');
+			});
+			function showModal(modalId) {
+				if((modalId.substring(0, 4) != '#_=_') && ($(modalId).length === 1)){ // FIXME _=_
+					$(modalId).dialog({ modal: true, draggable: false, minWidth: 500 });
+					$(modalId + ' .ui-titlebar-button').appendTo($(modalId).prev(".ui-dialog-titlebar"));
+					$(modalId + ' .place').geocomplete({details: modalId + ' .place-detail', detailsAttribute: 'data-geo'});
+					$(function() {
+						$(modalId + ' .flexslider.clean').flexslider({
+							animation: 'slide',
+							animationLoop: false, 
+							slideshow: false, 
+							controlNav: false, 
+							directionNav: false,
+							start: function(slider) {
+							    $(modalId + ' .flexslider.clean .slides li .previous').click(function(event){
+							        event.preventDefault();
+							        slider.flexAnimate(slider.getTarget('previous'));
+							    });
+							    $(modalId + ' .flexslider.clean .slides li .next').click(function(event){
+							        event.preventDefault();
+							        slider.flexAnimate(slider.getTarget('next'));
+							    });
+							}
+						})
+					});
+				}
+			};
+			$(function autoShowModal() {
+				showModal(location.hash + '.hidden-dialog');
+			});
+			$(".sub-menu.left .open").click(function() {
+				var submenu = $(this).next().show().position({
+					my: "left top+4",
+					at: "left bottom",
+					of: this
+				});
+				$(document).one( "click", function() {
+					submenu.hide();
+				});
+				return false;
+			});
+			$(".sub-menu.right .open").click(function() {
+				var submenu = $(this).next().show().position({
+					my: "right top+4",
+					at: "right bottom",
+					of: this
+				});
+				$(document).one( "click", function() {
+					submenu.hide();
+				});
+				return false;
+			});
+			$(".submit-button").click(function (event) {
+				var standardOnClick = $(this).attr("onclick");
+				setTimeout(function(){$(this).attr("onclick", "")}, 50);
+				setTimeout(function(){$(this).attr("onclick", standardOnClick)}, 5000);
+			});
+		//]]>
+		</script>
+	</h:body>
+</f:view>
+</html>

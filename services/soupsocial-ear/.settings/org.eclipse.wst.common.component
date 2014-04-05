@@ -14,31 +14,19 @@
         <dependent-module archiveName="party-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/party-ejb/party-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="party-web-0.0.1.war" deploy-path="/" handle="module:/resource/party-web/party-web">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="place-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/place-ejb/place-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="place-web-0.0.1.war" deploy-path="/" handle="module:/resource/place-web/place-web">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="contact-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/contact-ejb/contact-ejb">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="contact-web-0.0.1.war" deploy-path="/" handle="module:/resource/contact-web/contact-web">
+        <dependent-module archiveName="contact-ejb-0.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/dejava/service/contact-ejb/0.0.1/contact-ejb-0.0.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="message-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/message-ejb/message-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="message-web-0.0.1.war" deploy-path="/" handle="module:/resource/message-web/message-web">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="philanthropy-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/philanthropy-ejb/philanthropy-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="philanthropy-web-0.0.1.war" deploy-path="/" handle="module:/resource/philanthropy-web/philanthropy-web">
+        <dependent-module archiveName="photo-ejb-0.0.1.jar" deploy-path="/" handle="module:/resource/photo-ejb/photo-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="properties-0.0.1.jar" deploy-path="/lib" handle="module:/resource/service-properties/service-properties">
@@ -107,13 +95,13 @@
         <dependent-module archiveName="commons-beanutils-1.8.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="shiro-ehcache-1.2.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-ehcache/1.2.2/shiro-ehcache-1.2.2.jar">
+        <dependent-module archiveName="shiro-ehcache-1.2.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-ehcache/1.2.3/shiro-ehcache-1.2.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="ehcache-core-2.5.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/net/sf/ehcache/ehcache-core/2.5.0/ehcache-core-2.5.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="shiro-web-1.2.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-web/1.2.2/shiro-web-1.2.2.jar">
+        <dependent-module archiveName="shiro-web-1.2.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/shiro/shiro-web/1.2.3/shiro-web-1.2.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

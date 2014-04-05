@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+	<persistence-unit name="TestDS">
+		<!-- We use a different datasource for tests, so as to not overwrite production 
+			data. This is an unmanaged data source, backed by H2, an in memory database. 
+			Production applications should use a managed datasource. -->
+		<!-- The datasource is deployed as WEB-INF/test-ds.xml, you can find it 
+			in the source at src/test/resources/test-ds.xml -->
+		<jta-data-source>java:/datasource/TestDS</jta-data-source><validation-mode>NONE</validation-mode>
+		<properties>
+			<!-- Properties for Hibernate -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.use_sql_comments" value="false" />
+		</properties>
+	</persistence-unit>
+</persistence>

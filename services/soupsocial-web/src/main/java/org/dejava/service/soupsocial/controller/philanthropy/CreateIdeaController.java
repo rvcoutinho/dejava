@@ -9,15 +9,16 @@ import javax.inject.Named;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.dejava.service.accesscontrol.interceptor.Secured;
-import org.dejava.service.philanthropy.component.PhilanthropyProjectComponent;
+import org.dejava.service.philanthropy.component.ProjectComponent;
 import org.dejava.service.philanthropy.model.party.Supporter;
+import org.dejava.service.philanthropy.model.project.author.ProjectAuthor;
 import org.dejava.service.philanthropy.model.project.plan.ProjectIdea;
-import org.dejava.service.philanthropy.util.MessageTypes;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.place.component.PlaceComponent;
 import org.dejava.service.place.util.PlaceCtx;
 import org.dejava.service.soupsocial.constant.InfoKeys;
 import org.dejava.service.soupsocial.controller.user.UserController;
+import org.dejava.service.soupsocial.util.MessageTypes;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
 /**
@@ -45,7 +46,7 @@ public class CreateIdeaController extends AbstractCreateProjectController implem
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyProjectComponent projectComponent;
+	private ProjectComponent projectComponent;
 
 	/**
 	 * The new project idea.
@@ -65,6 +66,16 @@ public class CreateIdeaController extends AbstractCreateProjectController implem
 		}
 		// Returns the idea.
 		return newProjectIdea;
+	}
+
+	/**
+	 * Sets the new project idea.
+	 * 
+	 * @param newProjectIdea
+	 *            New new project idea.
+	 */
+	public void setNewProjectIdea(final ProjectIdea newProjectIdea) {
+		this.newProjectIdea = newProjectIdea;
 	}
 
 	/**
@@ -88,12 +99,26 @@ public class CreateIdeaController extends AbstractCreateProjectController implem
 		// Updates the idea target area.
 		getNewProjectIdea().setTargetArea(placeComponent.getByGoogleReference(getAddressReference()));
 		// Sets the current user as the author of the new idea.
-		getNewProjectIdea().getAuthors().add((Supporter) userController.getPhilanthropyParty());
+		getNewProjectIdea().getAuthors().add(
+				new ProjectAuthor(getNewProject(), (Supporter) userController.getPhilanthropyParty()));
 		// Updates the idea goals.
 		getNewProjectIdea().setGoals(getGoals());
 		// Creates the project.
 		projectComponent.createIdea(getNewProject());
+		// Clears the created project.
+		clear();
 		// Adds a success message to the context.
-		messageHandler.addMessage(MessageTypes.Model.class, null, InfoKeys.CREATE_IDEA, null);
+		messageHandler.addMessage(MessageTypes.Info.class, null, InfoKeys.CREATE_IDEA, null);
+	}
+
+	/**
+	 * @see org.dejava.service.soupsocial.controller.philanthropy.AbstractCreateProjectController#clear()
+	 */
+	@Override
+	protected void clear() {
+		// Clears the current idea.
+		setNewProjectIdea(null);
+		// Clears the current project.
+		super.clear();
 	}
 }

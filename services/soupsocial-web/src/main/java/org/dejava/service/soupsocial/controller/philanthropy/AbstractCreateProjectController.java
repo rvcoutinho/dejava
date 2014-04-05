@@ -10,7 +10,7 @@ import javax.servlet.http.Part;
 
 import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
 import org.dejava.service.philanthropy.model.Category;
-import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
+import org.dejava.service.philanthropy.model.project.Project;
 import org.dejava.service.philanthropy.util.MessageTypes;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
@@ -34,21 +34,31 @@ public abstract class AbstractCreateProjectController implements Serializable {
 	/**
 	 * The new project.
 	 */
-	private PhilanthropyProject newProject;
+	private Project newProject;
 
 	/**
 	 * Gets the new project.
 	 * 
 	 * @return New project.
 	 */
-	public PhilanthropyProject getNewProject() {
+	public Project getNewProject() {
 		// If the idea is null.
 		if (newProject == null) {
 			// Creates a new project.
-			newProject = new PhilanthropyProject();
+			newProject = new Project();
 		}
 		// Returns the project.
 		return newProject;
+	}
+
+	/**
+	 * Sets the new project.
+	 * 
+	 * @param newProject
+	 *            New new project.
+	 */
+	public void setNewProject(final Project newProject) {
+		this.newProject = newProject;
 	}
 
 	/**
@@ -216,6 +226,19 @@ public abstract class AbstractCreateProjectController implements Serializable {
 		}
 		// Returns the category options as a list of select items.
 		return categoryOptions;
+	}
+
+	/**
+	 * Clears the current project.
+	 */
+	protected void clear() {
+		// Clears the current project.
+		setNewProject(null);
+		setAddressReference(null);
+		setDisplayImage(null);
+		setGoal1(null);
+		setGoal2(null);
+		setGoal3(null);
 	}
 
 }

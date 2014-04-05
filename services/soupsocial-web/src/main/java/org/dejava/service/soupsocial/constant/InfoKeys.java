@@ -20,6 +20,11 @@ public final class InfoKeys {
 	public static final String CREATE_PROJECT = "project.create";
 
 	/**
+	 * Share project info key.
+	 */
+	public static final String SHARE_PROJECT = "project.share";
+
+	/**
 	 * Private constructor.
 	 */
 	private InfoKeys() {

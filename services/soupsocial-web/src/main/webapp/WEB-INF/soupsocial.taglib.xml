@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!DOCTYPE facelet-taglib PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+  "http://xmlns.jcp.org/dtd/facelet-taglib_1_0.dtd">
+<facelet-taglib>
+	<namespace>http://www.soupsocial.com/facelets</namespace>
+	<tag>
+		<tag-name>small-project</tag-name>
+		<source>tags/small-project.xhtml</source>
+	</tag>
+</facelet-taglib>

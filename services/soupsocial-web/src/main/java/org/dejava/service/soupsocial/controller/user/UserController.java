@@ -15,11 +15,9 @@ import org.dejava.service.accesscontrol.interceptor.Secured;
 import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.principal.Principal;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
-import org.dejava.service.party.component.PartyComponent;
-import org.dejava.service.party.model.Party;
 import org.dejava.service.party.util.PartyCtx;
-import org.dejava.service.philanthropy.component.PhilanthropyPartyComponent;
-import org.dejava.service.philanthropy.model.party.PhilanthropyParty;
+import org.dejava.service.philanthropy.component.PartyComponent;
+import org.dejava.service.philanthropy.model.party.Party;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
@@ -122,14 +120,14 @@ public class UserController implements Serializable {
 	 */
 	@Inject
 	@PartyCtx
-	private PartyComponent partyComponent;
+	private org.dejava.service.party.component.PartyComponent partyComponent;
 
 	/**
 	 * Gets the party with the user name.
 	 * 
 	 * @return The party with the user name.
 	 */
-	public Party getParty() {
+	public org.dejava.service.party.model.Party getParty() {
 		// Returns the party.
 		return partyComponent.getPartyByUser(getUser().getIdentifier());
 	}
@@ -139,19 +137,19 @@ public class UserController implements Serializable {
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyPartyComponent philanthropyPartyComponent;
+	private PartyComponent philanthropyPartyComponent;
 
 	/**
 	 * The philanthropy party with the user name.
 	 */
-	private PhilanthropyParty philanthropyParty;
+	private Party philanthropyParty;
 
 	/**
 	 * Gets the philanthropy party with the user name.
 	 * 
 	 * @return The philanthropy party with the user name.
 	 */
-	public PhilanthropyParty getPhilanthropyParty() {
+	public Party getPhilanthropyParty() {
 		// If the party has not been retrieved yet.
 		if (philanthropyParty == null) {
 			// Tries to get the party.

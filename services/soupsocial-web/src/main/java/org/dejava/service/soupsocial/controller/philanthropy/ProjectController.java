@@ -8,12 +8,15 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.dejava.component.i18n.message.handler.ApplicationMessageHandler;
 import org.dejava.service.accesscontrol.interceptor.Secured;
-import org.dejava.service.philanthropy.component.PhilanthropyProjectComponent;
+import org.dejava.service.philanthropy.component.ProjectComponent;
 import org.dejava.service.philanthropy.model.party.NonProfitOrg;
-import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
+import org.dejava.service.philanthropy.model.project.Project;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
+import org.dejava.service.soupsocial.constant.InfoKeys;
 import org.dejava.service.soupsocial.controller.user.UserController;
+import org.dejava.service.soupsocial.util.MessageTypes;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
 /**
@@ -30,6 +33,13 @@ public class ProjectController implements Serializable {
 	private static final long serialVersionUID = 4883088694766827281L;
 
 	/**
+	 * The faces message handler.
+	 */
+	@Inject
+	@SoupSocialCtx
+	protected ApplicationMessageHandler messageHandler;
+
+	/**
 	 * Faces context.
 	 */
 	@Inject
@@ -37,14 +47,14 @@ public class ProjectController implements Serializable {
 	protected FacesContext context;
 
 	/**
-	 * PhilanthropyProject EJB component.
+	 * Project EJB component.
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyProjectComponent projectComponent;
+	private ProjectComponent projectComponent;
 
 	/**
-	 * PhilanthropyProject id.
+	 * Project id.
 	 */
 	private Integer projectId;
 
@@ -77,14 +87,14 @@ public class ProjectController implements Serializable {
 	/**
 	 * The project.
 	 */
-	private PhilanthropyProject project;
+	private Project project;
 
 	/**
 	 * Gets the project.
 	 * 
 	 * @return The project.
 	 */
-	public PhilanthropyProject getProject() {
+	public Project getProject() {
 		// If the project is null.
 		if (project == null) {
 			// Gets the project by its id.
@@ -112,6 +122,8 @@ public class ProjectController implements Serializable {
 				userController.getPhilanthropyParty().getIdentifier());
 		// Updates the project shares.
 		getProject().setShares(shares);
+		// Adds a success message to the context.
+		messageHandler.addMessage(MessageTypes.Info.class, null, InfoKeys.CREATE_PROJECT, null);
 	}
 
 	/**

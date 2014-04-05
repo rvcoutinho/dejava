@@ -5,7 +5,6 @@ import javax.persistence.Table;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
-import org.dejava.service.party.model.Party;
 
 /**
  * Non-profit organization.
@@ -13,9 +12,10 @@ import org.dejava.service.party.model.Party;
 @Entity
 @Table(name = "non_profit_org")
 @MessageSources(sources = {
-		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", entriesAffix = {
+				"", ".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
 		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
-public class NonProfitOrg extends PhilanthropyParty {
+public class NonProfitOrg extends Party {
 
 	/**
 	 * Generated serial.
@@ -45,7 +45,7 @@ public class NonProfitOrg extends PhilanthropyParty {
 	 * @param party
 	 *            The original party.
 	 */
-	public NonProfitOrg(final Party party) {
+	public NonProfitOrg(final org.dejava.service.party.model.Party party) {
 		super();
 		// Sets the party id.
 		setParty(party);

@@ -1,7 +1,19 @@
 .projects>.project {
 	margin-bottom: 27px;
-	width: 282px;
+	width: 280px;
 	float: left;
+}
+
+.projects>.project.idea {
+	border: 1px solid #BBBBBB;
+}
+
+.projects>.project.plan {
+	border: 1px solid #44BFC6;
+}
+
+.projects>.project.ongoing {
+	border: 1px solid #F8971D;
 }
 
 .projects.two-projects>.project.odd {
@@ -33,20 +45,25 @@
 
 .projects>.project>.project-party>div {
 	float: left;
+	height: 0px;
 	width: 0px;
 	overflow: hidden;
+	width: 0px;
 }
 
 .projects>.project.idea>.project-party>div.idea {
-	width: 282px;
+	height: auto;
+	width: 280px;
 }
 
 .projects>.project.plan>.project-party>div.plan {
-	width: 282px;
+	height: auto;
+	width: 280px;
 }
 
-.projects>.project.on-going>.project-party>div.on-going {
-	width: 282px;
+.projects>.project.ongoing>.project-party>div.ongoing {
+	height: auto;
+	width: 280px;
 }
 
 .projects>.project.idea.plan>.project-party>div.idea {
@@ -57,23 +74,23 @@
 	
 }
 
-.projects>.project.plan.on-going>.project-party>div.plan {
+.projects>.project.plan.ongoing>.project-party>div.plan {
 	
 }
 
-.projects>.project.plan.on-going>.project-party>div.on-going {
+.projects>.project.plan.ongoing>.project-party>div.ongoing {
 	
 }
 
-.projects>.project.idea.plan.on-going>.project-party>div.idea {
+.projects>.project.idea.plan.ongoing>.project-party>div.idea {
 	
 }
 
-.projects>.project.idea.plan.on-going>.project-party>div.plan {
+.projects>.project.idea.plan.ongoing>.project-party>div.plan {
 	
 }
 
-.projects>.project.idea.plan.on-going>.project-party>div.on-going {
+.projects>.project.idea.plan.ongoing>.project-party>div.ongoing {
 	
 }
 

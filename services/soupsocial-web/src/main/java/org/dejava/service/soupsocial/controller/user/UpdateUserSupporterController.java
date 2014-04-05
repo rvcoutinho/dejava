@@ -11,10 +11,10 @@ import org.dejava.service.accesscontrol.interceptor.Secured;
 import org.dejava.service.accesscontrol.interceptor.SuppressSecurityExceptions;
 import org.dejava.service.contact.model.EmailAddress;
 import org.dejava.service.contact.model.PhoneNumber;
-import org.dejava.service.philanthropy.component.PhilanthropyPartyTaskComponent;
+import org.dejava.service.philanthropy.component.PartyTaskComponent;
 import org.dejava.service.philanthropy.model.party.Supporter;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
-import org.dejava.service.soupsocial.controller.organization.AbstractCreatePhilanthropyPartyController;
+import org.dejava.service.soupsocial.controller.organization.AbstractCreatePartyController;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
 /**
@@ -23,7 +23,7 @@ import org.dejava.service.soupsocial.util.SoupSocialCtx;
 @SoupSocialCtx
 @RequestScoped
 @Named("updateUserSupporterController")
-public class UpdateUserSupporterController extends AbstractCreatePhilanthropyPartyController {
+public class UpdateUserSupporterController extends AbstractCreatePartyController {
 
 	/**
 	 * Generated serial.
@@ -38,7 +38,7 @@ public class UpdateUserSupporterController extends AbstractCreatePhilanthropyPar
 	private UserController userController;
 
 	/**
-	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePhilanthropyPartyController#getParty()
+	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePartyController#getParty()
 	 */
 	@Override
 	@Secured
@@ -49,7 +49,7 @@ public class UpdateUserSupporterController extends AbstractCreatePhilanthropyPar
 	}
 
 	/**
-	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePhilanthropyPartyController#getEmailAddress()
+	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePartyController#getEmailAddress()
 	 */
 	@Override
 	@Secured
@@ -60,7 +60,7 @@ public class UpdateUserSupporterController extends AbstractCreatePhilanthropyPar
 	}
 
 	/**
-	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePhilanthropyPartyController#getPhoneNumber()
+	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePartyController#getPhoneNumber()
 	 */
 	@Override
 	@Secured
@@ -75,7 +75,7 @@ public class UpdateUserSupporterController extends AbstractCreatePhilanthropyPar
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyPartyTaskComponent partyComponent;
+	private PartyTaskComponent partyComponent;
 
 	/**
 	 * Updates the supporter info.

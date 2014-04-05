@@ -3,6 +3,8 @@ package org.dejava.service.soupsocial.exception;
 import javax.faces.context.ExceptionHandlerFactory;
 
 import org.dejava.component.faces.exception.AbstractExceptionHandlerFactory;
+import org.dejava.service.soupsocial.constant.ErrorKeys;
+import org.dejava.service.soupsocial.util.MessageTypes;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
 /**
@@ -18,7 +20,7 @@ public class ExceptionHandlerFactoryImpl extends AbstractExceptionHandlerFactory
 	 *            The original factory to be injected.
 	 */
 	public ExceptionHandlerFactoryImpl(final ExceptionHandlerFactory wrappedFactory) {
-		super(wrappedFactory);
+		super(wrappedFactory, MessageTypes.Error.class, ErrorKeys.GENERIC);
 	}
 
 	/**

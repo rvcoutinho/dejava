@@ -7,8 +7,9 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.dejava.service.philanthropy.component.PhilanthropyProjectComponent;
-import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
+import org.dejava.service.philanthropy.component.ProjectComponent;
+import org.dejava.service.philanthropy.model.Category;
+import org.dejava.service.philanthropy.model.project.Project;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.soupsocial.controller.user.UserController;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
@@ -31,22 +32,90 @@ public class ProjectsController implements Serializable {
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyProjectComponent projectComponent;
+	private ProjectComponent projectComponent;
 
 	/**
-	 * Ideas for the given filter.
+	 * The category for the projects.
 	 */
-	private Collection<PhilanthropyProject> ideas;
+	private Category category;
 
 	/**
-	 * Gets the project ideas for the given filter.
+	 * Gets the category for the projects.
 	 * 
-	 * @return The project ideas for the given filter.
+	 * @return The category for the projects.
 	 */
-	public Collection<PhilanthropyProject> getProjectIdeas() {
+	public Category getCategory() {
+		return category;
+	}
+
+	/**
+	 * Sets the category for the projects.
+	 * 
+	 * @param category
+	 *            New category for the projects.
+	 */
+	public void setCategory(final Category category) {
+		this.category = category;
+	}
+
+	/**
+	 * The tag for the projects.
+	 */
+	private String tag;
+
+	/**
+	 * Gets the tag for the projects.
+	 * 
+	 * @return The tag for the projects.
+	 */
+	public String getTag() {
+		return tag;
+	}
+
+	/**
+	 * Sets the tag for the projects.
+	 * 
+	 * @param tag
+	 *            New tag for the projects.
+	 */
+	public void setTag(final String tag) {
+		this.tag = tag;
+	}
+
+	/**
+	 * Ongoing projects.
+	 */
+	private Collection<Project> projects;
+
+	/**
+	 * Gets the projects.
+	 * 
+	 * @return The projects.
+	 */
+	public Collection<Project> getProjects() {
+		// If there are no projects.
+		if (projects == null) {
+			// Gets the projects.
+			projects = projectComponent.getProjectsByCategoryOrTag(getCategory(), getTag(), null, null);
+		}
+		// Returns the projects.
+		return projects;
+	}
+
+	/**
+	 * Ideas.
+	 */
+	private Collection<Project> ideas;
+
+	/**
+	 * Gets the project ideas.
+	 * 
+	 * @return The project ideas.
+	 */
+	public Collection<Project> getIdeas() {
 		// If there are no ideas.
 		if (ideas == null) {
-			// Gets the ideas for the filter.
+			// Gets the ideas.
 			ideas = projectComponent.getIdeas(null, null);
 		}
 		// Returns the ideas.
@@ -54,43 +123,43 @@ public class ProjectsController implements Serializable {
 	}
 
 	/**
-	 * Sets the project ideas for the given filter.
-	 * 
-	 * @param ideas
-	 *            New project ideas for the given filter.
+	 * Planned projects.
 	 */
-	public void setProjectIdeas(final Collection<PhilanthropyProject> ideas) {
-		this.ideas = ideas;
-	}
+	private Collection<Project> plannedProjects;
 
 	/**
-	 * Ideas for the given filter.
-	 */
-	private Collection<PhilanthropyProject> projectPlans;
-
-	/**
-	 * Gets the project ideas for the given filter.
+	 * Gets the planned projects.
 	 * 
-	 * @return The project ideas for the given filter.
+	 * @return The planned projects.
 	 */
-	public Collection<PhilanthropyProject> getProjectPlans() {
-		// If there are no projectPlans.
-		if (projectPlans == null) {
-			// Gets the project ideas for the filter.
-			projectPlans = projectComponent.getPlannedProjects(null, null);
+	public Collection<Project> getPlannedProjects() {
+		// If there are no plannedProjects.
+		if (plannedProjects == null) {
+			// Gets the planned projects.
+			plannedProjects = projectComponent.getPlannedProjects(null, null);
 		}
-		// Returns the projectPlans.
-		return projectPlans;
+		// Returns the plannedProjects.
+		return plannedProjects;
 	}
 
 	/**
-	 * Sets the project ideas for the given filter.
-	 * 
-	 * @param projectPlans
-	 *            New project ideas for the given filter.
+	 * Ongoing projects.
 	 */
-	public void setProjectPlans(final Collection<PhilanthropyProject> projectPlans) {
-		this.projectPlans = projectPlans;
+	private Collection<Project> ongoingProjects;
+
+	/**
+	 * Gets the ongoing projects.
+	 * 
+	 * @return The ongoing projects.
+	 */
+	public Collection<Project> getOngoingProjects() {
+		// If there are no ongoingProjects.
+		if (ongoingProjects == null) {
+			// Gets the ongoing projects.
+			ongoingProjects = projectComponent.getOngoingProjects(null, null);
+		}
+		// Returns the ongoingProjects.
+		return ongoingProjects;
 	}
 
 	/**
@@ -105,7 +174,7 @@ public class ProjectsController implements Serializable {
 	 * 
 	 * @return The projects created by a supporter.
 	 */
-	public Collection<PhilanthropyProject> getProjectsCreatedBySupporter() {
+	public Collection<Project> getProjectsCreatedBySupporter() {
 		return projectComponent.getProjectsCreatedBySupporter(userController.getPhilanthropyParty()
 				.getIdentifier(), null, null);
 	}
@@ -115,7 +184,7 @@ public class ProjectsController implements Serializable {
 	 * 
 	 * @return The number of ideas for a supporter.
 	 */
-	public Long countCreatedBySupporter() {
+	public Long countProjectsCreatedBySupporter() {
 		return projectComponent.countProjectsCreatedBySupporter(userController.getPhilanthropyParty()
 				.getIdentifier());
 	}
@@ -125,7 +194,7 @@ public class ProjectsController implements Serializable {
 	 * 
 	 * @return The projects shared by a supporter.
 	 */
-	public Collection<PhilanthropyProject> getProjectsSharedBySupporter() {
+	public Collection<Project> getProjectsSharedBySupporter() {
 		return projectComponent.getProjectsSharedBySupporter(userController.getPhilanthropyParty()
 				.getIdentifier(), null, null);
 	}

@@ -15,7 +15,7 @@ import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.philanthropy.model.party.Supporter;
-import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
+import org.dejava.service.philanthropy.model.project.Project;
 
 /**
  * A project share action.
@@ -27,7 +27,7 @@ import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 		@NamedQuery(name = "countSharesByProject", query = "SELECT count(share) FROM ProjectShare share WHERE share.project.identifier = :projectId"),
 		@NamedQuery(name = "countSharesBySupporter", query = "SELECT count(share) FROM ProjectShare share WHERE share.supporter.identifier = :supporterId") })
 @MessageSources(sources = {
-		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", entriesAffix = { "", ".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
 		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class ProjectShare extends AbstractIdentifiedEntity {
 
@@ -39,7 +39,7 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	/**
 	 * The project that has been shared.
 	 */
-	private PhilanthropyProject project;
+	private Project project;
 
 	/**
 	 * Gets the project that has been shared.
@@ -48,7 +48,7 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "project")
-	public PhilanthropyProject getProject() {
+	public Project getProject() {
 		return project;
 	}
 
@@ -58,7 +58,7 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	 * @param project
 	 *            New project that has been shared.
 	 */
-	public void setProject(final PhilanthropyProject project) {
+	public void setProject(final Project project) {
 		this.project = project;
 	}
 
@@ -136,7 +136,7 @@ public class ProjectShare extends AbstractIdentifiedEntity {
 	 */
 	public ProjectShare(final Integer projectId, final Integer supporterId) {
 		super();
-		this.project = new PhilanthropyProject(projectId);
+		this.project = new Project(projectId);
 		this.supporter = new Supporter(supporterId);
 	}
 

@@ -21,7 +21,7 @@ import org.dejava.service.accesscontrol.util.MessageTypes;
 @Table(name = "user_permission")
 @NamedQueries(value = { @NamedQuery(name = "getByName", query = "SELECT userPerm FROM UserPermission userPerm WHERE userPerm.user.id = :userId AND userPerm.permission.name LIKE :name") })
 @MessageSources(sources = {
-		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.accesscontrol.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.accesscontrol.properties.model", entriesAffix = { "", ".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
 		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.accesscontrol.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class UserPermission extends AbstractIdentifiedEntity {
 

@@ -5,8 +5,8 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
-import org.dejava.service.philanthropy.model.party.PhilanthropyParty;
-import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
+import org.dejava.service.philanthropy.model.party.Party;
+import org.dejava.service.philanthropy.model.project.Project;
 
 /**
  * A philanthropy project proposal.
@@ -22,7 +22,7 @@ public abstract class ProjectProposal extends AbstractIdentifiedEntity {
 	/**
 	 * The philanthropy project for the proposal.
 	 */
-	private PhilanthropyProject project;
+	private Project project;
 
 	/**
 	 * Gets the philanthropy project for the proposal.
@@ -30,7 +30,7 @@ public abstract class ProjectProposal extends AbstractIdentifiedEntity {
 	 * @return The philanthropy project for the proposal.
 	 */
 	@Column(name = "project")
-	public PhilanthropyProject getProject() {
+	public Project getProject() {
 		return project;
 	}
 
@@ -40,7 +40,7 @@ public abstract class ProjectProposal extends AbstractIdentifiedEntity {
 	 * @param project
 	 *            New philanthropy project for the proposal.
 	 */
-	public void setProject(final PhilanthropyProject project) {
+	public void setProject(final Project project) {
 		this.project = project;
 	}
 
@@ -50,7 +50,7 @@ public abstract class ProjectProposal extends AbstractIdentifiedEntity {
 	 * @return The proposer.
 	 */
 	@Transient
-	public abstract PhilanthropyParty getProposer();
+	public abstract Party getProposer();
 
 	/**
 	 * Default constructor.
@@ -66,6 +66,6 @@ public abstract class ProjectProposal extends AbstractIdentifiedEntity {
 	 *            The philanthropy project identifier for the proposal.
 	 */
 	public ProjectProposal(final Integer projectId) {
-		this.project = new PhilanthropyProject(projectId);
+		this.project = new Project(projectId);
 	}
 }

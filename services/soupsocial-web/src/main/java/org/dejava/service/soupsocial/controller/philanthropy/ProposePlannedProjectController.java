@@ -9,7 +9,7 @@ import javax.inject.Named;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.dejava.service.accesscontrol.interceptor.Secured;
-import org.dejava.service.philanthropy.component.PhilanthropyProjectComponent;
+import org.dejava.service.philanthropy.component.ProjectComponent;
 import org.dejava.service.philanthropy.model.project.plan.ProjectPlan;
 import org.dejava.service.philanthropy.util.MessageTypes;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
@@ -44,7 +44,7 @@ public class ProposePlannedProjectController extends AbstractCreateProjectContro
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyProjectComponent projectComponent;
+	private ProjectComponent projectComponent;
 
 	/**
 	 * The new project plan.

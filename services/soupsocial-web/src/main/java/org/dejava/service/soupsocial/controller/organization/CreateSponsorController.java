@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.dejava.service.party.model.Organization;
-import org.dejava.service.philanthropy.component.PhilanthropyPartyTaskComponent;
+import org.dejava.service.philanthropy.component.PartyTaskComponent;
 import org.dejava.service.philanthropy.model.party.Sponsor;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
@@ -19,7 +19,7 @@ import org.dejava.service.soupsocial.util.SoupSocialCtx;
 @ConversationScoped
 @SoupSocialCtx
 @Named("newSponsorController")
-public class CreateSponsorController extends AbstractCreatePhilanthropyPartyController implements Serializable {
+public class CreateSponsorController extends AbstractCreatePartyController implements Serializable {
 
 	/**
 	 * Generated serial.
@@ -32,7 +32,7 @@ public class CreateSponsorController extends AbstractCreatePhilanthropyPartyCont
 	private Sponsor newParty;
 
 	/**
-	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePhilanthropyPartyController#getParty()
+	 * @see org.dejava.service.soupsocial.controller.organization.AbstractCreatePartyController#getParty()
 	 */
 	@Override
 	public Sponsor getParty() {
@@ -50,7 +50,7 @@ public class CreateSponsorController extends AbstractCreatePhilanthropyPartyCont
 	 */
 	@Inject
 	@PhilanthropyCtx
-	private PhilanthropyPartyTaskComponent partyComponent;
+	private PartyTaskComponent partyComponent;
 
 	/**
 	 * Creates a new sponsor.
@@ -62,6 +62,6 @@ public class CreateSponsorController extends AbstractCreatePhilanthropyPartyCont
 		// Updates the party address.
 		updateAddressDetails();
 		// Creates the new party.
-		partyComponent.createPhilanthropyParty(getParty());
+		partyComponent.createParty(getParty());
 	}
 }

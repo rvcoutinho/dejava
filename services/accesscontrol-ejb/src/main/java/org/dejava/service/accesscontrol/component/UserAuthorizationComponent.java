@@ -57,6 +57,8 @@ public class UserAuthorizationComponent {
 			// Creates the role. TODO Think about
 			actualRole = roleDAO.merge(userRole.getRole());
 		}
+		// Resets the role in the user role.
+		userRole.setRole(actualRole);
 		// Validates TODO
 		// Adds the role to the user.
 		userRoleDAO.merge(userRole);
@@ -158,6 +160,8 @@ public class UserAuthorizationComponent {
 			// Creates the permission. TODO Think about
 			actualPermission = permissionDAO.merge(userPermission.getPermission());
 		}
+		// Resets the permission in the user permission.
+		userPermission.setPermission(actualPermission);
 		// Validates TODO
 		// Adds the permission to the user.
 		userPermissionDAO.merge(userPermission);

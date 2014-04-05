@@ -7,22 +7,20 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import javax.persistence.PostLoad;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
-import org.dejava.service.philanthropy.model.party.Supporter;
 import org.dejava.service.philanthropy.model.project.author.ProjectAuthor;
 
 /**
- * Philanthropy project idea (pre plan).
+ * Philanthropy project idea (pre-plan).
  */
 @Entity
 @Table(name = "project_idea")
 @MessageSources(sources = {
-		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", entriesAffix = {
+				"", ".description" }, processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
 		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.error", processSuperclasses = true, processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class ProjectIdea extends AbstractProjectPlan {
 
@@ -34,7 +32,7 @@ public class ProjectIdea extends AbstractProjectPlan {
 	/**
 	 * The authors (relationship) of the project idea.
 	 */
-	private Collection<ProjectAuthor> projectAuthors;
+	private Collection<ProjectAuthor> authors;
 
 	/**
 	 * Gets the authors (relationship) of the project idea.
@@ -42,38 +40,7 @@ public class ProjectIdea extends AbstractProjectPlan {
 	 * @return The authors (relationship) of the project idea.
 	 */
 	@OneToMany(mappedBy = "project", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	public Collection<ProjectAuthor> getProjectAuthors() {
-		// If there are no authors.
-		if (projectAuthors == null) {
-			// Creates a new list for the authors.
-			projectAuthors = new ArrayList<>();
-		}
-		// Returns the authors.
-		return projectAuthors;
-	}
-
-	/**
-	 * Sets the authors (relationship) of the project idea.
-	 * 
-	 * @param projectAuthors
-	 *            New authors (relationship) of the project idea.
-	 */
-	public void setProjectAuthors(final Collection<ProjectAuthor> projectAuthors) {
-		this.projectAuthors = projectAuthors;
-	}
-
-	/**
-	 * The authors of the project idea.
-	 */
-	private Collection<Supporter> authors;
-
-	/**
-	 * Gets the authors of the project idea.
-	 * 
-	 * @return The authors of the project idea.
-	 */
-	@Transient
-	public Collection<Supporter> getAuthors() {
+	public Collection<ProjectAuthor> getAuthors() {
 		// If there are no authors.
 		if (authors == null) {
 			// Creates a new list for the authors.
@@ -84,28 +51,13 @@ public class ProjectIdea extends AbstractProjectPlan {
 	}
 
 	/**
-	 * Sets the authors of the project idea.
+	 * Sets the authors (relationship) of the project idea.
 	 * 
 	 * @param authors
-	 *            New authors of the project idea.
+	 *            New authors (relationship) of the project idea.
 	 */
-	protected void setAuthors(final Collection<Supporter> authors) {
+	public void setAuthors(final Collection<ProjectAuthor> authors) {
 		this.authors = authors;
-	}
-
-	/**
-	 * Retrieves the authors from the project author relationship.
-	 */
-	@PostLoad
-	private void retrieveAuthors() {
-		// If there are any authors.
-		if (getProjectAuthors() != null) {
-			// For each author.
-			for (final ProjectAuthor currentAuthor : getProjectAuthors()) {
-				// Adds the author to the authors list.
-				getAuthors().add(currentAuthor.getSupporter());
-			}
-		}
 	}
 
 }

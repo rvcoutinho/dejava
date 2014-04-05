@@ -6,7 +6,7 @@
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 	<section id="create-project" class="hidden-dialog form-content"
 		title="Dê sua ideia por um mundo melhor!">
-		<button id="create-idea-info-button"
+		<button id="create-project-info-button"
 			class="ui-titlebar-button ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"
 			title="Teste">
 			<i class="fa fa-question"></i>
@@ -16,19 +16,35 @@
 				<ul class="slides">
 					<li>
 						<div>
-							<h:outputLabel for="create-project-name">Título</h:outputLabel>
+							<h:outputLabel for="create-project-name"
+								value="#{phi_mdl['projectplan.name']}" />
 							:
 							<h:inputText id="create-project-name"
+								p:placeholder="#{phi_mdl['projectplan.name.description']}"
+								p:maxlength="60"
 								value="#{newProjectPlanController.newProjectPlan.name}" />
 						</div>
 						<div>
-							<h:outputLabel for="create-project-short-desc">Resumo</h:outputLabel>
+							<h:outputLabel for="create-project-short-desc"
+								value="#{phi_mdl['projectplan.shortdesc']}" />
 							:
 							<h:inputText id="create-project-short-desc"
+								p:placeholder="#{phi_mdl['projectplan.shortdesc.description']}"
+								p:maxlength="165"
 								value="#{newProjectPlanController.newProjectPlan.shortDesc}" />
 						</div>
 						<div>
-							<h:outputLabel for="create-project-category">Category</h:outputLabel>
+							<h:outputLabel for="create-project-desc"
+								value="#{phi_mdl['projectplan.desc']}" />
+							:
+							<h:inputTextarea id="create-project-desc"
+								p:placeholder="#{phi_mdl['projectplan.desc.description']}"
+								p:maxlength="1650"
+								value="#{newProjectPlanController.newProjectPlan.desc}" />
+						</div>
+						<div>
+							<h:outputLabel for="create-project-category"
+								value="#{phi_mdl['project.category']}" />
 							:
 							<h:selectOneMenu id="create-project-category"
 								value="#{newProjectPlanController.newProject.category}">
@@ -37,38 +53,22 @@
 							</h:selectOneMenu>
 						</div>
 						<div>
-							<h:outputLabel>Foto</h:outputLabel>
+							<h:outputLabel value="#{phi_mdl['projectplan.displayimage']}" />
 							:
-							<!-- <h:inputFile id="create-project-display-image"
-									value="#{newProjectPlanController.displayImage}" /> -->
+							<!--  -->
+							<h:inputFile id="create-project-display-image"
+								p:placeholder="#{phi_mdl['projectplan.displayimage.description']}"
+								value="#{newProjectPlanController.displayImage}" />
 						</div>
 						<div>
-							<h:outputLabel for="create-project-video">Vídeo</h:outputLabel>
+							<h:outputLabel for="create-project-video"
+								value="#{phi_mdl['projectplan.videourl']}" />
 							:
 							<h:inputText id="create-project-video" class="youtube"
+								p:placeholder="#{phi_mdl['projectplan.videourl.description']}"
 								value="#{newProjectPlanController.newProjectPlan.videoURL}" />
 							<span class="pre-input-text small-text">http://www.youtube.com/watch?v=
 							</span>
-						</div>
-						<div>
-							<h:outputLabel for="create-project-target-audience">Beneficiados</h:outputLabel>
-							:
-							<h:inputText id="create-project-target-audience"
-								value="#{newProjectPlanController.newProjectPlan.targetAudience}" />
-						</div>
-						<div>
-							<h:outputLabel for="create-project-address">Raio de ação</h:outputLabel>
-							:
-							<h:inputText id="create-project-address" styleClass="place" />
-							<span class="hidden-dialog place-detail"><h:inputHidden
-									id="create-project-address-reference"
-									value="#{newProjectPlanController.addressReference}"
-									p:data-geo="reference" /></span>
-							<script>
-								$(function() {
-									$('#create-project .place').geocomplete({details: '#create-project .place-detail', detailsAttribute: 'data-geo'});
-								});
-							</script>
 						</div>
 						<div class="buttons">
 							<div>
@@ -82,26 +82,51 @@
 					</li>
 					<li>
 						<div>
-							<h:outputLabel for="create-project-motivation">Porque tive essa ideia</h:outputLabel>
+							<h:outputLabel for="create-project-target-audience"
+								value="#{phi_mdl['projectplan.targetaudience']}" />
 							:
-							<h:inputTextarea id="create-project-motivation"
+							<h:inputText id="create-project-target-audience"
+								p:maxlength="100"
+								p:placeholder="#{phi_mdl['projectplan.targetaudience.description']}"
+								value="#{newProjectPlanController.newProjectPlan.targetAudience}" />
+						</div>
+						<div>
+							<h:outputLabel for="create-project-address"
+								value="#{phi_mdl['projectplan.targetarea']}" />
+							:
+							<h:inputText id="create-project-address" styleClass="place"
+								p:placeholder="#{phi_mdl['projectplan.targetarea.description']}" />
+							<span class="hidden-dialog place-detail"><h:inputHidden
+									id="create-project-address-reference"
+									value="#{newProjectPlanController.addressReference}"
+									p:data-geo="reference" /></span>
+							<script type="text/javascript">
+								$(function() {
+									$('#create-project .place').geocomplete({details: '#create-project .place-detail', detailsAttribute: 'data-geo'});
+								});
+							</script>
+						</div>
+						<div>
+							<h:outputLabel for="create-project-motivation"
+								value="#{phi_mdl['projectplan.motivation']}" />
+							:
+							<h:inputTextarea id="create-project-motivation" p:maxlength="500"
+								p:placeholder="#{phi_mdl['projectplan.motivation.description']}"
 								value="#{newProjectPlanController.newProjectPlan.motivation}" />
 						</div>
 						<div>
-							<h:outputLabel>Objetivos</h:outputLabel>
+							<h:outputLabel value="#{phi_mdl['projectplan.goals']}">
 							:
-							<h:inputText id="create-project-goals-1"
-								value="#{newProjectPlanController.goal1}" />
-							<h:inputText id="create-project-goals-2"
-								value="#{newProjectPlanController.goal2}" />
-							<h:inputText id="create-project-goals-3"
-								value="#{newProjectPlanController.goal3}" />
-						</div>
-						<div>
-							<h:outputLabel for="create-project-desc">Como funcionaria</h:outputLabel>
-							:
-							<h:inputTextarea id="create-project-desc"
-								value="#{newProjectPlanController.newProjectPlan.desc}" />
+							<h:inputText id="create-project-goals-1" p:maxlength="100"
+									p:placeholder="#{phi_mdl['projectplan.goals.description']}"
+									value="#{newProjectPlanController.goal1}" />
+								<h:inputText id="create-project-goals-2" p:maxlength="100"
+									p:placeholder="#{phi_mdl['projectplan.goals.description']}"
+									value="#{newProjectPlanController.goal2}" />
+								<h:inputText id="create-project-goals-3" p:maxlength="100"
+									p:placeholder="#{phi_mdl['projectplan.goals.description']}"
+									value="#{newProjectPlanController.goal3}" />
+							</h:outputLabel>
 						</div>
 						<div class="buttons">
 							<div>
@@ -120,7 +145,8 @@
 					</li>
 					<li>
 						<div>
-							<h:outputLabel for="create-project-investment">Investimento estimado</h:outputLabel>
+							<h:outputLabel for="create-project-investment"
+								value="#{phi_mdl['projectplan.investment']}" />
 							:
 							<h:selectOneMenu id="create-project-investment"
 								value="#{newProjectPlanController.newProjectPlan.investment}">
@@ -133,7 +159,8 @@
 							</h:selectOneMenu>
 						</div>
 						<div>
-							<h:outputLabel for="create-project-time">Tempo estimado</h:outputLabel>
+							<h:outputLabel for="create-project-time"
+								value="#{phi_mdl['projectplan.time']}" />
 							:
 							<h:selectOneMenu id="create-project-time"
 								value="#{newProjectPlanController.newProjectPlan.time}">
@@ -157,9 +184,11 @@
 							</h:selectOneMenu>
 						</div>
 						<div>
-							<h:outputLabel for="create-project-tags">Tags</h:outputLabel>
+							<h:outputLabel for="create-project-tags"
+								value="#{phi_mdl['project.alltags']}" />
 							:
 							<h:inputTextarea id="create-project-tags"
+								p:placeholder="#{phi_mdl['project.alltags.description']}"
 								value="#{newProjectPlanController.newProject.allTags}" />
 						</div>
 						<div class="buttons">
@@ -169,10 +198,15 @@
 									<h:graphicImage library="soupsocial" class="spoon"
 										name="gfx/spoon.png" />
 								</button>
-								<h:commandLink
-									action="#{newProjectPlanController.createProject}">
+								<h:commandLink action="#{newProjectPlanController.createProject()}"
+									onclick="jQuery('#create-project').dialog('close');"
+									styleClass="submit-button">
 									<f:ajax execute="@form"
-										render="messages-container projects-container" />
+										render="messages-container projects-container create-project-form create-project-error-handler" />
+									<h:panelGroup id="create-project-error-handler"
+										rendered="#{facesContext.maximumSeverity.ordinal gt 1}">
+										<script type="text/javascript">showModal('#create-project');</script>
+									</h:panelGroup>
 									<button class="dark-green-bg right-button">
 										cadastrar
 										<h:graphicImage library="soupsocial" class="spoon"

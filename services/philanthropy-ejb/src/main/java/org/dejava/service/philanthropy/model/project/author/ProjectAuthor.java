@@ -10,7 +10,7 @@ import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.philanthropy.model.party.Supporter;
-import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
+import org.dejava.service.philanthropy.model.project.Project;
 
 /**
  * A project author relationship.
@@ -18,7 +18,7 @@ import org.dejava.service.philanthropy.model.project.PhilanthropyProject;
 @Entity
 @Table(name = "ProjectAuthor")
 @MessageSources(sources = {
-		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", entriesAffix = { "", ".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
 		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class ProjectAuthor extends AbstractIdentifiedEntity {
 
@@ -30,7 +30,7 @@ public class ProjectAuthor extends AbstractIdentifiedEntity {
 	/**
 	 * The project that has been shared.
 	 */
-	private PhilanthropyProject project;
+	private Project project;
 
 	/**
 	 * Gets the project that has been shared.
@@ -39,7 +39,7 @@ public class ProjectAuthor extends AbstractIdentifiedEntity {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "project")
-	public PhilanthropyProject getProject() {
+	public Project getProject() {
 		return project;
 	}
 
@@ -49,7 +49,7 @@ public class ProjectAuthor extends AbstractIdentifiedEntity {
 	 * @param project
 	 *            New project that has been shared.
 	 */
-	public void setProject(final PhilanthropyProject project) {
+	public void setProject(final Project project) {
 		this.project = project;
 	}
 
@@ -94,7 +94,7 @@ public class ProjectAuthor extends AbstractIdentifiedEntity {
 	 * @param supporter
 	 *            The supporter who has authored the project.
 	 */
-	public ProjectAuthor(final PhilanthropyProject project, final Supporter supporter) {
+	public ProjectAuthor(final Project project, final Supporter supporter) {
 		super();
 		this.supporter = supporter;
 		this.project = project;

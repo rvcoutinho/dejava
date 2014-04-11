@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="org.dejava.component.ejb.test.component.GenericComponentDAOTest" time="24.136" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="org.dejava.component.ejb.test.component.GenericComponentDAOTest" time="38.942" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0\jre\bin"/>
@@ -26,9 +26,9 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf7109307122870741588.tmp"/>
+    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3074553143760783007.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Java\jdk1.8.0\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\eclipse;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jdk1.7.0_51\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -61,20 +61,20 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetEntityByAttributeDuplicateAttribute" time="1.216"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveCollectionNullEntity" time="0.125"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetByIdNullId" time="0.198"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetByIdSuccess" time="0.119"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateCollectionSuccess" time="0.286"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveCollectionSuccess" time="0.179"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateNullEntity" time="0.075"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetEntityByAttributeNullAttributeName" time="0.116"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateCollectionNullEntity" time="0.06"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetAllSuccess" time="0.21"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveSuccess" time="0.061"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetEntityByAttributeSuccess" time="0.056"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveNullEntity" time="0.088"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetCollectionByAttributeNullAttributeName" time="0.234"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateSuccess" time="0.188"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetCollectionByAttributeSuccess" time="0.296"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetEntityByAttributeDuplicateAttribute" time="2.168"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveCollectionNullEntity" time="0.108"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetByIdNullId" time="0.175"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetByIdSuccess" time="0.136"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateCollectionSuccess" time="0.24"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveCollectionSuccess" time="0.2"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateNullEntity" time="0.101"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetEntityByAttributeNullAttributeName" time="0.121"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateCollectionNullEntity" time="0.051"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetAllSuccess" time="0.246"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveSuccess" time="0.063"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetEntityByAttributeSuccess" time="0.072"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveNullEntity" time="0.102"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetCollectionByAttributeNullAttributeName" time="0.092"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateSuccess" time="0.145"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetCollectionByAttributeSuccess" time="0.363"/>
 </testsuite>

@@ -92,6 +92,39 @@ public abstract class AbstractGenericDAO<Entity, Key> implements GenericDAO<Enti
 	}
 
 	/**
+	 * @see org.dejava.component.ejb.dao.GenericDAO#persist(java.lang.Object)
+	 */
+	@Override
+	public Entity persist(final Entity entity) {
+		// Asserts that the entity is not null.
+		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, entity);
+		// TODO Check if already is persisted?
+		// Persists the given entity with the persistence context.
+		getEntityManager().persist(entity);
+		// Return the persisted entity.
+		return entity;
+	}
+
+	/**
+	 * @see org.dejava.component.ejb.dao.GenericDAO#persist(java.util.Collection)
+	 */
+	@Override
+	public Collection<Entity> persist(final Collection<Entity> entities) {
+		// Creates a new list of entities.
+		final Collection<Entity> persistdEntities = new ArrayList<>();
+		// If the given collection is not empty.
+		if (entities != null) {
+			// For each given entity.
+			for (final Entity currentEntity : entities) {
+				// Tries to add or update the current entity.
+				persistdEntities.add(persist(currentEntity));
+			}
+		}
+		// Returns the list of persisted entities.
+		return persistdEntities;
+	}
+
+	/**
 	 * @see org.dejava.component.ejb.dao.GenericDAO#merge(java.lang.Object)
 	 */
 	@Override

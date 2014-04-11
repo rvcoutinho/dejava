@@ -111,7 +111,7 @@ public class GenericComponentDAOTest {
 	}
 
 	/**
-	 * Tests a successful approach for the method addOrUpdate (entity).
+	 * Tests a successful approach for the method addOrUpdate (entity). FIXME Persist and merge
 	 */
 	@Test
 	public void testAddOrUpdateSuccess() {
@@ -124,7 +124,7 @@ public class GenericComponentDAOTest {
 	}
 
 	/**
-	 * Tests the method addOrUpdate (entity) with null entity.
+	 * Tests the method addOrUpdate (entity) with null entity. FIXME Persist and merge
 	 * 
 	 * @throws Throwable
 	 *             Expected exception.
@@ -143,7 +143,7 @@ public class GenericComponentDAOTest {
 	}
 
 	/**
-	 * Tests a successful approach for the method addOrUpdate (collection).
+	 * Tests a successful approach for the method addOrUpdate (collection). FIXME Persist and merge
 	 */
 	@Test
 	public void testAddOrUpdateCollectionSuccess() {

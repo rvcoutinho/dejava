@@ -13,6 +13,24 @@ import java.util.Collection;
 public interface GenericDAO<Entity, Key> {
 
 	/**
+	 * Persists the entity with the persistence context (so its state is persisted).
+	 * 
+	 * @param entity
+	 *            The entity to be persisted.
+	 * @return The persisted instance.
+	 */
+	public abstract Entity persist(Entity entity);
+
+	/**
+	 * Persists the entities with the persistence context (so its state is persisted).
+	 * 
+	 * @param entities
+	 *            The entities to be persisted.
+	 * @return The persisted instances.
+	 */
+	public abstract Collection<Entity> persist(Collection<Entity> entities);
+
+	/**
 	 * Merges the entity with the persistence context (so its state is persisted).
 	 * 
 	 * @param entity

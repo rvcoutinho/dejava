@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="org.dejava.component.ejb.test.component.GenericComponentDAOTest" time="38.942" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="org.dejava.component.ejb.test.component.GenericComponentDAOTest" time="12.808" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0\jre\bin"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3074553143760783007.tmp"/>
+    <property name="classworlds.conf" value="D:\usuarios\rvcoutinho\Desktop\dejava\components\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf6973888517498477993.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jdk1.7.0_51\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.4\bin;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -43,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Parquillian-wildfly-managed -B --threads 4 deploy"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Parquillian-wildfly-managed -B --threads 4 -s D:\usuarios\rvcoutinho\.m2\settings.xml deploy"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pt"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,20 +61,154 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetEntityByAttributeDuplicateAttribute" time="2.168"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveCollectionNullEntity" time="0.108"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetByIdNullId" time="0.175"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetByIdSuccess" time="0.136"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateCollectionSuccess" time="0.24"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveCollectionSuccess" time="0.2"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateNullEntity" time="0.101"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetEntityByAttributeNullAttributeName" time="0.121"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateCollectionNullEntity" time="0.051"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetAllSuccess" time="0.246"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveSuccess" time="0.063"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetEntityByAttributeSuccess" time="0.072"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testRemoveNullEntity" time="0.102"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetCollectionByAttributeNullAttributeName" time="0.092"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testAddOrUpdateSuccess" time="0.145"/>
-  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="testGetCollectionByAttributeSuccess" time="0.363"/>
+  <testcase classname="org.dejava.component.ejb.test.component.GenericComponentDAOTest" name="org.dejava.component.ejb.test.component.GenericComponentDAOTest" time="0">
+    <error message="Could not invoke deployment method: public static org.jboss.shrinkwrap.api.Archive org.dejava.component.ejb.test.component.GenericComponentDAOTest.createTestArchive()" type="java.lang.RuntimeException">java.lang.RuntimeException: Could not invoke deployment method: public static org.jboss.shrinkwrap.api.Archive org.dejava.component.ejb.test.component.GenericComponentDAOTest.createTestArchive()
+	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.invoke(AnnotationDeploymentScenarioGenerator.java:181)
+	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.generateDeployment(AnnotationDeploymentScenarioGenerator.java:103)
+	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.generate(AnnotationDeploymentScenarioGenerator.java:64)
+	at org.jboss.arquillian.container.test.impl.client.deployment.DeploymentGenerator.generateDeployment(DeploymentGenerator.java:79)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.test.impl.client.ContainerEventController.execute(ContainerEventController.java:100)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:65)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeClass(EventTestRunnerAdaptor.java:80)
+	at org.jboss.arquillian.junit.Arquillian$2.evaluate(Arquillian.java:182)
+	at org.jboss.arquillian.junit.Arquillian.multiExecute(Arquillian.java:314)
+	at org.jboss.arquillian.junit.Arquillian.access$100(Arquillian.java:46)
+	at org.jboss.arquillian.junit.Arquillian$3.evaluate(Arquillian.java:199)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.jboss.arquillian.junit.Arquillian.run(Arquillian.java:147)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.jboss.arquillian.container.test.impl.client.deployment.AnnotationDeploymentScenarioGenerator.invoke(AnnotationDeploymentScenarioGenerator.java:177)
+	... 56 more
+Caused by: org.jboss.shrinkwrap.resolver.api.InvalidConfigurationFileException: Found 1 problems while building POM model from D:\usuarios\rvcoutinho\Desktop\dejava\components\ejb\pom.xml
+1/ [FATAL] Non-resolvable parent POM: Failed to resolve POM for org.dejava.component:pom:0.0.1 due to Could not transfer artifact org.dejava.component:pom:pom:0.0.1 from/to dejava-components-releases (https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases): Error transferring file: handshake alert:  unrecognized_name from https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases/org/dejava/component/pom/0.0.1/pom-0.0.1.pom and &apos;parent.relativePath&apos; points at wrong local POM @ org.dejava.component:ejb:0.0.1, D:\usuarios\rvcoutinho\Desktop\dejava\components\ejb\pom.xml
+
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenWorkingSessionImpl.loadPomFromFile(MavenWorkingSessionImpl.java:185)
+	at org.jboss.shrinkwrap.resolver.impl.maven.task.LoadPomTask.execute(LoadPomTask.java:84)
+	at org.jboss.shrinkwrap.resolver.impl.maven.PomlessResolveStageBaseImpl.loadPomFromFile(PomlessResolveStageBaseImpl.java:96)
+	at org.jboss.shrinkwrap.resolver.impl.maven.MavenResolverSystemBaseImpl.loadPomFromFile(MavenResolverSystemBaseImpl.java:174)
+	at org.dejava.component.ejb.test.component.GenericComponentDAOTest.createTestArchive(GenericComponentDAOTest.java:45)
+	... 61 more
+</error>
+    <system-out>16:13:23,639 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.0.Final
+16:13:24,075 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.0.Final
+16:13:24,184 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.0.0.Final &quot;WildFly&quot; starting
+16:13:26,852 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+16:13:26,884 INFO  [org.xnio] (MSC service thread 1-2) XNIO version 3.2.0.Final
+16:13:26,884 INFO  [org.xnio.nio] (MSC service thread 1-2) XNIO NIO Implementation Version 3.2.0.Final
+16:13:26,931 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 36) JBAS010280: Activating Infinispan subsystem.
+16:13:26,946 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 52) JBAS013171: Activating Security Subsystem
+16:13:26,962 INFO  [org.jboss.as.security] (MSC service thread 1-5) JBAS013170: Current PicketBox version=4.0.20.Final
+16:13:26,977 INFO  [org.jboss.as.jacorb] (ServerService Thread Pool -- 37) JBAS016300: Activating JacORB Subsystem
+16:13:26,993 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 56) JBAS015537: Activating WebServices Extension
+16:13:27,024 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 43) JBAS012615: Activated the following JSF Implementations: [main]
+16:13:27,024 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 47) JBAS011800: Activating Naming Subsystem
+16:13:27,149 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) JBAS017502: Undertow 1.0.0.Final starting
+16:13:27,149 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-8) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.3.Final)
+16:13:27,211 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) JBAS017502: Undertow 1.0.0.Final starting
+16:13:27,305 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 31) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+16:13:27,321 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) JBAS010417: Started Driver service with driver-name = h2
+16:13:27,945 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 31) JBAS010404: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 9.2)
+16:13:27,960 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010417: Started Driver service with driver-name = org.postgresql
+16:13:28,024 INFO  [org.jboss.remoting] (MSC service thread 1-6) JBoss Remoting version 4.0.0.Final
+16:13:28,086 INFO  [org.jboss.as.naming] (MSC service thread 1-4) JBAS011802: Starting Naming Service
+16:13:28,102 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-4) JBAS015400: Bound mail session [java:jboss/mail/Default]
+16:13:28,258 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) JBAS017527: Creating file handler for path C:\servidores\wildfly-8.0.0.Final/welcome-content
+16:13:28,258 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017525: Started server default-server.
+16:13:28,289 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) JBAS017531: Host default-host starting
+16:13:28,429 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017519: Undertow HTTP listener default listening on /127.0.0.1:8080
+16:13:28,648 WARN  [jacorb.codeset] (MSC service thread 1-1) Warning - unknown codeset (Cp1252) - defaulting to ISO-8859-1
+16:13:28,679 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-3) JBAS015012: Started FileSystemDeploymentService for directory C:\servidores\wildfly-8.0.0.Final\standalone\deployments
+16:13:28,835 INFO  [org.jboss.as.jacorb] (MSC service thread 1-1) JBAS016330: CORBA ORB Service started
+16:13:28,835 WARN  [org.jboss.as.messaging] (MSC service thread 1-5) JBAS011600: AIO wasn&apos;t located on this platform, it will fall back to using pure Java NIO. If your platform is Linux, install LibAIO to enable the AIO journal
+16:13:28,991 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+16:13:29,022 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221000: live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=C:\servidores\wildfly-8.0.0.Final\standalone\data\messagingjournal,bindingsDirectory=C:\servidores\wildfly-8.0.0.Final\standalone\data\messagingbindings,largeMessagesDirectory=C:\servidores\wildfly-8.0.0.Final\standalone\data\messaginglargemessages,pagingDirectory=C:\servidores\wildfly-8.0.0.Final\standalone\data\messagingpaging)
+16:13:29,022 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221006: Waiting to obtain live lock
+16:13:29,101 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221013: Using NIO Journal
+16:13:29,179 INFO  [io.netty.util.internal.PlatformDependent] (ServerService Thread Pool -- 58) Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+16:13:29,569 INFO  [org.jboss.as.jacorb] (MSC service thread 1-1) JBAS016328: CORBA Naming Service started
+16:13:29,647 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221043: Adding protocol support CORE
+16:13:29,663 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221043: Adding protocol support AMQP
+16:13:29,663 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221043: Adding protocol support STOMP
+16:13:29,819 INFO  [org.jboss.ws.common.management] (MSC service thread 1-7) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.2.3.Final
+16:13:29,834 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221034: Waiting to obtain live lock
+16:13:29,834 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221035: Live Server Obtained live lock
+16:13:30,451 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221007: Server is now live
+16:13:30,451 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 58) HQ221001: HornetQ Server version 2.4.1.Final (Fast Hornet, 124) [54cf10d5-9660-11e3-b32b-19ba83dacfc2] 
+16:13:30,467 INFO  [org.jboss.messaging] (MSC service thread 1-4) JBAS011615: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor-throughput acceptor
+16:13:30,467 INFO  [org.jboss.messaging] (MSC service thread 1-3) JBAS011615: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor acceptor
+16:13:30,499 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 58) JBAS011601: Bound messaging object to jndi name java:/ConnectionFactory
+16:13:30,515 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 59) JBAS011601: Bound messaging object to jndi name java:jboss/exported/jms/RemoteConnectionFactory
+16:13:30,562 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-6) JBAS010406: Registered connection factory java:/JmsXA
+16:13:30,624 INFO  [org.hornetq.ra] (MSC service thread 1-6) HornetQ resource adaptor started
+16:13:30,624 INFO  [org.jboss.as.connector.services.resourceadapters.ResourceAdapterActivatorService$ResourceAdapterActivator] (MSC service thread 1-6) IJ020002: Deployed: file://RaActivatorhornetq-ra
+16:13:30,624 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-6) JBAS010401: Bound JCA ConnectionFactory [java:/JmsXA]
+16:13:30,624 INFO  [org.jboss.as.messaging] (MSC service thread 1-2) JBAS011601: Bound messaging object to jndi name java:jboss/DefaultJMSConnectionFactory
+16:13:30,702 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+16:13:30,702 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+16:13:30,702 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.0.0.Final &quot;WildFly&quot; started in 7750ms - Started 216 of 264 services (89 services are lazy, passive or on-demand)
+</system-out>
+    <system-err>abr 13, 2014 4:13:22 PM org.jboss.as.arquillian.container.managed.ManagedDeployableContainer startInternal
+INFORMA��ES: Starting container with: [&quot;C:\Program Files\Java\jdk1.8.0\bin\java&quot;, -Djava.util.logging.manager=org.jboss.logmanager.LogManager, -ea, -Djboss.home.dir=C:/servidores/wildfly-8.0.0.Final, -Dorg.jboss.boot.log.file=C:\servidores\wildfly-8.0.0.Final\standalone\log\server.log, -Dlogging.configuration=file:/C:/servidores/wildfly-8.0.0.Final/standalone/configuration/logging.properties, -Djboss.bundles.dir=C:/servidores/wildfly-8.0.0.Final\bundles, -jar, C:\servidores\wildfly-8.0.0.Final\jboss-modules.jar, -mp, C:/servidores/wildfly-8.0.0.Final\modules, org.jboss.as.standalone, -server-config, standalone-full.xml]
+abr 13, 2014 4:13:22 PM org.xnio.Xnio &lt;clinit&gt;
+INFO: XNIO version 3.2.0.Final
+abr 13, 2014 4:13:22 PM org.xnio.nio.NioXnio &lt;clinit&gt;
+INFO: XNIO NIO Implementation Version 3.2.0.Final
+abr 13, 2014 4:13:23 PM org.jboss.remoting3.EndpointImpl &lt;clinit&gt;
+INFO: JBoss Remoting version 4.0.0.Final
+abr 13, 2014 4:13:31 PM org.jboss.shrinkwrap.resolver.impl.maven.logging.LogTransferListener transferFailed
+ADVERT�NCIA: Failed downloading org/dejava/component/pom/0.0.1/pom-0.0.1.pom from http://repo1.maven.org/maven2/. Reason: 
+org.sonatype.aether.transfer.ArtifactNotFoundException: Could not find artifact org.dejava.component:pom:pom:0.0.1 in central (http://repo1.maven.org/maven2)
+abr 13, 2014 4:13:33 PM org.jboss.shrinkwrap.resolver.impl.maven.logging.LogTransferListener transferFailed
+ADVERT�NCIA: Failed downloading org/dejava/component/pom/0.0.1/pom-0.0.1.pom from https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases/. Reason: 
+org.sonatype.aether.transfer.ArtifactTransferException: Could not transfer artifact org.dejava.component:pom:pom:0.0.1 from/to dejava-components-releases (https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases): Error transferring file: handshake alert:  unrecognized_name from https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases/org/dejava/component/pom/0.0.1/pom-0.0.1.pom
+</system-err>
+  </testcase>
 </testsuite>

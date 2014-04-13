@@ -205,8 +205,8 @@ public abstract class AbstractGenericDAO<Entity, Key> implements GenericDAO<Enti
 		PreConditions.assertParamNotNull(DAOParamKeys.ATTR_NAME, attributeName);
 		// Creates a new criteria query.
 		final CriteriaQuery<Entity> criteriaQuery = getCriteriaBuilder().createQuery(getEntityClass());
-		// Creates the root for the query.
-		final Root<Entity> criteriaRoot = criteriaQuery.from(getEntityClass());
+		// Creates a distinct select from the entity class.
+		final Root<Entity> criteriaRoot = criteriaQuery.distinct(true).from(getEntityClass());
 		// If the attribute value is null.
 		if (attributeValue == null) {
 			// Sets the is null condition for the given attribute value.
@@ -258,8 +258,8 @@ public abstract class AbstractGenericDAO<Entity, Key> implements GenericDAO<Enti
 	public Collection<Entity> getAll(final Integer firstResult, final Integer maxResults) {
 		// Creates a new criteria query.
 		final CriteriaQuery<Entity> criteriaQuery = getCriteriaBuilder().createQuery(getEntityClass());
-		// Creates the root for the query.
-		final Root<Entity> criteriaRoot = criteriaQuery.from(getEntityClass());
+		// Creates a distinct select from the entity class.
+		final Root<Entity> criteriaRoot = criteriaQuery.distinct(true).from(getEntityClass());
 		// Defines the select for the query.
 		criteriaQuery.select(criteriaRoot);
 		// Gets the JPA query.

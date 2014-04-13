@@ -137,7 +137,7 @@ public abstract class AbstractCreatePartyController implements Serializable {
 		// Removes previous addresses.
 		getParty().setAddresses(null);
 		// Sets the new address to the party.
-		getParty().getAddresses().add(placeComponent.getContactByGoogleReference(getAddressReference()));
+		getParty().getAddresses().add(placeComponent.getPlaceByGoogleReference(getAddressReference()));
 	}
 
 }

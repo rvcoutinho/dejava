@@ -96,8 +96,8 @@ public class ProjectComponent {
 	 *            The maximum numbers of results to be considered.
 	 * @return Projects by category.
 	 */
-	public Collection<Project> getProjectsByCategory(final Category category,
-			final Integer firstResult, final Integer maxResults) {
+	public Collection<Project> getProjectsByCategory(final Category category, final Integer firstResult,
+			final Integer maxResults) {
 		return projectDAO.getByAttribute("category", category, firstResult, maxResults);
 	}
 
@@ -130,8 +130,8 @@ public class ProjectComponent {
 	 *            The maximum numbers of results to be considered.
 	 * @return Projects by category or tag (or none).
 	 */
-	public Collection<Project> getProjectsByCategoryOrTag(final Category category,
-			final String tag, final Integer firstResult, final Integer maxResults) {
+	public Collection<Project> getProjectsByCategoryOrTag(final Category category, final String tag,
+			final Integer firstResult, final Integer maxResults) {
 		// If both the category and tag are null.
 		if ((category == null) && (tag == null)) {
 			// Returns all projects.
@@ -172,7 +172,7 @@ public class ProjectComponent {
 		// Validates the idea to be added.
 		projectBusinessRuleSet.validate(idea);
 		// Adds the idea.
-		projectDAO.merge(idea);
+		projectDAO.persist(idea);
 	}
 
 	/**
@@ -185,8 +185,7 @@ public class ProjectComponent {
 	 * 
 	 * @return All project plans.
 	 */
-	public Collection<Project> getPlannedProjects(final Integer firstResult,
-			final Integer maxResults) {
+	public Collection<Project> getPlannedProjects(final Integer firstResult, final Integer maxResults) {
 		return projectDAO.getPlannedProjects(firstResult, maxResults);
 	}
 
@@ -200,7 +199,7 @@ public class ProjectComponent {
 		// Validates the project to be added.
 		projectBusinessRuleSet.validate(plannedProject);
 		// Adds the planned project.
-		projectDAO.merge(plannedProject);
+		projectDAO.persist(plannedProject);
 	}
 
 	/**
@@ -213,8 +212,7 @@ public class ProjectComponent {
 	 * 
 	 * @return All project plans.
 	 */
-	public Collection<Project> getOngoingProjects(final Integer firstResult,
-			final Integer maxResults) {
+	public Collection<Project> getOngoingProjects(final Integer firstResult, final Integer maxResults) {
 		return projectDAO.getOngoingProjects(firstResult, maxResults);
 	}
 
@@ -344,7 +342,7 @@ public class ProjectComponent {
 		shareBusinessRuleSet.validate(projectShare,
 				shareDAO.countSharesByProjectAndSupporter(projectId, supporterId));
 		// Persists the share.
-		shareDAO.merge(projectShare);
+		shareDAO.persist(projectShare);
 	}
 
 	/**

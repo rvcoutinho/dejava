@@ -40,7 +40,18 @@ public class UserComponent {
 		// Validates the user to be added.
 		userBizRuleSet.validate(user);
 		// Adds the new user.
-		return userDAO.merge(user);
+		return userDAO.persist(user);
+	}
+
+	/**
+	 * Gets the user by its identifier.
+	 * 
+	 * @param userId
+	 *            The suer identifier.
+	 * @return The user by its identifier.
+	 */
+	public User getUserById(final Integer userId) {
+		return userDAO.getById(userId);
 	}
 
 }

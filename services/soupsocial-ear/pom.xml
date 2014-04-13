@@ -65,6 +65,12 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>photo-web</artifactId>
+			<type>war</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.soupsocial</groupId>
 			<artifactId>soupsocial-web</artifactId>
 			<type>war</type>

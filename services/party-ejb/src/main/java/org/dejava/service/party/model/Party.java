@@ -14,11 +14,11 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.ejb.entity.ExternalEntity;
+import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.contact.interfac.Contactable;
 import org.dejava.service.contact.model.Contact;
 import org.dejava.service.party.util.MessageTypes;
@@ -103,7 +103,6 @@ public abstract class Party extends AbstractIdentifiedEntity implements Contacta
 	 */
 	@Override
 	@Transient
-	@Valid
 	public Collection<Place> getAddresses() {
 		// If the address set is null.
 		if (addresses == null) {
@@ -125,7 +124,7 @@ public abstract class Party extends AbstractIdentifiedEntity implements Contacta
 	/**
 	 * Contacts for the party.
 	 */
-	@ExternalEntity(retrieveObj = "java:app/contact-ejb/Component/Contact/Contact", retrieveMethod = "getContactById", mappedBy = "partyId", singleEntity = false)
+	@ExternalEntity(retrieveObj = "java:app/contact-ejb/Component/Contact/Contact", retrieveMethod = "getContactByParty", mappedBy = "partyId", singleEntity = false)
 	private Collection<Contact> contacts;
 
 	/**
@@ -133,7 +132,6 @@ public abstract class Party extends AbstractIdentifiedEntity implements Contacta
 	 */
 	@Override
 	@Transient
-	@Valid
 	@NotNull(payload = MessageTypes.Error.class, message = "party.contacts.notnull")
 	@NotEmpty(payload = MessageTypes.Error.class, message = "party.contacts.notempty")
 	public Collection<Contact> getContacts() {
@@ -177,28 +175,60 @@ public abstract class Party extends AbstractIdentifiedEntity implements Contacta
 	}
 
 	/**
-	 * The user (identifier).
+	 * The user identifier.
 	 */
-	private Integer user;
+	private Integer userId;
 
 	/**
-	 * Gets the user (identifier).
+	 * Gets the user identifier.
 	 * 
-	 * @return The user (identifier).
+	 * @return The user identifier.
 	 */
 	@Column(name = "u5er")
-	public Integer getUser() {
+	public Integer getUserId() {
+		return userId;
+	}
+
+	/**
+	 * Sets the user identifier.
+	 * 
+	 * @param userId
+	 *            New user identifier.
+	 */
+	public void setUserId(final Integer userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * The user.
+	 */
+	@ExternalEntity(retrieveObj = "java:app/accesscontrol-ejb/Component/AccessControl/User", retrieveMethod = "getUserById")
+	private User user;
+
+	/**
+	 * Gets the user.
+	 * 
+	 * @return The user.
+	 */
+	@Transient
+	public User getUser() {
 		return user;
 	}
 
 	/**
-	 * Sets the user (identifier).
+	 * Sets the user.
 	 * 
 	 * @param user
-	 *            New user (identifier).
+	 *            New user.
 	 */
-	public void setUser(final Integer user) {
+	public void setUser(final User user) {
+		// Sets the user.
 		this.user = user;
+		// If the user is not null.
+		if (user != null) {
+			// Sets the user id.
+			setUserId(user.getIdentifier());
+		}
 	}
 
 	/**

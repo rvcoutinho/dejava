@@ -14,7 +14,7 @@
 	<repositories>
 		<repository>
 			<id>dejava-components-releases</id>
-			<url>https://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
+			<url>http://github.com/rvcoutinho/dejava/raw/master/components/maven/releases</url>
 		</repository>
 		<repository>
 			<id>dejava-services-releases</id>
@@ -96,6 +96,13 @@
 				<artifactId>photo-ejb</artifactId>
 				<version>0.0.1</version>
 				<type>ejb</type>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dejava.service</groupId>
+				<artifactId>photo-web</artifactId>
+				<version>0.0.1</version>
+				<type>war</type>
 				<scope>provided</scope>
 			</dependency>
 

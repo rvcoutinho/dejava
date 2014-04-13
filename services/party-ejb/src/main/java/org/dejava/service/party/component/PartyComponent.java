@@ -40,7 +40,7 @@ public class PartyComponent {
 		// Validates the party to be added.
 		partyBusinessRuleSet.validate(party);
 		// Adds the new party.
-		return partyDAO.merge(party);
+		return partyDAO.persist(party);
 	}
 
 	/**
@@ -48,12 +48,13 @@ public class PartyComponent {
 	 * 
 	 * @param party
 	 *            Party info.
-	 * @return The update party.
+	 * @return The updated party.
 	 */
 	public Party updatePartySimpleInfo(final Party party) {
+		// TODO Verify for illegal modifications.
 		// Validates the party to be added.
 		partyBusinessRuleSet.validate(party);
-		// Adds the new party.
+		// Updates the new party.
 		return partyDAO.merge(party);
 	}
 
@@ -76,7 +77,7 @@ public class PartyComponent {
 	 * @return A person by its user identifier.
 	 */
 	public Party getPartyByUser(final Integer userId) {
-		return partyDAO.getByAttribute("user", userId);
+		return partyDAO.getByAttribute("userId", userId);
 	}
 
 }

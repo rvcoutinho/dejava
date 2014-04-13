@@ -42,7 +42,7 @@ public class ContactComponent {
 		// Validates the contact to be added.
 		contactBusinessRuleSet.validate(contact);
 		// Adds the new contact.
-		return contactDAO.merge(contact);
+		return contactDAO.persist(contact);
 	}
 
 	/**
@@ -56,13 +56,13 @@ public class ContactComponent {
 		// Validates the contacts to be added.
 		contactBusinessRuleSet.validate(contacts);
 		// Adds the new contacts.
-		return contactDAO.merge(contacts);
+		return contactDAO.persist(contacts);
 	}
 
 	/**
 	 * Gets the contact by the party identifier.
 	 * 
-	 * @param partyId
+	 * @param party
 	 *            The party identifier.
 	 * @param firstResult
 	 *            The first result that should be considered by the query.
@@ -70,9 +70,9 @@ public class ContactComponent {
 	 *            The maximum numbers of results to be considered by the query.
 	 * @return The contact by the party identifier.
 	 */
-	public Collection<Contact> getContactByPartyId(final Integer partyId, final Integer firstResult,
+	public Collection<Contact> getContactByParty(final Integer party, final Integer firstResult,
 			final Integer maxResults) {
-		return contactDAO.getByAttribute("partyId", partyId, firstResult, maxResults);
+		return contactDAO.getByAttribute("party", party, firstResult, maxResults);
 	}
 
 	/**

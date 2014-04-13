@@ -88,4 +88,11 @@ public class PhoneNumber extends Contact {
 		// Sets the new field value (making sure that just numbers are recorded).
 		this.number = ArgFormatter.removeInvalidRegex(number, "[^\\d]");
 	}
+
+	/**
+	 * Default constructor.
+	 */
+	public PhoneNumber() {
+		super();
+	}
 }

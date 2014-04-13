@@ -27,13 +27,6 @@ import org.dejava.service.philanthropy.util.PhilanthropyCtx;
 public class PartyTaskComponent {
 
 	/**
-	 * Party component.
-	 */
-	@Inject
-	@PartyCtx
-	private org.dejava.service.party.component.PartyComponent partyComponent;
-
-	/**
 	 * Party task component.
 	 */
 	@Inject
@@ -88,8 +81,8 @@ public class PartyTaskComponent {
 		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, party);
 		// If the party has an original party.
 		if (party.getParty() != null) {
-			// Adds or updates the original party for the party.
-			party.setParty(partyComponent.createParty(party.getParty()));
+			// Adds the original party for the party.
+			party.setParty(partyTaskComponent.createPartyWithContactsAndAddresses(party.getParty()));
 		}
 		// Persists the party.
 		final Party newParty = philanthropyPartyComponent.createParty(party);

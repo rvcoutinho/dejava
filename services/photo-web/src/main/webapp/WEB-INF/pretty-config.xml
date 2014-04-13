@@ -1,0 +1,15 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<url-mapping id="raw-photo">
+		<pattern value="/p/#{photoId}" />
+		<view-id value="/p" />
+	</url-mapping>
+	<url-mapping id="raw-avatar">
+		<pattern value="/a/#{ownerId}" />
+		<view-id value="/a" />
+	</url-mapping>
+
+</pretty-config>

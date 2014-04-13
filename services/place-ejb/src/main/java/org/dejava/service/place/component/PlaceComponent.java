@@ -41,8 +41,8 @@ public class PlaceComponent {
 	 * @throws IOException
 	 *             If the google place URL cannot be processed. FIXME
 	 */
-	public Place getContactByGoogleReference(final String placeReference) throws IOException {
-		return placeDAO.getContactByGoogleReference(placeReference);
+	public Place getPlaceByGoogleReference(final String placeReference) throws IOException {
+		return placeDAO.getPlaceByGoogleReference(placeReference);
 	}
 
 	/**
@@ -55,8 +55,18 @@ public class PlaceComponent {
 	public Place createPlace(final Place place) {
 		// Validates the place to be added.
 		placeBusinessRuleSet.validate(place);
-		// Adds the new place.
-		return placeDAO.merge(place);
+		// Tries to get a place with the same reference.
+		final Place similiarPlace = placeDAO.getByAttribute("reference", place.getReference());
+		// If there is a similar place (same reference).
+		if (similiarPlace != null) {
+			// Returns the similar place.
+			return similiarPlace;
+		}
+		// If there is no similar place (same reference).
+		else {
+			// Adds and returns the new place.
+			return placeDAO.persist(place);
+		}
 	}
 
 	/**
@@ -70,7 +80,7 @@ public class PlaceComponent {
 		// Validates the places to be added.
 		placeBusinessRuleSet.validate(places);
 		// Adds the new places.
-		return placeDAO.merge(places);
+		return placeDAO.persist(places);
 	}
 
 	/**

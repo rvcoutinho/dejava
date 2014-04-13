@@ -19,6 +19,8 @@ import org.dejava.service.party.util.PartyCtx;
 import org.dejava.service.philanthropy.component.PartyComponent;
 import org.dejava.service.philanthropy.model.party.Party;
 import org.dejava.service.philanthropy.util.PhilanthropyCtx;
+import org.dejava.service.photo.component.PhotoComponent;
+import org.dejava.service.photo.util.PhotoCtx;
 import org.dejava.service.soupsocial.util.SoupSocialCtx;
 
 /**
@@ -101,6 +103,7 @@ public class UserController implements Serializable {
 	 * 
 	 * @return The user for the given user name.
 	 */
+	@Secured
 	@RequiresUser
 	public User getUser() {
 		// If there is no user name given.
@@ -158,6 +161,13 @@ public class UserController implements Serializable {
 		// Returns the party.
 		return philanthropyParty;
 	}
+
+	/**
+	 * The photo EJB component.
+	 */
+	@Inject
+	@PhotoCtx
+	private PhotoComponent photoComponent;
 
 	/**
 	 * Logs the current user out.

@@ -48,4 +48,5 @@ public class Test implements Serializable {
 	public void test() {
 		System.out.println(getClass());
 	}
+
 }

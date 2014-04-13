@@ -95,9 +95,8 @@
 								<div
 									class="sub-menu right square-box user-menu light-green-bg ui-corner-all">
 									<h:link outcome="pretty:me" styleClass="featured-text-1">
-										<img class="ui-corner-left"
-											src="https://graph.facebook.com/me/picture?access_token=#{userController.subject.session.getAttribute('access_token')}"
-											alt="" />
+										<img src="/photo-web/a/#{userController.party.identifier}"
+											class="ui-corner-left" />
 									</h:link>
 									<a href="#" class="open"><i
 										class="fa fa-caret-down light-green-bg ui-corner-right" /></a>

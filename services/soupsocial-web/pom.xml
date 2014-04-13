@@ -46,6 +46,11 @@
 			<artifactId>philanthropy-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
+		<dependency>
+			<groupId>org.dejava.service</groupId>
+			<artifactId>photo-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
 
 		<dependency>
 			<groupId>org.dejava.service</groupId>

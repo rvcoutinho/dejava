@@ -15,12 +15,23 @@ import org.dejava.service.accesscontrol.model.User;
 import org.dejava.service.accesscontrol.model.permission.UserPermission;
 import org.dejava.service.accesscontrol.util.AccessControlCtx;
 import org.dejava.service.accesscontrol.util.MessageTypes;
+import org.dejava.service.contact.component.ContactComponent;
+import org.dejava.service.contact.model.Contact;
+import org.dejava.service.contact.util.ContactCtx;
 import org.dejava.service.message.component.MessageComponent;
 import org.dejava.service.message.model.AppNotification;
 import org.dejava.service.message.util.MessageCtx;
 import org.dejava.service.party.constant.Permissions;
+import org.dejava.service.party.model.Party;
 import org.dejava.service.party.model.Person;
 import org.dejava.service.party.util.PartyCtx;
+import org.dejava.service.photo.component.PhotoComponent;
+import org.dejava.service.photo.constant.PhotoAlbums;
+import org.dejava.service.photo.model.Album;
+import org.dejava.service.photo.model.Photo;
+import org.dejava.service.photo.util.PhotoCtx;
+import org.dejava.service.place.component.PlaceComponent;
+import org.dejava.service.place.util.PlaceCtx;
 
 /**
  * Party coreography EJB component.
@@ -42,6 +53,27 @@ public class PartyTaskComponent {
 	@Inject
 	@AccessControlCtx
 	private UserComponent userComponent;
+
+	/**
+	 * Photo EJB component.
+	 */
+	@Inject
+	@PhotoCtx
+	private PhotoComponent photoComponent;
+
+	/**
+	 * Contact EJB component.
+	 */
+	@Inject
+	@ContactCtx
+	private ContactComponent contactComponent;
+
+	/**
+	 * Place EJB component.
+	 */
+	@Inject
+	@PlaceCtx
+	private PlaceComponent placeComponent;
 
 	/**
 	 * User authorization EJB component.
@@ -106,6 +138,31 @@ public class PartyTaskComponent {
 	}
 
 	/**
+	 * Creates a party with its contacts and addresses.
+	 * 
+	 * @param party
+	 *            The party to be created.
+	 * @return Returns the created party.
+	 */
+	public Party createPartyWithContactsAndAddresses(final Party party) {
+		// Creates the party addresses.
+		party.setAddresses(placeComponent.createPlaces(party.getAddresses()));
+		// Gets the party contacts.
+		final Collection<Contact> contacts = party.getContacts();
+		// Adds the new party.
+		final Party newParty = partyComponent.createParty(party);
+		// For each party contact.
+		for (final Contact currentContact : contacts) {
+			// Updates the current contact with the party identifier.
+			currentContact.setParty(newParty.getIdentifier());
+		}
+		// Creates the party contacts.
+		newParty.setContacts(contactComponent.createContacts(contacts));
+		// Returns the created party.
+		return newParty;
+	}
+
+	/**
 	 * Creates a person and a user using the facebook user information.
 	 * 
 	 * @param facebookUser
@@ -114,12 +171,15 @@ public class PartyTaskComponent {
 	public void createPersonAndUser(final com.restfb.types.User facebookUser) {
 		// Adds the new user.
 		final User user = userComponent.createUser(new User(facebookUser));
-		// Creates the new person.
+		// Creates a the person with the facebook information.
 		Person person = new Person(facebookUser);
-		// Sets the user for the person.
-		person.setUser(user.getIdentifier());
-		// Adds the new person.
-		person = (Person) partyComponent.createParty(person);
+		// Sets the person user.
+		person.setUser(user);
+		// Creates the person, its addresses and contacts.
+		person = (Person) createPartyWithContactsAndAddresses(person);
+		// Creates a new photo for the user avatar.
+		photoComponent.createPhoto(new Photo(photoComponent.getFacebookUserAvatar(), new Album(
+				PhotoAlbums.AVATAR_ALBUM, person.getIdentifier(), null)));
 		// Notifies the user with a welcome message.
 		messageComponent.sendAppNotification(new AppNotification(person.getIdentifier(),
 				new SimpleMessageCommand(MessageTypes.URL.class, null, URLKeys.NEW_USER, null),

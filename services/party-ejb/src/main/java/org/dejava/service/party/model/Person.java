@@ -255,7 +255,7 @@ public class Person extends Party {
 			// If there is a given email.
 			if ((facebookUser.getEmail() != null) && (!facebookUser.getEmail().isEmpty())) {
 				// Adds the email address as a contact.
-				getContacts().add(new EmailAddress(facebookUser.getEmail()));
+				getContacts().add(new EmailAddress(facebookUser.getEmail(), getIdentifier()));
 			}
 			// If there is a given gender.
 			if ((facebookUser.getGender() != null) && (!facebookUser.getGender().isEmpty())) {

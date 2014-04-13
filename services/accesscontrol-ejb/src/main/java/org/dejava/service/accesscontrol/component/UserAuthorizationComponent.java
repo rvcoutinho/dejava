@@ -55,13 +55,13 @@ public class UserAuthorizationComponent {
 		// If the role does not exist yet.
 		if (actualRole == null) {
 			// Creates the role. TODO Think about
-			actualRole = roleDAO.merge(userRole.getRole());
+			actualRole = roleDAO.persist(userRole.getRole());
 		}
 		// Resets the role in the user role.
 		userRole.setRole(actualRole);
 		// Validates TODO
 		// Adds the role to the user.
-		userRoleDAO.merge(userRole);
+		userRoleDAO.persist(userRole);
 	}
 
 	/**
@@ -158,13 +158,13 @@ public class UserAuthorizationComponent {
 		// If the permission does not exist yet.
 		if (actualPermission == null) {
 			// Creates the permission. TODO Think about
-			actualPermission = permissionDAO.merge(userPermission.getPermission());
+			actualPermission = permissionDAO.persist(userPermission.getPermission());
 		}
 		// Resets the permission in the user permission.
 		userPermission.setPermission(actualPermission);
 		// Validates TODO
 		// Adds the permission to the user.
-		userPermissionDAO.merge(userPermission);
+		userPermissionDAO.persist(userPermission);
 	}
 
 	/**

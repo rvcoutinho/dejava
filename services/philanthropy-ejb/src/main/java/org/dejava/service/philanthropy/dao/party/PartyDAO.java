@@ -28,17 +28,4 @@ public class PartyDAO extends AbstractGenericDAO<Party, Integer> {
 		return entityManager;
 	}
 
-	/**
-	 * @see org.dejava.component.ejb.dao.AbstractGenericDAO#merge(java.lang.Object)
-	 */
-	@Override
-	public Party merge(final Party entity) {
-		// Merges the party.
-		final Party newParty = super.merge(entity);
-		// Asserts that the original party is set.
-		newParty.setParty(entity.getParty());
-		// Returns the merged party.
-		return newParty;
-	}
-
 }

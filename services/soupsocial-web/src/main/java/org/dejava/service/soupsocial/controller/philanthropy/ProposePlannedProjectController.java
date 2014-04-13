@@ -85,7 +85,7 @@ public class ProposePlannedProjectController extends AbstractCreateProjectContro
 		// Sets the plan for the new project.
 		getNewProject().setPlan(getNewProjectPlan());
 		// Updates the plan target area.
-		getNewProjectPlan().setTargetArea(placeComponent.getContactByGoogleReference(getAddressReference()));
+		getNewProjectPlan().setTargetArea(placeComponent.getPlaceByGoogleReference(getAddressReference()));
 		// Updates the plan goals.
 		getNewProjectPlan().setGoals(getGoals());
 		// Creates the project.

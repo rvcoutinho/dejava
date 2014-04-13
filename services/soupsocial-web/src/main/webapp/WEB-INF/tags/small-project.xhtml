@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <ui:composition>
 	<article
 		class="project padding-1 ui-corner-all light-gray-texture-bg#{not empty project.idea ? ' idea' : ''}#{not empty project.plan ? ' plan' : ''}#{not empty project.sponsor ? ' ongoing' : ''}#{varStatus.even ? ' even' : ' odd'}#{varStatus.index mod 3 == 1 ? ' middle' : ''}">
@@ -20,8 +21,16 @@
 			<div class="plan small-text border-bottom">Instituição:</div>
 			<div class="ongoing small-text border-bottom">Patrocinadores:</div>
 			<div class="idea small-text border-top padding-6">
-				<a><h:graphicImage library="soupsocial"
-						class="project-owner-img" /> </a>
+				<c:if test="#{not empty project.idea}">
+					<ui:repeat var="currentAuthor" value="#{project.idea.authors}">
+						<h:link outcome="user">
+							<f:param name="username"
+								value="#{currentAuthor.supporter.party.user.name}" />
+							<img src="/photo-web/a/#{currentAuthor.supporter.partyId}"
+								class="project-owner-img" />
+						</h:link>
+					</ui:repeat>
+				</c:if>
 			</div>
 			<div class="plan small-text border-top padding-6">
 				<a><h:graphicImage library="soupsocial"

@@ -1,7 +1,6 @@
 package org.dejava.service.philanthropy.model.project.author;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -10,15 +9,16 @@ import org.dejava.component.ejb.entity.AbstractIdentifiedEntity;
 import org.dejava.component.i18n.source.annotation.MessageSource;
 import org.dejava.component.i18n.source.annotation.MessageSources;
 import org.dejava.service.philanthropy.model.party.Supporter;
-import org.dejava.service.philanthropy.model.project.Project;
+import org.dejava.service.philanthropy.model.project.plan.ProjectIdea;
 
 /**
  * A project author relationship.
  */
 @Entity
-@Table(name = "ProjectAuthor")
+@Table(name = "project_author")
 @MessageSources(sources = {
-		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", entriesAffix = { "", ".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
+		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", entriesAffix = {
+				"", ".description" }, processors = { "org.dejava.component.i18n.source.processor.impl.PublicGettersEntryProcessor" }),
 		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.error", processors = { "org.dejava.component.i18n.source.processor.impl.GetterConstraintEntryProcessor" }) })
 public class ProjectAuthor extends AbstractIdentifiedEntity {
 
@@ -30,16 +30,16 @@ public class ProjectAuthor extends AbstractIdentifiedEntity {
 	/**
 	 * The project that has been shared.
 	 */
-	private Project project;
+	private ProjectIdea project;
 
 	/**
 	 * Gets the project that has been shared.
 	 * 
 	 * @return The project that has been shared.
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "project")
-	public Project getProject() {
+	public ProjectIdea getProject() {
 		return project;
 	}
 
@@ -49,7 +49,7 @@ public class ProjectAuthor extends AbstractIdentifiedEntity {
 	 * @param project
 	 *            New project that has been shared.
 	 */
-	public void setProject(final Project project) {
+	public void setProject(final ProjectIdea project) {
 		this.project = project;
 	}
 
@@ -94,7 +94,7 @@ public class ProjectAuthor extends AbstractIdentifiedEntity {
 	 * @param supporter
 	 *            The supporter who has authored the project.
 	 */
-	public ProjectAuthor(final Project project, final Supporter supporter) {
+	public ProjectAuthor(final ProjectIdea project, final Supporter supporter) {
 		super();
 		this.supporter = supporter;
 		this.project = project;

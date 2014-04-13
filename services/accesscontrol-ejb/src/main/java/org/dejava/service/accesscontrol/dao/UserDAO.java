@@ -1,6 +1,5 @@
 package org.dejava.service.accesscontrol.dao;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.inject.Inject;
@@ -35,32 +34,21 @@ public class UserDAO extends AbstractGenericDAO<User, Integer> {
 	}
 
 	/**
-	 * @see org.dejava.component.ejb.dao.AbstractGenericDAO#merge(java.lang.Object)
+	 * @see org.dejava.component.ejb.dao.AbstractGenericDAO#persist(java.lang.Object)
 	 */
 	@Override
-	public User merge(final User entity) {
-		// Asserts that the entity is not null.
+	public User persist(final User entity) {
+		// Asserts that the entity is not null. FIXME
 		PreConditions.assertParamNotNull(DAOParamKeys.ENTITY, entity);
-		// If the user has no id.
-		if (entity.getIdentifier() == null) {
-			// Gets the credentials for the user.
-			final Collection<Credentials> credentials = entity.getCredentials();
-			// Remove the principals from the user (credentials might use the user id for hash calculations).
-			entity.setCredentials(null);
-			// Merges the user.
-			User mergedUser = super.merge(entity);
-			// Re-adds the credentials to the merged user.
-			mergedUser.setCredentials(new ArrayList<>(credentials), true);
-			// Re-sets the credentials for the given user (to prevent problems with old references).
-			entity.setCredentials(credentials, true);
-			// Returns the merged user.
-			return mergedUser;
-		}
-		// If it has an id.
-		else {
-			// Merges the user normally.
-			return super.merge(entity);
-		}
+		// Gets the credentials for the user.
+		final Collection<Credentials> credentials = entity.getCredentials();
+		// Remove the principals from the user (credentials might use the user id for hash calculations).
+		entity.setCredentials(null);
+		// Persists the user.
+		super.persist(entity);
+		// Re-sets the credentials for the given user (to prevent problems with old references).
+		entity.setCredentials(credentials, true);
+		// Returns the persisted user.
+		return entity;
 	}
-
 }

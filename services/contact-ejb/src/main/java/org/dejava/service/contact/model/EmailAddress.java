@@ -70,9 +70,11 @@ public class EmailAddress extends Contact {
 	 * 
 	 * @param emailAddress
 	 *            The email address.
+	 * @param party
+	 *            The contact party identifier.
 	 */
-	public EmailAddress(String emailAddress) {
-		super();
+	public EmailAddress(final String emailAddress, final Integer party) {
+		super(party);
 		// Sets the email address.
 		this.address = emailAddress;
 	}

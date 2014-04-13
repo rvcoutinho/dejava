@@ -40,8 +40,8 @@ public class PartyComponent {
 	public Party createParty(final Party party) {
 		// Validates the party to be added.
 		partyBusinessRuleSet.validate(party);
-		// Adds persists the new party.
-		return partyDAO.merge(party);
+		// Adds the new party.
+		return partyDAO.persist(party);
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class PartyComponent {
 	public Party updateParty(final Party party) {
 		// Validates the party to be added.
 		partyBusinessRuleSet.validate(party);
-		// Adds persists the new party.
+		// Updates the new party.
 		return partyDAO.merge(party);
 	}
 
@@ -75,7 +75,7 @@ public class PartyComponent {
 	 * 
 	 * @param party
 	 *            The original party.
-	 * @return The philanthropy party by the party.
+	 * @return The philanthropy party by the party. FIXME Party task?
 	 */
 	public Party getOrAddSupporterByParty(final org.dejava.service.party.model.Party party) {
 		// Tries to get the philanthropy party for the party id.

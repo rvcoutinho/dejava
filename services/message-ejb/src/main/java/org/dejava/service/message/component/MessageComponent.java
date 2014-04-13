@@ -129,7 +129,7 @@ public class MessageComponent {
 		// Validates the message to be added.
 		messageBusinessRuleSet.validate(message);
 		// Adds the new message.
-		return messageDAO.merge(message);
+		return messageDAO.persist(message);
 	}
 
 	/**

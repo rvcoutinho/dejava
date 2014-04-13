@@ -46,7 +46,7 @@ public class UserAuthenticationComponent {
 	public Principal addUserPrincipal(final Principal principal) {
 		// Validates the principal to be added. TODO
 		// Adds the new principal.
-		return principalDAO.merge(principal);
+		return principalDAO.persist(principal);
 	}
 
 	/**

@@ -79,4 +79,19 @@ public class FacebookAPIKeys {
 	 */
 	public static final String APP_ACCESS_TOKEN_PARAM = "facebook.app.param.oauth.access.token";
 
+	/**
+	 * The key of parameter (height) to be used in the facebook picture URL.
+	 */
+	public static final String APP_AVATAR_HEIGHT_PARAM = "facebook.app.param.avatar.height";
+
+	/**
+	 * The default avatar height to be used in the facebook picture URL.
+	 */
+	public static final String APP_DEFAULT_AVATAR_HEIGHT = "facebook.app.avatar.height.default";
+
+	/**
+	 * Facebook user avatar URL key.
+	 */
+	public static final String APP_USER_AVATAR_URL = "facebook.app.user.avatar.url";
+
 }

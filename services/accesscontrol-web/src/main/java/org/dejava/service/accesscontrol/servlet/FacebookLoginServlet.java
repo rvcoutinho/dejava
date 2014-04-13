@@ -165,11 +165,12 @@ public class FacebookLoginServlet extends HttpServlet {
 		if (request.getSession().getAttribute(API_PROPERTIES.getProperty(FacebookAPIKeys.APP_STATE_ATTR))
 				.equals(request.getParameter(API_PROPERTIES.getProperty(FacebookAPIKeys.APP_STATE_PARAM)))) {
 			// Gets the URL for the access token exchange.
-			final URL oAuthAccessToken = new URL(getOAuthAccessTokenURL(request.getRequestURL().toString(),
+			final URL oAuthAccessTokenURL = new URL(getOAuthAccessTokenURL(
+					request.getRequestURL().toString(),
 					request.getParameter(API_PROPERTIES.getProperty(FacebookAPIKeys.APP_OAUTH_CODE_PARAM))));
 			// Gets the access token information
 			final String accessTokenInfo = new BufferedReader(new InputStreamReader(
-					oAuthAccessToken.openStream())).readLine();
+					oAuthAccessTokenURL.openStream())).readLine();
 			// Redirects to the login with the access token information.
 			response.sendRedirect(request.getRequestURL().toString() + "?" + accessTokenInfo);
 		}
@@ -209,6 +210,9 @@ public class FacebookLoginServlet extends HttpServlet {
 		// Gets the access token.
 		final String accessToken = request.getParameter(API_PROPERTIES
 				.getProperty(FacebookAPIKeys.APP_ACCESS_TOKEN_PARAM));
+		// Sets the access token to the subject session (so it can be accessed by other applications).
+		getSubject().getSession().setAttribute(
+				API_PROPERTIES.getProperty(FacebookAPIKeys.APP_ACCESS_TOKEN_PARAM), accessToken);
 		// Gets the facebook client with the given access token.
 		final FacebookClient fbClient = new DefaultFacebookClient(accessToken);
 		// Gets the current facebook user.
@@ -229,9 +233,6 @@ public class FacebookLoginServlet extends HttpServlet {
 			final FacebookUserToken facebookToken = new FacebookUserToken(fbUser.getId());
 			// Tries to log the user in.
 			getSubject().login(facebookToken);
-			// Sets the access token to the subject session (so it can be accessed by other applications).
-			getSubject().getSession().setAttribute(
-					API_PROPERTIES.getProperty(FacebookAPIKeys.APP_ACCESS_TOKEN_PARAM), accessToken);
 			// Redirects to the facebook original request URL.
 			response.sendRedirect((String) request.getSession().getAttribute(
 					API_PROPERTIES.getProperty(FacebookAPIKeys.APP_REDIRECT_URI_PARAM)));

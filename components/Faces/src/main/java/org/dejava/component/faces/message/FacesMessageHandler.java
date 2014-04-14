@@ -57,8 +57,8 @@ public class FacesMessageHandler implements ApplicationMessageHandler {
 		// By default, the message severity is error.
 		Severity severity = FacesMessage.SEVERITY_ERROR;
 		// Gets the class of the message type.
-		final ClassMirror<Object> messageTypeClass = new ClassMirror<>(type.getClass());
-		//
+		final ClassMirror<Object> messageTypeClass = new ClassMirror<>((Class<?>)type);
+		// Gets the message type annotation from the message type.
 		final AnnotationMirror<MessageType> messageTypeInfo = messageTypeClass
 				.getAnnotation(MessageType.class);
 		// If the message type annotation is found.

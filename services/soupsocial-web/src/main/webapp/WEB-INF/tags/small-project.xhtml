@@ -21,18 +21,26 @@
 			<div class="plan small-text border-bottom">Instituição:</div>
 			<div class="ongoing small-text border-bottom">Patrocinadores:</div>
 			<div class="idea small-text border-top padding-6">
-				<c:if test="#{not empty project.idea}">
-					<ui:repeat var="currentAuthor" value="#{project.idea.authors}">
-						<h:link outcome="user">
-							<f:param name="username"
-								value="#{currentAuthor.supporter.party.user.name}" />
-							<img src="/photo-web/a/#{currentAuthor.supporter.partyId}"
-								class="project-owner-img" />
-						</h:link>
-					</ui:repeat>
-				</c:if>
+				<ui:repeat var="currentAuthor"
+					value="#{project.idea.authors.toArray()}">
+					<h:link outcome="pretty:user">
+						<f:param name="username"
+							value="#{currentAuthor.supporter.party.user.name}" />
+						<img
+							src="/photo-web/a/#{currentAuthor.supporter.party.identifier}"
+							class="project-owner-img" />
+					</h:link>
+				</ui:repeat>
 			</div>
 			<div class="plan small-text border-top padding-6">
+				<h:link rendered="#{not empty project.plan.organization}">
+					<!-- outcome="pretty:user" -->
+					<f:param name="username"
+						value="#{project.plan.organization.party.user.name}" />
+					<img
+						src="/photo-web/a/#{project.plan.organization.party.identifier}"
+						class="project-owner-img" />
+				</h:link>
 				<a><h:graphicImage library="soupsocial"
 						class="project-owner-img" /></a>
 			</div>

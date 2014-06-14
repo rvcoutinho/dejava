@@ -53,7 +53,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 		@NamedQuery(name = "getPlannedProjects", query = "SELECT project FROM Project project WHERE project.plan IS NOT NULL AND project.sponsor IS NULL"),
 		@NamedQuery(name = "getOngoingProjects", query = "SELECT project FROM Project project WHERE project.sponsor IS NOT NULL"),
 		@NamedQuery(name = "countProjectsCreatedBySupporter", query = "SELECT count(author) FROM ProjectAuthor author WHERE author.supporter.identifier = :supporterId"),
-		@NamedQuery(name = "getProjectsCreatedBySupporter", query = "SELECT author.project FROM ProjectAuthor author WHERE author.supporter.identifier = :supporterId"),
+		@NamedQuery(name = "getProjectsCreatedBySupporter", query = "SELECT author.project.project FROM ProjectAuthor author WHERE author.supporter.identifier = :supporterId"),
 		@NamedQuery(name = "getProjectsSharedBySupporter", query = "SELECT share.project FROM ProjectShare share WHERE share.supporter.identifier = :supporterId") })
 @MessageSources(sources = {
 		@MessageSource(sourcePath = "../service-properties/src/main/resources", bundleBaseName = "org.dejava.service.philanthropy.properties.model", entriesAffix = {
@@ -160,7 +160,13 @@ public class Project extends AbstractIdentifiedEntity {
 	 *            New project initial idea.
 	 */
 	public void setIdea(final ProjectIdea idea) {
+		// Sets the idea.
 		this.idea = idea;
+		// If the idea is not null.
+		if (getIdea() != null) {
+			// Sets this project for the idea.
+			getIdea().setProject(this);
+		}
 	}
 
 	/**

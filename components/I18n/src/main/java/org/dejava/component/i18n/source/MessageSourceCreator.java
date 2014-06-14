@@ -11,7 +11,6 @@ import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
@@ -231,7 +230,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 	 *            The affix to be used.
 	 * @return The entries in the original set appended with each given affix.
 	 */
-	private Set<String> processEntriesAffix(Set<String> originalEntries, String[] entriesAffix) {
+	private Set<String> processEntriesAffix(final Set<String> originalEntries, final String[] entriesAffix) {
 		// Creates a new entry set.
 		Set<String> finalEntries = new TreeSet<>();
 		// If the set is not null.
@@ -244,11 +243,11 @@ public class MessageSourceCreator extends AbstractProcessor {
 			// If there is any affix.
 			else {
 				// For each entry in the set.
-				for (String currentEntry : originalEntries) {
+				for (final String currentEntry : originalEntries) {
 					// Adds the current entry without an affix.
 					finalEntries.add(currentEntry);
 					// For each given affix.
-					for (String currentAffix : entriesAffix) {
+					for (final String currentAffix : entriesAffix) {
 						// Adds the current entry with current affix.
 						finalEntries.add(currentEntry + currentAffix);
 					}
@@ -286,7 +285,7 @@ public class MessageSourceCreator extends AbstractProcessor {
 							for (final TypeElement currentClassToProcess : getClassesToProcess(
 									(TypeElement) currentClass, currentMsgSrc.processSuperclasses())) {
 								// Gets the processed entries.
-								Set<String> processedEntries = currentProcessor.processClass(
+								final Set<String> processedEntries = currentProcessor.processClass(
 										(TypeElement) currentClass, currentClassToProcess);
 								// Adds the entries for the current processor to the entry set.
 								entries.addAll(processEntriesAffix(processedEntries,

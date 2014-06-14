@@ -76,7 +76,7 @@ public class UserController implements Serializable {
 	 * 
 	 * @return The user name being searched.
 	 */
-	private String getUsername() {
+	public String getUsername() {
 		// Returns the user name.
 		return username;
 	}
